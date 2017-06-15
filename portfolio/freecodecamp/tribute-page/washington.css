@@ -1,0 +1,110 @@
+body {
+  background-color: #f7f6ef;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+#div_creator {
+  margin: 10px 0 10px;
+}
+
+#div_creator > code {
+  color: #333;
+  font-size: 10px;
+}
+
+#div_delaware_river {
+  margin-bottom: 10px;
+}
+
+#div_delaware_river label {
+  font-family: Tahoma, Geneva, sans-serif;
+  margin-left: 8px;
+  margin-top: 14px;
+}
+
+#div_delaware_river img {
+  box-shadow: 2px 2px 5px #505050;
+}
+
+#div_quote blockquote {
+  font-size: 20px;
+}
+
+#div_timeline > div, blockquote {
+  width: 800px;
+}
+
+#div_timeline li {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+#div_wiki > h3 {
+  margin: 30px 0 34px;
+}
+
+h1 {
+  font-family: "Meddon", cursive;
+}
+
+h1, h2, #div_creator, #div_delaware_river, #div_quote, #div_timeline, #div_wiki {
+  display: flex;
+  justify-content: center;
+}
+
+hr {
+  margin: 0 auto 0 auto;
+  width: 50%;
+  border-width: thin;
+  border-color: #8a8a8a;
+}
+
+ul {
+  margin-bottom: 24px;
+}
+
+/* dynamically scale font - http://stackoverflow.com/a/27524911 */
+@media all and (min-width: 900px) {
+  #div_delaware_river label {
+    font-size: 9px;
+  }
+
+  h1 {
+    font-size: 64px;
+  }
+
+  h2 {
+    font-size: 28px;
+    margin-top: 36px;
+  }
+}
+
+@media all and (max-width: 899px) and (min-width: 400px) {
+  #div_delaware_river label {
+    font-size: 8px;
+  }
+
+  h1 {
+    font-size: 7.1vw;
+  }
+
+  h2 {
+    font-size: 3.1vw;
+    margin-top: 4.1vw;
+  }
+}
+
+@media all and (max-width: 399px) and (min-width: 50px) {
+  #div_delaware_river label {
+    font-size: 7px;
+  }
+
+  h1 {
+    font-size: 27px;
+  }
+
+  h2 {
+    font-size: 12px;
+    margin-top: 16px;
+  }
+}
