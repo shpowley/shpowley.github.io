@@ -1,0 +1,59 @@
+html {
+  height: 100%
+}
+
+body {
+  /*
+   * makes body height the same as the browser window
+   * - also requires (css) html>height: 100% for this to work
+   */
+  margin: 0;
+  min-height: 100%;
+  font: 100% arial, sans-serif;
+  color: #FFF;
+  background-color: #000000;
+}
+
+#description {
+  margin: 0;
+  padding: 5mm;
+}
+
+h3 {
+  font-size: 1.0em;
+  margin: 0 0 0.5em 0;
+}
+
+.hidden {
+  display: none;
+}
+
+li > p {
+  margin: -4px 0 4px 0;
+  line-height: 1.4em;
+  font-size: 0.8em;
+}
+
+.links {
+  font-size: 0.8em;
+  line-height: 2em;
+  padding-left: 4mm;
+  margin-bottom: 4mm;
+}
+
+li > p, .links a, h3 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-decoration: initial;
+  color: #FFF;
+}
+
+li > p, h3 {
+  cursor: default;
+}
+
+ol {
+  margin: 0 0 0 4mm;
+}

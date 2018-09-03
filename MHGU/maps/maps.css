@@ -1,0 +1,62 @@
+html {
+  height: 100%
+}
+
+body {
+  /*
+   * makes body height the same as the browser window
+   * - also requires (css) html>height: 100% for this to work
+   */
+  margin: 0;
+  min-height: 100%;
+  font: 100% arial, sans-serif;
+  color: #FFF;
+  background-color: #00BCD4;
+}
+
+h3 {
+  color: #FFF;
+  cursor: default;
+  text-decoration: initial;
+  user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+}
+
+#main-content {
+  align-items: center;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+}
+
+#MHGU-map > div {
+  width: 80vw;
+}
+
+#MHGU-map > div > img {
+  display: block;
+  margin: auto;
+  max-width: 600px;
+  width: 100%;
+}
+
+#MHGU-map, #MHGU-map-title {
+  display: flex;
+  justify-content: center;
+}
+
+@media all and (min-width: 750px) {
+  h3 {
+    font-size: 3.0em;
+    margin: 0 0 0.5em 0;
+  }
+}
+
+@media all and (max-width: 749px) {
+  h3 {
+    font-size: 6.2vw;
+    margin: 0 0 1.5vw 0;
+  }
+}
