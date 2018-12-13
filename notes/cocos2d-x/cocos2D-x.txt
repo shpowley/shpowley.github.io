@@ -1,0 +1,200 @@
+CONTENTS
+--------
+
+CREATING A NEW SCENE
+CREATING A NEW PROJECT
+PRE-BUILT LIBRARIES
+LOGGING
+RESOLUTION
+SCALING
+WEB
+READING
+MISC
+NDK VERSION SETTINGS DISCUSSION
+TUTORIALS
+BOX2D/R.U.B.E.
+
+----------
+
+CREATING A NEW SCENE
+
+  - create new .cpp / .h files in c++ source folder (or copy from template)
+  - basic structure based off of HelloWorld .cpp / .h files
+  - place '#include "< new file >.h"' line in .h (or .cpp) of code creating new scene
+  - ADD "$(LOCAL_PATH)/../../../Classes/< new file >.cpp" line to "LOCAL_SRC_FILES :=" in "External Build Files" > Android.mk
+  - TRANSITIONS create / transition to new scene: http://www.cocos2d-x.org/docs/cocos2d-x/en/scenes/transitioning.html
+
+----------
+
+CREATING A NEW PROJECT
+
+  http://www.gamefromscratch.com/post/2014/09/29/Cocos2D-x-Tutorial-Series-Installation-Creating-a-Project-and-Hello-World.aspx
+
+  ex. cocos new -p com.world.hello -d ~/cocos2d-x/projects/ -l cpp --portrait hello_world
+
+
+  cocos new --help
+
+    usage (abbreviated):
+      cocos new [-h] [-p PACKAGE_NAME] [-d DIRECTORY] [--portrait] -l {cpp,lua,js} [PROJECT_NAME]
+
+    positional arguments:
+      PROJECT_NAME        Set the project name.
+
+    optional arguments:
+      -h, --help          show this help message and exit
+      -p PACKAGE_NAME     Set a package name for project.
+      -d DIRECTORY        Set the path where to place the new project.
+      --portrait          Set the project be portrait.
+      -l {cpp,lua,js}     Major programming language you want to use, should be [cpp | lua | js]
+
+      ..more arguments..
+
+
+  NOTE
+    replace cocos2d sub-folder with symbolic link to latest (or most appropriate) cocos2d-x folder
+
+    ex. ln -s [SOURCE FOLDER] [LINK]
+    more: man ln
+
+    OR use ENGINE argument (not sure if this works..?)
+
+
+  FOLLOW INSTRUCTIONS FOR "PRE-BUILT LIBRARIES"!!
+
+----------
+
+PRE-BUILT LIBRARIES
+
+  speed up compile step iteration; only compiles custom code vs. all of cocos2d-x from source (~30 seconds vs ~10 minutes)
+
+  NOTE: avoid "build > clean project" -- slows the compile immediately following "clean"
+
+
+  http://www.cocos2d-x.org/docs/cocos2d-x/en/editors_and_tools/prebuilt_libraries.html
+
+  ex. cocos gen-libs -c -p android -l cpp
+
+
+  cocos gen-libs --help
+
+    usage (abbreviated):
+      cocos gen-libs [-h] [-c] [-p {ios,mac,android,win32}] [-m {debug,release}] [--app-abi APP_ABI] [--ap ANDROID_PLATFORM] [-l {cpp,lua,js}]
+
+    Generate prebuilt libs of engine. The libs will be placed in 'prebuilt' folder
+    of the engine root path.
+
+    optional arguments:
+      -h, --help                  show this help message and exit
+      -c                          Remove the 'prebuilt' folder at first.
+      -p {ios,mac,android,win32}  Specify the target platform. Can specify multi platform by using '-p' multi times. Default all available platforms.
+      -m {debug,release}          Generate cocos libs for debug or release. Default debug.
+
+    Android Options:
+      --app-abi APP_ABI           Set the APP_ABI of ndk-build. Can be multi value separated with ':'. ex: --app-abi armeabi-v7a:x86. Default is 'armeabi-v7a'.
+      --ap ANDROID_PLATFORM       Specify the Android platform used for building Android apk.
+      -l {cpp,lua,js}             set project type to build
+
+
+  STEP-BY-STEP GUIDE
+
+  https://discuss.cocos2d-x.org/t/how-to-link-prebuilt-cocos2d-x-c-library-to-android-studio-project/32949/9
+
+    1. skipped the "--ap ANDROID_PLATFORM" argument
+
+    2. ok
+
+    3. skipped - used "cocos2D" LINK folder
+
+    4. skipped - left existing classpath setting
+
+    5. skipped - left existing setting
+
+    6. project.properties: skipped - file didn't exist
+
+    6. app/build.gradle
+
+      - added "ext { cocospath .. }" section
+      - added "arguments 'NDK_MODULE_PATH=...'" line
+      - modified line "abiFilters 'armeabi-v7a'" instead of 'armeabi'
+      - added 'jniLibs.srcDir "libs"' to "sourceSets.main { ... }" section
+      - skipped "dependencies { ... }" changes
+      - added "task cleanAssets { ... }" + "task copyAssets { ... }" sections
+      - added "clean.dependsOn.." + "preBuild.dependsOn.." lines
+
+    7. skipped
+
+    8. ok - DON'T FORGET
+
+----------
+
+LOGGING (COCOS2D-X)
+
+  http://www.cocos2d-x.org/docs/cocos2d-x/en/basic_concepts/logging.html
+  
+  basically encapsulates platform-specific logging code with parameters. for android the tag = COCOS2D-X
+
+
+ANDROID LOGGING
+
+  https://stackoverflow.com/questions/12159316/logging-values-of-variables-in-android-native-ndk/12159412
+
+  ex. __android_log_print(ANDROID_LOG_INFO, "TAG-COCOS2D", "Testing 1 2 3 %.2f", size.height );
+
+----------
+
+RESOLUTION
+
+  GOOD DISCUSSION RE: RESOLUTION / MULTI-RESOLUTION
+
+  https://discuss.cocos2d-x.org/t/discussion-solved-multi-resolution-with-sd-and-hd-graphics/31448
+
+
+  DPI
+
+    - exact DPI is difficult in android (JNI + nav bar problems)
+    https://discuss.cocos2d-x.org/t/cocos2dx-device-getdpi-confusion-on-android/39956/10
+
+----------
+
+SCALING
+
+  USING RENDERTEXTURE
+
+  https://discuss.cocos2d-x.org/t/solved-how-to-really-resize-a-sprite-to-avoid-scaling-it/21458/7
+
+----------
+
+BOOKS
+
+  Cocos2d-x Cookbook - Akihiro Matsuura
+  Cocos2d-x by Example: Beginner's Guide - Second Edition - Roger Engelbert
+  Building Android Games with Cocos2d-x - Raydelto Hernandez
+
+----------
+
+WEB
+https://github.com/chukong
+https://github.com/cocos2d/cocos2d-x
+
+READING
+http://www.cocos2d-x.org/docs/cocos2d-x/en/basic_concepts/actions.html [RUN SAMPLES]
+http://www.cocos2d-x.org/docs/cocos2d-x/en/actions/sequence_internals.html
+
+MISC
+https://discuss.cocos2d-x.org/t/how-do-i-call-a-function-in-a-sequence/21825
+
+NDK VERSION SETTINGS DISCUSSION
+https://discuss.cocos2d-x.org/t/cocos2d-x-v3-13-and-sdk-ndk-versions/31811/24
+https://discuss.cocos2d-x.org/t/cocos2d-x-v3-13-and-sdk-ndk-versions/31811/21
+
+TUTORIALS
+http://www.gamefromscratch.com/post/2014/10/01/Cocos2d-x-Tutorial-Series-Basic-Graphics.aspx
+https://wizardfu.com/book/cocos2d-x/
+https://www.raywenderlich.com/95835/cocos2d-x-tutorial-beginners
+https://www.raywenderlich.com/48180/cocos2d-x-tutorial-making-a-universal-app-part-1
+
+BOX2D/R.U.B.E.
+https://www.youtube.com/watch?v=bBIXpu-D_Zo
+https://discuss.cocos2d-x.org/t/box2d-scale-and-step/26208
+https://wizardfu.com/book/cocos2d-x/box2d-physics/

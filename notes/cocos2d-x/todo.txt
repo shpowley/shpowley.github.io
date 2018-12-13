@@ -1,0 +1,65 @@
+TODO
+
+- @ ch.8 jni p.118
+  - admob
+  
+- url for java to c++ calls
+
+- google android sensors
+
+- try to reverse-engineer git code for gyroscope sensor
+
+- code a version of the low-pass-filter accelerometer
+  - try to put this in a class
+
+- review old notes re: c++ virtual inherited functions
+
+- cocos2d-x equivalents to android onResume() / onPause() and other life-cycle
+  - TEST THIS: http://docs.cocos2d-x.org/cocos2d-x/en/audio/advanced.html
+  - document in notes
+
+- finish book and proceed to another book
+  - hopefully a box2d example
+
+- review javascript accelerometer / orientation sample (c9.io) to evolve cocos2d-x code base
+
+- move all notes from here to c9/github pages in html format
+  - collapsible sections
+
+- find box2d info
+  - see book: "Cocos2d-x by Example - Beginner's Guide" Ch. 8
+  - choose physics engine: chipmunk or box2d(*)
+  
+- look at existing 3 projects and journal short description of each
+
+! read "cocos2D-x notes.txt" > SCALING > USING RENDERTEXTURE, test & write notes
+- read "cocos2D-x notes.txt" > RESOLUTION
+
+- attempt manual creation of "programmers-guide-samples" project as auto-build script doesn't work in linux
+
+- c++ Android Studio conditional breakpoint -- TRY TO GET THIS WORKING
+
+*******
+
+- review notes on a weekly basis (journal and other notes)
+
+- read pdf books
+  - "Building Android Games with Cocos2D-x" (CURRENT BOOK)
+  - "Cocos2d-x by Example - Beginner's Guide"
+  - "Cocos2d-x Cookbook"
+
+- implement and test PAUSE without .push() & .pop() from "Building Android Games"
+
+- tutorials
+
+
+
+
+
+
+
+  
+  
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbNzI0NTQ3MzQyXX0=
+-->
