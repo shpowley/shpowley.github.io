@@ -1,0 +1,892 @@
+Tuesday 2019-01-22
+
+- Cocos2d-x by Example | chapter topic skimming
+  - ch1 installation
+    - ios, android
+  - ch2 c++
+    - ref
+    - TODO: read through again
+  - ch3 air hockey
+    - different resolutions, sound, touch, physics without a physics engine
+  - ch4 sky defense
+    - background music, batch draw sprite sheets, bitmap fonts, object pools, actions, touch
+  - ch5 rocket through
+    - particle effects, drawing primitives, touch
+  - ch6 victorian rush hour (rapid prototyping)
+    - rapid prototyping, collisions, touch
+  - ch7 victorian rush hour
+    - textures, nested containers, parallax, menus, tutorial integration
+  - ch8 mini pool
+    - box2d concepts, touch, timer
+  - ch9 eskimo
+    - box2d, scene transitions, .plist, load / save data, accelerometer
+  - ch10 stone age
+    - lua
+  - appendix a: vector calculations
+
+  * I kind of want to go through ALL of these chapters at some point, mostly for the learning experience and hopefully learn some best practices
+
+
+- briefly skimmed the 3rd book "Cocos2d-x Cookbook"
+  - not a good work-through-the-chapters style, but still good I think
+  - more of a reference for specific topics (ie. gui, sqlite, json, jni, networked downloads)
+
+
+* after skimming though the above titles, DATA STORAGE comes to mind. specifically what best to use (plist, sqlite, userdata, xml, json, encryption), but that's a road to go down another day
+
+
+* box2d + cocos2d-x | importing physics plist from PhysicsEditor (I bought this on sale along w/ TexturePacker)
+  - how-to import?
+  - PhysicsEditor allows physics shapes (hit-areas) to more closely resemble sprites
+  - added this to my TODO list
+
+
+- Cocos2d-x by Example - ch.9 summary reading
+  - TODO create Eskimo project, test and walk through code + take notes
+
+----------
+Monday 2019-01-21
+
+- slow progress so far on BOX2D
+
+- BOX2D (Cocos2d-x by Example - ch.8 continued)
+
+  - Box2D: relationship between "collision filters" AND "contact listeners"
+
+    - "collision filters"
+      - determine what bodies can collide with each other
+      - in ch.8, the "collision filters" are defined early in the Ball object's life, during ::initBall()
+
+    - "contact listeners"
+      - another Box2D feature that helps with collision management
+      - unlike "collision filters", this is where to place logic dealing with what to do if a collision occurs
+      - derived from "b2ContactListener" class and must implement at least one event
+        - events: BeginContact(), EndContact(), PreSolve(), PostSolve()
+
+  - touch contact listeners are added to the main game layer in order for the player to hit the balls on the pool table with the cue stick
+
+    - the player touches somewhere near the white cue ball to set the initial contact "hit" position both for the physics engine and also a starting point for a "dotted line" visual guide (THIS FEATURE DOESN'T APPEAR TO BE WORKING)
+
+    - dragging causes the cue stick to move in relation to the cue ball
+      - Box2D: set/get a b2Body position and angle using SetTransform() method (see 6.4 Using a Body > Position and Velocity)
+
+        ex. bool SetTransform(const b2Vec2& position, float32 angle);
+
+    - letting go causes the cue stick to quickly hit the cue ball with an impulse in the direction oriented with the cue ball and stick aiming
+      - Box2D: linear impulse (see ch.10 World Class > Forces and Impulses)
+
+        ex. void ApplyLinearImpulse(const b2Vec2& impulse, const b2Vec2& point);
+
+      - actual MiniPool implementation
+
+        ex. cueBody->ApplyLinearImpulse(b2Vec2(_pullBack * cos(angle) * SHOT_POWER, _pullBack * sin(angle) * SHOT_POWER), cueBody->GetWorldCenter(), true);
+
+        - note "cueBody->GetWorldCenter()" is center of mass in world-coordinates
+
+  * Box2D: b2World::Step()
+    - b2Body objects cannot be made inactive (b2Body::SetActive) or destroyed (b2World::DestroyBody) inside a step; this needs to be done AFTER b2World::Step()
+
+----------
+Sunday 2019-01-20
+
+- did a backup of cocos2d-x source code (just in case)
+- compiled and tested "MyTests" project on the moto g to verify everything still works
+
+- BOX2D (Cocos2d-x by Example - ch.8 continued)
+
+  - Sensor objects can only fire the BeginContact & EndContact methods of b2ContactListener objects
+
+  - for this game, collision logic is split between BeginContact and PreSolve methods, but author states that for this game, placing all collision logic could just as easily be placed in BeginContact
+
+----------
+Saturday 2019-01-19
+
+- SO AFTER AUTO-UPDATING TO ANDROID STUDIO 3.3 - EVERYTHING BROKE!!!
+
+  - I don't really understand, but that triggered further breakage: gradle and even cocos2d-x 3.17.1
+  - just indexing took forever and out-of-memory errors kept triggering
+  - I went so far as to deleting Android Studio and cocos2d-x 3.17 and even more problems
+  - Android Studio still had problems with/without cocos and cocos2d-x 3.17.1 no longer has the original method to create pre-compiled libs..
+  - luckily I created a backup just the day prior and restored to that, but that whole process took forever
+    - that restore was 14.5GB and chromeos kept crashing just copying that file; I was afraid the restore would fail with all that cocos code lost!
+
+- WHAT I LEARNED
+
+  - don't update android studio / cocos2d-x and software in general UNLESS A BACKUP EXISTS
+    - KEEP SOFTWARE VERSIONS LOCKED
+
+  - create backups, create backups of source code
+
+  - I need another computer to better multi-task and have another dev environment
+    - I can get by with what I'm doing for awhile, but going forward the biggest issue is cost $$$
+    - I'm leaning toward linux for what I already have, but the problem is with upgrading the latest software WILL BREAK THINGS AGAIN
+
+----------
+Thursday 2019-01-17
+
+- Box2D Manual reading
+  - finished skimming / reading, but honestly I'm not sure if it just confused me more
+
+** So Android Studio 3.3 updated and all projects are not working, very slow IDE, gradle problems, etc.
+  - I'm planning to re-install cocos2d-x (making pre-built libs again..) and a fresh install of android studio too
+
+----------
+Wednesday 2019-01-16
+
+- updated Google Calendar to reflect days since I've started this developer journal. hopefully, I can stay better motivated by seeing my progress in calendar form.
+
+
+- BOX2D (Cocos2d-x by Example - ch.8 continued)
+
+  - pockets are STATIC box2d bodies (don't move) and should behave as sensors (sensitive to collision)
+    - this turns off all physics from an object and turns it into a collision "hot spot"
+
+    ex. b2BodyDef bodyDef;
+        b2FixtureDef fixtureDef;
+        ..
+        bodyDef.type = b2_staticBody;
+        fixtureDef.isSensor = true;
+
+
+  - edges (b2EdgeShape) are shapes that can be hit only on one side; perfect for defining the pool table "edges"
+
+    - based on the Box2D docs, it doesn't mention collisions begin only on one side; it does state that EDGE COLLISIONS MUST NOT BE EDGE-EDGE though
+
+    - interestingly, the same edge shape variable can be re-used to define multiple edges, just repositioning the edge coordinates and creating a new fixture
+
+      * ONE B2BODY OBJECT CAN HAVE MULTIPLE EDGES
+
+      ex. b2BodyDef tableBodyDef;
+          tableBodyDef.position.Set(0, 0);
+          auto tableBody = _world->CreateBody(&tableBodyDef);
+
+          b2EdgeShape tableBox;
+
+          tableBox.Set(b2Vec(x1, y1), b2Vec(x2, y2)); // edge #1
+          tableBody->CreateFixture(&tableBox, 0);
+
+          tableBox.Set(b2Vec(x3, y3), b2Vec(x4, y4)); // edge #2
+          tableBody->CreateFixture(&tableBox, 0);
+          ..
+
+
+  * REMEMBER that the pockets and edges are purely physics objects and don't have sprites associated with them; these are NOT b2Sprites
+
+
+  - balls + cue ball (Ball object derived from b2Sprite)
+
+    - NOTE: all of the sprites are added to SpriteBatchNode* _gameBatchNode; I have not yet studied the "SpriteBatchNode" usage
+
+    - all of the physics settings for each Ball is identical and added to b2World in the Ball class; the only variation that I notice is the Sprite "color", type of ball (cue or normal) and start position
+
+      - b2Sprite::setSpritePosition() handles placement of the image sprite and the physics b2Body AND the "matching" placement of each within it's relevant container
+
+      - each ball is a DYNAMIC physics body
+
+      - "Damping" applies an effect similar to friction between each ball and the table "surface"
+        - actual "Friction" is not used because the table is not an actual physics body in this case
+        - Linear Damping affects a ball's linear velocity
+
+          ex. _body->SetLinearDamping(1.2);
+
+        - Angular Damping affects a ball's angular velocity
+
+          ex. _body->SetAngularDamping(0.2);
+
+      * COMMENT: how does the author determine values for LinearDamping, AngularDamping, Density, Restitution, etc.?
+
+      - the Cue ball is set to behave as a "bullet" in order for the sim to pay extra attention to collisions with the cue
+        - in order to minimize processor load, only one physics object is defined as a bullet (the cue)
+
+        ex. _body->SetBullet(true);
+
+      - "collision filters"
+        - uint16; up to 16 collision filter categories
+        - 16-bit, 0x hexadecimal format only? (? binary literal = 0b00100... since c++14)
+        - "collision category bits. normally you would just set one bit"
+
+          ex. playerFixtureDef.filter.categoryBits = 0x0002;
+              playerFixtureDef.filter.maskBits = 0x0004;
+
+        - each box2d fixture can specify category and mask bits
+          - category = type of fixture the body is
+          - mask = type of fixture it can collide with
+          - collision-check uses bitwise & performed on both objects
+
+            ex. if ((catA & maskB) != 0 && (catB & maskA) != 0) {
+                  // collision code
+                }
+
+          * mask advanced: add more than one category
+
+            ex. fixtureDef.filter.maskBits = 0x0100 | 0x0010;
+
+          * mask advanced: collide with everything, except
+
+            ex. fixtureDef.filter.maskBits = 0xFFFF & ~0x0100;
+
+        * for MiniPool, cue ball "categoryBits" and cue stick "maskBits" are the same (0x0100), so that cue stick can only hit the cue ball
+
+
+  - cue stick (Cue object derived from b2Sprite)
+
+    - high DAMPING values to prevent stick from "flying off screen"
+    - b2PolygonShape set to a box
+    - cue size is relative to ball radius
+
+
+- Box2D Manual reading
+
+  - I'm also reading the Box2D Manual to break things up a little
+
+----------
+Tuesday 2019-01-15
+
+- BOX2D (Cocos2d-x by Example - ch.8)
+
+  - the main problem I have is running ch.8 game simulation of Mini Pool, it's impossible to see the debug draw objects by default
+
+    - I'm not sure exactly how this is supposed to work, but the Box2d debug draw objects only appear by changing the opacity of various sprites - kind of a hack
+    - changing the sprites visibility, though reasonably viable in most situations, fails because the game logic is tied directly to the visibility of certain sprites..
+
+  * p.150/151 GameLayer::draw() and GameLayer::onDraw() is NOT DISCUSSED AT ALL; with the use of opengl-heavy code like this, some comments would be exceedingly helpful, HOPEFULLY THIS IS ADDRESSED IN THE MINIPOOL SOURCE CODE
+
+  - b2Body userData property often is used to store a pointer to the associated sprite
+    * INFO: remember an object created with the "new" keyword returns a pointer to that object
+
+  - b2Sprite (see section "Sunday 2019-01-13") inherits cocos2d::Sprite, but DOESN'T REQUIRE AND ACTUAL IMAGE TO BE DEFINED; thereby allowing it to exist independently of a 1-1 image
+
+    - this is demonstrated by the pool table image in particular; 1 pool table image, but 6 pockets and 6 lines
+
+    - many objects inherit from b2Sprite and DO have an image - ie. balls and cue
+
+    - SO, this comes back to the problem of not being able to see the physics debug draw objects when images are visible
+      - b2Body objects exist on a b2World which in turn is defined on a particular layer
+      - the MiniPool sprites and b2World happen to both exist on the same GameLayer
+      * WHERE TO GO FROM HERE? I'm still trying to wrap my head around the MiniPool project and Box2D - both of which are complex..
+
+  @p157 not exactly sure how the author determines placing b2Body pockets, nor is an explanation given..
+
+----------
+Monday 2019-01-14
+
+- BOX2D: in one cocos2d-x post, a user recommends "drawing the debug info in a separate layer and position that on top of your main layer" - http://discuss.cocos2d-x.org/t/box2d-debug-draw-v3-8-1/25377/15
+
+  * TODO - I need to figure out how to create a project with multiple layers; use the "celestial_glory" project for some tests
+
+  - this is, in fact, what this book starts out doing I think, creating a HelloWorld that inherits from layer, but since this "mini" project is never tested, this point is difficult to see
+
+
+  * LAYERS / SCENES
+
+    * going back through some older projects, I'm starting to see usage of "Scene" / "Layer" objects, but I've just never noticed it until now; in some of my own work, I've tended to place visual elements directly on a "Scene", which is technically ok, but MOST BOOK EXAMPLES USE A 1-1 "SCENE"/"LAYER" AND PLACE VISUAL ELEMENTS ON THAT
+
+      - the default "HelloWorldScene" project uses the cocos2d-x macro CREATE_FUNC() and this lends itself to using a "Scene" (what I've typically done)
+
+      * this 1-1 "SCENE"/"LAYER" is what confuses me the most, as they're used almost interchangeably
+
+    - researching "cocos2d-x Layers", I'm not sure what's going to happen with "Layer" in the future; some recommend actually using "Node" in place of "Layer" altogether, but I haven't seen any examples of using Node as a Layer-type container yet..
+
+    * if possible, it might be better to create TRUE sub-classed Layers and treat them as such, so that they can be manipulated as independent LAYERS on a SCENE
+
+    * either through independent layers or combo sprite-Box2D objects (ie. similar to ch8 b2Sprite), there needs to be a way to see the Debug Draw graphics clearly; debug draw should appear over sprites
+        a) hide / change opacity on independent layers OR
+        b) hide / change opacity on custom b2Sprites
+
+  - I'm creating an outline of instructions for cocos2d-x Box2D / Box2D Debug Draw implementation; see "Box2D.txt"
+
+----------
+Sunday 2019-01-13
+
+- I wanted to highlight some cocos2d-x topics covered in the 2 books I'm studying so far by creating a central document organized by alphabetic topic (topics-main.txt)
+
+
+* BOX2D early thoughts..
+  - trying to figure this out, with respect to these 2 pre-made projects - ch.8/9, is going to take awhile and is going to be ongoing
+  - box2d is important with what I'm trying to do with my "BOBBLE" project ideas, especially with the importance of the physics involved
+
+  * I think box2d will be the way forward when compared to the chipmunk physics engine
+    - both are built-in APIs to cocos2d-x
+    - box2d has more online info and support
+    - the debug draw capabilities of box2d responds in real-time and seems much better than chipmunk (chipmunk debug draw appears glitchy even within the cocos2d-x cpptest app and doesn't draw real-time)
+
+  - I need to be able to create my own Box2D "test harness" project to truly apply what I'm learning and use this in future "Bobble" projects
+
+
+- BOX2D (Cocos2d-x by Example - ch.8)
+  - written in c++ and API automatically included in cocos2d-x projects
+
+  - 1 extra (detailed) step required for box2d DEBUG DRAW
+    - add GLES-Render.h/.cpp and associated code
+
+    - allows seeing physics debug draw mode OUTLINES with/without actual sprites
+
+    - recommended to comment out / delete box2d debug code on release, however, once this is better understood, I think a conditional compile using COCOS2D_DEBUG would be better (see "Wednesday 2018-12-12")
+
+  - a simplified box2d pre-project example (modified helloworld "scene" to a "layer")
+    - NEVER ACTUALLY TESTED!!! why? had to type this manually bleh
+    - perhaps this is meant mainly to demo how to incorporate the box2d physics debug draw mode
+    - create a backup of this debug draw code
+
+  - BOX2D details
+    - uses "b2World" physics world and "b2Body" physics bodies
+    - has it's own vector structure "b2Vec2" (used for gravity in the helloworld example)
+    - "SetAllowSleeping" - skip checking for derived data on objects not moving
+    - "SetContinuousPhysics" - ??? fast-moving objects; pay extra attention for collisions
+    - PTM (pixel to meter) - every pixel position value will be divided by this ratio constant; commonly set to 100
+
+    - ->Step(time step, velocity iterations, position iterations)
+      - default values from cocos2d-x template
+      - recommends fixed time step vs. delta (used in example)
+      - play with velocity / position iterations aiming for lowest possible
+
+    - no built-in memory management
+      - a separate library API component of cocos2d-x that does not use Ref
+      - manual memory management using "delete" and "= nullptr" (old technique) OR c++11 smart pointers (newer technique)
+
+    - b2Body objects have a useful property called "userData" (commonly used to store a reference to image sprite)
+
+    * DEBUG DRAW on b2Body objects
+      - this will be an ongoing learning process
+      - Q: HOW TO HANDLE CONDITIONAL COMPILATION
+      - Sprite->setVisible()/setOpacity() of sprites associated with b2Body object I think will be the most useful in future projects to best visually see b2Body debug draws
+
+  - minipool project
+    - physics objects: 16 balls (circles), cue stick (box), pool table (composed of 6 edges), & 6 pockets (circles)
+    - copied resources and c++ source from the chapter source
+
+    - hp touchpad test
+      - worked for the most part without many changes
+      - crashed 1x
+      - had to change to portrait mode in AndroidManifest.xml as the default was landscape
+      - ran @ ~40fps
+
+    - custom class called "b2Sprite"
+      - inherits cocos2d-x "Sprite" with the addition of _body member variable that points to it's b2Body
+      * userData sprite & _body b2Body allows easy bidirectional pointer access
+
+----------
+Saturday 2019-01-12
+
+- Cocos2d-x by Example (ch.3 continued)
+
+  - update() (MAIN GAME LOOP)
+    - the actual "collision" logic obviously works, but doesn't make 100% sense
+      a) as soon as a "collision" occurs, it seems that "collision" logic should be processed AND THEN proceed to the next part, instead of repeating the collision-check with the next player. it could be argued that a rare simultaneous collision could happen between the puck and both player mallets, but currently it looks like only player 2 would "win" this scenario
+      b) perhaps add logic for the rare simultaneous puck-both-players collision; testing this "edge" case along a wall in particular, cause the puck to overlap both player mallets, bouncing back and forth quickly - physically this should be impossible
+
+    - the top/bottom wall collision-check is clever in that it ignores or subtracts the goal areas' positions from these checks
+
+    - I added a few ELSE IF changes to remove redundant logic checks (ie. the puck can only collide with 1 of the side walls at a time - if it is determined a collision occurs with the left wall, don't bother checking the right)
+
+- perused all remaining chapters to get a feel for topics covered; I want to do this again and highlight topics that could soon be useful in a simple outline form and possibly add these to my overall TODO list
+
+----------
+Friday 2019-01-11
+
+- Cocos2d-x by Example (ch.3 continued)
+  - touch event handlers
+    - each "touch" is unique and distinct for each player and in "onTouchesBegan" is stored / associated with said player
+
+    - in "onTouchesMoved" each touch LOCATION is dynamic over time and as a player moves their mallet, it is different from the original "onTouchesBegan" event
+      - pseudocode: keep each player "in bounds" within the opengl table AND only on their side of the table
+      - player->setNextPosition() records the "next" position of the player's mallet sprite (to be used later)
+      - player->setVector() records the "displacement" of the next position from the last position of the player's mallet sprite (to be used later)
+
+    - in "onTouchesEnded" the relevant player's sprite touch data is reset (Touch and displacement Vector)
+      - location is "ignored" because when a player lets go of a mallet, the position of that mallet stays at it's last position
+
+    - cocos2d-x "Point" data type is equivalent to "Vec2"
+
+    - this design pattern might come in useful for the bobble project (single taps, tap-drag)
+
+  - update() (MAIN GAME LOOP)
+    - NO PHYSICS ENGINE - all physics is handled internally within "update()"
+
+    - condition(s) for a "collision" include the current AND next position of the puck and player mallet either touching or overlapping (this isn't clear from the code comments or book)
+      - current vs next position of puck / player ~ XOR type of logic on the future position of only one of the colliding objects, not both (I don't get the over-arcing logic, but just go with it)
+      - collision touch / overlap AVOIDS SQUARE ROOT CALCULATIONS as that is apparently a COSTLY CODE OPERATION
+
+----------
+Thursday 2019-01-10
+
+- resolution tests:
+  - HP TOUCHPAD android 4.0.4: tried altering ResolutionPolicy values to test the effects (see journal entry Tuesday 2018-12-18) and though there are small black bars on the top/bottom, "SHOW_ALL" is perhaps the best choice on this device / OS, whereas the default "EXACT_FIT" stretches the game slightly
+  - Motorola Moto G (1st gen) android 5.1: highly noticeable black bars using "EXACT_FIT"
+
+  * TODO: based on the Moto G test, it might be a good idea to create aspect ratio "squares" in a 2d drawing program in the future for better visualization in the early phases of a project..
+
+- Cocos2d-x by Example (re-reading ch.3)
+  - demonstrates how to create a project in apple/ipad
+
+  - game is designed in portrait orientation and positioning of sprites with that in mind
+
+  - as game is designed for apple touchpad 1024x768, it's difficult to determine at this point if some non-visual aspects of this air hockey game might be adversely affected (ie. physics, positioning, etc.)
+
+  - GameSprite.cpp > setPosition - this overridden method ensures that our subclassed object's internal variable "_nextPosition" matches the inherited parent's "pos" variable, prior to the next game iteration
+
+  - GameSprite.cpp > radius - a convenient way of getting circular sprite texture radii
+    - this might be useful as a quick way to get texture height/width if used a lot; recommended as INLINE by author
+
+  - GameSprite.cpp > static method "gameSpriteWithFile"
+    * this is INTERESTING as I have not yet had to deal with this situation. GameSprite inherits from Sprite, but doesn't override the "create" static method in Sprite OR RATHER c++ doesn't support this; basically, this is why there is a new static method called "gameSpriteWithFile"
+
+    - I couldn't understand the code implemented here at first, but after thinking about it, I just forgot that the static method is used to create instances of itself
+    - this code pattern is duplicated from the base class CCSprite.cpp > "create" static method; so there isn't really anything new
+
+  - Director::getInstance()->getWinSize() VS Director::getInstance()->getVisibleSize()
+    - not really sure what the difference is, nor which is better to use OR if it even matters (see code CCDirector.cpp and journal entry "Tuesday 2018-12-18")
+
+  - GameLayer.cpp > init() - all initial positioning of sprites is done with relative values
+
+  - ch.3 hockey game uses multi-touch (EventListenerTouchAllAtOnce) vs the last book "Android Games" (EventListenerTouchOneByOne) with the primary reasoning being that the hockey game supports 2-players
+    - event listeners use cocos2d-x c++ callback macro "CC_CALLBACK_2" and "Android Games" example actually uses an empty lamba expression in one instance
+      - TODO: lookup info on "CC_CALLBACK_2"
+      - TODO: lookup info on implementing a callback without "CC_CALLBACK_2"
+      - TODO: lookup info on c++ lambda expressions
+
+
+- Hockey game ideas:
+  - more "friction" or something to slow the pucks hyper-momentum
+  - sound to mimic air from the table
+  - puck and mallets not automatically repositioned; something more akin to real life - loser get to place the puck or auto-dispensing puck feeder back onto the table
+  - when a player lets go of a mallet, it isn't stationary. this might cludge the existing code though
+
+----------
+Wednesday 2019-01-09
+
+- spent some time getting android studio working within chrome os / xiwi ..I think this will work
+  - in general, I didn't like firefox compared to chrome for journaling in c9 and having to open crouton linux; also, crostini wasn't an option at this point
+  - renamed android studio projects for easier identification
+  - tried changing each project layout to full screen within the linux environment
+
+  * this has a DISTINCT ADVANTAGE of being able to go into standby
+
+- reviewing notes from "Tuesday 2018-12-18" (continued)
+
+  - created a new project for ch.3 and re-factored code+resources from the book
+    - NO ERRORS! looked ok and ran just fine on the hp touchpad running cyanogenmod android 4.0.4
+    - caveat of "EXACT_FIT" (stretch to fit) and the ever-present status bar that cannot be hidden on older versions of android (4.0.4)
+    - HP Touchpad specified at 1024x768, which matches the code "designSize" and assets, but perhaps because of the android 4.0.4 status bar the default "EXACT_FIT" does stretch the assets. this is proven when changed to "SHOW_ALL" and black bars appear on the top/bottom of the air hockey table
+
+----------
+Tuesday 2019-01-08
+
+- reviewing notes from "Tuesday 2018-12-18" (getting "up to speed" on where I left off) and attempt to clarify
+
+  * resolutionPolicy: more testing and design pattern needed
+
+  - audioEngine->preloadEffect: I think method from previous book examples is preferred
+
+  - CC_SYNTHESIZE
+    - one of the "CC_" type helper functions bundled in cocos2d-x to auto-create protected variables and getter/setter functions
+    - a best practice to used these(?)
+    - how-to usage guide doesn't seem to exist
+
+  - GameSprite class
+    - WHY IS THIS EVEN USED SINCE SPRITE CLASS EXISTS?
+    - WHAT IS THE PURPOSE OF gameSpriteWithFile()?
+
+----------
+Monday 2018-12-31
+
+- demonstrating cocos2d-x projects to jack (accelerometer specifically), immediately had project "mangling" as this was one of the older android studio projects
+  - project would not compile correctly and eventually linked another project entirely!
+  - created a new project and copied my source c++ files, but on project initialization it took 30min+ for an unknown "batch update"
+  - finally worked by creating a base cocos2d-x project AND THEN moving files over
+
+  - ALTHOUGH IT SEEMS LIKE OVERKILL, CONSIDERING A DIFFERENT FRAMEWORK AND PC SETUP
+    - cocos2d-x is too unfriendly and cludgey; pro: relatively low overhead on target platforms
+    - crouton linux using a chromebox is underpowered and somewhat unwieldly
+
+----------
+Tuesday 2018-12-18
+
+- Cocos2d-x by Example (reading ch.3)
+  - cocos2d-x api: "glview->setDesignResolutionSize" > resolutionPolicy
+    "EXACT_FIT" - fill screen by STRETCH TO FIT, if design AND actual resolution ratios don't match
+    "NO_BORDER" - full screen WITHOUT BLACK BORDERS, however, top/bottom OR left/right portions of the game "design resolution" will be CUT OFF if design AND actual resolution ratios don't match
+    "SHOW_ALL" - full screen WITH BLACK BORDERS if design AND actual resolution ratios don't match
+
+    "FIXED_HEIGHT" - takes height of design resolution and modifies width of internal canvas (only in code docs)
+    "FIXED_WIDTH" - takes width of design resolution and modifies height of internal canvas (only in code docs)
+      - AIR HOCKEY GAME TESTS: (HP TOUCHPAD android 4.0.4)
+        - "FIXED_HEIGHT ~ "SHOW_ALL"
+        - "FIXED_WIDTH ~ "NO_BORDER"
+        - TODO: test should be repeated in another game design resolution and/or device
+
+      - last 2 are a bit confusing a to what they actually do in practice
+
+  - AppDelegate.cpp > applicationDidFinishLaunching()
+    - audioEngine->preloadEffect
+      - explicit conversion to .c_str() is necessary as used in this example, however, the usage "fileUtils->fullPathForFilename()" is not; explicit using the name of the sound file is fine (ie. "hit.wav") as the search paths are fully qualified at this point
+      - pre-loading sounds files in AppDelegate.cpp is a good if sounds are shared between all scenes
+
+  - new "GameSprite" class
+    - inherits from Sprite
+
+    * implements "autorelease()" and CC_SAFE_DELETE() in static "gameSpriteWithFile()" method, but I NEED TO VERIFY TECHNIQUE elsewhere other than this book; maybe it's an older style, but I want to make sure
+
+    - CC_SYNTHESIZE @p.35
+      - macro automatically creates getters/setters for specified (protected) variable
+        - "automatically" - con: essentially hides what's really being generated though
+        - lookup "protected" variables
+
+      - macro isn't really documented; need to refer to source code..
+
+    - lookup "override" keyword in the setPosition() declaration
+      - definition: c++ 11 keyword; override ensures that the function is virtual and is overriding a virtual function from a base class
+
+  * init()
+    - Director::getInstance()->getWinSize()  // "Returns the size of the OpenGL view in points"
+      vs.
+    - Director::getInstance()->getVisibleSize()  // "Returns visible size of the OpenGL view in points (if GLView::setDesignResolutionSize() isn't called)"
+
+      * this is interesting as I'm so used to seeing getVisibleSize() being used so far. I'm curious how setDesignResolutionSize() affects this as it is often called in AppDelegate.cpp by the cocos2d-x default base project..
+
+----------
+Sunday 2018-12-16
+
+- HP touchpad w/ cyanomod
+  - non-official version of android running 4.0.4
+  - compiled debug version of 2 different projects and these successfully installed and ran
+    - cpp_tests, the much more complex cocos2d-x test project, ran for the most part w/ some problems or slowdown w/ complex effects and physics, but it still ran!
+
+- Cocos2d-x by Example
+  - possible issue with code targeting iPad. I'll try to run ch.3 on existing devices and go from there
+  - just out of curiosity I compared ch.3 and ch.8 "AppDelegate.cpp" with the targeted device resolutions. unfortunately, the design resolution is not consistent between chapters
+  - I had wanted to do something similar to the last book and have a central scene with a chapter select menu, but the inconsistent design resolution might be a problem
+  - for now, read ch.3 while referencing the source
+
+----------
+Saturday 2018-12-15
+
+- Cocos2d-x by Example
+  - continued reading ch.2
+    - p.22 Instantiating objects and managing memory
+      - Ref derived objects
+      - this get a bit confusing as I have yet to see this code even mentioned before now (ie. ->retain(), ->release(), ->autorelease(), CC_SAFE_DELETE())
+
+----------
+Friday 2018-12-14
+
+- cpp-tests project
+  - created a new cocos2d project and manually copied files from cpp-tests..this ended up ACTUALLY WORKING; I'm still not sure what was wrong with the old setup
+  * review app itself and maybe make some code adjustments (menu font size, debug frame rate OFF, ..)
+  - this is also a good code reference
+
+- cocos2d-x sample
+  - similar to cpp-tests, I created a new cocos2d project and manually copied files
+  - this eventually did compile and run, but when trying out the app itself, it would often crash
+  - resolved crashing, but scaling for a small device isn't good; the default font size for many scenes are too big..way out of proportion
+    - this needs further debugging
+
+- purchased texturepacker / physicseditor on sale
+
+- reading ch.2
+
+----------
+Thursday 2018-12-13
+
+- miscellaneous
+  - default text editor in google drive started acting wonky
+  - moved cocos2d-x text notes over to c9.io (github pages); easier to work with and also in case I want to private publish
+
+* just making note URL reference to the guide for handling "java to c++ calls": http://stnguyen.com/cocos2d-x/call-cpp-functions-from-java.html
+
+- admob
+  - instructions to use "android-support-v4.jar" seems no longer relevant
+    - additional instructions reference eclipse ide which is also invalid
+
+  - ad choices include: admob, admob + firebase, and sdkbox
+    - after some consideration, I'm holding off on the ad portion of this book until a core application is functional and closer to release
+      - I think admob + firebase is the way to go forward as the documentation seems much more thorough and has native c++ cocos2d-x examaples
+
+    - continue with "Building Android Games with Cocos2d-x" p.122 starting at moving the mute button
+      - note that this example and other online samples use a c++ => java jni ad template, similar to the android "toast"
+      - firebase/admob: https://firebase.google.com/docs/admob/cpp/cocos2d-x
+      - admob java (partial): https://discuss.cocos2d-x.org/t/admob-integration-with-cocos2dx/42563
+
+- started a new book "Cocos2d-x by Example - Beginner's Guide"
+  - assumes Eclipse IDE
+  - removed cocos2d folders from source code .zip files - 1.9GB down to 194.7MB
+
+* after some thought, it would be possible to use the existing coco2d-x accelerometer codebase (acceleration + gravity) to simplify getting a working app up and running..speeding up the dev cycle. in essence, it would work very much like a real-life bobble toy
+  - RETROFIT acceleration - gravity as a settings option maybe
+
+- after reading ch.1, the book recommends some software tools
+  - I think it's worthwhile to purchase TexturePacker + PhysicsEditor while on sale
+  - links to other recommended game/creative tools:
+    HUGE LIST: https://game-development.zeef.com/david.arcila
+    Reddit post: https://www.reddit.com/r/gamedev/comments/3a3hnx/share_tools_you_could_not_live_without/
+    Bump map - needed??: https://github.com/kmkolasinski/AwesomeBump
+
+- re-attempt to compile and test cpp-tests project
+  - somehow this project got mangled with another project (android_games) and had to be rebuilt
+  - the rebuild was ok, but failed and crashed when testing. this worked at one time very early on.
+
+----------
+Wednesday 2018-12-12
+
+- JNI
+  - attempted to implement example from the book to p.118 and some help from "Call Java functions from C++ in cocos2d-x" (http://stnguyen.com/cocos2d-x/call-java-functions-from-cpp.html)
+
+  - I didn't have success at first with refactoring ch.8 JNI code as the app kept crashing at the JNI call. I'm not 100% sure what I did to get this working.
+    1) the book has a more segmented (convoluted?) approach that wraps the JNI call in another class "JniBridge .h/.cpp"
+      - this may be advantageous if there are many JNI calls, but makes for obtuse learning
+    2) the website example uses the return value from JniHelper::getStaticMethodInfo() in an IF statement instead of just assuming it returns true and is valid. I incorporated this into the test
+    3) if the last parameter in JniHelper::getStaticMethodInfo() returns a void, do not put a ";" semicolon at the end. other data types, however, seems to require a ";" at the end
+    4) the last major change was to AppActivity.java, implemementing the getInstance() method with the "instance" variable initialization to "this". the the website example didn't have anything like this, but it was required for the JniFacade.java code
+
+  * this is somewhat confusing, but cocos2d-x includes JniHelper .h/.cpp source code, which wraps many calls to the Android NDK (jni.h) AND it might be a good idea to use this for additional guidance for "how-to" code examples in the future, as there are numerous variations of c++ to Android JNI-type calls
+
+  *** just calling the JniHelper::callStaticVoid() method directly, saves a lot of duplicate code and is correctly implemented by the cocos2d team
+
+- COCOS2D_DEBUG compiler flag
+  - use CCLOG to log debug messages, as it honors the COCOS2D_DEBUG flag
+  - for ANDROID.. modify Application.mk line APP_CPPFLAGS += appropriately for NDK_DEBUG, but take care, as that one change will not use the pre-compiled base and will do FULL re-compile, which takes quite awhile
+  - I'm not yet sure about the RELEASE build though - I don't yet know how to do a digital signature, which is required. by default, will COCOS2D_DEBUG = 0 or does this need to be specified?
+
+----------
+Monday 2018-12-10
+
+- finished ch.7 reading particle effects and particle system designers
+
+- acceleration / gyro
+  - downloaded pertinent .js files from my phaser.io hula and piggy wiggly projects. just perusing the code, I only appear to be using the linear acceleration calculated from the low-pass filter
+
+  - javascript appears to be limited to acceleration+gravity & gyro, but linear acceleration has to be calculated on-the-fly using a low-pass filter calculation I found (I used this calculation because I haven't encountered actual linear acceleration support on any devices I've used so far - despite it being in the javascript API)
+
+  - cocos2d-x only supports acceleration+gravity at the moment
+    * I did find this cocos2d-x project on github to access the gyroscope (ios and android)
+      https://github.com/Undume/Gyroscope-Cocos2d-x
+
+  * google android sensors
+    https://developer.android.com/guide/topics/sensors/
+    - android has API support for many more sensors and access through JNI might work
+
+----------
+Sunday 2018-12-09
+
+- ch.7
+  - bombs re-implemented as cocos2d::Vector array
+  - particle effects (bomb explosions)
+    - ch.7 refactored into test project
+    - bomb only explodes when touched with finger
+    - I found a strange bug, that at first glance, appeared to be the fault of the Audio API. after playing with this a little and even switching to the SimpleAudio, the crashes persisted.
+      - the cause seems to revolve around the "bombs" vector array implementation
+        - 1) in the contact callback, _sprBomb is being referenced to get the physics body, but this only works with the previous chapters' code as the vector array should now be used. after this fix, it seems to work a bit better and not crash so often. (NOTE: ultimately, I'm not really even sure this code is necessary, since a new scene is being loaded right away. I iterate the the bombs array instead and move the new scene load further down)
+        - 2) this bug is more subtle, as it only causes crashes "occasionally". I'm not going to try to fix this as it's more involved, but basically touch-exploding bombs stacked too close causes multiple bombs to explode and the cocos2d vector array gets out of sync somehow. even more strange, is that on rare occasions, touch-exploding a bomb, will cause another bomb to explode much further away (this doesn't make sense), which also cause the bombs vector array to get out of sync. one possible fix is to not allow a single touch to explode more than one bomb at a time (OR SOMETHING ALONG THOSE LINES)
+        - 3) ANOTHER problem is for bombs that aren't exploded and fall off the screen - these are never destroyed and removed from the vector array
+
+- tried playing with c++ Android Studio conditional breakpoint -- THIS WOULDN'T WORK FOR SOME REASON. TEST THIS OUT AGAIN ANOTHER TIME
+
+
+- implemented ch.6 code
+  - book has code for both SimpleAudio and Audio engines, but SimpleAudio code is never used
+  - USE CODE SAMPLE STYLE FROM AppDelegate.cpp, as audio implementation for c++ includes isn't ideal
+  - small stutter is noticeable in collision code? PRE-LOAD SOUND FILES
+  - NOTE searchPaths.push_back("sounds"); to add easier access to sound files
+  - mute button "menu item images" that has 2 distinct visiblity states - mute / unmute
+
+  - noticible differences between SimpleAudio and Audio API -- USE BOTH FOR NOW, AS THE NEWER AUDIO ENGINE HAS EXPERIMENTAL IN THE TEXT OF IT'S C++ INCLUDE..
+    - new Audio API treats bg sounds and effects the same, whereas SimpleAudio has different methods to depending on the type of sound
+    - use AudioEngine::INVALID_AUDIO_ID as a test for unplayed sounds
+
+  - shared pre-processor directive across multiple files, specifically USE_AUDIO_ENGINE
+    - https://stackoverflow.com/a/2946543
+    - implemented a duplicate of pre-processor definition in Ch6Scene.h to eliminate unnecessary code from SimpleAudio, but a shared .h file would be better in the future
+
+  - cocos2D-x template code in AppDelegate.cpp actually places end in destructor -- ALREADY HANDLES AUDIO CLEANUP FOR ENTIRE APPLICATION
+    - tested adding overriden onExit() (and destructor) -- not needed for Audio cleanup, but might come in handy??
+
+----------
+Saturday 2018-12-08
+
+- read through ch.5, "Handling Text / Fonts", and implemented into my test project.
+  - samples for truetype, system, bitmap fonts
+
+  - introduces the concept of the simple storage mechanism, UserDefault, but is limited to being a global variable data holder. it actually causes the app to stutter
+
+  - introduces the scheduler concept, through "schedule" and CC_SCHEDULE_SELECTOR
+    - book doesn't go in-depth, but I added some test code. scheduler is a bit weird..pausing can only be done on the "target" scene and ALL child scheduled function, not any one specific scheduled function.
+
+  - introduces .getShapeA / .getShapeB concept in the physics contact handler. at first, I thought this was a code "hack" as it wasn't explained at all. basically the contact handler is triggered by ALL physics objects and we have to test whether or not shape A or shape B is the player "bunny"
+    - https://www.raywenderlich.com/1848-cocos2d-x-tutorial-for-beginners (not a great example per se, but shows how to remove colliding nodes)
+
+----------
+Friday 2018-12-07
+
+- implemented multi-touch to ch.4 code - it works fairly well, but not perfect. just dragging a finger around the screen causes touch press on multiple objects. probably fixed using additional logic in the on-touch-begin/on-touch-end events
+
+- implemented return to menu on the back button press and back button on main menu
+
+- torque spin after a collision (or contact) is absurdly fast. multiple contacts seem to occur for some reason
+  - after some observation and code changes, multiple contact events are triggered if both physics bodies are allowed to stay too close to one another
+  - this is compounded (I think) by one object being moved continually by the accelerometer AND the rotation of the other physics body
+  - returning true/false is "iffy" as the book states that returning false will not allow the contact event to trigger again. returning false seems to allow the event code to execute correctly, whereas returning true seems to "fail" I guess
+  - a boolean flag keeping track of whether this event triggered seems to work if incorporated with this code. return false seems to ALWAYS be best, as return true has an undesirable result. not really sure what's going on though. another option might be to remove the event-binding entirely...
+
+----------
+Thursday 2018-12-06
+
+- implemented ch.4 in test code that implements accelerometer, single-touch, back button, and keep screen alive. finished reading through ch.4
+
+----------
+Wednesday 2018-12-05
+
+- added and refactored ch.3 code to test project. realized a bit late that test code actually started at ch.2 - so it took a little while to reflect this in the test project
+
+- encountering difficulty with the physics bodies debug outline on 2 devices I own. moto-g (android 5.1) draws debug physics bodies at start, but will not redraw to reflect updated positions. samsung galaxy s3 (android 4.4) will NOT draw debug physics bodies at all. in all cases, actual sprites move and collisions occur.
+  - I tried using AVDs also - x86 will not work under chrome os / crouton as a kvm can't be installed. arm-based AVD is very slow to even start and eventually.................doesn't run at all
+  - older chrome os hardware is less than ideal for android development: new computer $$$ (pc/linux, new chrome os/crostini), pure linux on this chromebox, or make due with testing on actual phones
+
+- additional tests recommended by the book included applying forces, impulse, linear damping, and torque, but I had some difficulty getting these test functions to work.
+  - assigning a mass, using the setMass() function, was the trick to get force / impulse to work properly - not sure of the units.
+  - assigning a moment, using the setMoment() function, enabled torque adjustments to work as expected. moment values <= 0 caused the app to crash and too close to zero acted "haywire". this doesn't seem to be really documented, but moment >= 1.25 seemed to work best (THESE NUMBERS ARE INCONSISTENT AFTER MULTIPLE RUNS, SO...? 12/16/2018)
+  - setEnabled() & setRotationEnable() function seem unnecessary. perhaps these are enabled by default or by the setDynamic() function
+
+- NOTE: ResolutionPolicy::NO_BORDER made everything drawn slightly to the left, almost like it seemed aligned to the right edge. ResolutionPolicy::FIXED_HEIGHT seemed more desireable, aligned center
+
+----------
+Tuesday 2018-12-04
+
+- installed android studio plugin for wireless adb
+
+- reviewed ch. 1 source code
+
+----------
+Monday 2018-12-03
+
+- reviewed previous notes
+
+----------
+Thursday 2018-11-29
+
+- installed android sdk 4.4 to enable testing on another device - samsung galaxy s3. two applications seemed to run fine
+
+- researched some common smartphone device resolutions to determine how they stack up against 1) the default low/mid/high resolutions used by the cocos2d-x framework and 2) the images provided by the book "Building Android Games with Cocos2D-x" ch.1 source code
+
+  - considering the provided images and typical smartphone resolutions, only the low and mid size images really would work - refactoring the code accordingly
+
+  - the accelerometer-based "bobble" apps should be highly customized
+    - if using a background image, I think using "ResolutionPolicy::NO_BORDER" would be best, because cutting off portions of the background should be ok
+    - the actual foreground images and physics objects should somehow be re-sizeable
+
+- menu + ch.1 sample is working - return to reading and add chapters as reading progresses
+
+----------
+Tuesday 2018-11-27
+
+- attempting to refactor AppDelegate.cpp screen dynamic resolution code automatically generated by cocos2d-x framework to the code from ch.1
+
+  - book ch.1 AppDelegate.cpp > applicationDidFinishLaunching() > glview->setFrameSize(480, 800);
+    - this doesn't appear to do anything
+
+  - added a scene background color to (hopefully) visually understand impact of code changes
+    - https://discuss.cocos2d-x.org/t/change-background-color-of-scene/42858/2 (change scene bg color)
+
+  - playing w/ ResolutionPolicy::NO_BORDER to ::SHOW_ALL shows that the default ::NO_BORDER actually cuts off portions of the left and right, while ::SHOW_ALL displays the entire design area, but leaves empty top/bottom black portions. so neither setting is ideal, especially considering the bg image and device resolution do not match.
+    - test device resolution (moto-g gen 1) - w: 720, h: 1280
+    - ch.1 background image                 - w: 768, h: 1280
+
+    - ResolutionPolicy::SHOW_ALL I think would be best in this scenario, but should be modified to something more appropriate going forward. best to match the device, if possible.
+
+----------
+Monday 2018-11-26
+
+- decided to create an android application to test out each chapter's code from the book "Building Android Games with Cocos2D-x". this will have a main menu with a menu option to launch each chapter's code
+  - this will allow for better understanding of the code being read and see it in action
+  - possibly discern coding differences from a more recent version of the cocos2d-x framework
+
+- progress: completed skeleton project with selectable menu items (ch.1 - 8)
+
+----------
+Saturday 2018-11-24
+
+- took notes on PDF book "Building Android Games with Cocos2D-x"
+  - stopped @ ch.3: understanding game physics
+
+----------
+Tuesday 2018-11-20
+
+- added an additional "blank" scene to contain physics bodies test
+- planning to use built-in physics engine "chipmunk" and if that has problems, I'll try Box2d
+
+----------
+Sunday 2018-11-18
+
+- modified test project to have a menu select scene & accelerometer xyz measurement scene
+  - add additional scenes from the menu select scene
+
+----------
+Saturday 2018-11-17
+
+- "simple" test to display accelerometer-x in log and label
+
+- compile warning persists even after trying some fixes searching google
+  - "WARNING: ABIs [armeabi-v7a,armeabi] set by 'android.injected.build.abi' gradle flag contained 'ARMEABI' not targeted by this project."
+
+----------
+Friday 2018-11-16
+
+- migrate notes to Google Drive (easier to access from different environments)
+  1) developer daily journal
+  2) to do list
+  3) cocos2D-x notes
+  4) books
+
+- optimize template project as much as possible
+  - REMEMBER TO UPDATE TEMPLATE W/ VERSION UPDATES
+
+----------
+Tuesday 2018-10-09
+
+- "cocos2D-x notes.txt" review
+  - NEW PROJECT
+    - renamed to HOW TO CREATE A NEW PROJECT
+
+  - PRE-BUILT LIBRARIES
+    - reviewed instructions
+    - TODO item added to streamline creating new projects using PRE-BUILT
+
+  - LOGGING - basically use built-in log function (WRONG -- USE CCLOG FROM NOW ON 12/16/2018)
+
+  - RESOLUTION - skipped for now
+
+  - SCALING - skipped for now; this seemed important though so adding it to the list of TODO
+
+  - https://github.com/chukong / "programmers-guide-samples"
+    - failed to compile for Android and as in previous attempts, without success
+    - perhaps create a new base project and add code / resources TODO
+
+  - NEXT: continue looking at web links
+
+----------
+Sunday 2018-10-07
+
+- verified cocos2d-x still at version 3.17
+
+- it's been a while since I played with this code. plan is about ~2 hours / day for now.
+
+- continued with "my_tests" project
+  - modified some label text in Scene2.cpp and tested on my phone (compile time: 11m 15s)
+  - 2nd label alteration and test (compile time: 1m 2s)
+  DEFINITELY USE PRE-BUILT LIBRARIES - MAKE EASIER FOR NEW PROJECTS
+
+- "cocos2D-x notes.txt" review
+  - NEW SCENE
+    - copy from template needs elaboration or maybe an actual template TODO
+
+    - while looking over this, it was SOMEWHAT DIFFICULT TO LOCATE THE FILES referenced in the "LOCAL_SRC_FILES :=" section of Android.mk. I made this to locate these easier in the future. This is easier in an actual file manager directory tree, but one can also right-click the file or open tab and select "Show in File Manager".
+
+      - "Project" tree view (a little easier to navigate)
+        - /hellocpp/main.cpp ==> ROOT > (project) > app > jni > hellocpp
+        - Android.mk/Application.mk => ROOT > (project) > app > jni
+        - user .cpp/.h files ==> ROOT > (project) > Classes
+
+      - "Android" tree view
+        - Android.mk/Application.mk => ROOT > "External Build Files"
+        + Android.mk/Application.mk => ROOT > (project) > cpp > MyGame > (project) > proj.android > app > jni
+        - /hellocpp/main.cpp ==> ROOT > (project) > cpp > MyGame > (project) > proj.android > app > jni > hellocpp
+        - user .cpp/.h files ==> ROOT > (project) > cpp > MyGame > (project) > Classes
