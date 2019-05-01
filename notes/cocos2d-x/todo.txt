@@ -1,45 +1,75 @@
 TODO
 
-- @ ch.8 jni p.118
-  - admob
-  
-- url for java to c++ calls
+- http://www.iforce2d.net/b2dtut/
+  - install preview app
+  - study/test joints
 
-- google android sensors
 
-- try to reverse-engineer git code for gyroscope sensor
+- box2d test app
+  - create a menu for multiple scenes
+  - new scene for box2d joint(s) test
 
-- code a version of the low-pass-filter accelerometer
+
+- test git local + ide
+
+
+- review notes
+
+
+- c720 upgrade? and move to linux
+
+
+- BOX2D
+
+  - update BOX2D how-to guide as necessary
+
+  - Cocos2d-x by Example - Beginner's Guide
+    - ch8; pop quiz Q1-3, Q2-2, Q3-1, Q4-3
+    - ch9
+
+  - tutorial(s)
+    http://www.lavaxp.net/integrating-box2d-with-cocos2d-x/
+    http://www.iforce2d.net/b2dtut/
+
+
+- BOX2D: integrate latest version of Box2D w/ cocos2d-x?
+
+- BOX2D: see cocos2D-x.txt ...box2d download + test harness
+
+--------
+7 try to reverse-engineer git code for gyroscope sensor
+  https://github.com/Undume/Gyroscope-Cocos2d-x
+
+8 google android sensors
+  - android java project to test out various sensors?
+
+9 code a version of the low-pass-filter accelerometer
   - try to put this in a class
+--------
 
-- review old notes re: c++ virtual inherited functions
+- setDesignResolutionSize()
+  - setDesignResolutionSize() .."FIXED_HEIGHT" seemed to work better than "NO_BORDER", but more testing needed
+  - write design pattern to be used in projects
 
 - cocos2d-x equivalents to android onResume() / onPause() and other life-cycle
   - TEST THIS: http://docs.cocos2d-x.org/cocos2d-x/en/audio/advanced.html
+  - applicationDidEnterBackground / applicationWillEnterForeground
   - document in notes
-
-- finish book and proceed to another book
-  - hopefully a box2d example
-
-- review javascript accelerometer / orientation sample (c9.io) to evolve cocos2d-x code base
-
-- move all notes from here to c9/github pages in html format
-  - collapsible sections
-
-- find box2d info
-  - see book: "Cocos2d-x by Example - Beginner's Guide" Ch. 8
-  - choose physics engine: chipmunk or box2d(*)
-  
-- look at existing 3 projects and journal short description of each
 
 ! read "cocos2D-x notes.txt" > SCALING > USING RENDERTEXTURE, test & write notes
 - read "cocos2D-x notes.txt" > RESOLUTION
-
-- attempt manual creation of "programmers-guide-samples" project as auto-build script doesn't work in linux
+https://discuss.cocos2d-x.org/t/solved-how-to-really-resize-a-sprite-to-avoid-scaling-it/21458/8
 
 - c++ Android Studio conditional breakpoint -- TRY TO GET THIS WORKING
 
-*******
+- notes are scattered between multiple files (made sense at the time)
+  - cocos2D-x.txt
+    - try consolidating information from various files here with the goal of it being a personal reference
+    - move this to html format w/ expanding / collapsible sections
+
+  - todo.txt (keep)
+  - journal.txt (keep)
+  - <book name>.txt (not sure, maybe consolidate...)
 
 - review notes on a weekly basis (journal and other notes)
 
@@ -52,14 +82,21 @@ TODO
 
 - tutorials
 
+- ADMOB (later)
+  - continue with "Building Android Games with Cocos2d-x" p.122 starting at moving the mute button
+  - see "journal.txt" Thursday 2018-12-13
 
+- cocos2d-x event listeners
+  - lookup info on c++ lambda expressions
+  - lookup info on "CC_CALLBACK_2"
+  - lookup other callback mechanisms
 
+- research data storage options
 
+- create aspect ratio "squares" in a 2d drawing program
 
-
-
-  
-  
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbNzI0NTQ3MzQyXX0=
--->
+- physicseditor and cocos2d-x/box2d
+  https://github.com/CodeAndWeb/PhysicsEditor-Cocos2d-x-Box2d
+  https://github.com/meiry/PhysicsEditor-_cocos2d-x-ver3-loader
+  http://discuss.cocos2d-x.org/t/can-i-use-physics-editors-plist-file-with-box2d/44164
+  http://discuss.cocos2d-x.org/t/custom-loader-for-physicsbodyeditor-box2d/26225

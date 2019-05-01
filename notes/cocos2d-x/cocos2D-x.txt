@@ -1,9 +1,11 @@
 CONTENTS
 --------
 
+BOX2D
 CREATING A NEW SCENE
 CREATING A NEW PROJECT
 PRE-BUILT LIBRARIES
+UPDATED ANDROID STUDIO / GRADLE
 LOGGING
 RESOLUTION
 SCALING
@@ -12,7 +14,26 @@ READING
 MISC
 NDK VERSION SETTINGS DISCUSSION
 TUTORIALS
-BOX2D/R.U.B.E.
+
+----------
+
+BOX2D
+
+  https://box2d.org/
+  - extensive and well documented
+  - manual: http://box2d.org/manual.pdf
+  - forum: https://box2d.org/forum/
+
+  - download: https://github.com/erincatto/Box2D
+    - includes a testbed application w/ many demos
+
+  tutorial
+  - http://www.lavaxp.net/integrating-box2d-with-cocos2d-x/
+  - http://www.iforce2d.net/b2dtut/
+  - http://wizardfu.com/book/cocos2d-x/box2d-physics/
+
+  misc links
+  - basic scene? http://discuss.cocos2d-x.org/t/box2d-debug-draw-v3-8-1/25377/15
 
 ----------
 
@@ -31,7 +52,6 @@ CREATING A NEW PROJECT
   http://www.gamefromscratch.com/post/2014/09/29/Cocos2D-x-Tutorial-Series-Installation-Creating-a-Project-and-Hello-World.aspx
 
   ex. cocos new -p com.world.hello -d ~/cocos2d-x/projects/ -l cpp --portrait hello_world
-
 
   cocos new --help
 
@@ -61,6 +81,12 @@ CREATING A NEW PROJECT
 
 
   FOLLOW INSTRUCTIONS FOR "PRE-BUILT LIBRARIES"!!
+
+----------
+
+UPDATED ANDROID STUDIO / GRADLE
+
+- modify appropriate build.gradle file with updated version # ????
 
 ----------
 
@@ -131,7 +157,7 @@ PRE-BUILT LIBRARIES
 LOGGING (COCOS2D-X)
 
   http://www.cocos2d-x.org/docs/cocos2d-x/en/basic_concepts/logging.html
-  
+
   basically encapsulates platform-specific logging code with parameters. for android the tag = COCOS2D-X
 
 
@@ -161,7 +187,7 @@ SCALING
 
   USING RENDERTEXTURE
 
-  https://discuss.cocos2d-x.org/t/solved-how-to-really-resize-a-sprite-to-avoid-scaling-it/21458/7
+  https://discuss.cocos2d-x.org/t/solved-how-to-really-resize-a-sprite-to-avoid-scaling-it/21458/8
 
 ----------
 
@@ -193,8 +219,3 @@ http://www.gamefromscratch.com/post/2014/10/01/Cocos2d-x-Tutorial-Series-Basic-G
 https://wizardfu.com/book/cocos2d-x/
 https://www.raywenderlich.com/95835/cocos2d-x-tutorial-beginners
 https://www.raywenderlich.com/48180/cocos2d-x-tutorial-making-a-universal-app-part-1
-
-BOX2D/R.U.B.E.
-https://www.youtube.com/watch?v=bBIXpu-D_Zo
-https://discuss.cocos2d-x.org/t/box2d-scale-and-step/26208
-https://wizardfu.com/book/cocos2d-x/box2d-physics/

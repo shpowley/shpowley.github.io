@@ -1,0 +1,47 @@
+"Cocos2d-x by Example - Beginner's Guide"
+=========================================
+
+
+API
+
+  CONTAINERS
+  - scene
+
+  - layer
+
+  - sprite
+
+  - node
+    - a super class that many other containers inherit
+
+
+  DIRECTOR
+  - global singleton class
+
+
+  CACHE
+  - global singleton classes
+    - TextureCache
+    - SpriteFrameCache
+    - AnimationCache
+
+
+  ACTIONS
+
+
+  PARTICLES
+
+
+  SPECIALIZED NODES
+
+
+  MACROS, STRUCTURES, HELPER METHODS
+  
+  
+CODING
+- book recommends making DESTRUCTORS VIRTUAL
+
+- this->scheduleUpdate (or Node::scheduleUpdate) calls new scene update(float dt) implementation
+  - not sure how to use at the moment
+  
+- cocos2d-x has a "Ref" class that is the root of every major object in the framework that implements autorelease pools and retain counts

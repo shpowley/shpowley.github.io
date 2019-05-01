@@ -1,0 +1,54 @@
+CROUTON COMMANDS
+----------------
+
+sudo startxfce4 -n xenial -b -X xorg
+
+LAUNCH APPS FULLSCREEN
+sudo enter-chroot -b -n xenial xiwi -F nautilus
+
+LAUNCH APPS IN A WINDOW
+sudo enter-chroot -b -n xenial xiwi studio
+sudo enter-chroot -b -n xenial xiwi nautilus
+sudo enter-chroot -b -n xenial xiwi xterm
+sudo enter-chroot -b -n xenial xiwi keepassx
+
+BACKUP
+sudo edit-chroot -b xenial
+
+RESTORE
+sudo edit-chroot -f xenial-20170903-0038.tar.gz -r xenial
+
+UPDATE CHROOT AFTER CHROME OS UPDATE / UPDATE TARGETS WITH NEW VERSION OF CROUTON
+sudo sh crouton -u -n xenial
+
+MOUNT CHROOT SHELL
+sudo enter-chroot -n xenial
+
+DOWNLOAD BOOTSTRAP
+sudo sh ~/Downloads/crouton/crouton -d -f ~/Downloads/crouton/xenial-bootstrap.tar.bz2 -r xenial -t audio,cli-extra,core,extension,x11,xiwi,xorg,xfce,xfce-desktop
+
+INSTALL FROM BOOTSTRAP
+sudo sh ~/Downloads/crouton/crouton -n xenial -f ~/Downloads/crouton/xenial-bootstrap.tar.bz2 -t audio,cli-extra,core,extension,x11,xiwi,xorg,xfce,xfce-desktop
+
+START SPECIFIC TARGET DE
+sudo startxfce4 -n xenial -b -X xorg
+sudo startxfce4 -n z3nial -b -X xorg
+sudo enter-chroot -n xenial -X <xorg | xiwi> startgnome
+
+--
+
+You can flip through your running chroot desktops and Chromium OS by hitting
+Ctrl+Alt+Shift+Back and Ctrl+Alt+Shift+Forward.
+
+You can start GNOME via the startgnome host command: sudo startgnome
+
+You already have the Chromium OS extension installed, so you're good to go!
+
+You can open your running chroot desktops by clicking on the extension icon.
+Once in a crouton window, press fullscreen or the "switch window" key to switch
+back to Chromium OS.
+
+You can launch individual apps in crouton windows by using the "xiwi" command
+in the chroot shell. Use startxiwi to launch directly from the host shell.
+Use the startxiwi parameter -b to run in the background.
+Example: sudo startxiwi -b xterm
