@@ -1,0 +1,44 @@
+GITHUB PAGES
+
+  https://shpowley.github.io/
+
+
+START HERE
+
+  http://rogerdudler.github.io/git-guide/
+
+
+PERFORMED AFTER ADD / DELETE / RENAME
+
+  git commit -m "comments"
+  git push origin master
+
+
+ADD A FILE
+
+  git add <FILE NAME> OR git add *
+
+
+DELETE A FILE
+
+  git rm <NAME OF FILE>
+
+
+DELETE A DIRECTORY AND IT'S CONTENTS
+
+  git rm -r <NAME OF DIRECTORY>
+
+
+RENAME
+
+  git mv <OLD NAME> <NEW NAME>
+
+
+UPDATE
+
+  git commit -am "comments"
+
+
+CHECK STATUS OF CHANGES
+
+  git status
