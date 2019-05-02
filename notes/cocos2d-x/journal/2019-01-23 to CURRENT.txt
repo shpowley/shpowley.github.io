@@ -1,16 +1,16 @@
 ----------
 Wednesday 2019-05-01
 
-- stack:
-  - docker?
-  - android studio
+- windows software stack:
+  x chrome browser
+  x visual studio code
+  x git
+  x android studio
   - java
   - android ndk c++
   - cocos2d-x
-  x chrome browser
   - box2d software
-  - visual studio code
-  - text editor or c9.io alternative
+  - docker?
 
 ----------
 Monday 2019-04-22
