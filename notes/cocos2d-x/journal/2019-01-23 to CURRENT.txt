@@ -9,10 +9,19 @@ Friday 2019-05-03
 
 - added existing cocos2d project (celestial) to github from crouton/linux to windows 10 environment
 
-  * NOTE 1: need to modify line of "proj.android > gradle.properties" to
+  * NOTE 1: need to modify line of "proj.android > gradle.properties" (project error)
     PROP_BUILD_TYPE=ndk-build
 
-  * NOTE 2: project path needs to avoid spaces
+  * NOTE 2: project path needs to avoid spaces (project error)
+
+  * NOTE 3: android.mk has to be modified to match that of the template project (.cpp files included properly)
+
+  - "celestial" project compiles and installs .apk file, but doesn't do anything
+  - template project works fine
+
+- windows 10 allows creating symlinks in a similar fashion to linux, saving space by creating a "cocos2d" link
+
+- try rebuilding another box2d project from crouton/linux in windows 10
 
 ----------
 Wednesday 2019-05-01
