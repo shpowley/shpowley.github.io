@@ -1,4 +1,20 @@
 ----------
+Friday 2019-05-03
+
+- continue software installs
+  - cocos2d-x version 3.17.1 downloaded and windows symlinks created
+    * NOTE: symlinks created in windows has subtle differences compared to linux, and require absolute filepaths
+  - updated android ndk
+  - install python 2.7.x (cocos2d-x prerequisite)
+
+- added existing cocos2d project (celestial) to github from crouton/linux to windows 10 environment
+
+  * NOTE 1: need to modify line of "proj.android > gradle.properties" to
+    PROP_BUILD_TYPE=ndk-build
+
+  * NOTE 2: project path needs to avoid spaces
+
+----------
 Wednesday 2019-05-01
 
 - windows software stack:
@@ -6,11 +22,9 @@ Wednesday 2019-05-01
   x visual studio code
   x git
   x android studio
-  - java
-  - android ndk c++
-  - cocos2d-x
+  x android ndk c++
+  x cocos2d-x
   - box2d software
-  - docker?
 
 ----------
 Monday 2019-04-22
