@@ -1,4 +1,35 @@
 ----------
+Sunday 2019-05-05
+
+- created macrium reflect boot usb drive and verified that I can boot from this and restore macrium disk images if necessary
+
+- trying to resolve issue with "celestial" cocos2d-x/box2d project not working correctly
+  - template project appears to work ok, even with windows softlink for cocos2d directory
+
+  - resolution actions:
+    - try another box2d project
+      - air_hockey from portable drive backup; using softlink cocos2d and Android.mk modification
+      - gradle plugin always has to be updated it seems and another warning given, otherwise pre-build is ok
+      - fresh build: 2m 37s
+      - THIS WORKS!! ..I don't think cocos2d-x needs to be reinstalled
+
+    - create/test "celestial" box2d project not using github
+      - THIS WORKS ALSO!!
+
+    - create/test "celestial" box2d project in old environment using github source
+      - FALSE ALARM
+      - straight away I noticed that MenuSelect.h/.cpp wasn't part of my local backup; basically the menu select scene isn't working and gave the appearance of box2d not working, compounded by moving to a new dev environment
+      * github version of the code was fixed/completed by referring back to sample from "android_games" project menu implementation
+
+- relocating cocos2d-x sdk, altered templates and tested ok
+
+- keep the crouton development environment for now without upgrading cocos2d-x, android/gradle
+
+* NOTE: each android studio project is quite LARGE, almost 2GB once built
+
+- NEXT: continue on with software installs from Wednesday 2019-05-01
+
+----------
 Friday 2019-05-03
 
 - continue software installs
@@ -33,6 +64,7 @@ Wednesday 2019-05-01
   x android studio
   x android ndk c++
   x cocos2d-x
+  - texturepacker, physicseditor..
   - box2d software
 
 ----------
