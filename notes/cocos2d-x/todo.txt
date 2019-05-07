@@ -10,13 +10,7 @@ TODO
   - new scene for box2d joint(s) test
 
 
-- test git local + ide
-
-
 - review notes
-
-
-- c720 upgrade? and move to linux
 
 
 - BOX2D
