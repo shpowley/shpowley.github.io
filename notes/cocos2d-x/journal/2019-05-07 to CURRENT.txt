@@ -1,4 +1,25 @@
 ----------
-Tuesday 2019-05-07
+Wednesday 2019-05-08
 
 - R.U.B.E. tutorials
+
+  - though there are some free tools that accomplish similar goals, this seems the most feature complete, maintained and well made; considering my end goals, this will probably be an essential tool
+
+  - watch all video tutorials
+
+    - stopped @ tutorial 17/18 : https://youtu.be/nCp-EK_IICA
+
+    * RE-WATCH especially the joint video tutorials
+    - video tutorials were recorded in 2012 and additional features have been added
+    - original joint types include: REVOLUTE, PRISMATIC, DISTANCE, WHEEL, ROPE
+    - new joint types are: WELD, FRICTION, MOTOR
+
+    * TODO (2): create a file with different types of joints and "play" with settings (TAKE NOTES)
+      - implementing something like an axis-constrained SPRING isn't exactly 1-to-1, it has to be finagled.. a distance joint with frequency and damping set I think and even then, it not constrained to any axis. this is more of a box2d thing, but I'm not sure if it's a "limitation" per se
+
+    * TODO (3): TAKE NOTES OF EACH TYPE OF JOINT AND WHAT THEY DO IN MY OWN WORDS
+
+- TODO (1):
+  - finish watching video tutorials
+  - install keepassx, update iforce2d password
+  - install paid version of R.U.B.E. and loaders
