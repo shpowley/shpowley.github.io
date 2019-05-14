@@ -5,7 +5,6 @@ BOX2D
 CREATING A NEW SCENE
 CREATING A NEW PROJECT
 PRE-BUILT LIBRARIES
-UPDATED ANDROID STUDIO / GRADLE
 LOGGING
 RESOLUTION
 SCALING
@@ -28,7 +27,7 @@ BOX2D
     - includes a testbed application w/ many demos
 
   tutorial
-  - http://www.lavaxp.net/integrating-box2d-with-cocos2d-x/
+  * http://www.lavaxp.net/integrating-box2d-with-cocos2d-x/
   - http://www.iforce2d.net/b2dtut/
   - http://wizardfu.com/book/cocos2d-x/box2d-physics/
 
@@ -72,21 +71,21 @@ CREATING A NEW PROJECT
 
 
   NOTE
-    replace cocos2d sub-folder with symbolic link to latest (or most appropriate) cocos2d-x folder
+    replace cocos2d sub-folder with SYMBOLIC LINK to latest (or most appropriate) cocos2d-x folder
 
-    ex. ln -s [SOURCE FOLDER] [LINK]
-    more: man ln
 
-    OR use ENGINE argument (not sure if this works..?)
+    LINUX
+
+      ex. ln -s [SOURCE FOLDER] [LINK]
+      more: man ln
+
+
+    WINDOWS
+
+      ex. mklink /d [LINK] [TARGET FOLDER]
 
 
   FOLLOW INSTRUCTIONS FOR "PRE-BUILT LIBRARIES"!!
-
-----------
-
-UPDATED ANDROID STUDIO / GRADLE
-
-- modify appropriate build.gradle file with updated version # ????
 
 ----------
 

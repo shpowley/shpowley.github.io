@@ -1,13 +1,95 @@
 ----------
+Monday 2019-05-13
+
+- NOTES FROM ATL DRIVE
+  - happy face emojis accelerometer react bouncing, circular spring also
+  - hello kitty (if hawaii app actually does well), kimono @ megamart, grass skirt, etc. look at IP licensing..
+  - fortnite dancing - not sure about this one..
+  - swaying feet, sandals (hawaiian), alternate theme also - other graphics: user replaceable (baby feet), generic baby footprint, linux gnome bare feet, dog paws x 4
+  - t-rex google page not found: 1) dinosaur reacts to accelerometer jumping with background just always scrolling OR 2) background moves in relation to accelerometer
+  - monster truck similar to dinosaur scenario; physics on truck, 2D OR pseudo-3D, obstacles (cars, boulders), varying terrain
+
+  - accelerometer toy "themes"
+    - each theme need 3-5+
+    - many bobble toys could be incorporated in more than one theme
+    - flower power: solar powered flower, hawaiian lei, research popular flowers "jostled around", water lilies, hummingbird, butterfly resting, kindergarten style, sunflower, on water
+      - hummingbird: it "floats", flapping wings, flying around to flower movement
+    - spinning things: pinwheel (very light, little friction), windmill (holland, physics heavier), wind farm, car wheel, gears, fidget spinner, shuriken
+    - hawaiian: +android robot w/ hawaiian shirt, lei, hula skirt, different poses
+    - cute animals: a lot of possibilies in similar poses
+    - food: stacked hamburger (ingredients stack flop), pizza; advertising graphics geared toward businesses
+    - christian: buddy jesus, air jesus, christian fish, cross on a chain
+      - religion is very touchy though..
+    - japan: cherry blossoms in water, sumo wrestler, geisha dancer, shuriken spinning
+
+    - user-customizable graphics in pre-made physics templates: braves tomahawk chopping + logo, hula dancer face or face cutout, circular spring, animation; avoids IP issues
+      - animation moving from user tap or accelerometer, individual graphic frames or an animated gif specified by user
+        - animation speed remains consistent and always finishes on last frame
+        - simplified animation speed control, rotation in 90 degree steps
+        - ex. muybridge horse, many on the internet, skull spinning, selfie(s)
+  
+  - similated water: boat, boat in a bottle, rubber duck
+  - skeleton on a chain, joints connected; theme?
+  - morning star on a chain (weapons theme?)
+  - leaning tower of pisa
+  - hand-drawn art might be a good idea; cuphead video gave me inspiration to develop my own "style" - art styles alone can be a primary appeal to users
+
+  - bobble toys should have the ability to "auto-wobble" or respond to touch / touch-drag; in stationary environments this would be good
+  - day dream still a thing, live wallpaper: would be appealing to many and would respond to swipes; panda live wallpaper gave me inspiration for this - very simplistic movement, but art style and functionality generated many downloads
+  * drive to ATL got brainstorming about this subconciously; it might be a good idea to just drive around to get new ideas and audio recorded
+
+- OLD NOTES / JOURNAL ENTRIES
+  - I need to "catch up" on my dev history, since I took such a long break from this (mostly because of the move and dev environment change)
+  - I started journaling since 2018-10-07
+  - this is about 7.5 months; a total ~71 days ..out of 219 based on my calendar entries -> 32%
+
+  - looking back on the initial chipmunk physics tests (2018-12-05), this was very error-prone as this was pretty much code trial-and-error; I'm not exactly sure how much of this was issues related to chipmunk per se, but even with code-only box2d implementations, this was tedious. the R.U.B.E. editor should really go far streamlining physics implementations..
+
+  @Saturday 2018-12-08
+
+
+- MY TODO LIST
+  x transcribe notes from ATL drive (yesterday)
+
+  - read through old notes / journal entries
+
+  - R.U.B.E.
+    - document box2d docs vs R.U.B.E. joints to better visualize
+      - look at javascript phaser joints in previous apps and compare to above
+
+    - experiment different joint configurations (see sketch & try negative torque)
+      - torque controlled programmatically to mimic joint flexed +/- a rest position?
+
+    - basic workflow from R.U.B.E. to c++/cocos2d-x using a simple physics scenario
+      - and loader using JSON (problems with reverse engineering)
+
+  - still need to work out android accelerometer - gravity issue
+
+----------
+Sunday 2019-05-12
+
+- just experimenting with R.U.B.E. joints and attempting to visually understand joint basic operation
+- UNFORTUNATELY, there are no pre-built "springs" and I have to work with the joint types provided
+- at the moment, it appears that "wheel" joints are closest to what I want as far as creating spring oscillating effects
+  - "wheel" @ ~ frequency < 4 and damping ratio < 0.5 (last f=1, dr=0.03)
+
+----------
+Thursday 2019-05-09
+
+- R.U.B.E. video tutorials continued
+  - a lot of information and time-consuming to watch all the videos..
+
+- R.U.B.E. iforce2d has a bunch of c++ box2d tutorials
+  - https://www.iforce2d.net/b2dtut/introduction
+
+----------
 Wednesday 2019-05-08
 
-- R.U.B.E. tutorials
+- R.U.B.E. video tutorials
 
   - though there are some free tools that accomplish similar goals, this seems the most feature complete, maintained and well made; considering my end goals, this will probably be an essential tool
 
-  - watch all video tutorials
-
-    - stopped @ tutorial 17/18 : https://youtu.be/nCp-EK_IICA
+  - watch video tutorials
 
     * RE-WATCH especially the joint video tutorials
     - video tutorials were recorded in 2012 and additional features have been added
