@@ -11,13 +11,19 @@ TODO
 
   - basic workflow from R.U.B.E. to c++/cocos2d-x using a simple physics scenario
     - and loader using JSON (problems with reverse engineering)
+    - revisit Box2D.txt and update
 
   - watch some tutorial videos
 
 - documentation
-  - books central document (look at journal entry) to outline chapters brief content and read/build status
-  - central project ideas to consolidate info from journal and other places
-  - re-org and consolidate journal notes into a monthly format ==> new journal
+  - re-org and consolidate journal notes into a monthly format ==> new journal files; simultaneously update books and projects
+
+  - books.txt
+    - central location to track cocos2d-x book reading and chapter summary, chapters completed, projects completed, and thoughts
+
+  - project ideas.txt
+    - central project ideas to consolidate info from journal and other places
+    - journal (Monday 2019-05-13, Tuesday 2019-05-14), Note 4 S-Note, other journal entries?, todo lists
 
 - still need to work out android accelerometer - gravity issue
 
@@ -25,6 +31,9 @@ TODO
 - box2d test app
   - create a menu for multiple scenes
   - new scene for box2d joint(s) test
+
+- pre-built cocos2D-x libraries
+  - try to get working (make sure to back everything up prior)
 
 
 - BOX2D
@@ -40,6 +49,7 @@ TODO
 ONGOING
 - use vs code print monthly journal to pdf and markup using android app "xodo"
 - monthly days work stats: % days, % actual hours(?)
+- maintain books.txt
 
 --------
 7 try to reverse-engineer git code for gyroscope sensor

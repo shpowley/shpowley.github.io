@@ -1,4 +1,28 @@
 ----------
+Wednesday 2019-05-15
+
+- documentation
+
+  x cocos2D-x.txt
+  x Box2D.txt
+  x Build Android Games.txt
+
+  x Cocos2d-x by Example.txt (DELETE)
+    - not much here at all.. deleting this
+    - more specific info is recorded in various journal entries
+
+  x project ideas.txt (NEW)
+    - central location to track current project(s) and ideas
+    - TODO ongoing; I only created a placeholder document at the moment
+
+  x books.txt (NEW)
+    - central location to track cocos2d-x book reading and chapter summary, chapters completed, etc.
+    - TODO ongoing; only a skeleton at the moment
+  
+  x topics - main.txt (DELETE)
+    - barely useful and hard to maintain
+
+----------
 Tuesday 2019-05-14
 
 - NOTES FROM HIKE
@@ -41,7 +65,7 @@ Monday 2019-05-13
         - simplified animation speed control, rotation in 90 degree steps
         - ex. muybridge horse, many on the internet, skull spinning, selfie(s)
   
-  - similated water: boat, boat in a bottle, rubber duck
+  - simulated water: boat, boat in a bottle, rubber duck
   - skeleton on a chain, joints connected; theme?
   - morning star on a chain (weapons theme?)
   - leaning tower of pisa

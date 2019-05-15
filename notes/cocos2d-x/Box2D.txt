@@ -1,178 +1,193 @@
-QUESTIONS / TO RESEARCH
------------------------
+LINKS
 
-- BOX2D debug draw implementation
-- Mat4?
-- CustomCommand?
-- GLESDebugDraw?
-- GLESDebugDraw _debugDraw->SetFlags(flags); // what are the flags?
+  main: https://box2d.org/
+  manual: http://box2d.org/manual.pdf
+  forum: https://box2d.org/forum/
 
+  download: https://github.com/erincatto/Box2D
+  - includes a testbed application w/ many demos
 
-BOX2D implementation instructions
----------------------------------
+  tutorial
+  * http://www.lavaxp.net/integrating-box2d-with-cocos2d-x/
+  - http://www.iforce2d.net/b2dtut/
+  - http://wizardfu.com/book/cocos2d-x/box2d-physics/
 
-INFO: b2World is the "core" of the engine
-INFO: more than one b2World object can exist in a game
+  misc links
+  - debug draw basic scene: http://discuss.cocos2d-x.org/t/box2d-debug-draw-v3-8-1/25377/15
 
-- ADD PHYSICS INITIALIZATION declaration (separate function OR implemented in another init-type function)
+--------------------------------------------------
+QUESTIONS
 
+  Mat4
+  CustomCommand
+  GLESDebugDraw
+  GLESDebugDraw _debugDraw->SetFlags(flags); // what are the flags?
 
-- ADD UPDATE FUNCTION to .h
+--------------------------------------------------
+IMPLEMENTATION
 
-  void update(float);
+  b2World is the "core" of the engine
+    
+    - more than one b2World object can exist in a game
 
 
-- ADD DRAW FUNCTION to .h
+  ADD PHYSICS INITIALIZATION DECLARATION
+    
+    - separate function OR implemented in another init-type function)
 
-  virtual void draw(cocos2d::Renderer*, const cocos2d::Mat4&, uint32_t);
 
+  ADD UPDATE FUNCTION TO .h
+    
+    ex. void update(float);
 
-- best practice to ADD BOX2D WORLD AS A PRIVATE MEMBER VARIABLE
 
-  private:
-    b2World* world;
+  ADD DRAW FUNCTION TO .h
+    
+    ex. virtual void draw(cocos2d::Renderer*, const cocos2d::Mat4&, uint32_t);
 
 
-- ADD scheduleUpdate() / this->scheduleUpdate() EARLY ON
-  - place this either in the constructor or somewhere in init() function
-  - schedules the update() method (called every frame)
+  ADD BOX2D WORLD AS A PRIVATE MEMBER VARIABLE (BEST PRACTICE)
+    
+    ex. private:
+          b2World* world;
 
 
-- PHYSICS INIT CODE IMPLEMENTATION
+  ADD scheduleUpdate() / this->scheduleUpdate() EARLY ON
+    - place this either in the constructor or somewhere in init() function
+    - schedules the update() method (called every frame)
 
-  - set gravity
-    - uses "b2Vec2"
 
-    ex. b2Vec2 gravity;
-        gravity.Set(0, -10.0f);  // use (0, 0) if no gravity
-        world = new b2World(gravity);
+  PHYSICS INIT CODE IMPLEMENTATION
 
+    set gravity
 
-  - set "allow sleeping"
-    - if objects are not moving and therefore not generating derived data, skip checking for derived data from those objects
+      ex. b2Vec2 gravity;
+          gravity.Set(0, -10.0f);  // use (0, 0) if no gravity
+          world = new b2World(gravity);
 
-    ex. world->SetAllowSleeping(true);
 
+    set "allow sleeping"
+      - if objects are not moving and therefore not generating derived data, skip checking for derived data from those objects
 
-  - set "continuous physics"
-    - means that we have some fast objects, so pay extra attention for collisions
+      ex. world->SetAllowSleeping(true);
 
-    ex. world->SetContinuousPhysics(true);
 
+    set "continuous physics"
+      - means that we have some fast objects, so pay extra attention for collisions
 
-  - set debug drawing (OPTIONAL; see "BOX2D DEBUG DRAW implementation instructions")
+      ex. world->SetContinuousPhysics(true);
 
 
-  - set contact/collision listener
+    set debug drawing (OPTIONAL; see "BOX2D DEBUG DRAW implementation instructions")
 
-    ex. _collisionListener = new CollisionListener(); // CollisionListener derived from b2ContactListener
-        _world->SetContactListener(_collisionListener);
 
-    - see Box2D docs (9.3 Accessing Contacts, 9.4 Contact Listener, 9.5 Contact Filtering)
-    - also, be sure to define collision filters
+    set contact/collision listener
 
+      ex. _collisionListener = new CollisionListener(); // CollisionListener derived from b2ContactListener
+          _world->SetContactListener(_collisionListener);
 
-  - physics bodies (see below ADD PHYSICS BODIES)
+      - see Box2D docs (9.3 Accessing Contacts, 9.4 Contact Listener, 9.5 Contact Filtering)
+      - also, be sure to define collision filters
 
 
-- ADD STEP() TO MAIN LOOP
+    physics bodies (see below ADD PHYSICS BODIES)
 
-  - usually added to update() implementation, but not always
 
-  ex. world->Step(dt, 8, 1);
+  ADD STEP() TO MAIN LOOP
 
-  - 1st parameter is the time step, usually delta time (dt); book states that a fixed time step is usually better than a delta
-  - 2nd parameter is the number of velocity iterations processed inside a step
-  - 3rd parameter is the number of position iterations processed inside a step
+    - usually added to update() implementation, but not always
 
-  * experiment with the # velocity / position iterations aiming to find the lowest possible
+    ex. world->Step(dt, 8, 1);
 
+    - 1st parameter is the time step, usually delta time (dt); book states that a fixed time step is usually better than a delta
+    - 2nd parameter is the number of velocity iterations processed inside a step
+    - 3rd parameter is the number of position iterations processed inside a step
 
-- MEMORY MANAGEMENT
+    * experiment with the # velocity / position iterations aiming to find the lowest possible
 
-  * remember to manage memory as Box2D is independent of cocos2d-x and therefore, does not use Ref objects
 
-  - use "delete" or c++11 smart pointers
+  MEMORY MANAGEMENT
 
-    ex. delete world;
-        world = nullptr;
+    * remember to manage memory as Box2D is independent of cocos2d-x and therefore, does not use Ref objects
 
+    - use "delete" or c++11 smart pointers
 
-- ADD PHYSICS BODIES
+      ex. delete world;
+          world = nullptr;
 
-  - box2d "b2Body"
 
-  - created by combining a BODY DEFINITION and BODY FIXTURE
+  ADD PHYSICS BODIES
 
-    - BODY DEFINITION
-      - type (dynamic, static, kinematic), position, velocity, angle, ...
+    - box2d "b2Body"
 
-    - BODY FIXTURE
-      - shape (circle, square, ...) , density, elasticity, friction, restitution, ...
+    - created by combining a BODY DEFINITION and BODY FIXTURE
 
-  ex. create a circle 40 pixels wide; note the use of PTM_RATIO
+      - BODY DEFINITION
+        - type (dynamic, static, kinematic), position, velocity, angle, ...
 
-      // body definition
-      b2BodyDef bodyDef;
-      bodyDef.type = b2_dynamicBody;
+      - BODY FIXTURE
+        - shape (circle, square, ...) , density, elasticity, friction, restitution, ...
 
-      // create circle shape
-      b2CircleShape circle;
-      circle.m_radius = 20.0 / PTM_RATIO;
+    ex. create a circle 40 pixels wide; note the use of PTM_RATIO
 
-      // define fixture
-      b2FixtureDef fixtureDef;
-      fixtureDef.shape = &circle;
-      fixtureDef.density = 1;
-      fixtureDef.restitution = 0.7;
-      fixtureDef.friction = 0.4;
+        // body definition
+        b2BodyDef bodyDef;
+        bodyDef.type = b2_dynamicBody;
 
-      b2Body* body = world->CreateBody(&bodyDef);
-      body->CreateFixture(&fixtureDef);
+        // create circle shape
+        b2CircleShape circle;
+        circle.m_radius = 20.0 / PTM_RATIO;
 
-===============================================================
+        // define fixture
+        b2FixtureDef fixtureDef;
+        fixtureDef.shape = &circle;
+        fixtureDef.density = 1;
+        fixtureDef.restitution = 0.7;
+        fixtureDef.friction = 0.4;
 
+        b2Body* body = world->CreateBody(&bodyDef);
+        body->CreateFixture(&fixtureDef);
 
-BOX2D DEBUG DRAW implementation instructions
---------------------------------------------
+--------------------------------------------------
+BOX2D DEBUG DRAW IMPLEMENTATION
 
-INFO: the debug draw object allows you to see a simulation without using any sprites
+  INFO: the debug draw object allows you to see a simulation without using any sprites
 
-- copy GLES-Render.h/.cpp to the project and include in appropriate c++ file
-  - these files are required in order to use the debug draw features of Box2D
-  * as far as I can tell, these have to be manually copied; they don't seem to exist in the cocos2d-x framework
+  - copy GLES-Render.h/.cpp to the project and include in appropriate c++ file
+    - these files are required in order to use the debug draw features of Box2D
+    * as far as I can tell, these have to be manually copied; they don't seem to exist in the cocos2d-x framework
 
 
-- override draw() function (inherited from Node)
+  - override draw() function (inherited from Node)
 
-  ex. from physics initialization
+    ex. from physics initialization
 
-      _debugDraw = new (std::nothrow) GLESDebugDraw( PTM_RATIO );
-      world->SetDebugDraw(_debugDraw);
+        _debugDraw = new (std::nothrow) GLESDebugDraw( PTM_RATIO );
+        world->SetDebugDraw(_debugDraw);
 
 
-- PTM_RATIO is a defined constant
-  - PTM = "pixel to meter"
-  - Box2D uses meters for internal calculations
+  - PTM_RATIO is a defined constant
+    - PTM = "pixel to meter"
+    - Box2D uses meters for internal calculations
 
-  * every pixel position value in the game is divided by PTM_RATIO
-    - book recommends the division result to be between 0.1 and 10, else adjust +/- accordingly
-      - this isn't exactly clear, but there is some leeway
-    - book recommends experimenting with this value once a game is complete
+    * every pixel position value in the game is divided by PTM_RATIO
+      - book recommends the division result to be between 0.1 and 10, else adjust +/- accordingly
+        - this isn't exactly clear, but there is some leeway
+      - book recommends experimenting with this value once a game is complete
 
-    - books samples show PTM_RATIO values of 32 and 100
+      - books samples show PTM_RATIO values of 32 and 100
 
 
-- flags determine what is seen in the debug draw
+  - flags determine what is seen in the debug draw
 
-  ex. uint32 flags = 0;
+    ex. uint32 flags = 0;
 
-      flags += b2Draw::e_shapeBit;            // show object shapes
-      // flags += b2Draw::e_jointBit;
-      // flags += b2Draw::e_aabbBit;
-      // flags += b2Draw::e_pairBit;
-      // flags += b2Draw::e_centerOfMassBit;
+        flags += b2Draw::e_shapeBit;            // show object shapes
+        // flags += b2Draw::e_jointBit;
+        // flags += b2Draw::e_aabbBit;
+        // flags += b2Draw::e_pairBit;
+        // flags += b2Draw::e_centerOfMassBit;
 
-      _debugDraw->SetFlags(flags);
+        _debugDraw->SetFlags(flags);
 
 

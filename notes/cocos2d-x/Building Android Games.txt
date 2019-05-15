@@ -153,4 +153,4 @@ JNI
   - http://stnguyen.com/cocos2d-x/call-java-functions-from-cpp.html
 - call c++ from java (android)
   - http://stnguyen.com/cocos2d-x/call-cpp-functions-from-java.html
-- reading JniHelper .h/.cpp source code
+* reading JniHelper .h/.cpp source code

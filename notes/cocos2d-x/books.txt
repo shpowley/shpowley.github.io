@@ -1,0 +1,40 @@
+COCOS2D-X COOKBOOK - AKIHIRO MATSUURA
+
+  <description and thoughts>
+
+  CHAPTERS
+
+--------------------------------------------------
+COCOS2D-X BY EXAMPLE: BEGINNER'S GUIDE - SECOND EDITION - ROGER ENGELBERT
+
+  description and thoughts
+
+  CHAPTERS
+
+    1 installation
+      - ios, android
+    2 c++
+      - ref
+      - TODO: read through again
+    3 air hockey
+      - different resolutions, sound, touch, physics without a physics engine
+    4 sky defense
+      - background music, batch draw sprite sheets, bitmap fonts, object pools, actions, touch
+    5 rocket through
+      - particle effects, drawing primitives, touch
+    6 victorian rush hour (rapid prototyping)
+      - rapid prototyping, collisions, touch
+    7 victorian rush hour
+      - textures, nested containers, parallax, menus, tutorial integration
+    8 mini pool
+      - box2d concepts, touch, timer
+    9 eskimo
+      - box2d, scene transitions, .plist, load / save data, accelerometer
+    10 stone age
+      - lua
+    appendix a: vector calculations
+
+--------------------------------------------------
+BUILDING ANDROID GAMES WITH COCOS2D-X - RAYDELTO HERNANDEZ
+
+  description and thoughts
