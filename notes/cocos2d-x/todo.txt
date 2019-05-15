@@ -1,8 +1,25 @@
 TODO
 
-- http://www.iforce2d.net/b2dtut/
-  - install preview app
-  - study/test joints
+- skim other docs mentioned in journal and perhaps remove some
+
+- R.U.B.E.
+  - document box2d docs vs R.U.B.E. joints to better visualize (watch relevant videos)
+    - look at javascript phaser joints in previous apps and compare to above
+
+  - experiment different joint configurations (see sketch & try negative torque)
+    - torque controlled programmatically to mimic joint flexed +/- a rest position?
+
+  - basic workflow from R.U.B.E. to c++/cocos2d-x using a simple physics scenario
+    - and loader using JSON (problems with reverse engineering)
+
+  - watch some tutorial videos
+
+- documentation
+  - books central document (look at journal entry) to outline chapters brief content and read/build status
+  - central project ideas to consolidate info from journal and other places
+  - re-org and consolidate journal notes into a monthly format ==> new journal
+
+- still need to work out android accelerometer - gravity issue
 
 
 - box2d test app
@@ -10,25 +27,19 @@ TODO
   - new scene for box2d joint(s) test
 
 
-- review notes
-
-
 - BOX2D
-
   - update BOX2D how-to guide as necessary
-
-  - Cocos2d-x by Example - Beginner's Guide
-    - ch8; pop quiz Q1-3, Q2-2, Q3-1, Q4-3
-    - ch9
 
   - tutorial(s)
     http://www.lavaxp.net/integrating-box2d-with-cocos2d-x/
     http://www.iforce2d.net/b2dtut/
 
+  - integrate latest version of Box2D w/ cocos2d-x?
 
-- BOX2D: integrate latest version of Box2D w/ cocos2d-x?
 
-- BOX2D: see cocos2D-x.txt ...box2d download + test harness
+ONGOING
+- use vs code print monthly journal to pdf and markup using android app "xodo"
+- monthly days work stats: % days, % actual hours(?)
 
 --------
 7 try to reverse-engineer git code for gyroscope sensor
@@ -39,6 +50,7 @@ TODO
 
 9 code a version of the low-pass-filter accelerometer
   - try to put this in a class
+
 --------
 
 - setDesignResolutionSize()

@@ -1,4 +1,17 @@
 ----------
+Tuesday 2019-05-14
+
+- NOTES FROM HIKE
+  - custom app from animated gifs.. add sound file; loop option; pre-made and custom
+
+  - TODO: re-org and consolidate journal notes into a monthly format
+
+  * TODO: from now on use vs code print monthly journal to pdf and markup using android app "xodo"
+    - highlight / comment journal sections when going back over them; to make certain sections stand out and over time I learn new things that might be highly relevant
+
+- finished reading through old journal entries
+
+----------
 Monday 2019-05-13
 
 - NOTES FROM ATL DRIVE
@@ -10,7 +23,7 @@ Monday 2019-05-13
   - monster truck similar to dinosaur scenario; physics on truck, 2D OR pseudo-3D, obstacles (cars, boulders), varying terrain
 
   - accelerometer toy "themes"
-    - each theme need 3-5+
+    - each theme need 3-5+ toys I think
     - many bobble toys could be incorporated in more than one theme
     - flower power: solar powered flower, hawaiian lei, research popular flowers "jostled around", water lilies, hummingbird, butterfly resting, kindergarten style, sunflower, on water
       - hummingbird: it "floats", flapping wings, flying around to flower movement
@@ -44,26 +57,6 @@ Monday 2019-05-13
   - this is about 7.5 months; a total ~71 days ..out of 219 based on my calendar entries -> 32%
 
   - looking back on the initial chipmunk physics tests (2018-12-05), this was very error-prone as this was pretty much code trial-and-error; I'm not exactly sure how much of this was issues related to chipmunk per se, but even with code-only box2d implementations, this was tedious. the R.U.B.E. editor should really go far streamlining physics implementations..
-
-  @Saturday 2018-12-08
-
-
-- MY TODO LIST
-  x transcribe notes from ATL drive (yesterday)
-
-  - read through old notes / journal entries
-
-  - R.U.B.E.
-    - document box2d docs vs R.U.B.E. joints to better visualize
-      - look at javascript phaser joints in previous apps and compare to above
-
-    - experiment different joint configurations (see sketch & try negative torque)
-      - torque controlled programmatically to mimic joint flexed +/- a rest position?
-
-    - basic workflow from R.U.B.E. to c++/cocos2d-x using a simple physics scenario
-      - and loader using JSON (problems with reverse engineering)
-
-  - still need to work out android accelerometer - gravity issue
 
 ----------
 Sunday 2019-05-12

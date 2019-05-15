@@ -398,7 +398,7 @@ Friday 2019-01-11
 
     - cocos2d-x "Point" data type is equivalent to "Vec2"
 
-    - this design pattern might come in useful for the bobble project (single taps, tap-drag)
+    * this design pattern might come in useful for the bobble project (single taps, tap-drag)
 
   - update() (MAIN GAME LOOP)
     - NO PHYSICS ENGINE - all physics is handled internally within "update()"
@@ -520,7 +520,7 @@ Tuesday 2018-12-18
   - AppDelegate.cpp > applicationDidFinishLaunching()
     - audioEngine->preloadEffect
       - explicit conversion to .c_str() is necessary as used in this example, however, the usage "fileUtils->fullPathForFilename()" is not; explicit using the name of the sound file is fine (ie. "hit.wav") as the search paths are fully qualified at this point
-      - pre-loading sounds files in AppDelegate.cpp is a good if sounds are shared between all scenes
+      - pre-loading sounds files in AppDelegate.cpp is good if sounds are shared between all scenes
 
   - new "GameSprite" class
     - inherits from Sprite

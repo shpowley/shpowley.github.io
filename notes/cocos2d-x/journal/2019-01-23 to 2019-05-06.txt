@@ -64,7 +64,7 @@ Friday 2019-05-03
 
   * NOTE 2: project path needs to avoid spaces (project error)
 
-  * NOTE 3: android.mk has to be modified to match that of the template project (.cpp files included properly)
+  * NOTE 3: android.mk has to be modified to match that of the cocos2d-x template project (.cpp files included properly)
 
   - "celestial" project compiles and installs .apk file, but doesn't do anything
   - template project works fine
@@ -266,7 +266,7 @@ Thursday 2019-02-21
     - debug draw code uses a conditional compile flag to simplify enabling this feature
     - positioning works as the circle was made to draw on the center of the screen using PTM_RATIO
 
-  * next, I think that this box2d/debug draw code needs to refactored onto the physics Layer instead of directly on the Scene as it is now AND if everything still works, try adjusting the z-order with the graphics layer above or below; and after that, a custom b2Sprite
+  * next, I think that this box2d/debug draw code needs to be refactored onto the physics Layer instead of directly on the Scene as it is now AND if everything still works, try adjusting the z-order with the graphics layer above or below; and after that, a custom b2Sprite
 
 ----------
 Sunday 2019-02-17
