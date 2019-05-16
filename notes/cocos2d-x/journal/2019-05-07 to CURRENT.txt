@@ -1,26 +1,38 @@
 ----------
 Wednesday 2019-05-15
 
-- documentation
+  IFORCE2D VIDEOS AND TUTORIALS
 
-  x cocos2D-x.txt
-  x Box2D.txt
-  x Build Android Games.txt
+    - added videos and tutorial items to my TODO list
+    - @ "Box2D C++ tutorials - Making a test" : http://www.iforce2d.net/b2dtut/making-a-test
 
-  x Cocos2d-x by Example.txt (DELETE)
-    - not much here at all.. deleting this
-    - more specific info is recorded in various journal entries
 
-  x project ideas.txt (NEW)
-    - central location to track current project(s) and ideas
-    - TODO ongoing; I only created a placeholder document at the moment
+  COCOS2D-X PREBUILT LIBS (comments)
 
-  x books.txt (NEW)
-    - central location to track cocos2d-x book reading and chapter summary, chapters completed, etc.
-    - TODO ongoing; only a skeleton at the moment
-  
-  x topics - main.txt (DELETE)
-    - barely useful and hard to maintain
+    - I'm just revisiting this topic. In my windows 10 dev environment, the build time is reasonable, even for fresh builds. subsequent builds are even faster, but I guess this could always be faster. it might even save disk space (not sure about this though). marked as a TODO item with a more recent solution using cmake (see cocos2D-x.txt).
+
+    - previously this broke in my crouton environment when trying to upgrade android studio a while back; I ended up having to roll back and lock down the software versions for android studio / cocos2D-x`
+
+
+  DOCUMENTATION
+    x cocos2D-x.txt
+    x Box2D.txt
+    x Build Android Games.txt
+
+    x Cocos2d-x by Example.txt (DELETE)
+      - not much here at all.. deleting this
+      - more specific info is recorded in various journal entries
+
+    x project ideas.txt (NEW)
+      - central location to track current project(s) and ideas
+      - TODO ongoing; I only created a placeholder document at the moment
+
+    x books.txt (NEW)
+      - central location to track cocos2d-x book reading and chapter summary, chapters completed, etc.
+      - TODO ongoing; only a skeleton at the moment
+    
+    x topics - main.txt (DELETE)
+      - barely useful and hard to maintain
 
 ----------
 Tuesday 2019-05-14

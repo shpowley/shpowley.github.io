@@ -153,6 +153,9 @@ BOX2D DEBUG DRAW IMPLEMENTATION
 
   INFO: the debug draw object allows you to see a simulation without using any sprites
 
+  - also check out iforce2d tutorial: http://www.iforce2d.net/b2dtut/debug-draw
+
+
   - copy GLES-Render.h/.cpp to the project and include in appropriate c++ file
     - these files are required in order to use the debug draw features of Box2D
     * as far as I can tell, these have to be manually copied; they don't seem to exist in the cocos2d-x framework
