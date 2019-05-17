@@ -1,4 +1,24 @@
 ----------
+Friday 2019-05-17
+
+----------
+Thursday 2019-05-16
+
+  IFORCE2D TUTORIALS
+
+    - learning how to use RUBE editor with box2d scenarios AND put these them into the box2d test harness
+
+    * NOTE: to add new tests to the box2d test harness REQUIRES opening modifying the source code in some type of editor and recompiling
+      - visual studio 2019 was used
+
+    BOX2D BODY TYPES
+      DYNAMIC - affected by gravity, linear/angular velocity, collides w/ all bodies (unless specified otherwise)
+      STATIC - unaffected by gravity, position/angle can be set, but doesn't move
+      KINEMATIC - unaffected by gravity, linear/angular velocity, does not collide with static bodies
+
+    - @ "Box2D C++ tutorials - Fixtures" : http://www.iforce2d.net/b2dtut/fixtures
+
+----------
 Wednesday 2019-05-15
 
   IFORCE2D VIDEOS AND TUTORIALS
@@ -11,7 +31,7 @@ Wednesday 2019-05-15
 
     - I'm just revisiting this topic. In my windows 10 dev environment, the build time is reasonable, even for fresh builds. subsequent builds are even faster, but I guess this could always be faster. it might even save disk space (not sure about this though). marked as a TODO item with a more recent solution using cmake (see cocos2D-x.txt).
 
-    - previously this broke in my crouton environment when trying to upgrade android studio a while back; I ended up having to roll back and lock down the software versions for android studio / cocos2D-x`
+    - previously this broke in my crouton environment when trying to upgrade android studio a while back; I ended up having to roll back and lock down the software versions for android studio / cocos2D-x
 
 
   DOCUMENTATION
