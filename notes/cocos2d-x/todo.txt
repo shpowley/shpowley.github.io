@@ -2,18 +2,38 @@ TODO
 
   R.U.B.E.
 
-    - work through a few tutorials step-by-step to familiarize
-    - attempt to integrate a tutorial(?) into cocos2D-x project
+    - tutorials
+      1 - world settings, forces and impulses
+      2 - custom gravity, moving at constant speed
+      3 - rotating to a given angle, jumping
+      4 - using debug draw, drawing your own objects
+      5 - user data
+      6 - anatomy of a collision
+      7 - collision callbacks
+      8 - collision filtering, sensors
+      9 - ray casting
+      10 - world querying, removing bodies safely
+      11 - *joints - overview
+      12 - *joints - revolute
+      13 - *joints - prismatic
+      14 - "can I jump" question
+      15 - ghost vertices
 
-    - document box2d docs vs R.U.B.E. joints to better visualize (watch relevant videos)
-      - look at javascript phaser joints in previous apps and compare to above
+    - try modifying export items and check with .cpp and json export files
+    - attempt to use RUBE loader with cocos2D-x project
+
+    - compare box2d docs vs R.U.B.E. joints to better visualize (watch relevant videos)
+      - also, look at javascript phaser joints in previous apps and compare to above
 
     - experiment different joint configurations (see sketch & try negative torque)
       - torque controlled programmatically to mimic joint flexed +/- a rest position?
 
-    - basic workflow from R.U.B.E. to c++/cocos2d-x using a simple physics scenario
+    - attempt to integrate code into cocos2D-x project
+      - document basic workflow from R.U.B.E. to c++/cocos2d-x using a simple physics scenario
       - and loader using JSON (problems with reverse engineering)
       - revisit Box2D.txt and update
+
+    - read/document notable DISCUSSION FORUM topics
 
     - tutorials:
       http://www.iforce2d.net/b2dtut/introduction

@@ -1,6 +1,50 @@
 ----------
 Friday 2019-05-17
 
+  - I'm guessing around the end of May to complete these tutorials (not counting the advanced tutorials)
+
+
+  IFORCE2D TUTORIALS
+
+    "Fixtures" tutorial (iforce-FooTest-B.h)
+
+      * NOTE: be CAREFUL of when creating polygon fixtures
+
+        - a LIMIT OF 8 VERTICES PER POLYGON by default (if you need more you can adjust the value b2_maxPolygonVertices in the file b2Settings.h)
+        - vertices must be specified in COUNTER-CLOCKWISE ORDER
+        - vertices must describe a CONVEX POLYGON
+
+      * INTERESTING NOTE: if fixture density is not specified, body / fixture WILL NOT ROTATE in response to mouse grab in the box2d test harness; not sure if this is expected behavior
+
+
+      Friction (iforce-FooTest-C.h)
+
+        - "When two fixtures collide with each other, the resulting friction tends toward the lower of their friction values."
+
+
+      Restitution
+
+        - How "bouncy" a fixture is.
+        - "When two fixtures collide with each other, the resulting restitution tends toward the higher of their restitution values."
+
+
+      Changing fixture attributes at run-time
+
+        - use <fixture> ->SetDensity(), ->SetRestitution(), ->SetFriction()
+        * NOTE: setting density also requires a call to ResetMassData() on the body of the fixture
+
+
+      Iterating over fixtures in a body
+
+        - use <body> ->GetFixtureList() to get the first element in a linked list; for multiple fixtures use this in a for loop
+
+
+  IFORCE2D C++ BOX2D TEST HARNESS
+
+    - I created this simple physics scenario in the RUBE editor (2 bodies connected via a rotating joint) and exported the scene to c++. From there, I literally copy-and-pasted the code into this Box2D test class constructor - this worked without any problems (iforce-BarTest.h).
+
+    * NOTE: while this dry test run proved RUBE-to-C++, the .cpp code generated is overly verbose and very non-descriptive from a code editing standpoint (naming isn't maintained and there aren't comments to help). for complex RUBE scenes this might be a problem, but my scenes are probably simple enough to get away with using direct export to C++.
+
 ----------
 Thursday 2019-05-16
 
