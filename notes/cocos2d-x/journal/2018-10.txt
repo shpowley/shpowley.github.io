@@ -1,0 +1,52 @@
+----------
+Tuesday 2018-10-09
+
+  - "cocos2D-x notes.txt" review
+  
+    - NEW PROJECT
+      - renamed to HOW TO CREATE A NEW PROJECT
+
+    - PRE-BUILT LIBRARIES
+      - reviewed instructions
+      - TODO item added to streamline creating new projects using PRE-BUILT
+
+    - LOGGING - basically use built-in log function (WRONG -- USE CCLOG FROM NOW ON 12/16/2018)
+
+    - RESOLUTION - skipped for now
+
+    - SCALING - skipped for now; this seemed important though so adding it to the list of TODO
+
+    - https://github.com/chukong / "programmers-guide-samples"
+      - failed to compile for Android and as in previous attempts, without success
+      - perhaps create a new base project and add code / resources TODO
+
+    - NEXT: continue looking at web links
+
+----------
+Sunday 2018-10-07
+
+  - verified cocos2d-x still at version 3.17
+
+  - it's been a while since I played with this code. plan is about ~2 hours / day for now.
+
+  - continued with "my_tests" project
+    - modified some label text in Scene2.cpp and tested on my phone (compile time: 11m 15s)
+    - 2nd label alteration and test (compile time: 1m 2s)
+    DEFINITELY USE PRE-BUILT LIBRARIES - MAKE EASIER FOR NEW PROJECTS
+
+  - "cocos2D-x notes.txt" review
+    - NEW SCENE
+      - copy from template needs elaboration or maybe an actual template TODO
+
+      - while looking over this, it was SOMEWHAT DIFFICULT TO LOCATE THE FILES referenced in the "LOCAL_SRC_FILES :=" section of Android.mk. I made this to locate these easier in the future. This is easier in an actual file manager directory tree, but one can also right-click the file or open tab and select "Show in File Manager".
+
+        - "Project" tree view (a little easier to navigate)
+          - /hellocpp/main.cpp ==> ROOT > (project) > app > jni > hellocpp
+          - Android.mk/Application.mk => ROOT > (project) > app > jni
+          - user .cpp/.h files ==> ROOT > (project) > Classes
+
+        - "Android" tree view
+          - Android.mk/Application.mk => ROOT > "External Build Files"
+          + Android.mk/Application.mk => ROOT > (project) > cpp > MyGame > (project) > proj.android > app > jni
+          - /hellocpp/main.cpp ==> ROOT > (project) > cpp > MyGame > (project) > proj.android > app > jni > hellocpp
+          - user .cpp/.h files ==> ROOT > (project) > cpp > MyGame > (project) > Classes

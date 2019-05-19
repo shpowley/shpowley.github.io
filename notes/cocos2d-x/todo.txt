@@ -3,7 +3,7 @@ TODO
   R.U.B.E.
 
     - tutorials
-      1 - world settings, forces and impulses
+      x - world settings, forces and impulses
       2 - custom gravity, moving at constant speed
       3 - rotating to a given angle, jumping
       4 - using debug draw, drawing your own objects
@@ -30,7 +30,10 @@ TODO
 
     - attempt to integrate code into cocos2D-x project
       - document basic workflow from R.U.B.E. to c++/cocos2d-x using a simple physics scenario
-      - and loader using JSON (problems with reverse engineering)
+      + and loader using JSON (problems with reverse engineering)
+
+      * I need to really study how my Celestial>AsteroidScene was implemented to see if RUBE import can be incorporated easily
+
       - revisit Box2D.txt and update
 
     - read/document notable DISCUSSION FORUM topics

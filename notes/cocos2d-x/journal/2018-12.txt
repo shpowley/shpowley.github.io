@@ -1,0 +1,271 @@
+----------
+Monday 2018-12-31
+
+  - demonstrating cocos2d-x projects to jack (accelerometer specifically), immediately had project "mangling" as this was one of the older android studio projects
+    - project would not compile correctly and eventually linked another project entirely!
+    - created a new project and copied my source c++ files, but on project initialization it took 30min+ for an unknown "batch update"
+    - finally worked by creating a base cocos2d-x project AND THEN moving files over
+
+    - ALTHOUGH IT SEEMS LIKE OVERKILL, CONSIDERING A DIFFERENT FRAMEWORK AND PC SETUP
+      - cocos2d-x is too unfriendly and cludgey; pro: relatively low overhead on target platforms
+      - crouton linux using a chromebox is underpowered and somewhat unwieldly
+
+----------
+Tuesday 2018-12-18
+
+  - Cocos2d-x by Example (reading ch.3)
+    - cocos2d-x api: "glview->setDesignResolutionSize" > resolutionPolicy
+      "EXACT_FIT" - fill screen by STRETCH TO FIT, if design AND actual resolution ratios don't match
+      "NO_BORDER" - full screen WITHOUT BLACK BORDERS, however, top/bottom OR left/right portions of the game "design resolution" will be CUT OFF if design AND actual resolution ratios don't match
+      "SHOW_ALL" - full screen WITH BLACK BORDERS if design AND actual resolution ratios don't match
+
+      "FIXED_HEIGHT" - takes height of design resolution and modifies width of internal canvas (only in code docs)
+      "FIXED_WIDTH" - takes width of design resolution and modifies height of internal canvas (only in code docs)
+        - AIR HOCKEY GAME TESTS: (HP TOUCHPAD android 4.0.4)
+          - "FIXED_HEIGHT ~ "SHOW_ALL"
+          - "FIXED_WIDTH ~ "NO_BORDER"
+          - TODO: test should be repeated in another game design resolution and/or device
+
+        - last 2 are a bit confusing a to what they actually do in practice
+
+    - AppDelegate.cpp > applicationDidFinishLaunching()
+      - audioEngine->preloadEffect
+        - explicit conversion to .c_str() is necessary as used in this example, however, the usage "fileUtils->fullPathForFilename()" is not; explicit using the name of the sound file is fine (ie. "hit.wav") as the search paths are fully qualified at this point
+        - pre-loading sounds files in AppDelegate.cpp is good if sounds are shared between all scenes
+
+    - new "GameSprite" class
+      - inherits from Sprite
+
+      * implements "autorelease()" and CC_SAFE_DELETE() in static "gameSpriteWithFile()" method, but I NEED TO VERIFY TECHNIQUE elsewhere other than this book; maybe it's an older style, but I want to make sure
+
+      - CC_SYNTHESIZE @p.35
+        - macro automatically creates getters/setters for specified (protected) variable
+          - "automatically" - con: essentially hides what's really being generated though
+          - lookup "protected" variables
+
+        - macro isn't really documented; need to refer to source code..
+
+      - lookup "override" keyword in the setPosition() declaration
+        - definition: c++ 11 keyword; override ensures that the function is virtual and is overriding a virtual function from a base class
+
+    * init()
+      - Director::getInstance()->getWinSize()  // "Returns the size of the OpenGL view in points"
+        vs.
+      - Director::getInstance()->getVisibleSize()  // "Returns visible size of the OpenGL view in points (if GLView::setDesignResolutionSize() isn't called)"
+
+        * this is interesting as I'm so used to seeing getVisibleSize() being used so far. I'm curious how setDesignResolutionSize() affects this as it is often called in AppDelegate.cpp by the cocos2d-x default base project..
+
+----------
+Sunday 2018-12-16
+
+  - HP touchpad w/ cyanomod
+    - non-official version of android running 4.0.4
+    - compiled debug version of 2 different projects and these successfully installed and ran
+      - cpp_tests, the much more complex cocos2d-x test project, ran for the most part w/ some problems or slowdown w/ complex effects and physics, but it still ran!
+
+  - Cocos2d-x by Example
+    - possible issue with code targeting iPad. I'll try to run ch.3 on existing devices and go from there
+    - just out of curiosity I compared ch.3 and ch.8 "AppDelegate.cpp" with the targeted device resolutions. unfortunately, the design resolution is not consistent between chapters
+    - I had wanted to do something similar to the last book and have a central scene with a chapter select menu, but the inconsistent design resolution might be a problem
+    - for now, read ch.3 while referencing the source
+
+----------
+Saturday 2018-12-15
+
+  - Cocos2d-x by Example
+    - continued reading ch.2
+      - p.22 Instantiating objects and managing memory
+        - Ref derived objects
+        - this get a bit confusing as I have yet to see this code even mentioned before now (ie. ->retain(), ->release(), ->autorelease(), CC_SAFE_DELETE())
+
+----------
+Friday 2018-12-14
+
+  - cpp-tests project
+    - created a new cocos2d project and manually copied files from cpp-tests..this ended up ACTUALLY WORKING; I'm still not sure what was wrong with the old setup
+    * review app itself and maybe make some code adjustments (menu font size, debug frame rate OFF, ..)
+    - this is also a good code reference
+
+  - cocos2d-x sample
+    - similar to cpp-tests, I created a new cocos2d project and manually copied files
+    - this eventually did compile and run, but when trying out the app itself, it would often crash
+    - resolved crashing, but scaling for a small device isn't good; the default font size for many scenes are too big..way out of proportion
+      - this needs further debugging
+
+  - purchased texturepacker / physicseditor on sale
+
+  - reading ch.2
+
+----------
+Thursday 2018-12-13
+
+  - miscellaneous
+    - default text editor in google drive started acting wonky
+    - moved cocos2d-x text notes over to c9.io (github pages); easier to work with and also in case I want to private publish
+
+  * just making note URL reference to the guide for handling "java to c++ calls": http://stnguyen.com/cocos2d-x/call-cpp-functions-from-java.html
+
+  - admob
+    - instructions to use "android-support-v4.jar" seems no longer relevant
+      - additional instructions reference eclipse ide which is also invalid
+
+    - ad choices include: admob, admob + firebase, and sdkbox
+      - after some consideration, I'm holding off on the ad portion of this book until a core application is functional and closer to release
+        - I think admob + firebase is the way to go forward as the documentation seems much more thorough and has native c++ cocos2d-x examaples
+
+      - continue with "Building Android Games with Cocos2d-x" p.122 starting at moving the mute button
+        - note that this example and other online samples use a c++ => java jni ad template, similar to the android "toast"
+        - firebase/admob: https://firebase.google.com/docs/admob/cpp/cocos2d-x
+        - admob java (partial): https://discuss.cocos2d-x.org/t/admob-integration-with-cocos2dx/42563
+
+  - started a new book "Cocos2d-x by Example - Beginner's Guide"
+    - assumes Eclipse IDE
+    - removed cocos2d folders from source code .zip files - 1.9GB down to 194.7MB
+
+  * after some thought, it would be possible to use the existing coco2d-x accelerometer codebase (acceleration + gravity) to simplify getting a working app up and running..speeding up the dev cycle. in essence, it would work very much like a real-life bobble toy
+    - RETROFIT acceleration - gravity as a settings option maybe
+
+  - after reading ch.1, the book recommends some software tools
+    - I think it's worthwhile to purchase TexturePacker + PhysicsEditor while on sale
+    - links to other recommended game/creative tools:
+      HUGE LIST: https://game-development.zeef.com/david.arcila
+      Reddit post: https://www.reddit.com/r/gamedev/comments/3a3hnx/share_tools_you_could_not_live_without/
+      Bump map - needed??: https://github.com/kmkolasinski/AwesomeBump
+
+  - re-attempt to compile and test cpp-tests project
+    - somehow this project got mangled with another project (android_games) and had to be rebuilt
+    - the rebuild was ok, but failed and crashed when testing. this worked at one time very early on.
+
+----------
+Wednesday 2018-12-12
+
+  - JNI
+    - attempted to implement example from the book to p.118 and some help from "Call Java functions from C++ in cocos2d-x" (http://stnguyen.com/cocos2d-x/call-java-functions-from-cpp.html)
+
+    - I didn't have success at first with refactoring ch.8 JNI code as the app kept crashing at the JNI call. I'm not 100% sure what I did to get this working.
+      1) the book has a more segmented (convoluted?) approach that wraps the JNI call in another class "JniBridge .h/.cpp"
+        - this may be advantageous if there are many JNI calls, but makes for obtuse learning
+      2) the website example uses the return value from JniHelper::getStaticMethodInfo() in an IF statement instead of just assuming it returns true and is valid. I incorporated this into the test
+      3) if the last parameter in JniHelper::getStaticMethodInfo() returns a void, do not put a ";" semicolon at the end. other data types, however, seems to require a ";" at the end
+      4) the last major change was to AppActivity.java, implemementing the getInstance() method with the "instance" variable initialization to "this". the the website example didn't have anything like this, but it was required for the JniFacade.java code
+
+    * this is somewhat confusing, but cocos2d-x includes JniHelper .h/.cpp source code, which wraps many calls to the Android NDK (jni.h) AND it might be a good idea to use this for additional guidance for "how-to" code examples in the future, as there are numerous variations of c++ to Android JNI-type calls
+
+    *** just calling the JniHelper::callStaticVoid() method directly, saves a lot of duplicate code and is correctly implemented by the cocos2d team
+
+  - COCOS2D_DEBUG compiler flag
+    - use CCLOG to log debug messages, as it honors the COCOS2D_DEBUG flag
+    - for ANDROID.. modify Application.mk line APP_CPPFLAGS += appropriately for NDK_DEBUG, but take care, as that one change will not use the pre-compiled base and will do FULL re-compile, which takes quite awhile
+    - I'm not yet sure about the RELEASE build though - I don't yet know how to do a digital signature, which is required. by default, will COCOS2D_DEBUG = 0 or does this need to be specified?
+
+----------
+Monday 2018-12-10
+
+  - finished ch.7 reading particle effects and particle system designers
+
+  - acceleration / gyro
+    - downloaded pertinent .js files from my phaser.io hula and piggy wiggly projects. just perusing the code, I only appear to be using the linear acceleration calculated from the low-pass filter
+
+    - javascript appears to be limited to acceleration+gravity & gyro, but linear acceleration has to be calculated on-the-fly using a low-pass filter calculation I found (I used this calculation because I haven't encountered actual linear acceleration support on any devices I've used so far - despite it being in the javascript API)
+
+    - cocos2d-x only supports acceleration+gravity at the moment
+      * I did find this cocos2d-x project on github to access the gyroscope (ios and android)
+        https://github.com/Undume/Gyroscope-Cocos2d-x
+
+    * google android sensors
+      https://developer.android.com/guide/topics/sensors/
+      - android has API support for many more sensors and access through JNI might work
+
+----------
+Sunday 2018-12-09
+
+  - ch.7
+    - bombs re-implemented as cocos2d::Vector array
+    - particle effects (bomb explosions)
+      - ch.7 refactored into test project
+      - bomb only explodes when touched with finger
+      - I found a strange bug, that at first glance, appeared to be the fault of the Audio API. after playing with this a little and even switching to the SimpleAudio, the crashes persisted.
+        - the cause seems to revolve around the "bombs" vector array implementation
+          - 1) in the contact callback, _sprBomb is being referenced to get the physics body, but this only works with the previous chapters' code as the vector array should now be used. after this fix, it seems to work a bit better and not crash so often. (NOTE: ultimately, I'm not really even sure this code is necessary, since a new scene is being loaded right away. I iterate the the bombs array instead and move the new scene load further down)
+          - 2) this bug is more subtle, as it only causes crashes "occasionally". I'm not going to try to fix this as it's more involved, but basically touch-exploding bombs stacked too close causes multiple bombs to explode and the cocos2d vector array gets out of sync somehow. even more strange, is that on rare occasions, touch-exploding a bomb, will cause another bomb to explode much further away (this doesn't make sense), which also cause the bombs vector array to get out of sync. one possible fix is to not allow a single touch to explode more than one bomb at a time (OR SOMETHING ALONG THOSE LINES)
+          - 3) ANOTHER problem is for bombs that aren't exploded and fall off the screen - these are never destroyed and removed from the vector array
+
+  - tried playing with c++ Android Studio conditional breakpoint -- THIS WOULDN'T WORK FOR SOME REASON. TEST THIS OUT AGAIN ANOTHER TIME
+
+  - implemented ch.6 code
+    - book has code for both SimpleAudio and Audio engines, but SimpleAudio code is never used
+    - USE CODE SAMPLE STYLE FROM AppDelegate.cpp, as audio implementation for c++ includes isn't ideal
+    - small stutter is noticeable in collision code? PRE-LOAD SOUND FILES
+    - NOTE searchPaths.push_back("sounds"); to add easier access to sound files
+    - mute button "menu item images" that has 2 distinct visiblity states - mute / unmute
+
+    - noticible differences between SimpleAudio and Audio API -- USE BOTH FOR NOW, AS THE NEWER AUDIO ENGINE HAS EXPERIMENTAL IN THE TEXT OF IT'S C++ INCLUDE..
+      - new Audio API treats bg sounds and effects the same, whereas SimpleAudio has different methods to depending on the type of sound
+      - use AudioEngine::INVALID_AUDIO_ID as a test for unplayed sounds
+
+    - shared pre-processor directive across multiple files, specifically USE_AUDIO_ENGINE
+      - https://stackoverflow.com/a/2946543
+      - implemented a duplicate of pre-processor definition in Ch6Scene.h to eliminate unnecessary code from SimpleAudio, but a shared .h file would be better in the future
+
+    - cocos2D-x template code in AppDelegate.cpp actually places end in destructor -- ALREADY HANDLES AUDIO CLEANUP FOR ENTIRE APPLICATION
+      - tested adding overriden onExit() (and destructor) -- not needed for Audio cleanup, but might come in handy??
+
+----------
+Saturday 2018-12-08
+
+  - read through ch.5, "Handling Text / Fonts", and implemented into my test project.
+    - samples for truetype, system, bitmap fonts
+
+    - introduces the concept of the simple storage mechanism, UserDefault, but is limited to being a global variable data holder. it actually causes the app to stutter
+
+    - introduces the scheduler concept, through "schedule" and CC_SCHEDULE_SELECTOR
+      - book doesn't go in-depth, but I added some test code. scheduler is a bit weird..pausing can only be done on the "target" scene and ALL child scheduled function, not any one specific scheduled function.
+
+    - introduces .getShapeA / .getShapeB concept in the physics contact handler. at first, I thought this was a code "hack" as it wasn't explained at all. basically the contact handler is triggered by ALL physics objects and we have to test whether or not shape A or shape B is the player "bunny"
+      - https://www.raywenderlich.com/1848-cocos2d-x-tutorial-for-beginners (not a great example per se, but shows how to remove colliding nodes)
+
+----------
+Friday 2018-12-07
+
+  - implemented multi-touch to ch.4 code - it works fairly well, but not perfect. just dragging a finger around the screen causes touch press on multiple objects. probably fixed using additional logic in the on-touch-begin/on-touch-end events
+
+  - implemented return to menu on the back button press and back button on main menu
+
+  - torque spin after a collision (or contact) is absurdly fast. multiple contacts seem to occur for some reason
+    - after some observation and code changes, multiple contact events are triggered if both physics bodies are allowed to stay too close to one another
+    - this is compounded (I think) by one object being moved continually by the accelerometer AND the rotation of the other physics body
+    - returning true/false is "iffy" as the book states that returning false will not allow the contact event to trigger again. returning false seems to allow the event code to execute correctly, whereas returning true seems to "fail" I guess
+    - a boolean flag keeping track of whether this event triggered seems to work if incorporated with this code. return false seems to ALWAYS be best, as return true has an undesirable result. not really sure what's going on though. another option might be to remove the event-binding entirely...
+
+----------
+Thursday 2018-12-06
+
+  - implemented ch.4 in test code that implements accelerometer, single-touch, back button, and keep screen alive. finished reading through ch.4
+
+----------
+Wednesday 2018-12-05
+
+  - added and refactored ch.3 code to test project. realized a bit late that test code actually started at ch.2 - so it took a little while to reflect this in the test project
+
+  - encountering difficulty with the physics bodies debug outline on 2 devices I own. moto-g (android 5.1) draws debug physics bodies at start, but will not redraw to reflect updated positions. samsung galaxy s3 (android 4.4) will NOT draw debug physics bodies at all. in all cases, actual sprites move and collisions occur.
+    - I tried using AVDs also - x86 will not work under chrome os / crouton as a kvm can't be installed. arm-based AVD is very slow to even start and eventually.................doesn't run at all
+    - older chrome os hardware is less than ideal for android development: new computer $$$ (pc/linux, new chrome os/crostini), pure linux on this chromebox, or make due with testing on actual phones
+
+  - additional tests recommended by the book included applying forces, impulse, linear damping, and torque, but I had some difficulty getting these test functions to work.
+    - assigning a mass, using the setMass() function, was the trick to get force / impulse to work properly - not sure of the units.
+    - assigning a moment, using the setMoment() function, enabled torque adjustments to work as expected. moment values <= 0 caused the app to crash and too close to zero acted "haywire". this doesn't seem to be really documented, but moment >= 1.25 seemed to work best (THESE NUMBERS ARE INCONSISTENT AFTER MULTIPLE RUNS, SO...? 12/16/2018)
+    - setEnabled() & setRotationEnable() function seem unnecessary. perhaps these are enabled by default or by the setDynamic() function
+
+  - NOTE: ResolutionPolicy::NO_BORDER made everything drawn slightly to the left, almost like it seemed aligned to the right edge. ResolutionPolicy::FIXED_HEIGHT seemed more desireable, aligned center
+
+----------
+Tuesday 2018-12-04
+
+  - installed android studio plugin for wireless adb
+
+  - reviewed ch. 1 source code
+
+----------
+Monday 2018-12-03
+
+  - reviewed previous notes

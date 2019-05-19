@@ -1,0 +1,782 @@
+----------
+Thursday 2019-01-31
+
+  - tried opening sprite_sheet.png/.plist in TexturePacker without luck, but discovered TexturePacker projects have their own file format; the best I could do is "add" the .png to an existing project
+
+----------
+Tuesday 2019-01-29
+
+  - Cocos2d-x by Example - ch.4 Sky Defense continued reading
+    * cocos2d-x Sprites can be children of other sprites such as the bomb
+
+    - the "final" code version closely resembles what's presented in the book
+    - the "bonus" code actually includes the ufo enemy; there are a number of areas where the code is implemented differently
+
+----------
+Monday 2019-01-28
+
+  - I decided to go through the reading for ch.4 Sky Defense and build the demo
+    - while creating this demo, it's interesting to note that ch.4 has 3 versions of the source code - start, final and bonus
+
+----------
+Sunday 2019-01-27
+
+  - continued Cocos2d-x by Example - ch.9 Eskimo from custom user events
+
+  - as this daily journal increases in length to ~900+ lines, I've decided to separate it for easier organization and to reduce memory footprint
+
+  - the Eskimo game also uses "SpriteBatchNode*" similar to MiniPool; it might be a good idea review ch.4 Sky Defense as this is where this topic is first addressed
+
+----------
+Saturday 2019-01-26
+
+  - continued Cocos2d-x by Example - ch.9 Eskimo
+
+  * one item I would like to focus on are the CUSTOM USER EVENTS (I think), specifically for use with JNI and the various android sensors (light, audio, gyro and linear acceleration)
+
+  - read through CUSTOM USER EVENT section to better understand this topic.. I still need to write notes on this section
+
+----------
+Friday 2019-01-25
+
+  - continued Cocos2d-x by Example - ch.9 Eskimo
+
+----------
+Wednesday 2019-01-23
+
+  - created ch8 Eskimo project
+
+    - creating a project by manually copying resources and c++ source files, then modifying Android.mk failed; I couldn't determine what the error messages even meant
+
+    * I tried again and succeeded creating the Eskimo project by creating a base "HelloWorld" project, opening it in Android Studio, copying the resource and c++ files, modifying Android.mk, and then selecting "refresh linked c++ projects" in Android Studio
+      - after ~10+ min the project compiled and successfully ran on the hp touchpad (~40fps and the accelerometer controls seem inverted)
+      - tried running on the moto g (60fps and correct motion controls)
+
+    - "pause" feature worked as expected, but the music kept playing
+    - tutorial seemed like a good idea, but there was no apparent way to exit the tutorial and play the actual game
+    - ran at decent 34-40 fps, good background music and seemed almost "professional", but the control scheme's tricky guiding of the eskimo to the igloo seemed unintuitive / clunky
+
+
+  - Cocos2d-x by Example - ch.9 Eskimo
+
+    - several topics already mentioned:
+      - box2d, scene transitions, .plist, load / save data, accelerometer
+      + particle effects, custom notification/events, singleton layer
+
+    ---
+    BOX2D
+    - eskimo can switch shape, each shape having distinct physics properties
+
+    - eskimo and platform(s) are derived from b2Sprite (custom Sprite + b2Body class)
+    - gravity switch (GSwitch) and igloo are derived from Sprite
+
+    * the eskimo can collide with gravity switches and igloo
+      - this game DOES NOT USE BOX2D SENSORS like ch.8 minipool
+      - demonstrates 2d collision logic without having to use to box2d sensors
+        - collisions are determined in the games main loop combined with user-defined events to handle the collision logic
+
+      "compound body" - a box2d body with multiple fixtures
+      - a box2d "body" may have 0 - n box2d "fixtures"
+        - this can be a mix of sensors and solid fixtures
+
+      - box2d "fixtures" can contain (see box2d docs 7.1)
+        - a SINGLE shape (or none..)
+        - broad-phase proxies (?)
+        - density (mass), friction (objects sliding each other), restitution (bounce)
+        - collision filtering flags
+        - back pointer to the parent body
+        - user data
+        - sensor flag (collision detection with no response)
+        ---
+        - fixture definition (b2FixtureDef) contains creation info with defaults
+        - fixture is created as part of a body; cannot exist independently
+        - destroyed automatically with the parent body or can be destroyed separately
+
+    ---
+    SCREEN ORGANIZATION (3 layer/scene(s))
+
+    * COMMENT: this seems a good method for prototyping
+      - start with some thumbnails + simple description + flowchart(?)
+
+    - menu | level select | game
+      - layer is based on cocos2d-x "Node"
+      - like android "activities"; each layer/scene exists independently in memory
+
+      - structure
+        - menu
+          -> static cocos2d::Scene* scene()
+
+        - level select
+          -> static cocos2d::Scene* scene()
+
+        - game
+          -> static cocos2d::Scene* scene()
+            -> static GameLayer* create(int level, int levelsCompleted)
+              -> void clearLayer(void);
+
+      * game layer/scene, unlike the others, is a singleton (pointer) that stays in memory once instantiated, speeding up repeated scene loads
+
+        - TRANSITIONS to game layer/scene are treated exactly the same as any other scene
+
+        - NOTE: GameLayer::clearLayer() hides all level platform and gravity switch sprites and inactivates all platform physics bodies - if the game layer/scene is already loaded in memory
+
+        - architecture
+
+          - PRO/CON #1: scheduleUpdate() and unscheduleUpdate() have to be called to control the MAIN LOOP
+            - ENTRY POINT scheduleUpdate() - from GameLayer::create()
+            - EXIT POINT unscheduleUpdate() - from GameLayer::onTouchEnded() when transitioning to the Menu scene/layer
+
+          - PRO/CON #2: transitioning to a new instance of GameLayer is not possible
+
+          * NOTE: the author mentions that this singleton architecture obviously works, but PERHAPS A BETTER ALTERNATIVE is a game elements cache or "game manager" constructed with singleton object pools to better allow sharing of game elements between scenes and still take advantage of the increased loading speed
+
+      * game layer/scene CONSTRUCTOR + sub functions, DECONSTRUCTOR, and CREATE + sub functions should be studied a bit more thoroughly to better understand relationships involved
+
+      - another example @ cocos2s-x: tests/cpp-tests/Classes/TransitionsTest
+        - COMMENT: this is about layers, not the hybrid scene/layer ..without digging deeper into the code, I'm not sure exactly how this helps
+
+      * layer->release(); is used when creating new scenes; many other examples don't do this ..is this better? why?
+
+      *** NOTE: the menu layer doesn't have touch listeners assigned to any particular function; SO WHY IS THAT? ***
+
+    ---
+    LOADING EXTERNAL LEVEL DATA USING .plist
+
+    - xml-format (can be edited in any text editor -- I've read some conflicting info on this though)
+      - more dedicated .plist editor?
+
+    - stored in Resources folder
+
+    - RECOMMENDATION: limit the size of .plist files and organize into multiple level "packs" to reduce memory footprint and speed up load/parse step
+
+    - the main item types for .plist is either array (many indexed elements of the same type) or dictionary (many named elements of varying type), + boolean, data, date, number, string individual elements
+
+    - code sample to load .plist to load the level data
+
+      _levels = FileUtils::getInstance()->getValueVectorFromFile("levels.plist");
+
+      - note that "getValueVectorFromFile()" returns a ValueVector ARRAY type and is NOT DOCUMENTED online for some reason
+      - QUESTION: is the "root" element always an array type?
+
+    - parsing data uses "ValueMap" for maps, "ValueVector" for arrays, and .asInt()/.asBoolean()/.asString() etc. for other elements
+
+    ---
+    SAVING GAME DATA WITH UserDefault
+
+    - easiest method to save user data is with UserDefault
+    - able to get/set/delete individual key/data elements - integer, float, string, boolean
+    - more efficient to use .flush method for multiple updates and find a strategic point in code to execute this
+
+    ---
+    USER-DEFINED EVENTS
+
+    - Director + Dispatcher
+      - a central message dispatcher (OBSERVER PATTERN) - other objects can subscribe to in order to listen or dispatch messages to
+
+    - EVENT HANDLERS for "custom" user events are special functions created specifically for dealing with user-defined event triggers
+      * COMMENT: despite their usefulness, some of these techniques tend to obfuscate what's actually going on behind the scenes
+
+
+      EVENT HANDLERS
+      - c++ LAMBDA EXPRESSION derived functions are used to create custom EVENT HANDLERS (for Platform and Igloo classes)
+        - TODO: LAMBDA EXPRESSION usage needs to be studied in a bit more detail
+
+        - these are placed somewhere near the actual "add listener" for improved readability (OR can be written directly in-place)
+          user docs example: https://docs.cocos2d-x.org/cocos2d-x/en/event_dispatcher/custom.html
+
+
+      ADDING USER-DEFINED EVENT LISTENERS
+      - custom macros (EVENT_DISPATCHER and ADD_NOTIFICATION) are combined in such way to greatly simplify the syntax
+
+        ADD_NOTIFICATION(this, GameLayer::NOTIFICATION_GRAVITY_SWITCH, onGravityChanged);
+
+        vs.
+
+        Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(EventListenerCustom::create(GameLayer::NOTIFICATION_GRAVITY_SWITCH, onGravityChanged), this);
+
+      - no luck trying to implement this using CC_CALLBACK_2 -- I'm not sure how to do this or if it's possible
+
+
+      NOTIFICATION DISPATCH
+      - custom macro can once again be used to simplify syntax
+
+        EVENT_DISPATCHER->dispatchCustomEvent(GameLayer::NOTIFICATION_GRAVITY_SWITCH);
+
+      - "->dispatchEvent()" can also be used, but isn't as convenient
+
+
+      MESSAGE NOTIFICATIONS
+      - implemented as static const c-strings
+
+        const char* GameLayer::NOTIFICATION_GRAVITY_SWITCH = "NOTIFICATION_GRAVITY_SWITCH";
+
+
+      CUSTOM EVENT USER DATA
+      - void* data type
+      - data can be retrieved from EventCustom* parameter of the EVENT HANDLER
+
+        event->getUserData();
+
+      - user data can be set in the optional 2nd parameter of dispatchCustomEvent()
+        - event->setUserData(void* optionalUserData) is called internally
+
+
+      REMOVING EVENT LISTENERS
+      - book states that event listeners are removed automatically once that parent object is destroyed
+
+      - in the Igloo deconstructor, however, the customer user event listeners are removed explicitly
+
+        EVENT_DISPATCHER->removeCustomEventListeners(GameLayer::NOTIFICATION_GRAVITY_SWITCH);
+
+    ---
+    ACCELEROMETER
+
+    - overall, the use of the accelerometer isn't much different when compared to ch.4 - Building Android Games with Cocos2d-x
+
+    - this code is still using the built-in accelerometer API, limiting it to acceleration+gravity only
+
+    - digging into the java code for android (Cocos2dxHelper.java, Cocos2dxAccelerometer.java), it appears that onPause()/onResume() automatically handles enabling/disabling the accelerometer
+
+
+      INITIALIZATION
+      - turn the accelerometer on/off
+
+        Device::setAccelerometerEnabled();
+
+
+      INTERVAL
+      - control the event interval (ie. 1/60, etc.); not sure if this would affect battery life
+
+        Device::setAccelerometerInterval();
+
+
+      EVENT BINDING
+      - a special event listener object is required, "EventListenerAcceleration", but is implemented in a similar fashion to other event objects
+
+        auto listenerAccelerometer = EventListenerAcceleration::create(CC_CALLBACK_2(GameLayer::onAcceleration, this));
+        _eventDispatcher->addEventListenerWithSceneGraphPriority(listenerAccelerometer, this);
+
+
+      IMPLEMENTATION / USAGE NOTES
+
+      - BEST PRACTICES
+        - minimal processing logic is implemented in the event handler and basically, raw acceleration data is copied to member variable (at least in this book anyway)
+        - most logic processing is done in the main loop
+
+      - game-specific Box2D integration
+        - acceleration control is limited to when the eskimo is "touching" a platform
+
+          if (_player->getBody()->GetContactList()) ..
+
+        - eskimo shape determines the type of force applied
+
+          - if the eskimo is a circle, a constant force is applied
+            * ideally, I think that friction should have an effect automatically, but the friction effect appears to be applied independent of box2d on the velocity and I'm not sure why..
+
+            _player->getBody()->ApplyForce(b2Vec2(_acceleration.x * CIRCLE_MULTIPLIER, 0), _player->getBody()->GetWorldCenter(), true);
+
+          - if the eskimo is a square, an impulse is applied, with no friction effect
+
+            _player->getBody()->ApplyLinearImpulse(b2Vec2(_acceleration.x * BOX_MULTIPLIER, 0), _player->getBody()->GetWorldCenter(), true);
+
+    ---
+    REUSING b2Body
+
+    - box2d makes it possible to change fixture data of a b2Body fixture without having to destroy the actual body
+    - this game makes use of this feature with the eskimo shape change and also with the platform layout with each new level
+
+    - the following code snippet allows re-using b2body by destroying any existing fixtures
+
+      if (_body->GetFixtureList()) {
+        _body->DestroyFixture(_body->GetFixtureList());
+      }
+
+----------
+Tuesday 2019-01-22
+
+  - Cocos2d-x by Example | chapter topic skimming
+    - ch1 installation
+      - ios, android
+    - ch2 c++
+      - ref
+      - TODO: read through again
+    - ch3 air hockey
+      - different resolutions, sound, touch, physics without a physics engine
+    - ch4 sky defense
+      - background music, batch draw sprite sheets, bitmap fonts, object pools, actions, touch
+    - ch5 rocket through
+      - particle effects, drawing primitives, touch
+    - ch6 victorian rush hour (rapid prototyping)
+      - rapid prototyping, collisions, touch
+    - ch7 victorian rush hour
+      - textures, nested containers, parallax, menus, tutorial integration
+    - ch8 mini pool
+      - box2d concepts, touch, timer
+    - ch9 eskimo
+      - box2d, scene transitions, .plist, load / save data, accelerometer
+    - ch10 stone age
+      - lua
+    - appendix a: vector calculations
+
+    * I kind of want to go through ALL of these chapters at some point, mostly for the learning experience and hopefully learn some best practices
+
+
+  - briefly skimmed the 3rd book "Cocos2d-x Cookbook"
+    - not a good work-through-the-chapters style, but still good I think
+    - more of a reference for specific topics (ie. gui, sqlite, json, jni, networked downloads)
+
+
+  * after skimming though the above titles, DATA STORAGE comes to mind. specifically what best to use (plist, sqlite, userdata, xml, json, encryption), but that's a road to go down another day
+
+
+  * box2d + cocos2d-x | importing physics plist from PhysicsEditor (I bought this on sale along w/ TexturePacker)
+    - how-to import?
+    - PhysicsEditor allows physics shapes (hit-areas) to more closely resemble sprites
+    - added this to my TODO list
+
+
+  - Cocos2d-x by Example - ch.9 summary reading
+    - TODO create Eskimo project, test and walk through code + take notes
+
+----------
+Monday 2019-01-21
+
+  - slow progress so far on BOX2D
+
+  - BOX2D (Cocos2d-x by Example - ch.8 continued)
+
+    - Box2D: relationship between "collision filters" AND "contact listeners"
+
+      - "collision filters"
+        - determine what bodies can collide with each other
+        - in ch.8, the "collision filters" are defined early in the Ball object's life, during ::initBall()
+
+      - "contact listeners"
+        - another Box2D feature that helps with collision management
+        - unlike "collision filters", this is where to place logic dealing with what to do if a collision occurs
+        - derived from "b2ContactListener" class and must implement at least one event
+          - events: BeginContact(), EndContact(), PreSolve(), PostSolve()
+
+    - touch contact listeners are added to the main game layer in order for the player to hit the balls on the pool table with the cue stick
+
+      - the player touches somewhere near the white cue ball to set the initial contact "hit" position both for the physics engine and also a starting point for a "dotted line" visual guide (THIS FEATURE DOESN'T APPEAR TO BE WORKING)
+
+      - dragging causes the cue stick to move in relation to the cue ball
+        - Box2D: set/get a b2Body position and angle using SetTransform() method (see 6.4 Using a Body > Position and Velocity)
+
+          ex. bool SetTransform(const b2Vec2& position, float32 angle);
+
+      - letting go causes the cue stick to quickly hit the cue ball with an impulse in the direction oriented with the cue ball and stick aiming
+        - Box2D: linear impulse (see ch.10 World Class > Forces and Impulses)
+
+          ex. void ApplyLinearImpulse(const b2Vec2& impulse, const b2Vec2& point);
+
+        - actual MiniPool implementation
+
+          ex. cueBody->ApplyLinearImpulse(b2Vec2(_pullBack * cos(angle) * SHOT_POWER, _pullBack * sin(angle) * SHOT_POWER), cueBody->GetWorldCenter(), true);
+
+          - note "cueBody->GetWorldCenter()" is center of mass in world-coordinates
+
+    * Box2D: b2World::Step()
+      - b2Body objects cannot be made inactive (b2Body::SetActive) or destroyed (b2World::DestroyBody) inside a step; this needs to be done AFTER b2World::Step()
+
+----------
+Sunday 2019-01-20
+
+  - did a backup of cocos2d-x source code (just in case)
+  - compiled and tested "MyTests" project on the moto g to verify everything still works
+
+  - BOX2D (Cocos2d-x by Example - ch.8 continued)
+
+    - Sensor objects can only fire the BeginContact & EndContact methods of b2ContactListener objects
+
+    - for this game, collision logic is split between BeginContact and PreSolve methods, but author states that for this game, placing all collision logic could just as easily be placed in BeginContact
+
+----------
+Saturday 2019-01-19
+
+  - SO AFTER AUTO-UPDATING TO ANDROID STUDIO 3.3 - EVERYTHING BROKE!!!
+
+    - I don't really understand, but that triggered further breakage: gradle and even cocos2d-x 3.17.1
+    - just indexing took forever and out-of-memory errors kept triggering
+    - I went so far as to deleting Android Studio and cocos2d-x 3.17 and even more problems
+    - Android Studio still had problems with/without cocos and cocos2d-x 3.17.1 no longer has the original method to create pre-compiled libs..
+    - luckily I created a backup just the day prior and restored to that, but that whole process took forever
+      - that restore was 14.5GB and chromeos kept crashing just copying that file; I was afraid the restore would fail with all that cocos code lost!
+
+  - WHAT I LEARNED
+
+    - don't update android studio / cocos2d-x and software in general UNLESS A BACKUP EXISTS
+      - KEEP SOFTWARE VERSIONS LOCKED
+
+    - create backups, create backups of source code
+
+    - I need another computer to better multi-task and have another dev environment
+      - I can get by with what I'm doing for awhile, but going forward the biggest issue is cost $$$
+      - I'm leaning toward linux for what I already have, but the problem is with upgrading the latest software WILL BREAK THINGS AGAIN
+
+----------
+Thursday 2019-01-17
+
+  - Box2D Manual reading
+    - finished skimming / reading, but honestly I'm not sure if it just confused me more
+
+  ** So Android Studio 3.3 updated and all projects are not working, very slow IDE, gradle problems, etc.
+    - I'm planning to re-install cocos2d-x (making pre-built libs again..) and a fresh install of android studio too
+
+----------
+Wednesday 2019-01-16
+
+  - updated Google Calendar to reflect days since I've started this developer journal. hopefully, I can stay better motivated by seeing my progress in calendar form.
+
+
+  - BOX2D (Cocos2d-x by Example - ch.8 continued)
+
+    - pockets are STATIC box2d bodies (don't move) and should behave as sensors (sensitive to collision)
+      - this turns off all physics from an object and turns it into a collision "hot spot"
+
+      ex. b2BodyDef bodyDef;
+          b2FixtureDef fixtureDef;
+          ..
+          bodyDef.type = b2_staticBody;
+          fixtureDef.isSensor = true;
+
+
+    - edges (b2EdgeShape) are shapes that can be hit only on one side; perfect for defining the pool table "edges"
+
+      - based on the Box2D docs, it doesn't mention collisions begin only on one side; it does state that EDGE COLLISIONS MUST NOT BE EDGE-EDGE though
+
+      - interestingly, the same edge shape variable can be re-used to define multiple edges, just repositioning the edge coordinates and creating a new fixture
+
+        * ONE B2BODY OBJECT CAN HAVE MULTIPLE EDGES
+
+        ex. b2BodyDef tableBodyDef;
+            tableBodyDef.position.Set(0, 0);
+            auto tableBody = _world->CreateBody(&tableBodyDef);
+
+            b2EdgeShape tableBox;
+
+            tableBox.Set(b2Vec(x1, y1), b2Vec(x2, y2)); // edge #1
+            tableBody->CreateFixture(&tableBox, 0);
+
+            tableBox.Set(b2Vec(x3, y3), b2Vec(x4, y4)); // edge #2
+            tableBody->CreateFixture(&tableBox, 0);
+            ..
+
+
+    * REMEMBER that the pockets and edges are purely physics objects and don't have sprites associated with them; these are NOT b2Sprites
+
+
+    - balls + cue ball (Ball object derived from b2Sprite)
+
+      - NOTE: all of the sprites are added to SpriteBatchNode* _gameBatchNode; I have not yet studied the "SpriteBatchNode" usage
+
+      - all of the physics settings for each Ball is identical and added to b2World in the Ball class; the only variation that I notice is the Sprite "color", type of ball (cue or normal) and start position
+
+        - b2Sprite::setSpritePosition() handles placement of the image sprite and the physics b2Body AND the "matching" placement of each within it's relevant container
+
+        - each ball is a DYNAMIC physics body
+
+        - "Damping" applies an effect similar to friction between each ball and the table "surface"
+          - actual "Friction" is not used because the table is not an actual physics body in this case
+          - Linear Damping affects a ball's linear velocity
+
+            ex. _body->SetLinearDamping(1.2);
+
+          - Angular Damping affects a ball's angular velocity
+
+            ex. _body->SetAngularDamping(0.2);
+
+        * COMMENT: how does the author determine values for LinearDamping, AngularDamping, Density, Restitution, etc.?
+
+        - the Cue ball is set to behave as a "bullet" in order for the sim to pay extra attention to collisions with the cue
+          - in order to minimize processor load, only one physics object is defined as a bullet (the cue)
+
+          ex. _body->SetBullet(true);
+
+        - "collision filters"
+          - uint16; up to 16 collision filter categories
+          - 16-bit, 0x hexadecimal format only? (? binary literal = 0b00100... since c++14)
+          - "collision category bits. normally you would just set one bit"
+
+            ex. playerFixtureDef.filter.categoryBits = 0x0002;
+                playerFixtureDef.filter.maskBits = 0x0004;
+
+          - each box2d fixture can specify category and mask bits
+            - category = type of fixture the body is
+            - mask = type of fixture it can collide with
+            - collision-check uses bitwise & performed on both objects
+
+              ex. if ((catA & maskB) != 0 && (catB & maskA) != 0) {
+                    // collision code
+                  }
+
+            * mask advanced: add more than one category
+
+              ex. fixtureDef.filter.maskBits = 0x0100 | 0x0010;
+
+            * mask advanced: collide with everything, except
+
+              ex. fixtureDef.filter.maskBits = 0xFFFF & ~0x0100;
+
+          * for MiniPool, cue ball "categoryBits" and cue stick "maskBits" are the same (0x0100), so that cue stick can only hit the cue ball
+
+
+    - cue stick (Cue object derived from b2Sprite)
+
+      - high DAMPING values to prevent stick from "flying off screen"
+      - b2PolygonShape set to a box
+      - cue size is relative to ball radius
+
+
+  - Box2D Manual reading
+
+    - I'm also reading the Box2D Manual to break things up a little
+
+----------
+Tuesday 2019-01-15
+
+  - BOX2D (Cocos2d-x by Example - ch.8)
+
+    - the main problem I have is running ch.8 game simulation of Mini Pool, it's impossible to see the debug draw objects by default
+
+      - I'm not sure exactly how this is supposed to work, but the Box2d debug draw objects only appear by changing the opacity of various sprites - kind of a hack
+      - changing the sprites visibility, though reasonably viable in most situations, fails because the game logic is tied directly to the visibility of certain sprites..
+
+    * p.150/151 GameLayer::draw() and GameLayer::onDraw() is NOT DISCUSSED AT ALL; with the use of opengl-heavy code like this, some comments would be exceedingly helpful, HOPEFULLY THIS IS ADDRESSED IN THE MINIPOOL SOURCE CODE
+
+    - b2Body userData property often is used to store a pointer to the associated sprite
+      * INFO: remember an object created with the "new" keyword returns a pointer to that object
+
+    - b2Sprite (see section "Sunday 2019-01-13") inherits cocos2d::Sprite, but DOESN'T REQUIRE AND ACTUAL IMAGE TO BE DEFINED; thereby allowing it to exist independently of a 1-1 image
+
+      - this is demonstrated by the pool table image in particular; 1 pool table image, but 6 pockets and 6 lines
+
+      - many objects inherit from b2Sprite and DO have an image - ie. balls and cue
+
+      - SO, this comes back to the problem of not being able to see the physics debug draw objects when images are visible
+        - b2Body objects exist on a b2World which in turn is defined on a particular layer
+        - the MiniPool sprites and b2World happen to both exist on the same GameLayer
+        * WHERE TO GO FROM HERE? I'm still trying to wrap my head around the MiniPool project and Box2D - both of which are complex..
+
+    @p157 not exactly sure how the author determines placing b2Body pockets, nor is an explanation given..
+
+----------
+Monday 2019-01-14
+
+  - BOX2D: in one cocos2d-x post, a user recommends "drawing the debug info in a separate layer and position that on top of your main layer" - http://discuss.cocos2d-x.org/t/box2d-debug-draw-v3-8-1/25377/15
+
+    * TODO - I need to figure out how to create a project with multiple layers; use the "celestial_glory" project for some tests
+
+    - this is, in fact, what this book starts out doing I think, creating a HelloWorld that inherits from layer, but since this "mini" project is never tested, this point is difficult to see
+
+
+    * LAYERS / SCENES
+
+      * going back through some older projects, I'm starting to see usage of "Scene" / "Layer" objects, but I've just never noticed it until now; in some of my own work, I've tended to place visual elements directly on a "Scene", which is technically ok, but MOST BOOK EXAMPLES USE A 1-1 "SCENE"/"LAYER" AND PLACE VISUAL ELEMENTS ON THAT
+
+        - the default "HelloWorldScene" project uses the cocos2d-x macro CREATE_FUNC() and this lends itself to using a "Scene" (what I've typically done)
+
+        * this 1-1 "SCENE"/"LAYER" is what confuses me the most, as they're used almost interchangeably
+
+      - researching "cocos2d-x Layers", I'm not sure what's going to happen with "Layer" in the future; some recommend actually using "Node" in place of "Layer" altogether, but I haven't seen any examples of using Node as a Layer-type container yet..
+
+      * if possible, it might be better to create TRUE sub-classed Layers and treat them as such, so that they can be manipulated as independent LAYERS on a SCENE
+
+      * either through independent layers or combo sprite-Box2D objects (ie. similar to ch8 b2Sprite), there needs to be a way to see the Debug Draw graphics clearly; debug draw should appear over sprites
+          a) hide / change opacity on independent layers OR
+          b) hide / change opacity on custom b2Sprites
+
+    - I'm creating an outline of instructions for cocos2d-x Box2D / Box2D Debug Draw implementation; see "Box2D.txt"
+
+----------
+Sunday 2019-01-13
+
+  - I wanted to highlight some cocos2d-x topics covered in the 2 books I'm studying so far by creating a central document organized by alphabetic topic (topics-main.txt)
+
+
+  * BOX2D early thoughts..
+    - trying to figure this out, with respect to these 2 pre-made projects - ch.8/9, is going to take awhile and is going to be ongoing
+    - box2d is important with what I'm trying to do with my "BOBBLE" project ideas, especially with the importance of the physics involved
+
+    * I think box2d will be the way forward when compared to the chipmunk physics engine
+      - both are built-in APIs to cocos2d-x
+      - box2d has more online info and support
+      - the debug draw capabilities of box2d responds in real-time and seems much better than chipmunk (chipmunk debug draw appears glitchy even within the cocos2d-x cpptest app and doesn't draw real-time)
+
+    - I need to be able to create my own Box2D "test harness" project to truly apply what I'm learning and use this in future "Bobble" projects
+
+
+  - BOX2D (Cocos2d-x by Example - ch.8)
+    - written in c++ and API automatically included in cocos2d-x projects
+
+    - 1 extra (detailed) step required for box2d DEBUG DRAW
+      - add GLES-Render.h/.cpp and associated code
+
+      - allows seeing physics debug draw mode OUTLINES with/without actual sprites
+
+      - recommended to comment out / delete box2d debug code on release, however, once this is better understood, I think a conditional compile using COCOS2D_DEBUG would be better (see "Wednesday 2018-12-12")
+
+    - a simplified box2d pre-project example (modified helloworld "scene" to a "layer")
+      - NEVER ACTUALLY TESTED!!! why? had to type this manually bleh
+      - perhaps this is meant mainly to demo how to incorporate the box2d physics debug draw mode
+      - create a backup of this debug draw code
+
+    - BOX2D details
+      - uses "b2World" physics world and "b2Body" physics bodies
+      - has it's own vector structure "b2Vec2" (used for gravity in the helloworld example)
+      - "SetAllowSleeping" - skip checking for derived data on objects not moving
+      - "SetContinuousPhysics" - ??? fast-moving objects; pay extra attention for collisions
+      - PTM (pixel to meter) - every pixel position value will be divided by this ratio constant; commonly set to 100
+
+      - ->Step(time step, velocity iterations, position iterations)
+        - default values from cocos2d-x template
+        - recommends fixed time step vs. delta (used in example)
+        - play with velocity / position iterations aiming for lowest possible
+
+      - no built-in memory management
+        - a separate library API component of cocos2d-x that does not use Ref
+        - manual memory management using "delete" and "= nullptr" (old technique) OR c++11 smart pointers (newer technique)
+
+      - b2Body objects have a useful property called "userData" (commonly used to store a reference to image sprite)
+
+      * DEBUG DRAW on b2Body objects
+        - this will be an ongoing learning process
+        - Q: HOW TO HANDLE CONDITIONAL COMPILATION
+        - Sprite->setVisible()/setOpacity() of sprites associated with b2Body object I think will be the most useful in future projects to best visually see b2Body debug draws
+
+    - minipool project
+      - physics objects: 16 balls (circles), cue stick (box), pool table (composed of 6 edges), & 6 pockets (circles)
+      - copied resources and c++ source from the chapter source
+
+      - hp touchpad test
+        - worked for the most part without many changes
+        - crashed 1x
+        - had to change to portrait mode in AndroidManifest.xml as the default was landscape
+        - ran @ ~40fps
+
+      - custom class called "b2Sprite"
+        - inherits cocos2d-x "Sprite" with the addition of _body member variable that points to it's b2Body
+        * userData sprite & _body b2Body allows easy bidirectional pointer access
+
+----------
+Saturday 2019-01-12
+
+  - Cocos2d-x by Example (ch.3 continued)
+
+    - update() (MAIN GAME LOOP)
+      - the actual "collision" logic obviously works, but doesn't make 100% sense
+        a) as soon as a "collision" occurs, it seems that "collision" logic should be processed AND THEN proceed to the next part, instead of repeating the collision-check with the next player. it could be argued that a rare simultaneous collision could happen between the puck and both player mallets, but currently it looks like only player 2 would "win" this scenario
+        b) perhaps add logic for the rare simultaneous puck-both-players collision; testing this "edge" case along a wall in particular, cause the puck to overlap both player mallets, bouncing back and forth quickly - physically this should be impossible
+
+      - the top/bottom wall collision-check is clever in that it ignores or subtracts the goal areas' positions from these checks
+
+      - I added a few ELSE IF changes to remove redundant logic checks (ie. the puck can only collide with 1 of the side walls at a time - if it is determined a collision occurs with the left wall, don't bother checking the right)
+
+  - perused all remaining chapters to get a feel for topics covered; I want to do this again and highlight topics that could soon be useful in a simple outline form and possibly add these to my overall TODO list
+
+----------
+Friday 2019-01-11
+
+  - Cocos2d-x by Example (ch.3 continued)
+    - touch event handlers
+      - each "touch" is unique and distinct for each player and in "onTouchesBegan" is stored / associated with said player
+
+      - in "onTouchesMoved" each touch LOCATION is dynamic over time and as a player moves their mallet, it is different from the original "onTouchesBegan" event
+        - pseudocode: keep each player "in bounds" within the opengl table AND only on their side of the table
+        - player->setNextPosition() records the "next" position of the player's mallet sprite (to be used later)
+        - player->setVector() records the "displacement" of the next position from the last position of the player's mallet sprite (to be used later)
+
+      - in "onTouchesEnded" the relevant player's sprite touch data is reset (Touch and displacement Vector)
+        - location is "ignored" because when a player lets go of a mallet, the position of that mallet stays at it's last position
+
+      - cocos2d-x "Point" data type is equivalent to "Vec2"
+
+      * this design pattern might come in useful for the bobble project (single taps, tap-drag)
+
+    - update() (MAIN GAME LOOP)
+      - NO PHYSICS ENGINE - all physics is handled internally within "update()"
+
+      - condition(s) for a "collision" include the current AND next position of the puck and player mallet either touching or overlapping (this isn't clear from the code comments or book)
+        - current vs next position of puck / player ~ XOR type of logic on the future position of only one of the colliding objects, not both (I don't get the over-arcing logic, but just go with it)
+        - collision touch / overlap AVOIDS SQUARE ROOT CALCULATIONS as that is apparently a COSTLY CODE OPERATION
+
+----------
+Thursday 2019-01-10
+
+  - resolution tests:
+    - HP TOUCHPAD android 4.0.4: tried altering ResolutionPolicy values to test the effects (see journal entry Tuesday 2018-12-18) and though there are small black bars on the top/bottom, "SHOW_ALL" is perhaps the best choice on this device / OS, whereas the default "EXACT_FIT" stretches the game slightly
+    - Motorola Moto G (1st gen) android 5.1: highly noticeable black bars using "EXACT_FIT"
+
+    * TODO: based on the Moto G test, it might be a good idea to create aspect ratio "squares" in a 2d drawing program in the future for better visualization in the early phases of a project..
+
+  - Cocos2d-x by Example (re-reading ch.3)
+    - demonstrates how to create a project in apple/ipad
+
+    - game is designed in portrait orientation and positioning of sprites with that in mind
+
+    - as game is designed for apple touchpad 1024x768, it's difficult to determine at this point if some non-visual aspects of this air hockey game might be adversely affected (ie. physics, positioning, etc.)
+
+    - GameSprite.cpp > setPosition - this overridden method ensures that our subclassed object's internal variable "_nextPosition" matches the inherited parent's "pos" variable, prior to the next game iteration
+
+    - GameSprite.cpp > radius - a convenient way of getting circular sprite texture radii
+      - this might be useful as a quick way to get texture height/width if used a lot; recommended as INLINE by author
+
+    - GameSprite.cpp > static method "gameSpriteWithFile"
+      * this is INTERESTING as I have not yet had to deal with this situation. GameSprite inherits from Sprite, but doesn't override the "create" static method in Sprite OR RATHER c++ doesn't support this; basically, this is why there is a new static method called "gameSpriteWithFile"
+
+      - I couldn't understand the code implemented here at first, but after thinking about it, I just forgot that the static method is used to create instances of itself
+      - this code pattern is duplicated from the base class CCSprite.cpp > "create" static method; so there isn't really anything new
+
+    - Director::getInstance()->getWinSize() VS Director::getInstance()->getVisibleSize()
+      - not really sure what the difference is, nor which is better to use OR if it even matters (see code CCDirector.cpp and journal entry "Tuesday 2018-12-18")
+
+    - GameLayer.cpp > init() - all initial positioning of sprites is done with relative values
+
+    - ch.3 hockey game uses multi-touch (EventListenerTouchAllAtOnce) vs the last book "Android Games" (EventListenerTouchOneByOne) with the primary reasoning being that the hockey game supports 2-players
+      - event listeners use cocos2d-x c++ callback macro "CC_CALLBACK_2" and "Android Games" example actually uses an empty lamba expression in one instance
+        - TODO: lookup info on "CC_CALLBACK_2"
+        - TODO: lookup info on implementing a callback without "CC_CALLBACK_2"
+        - TODO: lookup info on c++ lambda expressions
+
+
+  - Hockey game ideas:
+    - more "friction" or something to slow the pucks hyper-momentum
+    - sound to mimic air from the table
+    - puck and mallets not automatically repositioned; something more akin to real life - loser get to place the puck or auto-dispensing puck feeder back onto the table
+    - when a player lets go of a mallet, it isn't stationary. this might cludge the existing code though
+
+----------
+Wednesday 2019-01-09
+
+  - spent some time getting android studio working within chrome os / xiwi ..I think this will work
+    - in general, I didn't like firefox compared to chrome for journaling in c9 and having to open crouton linux; also, crostini wasn't an option at this point
+    - renamed android studio projects for easier identification
+    - tried changing each project layout to full screen within the linux environment
+
+    * this has a DISTINCT ADVANTAGE of being able to go into standby
+
+  - reviewing notes from "Tuesday 2018-12-18" (continued)
+
+    - created a new project for ch.3 and re-factored code+resources from the book
+      - NO ERRORS! looked ok and ran just fine on the hp touchpad running cyanogenmod android 4.0.4
+      - caveat of "EXACT_FIT" (stretch to fit) and the ever-present status bar that cannot be hidden on older versions of android (4.0.4)
+      - HP Touchpad specified at 1024x768, which matches the code "designSize" and assets, but perhaps because of the android 4.0.4 status bar the default "EXACT_FIT" does stretch the assets. this is proven when changed to "SHOW_ALL" and black bars appear on the top/bottom of the air hockey table
+
+----------
+Tuesday 2019-01-08
+
+  - reviewing notes from "Tuesday 2018-12-18" (getting "up to speed" on where I left off) and attempt to clarify
+
+    * resolutionPolicy: more testing and design pattern needed
+
+    - audioEngine->preloadEffect: I think method from previous book examples is preferred
+
+    - CC_SYNTHESIZE
+      - one of the "CC_" type helper functions bundled in cocos2d-x to auto-create protected variables and getter/setter functions
+      - a best practice to used these(?)
+      - how-to usage guide doesn't seem to exist
+
+    - GameSprite class
+      - WHY IS THIS EVEN USED SINCE SPRITE CLASS EXISTS?
+      - WHAT IS THE PURPOSE OF gameSpriteWithFile()?

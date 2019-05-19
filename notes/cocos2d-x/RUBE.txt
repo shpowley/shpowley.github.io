@@ -1,0 +1,17 @@
+HELP PANEL
+
+  - online version: http://www.iforce2d.net/rubehelp/
+  * it might be worthwhile to read through some sections
+
+
+RUBE DOCUMENTS
+
+  - can be dragged in to open
+  - certain panels reference the ACTIVE DOCUMENT
+    - context help (F9), items (F6), script (F8), properties (F7)
+
+
+MISC
+  
+  - CTRL + right mouse button will ZOOM to created rectangle
+  - SEND FEEDBACK option built in

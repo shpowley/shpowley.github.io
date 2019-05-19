@@ -1,0 +1,334 @@
+----------
+Thursday 2019-02-28
+
+  - noting similarities between classes that inherit from b2Sprite (minipool/ball, minipool/cue, eskimo/eskimo, eskimo/platform) in hopes of better understanding b2Sprite usage and making a similar class to use as a template
+
+    cue
+    - constructor - b2Sprite initializer
+    - destructor - empty
+    - create (static) - entry point to create object (similar to Sprite::create())
+      - initCue - init physics + shape, init sprite image
+
+    ball
+    - constructor - b2Sprite initializer, init private variables
+    - destructor - empty
+    - create (static) - entry point to create object (similar to Sprite::create())
+      - initBall - init physics + shape + position, init sprite image
+    - reset - reset physics + position + private vars
+
+    - update(dt) - update sprite position to match physics
+      - NOTE: b2Sprite already has update(dt) and this appears to override this with the key difference being that angle is not altered with ball::update()
+
+    eskimo
+    - constructor - b2Sprite initializer, init private variables, init physics + shape, init sprite image
+    - destructor - empty
+    - create (static) - entry point to create object (similar to Sprite::create())
+    - reset - reset physics + shape + angle
+    - update - switch physics shape
+    - makeCircleShape - create circle physics + image
+    - makeBoxShape - create square physics + image
+
+    platform
+    - constructor - b2Sprite initializer, init physics, register custom notifications
+    - destructor - empty platform container
+    - create (static) - entry point to create object (similar to Sprite::create())
+      - createTiles - platform container composition
+    - initPlatform - PUBLIC; complex composite object; init physics + shape + position + angle
+      - switchTexture - init sprite tiles
+
+  - modified my version of b2Sprite and added setPosition (overloaded) + setRotation + setTransform
+
+----------
+Saturday 2019-02-23
+
+  - attempting to understand b2Sprite usage
+
+    - b2Sprite composition allows bidirectional reference to b2Body/b2Sprite
+      - b2Sprite->b2Body <===> b2Body::userData->b2Sprite
+
+    - b2World ==> b2Body <= b2BodyDef
+                        <= b2Fixture <== b2 "Shape"
+
+    - while browsing code I noticed 2 variations on initializing a Sprite from a sprite frame
+      - createWithSpriteFrameName VS initWithSpriteFrameName
+      - no reasonable explanation could be found regarding usage of one over the other, even looking at the code didn't help
+      - initWithSpriteFrameName tended to be used within a class inheriting from b2Sprite
+      - createWithSpriteFrameName seemed to be used more standalone..
+
+
+    MINIPOOL
+    * pocket x 6
+      - though defined as a b2Sprite and it works, this doesn't make sense since there's no sprite involved
+      - I'm pretty sure the pockets could be coded similar to the table sides ..as b2Body objects
+
+    - ball x 15 + cue ball
+    * cue stick (good example)
+
+    ESKIMO
+    - eskimo
+    - platform x 50
+
+----------
+Friday 2019-02-22
+
+  - box2d test
+    - created a physics-only layer with debug draw code (conditional compile), basically refactoring it out of the scene and into a custom layer
+    * the drawing on physics debug layer honors proper z-order when tested against other layers with graphics stacked in nearby proximity
+    - modified code to test a slow falling circle with Layer update called from the Scene update
+      - tried @ 30fps just for fun.. I might try this again in the future further along; I wonder if this affects battery drain
+
+  - b2Sprite.h/.cpp
+    - created a slightly modified version of the b2Sprite class from the minipool book sample application
+    - NEXT: try using b2Sprite in the box2d test with box2d-only b2Sprite and graphic+box2d b2Sprite
+
+----------
+Thursday 2019-02-21
+
+  - box2d test
+    - copied GLES-Render.cpp/.h from minipool (I'm not sure if there's a better version??)
+    - copied box2d/GLES debug code with no gravity a simple physics body circle as a test - this worked after some minor issues
+      - debug draw code uses a conditional compile flag to simplify enabling this feature
+      - positioning works as the circle was made to draw on the center of the screen using PTM_RATIO
+
+    * next, I think that this box2d/debug draw code needs to be refactored onto the physics Layer instead of directly on the Scene as it is now AND if everything still works, try adjusting the z-order with the graphics layer above or below; and after that, a custom b2Sprite
+
+----------
+Sunday 2019-02-17
+
+  - created basic box2d framework in the test application
+
+    - playing around with compiler flags to control the box2d debug draw
+      - a common #include with #define is probably best
+
+  - still in the early stages.. I created a PHYSICS_DEBUG flag.. continue building on this
+
+  - currently @ Intown Suites due to personal problems, but it's difficult to work on this
+
+----------
+Saturday 2019-02-16
+
+  - created a very basic scene with multiple layers. the following describes how scene/layers are handled currently vs. my intended goal
+
+    DEFAULT PROJECT: scene with no layers
+
+    MINIPOOL / ESKIMO: 1-1 scene/layer hybrid with scene "hidden"
+
+    GOAL: scene with 1+ layers
+    - scene automatically should load required layers
+    - easy ON/OFF of each layer's visibility
+
+    - possible layers
+      - PHYSICS LAYER
+      - GAME LAYER
+      - HUD LAYER
+      - MENU LAYER
+
+    - PHYSICS LAYER should have the highest z-order
+
+----------
+Saturday 2019-02-09
+
+  - skimmed Cocos2d-x by Example - ch.5
+    - this is a bit more involved than I first thought, especially the math involved
+
+----------
+Thursday 2019-02-07
+
+  TexturePacker tutorial
+
+  - https://www.codeandweb.com/texturepacker/tutorials/animations-and-spritesheets-in-cocos2d-x
+
+  - how to create a sprite sheet specific to cocos2d-x with scaled variant resolutions (hdr/hd/sd) and polygon outline sprites
+
+  - sample project and source code
+    * NOTE: it might be worthwhile to compare the source code for loading resources against previous methods
+
+  - author recommends using highest design resolution
+
+  * a cocos2d-x Vector of sprite frames is created using "HelloWorld::getAnimation()" and uses an interesting method "sprintf()" + a unique naming scheme in the .plist data file to load animation sprite frames
+
+    sprintf
+    - write formatted data to string
+    - http://www.cplusplus.com/reference/cstdio/sprintf/
+
+  - one unique recommendation is to MAKE THE SPRITE ANIMATION A CHILD OF THE BACKGROUND IMAGE as opposed to the layer; this ensures that the sprite is positioned in the right spot on the background
+
+  - adding a MoveTo sequence with the walking animation makes 2d animation more convincing
+    - COMMENT: I had to add an additional 5 seconds to make the feet not slide too much; the movement didn't match the walk's stride
+
+----------
+Wednesday 2019-02-06
+
+  - looking at code from "MyTests" and adding to notes from "Friday 2019-02-01"
+
+----------
+Monday 2019-02-04
+
+  - still reviewing previous notes from "Wednesday 2019-01-16"
+
+  - TODO: I need to go through these notes again another time and incorporate some of the info into "topics - main.txt" and "Box2D.txt"
+    - ditto for "Building Android Games.txt" and "Cocos2d-x by Example.txt"
+
+  - I was just curious about using json instead of .plist/xml and google search "cocos2d-x json" pointed to using the "rapidjson" external library
+
+----------
+Sunday 2019-02-03
+
+  - finished notes for Cocos2d-x by Example - ch.4 Sky Defense and reviewing notes as a refresher
+
+  - looking back at my box2d notes and the minipool code, I'm still not exactly sure how I'm going to implement the box2d/debug-draw
+    - after studying minipool codebase, something similar to the following object structure is required
+      - a scene with a regular "GAME SPRITES" layer + "BOX2D PHYSICS / DEBUG DRAW" layer (higher z-order)
+      - an object similar to CUE.CPP/.H derived from b2Sprite
+      - something similar to B2SPRITE
+        - b2Sprite needs 2 separate layers in the constructor: a GAME LAYER and a PHYSICS LAYER
+        - in addition, further refine "b2Sprite::setSpritePosition()"
+
+    * NOTE: the minipool implementation is rather complicated to understand and modifying it to support 2 layers seems even more daunting
+
+----------
+Friday 2019-02-01
+
+  - Cocos2d-x by Example - ch.4 Sky Defense
+
+
+    SPRITE SHEETS
+
+    - the MAX TEXTURE SIZE that seems to be a safe choice for most devices seems to be 2048x2048
+      - 4096x4096 for newer devices
+
+    - create a sprite sheet optimized for cocos2d-x using TexturePacker
+      - https://www.codeandweb.com/texturepacker/tutorials/animations-and-spritesheets-in-cocos2d-x
+
+    - "SpriteBatchNode" though technically not deprecated, doesn't seem encouraged, and still exists for compatibility
+      - this book's sample code uses SpriteBatchNode extensively
+      * according to "https://www.codeandweb.com/texturepacker/tutorials/cocos2d-x-performance-optimization", SpriteBatchNode will only use quads and ignore polygon optimized sprites
+
+    - when shrinking/growing a sprite regularly (ex. bombs in this game) it may be beneficial to create a MIPMAP for performance
+      * use ->getTexture()->generateMipmap() to create antialiased pre-rendered copies of a texture in diminishing sizes
+      - texture must be POT (power of 2)
+        - QUESTION: does POT refer to the source texture file or the texture frame?
+
+
+      ADDING SPRITES
+
+      - SpriteFrameCache::addSpriteFramesWithFile() now inherently handles batch drawing of sprites
+        - this is an overloaded method that loads the .plist/.png texture
+
+      - use Sprite::createWithSpriteFrameName() to create new Sprites from texture file "frames"
+
+      - use Sprite::create() + AutoPolygon on plain .png textures (see "MyTests" project)
+        - AutoPolygon creates a polygon "cutout" shape of a sprite to make drawing more efficient; more vertices, fewer pixels
+        - see: https://docs.cocos2d-x.org/cocos2d-x/en/sprites/polygon.html
+
+        example:
+
+          auto poly_data = AutoPolygon::generatePolygon("hula.png");
+          auto hula_sprite = Sprite::create(poly_data);
+
+        - while AREAS OF A SPRITE SHEET CAN BE SPECIFIED BY THE 2ND PARAMETER of Autopolygon::generatePolygon(), it's BEST WHEN ONLY A SINGLE FRAME IS NEEDED as ::generatePolygon() is a static function the doesn't allow a sprite texture to be re-used
+
+        * when MULTIPLE FRAMES OF A SPRITE SHEET ARE NEEDED TO BE REDUCED IN-CODE, see "cocos/2d/CCAutoPolygon.h" comments for "generateTriangles()"; AutoPolygon can be re-used multiple times with different settings for ::generateTriangles()
+
+        * for sprite sheets created with TEXTUREPACKER, the software can create "POLYGON MESH SPRITES" that export cocos2d-x .plist format
+          see: https://www.codeandweb.com/texturepacker/tutorials/cocos2d-x-performance-optimization
+
+
+      - inherited from Node
+
+        * set the sprite z-order using the 2nd parameter of ->addChild()
+          - ex. enum: foreground, middle, background, etc.
+
+        * create an optional TAG identifier using the 3rd parameter of ->addChild()
+          - retrieve said child object using ->getChildByTag(< tag >)
+
+      * SPRITES CAN BE CHILDREN OF OTHER SPRITES because each sprite is based on Node
+        - game example uses the bomb with child sprites for the sparking fuse and halo effect
+        - NOTE: shrink / grow container will also affect children
+
+
+    BITMAP FONTS
+
+    - font image file (.png) + font data file (.fnt)
+      - the .fnt file contains the file name of the relevant font image file
+
+    - use Label::createWithBMFont(< font data file >) to load the bitmap fonts
+
+    - adjustment can be made to the anchor point
+    - use ->setString() to change the actual text of the relevant label
+
+
+    OBJECT POOLS
+
+    - pre-allocation of memory for re-usable objects for efficiency / speed
+
+    - usually based on cocos2d-x Vector class if using Ref-based cocos2d-x objects as this automatically handles ref counts, etc.
+      - class wrapper based on std::vector
+
+      - pre-allocate size in the relevant class constructor
+        - ie. GameLayer::GameLayer() : _meteorPool(50), _healthPool(20), _fallingObjects(40), _clouds(4) {...
+
+      - .clear() method is probably best for clean up
+
+      * be cognizant of reaching the end of an object pool and handling that scenario
+
+
+    ACTION / ACTION SEQUENCE / ANIMATION
+
+      ACTION: node transformation over specified time interval
+      - many transformations are a subclass of the Action class (ie. FadeOut, ScaleTo, RotateBy, etc.)
+      - defined by "Action::create()" and usually with a time interval
+
+      * remember to use "->clone()" when RE-USING ACTIONS
+        - see: http://www.cocos2d-x.org/docs/cocos2d-x/en/actions/sequence_internals.html
+
+      - ACTIONS are time savers compared to trying to implement them otherwise
+        * example of NOT USING ACTIONS and the code to implement this can be found in "// move clouds" section of GameLayer::update()
+        - whereas the falling meteors is an example of USING ACTIONS
+
+
+      ACTION SEQUENCE: combination of pre-defined actions and animations AND OTHER ACTION SEQUENCES
+      - action EASING EFFECTS (ie. EaseIn, EaseOut, etc.)
+      - action REPEAT (ie. Repeat, RepeatForever)
+      - action CALLBACKS can be specified upon completing an action
+        - implemented with CallFunc / CallFuncN; CallFuncN has Node* as the 1st argument of the callback function
+
+        ex. 1
+
+          CallFunc::create(std::bind(&GameLayer::shockwaveDone, this))..
+          void GameLayer::shockwaveDone() {..}
+
+        ex. 2
+
+          CallFuncN::create(CC_CALLBACK_1(GameLayer::animationDone, this))..
+          void GameLayer::animationDone(Node* pSender) {..}
+
+      * execute an action with "->runAction(< Action | Action Sequence >)"
+
+      * see sample code function "void GameLayer::createActions()" for implementation examples
+        - ch.4 Sky Defense pre-defines many Action Sequences into class variables and uses "->retain()" for easy re-use whenever needed (ie. explosions, explosion shockwave, healthpack parachute fall/swing, etc.)
+
+
+      ANIMATION: changes the texture used by a sprite over a period of time that can create the effect of animation
+
+      - animation initialized with "Animation::create()"
+      - add sprite frames using "->addSpriteFrame()"
+
+      - OR "Animation::createWithSpriteFrames()" with cocos2d-x Vector of sprite frames (see MyTests project)
+
+      - set frame delay time using ->setDelayPerUnit(< # seconds / # frames >)
+      - go back to start frame after the animation is complete using "->setRestoreOriginalFrame()"
+
+      - NOTE: animation object can be re-used for multiple animations
+        - book example does this for "_explosion" and "_groundHit"
+
+      - implement the animation as an ACTION with "Animate::create(< animation >)", which can then be incorporated into an ACTION SEQUENCE
+
+
+      SPAWN: simultaneous actions or sequences
+      - see "Spawn::createWithTwoActions()", "Sequence::createWithTwoActions()", and similar functions
+
+
+    UPDATE TIMERS
+    - several in-game count-up "timers" and "timer intervals" are implemented as float counters to activate in-game events
+    - though these timers are a bit simple, this technique obviously works, but I'm not sure if there's a better way

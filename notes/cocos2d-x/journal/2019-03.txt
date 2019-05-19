@@ -1,0 +1,52 @@
+----------
+Tuesday 2019-03-05
+
+  - adding a menu select scene for the box2d implementation to test out different box2d scenarios
+    * after typing some code for this, I have to wonder if the static "createScene()" method is really necessary
+      - as stated in previous notes, inherited classes cannot override static methods of the base class. "createScene()" is basically a wrapper for "create()", but if nothing "extra" is being added, is it really worth doing this? to be on the safer side maybe it is
+
+----------
+Monday 2019-03-04
+
+  - Box2D test harness (SKIP FOR NOW)
+    - FAILED attempting to build this from downloaded source code; premake5 had to be downloaded, but still failed - I think because the opengl version is 3.0 and version 3.3 (minimum) is required; not sure if opengl version can be updated on this older chromebox AND I'm not even sure if this is the reason for the error
+    - skip the test harness for now until a newer PC environment can be used
+
+  - I've starting looking at alternatives because of the box2d test harness problem
+    - possibly installing linux on one of the chrome devices (gallium or manjaro..)
+
+    DEVICE 1                            DEVICE 2
+    chromebox cn60                    | chromebook c720-3404
+    i3-4010U CPU @ 1.70GHz (Haswell)  | i3-4005U 1.7 GHz
+    16GB ram                          | 4GB ram
+    ~120GB storage                    | 32GG storage
+
+----------
+Sunday 2019-03-03
+
+  - PROJECT IDEA: rolling coins - various coin rolling w/ accelerometer; international coins maybe? modes - $1.00, $0.50, collector, international (by country), bitcoin, arcade
+
+  - b2Sprite test
+    - experimenting with scheduleOnce() function to delay movement of asteroid and I encountered problems compiling until I added float dt as an additional parameter -- required; dt is the delay time from when the function was initially scheduled
+
+    - how to implement the refresh button; I've noticed 2 methods 1) menuItemImage (default project close) and 2) standard sprite(s) with touch listeners (eskimo)
+
+      - I decided to go with menuItemSprite which was similar to the menuItemImage implementation, but allows me to use pre-defined sprites from the spritesheet
+
+    * SUCCESS; this implementation test is more or less complete with multiple layers, 2 separate layers for the b2Sprite (physics and graphics), a refresh menu item, and a basic test of box2d with 2 colliding asteroids. while I could go further, adding more asteroids and a more complex scenario, this is enough to verify the capabilities I want to use so far. use this code base as a base template to further evolve
+
+----------
+Saturday 2019-03-02
+
+  - created 1 falling asteroid b2Sprite with combined graphic/b2Body and placed a "refresh" icon graphic
+
+  - NOTE: having multiple cocos2d-x projects reside in the project launcher and switching between projects (Eskimo and Celestial today) sometimes causes those projects to break, but I'm not sure why. Rebuilding those projects and moving requisite resources, source code and .mk files fixes things, but this is very time-consuming. I'm going to only have 1 project "loaded" in the pre-launch screen to see if that fixes things; not a real solution, but if it works that's fine.
+
+----------
+Friday 2019-03-01
+
+  - created a spritesheet .plist using texturepacker/polygon shapes + spaceship sprites and using this in my box2d test
+
+  - goal:
+    - create multiple box2d rotating "asteroids" that collide ~ about 3
+    - a refresh button that resets starting positions
