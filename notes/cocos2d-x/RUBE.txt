@@ -6,9 +6,20 @@ HELP PANEL
 
 RUBE DOCUMENTS
 
-  - can be dragged in to open
+  - RUBE files can be dragged in to open
+
   - certain panels reference the ACTIVE DOCUMENT
     - context help (F9), items (F6), script (F8), properties (F7)
+
+  - multiple views of the same document (open same file OR CLONE view)
+    - actions affect cloned views
+
+
+PLAYER VIEW
+
+  - simulation speed requires button toggle
+
+  - can be cloned
 
 
 MISC

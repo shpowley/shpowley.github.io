@@ -1,10 +1,12 @@
 TODO
 
+  - re-read may journal
+
   R.U.B.E.
 
     - tutorials
       x - world settings, forces and impulses
-      2 - custom gravity, moving at constant speed
+      x - custom gravity, moving at constant speed
       3 - rotating to a given angle, jumping
       4 - using debug draw, drawing your own objects
       5 - user data

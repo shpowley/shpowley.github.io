@@ -1,11 +1,42 @@
 ----------
+Monday 2019-05-20
+
+    - RUBE tutorials: rotating to a given angle, jumping
+    - re-watch RUBE tutorial vid #3 and take notes
+
+----------
 Sunday 2019-05-19
 
-  GOALS
+  ESKIMO ACCELEROMETER IMPLEMENTATION
 
-    - RUBE tutorials: custom gravity, moving at constant speed
-    - re-watch RUBE tutorial vid #2 and take notes
-    - glance at eskimo box2d cocos2D-x code - check accelerometer implementation
+    * see journal "Wednesday 2019-01-23", section "ACCELEROMETER" (fairly good explanation) AND GameLayer.cpp in Eskimo code
+
+    * today's iforce2d tutorials ("custom gravity" and "constant speed") seem highly relevant
+
+      COMMENTS:
+      
+        - maybe world->SetGravity() affecting all box2d objects(?)
+        - OR body->ApplyForce(b2Vec2(mass * acc.x, mass * acc.y), ...) on individual box2d objects(?)
+
+    - cocos2d-x is limited to ACCELERATION+GRAVITY ONLY without using JNI TO ACCESS OTHER SENSOR DATA OR using pseudo LINEAR ACCELERATION TRICK from javascript hula/piggly wiggly project
+
+      COMMENTS:
+
+        - JNI for other sensors might be good for obtaining light sensor reading also(?)
+        - what about Apple iOS and linear acceleration and light sensor data??
+
+
+  IFORCE2D TUTORIALS
+
+    * NOTE: keyboard override function signature has changed
+
+    "custom gravity" on specific objects (iforce-GravityTest.h)
+      ->ApplyForce() with negative gravity in Step() function
+      ->SetGravityScale() : 0 = cancel, -1 reverse (NEW, easier syntax and set outside Step() function)
+
+    "constant speed" (iforce-SpeedTest.h)
+      - gradual vs instant speed comparisons
+      + more complex speed implementations using force (not in code test)
 
 ----------
 Saturday 2019-05-18
