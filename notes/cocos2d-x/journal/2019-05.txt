@@ -1,8 +1,67 @@
 ----------
+Tuesday 2019-05-21
+
+    - RUBE tutorials: using debug draw, drawing your own objects - http://www.iforce2d.net/b2dtut/debug-draw
+    - re-watch RUBE tutorial vid #4 and take notes - https://youtu.be/FnBHnPwtZjE
+
+    - take another look at celestial project, specifically the b2Sprite relationship of sprite & physics object (initialization, positioning, and position-synchronization) and thoughts of RUBE usage
+
+    - fill in "project ideas.txt" and try to sort by themes; remember goal is 2D
+    - json export + json loader for cocos2d-x and box2d test harness(?)
+
+----------
 Monday 2019-05-20
 
-    - RUBE tutorials: rotating to a given angle, jumping
-    - re-watch RUBE tutorial vid #3 and take notes
+  BOX2D TEST HARNESS
+
+    - randomly looking at pre-built tests for ideas and code show-and-tell
+      - slider crank - locomotive
+      * cantilever - hula spring, floating dragon or fish
+      - car - great for vehicle project ideas (camera for box2d?)
+      - body types - body type can be changed at run-time
+      - chain vs rope joint
+      - breakable
+      - bridge - vehicle projects
+      - theo jansen's walker - mech walkers
+      - web - spider web + spider
+
+
+  MISC
+    - re-read journal entries for this month
+    - re-watched RUBE tutorial vid #3 and take notes
+
+
+  PROJECT IDEAS
+
+    - I thought of these earlier today. I mentioned a monster truck with scrolling background.
+      - along the same lines, I thought of "moon patrol" from way back during the atari 2600, but variations on that. a space land rover with a moon landscape and moon-like gravity..
+      - similarly, a old style train locomotive. this would be interesting as it many moving parts, the tracks/terrain has to flat. the terrain+vehicle+camera needs to be brainstormed.
+      - stunt car / motorcycle / skateboarder
+      - mech walker / imperial walker
+      - tank
+
+
+  IFORCE2D TUTORIALS
+
+    NOTE: all iforce2d tutorials are done on the box2d source code, specifically in the test harness
+
+
+    "Rotating a body to a given angle" (iforce-RotationTest.h)
+
+      - similar to last topic, using angles instead of linear movement
+      - rotation accomplished by using transform, torque, or impulse
+
+      - opengl calls to draw a "dot" didn't work at all - these api calls exist in <gl/GL.h>, but were inaccessible after a few attempts and I gave up; I ended up using "g_debugDraw.DrawCircle"
+
+      - COMMENT #1: these methods are somewhat involved; LOOK AT THE CODE COMMENTS
+
+      - COMMENT #2: though I can't be sure of this without further testing, the impulse technique should be operate outside the Step() function, similar to the linear impulse
+
+    
+    "Jumping" (iforce-JumpTest.h)
+    
+      - linear y-velocity, y-force over # time steps, impulse, or prismatic joint
+      - pros/cons of each
 
 ----------
 Sunday 2019-05-19
@@ -15,15 +74,18 @@ Sunday 2019-05-19
 
       COMMENTS:
       
-        - maybe world->SetGravity() affecting all box2d objects(?)
-        - OR body->ApplyForce(b2Vec2(mass * acc.x, mass * acc.y), ...) on individual box2d objects(?)
+        - maybe world->SetGravity() in response to the accelerometer to affecting all box2d objects(?) in the Step() function
 
-    - cocos2d-x is limited to ACCELERATION+GRAVITY ONLY without using JNI TO ACCESS OTHER SENSOR DATA OR using pseudo LINEAR ACCELERATION TRICK from javascript hula/piggly wiggly project
+        OR
+
+        - body->ApplyForce(b2Vec2(mass * acc.x, mass * acc.y), ...) on individual box2d objects(?) in response to the accelerometer in the Step() function
+
+    - cocos2d-x is limited to ACCELERATION+GRAVITY ONLY without using JNI TO ACCESS OTHER SENSOR DATA OR using the pseudo LINEAR ACCELERATION TRICK as in the javascript hula/piggly wiggly project
 
       COMMENTS:
 
-        - JNI for other sensors might be good for obtaining light sensor reading also(?)
-        - what about Apple iOS and linear acceleration and light sensor data??
+        - JNI for other sensors might be good and also for obtaining light sensor readings
+        - what about Apple iOS and linear acceleration and light sensor data?? (in the distant? future)
 
 
   IFORCE2D TUTORIALS
@@ -49,7 +111,7 @@ Saturday 2019-05-18
     - journal moved to monthly format
     - re-watched RUBE tutorial vid #1 and take notes (new document RUBE.txt)
 
-    * ASTEROID box2d/cocos2D-x/android project is my base code for building my apps
+    * ASTEROID box2d/cocos2D-x/android project is the template for building my apps
 
       - see AsteroidScene .cpp/.h | AsteroidScene::init() AND PhysicsLayer .cpp/.h
       - multiple layers on a scene (with separate layers for physics and associated sprite objects)
@@ -121,9 +183,9 @@ Friday 2019-05-17
 
   IFORCE2D C++ BOX2D TEST HARNESS
 
-    - I created this simple physics scenario in the RUBE editor (2 bodies connected via a rotating joint) and exported the scene to c++. From there, I literally copy-and-pasted the code into this Box2D test class constructor - this worked without any problems (iforce-BarTest.h).
+    - I created this simple physics scenario in the RUBE editor (2 bodies connected via a rotating joint) and exported the scene to c++. from there, I literally copy-and-pasted the code into this Box2D test class constructor - this worked without any problems (iforce-BarTest.h).
 
-    * NOTE: while this dry test run proved RUBE-to-C++, the .cpp code generated is overly verbose and very non-descriptive from a code editing standpoint (naming isn't maintained and there aren't comments to help). for complex RUBE scenes this might be a problem, but my scenes are probably simple enough to get away with using direct export to C++.
+    * NOTE: while this dry test run proved RUBE-to-C++, the .cpp code generated is overly verbose and very non-descriptive from a code editing standpoint (naming isn't maintained and there aren't any comments to help either). for complex RUBE scenes this might be a problem, but my scenes are probably simple enough to get away with using direct export to C++.
 
 ----------
 Thursday 2019-05-16
@@ -205,11 +267,11 @@ Monday 2019-05-13
     - accelerometer toy "themes"
       - each theme need 3-5+ toys I think
       - many bobble toys could be incorporated in more than one theme
-      - flower power: solar powered flower, hawaiian lei, research popular flowers "jostled around", water lilies, hummingbird, butterfly resting, kindergarten style, sunflower, on water
+      - flower power: solar powered dancing flower, hawaiian lei, research popular flowers "jostled around", water lilies, hummingbird, butterfly resting, kindergarten style, sunflower, different flowers floating on water
         - hummingbird: it "floats", flapping wings, flying around to flower movement
       - spinning things: pinwheel (very light, little friction), windmill (holland, physics heavier), wind farm, car wheel, gears, fidget spinner, shuriken
       - hawaiian: +android robot w/ hawaiian shirt, lei, hula skirt, different poses
-      - cute animals: a lot of possibilies in similar poses
+      - cute baby animals: a lot of possibilies in similar poses
       - food: stacked hamburger (ingredients stack flop), pizza; advertising graphics geared toward businesses
       - christian: buddy jesus, air jesus, christian fish, cross on a chain
         - religion is very touchy though..
@@ -217,18 +279,18 @@ Monday 2019-05-13
 
       - user-customizable graphics in pre-made physics templates: braves tomahawk chopping + logo, hula dancer face or face cutout, circular spring, animation; avoids IP issues
         - animation moving from user tap or accelerometer, individual graphic frames or an animated gif specified by user
-          - animation speed remains consistent and always finishes on last frame
+          - animation speed remains consistent and always finishes on last frame(?)
           - simplified animation speed control, rotation in 90 degree steps
           - ex. muybridge horse, many on the internet, skull spinning, selfie(s)
     
     - simulated water: boat, boat in a bottle, rubber duck
-    - skeleton on a chain, joints connected; theme?
+    - full skeleton on a chain, joints connected; theme?
     - morning star on a chain (weapons theme?)
     - leaning tower of pisa
     - hand-drawn art might be a good idea; cuphead video gave me inspiration to develop my own "style" - art styles alone can be a primary appeal to users
 
     - bobble toys should have the ability to "auto-wobble" or respond to touch / touch-drag; in stationary environments this would be good
-    - day dream still a thing, live wallpaper: would be appealing to many and would respond to swipes; panda live wallpaper gave me inspiration for this - very simplistic movement, but art style and functionality generated many downloads
+    - android day dream (still a thing?), live wallpaper: would be appealing to many and would respond to swipes; panda live wallpaper gave me inspiration for this - very simplistic movement, but art style and functionality generated many downloads
     * drive to ATL got brainstorming about this subconciously; it might be a good idea to just drive around to get new ideas and audio recorded
 
   - OLD NOTES / JOURNAL ENTRIES
@@ -253,7 +315,7 @@ Thursday 2019-05-09
     - a lot of information and time-consuming to watch all the videos..
 
   - R.U.B.E. iforce2d has a bunch of c++ box2d tutorials
-    - https://www.iforce2d.net/b2dtut/introduction
+    - http://www.iforce2d.net/b2dtut/introduction
 
 ----------
 Wednesday 2019-05-08
@@ -270,7 +332,7 @@ Wednesday 2019-05-08
       - new joint types are: WELD, FRICTION, MOTOR
 
       * TODO (2): create a file with different types of joints and "play" with settings (TAKE NOTES)
-        - implementing something like an axis-constrained SPRING isn't exactly 1-to-1, it has to be finagled.. a distance joint with frequency and damping set I think and even then, it not constrained to any axis. this is more of a box2d thing, but I'm not sure if it's a "limitation" per se
+        - implementing something like an axis-constrained SPRING isn't exactly 1-to-1, it has to be finagled.. a distance joint with frequency and damping set I think and even then, it's not constrained to any axis. this is more of a box2d thing, but I'm not sure if it's a "limitation" per se
 
       * TODO (3): TAKE NOTES OF EACH TYPE OF JOINT AND WHAT THEY DO IN MY OWN WORDS
 
@@ -311,7 +373,7 @@ Sunday 2019-05-05
         - air_hockey from portable drive backup; using softlink cocos2d and Android.mk modification
         - gradle plugin always has to be updated it seems and another warning given, otherwise pre-build is ok
         - fresh build: 2m 37s
-        - THIS WORKS!! ..I don't think cocos2d-x needs to be reinstalled
+        - THIS WORKS!! ..I don't think cocos2d-x needs to be re-installed
 
       - create/test "celestial" box2d project not using github
         - THIS WORKS ALSO!!
@@ -334,7 +396,7 @@ Friday 2019-05-03
 
   - continue software installs
     - cocos2d-x version 3.17.1 downloaded and windows symlinks created
-      * NOTE: symlinks created in windows has subtle differences compared to linux, and require absolute filepaths
+      * NOTE: SYMLINKS CREATED IN WINDOWS have subtle differences compared to linux, and REQUIRE ABSOLUTE FILEPATHS
     - updated android ndk
     - install python 2.7.x (cocos2d-x prerequisite)
 
@@ -348,7 +410,7 @@ Friday 2019-05-03
     * NOTE 3: android.mk has to be modified to match that of the cocos2d-x template project (.cpp files included properly)
 
     - "celestial" project compiles and installs .apk file, but doesn't do anything
-    - template project works fine
+      - template project works fine, though
 
   - windows 10 allows creating symlinks in a similar fashion to linux, saving space by creating a "cocos2d" link
 

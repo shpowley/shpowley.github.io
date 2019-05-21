@@ -13,6 +13,7 @@ RUBE DOCUMENTS
 
   - multiple views of the same document (open same file OR CLONE view)
     - actions affect cloned views
+    - each view could be in a different edit mode
 
 
 PLAYER VIEW
@@ -22,7 +23,36 @@ PLAYER VIEW
   - can be cloned
 
 
+CURSOR
+
+  - "C" + mouse-click to manually move it
+  - "C" + "S" to move it to selection center
+  - "C" + "C" to specify point by typing coordinates
+  - "C" + "X" OR "Y" to constrain cursor placement in horizontal OR vertical only
+
+
 MISC
   
   - CTRL + right mouse button will ZOOM to created rectangle
   - SEND FEEDBACK option built in
+  - each mode can have different items selected
+
+
+BOX2D BODY TYPES
+
+  DYNAMIC - affected by gravity, linear/angular velocity, collides w/ all bodies (unless specified otherwise)
+  STATIC - unaffected by gravity, position/angle can be set, but doesn't move
+  KINEMATIC - unaffected by gravity, linear/angular velocity, does not collide with static bodies
+
+
+JOINTS (TODO)
+
+  REVOLUTE
+  PRISMATIC
+  DISTANCE
+  WHEEL
+  ROPE
+  
+  WELD (NEW)
+  FRICTION (NEW)
+  MOTOR (NEW)

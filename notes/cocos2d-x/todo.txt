@@ -1,13 +1,13 @@
 TODO
 
-  - re-read may journal
+  - it might be a good idea to just drive around to get new ideas and audio recorded
 
   R.U.B.E.
 
     - tutorials
       x - world settings, forces and impulses
       x - custom gravity, moving at constant speed
-      3 - rotating to a given angle, jumping
+      x - rotating to a given angle, jumping
       4 - using debug draw, drawing your own objects
       5 - user data
       6 - anatomy of a collision
@@ -27,8 +27,9 @@ TODO
     - compare box2d docs vs R.U.B.E. joints to better visualize (watch relevant videos)
       - also, look at javascript phaser joints in previous apps and compare to above
 
-    - experiment different joint configurations (see sketch & try negative torque)
+    - experiment with different joint configurations (see sketch & try negative torque)
       - torque controlled programmatically to mimic joint flexed +/- a rest position?
+      - see "Sunday 2019-05-12"
 
     - attempt to integrate code into cocos2D-x project
       - document basic workflow from R.U.B.E. to c++/cocos2d-x using a simple physics scenario
@@ -37,6 +38,8 @@ TODO
       * I need to really study how my Celestial>AsteroidScene was implemented to see if RUBE import can be incorporated easily
 
       - revisit Box2D.txt and update
+
+    - revisit BOX2D TEST HARNESS (Monday 2019-05-20)
 
     - read/document notable DISCUSSION FORUM topics
 
