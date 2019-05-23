@@ -1,1 +1,166 @@
 PROJECT IDEAS CENTRAL DOCUMENT
+
+
+  * hand-drawn art might be a good idea; cuphead video gave me inspiration to try and develop my own "style"
+  * bobble toys should have the ability to "auto-wobble" or respond to touch / touch-drag; in stationary environments this would be good
+  * android day dream (still a thing?), LIVE WALLPAPER: would be appealing to many and would respond to swipes; panda live wallpaper gave me inspiration for this - very simplistic movement, but art style and functionality generated many downloads
+
+
+  THEMES
+
+    - each theme need 3-5+ toys
+    - many bobble toys could be incorporated in more than one theme
+
+
+  HAWAII
+
+    - hula dancer
+      - hula dancer face or face cutout
+
+    - flip flops + alternate styles
+      - dog paws
+      - user replaceable swaying feet (ie. baby feet)
+
+    - hang loose hawaii hand sign
+    - hawaiian turtles
+    - surfer
+
+    - tiki gods
+    - palm trees (wind, sunrise/sunset, coconuts falling, sun behind the trees)
+    - flowers (orchids floating on water)
+    - lei
+    - license plate keychain
+    - surfboard keychain
+    - tiki keychain
+    - hawaiian shirt (android robot w/ hawaiian shirt, lei, hula skirt, different poses)
+    - peace frog hang loose
+    - google image search: "hawaii keychain"
+      - art ideas
+      - hawaii with "w" replaced by hang loose hand sign
+      - aloha + flower
+      - hang loose keychains
+
+
+  HULA DANCER
+
+    - hula dancer
+    - hula garden gnome
+    - aphrodite hula
+    - betty boop hula
+    - "hello kitty" hula
+    - hula dancer face or face cutout
+    - hawaiian shirt (android robot w/ hawaiian shirt, lei, hula skirt, different poses)
+
+
+  VEHICLES
+
+    + scrolling background
+    + terrain+vehicle+camera needs to be brainstormed
+    + 2D OR pseudo-3D
+    + obstacles (destructable cars, boulders)
+
+    - monster truck + hilly terrain, etc.
+    - moon rover (moon patrol) + moon landscape and moon-like gravity
+    - various styles of train locomotives + this would be interesting as it many moving parts, the tracks/terrain has to flat
+    - stunt car
+    - dirt bike
+    - stunt motorcycle
+    - skateboarder
+    - mech walker / imperial walker
+    - tank
+
+
+  OPEN-SOURCE MASCOTS
+
+    - t-rex google page not found: 1) dinosaur reacts to accelerometer jumping with background just always scrolling OR 2) background moves in relation to accelerometer
+    - swaying linux gnome bare feet
+    - gnu wildebeast floating logo
+    - tux linux original logo / tux hula
+    - android logo / android hula
+
+
+  FLOWERS "FLOWER POWER"
+
+    - solar powered dancing flower
+    - hawaiian lei
+
+    - popular flowers "jostled around"
+      - sunflower
+
+    - water lilies on water
+    - hummingbird (it "floats", flapping wings, flying around to flower movement)
+    - butterfly resting
+    - kindergarten style
+    - "flower power" peace sign made of flowers
+
+
+  SPINNING THINGS
+
+    - pinwheel (very light, little friction)
+    - windmill (holland style, physics heavier)
+    - wind farm
+    - car wheels
+    - gears
+    - fidget spinner
+    - shuriken
+
+
+  CUTE BABY ANIMALS
+    
+    + check out panda live wallpaper
+    - a lot of possibilies in similar poses
+
+
+  JAPAN
+
+    - cherry blossoms floating on water
+    - sumo wrestler
+    - geisha dancer
+    - shuriken spinning
+    - asian clouds and..
+
+
+  USER CUSTOM
+
+    - user-customizable graphics in pre-made "physics" templates (ie. braves tomahawk chopping + logo, circular spring, animation; avoids IP issues)
+      - animation moving from user tap or accelerometer, individual graphic frames or an animated gif specified by user
+        - animation speed remains consistent and always finishes on last frame(?)
+        - simplified animation speed control, rotation in 90 degree steps
+        - ex. muybridge horse, many on the internet, skull spinning, selfie(s)
+    
+
+  HIPPIE ART
+
+    - peace frog waving hand
+    - happy face emojis accelerometer react bouncing, circular spring also; changing facial expressions
+    - piggly. wiggly.
+    - "flower power" peace sign made of flowers
+    - kokopelli - keychain(?), cave art style(?)
+    - "flower power" peace sign made of flowers
+
+
+  HOLIDAYS
+
+    - holiday stuff (snowman, pumpkin, turkey, reindeer, santa)
+    - christmas dancing toys - https://www.youtube.com/watch?v=494hMRzvXyk
+    - holidays: christmas, new year's, independence day, chinese new year, easter, valentine's, thanksgiving, halloween
+    - full skeleton on a chain, joints connected
+    - zombie
+    - christmas tree + ornaments
+
+
+  MISC
+
+    - presidential (republican elephant, democrat donkey, candidates)
+    - rolling coins - various coin rolling w/ accelerometer; international coins maybe? modes - $1.00, $0.50, collector, international (by country), bitcoin, arcade
+    - teddy bear
+    - simulated water: boat, boat in a bottle, rubber duck
+    - christian: buddy jesus, air jesus, christian fish, cross on a chain (religion is very touchy though)
+    - hello kitty (if hawaii app actually does well), kimono @ megamart, grass skirt, etc. look at IP licensing..
+    - fortnite dancing (not sure about this one..)
+    - food: stacked hamburger (ingredients stack flop), pizza; advertising graphics geared toward businesses
+    - morning star on a chain (weapons theme?)
+    - leaning tower of pisa
+    - gangnam style
+    - cowboy
+    - rodeo horse bronco

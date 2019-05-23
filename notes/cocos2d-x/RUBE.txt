@@ -19,7 +19,6 @@ RUBE DOCUMENTS
 PLAYER VIEW
 
   - simulation speed requires button toggle
-
   - can be cloned
 
 
@@ -29,6 +28,25 @@ CURSOR
   - "C" + "S" to move it to selection center
   - "C" + "C" to specify point by typing coordinates
   - "C" + "X" OR "Y" to constrain cursor placement in horizontal OR vertical only
+
+
+ITEMS PANEL
+
+  - allows selecting different types of entities (bodies, fixtures, images, etc.)
+  - shows object heirarchy for bodies and joints (pretty handy)
+  - items can be renamed
+
+  - filter search by names
+    - top-down for top-level heirarchy
+    - bottom-up for lower heirarchy
+
+  - all/none for easier venn-diagram select approach :)
+
+
+SCRIPT PANEL
+
+  - immediate window to run scripts
+  - angelscript (see help)
 
 
 MISC

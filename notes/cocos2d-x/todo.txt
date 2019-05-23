@@ -5,23 +5,41 @@ TODO
   R.U.B.E.
 
     - tutorials
-      x - world settings, forces and impulses
-      x - custom gravity, moving at constant speed
-      x - rotating to a given angle, jumping
-      4 - using debug draw, drawing your own objects
       5 - user data
+      11 - *joints - overview
+      12 - *joints - revolute
+      13 - *joints - prismatic
+
+    - tutorials + advanced (come back to review later)
       6 - anatomy of a collision
       7 - collision callbacks
       8 - collision filtering, sensors
       9 - ray casting
       10 - world querying, removing bodies safely
-      11 - *joints - overview
-      12 - *joints - revolute
-      13 - *joints - prismatic
       14 - "can I jump" question
       15 - ghost vertices
 
     - try modifying export items and check with .cpp and json export files
+
+    * revisit code examples in ANDROID/COCOS2D-X PROJECT TO TEST SAMPLE LOADER (Wednesday 2019-05-22) and document how to implement some features
+
+    - json compression? worth it?
+
+    - get android editor settings from crouton environment and use in windows
+
+    - integrate latest version of Box2D w/ cocos2d-x
+      * IMPORTANT: add a note to remind myself to redo this when cocos2d-x is eventually updated
+      - make sure to create a reliable backup prior to this!
+      - backup old cocos2d-x/box2d directory
+      - copy new box2d files into cocos2d-x
+
+      - maybe refer to this? https://discuss.cocos2d-x.org/t/how-do-i-update-the-box2d-version-in-a-cocos2dx-project/9942
+      
+      - debugdraw completely replaces the gles-render.h/.cpp files functionality..
+        - duplicate celesial project, removing "gles-render" files and replacing with "debugdraw" equivalents
+
+      - try backtesting with billiards and eskimo android projects
+
     - attempt to use RUBE loader with cocos2D-x project
 
     - compare box2d docs vs R.U.B.E. joints to better visualize (watch relevant videos)
@@ -42,6 +60,9 @@ TODO
     - revisit BOX2D TEST HARNESS (Monday 2019-05-20)
 
     - read/document notable DISCUSSION FORUM topics
+
+    - disable chipmunk? and other APP_CPPFLAGS
+      - see: http://discuss.cocos2d-x.org/t/how-to-speed-up-cocos2d-x-build-with-prebuilt-lib/23402/33
 
     - tutorials:
       http://www.iforce2d.net/b2dtut/introduction
@@ -104,8 +125,6 @@ TODO
     - tutorial(s)
       http://www.lavaxp.net/integrating-box2d-with-cocos2d-x/
       http://www.iforce2d.net/b2dtut/
-
-    - integrate latest version of Box2D w/ cocos2d-x?
 
 
   ONGOING

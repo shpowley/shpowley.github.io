@@ -38,8 +38,12 @@ PRE-BUILT LIBRARIES
 
   http://www.cocos2d-x.org/docs/cocos2d-x/en/editors_and_tools/prebuilt_libraries.html
 
+
   *** GUIDE(?) (NOV 2018)
   https://discuss.cocos2d-x.org/t/android-prebuilt-library-how-solve/44428
+
+  *** OLDER DISCUSSION
+  http://discuss.cocos2d-x.org/t/how-to-speed-up-cocos2d-x-build-with-prebuilt-lib/23402/33
 
   GENERATING PRE-BUILT LIBRARIES
 

@@ -1,13 +1,136 @@
 ----------
+Friday 2019-05-24
+
+  GOALS
+    - RUBE tutorials: NEXT
+    - watch RUBE tutorial vid #X and take notes - NEXT
+
+----------
+Thursday 2019-05-23
+
+  GOALS
+    - continue with b2djson loader: android custom project
+      - continue notes on "Wednesday 2019-05-22"
+
+    - cocos2d-x
+      - https://youtu.be/ePTR5lHE4q0
+      - https://www.iforce2d.net/rube/?panel=loaders
+
+    - peruse main TODO list
+    - RUBE tutorials: user data - http://www.iforce2d.net/b2dtut/user-data
+    - watch RUBE tutorial vid #5 and take notes - https://youtu.be/1UUHSezu96g
+
+----------
+Wednesday 2019-05-22
+
+  b2djson LOADERS
+
+    *** http://www.iforce2d.net/b2djson/
+      - programming usage case examples and reference
+
+
+    B2DJSON LOADER: COCOS2D-X / BOX2D
+
+      - the default "sampleLoaders" directory didn't have the latest cocos2d-x sample; the latest is v3.4
+
+
+      ANDROID/COCOS2D-X PROJECT SAMPLE PROJECT
+
+        !! WOW - THIS COMPILED AND WORKED ON THE FIRST ATTEMPT !! I was very surprised
+
+        - GOOD PERFORMANCE, PINCH-TO-ZOOM FEATURE on some demos
+        - IMAGES ALSO LOADED using b2djson
+        - BOX2D MOUSE JOINT feature
+        - simple UI CONTROLS demo (useful?)
+        - physics draw layer
+
+        - simple menu demo didn't really do anything though..
+
+        COMMENT: with IMAGES ABLE TO LOAD DIRECTLY WITH B2DJSON and VERTEX EDITING IN RUBE, I almost didn't need to purchase texturepacker (though the spritesheet feature will be necessary down the road)
+
+
+      ANDROID/COCOS2D-X PROJECT TO TEST CUSTOM JSON CREATED IN RUBE EDITOR
+
+        - studying BasicRUBELayer.cpp/.h to get a feel for how to load my custom/simple RUBE json file. this is definitely the file I want to be looking at, however, after browsing this code, I'VE NOTICED SEVERAL IMPORTANT THINGS
+
+          - I'm not sure if the technique using PTM_RATIO can be used as in the celestial project; BasicRUBELayer.cpp/.h provides worldToScreen() and screenToWorld() methods
+
+          * DEBUGDRAW INCLUDE FILES AND IMPLEMENTATIONS ARE VASTLY DIFFERENT across the many projects I've looked at so far..
+            -I've found several different versions with similar function signatures: celestial project (GLES-Render.h/.cpp), rube_loader_demo (Box2DDebugDraw.h/.cpp), iOS (GLES1DebugDraw.h/.cpp), etc.
+            - I'm going to at least try using the Box2D Testbed Framework files "DebugDraw.cpp" and "DebugDraw.h" from now on as these are closest to official(?) and fallback to the ones provided with the loader samples
+
+        HERE
+
+
+    B2DJSON LOADER: WINDOWS BOX2D TEST HARNESS
+
+      - copied b2dson from one of the loader examples into SDK/RUBE-b2djson folder
+        - each example appears to use the same source files
+
+      - created a link using MS mklink and moved this to SDK\Box2D\Testbed\Tests folder
+
+      - I had to FIX the following:
+        - b2dJsonImage_OpenGL .h/.cpp were NOT INCLUDED in the visual studio project heirarchy to prevent compile errors
+
+        - b2dJson.cpp
+          int32 vertexCount = poly->GetVertexCount();  HAD TO BE CHANGED TO
+          int32 vertexCount = poly->m_count;
+
+          ->GetVertexCount() appears to be deprecated in Box2D 2.3.2
+
+          NOTE:
+            - m_count is the # of vertices in b2Polygon only
+            - for something like b2Vec2 arrays, however, use SIZE OF ARRAY calculation = sizeof(<b2Vec2 array>) / sizeof(b2Vec2 element);
+
+----------
 Tuesday 2019-05-21
 
-    - RUBE tutorials: using debug draw, drawing your own objects - http://www.iforce2d.net/b2dtut/debug-draw
-    - re-watch RUBE tutorial vid #4 and take notes - https://youtu.be/FnBHnPwtZjE
+  MISC
 
-    - take another look at celestial project, specifically the b2Sprite relationship of sprite & physics object (initialization, positioning, and position-synchronization) and thoughts of RUBE usage
+    - sidetracked adding TODO items for integrating latest box2d to cocos2d-x and removing chipmunk
+    - fill in "project ideas.txt" and try to sort by themes
 
-    - fill in "project ideas.txt" and try to sort by themes; remember goal is 2D
-    - json export + json loader for cocos2d-x and box2d test harness(?)
+
+  IFORCE2D TUTORIALS
+
+    * NOTE: I can't really test these projects ("using debug draw" AND "drawing your own objects") because of the same reason given in the tutorial "rotating to a given angle". I think either there is something wrong my development environment or the opengl api calls used in these tutorials are deprecated from an older version of opengl (not sure exactly)
+
+
+    "using debug draw" (CODE EXAMPLE SKIPPED)
+
+      * I noticed that debug draw features seemed identical to gles-render.h/.cpp, which prompted me to consider upgrading the box2d bundled into cocos2d-x
+
+      *** NOTE: refer to Box2D Testbed/Framework/Test.cpp for a good detailed code usage example
+
+      - basically, this shows how to subclass "DebugDraw" (I honestly don't think I'll be doing this)
+
+      - don't forget to set the drawing flags for the type of visibility of elements desired (shapes, connections, aabb, broad-phase pairs, center-of-mass)
+
+
+    "drawing your objects" (CODE EXAMPLE SKIPPED)
+
+      - basically, drawing shapes independent of debug draw for an example game-entity
+
+
+  B2SPRITE (CELESTIAL PROJECT)
+
+    - my custom b2Sprite inherits from the cocos2d-x Sprite, overriding positioning functions to keep the box2d and sprite object positions in-sync
+      
+      Asteroid < b2Sprite < Sprite (cocos2d-x)
+
+    - for my asteroid test, everything seems to match up on the center of the sprite and box2d body, however, I'm not sure of the alignment for physics bodies with multiple fixtures
+
+    - the debug draw acts independently of the b2Sprite and visibility isn't controlled at a granular object level - it's more of an application-level on/off, but that's probably fine
+
+      * however, the default position will be (0, 0) and even for hidden objects, the physics debug will still render at that position
+
+
+    RUBE INIT
+
+    - in b2Sprite-based objects, the physics body is defined in the creation/init
+
+    - I think the RUBE definitions can be loaded in the scene load (1), then the bodies created as pointer definitions (2), initialized bodies passed into the create method, similar to the container physics layer (3)
+
 
 ----------
 Monday 2019-05-20
