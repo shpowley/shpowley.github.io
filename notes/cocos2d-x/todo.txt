@@ -2,6 +2,35 @@ TODO
 
   - it might be a good idea to just drive around to get new ideas and audio recorded
 
+
+  APP DEVELOPMENT PROGRESS NOTES
+
+    - name ideas: dashboard toys, bobble toys, bobble
+
+    - development goals: hawaii theme => hula dancers => open source mascots => dashboard toys (potluck)
+
+    * minimum viable app
+      * live wallpaper
+      * revenue mechanism(s)
+      - begin working on next app
+
+    * business license => e-mail address => bank account => app store account
+      - later a website, social media..
+
+    - ANDROID RUBE LOADER / COMBINE PHYSICS SCENARIOS: AROUND 3 SIDE-BY-SIDE, PINCH-TO-ZOOM/PAN (OR FIT IN LANDSCAPE VIEW), DESCRIPTIVE LABELS
+      - ex. this scenario has x-acceleration only to control x-force
+        scenario 2: max(x/z-acceleration) to control x-force
+        scenario 3: x/z-acceleration normalized to control x-force
+        scenario 4: auto-wobble?
+        scenario 5: different constants
+        scenario 6: alternate joint configs
+        scenario 7: minimum threshold acceleration
+        
+        different body shapes, distance, densities
+        acceleration moving forward or X/Z normal force
+        y acceleration spring effect
+
+
   R.U.B.E.
 
     - tutorials
@@ -11,6 +40,9 @@ TODO
       13 - *joints - prismatic
 
     - tutorials + advanced (come back to review later)
+        - using debug draw (RE-VISIT)
+        - drawing your objects (RE-VISIT)
+
       6 - anatomy of a collision
       7 - collision callbacks
       8 - collision filtering, sensors
@@ -19,29 +51,11 @@ TODO
       14 - "can I jump" question
       15 - ghost vertices
 
-    - try modifying export items and check with .cpp and json export files
+    - rendering: Box2DDebugDraw.cpp/.h vs GLES-Render.cpp/.h
+      - study Box2DDebugDraw.cpp/.h vs GLES-Render.cpp/.h and try to get working again? body (issue with backgrounds not moving)
 
-    * revisit code examples in ANDROID/COCOS2D-X PROJECT TO TEST SAMPLE LOADER (Wednesday 2019-05-22) and document how to implement some features
-
-    - json compression? worth it?
-
-    - get android editor settings from crouton environment and use in windows
-
-    - integrate latest version of Box2D w/ cocos2d-x
-      * IMPORTANT: add a note to remind myself to redo this when cocos2d-x is eventually updated
-      - make sure to create a reliable backup prior to this!
-      - backup old cocos2d-x/box2d directory
-      - copy new box2d files into cocos2d-x
-
-      - maybe refer to this? https://discuss.cocos2d-x.org/t/how-do-i-update-the-box2d-version-in-a-cocos2dx-project/9942
+    - json compression? worth it? option built into RUBE
       
-      - debugdraw completely replaces the gles-render.h/.cpp files functionality..
-        - duplicate celesial project, removing "gles-render" files and replacing with "debugdraw" equivalents
-
-      - try backtesting with billiards and eskimo android projects
-
-    - attempt to use RUBE loader with cocos2D-x project
-
     - compare box2d docs vs R.U.B.E. joints to better visualize (watch relevant videos)
       - also, look at javascript phaser joints in previous apps and compare to above
 
@@ -49,26 +63,10 @@ TODO
       - torque controlled programmatically to mimic joint flexed +/- a rest position?
       - see "Sunday 2019-05-12"
 
-    - attempt to integrate code into cocos2D-x project
-      - document basic workflow from R.U.B.E. to c++/cocos2d-x using a simple physics scenario
-      + and loader using JSON (problems with reverse engineering)
-
-      * I need to really study how my Celestial>AsteroidScene was implemented to see if RUBE import can be incorporated easily
-
-      - revisit Box2D.txt and update
-
-    - revisit BOX2D TEST HARNESS (Monday 2019-05-20)
 
     - read/document notable DISCUSSION FORUM topics
 
-    - disable chipmunk? and other APP_CPPFLAGS
-      - see: http://discuss.cocos2d-x.org/t/how-to-speed-up-cocos2d-x-build-with-prebuilt-lib/23402/33
-
-    - tutorials:
-      http://www.iforce2d.net/b2dtut/introduction
-      - link to some youtube videos below
-
-    - watch some tutorial videos
+    - video tutorials
       - Cocos2d-x "on the fly" resource updating: https://youtu.be/Xv4JYqwlGOg
       - Box2D inverted pendulum control: https://youtu.be/LH0pRDIeZB8
       - RUBE case study: soft wheels: https://youtu.be/F-aDMZUVw0c
@@ -90,18 +88,10 @@ TODO
       - Box2D conveyor belt implementation: https://youtu.be/EtvTtUZaVM0
 
 
-  DOCUMENTATION
-    - re-org and consolidate journal notes into a monthly format ==> new journal files; simultaneously update books and projects
-
-    - books.txt
-      - central location to track cocos2d-x book reading and chapter summary, chapters completed, projects completed, and thoughts
-
-    - project ideas.txt
-      - central project ideas to consolidate info from journal and other places
-      - journal (Monday 2019-05-13, Tuesday 2019-05-14), Note 4 S-Note, other journal entries?, todo lists
-
-
   ANDROID ACCELEROMETER SENSOR - GRAVITY ISSUE
+
+    QUESTION: is not having the ability to use linear acceleration really an issue?
+
     try to reverse-engineer git code for gyroscope sensor
       - https://github.com/Undume/Gyroscope-Cocos2d-x
 
@@ -111,20 +101,32 @@ TODO
     code a version of the low-pass-filter accelerometer
 
 
+  disable chipmunk? and other APP_CPPFLAGS
+    - see: http://discuss.cocos2d-x.org/t/how-to-speed-up-cocos2d-x-build-with-prebuilt-lib/23402/33
+
+
   PRE-BUILT COCOS2D-X LIBRARIES
     - try to get working (make sure to back everything up prior)
+    - http://discuss.cocos2d-x.org/t/how-to-speed-up-cocos2d-x-build-with-prebuilt-lib/23402/43
 
 
   BOX2D
-    - update BOX2D how-to guide as necessary
+    - update BOX2D how-to guide as necessary..
+
+    - study code to implement ideas for Box2D test harness (journal Monday 2019-05-20)
 
     BOX2D TEST APP
       - create a menu for multiple scenes
       - new scene for box2d joint(s) test
 
-    - tutorial(s)
-      http://www.lavaxp.net/integrating-box2d-with-cocos2d-x/
-      http://www.iforce2d.net/b2dtut/
+    LATEST VERSION OF BOX2D W/ COCOS2D-X?
+      * IMPORTANT: add a note to remind myself to redo this when cocos2d-x is eventually updated
+      - make sure to create a reliable backup prior to this!
+      - backup old cocos2d-x/box2d directory
+      - copy new box2d files into cocos2d-x
+      - try backtesting with billiards and eskimo android projects
+
+      - maybe refer to this? https://discuss.cocos2d-x.org/t/how-do-i-update-the-box2d-version-in-a-cocos2dx-project/9942
 
 
   ONGOING
@@ -148,27 +150,12 @@ TODO
     - read "cocos2D-x notes.txt" > RESOLUTION
       https://discuss.cocos2d-x.org/t/solved-how-to-really-resize-a-sprite-to-avoid-scaling-it/21458/8
 
-    - c++ Android Studio conditional breakpoint -- TRY TO GET THIS WORKING
-
-    - notes are scattered between multiple files (made sense at the time)
-      - cocos2D-x.txt
-        - try consolidating information from various files here with the goal of it being a personal reference
-        - move this to html format w/ expanding / collapsible sections
-
-      - todo.txt (keep)
-      - journal.txt (keep)
-      - <book name>.txt (not sure, maybe consolidate...)
-
-    - review notes on a weekly basis (journal and other notes)
-
     - read pdf books
       - "Building Android Games with Cocos2D-x" (CURRENT BOOK)
       - "Cocos2d-x by Example - Beginner's Guide"
       - "Cocos2d-x Cookbook"
 
     - implement and test PAUSE without .push() & .pop() from "Building Android Games"
-
-    - tutorials
 
     - ADMOB (later)
       - continue with "Building Android Games with Cocos2d-x" p.122 starting at moving the mute button
@@ -179,12 +166,4 @@ TODO
       - lookup info on "CC_CALLBACK_2"
       - lookup other callback mechanisms
 
-    - research data storage options
-
     - create aspect ratio "squares" in a 2d drawing program
-
-    - physicseditor and cocos2d-x/box2d
-      https://github.com/CodeAndWeb/PhysicsEditor-Cocos2d-x-Box2d
-      https://github.com/meiry/PhysicsEditor-_cocos2d-x-ver3-loader
-      http://discuss.cocos2d-x.org/t/can-i-use-physics-editors-plist-file-with-box2d/44164
-      http://discuss.cocos2d-x.org/t/custom-loader-for-physicsbodyeditor-box2d/26225

@@ -14,26 +14,38 @@ PROJECT IDEAS CENTRAL DOCUMENT
 
   HAWAII
 
-    - hula dancer
+    * hula dancer
       - hula dancer face or face cutout
 
-    - flip flops + alternate styles
+    * flip flops + alternate styles
       - dog paws
       - user replaceable swaying feet (ie. baby feet)
 
-    - hang loose hawaii hand sign
-    - hawaiian turtles
+    * hang loose hawaii hand sign + text
+    * hawaiian turtles
     - surfer
 
+    - palm trees
+      - sunrise/sunset, sun behind the trees(?)
+      - swaying with accelerometer and random wind
+      - coconuts falling with strong y-acceleration
+      - multiple joints for the trunk and palm leaves
+      - multiple trees
+
+    - android robot hula dancer
+      - hawaiian shirt, lei, hula skirt, different poses
+
     - tiki gods
-    - palm trees (wind, sunrise/sunset, coconuts falling, sun behind the trees)
     - flowers (orchids floating on water)
     - lei
-    - license plate keychain
-    - surfboard keychain
-    - tiki keychain
-    - hawaiian shirt (android robot w/ hawaiian shirt, lei, hula skirt, different poses)
     - peace frog hang loose
+
+    - keychains
+      - license plate
+      - surfboard
+      - tiki
+      - hawaiian shirt
+
     - google image search: "hawaii keychain"
       - art ideas
       - hawaii with "w" replaced by hang loose hand sign
@@ -43,13 +55,21 @@ PROJECT IDEAS CENTRAL DOCUMENT
 
   HULA DANCER
 
-    - hula dancer
-    - hula garden gnome
+    - traditional hula dancer toy variations
+    - tux penguin hula dancer
     - aphrodite hula
-    - betty boop hula
+    - presidential
+    - statue of liberty
+
+    - android robot hula dancer
+      - hawaiian shirt, lei, hula skirt, different poses
+
+    - (customize it) your face cutout on a toy hula dancer
+      - change skin tone / hair color?
+
     - "hello kitty" hula
-    - hula dancer face or face cutout
-    - hawaiian shirt (android robot w/ hawaiian shirt, lei, hula skirt, different poses)
+    - hula garden gnome
+    - betty boop hula
 
 
   VEHICLES
@@ -79,19 +99,22 @@ PROJECT IDEAS CENTRAL DOCUMENT
     - android logo / android hula
 
 
-  FLOWERS "FLOWER POWER"
+  FLOWERS "FLOWER POWER" / "DANCING FLOWERS"
 
-    - solar powered dancing flower
+    - solar powered dancing flower variations
+    - cactus dancing
     - hawaiian lei
 
     - popular flowers "jostled around"
       - sunflower
 
+    - lotus on water
     - water lilies on water
     - hummingbird (it "floats", flapping wings, flying around to flower movement)
     - butterfly resting
     - kindergarten style
-    - "flower power" peace sign made of flowers
+    - "flower power" peace sign made of flowers (see hippie art theme)
+    - artwork with flowers - deconstruct images of really popular artworks to animate flowers; remove background OR keep it
 
 
   SPINNING THINGS
@@ -109,6 +132,7 @@ PROJECT IDEAS CENTRAL DOCUMENT
     
     + check out panda live wallpaper
     - a lot of possibilies in similar poses
+    - round "cute" blob character; cat, dog, santa, rolling/squish-bouncing
 
 
   JAPAN
@@ -134,9 +158,10 @@ PROJECT IDEAS CENTRAL DOCUMENT
     - peace frog waving hand
     - happy face emojis accelerometer react bouncing, circular spring also; changing facial expressions
     - piggly. wiggly.
-    - "flower power" peace sign made of flowers
     - kokopelli - keychain(?), cave art style(?)
+
     - "flower power" peace sign made of flowers
+      - peace sign composed of flowers, each flower rotates/bounces, jarring acceleration causes flower(s) to fall off, flowers that fall grow back
 
 
   HOLIDAYS
@@ -151,12 +176,34 @@ PROJECT IDEAS CENTRAL DOCUMENT
 
   MISC
 
+    * GOOGLY EYES
+      - standalone app, live wallpaper
+      - pick your own image and place some googly eyes
+      - options: changeable physics, size/position/# eyes, background image, save configs
+      - pre-made with images (trump, hillary)
+
     - presidential (republican elephant, democrat donkey, candidates)
     - rolling coins - various coin rolling w/ accelerometer; international coins maybe? modes - $1.00, $0.50, collector, international (by country), bitcoin, arcade
     - teddy bear
     - simulated water: boat, boat in a bottle, rubber duck
-    - christian: buddy jesus, air jesus, christian fish, cross on a chain (religion is very touchy though)
-    - hello kitty (if hawaii app actually does well), kimono @ megamart, grass skirt, etc. look at IP licensing..
+
+    * christian:
+      - buddy jesus
+      - air jesus
+      - christian fish
+      - cross on a chain
+      * rosary on an old woman's hand
+      - existing jesus live wallpaper one not great IMO, but tons of downloads, cheesy religious text; rio jesus or other existing art, clouds moving toward user, not really much animation/accelerometer
+
+    * HELLO KITTY
+      - if hawaii app+ actually does well
+      - kimono @ megamart, grass skirt, etc.
+
+      - look into licensing IP
+        - check sanrio website
+        - google search images
+        - create a mock-up with at least 2 hello kitty dancing poses + create a video to submit (already built app mock-up (ios & android) would probably be a much more convincing argument..)
+
     - fortnite dancing (not sure about this one..)
     - food: stacked hamburger (ingredients stack flop), pizza; advertising graphics geared toward businesses
     - morning star on a chain (weapons theme?)
@@ -164,3 +211,19 @@ PROJECT IDEAS CENTRAL DOCUMENT
     - gangnam style
     - cowboy
     - rodeo horse bronco
+    - 4-leaf clover - group or individual
+    - toy box toys - teddy bear (floppy or animated), jack in the box
+    - spider/spider-web: spider moving around?
+    - sheep/jumping over a fence - accelerometer?
+    - humans transitioning poses - football player, martial arts (kung-fu) forms
+    - heart spring effect + thumping
+    - keychain license plates for all 50 states
+    - construction vehicles: interact with environment, earth movers, wrecking ball
+    - photo-op cutouts: strong-man muscle posing - upper body wobble flexing
+    - palm tree: multiple-segments for trunk(?), more difficult to animate, palm trees actually flex very little unless in an extreme wind / hurricane..
+    - animated gifs live wallpaper (already exists..), marketing synergy with existing apps (cross-advertising)
+
+    - vehicle orthographic view
+      - wheels spinning + vehicle bouncing in response to accelerometer
+      - logo appears fade-in/shrink to normal size, car appears in front of logo, logo fades out
+      - monster truck, various dream cars, IP?, simple movement

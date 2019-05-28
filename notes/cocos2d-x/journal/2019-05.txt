@@ -1,24 +1,92 @@
 ----------
-Friday 2019-05-24
+Tuesday 2019-05-28
 
   GOALS
-    - RUBE tutorials: NEXT
-    - watch RUBE tutorial vid #X and take notes - NEXT
+    - RUBE tutorials: http://www.iforce2d.net/b2dtut/collision-anatomy
+    - re-watch RUBE tutorial vid #7+ and take notes - https://youtu.be/6m4vxVIqUcM
 
 ----------
-Thursday 2019-05-23
+Monday 2019-05-27
 
   GOALS
-    - continue with b2djson loader: android custom project
-      - continue notes on "Wednesday 2019-05-22"
-
     - cocos2d-x
       - https://youtu.be/ePTR5lHE4q0
       - https://www.iforce2d.net/rube/?panel=loaders
 
-    - peruse main TODO list
-    - RUBE tutorials: user data - http://www.iforce2d.net/b2dtut/user-data
-    - watch RUBE tutorial vid #5 and take notes - https://youtu.be/1UUHSezu96g
+    - backup android RUBE custom project to github
+
+  ***
+  MISC
+
+    - re-watch RUBE tutorial vid #5 and 6 and take notes
+    - backup
+
+
+  AUDIO NOTES
+
+    - app settings
+      - driving, stationary desktop
+      - gravity + acceleration OR linear acceleration
+      - random auto-wobble
+
+    ? maybe test project in my name, maybe open-source mascots (gnu, android robot, tux hula), learning experience
+
+    - business names / app names:
+      - in motion, accel, animotion, animoji, animotes
+      - stuck with "accelerometer" concept in name? use a more generic name? initials..
+
+
+  IFORCE2D TUTORIALS
+
+    "Drawing your own objects" (iforce-DrawObjectTest.h)
+
+      * custom class (Ball) with a "render()" method, called during the box2d-physics Step() function
+        * compared this last tutorial, where custom DebugDraw uses inheritance to override "DrawSolidPolygon()"
+
+      - once again opengl-specific calls couldn't be used; deprecated in favor of shaders..?
+      - not learning opengl shaders, so I just used DebugDraw calls as much as possible; this doesn't allow for custom image rotation
+  
+
+    "user data" (iforce-UserDataTest.h)
+
+      - void pointer to outside objects
+      - user data c++ pointer are part of the following box2d classes: b2Body, b2Fixture, b2Joint
+
+      * store COMPLEX USER DATA using a CUSTOM STRUCT - good example shown
+        NOTE: caveat with user data is that it's good idea to be consistent with the type of data stored (complex struct is probably best)
+        NOTE: box2d doesn't delete user data, REMEMBER TO CLEAN UP
+
+      - example does the same as previous project with ball, except with a reference to ball in each box2d body, modifying properties
+
+
+----------
+Friday 2019-05-24
+
+  MISC
+    - transcribe audio notes
+    - note observations and improvement ideas for CUSTOM ANDROID RUBE LOADER
+    - created android app dev plan (i.e. apps I want in order of development, business related stuff, etc.)
+
+
+  DEBUGDRAW
+    - I tried to do a drop-in REPLACEMENT OF BOX2DDEBUGDRAW.CPP/.H WITH GLES-RENDER.CPP/.H, but that FAILED DUE TO SEVERAL INCOMPATIBILITIES. I might study this in more detail later.
+    - BOX2DDEBUGDRAW.CPP/.H works ok, it's just that the fill(?) color for BODIES REMAIN IN A STATIC POSITION for some reason
+
+  
+  IFORCE2D TUTORIALS
+
+    "using debug draw" (iforce-DebugDrawTest.h + iforce-DebugDraw.h)
+
+      - overriding "DebugDraw" class - "DrawSolidPolygon" method
+      - I decided to try this again as tutorials further along seem to build off of this..
+      - I completed the code as much as possible, however, the DebugDraw implementation isn't working in the windows 10 environment for some reason. a lot of the opengl functions in this tutorial are unavailable.
+
+----------
+Thursday 2019-05-23
+
+  MISC
+    - continue with b2djson loader: android custom project
+      - continue notes on "Wednesday 2019-05-22"
 
 ----------
 Wednesday 2019-05-22
@@ -57,9 +125,11 @@ Wednesday 2019-05-22
 
           * DEBUGDRAW INCLUDE FILES AND IMPLEMENTATIONS ARE VASTLY DIFFERENT across the many projects I've looked at so far..
             -I've found several different versions with similar function signatures: celestial project (GLES-Render.h/.cpp), rube_loader_demo (Box2DDebugDraw.h/.cpp), iOS (GLES1DebugDraw.h/.cpp), etc.
-            - I'm going to at least try using the Box2D Testbed Framework files "DebugDraw.cpp" and "DebugDraw.h" from now on as these are closest to official(?) and fallback to the ones provided with the loader samples
+            - attempted to use the Box2D Testbed Framework files "DebugDraw.cpp" and "DebugDraw.h", but I ended up having to fallback to the ones provided with the android loader sample
 
-        HERE
+        - "rube_loader_custom" android project houses my json loader simple box2d scenario test. essentially the hula dancer bobble toy, but with simple shapes. so after using the demo project as a code template, this eventually worked. I also incorporated the accelerometer to work with this box2d scenario, but this required tweaking the many settings: mass/density, box2d "weld joing" settings, etc. to get this to work properly.
+
+          - this still need work: b2Sprite integration, PTM_RATIO?, box2d joint limits/adjustments, mouse joint limits?, etc.
 
 
     B2DJSON LOADER: WINDOWS BOX2D TEST HARNESS
@@ -97,10 +167,6 @@ Tuesday 2019-05-21
 
 
     "using debug draw" (CODE EXAMPLE SKIPPED)
-
-      * I noticed that debug draw features seemed identical to gles-render.h/.cpp, which prompted me to consider upgrading the box2d bundled into cocos2d-x
-
-      *** NOTE: refer to Box2D Testbed/Framework/Test.cpp for a good detailed code usage example
 
       - basically, this shows how to subclass "DebugDraw" (I honestly don't think I'll be doing this)
 

@@ -49,11 +49,42 @@ SCRIPT PANEL
   - angelscript (see help)
 
 
+ITEM MANIPULATION (TRANSLATION, ROTATION, SCALING)
+  - +SHIFT : fine control/movement
+  - +CTRL : step
+
+  - for JOINTS, press T twice to switch anchors
+    - distance joints, 3rd T mode option
+
+  - item TRANSLATION can jump between viewport views
+  - for ROTATION/SCALING, 2 modes: rotate around 1) cursor OR 2) selection center
+
+  - mirror any item type except images
+    - for images, use image properties "flip" and "rotate"
+
+    - use negative scaling for all other object types (S, X, CTRL..)
+      NOTE: mirroring "polygon decomposition" can create many more sub-polygons than the original (fix this with Fixture > Reverse vertex winding)
+
+    - mirroring composite objects - this will work fine, except for joints
+      - positions will be fine, but the limit settings might have to be adjusted
+
+
 MISC
   
   - CTRL + right mouse button will ZOOM to created rectangle
-  - SEND FEEDBACK option built in
+  - SEND FEEDBACK option built in to RUBE
   - each mode can have different items selected
+  - ACTION MENU: accessible using SPACE BAR, right-click (as an option), or menu
+
+
+DUPLICATION (shift+D)
+
+  - actually causes 2 operations (duplication & translate)
+  - will also duplicate joints attached to the body - NOTE: be careful only duplicating 1 body with a joint attached, as the other side of the joint will still be attached to another body
+
+  - COPY / PASTE feature will still work as usual, but more useful for pasting into other documents
+    - DUPLICATE combines COPY+PASTE+TRANSLATE
+    - copies plaintext json into the clipboard - this can be edited in a text editor and copied again
 
 
 BOX2D BODY TYPES
