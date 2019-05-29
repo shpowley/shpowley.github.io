@@ -1,25 +1,68 @@
 ----------
-Tuesday 2019-05-28
+Wednesday 2019-05-29
 
   GOALS
-    - RUBE tutorials: http://www.iforce2d.net/b2dtut/collision-anatomy
+    - RUBE tutorials: http://www.iforce2d.net/b2dtut/joints-prismatic
+    - re-watch RUBE tutorial vid #9+ and take notes - https://youtu.be/dTu2j9swqnY
+
+  ---
+
+  IFORCE2D TUTORIALS
+
+    "Prismatic joints"
+
+      usage examples:
+        - elevators
+        - moving platforms
+        - sliding doors
+        - pistons
+
+----------
+Tuesday 2019-05-28
+
+  MISC
+  
     - re-watch RUBE tutorial vid #7+ and take notes - https://youtu.be/6m4vxVIqUcM
+
+
+  IFORCE2D TUTORIALS
+
+    "Joints overview"
+    
+      - mostly a discussion -- DEFINITELY REQUIRES EXPERIMENTATION IN THE BOX2D TEST HARNESS
+      - requires a joint defintion similar to fixtures and bodies
+      - "b2Joint" is the base class for ALL JOINTS types, but never used directly
+
+
+    "Revolute joints" (iforce-RevoluteJointTest.h)
+
+      usage examples:
+        - wheels or rollers
+        - chains or swingbridges (using multiple revolute joints)
+        - rag-doll joints
+        - rotating doors, catapults, levers
+
+      - somewhat peculiar behavior when compared to linear velocity / force test
+      - see the keyboard example code for forward/stop/reverse
+
+      - use a combination of min/max angle limits and motor force / target speed
+        - reference angle (at rest)
+        - "negative" motor force doesn't really work as expected, this should be positive I guess; instead, target speed should be -/+
+        - many settings can be specified in the definition or at run-time
+        - no instantaneous SetAngle() exists (set limits to accomplish this)
+        - ->EnableMotor(false) for spinning wheels appear to spin indefinitely at the cutoff speed and appear have no "friction"; add "friction" with low torque / zero target speed
+
+      * compare this to (Monday 2019-05-20 "Rotating a body to a given angle" - iforce-RotationTest.h)
+        - UNLIKE THE REVOLUTE JOINT, however, <body> ->ApplyTorque() and ->ApplyAngularImpulse() are applied to a BODY'S CENTER OF MASS
+        ** if a BODY CENTER OF MASS and REVOLUTE JOINT PIVOT were the same... this would require experimenting
 
 ----------
 Monday 2019-05-27
 
-  GOALS
-    - cocos2d-x
-      - https://youtu.be/ePTR5lHE4q0
-      - https://www.iforce2d.net/rube/?panel=loaders
-
-    - backup android RUBE custom project to github
-
-  ***
   MISC
 
     - re-watch RUBE tutorial vid #5 and 6 and take notes
-    - backup
+    - backup pc
 
 
   AUDIO NOTES

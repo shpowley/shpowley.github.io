@@ -2,12 +2,29 @@ TODO
 
   - it might be a good idea to just drive around to get new ideas and audio recorded
 
+  SHORT-TERM GOALS
+
+    - finish joint RUBE tutorials
+    - joints info
+      - look back at "Joints overview" - http://www.iforce2d.net/b2dtut/joints-overview
+      - look at RUBE section below
+      - look at box2d docs
+      - look at source code (visual studio)
+
+    - early-alpha android app with 3 separate hawaii-themed dashboard toys (menu + hula dancer, flip flops, "hang loose" hawaii)
+      - best guess physics, import images straight from loader
+      
+    - finish RUBE video tutorial re-watch
+
+
+  - LATEST VERSION OF BOX2D W/ COCOS2D-X
+
 
   APP DEVELOPMENT PROGRESS NOTES
 
     - name ideas: dashboard toys, bobble toys, bobble
 
-    - development goals: hawaii theme => hula dancers => open source mascots => dashboard toys (potluck)
+    - development goals: hawaii theme => hula dancers => iOS => googly eyes => ?
 
     * minimum viable app
       * live wallpaper
@@ -34,15 +51,11 @@ TODO
   R.U.B.E.
 
     - tutorials
-      5 - user data
       11 - *joints - overview
       12 - *joints - revolute
       13 - *joints - prismatic
 
-    - tutorials + advanced (come back to review later)
-        - using debug draw (RE-VISIT)
-        - drawing your objects (RE-VISIT)
-
+    - tutorials + advanced
       6 - anatomy of a collision
       7 - collision callbacks
       8 - collision filtering, sensors
@@ -54,7 +67,7 @@ TODO
     - rendering: Box2DDebugDraw.cpp/.h vs GLES-Render.cpp/.h
       - study Box2DDebugDraw.cpp/.h vs GLES-Render.cpp/.h and try to get working again? body (issue with backgrounds not moving)
 
-    - json compression? worth it? option built into RUBE
+    - json compression? worth it? option built into RUBE?
       
     - compare box2d docs vs R.U.B.E. joints to better visualize (watch relevant videos)
       - also, look at javascript phaser joints in previous apps and compare to above
@@ -127,6 +140,44 @@ TODO
       - try backtesting with billiards and eskimo android projects
 
       - maybe refer to this? https://discuss.cocos2d-x.org/t/how-do-i-update-the-box2d-version-in-a-cocos2dx-project/9942
+
+
+  CURRENT APP DEVELOPMENT IDEAS
+    - android widget
+    - android live wallpaper
+    - android daydream
+    - android smartwatch?
+
+    SAMPLE LIVE WALLPAPERS
+
+      - gif live wallpaper / other apps too
+        - decent ui
+        - pricey
+
+      - panda bobble head | panda chub
+        - no ads
+        - in-app purchase for full version
+        - app "hidden" from primary list
+        - "cute" well-made images
+
+      - water garden
+        - well made
+        - no ads
+        - in-app purchases
+
+      - 3d earth | beach | kitten live wallpaper
+        - small ad on 1st menu
+        - large full ad on 1st entry to settings
+        - gyro "parallax"
+        - more apps
+        - rate / share / privacy policy
+
+      - falling leaves | GOD | nature live wallpaper
+        - very annoying (INVASIVE) ads
+
+
+  IOS
+    iforce2d tutorial - RUBE+cocos2d-x (iOS setup): https://youtu.be/ePTR5lHE4q0
 
 
   ONGOING

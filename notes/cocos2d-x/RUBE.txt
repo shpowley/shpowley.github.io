@@ -50,8 +50,8 @@ SCRIPT PANEL
 
 
 ITEM MANIPULATION (TRANSLATION, ROTATION, SCALING)
-  - +SHIFT : fine control/movement
-  - +CTRL : step
+  +SHIFT : fine control/movement
+  +CTRL : step
 
   - for JOINTS, press T twice to switch anchors
     - distance joints, 3rd T mode option
@@ -69,22 +69,42 @@ ITEM MANIPULATION (TRANSLATION, ROTATION, SCALING)
       - positions will be fine, but the limit settings might have to be adjusted
 
 
+VERTEX WINDING
+
+  - always counter-clockwise, convex for the most efficient "polygon decomposition"
+
+
+VERTEX MODE
+
+  ADD COMPLEX VERTICES PATHS
+    - press E for "EDGE MODE" to QUICKLY ADD VERTICES TO AND EXISTING EDGE
+
+    - select vertex and press E + E (2nd time) to QUICKLY ADD VERTICES ANYWHERE
+      - press E (3rd time) to QUICKLY ADD VERTICES ON THE OTHER EDGE OF THE SELECTED VERTEX
+      *** with this mode it's easy to QUICKLY CREATE A PHYSICS SHAPE OUTLINE OF ANY IMAGE ***
+
+    - able to cycle add vertices mode by pressing E repeatedly
+
+
 MISC
   
   - CTRL + right mouse button will ZOOM to created rectangle
   - SEND FEEDBACK option built in to RUBE
   - each mode can have different items selected
   - ACTION MENU: accessible using SPACE BAR, right-click (as an option), or menu
+  - fixture shape type greatly impacts resulting appearance (tutorial 7/18)
 
 
 DUPLICATION (shift+D)
 
   - actually causes 2 operations (duplication & translate)
   - will also duplicate joints attached to the body - NOTE: be careful only duplicating 1 body with a joint attached, as the other side of the joint will still be attached to another body
+  - for duplicated fixtures, the fixtures remain attached to the same body as the source
 
   - COPY / PASTE feature will still work as usual, but more useful for pasting into other documents
     - DUPLICATE combines COPY+PASTE+TRANSLATE
     - copies plaintext json into the clipboard - this can be edited in a text editor and copied again
+    - for fixtures can be pasted onto new bodies (1+ body at the same time)
 
 
 BOX2D BODY TYPES
@@ -96,8 +116,8 @@ BOX2D BODY TYPES
 
 JOINTS (TODO)
 
-  REVOLUTE
-  PRISMATIC
+  * REVOLUTE
+  * PRISMATIC
   DISTANCE
   WHEEL
   ROPE
