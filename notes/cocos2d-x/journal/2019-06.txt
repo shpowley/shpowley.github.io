@@ -1,0 +1,26 @@
+----------
+Saturday 2019-06-01
+
+  GOALS
+    - review journal
+    
+    b2dJson image load test project
+
+      - once working, create a backup copy of the scene
+
+      - customization:
+        - a singular RUBE import class, loosely based on celestial ~ separate layers for graphics (1+ maybe) + layer for physics
+        - turn debugdraw on/off
+        - allow for individual image (as it is now) OR
+        - texturepacker spritesheet loading with the b2dJSON
+
+    - re-watch RUBE tutorial vid #14+ and take notes - https://youtu.be/wwEPKhdzIpk
+
+  ---
+
+  MISC
+
+    - new journal for June 2019 created
+    - install GIMP image software v2.10.10
+
+  CODING

@@ -114,14 +114,47 @@ BOX2D BODY TYPES
   KINEMATIC - unaffected by gravity, linear/angular velocity, does not collide with static bodies
 
 
-JOINTS (TODO)
+JOINTS
 
-  * REVOLUTE
-  * PRISMATIC
-  DISTANCE
-  WHEEL
-  ROPE
-  
-  WELD (NEW)
-  FRICTION (NEW)
-  MOTOR (NEW)
+  - 1st body selected is "body A"
+  - JOINTS CAN ONLY BE DUPLICATED, as body A / body B references are maintained
+
+  JOINTS AVAILABLE IN RUBE EDITOR
+
+    *REVOLUTE
+      - see iforce2d tutorial log "Tuesday 2019-05-28"
+      - adjust lower/upper limits using properties or adjusting visual "whiskers" (press L key for lower limit, L key again for upper limit..)
+      - motor
+
+    *PRISMATIC
+      - see iforce2d tutorial log "Wednesday 2019-05-29"
+      - adjust limits using properties or visually constrained to the local axis (L key for lower limit, L key again for upper limit)
+      - adjust axis (R key 3x)
+      - adjust local anchor (T key)
+      - motor
+
+    DISTANCE
+      - freely rotating bodies about anchors with variable / fixed distance apart, able to create springy "bounce" effect along the length
+      - visual adjustment press T (once) to adjust anchor A, T key (2nd time) to adjust anchor B, and T key (3rd time) to adjust the distance length
+
+    ROPE
+      - very similar to the DISTANCE joint, but without springy "bounce" effect when reaching desired length
+      - distance between bodyA/bodyB is ok when less than the specified length, but can't exceed the length (kinda, except in the beginning of the simulation)
+      - visual adjustment same as the DISTANCE joint
+
+    WHEEL
+      - basically, a REVOLUTE joint with suspension similar to PRISMATIC
+      - visually adust the "suspension" local axis (R key 3x)
+      - motor
+
+    WELD (NEW)
+      - basically, a simple "ROTATIONAL JOINT"
+      - see "Thursday 2019-05-30"
+
+    FRICTION (NEW)
+      - joint that only controls FRICTION for ROTATION and DISTANCE
+      - see "Thursday 2019-05-30"
+
+    MOTOR (NEW)
+      - like FRICTION JOINT with elastic force
+      - see "Thursday 2019-05-30"

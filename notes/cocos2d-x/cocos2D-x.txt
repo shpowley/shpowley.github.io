@@ -29,6 +29,7 @@ CREATING A NEW PROJECT
       more: man ln
 
     WINDOWS
+      - this has to be done using the ADMIN COMMAND LINE
       ex. mklink /d [LINK] [TARGET FOLDER]
 
 --------------------------------------------------

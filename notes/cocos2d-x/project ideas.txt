@@ -155,7 +155,7 @@ PROJECT IDEAS CENTRAL DOCUMENT
 
   HIPPIE ART
 
-    - peace frog waving hand
+    - peace frog waving hand (standalone)
     - happy face emojis accelerometer react bouncing, circular spring also; changing facial expressions
     - piggly. wiggly.
     - kokopelli - keychain(?), cave art style(?)
@@ -212,6 +212,8 @@ PROJECT IDEAS CENTRAL DOCUMENT
     - cowboy
     - rodeo horse bronco
     - 4-leaf clover - group or individual
+    - bacon
+    - money cat / lucky cat
     - toy box toys - teddy bear (floppy or animated), jack in the box
     - spider/spider-web: spider moving around?
     - sheep/jumping over a fence - accelerometer?

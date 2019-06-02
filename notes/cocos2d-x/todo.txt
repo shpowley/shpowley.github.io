@@ -2,22 +2,27 @@ TODO
 
   - it might be a good idea to just drive around to get new ideas and audio recorded
 
-  SHORT-TERM GOALS
 
-    - finish joint RUBE tutorials
-    - joints info
-      - look back at "Joints overview" - http://www.iforce2d.net/b2dtut/joints-overview
-      - look at RUBE section below
-      - look at box2d docs
-      - look at source code (visual studio)
+  SHORT-TERM GOALS
 
     - early-alpha android app with 3 separate hawaii-themed dashboard toys (menu + hula dancer, flip flops, "hang loose" hawaii)
       - best guess physics, import images straight from loader
       
     - finish RUBE video tutorial re-watch
+    - finish joint RUBE tutorials
 
 
   - LATEST VERSION OF BOX2D W/ COCOS2D-X
+
+  - backup new android projects (compacted) - rube_loader_image, rube_loader_demo, rube_loader_custom
+
+  - backup customized RUBE-b2djson (d:\sdk\RUBE-b2djson)
+    - only 1 change so far, but also deleted 2 files..
+    - add to github
+
+  - customize iforce2d "QueryCallbacks.h" from demo? right now copied as-is
+
+  - maybe at some point create a heirarchy diagram of a standard cocos2d-x + box2d project; shared directories, class inheritance, etc.
 
 
   APP DEVELOPMENT PROGRESS NOTES
@@ -50,13 +55,8 @@ TODO
 
   R.U.B.E.
 
-    - tutorials
-      11 - *joints - overview
-      12 - *joints - revolute
-      13 - *joints - prismatic
-
     - tutorials + advanced
-      6 - anatomy of a collision
+      6 - anatomy of a collision: http://www.iforce2d.net/b2dtut/collision-anatomy
       7 - collision callbacks
       8 - collision filtering, sensors
       9 - ray casting
@@ -66,16 +66,9 @@ TODO
 
     - rendering: Box2DDebugDraw.cpp/.h vs GLES-Render.cpp/.h
       - study Box2DDebugDraw.cpp/.h vs GLES-Render.cpp/.h and try to get working again? body (issue with backgrounds not moving)
+      - once "fixed", add to github and add to SDK folder, for new projects create LINK back to this (like cocos2d-x and b2dJSON)
 
     - json compression? worth it? option built into RUBE?
-      
-    - compare box2d docs vs R.U.B.E. joints to better visualize (watch relevant videos)
-      - also, look at javascript phaser joints in previous apps and compare to above
-
-    - experiment with different joint configurations (see sketch & try negative torque)
-      - torque controlled programmatically to mimic joint flexed +/- a rest position?
-      - see "Sunday 2019-05-12"
-
 
     - read/document notable DISCUSSION FORUM topics
 
@@ -126,7 +119,7 @@ TODO
   BOX2D
     - update BOX2D how-to guide as necessary..
 
-    - study code to implement ideas for Box2D test harness (journal Monday 2019-05-20)
+    * review test scenarios listed for useful box2d usage and study code to implementation for Box2D test harness (journal Monday 2019-05-20)
 
     BOX2D TEST APP
       - create a menu for multiple scenes
