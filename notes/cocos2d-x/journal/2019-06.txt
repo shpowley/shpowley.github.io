@@ -1,22 +1,119 @@
+GOALS
+  - gimp vids
+  - review journal 2019-05
+  - re-watch RUBE tutorial vid #14+ and take notes - https://youtu.be/wwEPKhdzIpk
+
+  DASHBOARD TOY APP (TODO)
+    - accelerometer
+    - back button
+    - main select menu
+    - 2 more scenes
+
+    - settings
+      - app settings vs individual scene
+      - fps (battery?)
+      - battery saver (lower fps + black background)
+      - backgrounds (black, colors, scenes, hawaiian flowers)
+      - auto-wobble / random movement
+
+    - max length mouse joint?
+    - pinch-to-zoom / pan
+
+----------
+Wednesday 2019-06-05
+
+  - prepped images for "hang loose", "sandals", and "hawaiian turtles"; these still need the physics scenes built in the RUBE editor
+
+
+  GIMP layer masking
+
+    - useful for things like hair
+
+    - add transparency (alpha channel ) to layer
+
+    - duplicate layer and rename to "mask"
+
+    "mask" layer:
+      + colors > curves (CONTRAST METHOD 1)
+        - increase contrast between "hair" (or shape edges) and background by adjusting slope to bottom-flat>steep>top-flat so background is almost white and contrast has large as possible
+
+      - colors > desaturate (b&w)
+        - choose best mode for contrast
+
+      + colors > brightness-contrast (CONTRAST METHOD 2)
+        - adjust both to where fine features (ie. individual hairs) can be seen
+
+      - colors > invert (to create a negative)
+
+      GOAL: anything black is removed and anything white is kept
+
+      - choose paintbrush
+        - increase brush size
+        - paint over areas that the mask should not remove WHITE
+        - paint areas outside the primary shape BLACK
+        - use hide/show mask layer to see what is and isn't part of the intended mask
+
+      ??? use soft brush on mask edges OR soften the edge of an existing layer mask, you could just use Filter >> Blur >> Gaussian Blur
+
+      - edit > cut (removes entire layer into clipboard)
+
+    original image layer
+      - layer > mask > add layer mask (OR right-click > add layer mask)
+        - dialog select: "white (full opacity)"
+
+      - select layer mask icon (2nd square next to original image)
+
+      - edit > paste (a floating pasted layer is created)
+      
+      - right-click new floating layer > anchor layer (mask negative should be visible in 2nd square)
+
+    - create a new layer behind the newly masked image and fill with contrasting color and zoom-in on edges to note mask problems
+      - select original image square and use clone tool (and/or the burn tool {burn+highlights}) to fix problem edge areas
+
+    - save gimp file for later modification and export
+
+
+----------
+Tuesday 2019-06-04
+
+  b2dJson image load test project ==> DASHBOARD TOY APP
+
+    - load individual image sprites OR texturepacker spritesheet
+
+    - this "test" project is turning into my actual app, right now it's just one scene, but it establishes a streamlined workflow for adding additional scenes
+
+      1) create or obtain images
+      2) TexturePacker composite spritesheet + .plist + export individual images
+      3) RUBE editor physics scene with TexturePacker exported images .json
+      4) create scene with RUBELayer class to load RUBE physics (b2dJson) and TexturePacker sprites
+      5) individual scene customizations
+
+  RUBE editor / Box2D
+
+    - so in case I forgot to journal this, it's possible to create "composite" joints to mimic real-world physics objects; this is accomplished by super-positioning box2d joints on top of one another. I have 2 RUBE file examples that I created:
+
+      "COMPRESSION SPRING" (see compression-spring.rube): by attaching a prismatic and distance joint on the same 2 bodies, I can create something that acts like a regular compression spring limited to movement along a single axis
+
+      "ROTATIONAL SPRING" (see hula.rube): by attaching a revolute and weld joint on the same 2 bodies AND exactly the same position I was able to create a rotation spring limited to a fixed min/max angle; right now I'm only using this on my hula dancer figurine
+
+    - I did this because the default joints on their own, don't exactly meet my needs, so this seems like a reasonable solution.
+    - I was thinking of creating a spring-like object that can compress/elongate/rotate by either combining the above OR a pseudo spring composed of multiple weld joints that look like a side-view spring in 2D (I tried that in RUBE and it doesn't work - some super-wacky oscillation actually)
+
+----------
+Monday 2019-06-03
+
+  CODING
+
+    - RUBE + images now load into android using b2dJson
+    - customized RUBE layer from demo created; very re-usable, but still needs modifations
+
+----------
+Sunday 2019-06-02
+
+  CODING
+
 ----------
 Saturday 2019-06-01
-
-  GOALS
-    - review journal
-    
-    b2dJson image load test project
-
-      - once working, create a backup copy of the scene
-
-      - customization:
-        - a singular RUBE import class, loosely based on celestial ~ separate layers for graphics (1+ maybe) + layer for physics
-        - turn debugdraw on/off
-        - allow for individual image (as it is now) OR
-        - texturepacker spritesheet loading with the b2dJSON
-
-    - re-watch RUBE tutorial vid #14+ and take notes - https://youtu.be/wwEPKhdzIpk
-
-  ---
 
   MISC
 

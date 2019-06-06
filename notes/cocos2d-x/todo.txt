@@ -6,13 +6,10 @@ TODO
   SHORT-TERM GOALS
 
     - early-alpha android app with 3 separate hawaii-themed dashboard toys (menu + hula dancer, flip flops, "hang loose" hawaii)
-      - best guess physics, import images straight from loader
       
     - finish RUBE video tutorial re-watch
     - finish joint RUBE tutorials
 
-
-  - LATEST VERSION OF BOX2D W/ COCOS2D-X
 
   - backup new android projects (compacted) - rube_loader_image, rube_loader_demo, rube_loader_custom
 

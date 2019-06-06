@@ -35,10 +35,16 @@ PROJECT IDEAS CENTRAL DOCUMENT
     - android robot hula dancer
       - hawaiian shirt, lei, hula skirt, different poses
 
-    - tiki gods
+    - tiki mask gods / tiki surfer..
+
     - flowers (orchids floating on water)
+      + butterfly?
+
     - lei
     - peace frog hang loose
+
+    - beach bum w/ sunglasses and long hipster beard (beard physics)
+      - gnome + beard physics
 
     - keychains
       - license plate
@@ -155,9 +161,10 @@ PROJECT IDEAS CENTRAL DOCUMENT
 
   HIPPIE ART
 
-    - peace frog waving hand (standalone)
+    - peace frog waving hand (maybe standalone as it's IP)
     - happy face emojis accelerometer react bouncing, circular spring also; changing facial expressions
     - piggly. wiggly.
+    - dream catcher
     - kokopelli - keychain(?), cave art style(?)
 
     - "flower power" peace sign made of flowers
@@ -212,7 +219,7 @@ PROJECT IDEAS CENTRAL DOCUMENT
     - cowboy
     - rodeo horse bronco
     - 4-leaf clover - group or individual
-    - bacon
+    - shakin bacon
     - money cat / lucky cat
     - toy box toys - teddy bear (floppy or animated), jack in the box
     - spider/spider-web: spider moving around?
