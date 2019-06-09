@@ -26,7 +26,7 @@ Friday 2019-05-31
 ----------
 Thursday 2019-05-30
 
-  *NOTE: the PULLEY JOINT and GEAR JOINT is NOT IMPLEMENTED IN THE RUBE EDITOR and if needed, would require coding them directly (and probably a good code example)
+  *NOTE: both the PULLEY and GEAR JOINTS are NOT IMPLEMENTED IN THE RUBE EDITOR and if needed, would require coding them directly (and probably a good code example too)
 
 
   Android custom loader IMAGE TEST
@@ -38,7 +38,7 @@ Thursday 2019-05-30
       b) I tried to get away with replacing the "bobble.json" in the rube_loader_custom project, but failed. later I realized that I forgot to implement the image loading code from the android RUBE demo - I didn't try to debug, but of course it would fail. I restored this project back to the way it was so I would have a slightly customized REFERENCE PROJECT for the android RUBE loader
 
 
-  At the moment, I think the FOLLOWING JOINTS PROBABLY BEST FIT MY NEEDS for my "Dashboard Toys" app idea:
+  at the moment, I think the FOLLOWING JOINTS PROBABLY BEST FIT MY NEEDS for my "Dashboard Toys" app idea:
 
     - the WELD JOINT (as a traditional physics ROTATIONAL SPRING)
 
@@ -47,7 +47,7 @@ Thursday 2019-05-30
 
     - the default REVOLUTE JOINT (many use case scenarios)
 
-    * additional COMPOSITE JOINTS may be possible through experimentation (like a 2D "spring" composed of multiple WELD JOINTS or a combination of WELD + PRISMATIC JOINTS), but that adds complexity and maybe processing overhead(?)
+    * additional COMPOSITE JOINTS may be possible through experimentation (like a 2D "spring" composed of multiple WELD JOINTS or a combination of WELD + PRISMATIC JOINTS {EDIT 2091-06-08: I think I meant WELD + REVOLUTE JOINTS}), but that adds complexity and maybe processing overhead(?)
 
 
   EXPERIMENT with WELD, FRICTION, MOTOR JOINTS IN RUBE editor
@@ -55,14 +55,14 @@ Thursday 2019-05-30
     WELD JOINT
 
       - essentially a "ROTATIONAL SPRING" that attempts to return to it's REFERENCE ANGLE
-        - has "frequency" (spring stiffness), oscillation "damping", and a "reference angle"
+        - has "frequency" (spring stiffness), oscillation "damping", and a "reference angle" (EDIT 2019-06-08: mass of connected bodies greatly influences the spring effect)
 
       - a REVOLUTE JOINT with the motor enabled and with a torque has imbues rotational friction, but won't snap back to the reference angle like a spring
 
 
     FRICTION JOINT
 
-      - very unique type of joint that controls FRICTION for both ROTATIONAL and DISTANCE
+      - very unique type of joint that controls FRICTION for both ROTATION and DISTANCE
       - there are only settings for "max torque", "max force" and maybe "collide connected"
       - usage: ???, maybe simulate object destruction
 
@@ -119,7 +119,7 @@ Wednesday 2019-05-29
 
       "iforce-PrismaticForklift.h"
         - simplified forklift example built by the author that further elaborates on prismatic joints
-        - 2 primatic joints connected at 90 degrees and controlled via the keyboard to simulate a forklift moving a box from 2 shelf positions
+        - 2 primatic joints connected at 90 degrees to one another and controlled via the keyboard to simulate a forklift moving a box from 2 shelf positions
         - use of "maskbit" to keep the box on the shelves while allowing the forklift to pass through
 
 ----------
@@ -127,7 +127,7 @@ Tuesday 2019-05-28
 
   MISC
   
-    - re-watch RUBE tutorial vid #7+ and take notes - https://youtu.be/6m4vxVIqUcM
+    - re-watch RUBE tutorial vid #7+ and took notes
 
 
   IFORCE2D TUTORIALS
@@ -152,7 +152,7 @@ Tuesday 2019-05-28
 
       - use a combination of min/max angle limits and motor force / target speed
         - reference angle (at rest)
-        - "negative" motor force doesn't really work as expected, this should be positive I guess; instead, target speed should be -/+
+        - "negative" motor force doesn't really work like I thought, this should always be positive or 0 I guess; instead, target speed should be -/+
         - many settings can be specified in the definition or at run-time
         - no instantaneous SetAngle() exists (set limits to accomplish this)
         - ->EnableMotor(false) for spinning wheels appear to spin indefinitely at the cutoff speed and appear have no "friction"; add "friction" with low torque / zero target speed
@@ -180,8 +180,8 @@ Monday 2019-05-27
     ? maybe test project in my name, maybe open-source mascots (gnu, android robot, tux hula), learning experience
 
     - business names / app names:
-      - in motion, accel, animotion, animoji, animotes
-      - stuck with "accelerometer" concept in name? use a more generic name? initials..
+      - in motion, accel, animotion, animoji, animotes (EDIT 2019-06-08: roly polygon w/ emphasis on roly poly)
+      - stuck with "accelerometer" concept in name? use a more generic name? my initials and acronym??
 
 
   IFORCE2D TUTORIALS
@@ -192,7 +192,7 @@ Monday 2019-05-27
         * compared this last tutorial, where custom DebugDraw uses inheritance to override "DrawSolidPolygon()"
 
       - once again opengl-specific calls couldn't be used; deprecated in favor of shaders..?
-      - not learning opengl shaders, so I just used DebugDraw calls as much as possible; this doesn't allow for custom image rotation
+      - I'm planning to learn opengl shader programming (I really hope not), so I just used DebugDraw calls as much as possible; this doesn't allow for custom image rotation
   
 
     "user data" (iforce-UserDataTest.h)
@@ -200,8 +200,10 @@ Monday 2019-05-27
       - void pointer to outside objects
       - user data c++ pointer are part of the following box2d classes: b2Body, b2Fixture, b2Joint
 
-      * store COMPLEX USER DATA using a CUSTOM STRUCT - good example shown
-        NOTE: caveat with user data is that it's good idea to be consistent with the type of data stored (complex struct is probably best)
+      * store COMPLEX USER DATA using a CUSTOM STRUCT (a great example is shown)
+
+        NOTE: caveat with user data is that it's a good idea to be consistent with the type of data stored (complex struct is probably best)
+
         NOTE: box2d doesn't delete user data, REMEMBER TO CLEAN UP
 
       - example does the same as previous project with ball, except with a reference to ball in each box2d body, modifying properties
@@ -218,7 +220,7 @@ Friday 2019-05-24
 
   DEBUGDRAW
     - I tried to do a drop-in REPLACEMENT OF BOX2DDEBUGDRAW.CPP/.H WITH GLES-RENDER.CPP/.H, but that FAILED DUE TO SEVERAL INCOMPATIBILITIES. I might study this in more detail later.
-    - BOX2DDEBUGDRAW.CPP/.H works ok, it's just that the fill(?) color for BODIES REMAIN IN A STATIC POSITION for some reason
+    - BOX2DDEBUGDRAW.CPP/.H works ok, it's just that the fill(?) color for BODIES REMAIN IN A FIXED POSITION for some reason, even though the shape outline moves
 
   
   IFORCE2D TUTORIALS
@@ -275,7 +277,7 @@ Wednesday 2019-05-22
             -I've found several different versions with similar function signatures: celestial project (GLES-Render.h/.cpp), rube_loader_demo (Box2DDebugDraw.h/.cpp), iOS (GLES1DebugDraw.h/.cpp), etc.
             - attempted to use the Box2D Testbed Framework files "DebugDraw.cpp" and "DebugDraw.h", but I ended up having to fallback to the ones provided with the android loader sample
 
-        - "rube_loader_custom" android project houses my json loader simple box2d scenario test. essentially the hula dancer bobble toy, but with simple shapes. so after using the demo project as a code template, this eventually worked. I also incorporated the accelerometer to work with this box2d scenario, but this required tweaking the many settings: mass/density, box2d "weld joing" settings, etc. to get this to work properly.
+        * "rube_loader_custom" android project houses my json loader simple box2d scenario test. essentially the hula dancer bobble toy, but with simple shapes. so after using the demo project as a code template, this eventually worked. I also incorporated the ACCELEROMETER to work with this box2d scenario, but this REQUIRED TWEAKING THE MANY SETTINGS: MASS/DENSITY, BOX2D "WELD JOING" SETTINGS, etc. to get this to work properly.
 
           - this still needs work: b2Sprite integration, PTM_RATIO?, box2d joint limits/adjustments, mouse joint limits?, etc.
 
@@ -311,7 +313,7 @@ Tuesday 2019-05-21
 
   IFORCE2D TUTORIALS
 
-    * NOTE: I can't really test these projects ("using debug draw" AND "drawing your own objects") because of the same reason given in the tutorial "rotating to a given angle". I think either there is something wrong my development environment or the opengl api calls used in these tutorials are deprecated from an older version of opengl (not sure exactly)
+    * NOTE: I can't really test these projects ("using debug draw" AND "drawing your own objects") because of the same reason given in the tutorial "rotating to a given angle". I think either there is something wrong my development environment or the opengl api calls used in these tutorials are deprecated from an older version (not sure exactly)
 
 
     "using debug draw" (CODE EXAMPLE SKIPPED)
@@ -365,14 +367,14 @@ Monday 2019-05-20
 
   MISC
     - re-read journal entries for this month
-    - re-watched RUBE tutorial vid #3 and take notes
+    - re-watched RUBE tutorial vid #3 and took notes
 
 
   PROJECT IDEAS
 
     - I thought of these earlier today. I mentioned a monster truck with scrolling background.
-      - along the same lines, I thought of "moon patrol" from way back during the atari 2600, but variations on that. a space land rover with a moon landscape and moon-like gravity..
-      - similarly, a old style train locomotive. this would be interesting as it many moving parts, the tracks/terrain has to flat. the terrain+vehicle+camera needs to be brainstormed.
+      - along the same lines, I thought of "moon patrol" from way back during the atari 2600 days, but basically variations on that. a space land rover with a moon landscape and moon-like gravity..
+      - similarly, a old style train locomotive. this would be interesting as it has many moving parts, the tracks/terrain has to be flat. the terrain+vehicle+camera needs to be brainstormed.
       - stunt car / motorcycle / skateboarder
       - mech walker / imperial walker
       - tank
@@ -446,13 +448,15 @@ Saturday 2019-05-18
   MISC
 
     - journal moved to monthly format
-    - re-watched RUBE tutorial vid #1 and take notes (new document RUBE.txt)
+    - re-watched RUBE tutorial vid #1 and took notes (new document RUBE.txt)
+
 
     * ASTEROID box2d/cocos2D-x/android project is the template for building my apps
 
       - see AsteroidScene .cpp/.h | AsteroidScene::init() AND PhysicsLayer .cpp/.h
       - multiple layers on a scene (with separate layers for physics and associated sprite objects)
       - box2d PHYSICS DEBUG DRAW functionality (see common.h for #define flags)
+
 
     COCOS2D_DEBUG
 
@@ -498,16 +502,16 @@ Friday 2019-05-17
 
       Friction (iforce-FooTest-C.h)
 
-        - "When two fixtures collide with each other, the resulting friction tends toward the lower of their friction values."
+        * "When two fixtures collide with each other, the RESULTING FRICTION TENDS TOWARD THE LOWER OF THEIR FRICTION VALUES."
 
 
       Restitution
 
         - How "bouncy" a fixture is.
-        - "When two fixtures collide with each other, the resulting restitution tends toward the higher of their restitution values."
+        * "When two fixtures collide with each other, the RESULTING RESTITUTION TENDS TOWARD THE HIGHER OF THEIR RESTITUTION VALUES."
 
 
-      Changing fixture attributes at run-time
+      Changing fixture attributes at RUN-TIME
 
         - use <fixture> ->SetDensity(), ->SetRestitution(), ->SetFriction()
         * NOTE: setting density also requires a call to ResetMassData() on the body of the fixture
@@ -522,7 +526,7 @@ Friday 2019-05-17
 
     - I created this simple physics scenario in the RUBE editor (2 bodies connected via a rotating joint) and exported the scene to c++. from there, I literally copy-and-pasted the code into this Box2D test class constructor - this worked without any problems (iforce-BarTest.h).
 
-    * NOTE: while this dry test run proved RUBE-to-C++, the .cpp code generated is overly verbose and very non-descriptive from a code editing standpoint (naming isn't maintained and there aren't any comments to help either). for complex RUBE scenes this might be a problem, but my scenes are probably simple enough to get away with using direct export to C++.
+    * NOTE: while this test run validated RUBE-to-C++, the .cpp code generated is OVERLY VERBOSE and very NON-DESCRIPTIVE FROM A CODE EDITING STANDPOINT (naming isn't maintained and there aren't any comments to help either). for complex RUBE scenes this might be a problem, but my scenes are probably simple enough to get away with using direct export to C++.
 
 ----------
 Thursday 2019-05-16
@@ -531,8 +535,7 @@ Thursday 2019-05-16
 
     - learning how to use RUBE editor with box2d scenarios AND put these them into the box2d test harness
 
-    * NOTE: to add new tests to the box2d test harness REQUIRES opening modifying the source code in some type of editor and recompiling
-      - visual studio 2019 was used
+    * NOTE: to add new tests to the box2d test harness REQUIRES opening and modifying the source code in some type of editor and recompiling .. ending up using visual studio 2019
 
     BOX2D BODY TYPES
       DYNAMIC - affected by gravity, linear/angular velocity, collides w/ all bodies (unless specified otherwise)
@@ -585,7 +588,7 @@ Tuesday 2019-05-14
 
     - TODO: re-org and consolidate journal notes into a monthly format
 
-    * TODO: from now on use vs code print monthly journal to pdf and markup using android app "xodo"
+    *** TODO: FROM NOW ON USE VS CODE PRINT MONTHLY JOURNAL TO PDF AND MARKUP USING ANDROID APP "XODO" ***
       - highlight / comment journal sections when going back over them; to make certain sections stand out and over time I learn new things that might be highly relevant
 
   - finished reading through old journal entries
@@ -593,7 +596,7 @@ Tuesday 2019-05-14
 ----------
 Monday 2019-05-13
 
-  - NOTES FROM ATL DRIVE
+  NOTES FROM ATL DRIVE
     - happy face emojis accelerometer react bouncing, circular spring also
     - hello kitty (if hawaii app actually does well), kimono @ megamart, grass skirt, etc. look at IP licensing..
     - fortnite dancing - not sure about this one..
@@ -630,7 +633,7 @@ Monday 2019-05-13
     - android day dream (still a thing?), live wallpaper: would be appealing to many and would respond to swipes; panda live wallpaper gave me inspiration for this - very simplistic movement, but art style and functionality generated many downloads
     * drive to ATL got brainstorming about this subconciously; it might be a good idea to just drive around to get new ideas and audio recorded
 
-  - OLD NOTES / JOURNAL ENTRIES
+  OLD NOTES / JOURNAL ENTRIES
     - I need to "catch up" on my dev history, since I took such a long break from this (mostly because of the move and dev environment change)
     - I started journaling since 2018-10-07
     - this is about 7.5 months; a total ~71 days ..out of 219 based on my calendar entries -> 32%
@@ -689,7 +692,7 @@ Monday 2019-05-06
     - successfully compiled and ran the Box2D Testbed application (NOT SURE WHAT TO DO WITH THIS AT THE MOMENT HOWEVER)
 
   - VISUAL STUDIO 2019 (free) had to be installed to compile the Box2D Testbed
-    - quite a large install, but now able to use this for general purpose c++ and COCOS CREATOR also installed as an option
+    - quite a large install, but now I'm able to use this for general purpose c++ and COCOS CREATOR was also installed as an option
 
   - next I need to find a good Box2D editor to better visualize some of the 2d physics scenarios I'm trying to create
     - R.U.B.E. ($35): https://www.iforce2d.net/rube/
@@ -717,7 +720,7 @@ Sunday 2019-05-05
 
       - create/test "celestial" box2d project in old environment using github source
         - FALSE ALARM
-        - straight away I noticed that MenuSelect.h/.cpp wasn't part of my local backup; basically the menu select scene isn't working and gave the appearance of box2d not working, compounded by moving to a new dev environment
+        - straight away I noticed that MenuSelect.h/.cpp wasn't part of my local backup; basically the menu select scene isn't working and gave the appearance of box2d not working, this and also compounded by the fact I moved to a new dev environment
         * github version of the code was fixed/completed by referring back to sample from "android_games" project menu implementation
 
   - relocating cocos2d-x sdk, altered templates and tested ok
@@ -733,7 +736,10 @@ Friday 2019-05-03
 
   - continue software installs
     - cocos2d-x version 3.17.1 downloaded and windows symlinks created
+      - windows 10 allows creating symlinks in a similar fashion to linux, saving space by creating a "cocos2d" link
+      
       * NOTE: SYMLINKS CREATED IN WINDOWS have subtle differences compared to linux, and REQUIRE ABSOLUTE FILEPATHS
+
     - updated android ndk
     - install python 2.7.x (cocos2d-x prerequisite)
 
@@ -747,9 +753,7 @@ Friday 2019-05-03
     * NOTE 3: android.mk has to be modified to match that of the cocos2d-x template project (.cpp files included properly)
 
     - "celestial" project compiles and installs .apk file, but doesn't do anything
-      - template project works fine, though
-
-  - windows 10 allows creating symlinks in a similar fashion to linux, saving space by creating a "cocos2d" link
+      - default cocos2d-x template project works fine, though
 
   - try rebuilding another box2d project from crouton/linux in windows 10
 

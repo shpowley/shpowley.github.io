@@ -1,23 +1,176 @@
 GOALS
-  - gimp vids
-  - review journal 2019-05
+
+  - separate notes section for each scene
+    - hula dancer
+      - note 4 oled black? strange visual issue with right side of head when moving
+    - hang loose
+    - sandals
+    - turtles
+
   - re-watch RUBE tutorial vid #14+ and take notes - https://youtu.be/wwEPKhdzIpk
+  - gimp vids
+
+  - create a gimp instructions document
 
   DASHBOARD TOY APP (TODO)
-    - accelerometer
-    - back button
-    - main select menu
-    - 2 more scenes
+    - content to 4 m box2d units + phone format
+    - RUBELayer option to attempt vertical centering of content?
+    - motor
 
     - settings
-      - app settings vs individual scene
-      - fps (battery?)
+      - app settings vs individual scenes
+      - always on
       - battery saver (lower fps + black background)
       - backgrounds (black, colors, scenes, hawaiian flowers)
       - auto-wobble / random movement
+      - turn on/off graphics (like debug)
 
     - max length mouse joint?
+    - multi-touch (multiple mouse joints?)
     - pinch-to-zoom / pan
+    - move "noise" test to it's own scene and display on device
+
+----------
+Sunday 2019-06-09
+
+  WHAT'S NEXT? live wallpaper, ads test, settings, drive testing, programmed movement contol, more scenes
+
+
+  MISC
+
+    - for GIMP > TexturePacker > RUBE graphic and scene creation, these need to be placed in the same folder for simplicity when switching between the 3 of them and android studio
+
+    - when creating fixtures in the RUBE editor, try simplifying the vertices as much as possible. scaling complex bodies with too many vertices often generate errors, especially when scaling to a smaller size.
+
+
+  CODING
+
+    test app with 4 RUBE/box2d scenes
+
+      - accelerometer works more or less, but settings have to be customized for each scene. the turtles scene for example, would greatly benefit from linear acceleration. the hang loose scene needs programmatic control of the torque in response to acceleration. also movement tests are needed - see TODO list.
+
+      - I built a debug app apk still in the early stages and tested on 3 devices. also cc'd Jack a copy for his thoughts and to see if the debug APK side-loads on his phone
+
+
+    accelerometer "noise"
+
+      - I "think" want to eliminate "noise" on the accelerometer readings and I created an experiment to obtain the min/max/range raw accelerometer data. I ran this test on 3 android devices for about 30-40 seconds each time
+      - I'm not sure if removing noise is necessary though..
+
+      TODO: move "noise" test to it's own scene and display on device
+
+      - max range: 0.12400000 (moto g)
+      - min range: 0.00952474 (galaxy s3)
+
+      - typical range:
+        - varies quite a bit
+        - orientation seems to affect the range, as does the device
+
+      moto g (portrait orientation):
+        X RANGE:   0.12000000 0.04800000 0.12400000
+        Y RANGE:   0.04400003 0.04800004 0.04800004
+        Z RANGE:   0.11600000 0.12399998 0.11599997
+
+      moto g (landscape orientation):
+        X RANGE:   0.04400003
+        Y RANGE:   0.12400000
+        Z RANGE:   0.04800001
+
+      note 4 (portrait orientation):
+        X RANGE:   0.01708984 0.01513672 0.01513672
+        Y RANGE:   0.02343750 0.02343750 0.03271478
+        Z RANGE:   0.02587891 0.02441406 0.02880859
+
+      note 4 (landscape orientation):
+        X RANGE:   0.01953119
+        Y RANGE:   0.01318360
+        Z RANGE:   0.01855469
+
+      galaxy s3 (portrait orientation):
+        X RANGE:   0.01196698 0.01025741 0.00952474
+        Y RANGE:   0.08364666 0.03235966 0.03736627
+        Z RANGE:   0.01599663 0.01367652 0.01269966
+
+
+----------
+Saturday 2019-06-08
+
+  MISC
+
+    - update calendar
+
+    - review journal 2019-05
+
+      stats:
+        - journal start: 2018-10-07
+        - total: 95/250 based => 38%
+        - may 2019: 24/31 days => 77%
+
+    
+  TODO list
+
+    - looking back at my notes, it might be worth trying to use a MOTOR JOINT with my turtles scene (see journal Thursday 2019-05-30)
+
+    * I think I need to look back over my notes / comments (did I take notes?) for my iforce2d tutorial tests in the box2d test harness created in visual studio 2019
+      + take a look at the pre-built tests (see journal entry Monday 2019-05-20)
+
+    - I need to create a new journal for each project: separate folder, features, change log, issues..
+
+
+  COCOS2D-X "GLOBAL" VARIABLES
+
+    - curious about global variables in cocos2d-x, I'm sure I've read about this before
+
+    globals class
+      - https://discuss.cocos2d-x.org/t/global-variables-in-cocos2d-x/20176/11
+
+    game manager singleton
+      - https://discuss.cocos2d-x.org/t/global-variables-in-cocos2d-x/20176/8
+      - https://discuss.cocos2d-x.org/t/correct-way-to-implement-singleton/28226/16
+      * https://discuss.cocos2d-x.org/t/correct-way-to-implement-singleton/28226/23
+      - https://discuss.cocos2d-x.org/t/correct-way-to-implement-singleton/28226/34
+
+    userdefault
+      - https://docs.cocos2d-x.org/api-ref/cplusplus/v3x/db/d94/classcocos2d_1_1_user_default.html
+
+
+  CODING
+
+    - coded android back button functionality
+      * NOTE: there needs to be an on-screen button to duplicate this, especially for IOS
+
+    - attempt to integrate accelerometer into RUBELayer .h/.cpp; when trying to test, the scaling and/or the physics settings are completely off
+
+----------
+Friday 2019-06-07
+
+  bobble app
+
+    - created a main menu for "Hang Loose", "Hula Girl", "Sandals", and "Hawaiian Turtles" with scenes for each
+
+
+  - physics RUBE scenes prepped for "turtles"
+
+    - most of the time spent creating the body/joint settings for a decent range of motion for the fins with appropriate mass for reasonable movement just using the mouse joint
+    
+    - while making these RUBE scenes, a question comes to mind - IS THERE AN OPTIMAL B2WORLD DESIGN SIZE?
+
+      - for things falling, etc. where gravity affects perceived velocity this might be an issue (?)
+      - I've been designing objects at a b2World screen height of ~10-20 m (I think), but that makes some of these "toys" rediculously large! size is relative in box2d worlds though
+
+      * so if 20 large box2d units equates to 20 m this ends up around 6 stories IRL, and that would equate to a 2-3 story hula dancer, etc. (this is based on the assumption that 1 large box2d unit = 1 meter)
+
+      - an alterative is designing each RUBE scence to a 4 "METER" BOX2D SCREEN HEIGHT. the phone screen would equate to only a 1 story building, with objects equating to the height of a car. I think this might be more reasonable
+        - after making my early proof-of-concept app, I think I'll go back and re-size the box2d scenes to this height
+
+    - for the screen-to-visible-world, I'm using an image overlay of different aspect ratio phone screens, with the target being a narrower device as newer phones seem to be targeting
+
+----------
+Thursday 2019-06-06
+
+  - physics RUBE scenes prepped for "hang loose", "sandals"; "turtles" started
+    
+    - tested "sandals" in same app as the "hula dancer" ..and this worked much better than expected
 
 ----------
 Wednesday 2019-06-05
@@ -25,7 +178,7 @@ Wednesday 2019-06-05
   - prepped images for "hang loose", "sandals", and "hawaiian turtles"; these still need the physics scenes built in the RUBE editor
 
 
-  GIMP layer masking
+  GIMP layer masking video tutorial
 
     - useful for things like hair
 
@@ -78,26 +231,27 @@ Tuesday 2019-06-04
 
   b2dJson image load test project ==> DASHBOARD TOY APP
 
-    - load individual image sprites OR texturepacker spritesheet
+    - able load TEXTUREPACKER SPRITESHEET (awesome!) OR individual image sprites
 
-    - this "test" project is turning into my actual app, right now it's just one scene, but it establishes a streamlined workflow for adding additional scenes
+    - this "test" project is turning into my actual app I think, right now it's just one scene, but it establishes a streamlined workflow for adding additional scenes
 
       1) create or obtain images
-      2) TexturePacker composite spritesheet + .plist + export individual images
-      3) RUBE editor physics scene with TexturePacker exported images .json
+      2) TexturePacker composite spritesheet + .plist
+      3) RUBE editor physics scene with standalone images + .json
       4) create scene with RUBELayer class to load RUBE physics (b2dJson) and TexturePacker sprites
       5) individual scene customizations
 
   RUBE editor / Box2D
 
-    - so in case I forgot to journal this, it's possible to create "composite" joints to mimic real-world physics objects; this is accomplished by super-positioning box2d joints on top of one another. I have 2 RUBE file examples that I created:
+    - so in case I forgot to journal this, it's possible to create "composite" joints to mimic real-world physics objects; this is accomplished by super-positioning box2d joints on top of one another. I have 2 RUBE editor file examples that I created:
 
-      "COMPRESSION SPRING" (see compression-spring.rube): by attaching a prismatic and distance joint on the same 2 bodies, I can create something that acts like a regular compression spring limited to movement along a single axis
+      "COMPRESSION SPRING" (see compression-spring.rube): by attaching a prismatic and distance joint on the same 2 bodies, I can create something that acts like a regular compression spring of sorts - it's limited to movement along a single axis
 
-      "ROTATIONAL SPRING" (see hula.rube): by attaching a revolute and weld joint on the same 2 bodies AND exactly the same position I was able to create a rotation spring limited to a fixed min/max angle; right now I'm only using this on my hula dancer figurine
+      "ROTATIONAL SPRING" (see hula.rube): by attaching a revolute and weld joint on the same 2 bodies AND exactly the same position I was able to create a rotation spring limited to a fixed min/max angle
 
-    - I did this because the default joints on their own, don't exactly meet my needs, so this seems like a reasonable solution.
-    - I was thinking of creating a spring-like object that can compress/elongate/rotate by either combining the above OR a pseudo spring composed of multiple weld joints that look like a side-view spring in 2D (I tried that in RUBE and it doesn't work - some super-wacky oscillation actually)
+    - I did this because the default joints on their own, don't always meet my needs, so this seems like a reasonable solution that require NO ADDITIONAL CODING
+
+    - also, I was thinking of creating a spring-like object that can compress/elongate/rotate by either combining the above OR a pseudo spring composed of multiple weld joints that look like a side-view spring in 2D (I actually tried this in the RUBE editor and it failed miserably. the simulation resulted in super-wacky oscillations with each additional joints+bodies added)
 
 ----------
 Monday 2019-06-03
@@ -105,7 +259,7 @@ Monday 2019-06-03
   CODING
 
     - RUBE + images now load into android using b2dJson
-    - customized RUBE layer from demo created; very re-usable, but still needs modifations
+    - customized RUBE layer from demo created; now it's just one class, highly re-usable and simplified loading of new RUBE json scenes, but still needs improvements
 
 ----------
 Sunday 2019-06-02

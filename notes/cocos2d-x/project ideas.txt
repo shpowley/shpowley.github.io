@@ -1,9 +1,13 @@
 PROJECT IDEAS CENTRAL DOCUMENT
 
-
   * hand-drawn art might be a good idea; cuphead video gave me inspiration to try and develop my own "style"
   * bobble toys should have the ability to "auto-wobble" or respond to touch / touch-drag; in stationary environments this would be good
   * android day dream (still a thing?), LIVE WALLPAPER: would be appealing to many and would respond to swipes; panda live wallpaper gave me inspiration for this - very simplistic movement, but art style and functionality generated many downloads
+
+
+  NAME IDEAS:
+
+    - "Dashboard Toys", "Bobble Toys"
 
 
   THEMES
@@ -81,7 +85,9 @@ PROJECT IDEAS CENTRAL DOCUMENT
   VEHICLES
 
     + scrolling background
-    + terrain+vehicle+camera needs to be brainstormed
+    + terrain+vehicle+CAMERA needs to be brainstormed
+      - camera following "vehicle" would be ideal I think
+      
     + 2D OR pseudo-3D
     + obstacles (destructable cars, boulders)
 
