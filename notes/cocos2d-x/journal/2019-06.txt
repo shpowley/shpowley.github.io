@@ -1,5 +1,8 @@
 GOALS
 
+  - backup / git backup
+  - sensors (linear acceleration) or low-pass filter, live wallpaper, settings screen (global, persist settings), advertising
+
   - separate notes section for each scene
     - hula dancer
       - note 4 oled black? strange visual issue with right side of head when moving
@@ -13,8 +16,6 @@ GOALS
   - create a gimp instructions document
 
   DASHBOARD TOY APP (TODO)
-    - content to 4 m box2d units + phone format
-    - RUBELayer option to attempt vertical centering of content?
     - motor
 
     - settings
@@ -30,10 +31,114 @@ GOALS
     - pinch-to-zoom / pan
     - move "noise" test to it's own scene and display on device
 
+
+----------
+Friday 2019-06-14
+
+----------
+Thursday 2019-06-13
+
+  CONTROLLING ORIENTATION / VERTICAL CENTERING
+
+    - I tried looking into PROGRAMMATICALLY CHANGING THE ORIENTATION from landscape to portrait and visa-versa, but this ISN'T POSSIBLE WITHOUT USING THE DEVICE-SPECIFIC API CALLS. in addition, the startup code in AppDelegate is very dependent on the start orientation. I don't really need to switch orientation on-the-fly anyway as I'll just be testing RUBE scenes side-by-side in development.
+
+    - I also DIDN'T HAVE SUCCESS AUTOMATING THE VERTICAL ALIGNMENT. I'm not sure if it's because I'm using the polygon spritesheet or what, but I gave up. it's probably easier to guesstimate the PROPORTION OF THE TOTAL SCENE CONTENT HEIGHT VS THE RUBE DESIGN HEIGHT and then use that proportion against Director::getInstance()->getWinSize().height. this should then work for either portrait or landscape.
+
+
+  CODING
+
+    - implemented a GAMEMANAGER SINGLETON CLASS
+      - in lieu of a Globals file, any globals will be implemented here
+
+
+  DEVICE LOGGING
+  
+    - code ripped from: http://www.iforce2d.net/cc2dxres/screenlog
+
+    - implemented as part of the GameManager singleton
+
+    - modified to allow (initial) log placement in pixels-x and screen-y % (this is % of the vertical screen height ..kind of strange, but I'm just trying to stick with the convention of the code already in place)
+
+    - "fixed" DEPRECATED CODE
+
+    COMMENTS: 
+
+      - by design, this LOGGING MECHANISM CAUSES EXISTING LOG MESSAGES TO SCROLL UP AS NEW LOG MESSAGES ARE ADDED; which is fine, but each log message doesn't stay pinned to a fixed location as I initially expected - like a plain label (MODIFYING THIS CODE TO ACT THIS WAY PROBABLY WOULDN'T BE A GOOD IDEA)
+      - log messages "disappear" after a specified delay
+      - a reference to any log message can be created and the LOG MESSAGE STRING UPDATED
+      - a helper class, ScopeLog, can be used a object lifecycle trace mechanism
+
+----------
+Wednesday 2019-06-12
+
+  MISC
+
+    - cocos2d-x v3.17.2 released
+      - hold off upgrading for now
+
+
+  CODING
+
+    - hello kitty hula girl
+      - basically the same as the original hula girl with modified sprites and adjustments to RUBE/box2d
+      - added hello kitty and "Exit" options to the main menu
+
+    - keep screen on
+      - cocos2d-x api call in the RUBELayer constructor/deconstructor
+      - RUBELayer is a good central point for this feature as it's used by all box2d physics scenes
+      - tested OK while driving briefly today on 2 devices
+      - non-RUBELayer scenes such as the main menu isn't affected
+
+----------
+Tuesday 2019-06-11
+
+  MISC
+
+    - hello kitty "hula dancer" image prep
+
+----------
+Monday 2019-06-10
+
+  USER CONTROLLED TOUCH-BASED MOTION
+
+    - some additional thoughts..
+      + box2d body induced wobble using a "FINGER TAP"
+      + box2d induced world acceleration using a "FINGER SWIPE"
+      + ability to turn each touch input method ON/OFF
+      + multi-touch?
+      - tweak the mouse joint to break once the position is outside the body
+      - a boolean flag of some sort (or maybe the collision filter) on box2d bodies to control if the body is controlled by touch input
+
+
+  DRIVE TESTING
+
+    - while the "app" is still pretty bare-bones right now, I did attempt to use it during a recent drive to get a better feel for each scene's response to acceleration during a typical drive. for the most part, each physics scene didn't really move very much - disappointing visual appeal. the sandals scene is the most responsive because of it's box2d spring settings, but even that one is underwhelming. in order to tune these visual effects so that they are MORE EXCITING, I need to try a few things.
+
+      - PROGRAMMED WOBBLE RESPONSE using impulse, force, torque, etc.
+      - INDUCED X-AXIS WOBBLE by y-axis / z-axis / normalized linear acceleration
+      - INDUCED OR AUTO-MOTION AT IDLE
+      - LINEAR ACCELERATION from android/ios sensors (see gyro github OR low-pass filter)
+        - gyro github project would be ideal for gyro sensor(?) and ambient light for possibly down the road
+      - SIDE-BY-SIDE TESTS of different induced wobble methods and/or modified box2d composite entity settings
+      - ON-SCREEN LOGGING
+
+  MISC
+
+    - found some good HELLO KITTY images on ebay to possibly use in the future. I want to create ONE sample hula dancer for my test app
+
+    - briefly looked at 2d animation software. 
+
+      Pencil2D - http://www.pencil2d.org/
+      Synfig Studio - https://synfig.org/
+      Blender (grease pencil)
+      Krita
+
+      - have a look on the android play store also
+
 ----------
 Sunday 2019-06-09
 
-  WHAT'S NEXT? live wallpaper, ads test, settings, drive testing, programmed movement contol, more scenes
+  WHAT'S NEXT? drive testing / programmed movement contol, live wallpaper, ads test, settings, more scenes
 
 
   MISC
@@ -121,7 +226,7 @@ Saturday 2019-06-08
 
     - curious about global variables in cocos2d-x, I'm sure I've read about this before
 
-    globals class
+    globals class (EDIT 2019-06-13: GLOBAL SINGLETON - LIKE THE GAME MANAGER - IS PROBABLY BETTER HERE; NO LUCK WITH THIS IMPLEMENTATION)
       - https://discuss.cocos2d-x.org/t/global-variables-in-cocos2d-x/20176/11
 
     game manager singleton

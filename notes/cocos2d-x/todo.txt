@@ -5,8 +5,6 @@ TODO
 
   SHORT-TERM GOALS
 
-    - early-alpha android app with 3 separate hawaii-themed dashboard toys (menu + hula dancer, flip flops, "hang loose" hawaii)
-      
     - finish RUBE video tutorial re-watch
     - finish joint RUBE tutorials
 
@@ -19,12 +17,10 @@ TODO
 
   - customize iforce2d "QueryCallbacks.h" from demo? right now copied as-is
 
-  - maybe at some point create a heirarchy diagram of a standard cocos2d-x + box2d project; shared directories, class inheritance, etc.
-
 
   APP DEVELOPMENT PROGRESS NOTES
 
-    - name ideas: dashboard toys, bobble toys, bobble
+    - name ideas: dashboard toys
 
     - development goals: hawaii theme => hula dancers => iOS => googly eyes => ?
 
@@ -122,15 +118,6 @@ TODO
       - create a menu for multiple scenes
       - new scene for box2d joint(s) test
 
-    LATEST VERSION OF BOX2D W/ COCOS2D-X?
-      * IMPORTANT: add a note to remind myself to redo this when cocos2d-x is eventually updated
-      - make sure to create a reliable backup prior to this!
-      - backup old cocos2d-x/box2d directory
-      - copy new box2d files into cocos2d-x
-      - try backtesting with billiards and eskimo android projects
-
-      - maybe refer to this? https://discuss.cocos2d-x.org/t/how-do-i-update-the-box2d-version-in-a-cocos2dx-project/9942
-
 
   CURRENT APP DEVELOPMENT IDEAS
     - android widget
@@ -196,8 +183,6 @@ TODO
       - "Cocos2d-x by Example - Beginner's Guide"
       - "Cocos2d-x Cookbook"
 
-    - implement and test PAUSE without .push() & .pop() from "Building Android Games"
-
     - ADMOB (later)
       - continue with "Building Android Games with Cocos2d-x" p.122 starting at moving the mute button
       - see "journal.txt" Thursday 2018-12-13
@@ -206,5 +191,3 @@ TODO
       - lookup info on c++ lambda expressions
       - lookup info on "CC_CALLBACK_2"
       - lookup other callback mechanisms
-
-    - create aspect ratio "squares" in a 2d drawing program
