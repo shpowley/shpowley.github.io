@@ -21,7 +21,7 @@ Monday 2019-04-22
       - delete temporary files (clear space)
       - file history (files)
       - system restore
-      - macrium reflect (drive/partition backup; TODO: need macrium reflect USB boot drive)
+      - macrium reflect (drive/partition backup)
 
 ----------
 Tuesday 2019-04-09
