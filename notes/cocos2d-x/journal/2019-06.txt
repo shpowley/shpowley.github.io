@@ -1,39 +1,174 @@
-GOALS
+----------
+Sunday 2019-06-16
 
-  - backup / git backup
-  - sensors (linear acceleration) or low-pass filter, live wallpaper, settings screen (global, persist settings), advertising
+  PLAN:
 
-  - separate notes section for each scene
-    - hula dancer
-      - note 4 oled black? strange visual issue with right side of head when moving
-    - hang loose
-    - sandals
-    - turtles
+    keep building gyro demo to apply JNI techniques learned
+      - back up to github, update() -> check acceleration values ALTER to java->c++ callback (use cocos2d-x acceleration implementation as a guide)
 
-  - re-watch RUBE tutorial vid #14+ and take notes - https://youtu.be/wwEPKhdzIpk
-  - gimp vids
+    read: https://developer.android.com/guide/topics/sensors 
 
-  - create a gimp instructions document
 
-  DASHBOARD TOY APP (TODO)
-    - motor
+    JNI
+      methodology from earlier book and take notes
 
-    - settings
-      - app settings vs individual scenes
-      - always on
-      - battery saver (lower fps + black background)
-      - backgrounds (black, colors, scenes, hawaiian flowers)
-      - auto-wobble / random movement
-      - turn on/off graphics (like debug)
+      COMPARE implementations: GYRO DEMO | cocos2d-x source | books
 
-    - max length mouse joint?
-    - multi-touch (multiple mouse joints?)
-    - pinch-to-zoom / pan
-    - move "noise" test to it's own scene and display on device
+      - custom user events (cocos2d-x by example ch.9)
 
+      - cocos2d-x cookbook jni topic
+
+      - call android java from c++
+        - http://stnguyen.com/cocos2d-x/call-java-functions-from-cpp.html
+      - call c++ from java (android)
+        - http://stnguyen.com/cocos2d-x/call-cpp-functions-from-java.html
+      * reading JniHelper .h/.cpp source code
+
+
+  CODING
+
+    gyro demo
+
+      - building onto this to figure out JNI usage
+      - further tweaked actual gyro code, but there's still just a tiny amount of drift
+      - added ON-SCREEN LOGGING capability (RUBE / iforce2d code sample)
+
+
+    JNI (see list from "Friday 2019-06-14")
+
+      * NOTE: this is MUCH MORE COMPLICATED than what I'm intending with the cocos2d-x framework; I'm pretty sure I'm just scratching the surface..
+
+
+      GET .JAVA METHOD SIGNATURES
+
+        - in order to CALL JAVA CODE FROM C++, the METHOD SIGNATURES must be determined
+        
+        1) FIND THE "JAVAP" COMMAND in the Android Studio install directory (ex. C:\Program Files\Android\Android Studio\jre\bin)
+        2) LOCATE RELEVANT JAVA .CLASS FILE(S) - use file search to locate in the cocos2d-x android studio sub-directory
+        3) USE THIS COMMAND TO GET THE REQUIRED SIGNATURES: javap -s <.class file location>
+
+
+      Cocos2dxActivity (AppActivity.Java)
+
+        - this is created by default as part of the cocos2d-x framework
+
+        - I'm not sure of it's importance yet, but is used differently by 2 different code samples to do kinda similar things related to the running cocos2d-x application
+
+          "Building Android Games" ch.8 : modified to retrieve android cocos2d-x instance to display "toast" message
+
+          Gyroscope sample code : cocos2d-x "context" for initiating access to device sensors
+
+
+      COCOS2D-X JniHelper (BUILT-IN)
+
+        ..\cocos2d\cocos\platform\android\jni\JniHelper .h/.cpp
+
+        * MAKE SURE TO USE THIS
+
+        - basically a MUCH FRIENDLIER WRAPPER for using more common calls to jni.h
+          - jni.h is a complex system header file for interfacing c++/java (not specific to android)
+
+          *** in the gyro demo, for example, using the method "cocos2d::JniHelper::callStaticVec3Method(CLASS_NAME, "getAccelValues")" greatly simplified the code in Gyroscope::getRate() to be just ONE LINE instead of TWELVE+
+
+
+      MISC
+
+        "Building Android Games" ch.8
+          - while looking at the source code from JNI example and trying to run it -- it failed - I FORGOT TO COPY OVER SOME OF THE .JAVA FILES; once working, I copied this to my new dev environment
+
+          * of particular note, is that APPACTIVITY.JAVA IS MODIFIED to support the "Android Toast"
+
+----------
+Saturday 2019-06-15
+
+  CODING
+
+    JNI - started looking at implementation notes
+
+  
+    gyro demo
+
+      USE THIS CODE (though a little "sloppy"), in addition to cocos2d-x template and JNI book notes to create my own "sensor code"
+
+      - tried different code on the moto-g to see if the gyro and/or the linear accelerometer exist -- THEY DON'T!!
+        - I was hoping that the linear accelerometer existed on this older device, but no luck ..I'LL HAVE TO PROGRAM THE LOW-PASS FILTER ALSO
+
+      - here's what is available on the moto-g using "..sensorManager.getSensorList(Sensor.TYPE_ALL)"
+
+        3-axis Accelerometer | android.sensor.accelerometer (ACCELERATION + GRAVITY)
+        AK8963 3-axis Magnetic field sensor | android.sensor.magnetic_field (GEOMAGNETIC FIELD - ..COMPASS)
+        AK8963 Orientation sensor | android.sensor.orientation (DEGREES OF ROTATION AROUND X/Y/Z)
+        CT406 Proximity sensor | android.sensor.proximity (HANDSET POSITION DURING A CALL..)
+        CT406 Light sensor | android.sensor.light (AMBIENT LIGHT LEVEL)
+        Display Rotation sensor | (???)
+
+      - hp touchpad (api level 15)
+        - also, tested my rube_loader_image app
+
+        LSM303DLH 3-axis Accelerometer
+        LSM303DLH Magnetometer
+        ISL29023 Light sensor
+
+      * so in order to actually use the demo, I could only use the samsung note 4 - as that has a gyro sensor
+        - I tried to get away with using the ORIENTATION SENSOR (software according to android docs) in place of the gyro, but that's slower / choppier and didn't really work as expected.. anyways I won't really be needing the gyro in the near future per se
+        
+        COMMENT: something seemed off with this demo, so I tried debugging it
+          - in the main update, the gyro rate is rad/s and the update happens ideally at 60 fps - so the rate needs to be divided by 60 (I should have used the delta...) and also needed to be converted to degrees -- THAT SEEMED TO "FIX" THE DEMO
+          - there's also a noticeable drift in the rotation readings when still - this could be calibrated out I guess
 
 ----------
 Friday 2019-06-14
+
+  CODING
+
+    SENSORS (GYRO)
+
+      project cloned from github in hopes of using additional sensors
+        - in this project the gyro is supposed to control a 3d sprite
+        - https://github.com/Undume/Gyroscope-Cocos2d-x
+
+        - created "helloworld" cocos2d-x project and copied over required files, but the initial test didn't work.. the 3d sprite loaded though
+          - I forgot the to copy over the .java files, but then it still didn't work
+          - comparing the gyro code to the cocos2d-x acceleration implementation, this doesn't appear to be using the "JAVA ==> C++ CALLBACK" mechanism
+
+        - looking at cocos2d-x built-in accelerometer code @ "..\cocos2d\cocos\platform\android\java" to see if I can reverse debug the gyro project based on this
+
+          - OOF! there's a lot of supporting code for this JNI accelerometer (AND IT'S HARD TO EVEN FOLLOW WHAT'S GOING ON..)
+            ..\cocos2d\cocos\base\CCEventListenerAcceleration .h/.cpp
+            ..\cocos2d\cocos\base\CCEventAcceleration .h/.cpp
+            ..\cocos2d\cocos\platform\android\CCDevice-android.cpp (JAVA HELPER CLASS NAME)
+            ..\cocos2d\cocos\platform\android\jni\Java_org_cocos2dx_lib_Cocos2dxAccelerometer.cpp (JAVA ==> C++ CALLBACK?)
+            ..\cocos2d\cocos\platform\android\jni\JniHelper .h/.cpp (USEFUL)
+            ..\cocos2d\cocos\platform\android\java\src\org\cocos2dx\lib\Cocos2dxAccelerometer.java
+            ..\cocos2d\cocos\platform\android\java\src\org\cocos2dx\lib\Cocos2dxGLSurfaceView.java
+
+            ..\cocos2d\cocos\platform\android\java\src\org\cocos2dx\lib\Cocos2dxHelper.java
+              - private static Cocos2dxAccelerometer getAccelerometer()
+            
+        * I eventually got the gyro code to work! I used code to list all of the available sensors on the phone from this code example (https://developer.android.com/guide/topics/sensors/sensors_overview) and discovered that my moto-g doesn't appear to even have a gyro sensor (or at least it fails the check); I tried this against my Note 4 and the gyro suddenly worked (it also lists many more sensors!)
+        - I'll continue from here, but I noticed right away that the linear-accelerometer isn't listed on the moto-g (I might have to use the low-pass filter algorithm as a fallback maybe?)
+        * also, just a quick reminder - the cocos2d-x implementation, while complex, has some advantages to check out..
+            
+
+    AUTO VERTICAL ALIGNMENT
+
+      - I tried looking at sprite info in the layer itself, but that x/y/w/h data was identical to what I found yesterday; at this point, nothing can be done except use an estimatated height offset proportion. here's a sample used in the hellokitty screen init():
+
+        info.b2world_offset_y = Director::getInstance()->getWinSize().height / 4;
+
+      - EDIT 2019-06-15: TODO - upon further reflection, I think I'll attempt to put the normalized height % in the RUBE file and try to export that in the RUBE json export and use that for positioning. it will be easier to estimate the content height based on the RUBE editor layout grid
+
+
+  MISC
+
+    - updates for windows 10 and performed backup
+
+    - backed up project "rube_loader_image" on github
+
+      - used .gitignore to create an "essential files" subset of the entire project
+
+      * used VS CODE (to create the initial git local repository and .gitignore) and then GITHUB DESKTOP (create github remote repository)
+        - though the command line could have been used, visual tools are more intuitive
 
 ----------
 Thursday 2019-06-13
@@ -42,7 +177,7 @@ Thursday 2019-06-13
 
     - I tried looking into PROGRAMMATICALLY CHANGING THE ORIENTATION from landscape to portrait and visa-versa, but this ISN'T POSSIBLE WITHOUT USING THE DEVICE-SPECIFIC API CALLS. in addition, the startup code in AppDelegate is very dependent on the start orientation. I don't really need to switch orientation on-the-fly anyway as I'll just be testing RUBE scenes side-by-side in development.
 
-    - I also DIDN'T HAVE SUCCESS AUTOMATING THE VERTICAL ALIGNMENT. I'm not sure if it's because I'm using the polygon spritesheet or what, but I gave up. it's probably easier to guesstimate the PROPORTION OF THE TOTAL SCENE CONTENT HEIGHT VS THE RUBE DESIGN HEIGHT and then use that proportion against Director::getInstance()->getWinSize().height. this should then work for either portrait or landscape.
+    * I also DIDN'T HAVE SUCCESS AUTOMATING THE VERTICAL ALIGNMENT. I'm not sure if it's because I'm using the polygon spritesheet or what, but I gave up. it's probably easier to guesstimate the PROPORTION OF THE TOTAL SCENE CONTENT HEIGHT VS THE RUBE DESIGN HEIGHT and then use that proportion against Director::getInstance()->getWinSize().height. this should then work for either portrait or landscape.
 
 
   CODING

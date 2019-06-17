@@ -5,17 +5,54 @@ TODO
 
   SHORT-TERM GOALS
 
+    - create my own "sensor code" + low-pass filter
+
+    - sensors (linear acceleration) or low-pass filter, live wallpaper, settings screen (global, persist settings), advertising
+      - sensors - read through this: https://developer.android.com/guide/topics/sensors
+
+    - separate notes section for each scene
+      - hula dancer
+        - note 4 oled black? strange visual issue with right side of head when moving
+        
+      - hang loose
+      - sandals
+      - turtles
+
+  
+    - gimp vids
+
+    - create a gimp instructions document
+
+    - motor
+
+    - settings
+      - app settings vs individual scenes
+      - always on
+      - battery saver (lower fps + black background)
+      - backgrounds (black, colors, scenes, hawaiian flowers)
+      - auto-wobble / random movement
+      - turn on/off graphics (like debug)
+      - flip individual accelerometer x y z (I noticed that the hp-touchpad has x reversed)
+
+    - max length mouse joint?
+    - multi-touch (multiple mouse joints?)
+    - pinch-to-zoom / pan
+    - move "noise" test to it's own scene and display on device
+
     - finish RUBE video tutorial re-watch
+      - re-watch RUBE tutorial vid #14+ and take notes - https://youtu.be/wwEPKhdzIpk
+
     - finish joint RUBE tutorials
 
+    - backup new android projects (compacted) - rube_loader_image, rube_loader_demo, rube_loader_custom
 
-  - backup new android projects (compacted) - rube_loader_image, rube_loader_demo, rube_loader_custom
+    - backup customized RUBE-b2djson (d:\sdk\RUBE-b2djson)
+      - only 1 change so far, but also deleted 2 files..
+      - add to github
 
-  - backup customized RUBE-b2djson (d:\sdk\RUBE-b2djson)
-    - only 1 change so far, but also deleted 2 files..
-    - add to github
+    - customize iforce2d "QueryCallbacks.h" from demo? right now copied as-is
 
-  - customize iforce2d "QueryCallbacks.h" from demo? right now copied as-is
+    - put normalized height % in the RUBE file and try to export that in the RUBE json export for programmatic positioning
 
 
   APP DEVELOPMENT PROGRESS NOTES
@@ -25,9 +62,12 @@ TODO
     - development goals: hawaii theme => hula dancers => iOS => googly eyes => ?
 
     * minimum viable app
-      * live wallpaper
+      * live wallpaper (android only)
       * revenue mechanism(s)
       - begin working on next app
+      - android widget
+      - android daydream
+      - calibration
 
     * business license => e-mail address => bank account => app store account
       - later a website, social media..

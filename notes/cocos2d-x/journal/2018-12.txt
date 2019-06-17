@@ -111,7 +111,7 @@ Thursday 2018-12-13
 
     - ad choices include: admob, admob + firebase, and sdkbox
       - after some consideration, I'm holding off on the ad portion of this book until a core application is functional and closer to release
-        - I think admob + firebase is the way to go forward as the documentation seems much more thorough and has native c++ cocos2d-x examaples
+        - I think admob + firebase is the way to go forward as the documentation seems much more thorough and has native c++ cocos2d-x examples
 
       - continue with "Building Android Games with Cocos2d-x" p.122 starting at moving the mute button
         - note that this example and other online samples use a c++ => java jni ad template, similar to the android "toast"
@@ -123,7 +123,7 @@ Thursday 2018-12-13
     - removed cocos2d folders from source code .zip files - 1.9GB down to 194.7MB
 
   * after some thought, it would be possible to use the existing coco2d-x accelerometer codebase (acceleration + gravity) to simplify getting a working app up and running..speeding up the dev cycle. in essence, it would work very much like a real-life bobble toy
-    - RETROFIT acceleration - gravity as a settings option maybe
+    - RETROFIT linear-acceleration as a settings option maybe
 
   - after reading ch.1, the book recommends some software tools
     - I think it's worthwhile to purchase TexturePacker + PhysicsEditor while on sale
@@ -147,7 +147,7 @@ Wednesday 2018-12-12
         - this may be advantageous if there are many JNI calls, but makes for obtuse learning
       2) the website example uses the return value from JniHelper::getStaticMethodInfo() in an IF statement instead of just assuming it returns true and is valid. I incorporated this into the test
       3) if the last parameter in JniHelper::getStaticMethodInfo() returns a void, do not put a ";" semicolon at the end. other data types, however, seems to require a ";" at the end
-      4) the last major change was to AppActivity.java, implemementing the getInstance() method with the "instance" variable initialization to "this". the the website example didn't have anything like this, but it was required for the JniFacade.java code
+      4) the last major change was to AppActivity.java, implemementing the getInstance() method with the "instance" variable initialization to "this". the website example didn't have anything like this, but it was required for the JniFacade.java code
 
     * this is somewhat confusing, but cocos2d-x includes JniHelper .h/.cpp source code, which wraps many calls to the Android NDK (jni.h) AND it might be a good idea to use this for additional guidance for "how-to" code examples in the future, as there are numerous variations of c++ to Android JNI-type calls
 
