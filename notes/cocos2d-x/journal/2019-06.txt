@@ -11,6 +11,21 @@
     - for landscape orientation, maybe scale up the image? RUBE landscape layout using faux phone image..
 
 ----------
+Friday 2019-06-21
+
+  CODING
+
+    - moved sensor cached data over to SensorManager instead of the GameManager; it seemed to make more sense to be grouped there
+
+    * linear acceleration calculated using low-pass filter (see code for notes)
+      - for devices reporting a hardware linear accelerometer, that is used, but if unavailable, the linear acceleration is calculated based on a low-pass filter method of the accelerometer (acceleration + gravity)
+      - I just did a quick test on the hawaiian turtles scene
+        - for the samsung note 4 (hardware linear acceleration), it seemed ok, much better than I expected actually
+        - for the moto g (NO hardware linear accelerometer), the low-pass filter calculated linear acceleration also worked, but the INITIAL ACCELERATION WAS OVERWHELMINGLY IN THE DIRECTION OF GRAVITY, but quickly stabilized - I wonder if the sample rate should be increased?
+        - phone movements for the moto g, created a somewhat larger acceleration effect on the turtles / box2d world; I'm not sure how to get the calculated acceleration to be more in-line with the hardware values, but the note 4 would probably be the best place to start with a comparison
+          - ideas: adjust filter.a, attempt higher sample rate, scene acceleration scaling
+
+----------
 Thursday 2019-06-20
 
   CODING
