@@ -1,29 +1,65 @@
-----------
-Sunday 2019-06-16
-
   PLAN:
 
-    keep building gyro demo to apply JNI techniques learned
-      - back up to github, update() -> check acceleration values ALTER to java->c++ callback (use cocos2d-x acceleration implementation as a guide)
+    read: https://developer.android.com/guide/topics/sensors
 
-    read: https://developer.android.com/guide/topics/sensors 
+    - clean up notes from Sunday 2019-06-16 JNI - java to c++
+
+    - linear acceleration low-pass filter
+
+    - accelerometer orientation..
+
+    - for landscape orientation, maybe scale up the image? RUBE landscape layout using faux phone image..
+
+----------
+Thursday 2019-06-20
+
+  CODING
+
+    - fingers crossed, sensors appear to be working correctly. available sensors identified consistently so far and working with onpause/onresume functionality
+
+    - re-coded RUBELayer to use my new JNI sensor code for acceleration
+      - it seems to work and I can now take advantage of other sensors if the device supports them
+      - acceleration/linear acceleration/gravity x & y negated to be correct
+      * this doesn't yet account for landscape orientation (or more complex flipped portrait/landscape)
+
+----------
+Wednesday 2019-06-19
+
+  CODING
+
+----------
+Tuesday 2019-06-18
+
+  CODING
+
+    RUBE Image***
+
+      D:\code\android_projects\gyrotest\proj.android\app\src\com\ecantalejos\cpp\Gyroscope.java
+      D:\code\android_projects\gyrotest\proj.android\app\jni\JNISensorUpdate.cpp
+      D:\code\android_projects\gyrotest\Classes\GameManager.h
+
+      ..\cocos2d\cocos\platform\android\java\src\org\cocos2dx\lib\Cocos2dxAccelerometer.java
+      ..\cocos2d\cocos\platform\android\jni\Java_org_cocos2dx_lib_Cocos2dxAccelerometer.cpp
+
+    Gyroscope demo
+
+      - I simplified the Gyroscope c++ class so much, it's essentially just one-line wrapper functions calls to the JniHelper methods ..it's almost unnecessary at this point
+
+      * while I put down some things done with this code, it provides a much easier template for creating my own sensor code when compared to the cocos2d-x implementation for acceleration
 
 
-    JNI
-      methodology from earlier book and take notes
+  JNI - add to notes from "Sunday 2019-06-16"
 
-      COMPARE implementations: GYRO DEMO | cocos2d-x source | books
+----------
+Monday 2019-06-17
 
-      - custom user events (cocos2d-x by example ch.9)
+  MISC
 
-      - cocos2d-x cookbook jni topic
+    - ORDERED A REAL-LIFE DASHBOARD HULA DOLL (kc hawaii) from amazon in order to improve box2d physics, hopefully mimicking real-life motion and spring response
+    - back up gyro demo source code to github; I've already changed the original code quite a bit and I plan on making additional modifications as I'm learning jni+android sensors
 
-      - call android java from c++
-        - http://stnguyen.com/cocos2d-x/call-java-functions-from-cpp.html
-      - call c++ from java (android)
-        - http://stnguyen.com/cocos2d-x/call-cpp-functions-from-java.html
-      * reading JniHelper .h/.cpp source code
-
+----------
+Sunday 2019-06-16
 
   CODING
 
@@ -59,7 +95,7 @@ Sunday 2019-06-16
           Gyroscope sample code : cocos2d-x "context" for initiating access to device sensors
 
 
-      COCOS2D-X JniHelper (BUILT-IN)
+      C++ => JAVA : COCOS2D-X JniHelper (BUILT-IN)
 
         ..\cocos2d\cocos\platform\android\jni\JniHelper .h/.cpp
 
@@ -69,6 +105,34 @@ Sunday 2019-06-16
           - jni.h is a complex system header file for interfacing c++/java (not specific to android)
 
           *** in the gyro demo, for example, using the method "cocos2d::JniHelper::callStaticVec3Method(CLASS_NAME, "getAccelValues")" greatly simplified the code in Gyroscope::getRate() to be just ONE LINE instead of TWELVE+
+
+
+      JAVA => C++ (EDIT: Tuesday 2019-06-18)
+
+        CLEAN UP NOTES..
+
+        - referring to:
+
+          http://stnguyen.com/cocos2d-x/call-cpp-functions-from-java.html
+          https://discuss.cocos2d-x.org/t/call-c-function-from-java/27255/2
+          Cocos2dxAccelerometer.java (cocos2d-x API)
+
+        - steps 1/2 in the source java
+
+        - step 3 - create 'extern "C"' c++ binding(?)
+          - name/location of the .cpp file isn't important
+          - I think the project JNI folder would be a good location though
+
+          for cocos2d-x, a listener seems required, especially for sensors
+            - cocos2d-x acceleration > CCLayer.cpp ::setAccelerometerEnabled sets up a listener on an inherited method "Layer::onAcceleration"
+
+           - I decided to not use listeners..
+
+          - gyro (original demo) does a "polling" from c++ to java to retrieve gyro sensor values where the "right" way is from java-to-c++ (and with cocos2d-x listeners)
+            - the listener code seems like too much extra code
+
+          - also, static java methods need a "java runnable" (I think) as used by cocos2d-x internally for handling acceleration..
+
 
 
       MISC
