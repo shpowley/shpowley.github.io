@@ -1,0 +1,57 @@
+features
+  - application global (game manager)
+  - persistence
+  - defaults
+
+
+global
+  - restore all defaults - even for all scenes, are you sure confirmation?
+  - keep screen on (during physics scenes): checkbox; boolean, default=true
+
+  - dark mode for oled black background(?): checkbox; boolean, default=false
+    - confirmation, overrides all scene backgrounds
+
+  - acceleration
+    - accelerometer orientation (this should be automatic)
+    - global acceleration scaling factor: slider; float, range: 0.1 - 100 (needs testing)
+    - flip accelerometer x, y, OR z
+    - minimum acceleration threshold
+
+  - auto-wobble
+
+  - dev debug
+    - turn on/off box2d shapes; default=false
+    - show scene images; default=true
+    - display stats
+    - on-screen logging
+
+
+scene
+  - override global scaling factor: checkbox; boolean, default=false
+    - acceleration scaling factor: slider; float, range: 0.1 - 100 (needs testing)
+
+  - background:
+    - oled black (global)
+    - solid color: color boxes
+    - pre-made background images: hawaiian flowers, beach scene, etc.
+    - custom image picker
+
+  - auto-wobble: checkbox; boolean; default=false
+    - only enable when still?
+    - random frequency: 2-10 seconds..
+
+  - joint stiffness
+
+  - scene specific settings
+    - hula dancer base
+    - clouds?
+    - etc.
+    - show text
+
+scene overlay
+  - display on user touch and fade out with no interaction
+  - auto-wobble
+  - backgrounds
+    - dark mode (global)
+  - pan/scale mode | reset to default option
+  - keep screen on (global)

@@ -1,3 +1,6 @@
+*** re-watch RUBE tutorial videos and take notes: @ vid #15+ - https://youtu.be/PJu1icPqYK4
+
+
 HELP PANEL
 
   - online version: http://www.iforce2d.net/rubehelp/
@@ -6,7 +9,7 @@ HELP PANEL
 
 RUBE DOCUMENTS
 
-  - RUBE files can be dragged in to open
+  - RUBE files can be opened by using drag/drop in the open editor
 
   - certain panels reference the ACTIVE DOCUMENT
     - context help (F9), items (F6), script (F8), properties (F7)
@@ -19,7 +22,7 @@ RUBE DOCUMENTS
 PLAYER VIEW
 
   - simulation speed requires button toggle
-  - can be cloned
+  - can also be cloned
 
 
 CURSOR
@@ -84,6 +87,14 @@ VERTEX MODE
       *** with this mode it's easy to QUICKLY CREATE A PHYSICS SHAPE OUTLINE OF ANY IMAGE ***
 
     - able to cycle add vertices mode by pressing E repeatedly
+
+
+IMAGES
+
+  - background or attach to a body
+  - able to drag/drop images (automatically become 1-unit in the physics world)
+  - position is relative to the body it's attached to or world coordinates if not attached to a body
+  - can be copy/pasted onto 1 or more new bodies
 
 
 MISC

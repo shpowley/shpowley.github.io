@@ -1,14 +1,182 @@
-  PLAN:
 
-    read: https://developer.android.com/guide/topics/sensors
+----------
+Wednesday 2019-06-26
 
-    - clean up notes from Sunday 2019-06-16 JNI - java to c++
+  audio notes
 
-    - linear acceleration low-pass filter
+    - feet on dashboard with multiple solar powered toys
+    - add bare feet to hawaiian theme, animated, spread pose
 
-    - accelerometer orientation..
+    - "dashboard mode" like what I saw
+      - multiple toys on the digital dashboard, with placement and resize(?)
+        - for repositioning maybe vibrate feedback, long-press(?), or click the base
 
-    - for landscape orientation, maybe scale up the image? RUBE landscape layout using faux phone image..
+      - default to landscape
+      - currently only one toy is visible that will be resizable + panning
+      - multiple toys physics overhead shouldln't slow performance
+      - b2json loader would have to import each toy individually; ignore world settings or don't export
+      - unlock toys with ad-movies
+
+    - overlay config options (hud)
+      - re-usable
+      - appear / fade out
+      - landscape or portrait
+      - rube layer pointer?
+
+    - don't rely on os orientation, use "in-app" pseudo-orientation?
+      - cocos2d-x doesn't support this
+      - global and scene-by-scene
+
+    - data storage; user-default or json object
+    - settings object; defaults (hard-code or..)
+    - menus (movement movement)
+
+    - feature-creep.. focus on KISS to complete the app
+      - menus, settings, clean up physics and graphics
+
+      * TODO
+        - task features / version list.. now vs future.. more specific versions
+
+      - surfboard scene, hula android, standard app requirements (privacy statement, etc.), splash
+
+
+  live wallpaper
+    - android canvas might be a solution for the live wallpaper, but a lot of duplicate code would be required
+    * TODO - go back and try modifying Cocos2dxHelper.java again to re-attempt the live wallpaper, and try using android "context" wherever possible and see if it breaks an existing project
+
+----------
+Tuesday 2019-06-25
+
+  CODING
+
+    settings screens
+
+      - making a list of settings for reference - settings.txt
+
+      - I considered making framerate as a setting, but after experimenting with it, this doesn't seem like a good idea
+        - the max framerate is 60 fps apparently 
+        - at 30 fps, sideways movement appears choppy
+        - for a mostly static scene, like settings or a menu, setting the framerate low (ie. 20 fps) seems to work, but if implemented, don't forget to reset it to it's prior value
+
+
+    android live wallpaper
+    
+      *** MY ATTEMPT TO GET THIS WORKING MORE OR LESS FAILED ***
+
+      - this post describes the situation more or less:
+        https://discuss.cocos2d-x.org/t/3-2rc0-android-live-wallpaper/15460
+
+      - I checked in my updates to the "RUBE loader custom" project for future reference (just in case)
+        - this contains my live wallpaper modifications except for Cocos2dxHelper.java
+
+      - my implementation has something wrong with starting the actual java service - it always crashes (I didn't figure out the cause, but it's a moot issue). ultimately though, even if that were fixed, the cocos2d-x 3.x framework doesn't really allow initializing the cocos2d-x app from an android service, as an android "Activity" is required at many code points beyond the Cocos2dxHelper.init() function. this is beyond my capability. I also undid my changes to Cocos2dxHelper.java
+      - I found a simplified cocos2d-x live wallpaper project in the forums, created/tested that project, but failed on the Cocos2dxHelper.init() from the wallpaper service with errors related to being unable to cast the wallpaper service "Context" to and "Activity"
+
+
+      * it might be worth pursuing a pure android solution with java AND c++
+        CON: duplicate c++/java code?
+        PRO: re-use RUBE/box2d physics and assets
+
+        - the vogella code from "Sunday 2019-06-23" is probably the best place to start
+          - see the android studio project "Vogella_LWP" in the code backup
+
+        - https://github.com/jbox2d/jbox2d
+        - https://github.com/iforce2d/b2dJson
+          - https://www.iforce2d.net/rube/?panel=loaders
+        - https://developer.android.com/reference/android/graphics/Canvas.html
+        - http://gamecodeschool.com/android/coding-android-sprite-sheet-animations/ (maybe?)
+
+
+      - an interesting read re: native opengl and android live wallpaper (way too complex for me though)
+        - https://mycardboarddreams.wordpress.com/2017/02/25/making-a-live-wallpaper-in-native-opengl/
+
+----------
+Monday 2019-06-24
+
+  CODING
+
+    android live wallpaper
+      - attempt cocos2d-x integration using "RUBE loader custom" project
+      - I went ahead and put this in github
+      - I chose this project as it has accelerometer-controlled physics and has only one scene ..this will eventually need more than one scene though
+
+      * I need to make a note of this for future reference; Cocos2dxHelper.java needs to be modified in order to enable the android live wallpaper feature, specifically, an overloaded version of init() in Cocos2dxHelper.java needs to be created that will allow an android wallpaper service to start up the cocos2d-x app. the existing version of init() needs to be kept, but it only allows an android activity to start the cocos2d-x app. the following is the path:
+
+        - ..cocos2d\cocos\platform\android\java\src\org\cocos2dx\lib\Cocos2dxHelper.java
+
+        **** Cocos2dxHelper.java NEEDS TO UPDATED APPROPRIATELY WITH EACH NEW RELEASE OF THE COCOS2D-X API ****
+
+----------
+Sunday 2019-06-23
+
+  CODING
+
+    android live wallpaper
+
+      - I wanted to get a better "feel" for live wallpapers from standard android projects and then try it with the cocos2d-x framework..
+
+
+      https://www.vogella.com/tutorials/AndroidLiveWallpaper/article.html
+
+        2.3 java code example to use an intent to set the wallpaper
+
+        * AndroidManifest.xml >>> android:exported="true" also used here
+        - uses deprecated methods for preferences, whereas the matrixLWP used code fragments - I'm not sure it matters though; ideally I would like to launch my cocos2d-x app straight into live wallpaper config screen
+
+
+      https://www.codeproject.com/Articles/1167401/Android-Live-Wallpaper-Tutorial
+
+        - live wallpaper finally created, but text doesn't fall
+        - sub-project "colorPicker" REALLY COMPLICATED things
+
+        * AndroidManifest.xml >>> android:exported="true" must be specified on the settings activity for it to open when clicking SETTINGS button (TESTED - SEEMS IRRELEVANT..)
+
+
+      https://kb.phardera.com/2013/07/create-android-live-wallpaper-with.html
+
+        - not much explanation behind the actual live wallpaper, except basic stuff
+        - "flocking birds"
+        - default project wouldn't compile, so I didn't bother trying to implement
+
+        .java files
+          * android.app.WallpaperManager
+
+          * android.service.wallpaper.WallpaperService
+            - the base class for all live wallpapers
+
+
+        AndroidManifest.xml
+          * <uses-feature android:name="android.software.live_wallpaper" android:required="true" />
+            - NOTE: android:required - it might be useful to set this FALSE for my stuff
+
+            <service ..
+          *   android:permission="android.permission.BIND_WALLPAPER
+              <intent-filter>
+          *       <action android:name="android.service.wallpaper.WallpaperService" />
+              </intent-filter>
+          *   <meta-data android:name="android.service.wallpaper" android:resource="@xml/mylwp_main" />
+    
+
+    standard android "hello world"
+      - https://developer.android.com/courses/fundamentals-training/toc-v2
+
+      NOTE: while creating the project I noted the following android api level features that caught my eye
+
+        api level 7 - live wallpaper
+        api level 17 - DAYDREAM, SECONDARY DISPLAYS, and LOCKSCREEN WIDGETS
+        api level 18 - support for opengl es 3.0
+        api level 21 - support for opengl es 3.1
+        api level 24 - multi-window support, vulkan api, vr mode
+        api level 25 - enhanced live wallpaper metadata
+        api level 26 - multi-display support
+
+----------
+Saturday 2019-06-22
+
+  ANDROID LIVE WALLPAPER / WIDGETS
+
+    - I bookmarked several internet resources for creating android live wallpapers and widgets
+    - another was a standard android live wallpaper, but had an interesting take on a "flocking birds" algorithm that I might be able to use for the hawaiian turtles - https://www.developer.com/ws/android/building-an-android-live-wallpaper.html
 
 ----------
 Friday 2019-06-21

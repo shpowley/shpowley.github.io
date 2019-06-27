@@ -1,48 +1,46 @@
 TODO
 
-  - it might be a good idea to just drive around to get new ideas and audio recorded
+  *** K.I.S.S. ***
+  *** it might be a good idea to just drive around / walk to get new ideas and record thoughts
 
 
-  SHORT-TERM GOALS
+  ONGOING
+    - monthly days worked stats: % days, % actual hours(?)
+    - use vs code print monthly journal to pdf and markup using android app "xodo"
 
-    - create my own "sensor code" + low-pass filter
 
-    - sensors (linear acceleration) or low-pass filter, live wallpaper, settings screen (global, persist settings), advertising
-      - sensors - read through this: https://developer.android.com/guide/topics/sensors
+  TASKS
+    - RUBE image opacity / linear filter properties - check how these affect cocos2D-x sprite creation in b2djson import
+
+    - clean up notes from Sunday 2019-06-16 JNI - java to c++
+
+    - live wallpaper
+      - go back and try modifying Cocos2dxHelper.java again to re-attempt the live wallpaper, and try using android "context" wherever possible and see if it breaks an existing project
+
+    - advertising
+
+    - sensors - read through this: https://developer.android.com/guide/topics/sensors
 
     - separate notes section for each scene
-      - hula dancer
-        - note 4 oled black? strange visual issue with right side of head when moving
         
-      - hang loose
-      - sandals
-      - turtles
+    - for landscape orientation, maybe scale up the image somewhat? RUBE landscape layout using faux phone image..
 
-  
     - gimp vids
-
-    - create a gimp instructions document
-
-    - motor
-
-    - settings
-      - app settings vs individual scenes
-      - always on
-      - battery saver (lower fps + black background)
-      - backgrounds (black, colors, scenes, hawaiian flowers)
-      - auto-wobble / random movement
-      - turn on/off graphics (like debug)
-      - flip individual accelerometer x y z (I noticed that the hp-touchpad has x reversed)
+      - create a gimp instructions document
 
     - max length mouse joint?
     - multi-touch (multiple mouse joints?)
     - pinch-to-zoom / pan (it might be a good idea to use this as a special user placement/zoom "mode")
+
+    - MOTOR JOINT with my turtles scene (see journal Thursday 2019-05-30)
+
     - move "noise" test to it's own scene and display on device..
 
-    - finish RUBE video tutorial re-watch
-      - re-watch RUBE tutorial vid #14+ and take notes - https://youtu.be/wwEPKhdzIpk
+    - finish RUBE video tutorial re-watch + notes
 
     - finish joint RUBE tutorials
+      - look back over my notes / comments (did I take notes?) for my iforce2d tutorial tests in the box2d test harness created in visual studio 2019
+      * BOX2D - review test scenarios listed for useful box2d usage and study code to implementation for Box2D test harness (journal Monday 2019-05-20)
 
     - backup new android projects (compacted) - rube_loader_image, rube_loader_demo, rube_loader_custom
 
@@ -55,6 +53,7 @@ TODO
     - put normalized height % in the RUBE file and try to export that in the RUBE json export for programmatic positioning
 
 
+
   APP DEVELOPMENT PROGRESS NOTES
 
     - name ideas: dashboard toys
@@ -62,12 +61,6 @@ TODO
     - development goals: hawaii theme => hula dancers => iOS => googly eyes => ?
 
     * minimum viable app
-      * live wallpaper (android only)
-      * revenue mechanism(s)
-      - begin working on next app
-      - android widget
-      - android daydream
-      - calibration
 
     * business license => e-mail address => bank account => app store account
       - later a website, social media..
@@ -101,10 +94,6 @@ TODO
       - study Box2DDebugDraw.cpp/.h vs GLES-Render.cpp/.h and try to get working again? body (issue with backgrounds not moving)
       - once "fixed", add to github and add to SDK folder, for new projects create LINK back to this (like cocos2d-x and b2dJSON)
 
-    - json compression? worth it? option built into RUBE?
-
-    - read/document notable DISCUSSION FORUM topics
-
     - video tutorials
       - Cocos2d-x "on the fly" resource updating: https://youtu.be/Xv4JYqwlGOg
       - Box2D inverted pendulum control: https://youtu.be/LH0pRDIeZB8
@@ -127,43 +116,13 @@ TODO
       - Box2D conveyor belt implementation: https://youtu.be/EtvTtUZaVM0
 
 
-  ANDROID ACCELEROMETER SENSOR - GRAVITY ISSUE
-
-    QUESTION: is not having the ability to use linear acceleration really an issue?
-
-    try to reverse-engineer git code for gyroscope sensor
-      - https://github.com/Undume/Gyroscope-Cocos2d-x
-
-    google android sensors
-      - android java project to test out various sensors?
-
-    code a version of the low-pass-filter accelerometer
-
-
   disable chipmunk? and other APP_CPPFLAGS
     - see: http://discuss.cocos2d-x.org/t/how-to-speed-up-cocos2d-x-build-with-prebuilt-lib/23402/33
 
 
-  PRE-BUILT COCOS2D-X LIBRARIES
-    - try to get working (make sure to back everything up prior)
-    - http://discuss.cocos2d-x.org/t/how-to-speed-up-cocos2d-x-build-with-prebuilt-lib/23402/43
-
-
-  BOX2D
-    - update BOX2D how-to guide as necessary..
-
-    * review test scenarios listed for useful box2d usage and study code to implementation for Box2D test harness (journal Monday 2019-05-20)
-
-    BOX2D TEST APP
-      - create a menu for multiple scenes
-      - new scene for box2d joint(s) test
-
-
   CURRENT APP DEVELOPMENT IDEAS
-    - android widget
     - android live wallpaper
     - android daydream
-    - android smartwatch?
 
     SAMPLE LIVE WALLPAPERS
 
@@ -197,12 +156,6 @@ TODO
     iforce2d tutorial - RUBE+cocos2d-x (iOS setup): https://youtu.be/ePTR5lHE4q0
 
 
-  ONGOING
-    - use vs code print monthly journal to pdf and markup using android app "xodo"
-    - monthly days work stats: % days, % actual hours(?)
-    - maintain books.txt
-
-
   MISCELLANEOUS
 
     - setDesignResolutionSize()
@@ -212,7 +165,6 @@ TODO
     - cocos2d-x equivalents to android onResume() / onPause() and other life-cycle
       - TEST THIS: http://docs.cocos2d-x.org/cocos2d-x/en/audio/advanced.html
       - applicationDidEnterBackground / applicationWillEnterForeground
-      - document in notes
 
     ! read "cocos2D-x notes.txt" > SCALING > USING RENDERTEXTURE, test & write notes
     - read "cocos2D-x notes.txt" > RESOLUTION
