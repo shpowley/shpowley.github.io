@@ -1,4 +1,4 @@
-*** re-watch RUBE tutorial videos and take notes: @ vid #15+ - https://youtu.be/PJu1icPqYK4
+*** re-watch RUBE tutorial videos and take notes: @ vid #16+ - https://youtu.be/ZVmBrebebEY
 
 
 HELP PANEL
@@ -50,6 +50,14 @@ SCRIPT PANEL
 
   - immediate window to run scripts
   - angelscript (see help)
+
+
+SCRIPT LOGS
+
+  - backup log directory + backup files (.rs extension)
+  - linux "tail" command will show actions performed in the RUBE editor as script commands -- these are actually being appended to the .rs backup file
+  - backup files could be used to restore a .rube file if anything happens to it
+    - by copy/paste contents into the SCRIPT PANEL (or drag/drop)
 
 
 ITEM MANIPULATION (TRANSLATION, ROTATION, SCALING)

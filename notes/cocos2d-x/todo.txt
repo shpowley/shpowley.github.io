@@ -8,8 +8,14 @@ TODO
     - monthly days worked stats: % days, % actual hours(?)
     - use vs code print monthly journal to pdf and markup using android app "xodo"
 
+    - remember to disable unused API options to reduce file size
+      https://docs.cocos2d-x.org/cocos2d-x/en/physics/debugging.html
+
 
   TASKS
+    - "dashboard" mode (see Wednesday 2019-06-26)
+      - saved dashboard profiles
+
     - RUBE image opacity / linear filter properties - check how these affect cocos2D-x sprite creation in b2djson import
 
     - clean up notes from Sunday 2019-06-16 JNI - java to c++

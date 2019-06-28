@@ -1,6 +1,59 @@
 
 ----------
+Thursday 2019-06-27
+
+  coding
+
+    settings
+      - started a settings scene (ultimately intended for application-level settings) for testing out cocos2d-x widgets
+      - I'm also thinking about using RUBE/box2d for widgets like in the RUBE demo
+
+      - experimentation with the existing menu, labels, and text fields
+        - I can get away with placing textfields and standard sprites as menu items - this doesn't seem to be a standard practice per se, but works
+        
+        - for now I'm going to try and keep this simple, with checkboxes and textfields only. once I'm further along, I'll go back and implement some more graphically pleasing UI controls
+          - I think the RUBE editor, as shown in the RUBE demo, would work somewhat, but I need to be able to constuct settings dynamically per the needs of individual scenes from structured / persisted data -- I THINK
+          - HARD-CODING a UI layout purely in RUBE is enticing
+
+        - the biggest issue I have is with textfields and the color behind it - it doesn't support it by default
+          - the best luck I've had is with using a DrawNode-->drawSolidRect behind the TextField
+
+        * TODO - I need to create storyboard-style settings screens
+          - sample UI: stocard, smart recorder, when.do
+          - remember this is developed in a game-style app, so widgets aren't as robust
+          * look at RUBE widget demo code, try creating individual RUBE widget (this knowledge will also help with the "dashboard" concept)
+
+
+  *** disabling physics (and adjusting other cocos2d-x api parameters)
+    - https://docs.cocos2d-x.org/cocos2d-x/en/physics/debugging.html
+      - found this in docs while searching for whether or not I could use scenes creating in cocos creator for settings-type layout ..I don't think it's possible
+
+    - location: cocos/base/ccConfig.h
+    - ie. enable/disable fps stats interval / location, use tiff/jpeg, 3d physics, etc.
+
+    - VERY INTERESTING; disabling unused features can reduce package size
+      - my debug .APK filesize is 4.39MB, disabling some unused options
+
+    - stripped out the following box2d/chipmunk parameters from proj.android/app/jni/Application.mk
+
+      -DCC_ENABLE_BOX2D_INTEGRATION=1 -DCC_ENABLE_CHIPMUNK_INTEGRATION=0
+    
+      APP_CPPFLAGS := -frtti -DCC_ENABLE_BOX2D_INTEGRATION=1 -DCC_ENABLE_CHIPMUNK_INTEGRATION=0 -std=c++11 -fsigned-char -Wno-extern-c-compat
+
+
+  cocos creator
+    - I was curious about whether I could use this to create UI widgets for my settings screens and combining it with my existing c++ codebase
+    - ended up re-installing because of some error and just trying out a "hello world" project
+    - I might re-visit this when I'm idle
+
+
+  re-watch rube tutorial video #15 + notes
+
+----------
 Wednesday 2019-06-26
+
+  re-watch rube tutorial video #14 + notes
+
 
   audio notes
 
