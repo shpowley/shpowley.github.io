@@ -1,4 +1,4 @@
-*** re-watch RUBE tutorial videos and take notes: @ vid #16+ - https://youtu.be/ZVmBrebebEY
+*** re-watch RUBE tutorial videos and take notes: @ v1.4 updates - https://youtu.be/XM_yYvk3AKk
 
 
 HELP PANEL
@@ -29,6 +29,7 @@ CURSOR
 
   - "C" + mouse-click to manually move it
   - "C" + "S" to move it to selection center
+  - "S" + "C" to move selected items center to cursor
   - "C" + "C" to specify point by typing coordinates
   - "C" + "X" OR "Y" to constrain cursor placement in horizontal OR vertical only
 
@@ -105,13 +106,108 @@ IMAGES
   - can be copy/pasted onto 1 or more new bodies
 
 
+ACTION MENU
+
+  - accessible using SPACE BAR, right-click (as an option), or menu
+
+  - add CUSTOM SCRIPTS manually in folder - <install dir>\rube\config\actionMenu
+    - default | myscripts-
+    - both contain scripts
+    - leave "default" alone
+
+    - myscripts- "hyphen" means custom scripts are ignored; remove hyphen to allow custom scripts
+      - layout.json: how menu is constructed, name, script file, etc.
+      - .rs files: actual script
+      - auto-load new scripts without having to restart
+
+
+CUSTOM PROPERTIES (tutorial 17/18 - https://youtu.be/nCp-EK_IICA)
+
+  - can be added to any object type including world
+  - attributes include "class" (ie. the object type), data "type", "name" (used by script), and "display name"
+  - custom properties / set values also shown on hover tooltip
+
+  RELATED HELP
+    - section "Custom properties"
+    - also check out "Using exported data" > "Supported loaders" >> "Loading custom properties"
+    - also check out "Using exported data" > "JSON file structure"
+
+  - custom properties can also be "unset" so that they don't exist
+  - exported json wraps all custom properties in "customProperties" sub-group
+    - how-to load example can be found @ <install>\rube\sampleLoaders\box2d-testbed-(C++)\src\Box2D\Testbed\Tests\loadrube_customProperties.h (as shown in the video)
+
+  NOTE: once a custom property is added to a certain object type, it exists for all new instances of that object type
+    - so in a sense, new custom properties should be defined as broad as possible to be applicable to object instances of that object type
+
+  - right-click on the properties window to add new custom properties
+  - also accessible from "scene > scene settings > custom properties" via a summary table of all custom properties; add, delete, modify, ..
+
+  - COPY custom properties for a scene using "scene > scene settings > copy to clipboard" and then running the script in your new scene 
+
+
+SAMPLERS (tutorial 18/18 - https://youtu.be/O68lFQWe7-A)
+
+  * 2 use-cases: ANIMATION-CAPTURE and FIXTURE AUTO-TRACE
+
+  RELATED HELP
+    - section "Editing items" > "Editing samplers - overview"
+
+
+  - a "rectangular area" of the screen
+    - top level object (like bodies, fixture, etc.) that's kind of a "camera" of sorts
+    - the "camera" samples graphic images in a defined area and is able to output to another image file at a specified resolution (sample width/height)
+    - can be "attached" to a body
+
+    - orientation can be rotated
+    - "output width/height" is better defined as an "aspect ratio" defined with a # of samples, whereas the actual world height is defined separately (width is auto-calculated based on this)
+
+  - composite image samples that when combined with the "simulation" allow you to create animation frames
+    - a sample window moved/sized to certain positions create "camera effects"
+    - example shown on trainWheels.rube (I can't find this anywhere though)
+
+    - RUBE isn't really a graphics or animation tool per se, but it's physics capabilities adds an interesting twist --- I HAVE TO THINK ABOUT IT'S BEST USE-CASE..
+
+  - simulation > step all bodies
+    + specify # steps
+
+
+  QUICK AUTO-TRACE (1-STEP)
+
+    - a "rough" trace of image using polygon fixtures
+    - action menu > sampler > create body+fixture from image; use defaults, except for "keep sampler?" (NO)
+    - clean up in vertex mode
+
+
+  sampler EDGES ===> ADVANCED AUTO-TRACE
+
+    - limited by the sample "resolution" (~# samples) and the source image
+    - default edges defined by the image opacity delta
+      - "Use color edges" is the other option that defines edges by color + opacity
+
+    - sampler PATHS / CONTROL POINTS
+      - press "E" to edit control points
+      - add control points to have RUBE create a polygon path - uses auto-pathfinding with the control points as user-defined "path-finding assist guides"
+      - as each control point is added the polygon defined by the path finding auto-updated
+      - control points added in-between 2 existing points will define it as such
+
+      * be sure to add control points in a counter-clockwise direction for efficient "polygon decomposition"
+
+      - keep image/sampler control points in-sync by attaching both to the same body (see https://youtu.be/O68lFQWe7-A?t=2649)
+      - path further refined by adjusting either "Max points" and "Min angle" (not both); "Max points" being the most useful
+
+      - LAST STEP is to generate a fixture from the sampler path
+        - with the body AND relevant sampler selected, use action menu > sampler > create a fixture from sampler
+        - should produce a much more accurate/efficient auto-trace when compared to the QUICK AUTO-TRACE
+  
+
 MISC
   
   - CTRL + right mouse button will ZOOM to created rectangle
   - SEND FEEDBACK option built in to RUBE
   - each mode can have different items selected
-  - ACTION MENU: accessible using SPACE BAR, right-click (as an option), or menu
   - fixture shape type greatly impacts resulting appearance (tutorial 7/18)
+  - delete using DELETE or BACKSPACE
+  - "save a copy" creates a snapshot
 
 
 DUPLICATION (shift+D)
@@ -177,3 +273,122 @@ JOINTS
     MOTOR (NEW)
       - like FRICTION JOINT with elastic force
       - see "Thursday 2019-05-30"
+
+
+v1.3 
+
+  body mass vs fixture density
+
+    - mass shown as a 1st class property of the body, but this is RUBE-specific, not box2d apparently
+    - composed of multiple fixtures with different densities, the body mass is calculated from this composite
+    * changing the mass of the body will change the densities of the fixtures attached to it in the same proportion
+
+    - while in fixture mode, pressing "D" will show the relative densities of all the fixtures in the current view -- all fixture items in greyscale, but with higher density fixtures visually more solid
+      - moving the view around will change the relative density visual presentation accordingly
+
+
+  BITPLANE
+    - a subpanel of PROPERTIES (a little bit hidden)
+    - each bitplane can be renamed if necessary
+    - apply category/mask to FIXTURES to specify what type of bitplane fixtures can collide
+    - category/mask relationships can be quite complex and this panel should make things easier
+
+    - the design panel also shows INSTANT VISUAL FEEDBACK what fixtures it can collide with
+      * also, pressing "F" while in fixture-mode and with none of the fixtures selected, allows you to move the mouse over any fixture and instantly shows what it can collide with
+
+    - selecting multiple fixtures tries to show a venn-diagram type of relationship with regards to common category/masks
+
+    NOTE: box2d only supports 16 distinct bitplane category/masks (16-bit); RUBE shows 32, but beyond 16, this has to be managed programmatically outside of box2d
+
+
+  MISC
+    - system hooks (ie. copying .json export to a specific directory/file location)
+      - vid actually shows this as a way to load .json RUBE exports directly onto running ios sim without having to recompile
+
+
+v1.4
+
+  MISC
+    - ASPECT SCALE: ratio of image width to height; same can be accomplished with the mouse by select image and pressing "S" + "X"/"Y" + mouse move
+    
+    - command line interface (ie. quick export .rube files to .json)
+
+    - script updates
+      - script event-hooks
+      - include other scripts feature similar c++ mechanism
+
+      - script panel "library" of scripts
+        - eliminates having to always copy/paste
+        - named scripts
+        - user-defined tags
+        - also a quick way of editing (action menu) custom scripts
+
+
+v1.5
+
+  SHOW LABELS toolbar icon - this must be depressed to show object labels in the editor view
+
+    - use "tools > options > use dynamic label placement" checkbox option so that labels are not overlapping
+
+    - use "scene settings > custom display > labels" option to create a script that alters label colors, etc.
+      - sample script is generated that can be altered; basically a function override
+
+
+  property label visibility
+
+    - use "scene settings > custom display > property display" option to create a script to controls property item visibility
+    - use case example #1: certain properties are irrelevant for static bodies (ie. bullet)
+    - use case example #2: custom properties (ie. certain user-defined categories shouldn't be climable - https://youtu.be/K-VzlEtXdJM?t=1018)
+
+
+  export filters
+
+    - use "scene settings > export options > included properties" to designate an export filter script
+    - much more FINE-GRAIN control into what gets exported into RUBE .json
+
+
+  snap-to-grid
+
+    - additional toolbar item to snap to absolute positions on the fixed grid when using CTRL+ (the default is to snap relative to the start position)
+
+
+  action items
+
+    * ALIGN VERTICES (this might be useful)
+    - split fixtures (ideally split along sub-polygon vertices)
+    - join two fixture (a bit tricky http://www.iforce2d.net/forums/viewtopic.php?f=9&t=186 and script had to be updated)
+    - refine: smooth line (vertices), remove redundant vertices, bevel corners
+
+  help full-text search
+  + online help
+
+
+v1.7
+
+  measure tool
+    - press "M" + move mouse
+    - can be split across 2 views
+
+  custom property combo-box export
+    - kind of like c++ enums, but 1.7 now adds the ability to export the "enum" names
+
+  ctrl+key vertex snapping (COMMENT: actually surprised this hasn't been a feature all along)
+    - editing or adding new vertices
+
+
+  INSTANTIABLE OBJECTS (https://youtu.be/E3KERZlt7Ak?t=420)
+
+    "RUBE scene within a scene"
+  
+    - RUBE instance object VS copy/paste from an open RUBE doc
+
+      - RUBE instance object are EXACT INSTANCES OF THE ORIGINAL that maintain the details from the original
+        - instance objects cannot be modified directly, only the original can
+        - user properties can be added to instance objects, just like bodies, fixtures, etc.
+
+      - copy/paste are completely BRAND NEW versions
+
+    - NESTED instance objects - WORKS
+      * AVOID circular references
+
+    * NOTE: instance object joints parameters (and some other relevant values) don't scale well in proportion to the attached bodies' mass (walking mech example; once a mech is scaled, it can't walk anymore - https://youtu.be/E3KERZlt7Ak?t=1327)

@@ -1,3 +1,55 @@
+----------
+Sunday 2019-06-30
+
+  re-watch rube tutorial videos
+  - taking so long.. I think because I just watch @ 1.5x last time without taking notes
+  ..just 2 left; going to skip v1.6 update until tomorrow or Tuesday as v1.7 has what I'm interested in I think
+
+
+  ** I'm thinking about using custom data for my settings via CUSTOM PROPERTIES (see RUBE.txt) and/or USER DATA (see "Monday 2019-05-27" - "user data" box2d test harness (iforce-UserDataTest.h) ==> location: D:\SDK\Box2D\Testbed\Tests)
+
+    - not sure if CUSTOM PROPERTIES and USER DATA are related or are one and the same, but I'll have to dig deeper into the code to find out
+    
+    - just a note, but the RUBE editor allows for "CUSTOM PROPERTIES", but not "USER DATA" in it's pure definition as a void* so...
+
+    - my use case: min/max, default value, label, description, intended toy width/height (for c++ layout)
+      - this does an end-around cocos2d-x, but that's not a bad thing
+
+
+    INSTANTIABLE OBJECTS
+      - I probably need to think about this some more, especially with the scaling joint parameter issue
+        - my turtles for example - the big turtle's joint strength would be different from the smaller ones
+        - it might be better to have duplicates of items that maintain it's original scale..maybe
+        - the 3 baby turtles could easily be an instance of 1, with the adult being a separate file altogether..
+
+      - I need to consider this from MULTIPLE PERSPECTIVES: the RUBE editor, RUBE json export, c++ b2json import, settings use-case vs multi-toy dashboard use-case
+
+----------
+Saturday 2019-06-29
+
+  re-watch rube tutorial videos
+    
+    TODO - add more info to joint notes
+
+    - watching version update videos.. just a comment. there are SO MANY LITTLE DETAILS that I would definitely have missed had I not re-watched these. also without taking notes, I don't see how I would remember half of this -- not sure if I'll use it all, but..
+
+
+    - cocos2d-x demo shown for v1.3
+
+      TODO - quick note, check out the code for destroying bodies and reloading (I need to actually try the reload on my current stuff)
+
+      * PINBALL is interesting in some of the pinball paths that can only have an entrance and have a BITPLANE-LIKE effect
+      * 2D adventure - take a look at the camera code
+
+----------
+Friday 2019-06-28
+
+  updated gimp to v2.10.12
+
+  re-watch rube tutorial video #16 + notes
+    - I want to finish re-watching these, specifically to see if I can make re-usable box2d "components"
+    - ideally I could use the RE-USABLE COMPONENTS to create composite RUBE/box2d scenes or import the components in directly -- still not sure if this is possible
+    - left off at v1.2 updates
 
 ----------
 Thursday 2019-06-27
@@ -24,7 +76,7 @@ Thursday 2019-06-27
           * look at RUBE widget demo code, try creating individual RUBE widget (this knowledge will also help with the "dashboard" concept)
 
 
-  *** disabling physics (and adjusting other cocos2d-x api parameters)
+  *** CCCONFIG.H - disabling physics (and adjusting other cocos2d-x api parameters)
     - https://docs.cocos2d-x.org/cocos2d-x/en/physics/debugging.html
       - found this in docs while searching for whether or not I could use scenes creating in cocos creator for settings-type layout ..I don't think it's possible
 

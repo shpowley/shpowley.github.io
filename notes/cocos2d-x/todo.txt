@@ -13,6 +13,10 @@ TODO
 
 
   TASKS
+    - update descriptions for joints in RUBE.txt
+    
+    - check out RUBE demo code - destroying bodies, pinback "bitplane", camera control/follow
+
     - "dashboard" mode (see Wednesday 2019-06-26)
       - saved dashboard profiles
 

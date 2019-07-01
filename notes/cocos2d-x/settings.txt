@@ -16,6 +16,7 @@ global
     - global acceleration scaling factor: slider; float, range: 0.1 - 100 (needs testing)
     - flip accelerometer x, y, OR z
     - minimum acceleration threshold
+    - wobble: x-acceleration OR max x/z-acceleration OR x/z normalized
 
   - auto-wobble
 
