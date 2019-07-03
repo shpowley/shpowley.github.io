@@ -5,6 +5,8 @@ features
 
 
 global
+  - driving vs desktop
+
   - restore all defaults - even for all scenes, are you sure confirmation?
   - keep screen on (during physics scenes): checkbox; boolean, default=true
 
@@ -17,11 +19,13 @@ global
     - flip accelerometer x, y, OR z
     - minimum acceleration threshold
     - wobble: x-acceleration OR max x/z-acceleration OR x/z normalized
+    - gravity + acceleration OR linear acceleration OR low-pass filter linear
 
   - auto-wobble
+    - random factor min/max time, min/max impulse
 
   - dev debug
-    - turn on/off box2d shapes; default=false
+    - turn on/off box2d shapes (debug draw); default=false
     - show scene images; default=true
     - display stats
     - on-screen logging

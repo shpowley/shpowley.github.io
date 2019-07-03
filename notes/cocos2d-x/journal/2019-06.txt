@@ -1,8 +1,7 @@
-----------
 Sunday 2019-06-30
 
   re-watch rube tutorial videos
-  - taking so long.. I think because I just watch @ 1.5x last time without taking notes
+  - taking so long.. I think because I just watched @ 1.5x last time without taking notes
   ..just 2 left; going to skip v1.6 update until tomorrow or Tuesday as v1.7 has what I'm interested in I think
 
 
@@ -22,7 +21,7 @@ Sunday 2019-06-30
         - it might be better to have duplicates of items that maintain it's original scale..maybe
         - the 3 baby turtles could easily be an instance of 1, with the adult being a separate file altogether..
 
-      - I need to consider this from MULTIPLE PERSPECTIVES: the RUBE editor, RUBE json export, c++ b2json import, settings use-case vs multi-toy dashboard use-case
+      - I need to consider this from MULTIPLE PERSPECTIVES: the RUBE editor, RUBE json export, c++ b2dJson import, settings use-case vs multi-toy dashboard use-case
 
 ----------
 Saturday 2019-06-29
@@ -65,7 +64,7 @@ Thursday 2019-06-27
         
         - for now I'm going to try and keep this simple, with checkboxes and textfields only. once I'm further along, I'll go back and implement some more graphically pleasing UI controls
           - I think the RUBE editor, as shown in the RUBE demo, would work somewhat, but I need to be able to constuct settings dynamically per the needs of individual scenes from structured / persisted data -- I THINK
-          - HARD-CODING a UI layout purely in RUBE is enticing
+          - HARD-CODING a UI layout purely in RUBE is enticing though
 
         - the biggest issue I have is with textfields and the color behind it - it doesn't support it by default
           - the best luck I've had is with using a DrawNode-->drawSolidRect behind the TextField
@@ -119,8 +118,8 @@ Wednesday 2019-06-26
       - default to landscape
       - currently only one toy is visible that will be resizable + panning
       - multiple toys physics overhead shouldln't slow performance
-      - b2json loader would have to import each toy individually; ignore world settings or don't export
-      - unlock toys with ad-movies
+      - b2dJson loader would have to import each toy individually; ignore world settings or don't export
+      - unlock each toy with ad-movies
 
     - overlay config options (hud)
       - re-usable
@@ -134,13 +133,10 @@ Wednesday 2019-06-26
 
     - data storage; user-default or json object
     - settings object; defaults (hard-code or..)
-    - menus (movement movement)
+    - menus (scrolling movement)
 
     - feature-creep.. focus on KISS to complete the app
       - menus, settings, clean up physics and graphics
-
-      * TODO
-        - task features / version list.. now vs future.. more specific versions
 
       - surfboard scene, hula android, standard app requirements (privacy statement, etc.), splash
 
@@ -209,7 +205,7 @@ Monday 2019-06-24
 
         - ..cocos2d\cocos\platform\android\java\src\org\cocos2dx\lib\Cocos2dxHelper.java
 
-        **** Cocos2dxHelper.java NEEDS TO UPDATED APPROPRIATELY WITH EACH NEW RELEASE OF THE COCOS2D-X API ****
+        **** Cocos2dxHelper.java WOULD NEED TO UPDATED APPROPRIATELY WITH EACH NEW RELEASE OF THE COCOS2D-X API ****
 
 ----------
 Sunday 2019-06-23
@@ -292,6 +288,7 @@ Friday 2019-06-21
 
     * linear acceleration calculated using low-pass filter (see code for notes)
       - for devices reporting a hardware linear accelerometer, that is used, but if unavailable, the linear acceleration is calculated based on a low-pass filter method of the accelerometer (acceleration + gravity)
+
       - I just did a quick test on the hawaiian turtles scene
         - for the samsung note 4 (hardware linear acceleration), it seemed ok, much better than I expected actually
         - for the moto g (NO hardware linear accelerometer), the low-pass filter calculated linear acceleration also worked, but the INITIAL ACCELERATION WAS OVERWHELMINGLY IN THE DIRECTION OF GRAVITY, but quickly stabilized - I wonder if the sample rate should be increased?
@@ -336,7 +333,7 @@ Tuesday 2019-06-18
       * while I put down some things done with this code, it provides a much easier template for creating my own sensor code when compared to the cocos2d-x implementation for acceleration
 
 
-  JNI - add to notes from "Sunday 2019-06-16"
+  JNI - added to notes from "Sunday 2019-06-16"
 
 ----------
 Monday 2019-06-17
@@ -366,6 +363,7 @@ Sunday 2019-06-16
       GET .JAVA METHOD SIGNATURES
 
         - in order to CALL JAVA CODE FROM C++, the METHOD SIGNATURES must be determined
+        * NOTE: android studio kinda helps with some auto-fill intellisense (see "rube_loader_image" project - SensorManager.cpp)
         
         1) FIND THE "JAVAP" COMMAND in the Android Studio install directory (ex. C:\Program Files\Android\Android Studio\jre\bin)
         2) LOCATE RELEVANT JAVA .CLASS FILE(S) - use file search to locate in the cocos2d-x android studio sub-directory
@@ -387,7 +385,7 @@ Sunday 2019-06-16
 
         ..\cocos2d\cocos\platform\android\jni\JniHelper .h/.cpp
 
-        * MAKE SURE TO USE THIS
+        **** IF POSSIBLE, MAKE SURE TO ALWAYS USE THIS ****
 
         - basically a MUCH FRIENDLIER WRAPPER for using more common calls to jni.h
           - jni.h is a complex system header file for interfacing c++/java (not specific to android)
@@ -397,30 +395,34 @@ Sunday 2019-06-16
 
       JAVA => C++ (EDIT: Tuesday 2019-06-18)
 
-        CLEAN UP NOTES..
-
         - referring to:
 
           http://stnguyen.com/cocos2d-x/call-cpp-functions-from-java.html
           https://discuss.cocos2d-x.org/t/call-c-function-from-java/27255/2
           Cocos2dxAccelerometer.java (cocos2d-x API)
 
-        - steps 1/2 in the source java
+        - steps 1/2 in the source java (java native functions call matching C functions in step 3)
+          - location: D:\code\android_projects\gyrotest\proj.android\app\src\com\ecantalejos\cpp\Gyroscope.java
 
-        - step 3 - create 'extern "C"' c++ binding(?)
+        - step 3 - create 'extern "C"' c++ binding
           - name/location of the .cpp file isn't important
-          - I think the project JNI folder would be a good location though
+          - I think the project JNI folder might be a good location as this is android-specific.. maybe or maybe doesn't matter..
 
-          for cocos2d-x, a listener seems required, especially for sensors
+        - COCOS2D-X LISTENERS
+
+          for cocos2d-x, a listener seems required, at least for the way the framework implements acceleration
+            - this is the "right" way, however..
             - cocos2d-x acceleration > CCLayer.cpp ::setAccelerometerEnabled sets up a listener on an inherited method "Layer::onAcceleration"
+            - static java methods need a "java runnable" (I think) as implemented by cocos2d-x internally for handling acceleration..
 
-           - I decided to not use listeners..
+          * NOTE: I DECIDED TO NOT USE LISTENERS.. WHY?
+            - implementing listener logic seems like too much extra code
+            - for each sensor I want to use, I would have to implement unique listener code
+            - I would have to modify the cocos2d-x framework code --- AND THAT'S VERY INVOLVED AND COULD BREAK THINGS
 
-          - gyro (original demo) does a "polling" from c++ to java to retrieve gyro sensor values where the "right" way is from java-to-c++ (and with cocos2d-x listeners)
-            - the listener code seems like too much extra code
-
-          - also, static java methods need a "java runnable" (I think) as used by cocos2d-x internally for handling acceleration..
-
+          - gyro (original demo) does a "polling" from c++ to java to retrieve gyro sensor data
+            - this seems inefficient, especially considering that the original did a request for each x, y, and z separately
+            - based android docs, you want to minimize traversing c++/java as much as possible
 
 
       MISC
@@ -508,7 +510,8 @@ Friday 2019-06-14
 
         info.b2world_offset_y = Director::getInstance()->getWinSize().height / 4;
 
-      - EDIT 2019-06-15: TODO - upon further reflection, I think I'll attempt to put the normalized height % in the RUBE file and try to export that in the RUBE json export and use that for positioning. it will be easier to estimate the content height based on the RUBE editor layout grid
+      - EDIT 2019-06-15: TODO - upon further reflection, I think I'll attempt to put the NORMALIZED height % in the RUBE file and try to export that in the RUBE json export and use that for positioning. it will be easier to visually estimate the content height based on the RUBE editor layout grid
+      - EDIT 2019-07-02: use BOTH normalized design height % AND normalized design width %
 
 
   MISC
@@ -520,7 +523,7 @@ Friday 2019-06-14
       - used .gitignore to create an "essential files" subset of the entire project
 
       * used VS CODE (to create the initial git local repository and .gitignore) and then GITHUB DESKTOP (create github remote repository)
-        - though the command line could have been used, visual tools are more intuitive
+        - though the command line could have been used, visual tools are more intuitive and pretty easy using this method
 
 ----------
 Thursday 2019-06-13
@@ -553,7 +556,7 @@ Thursday 2019-06-13
       - by design, this LOGGING MECHANISM CAUSES EXISTING LOG MESSAGES TO SCROLL UP AS NEW LOG MESSAGES ARE ADDED; which is fine, but each log message doesn't stay pinned to a fixed location as I initially expected - like a plain label (MODIFYING THIS CODE TO ACT THIS WAY PROBABLY WOULDN'T BE A GOOD IDEA)
       - log messages "disappear" after a specified delay
       - a reference to any log message can be created and the LOG MESSAGE STRING UPDATED
-      - a helper class, ScopeLog, can be used a object lifecycle trace mechanism
+      - a helper class, ScopeLog, can be used as an object lifecycle trace mechanism
 
 ----------
 Wednesday 2019-06-12
@@ -646,7 +649,7 @@ Sunday 2019-06-09
 
     accelerometer "noise"
 
-      - I "think" want to eliminate "noise" on the accelerometer readings and I created an experiment to obtain the min/max/range raw accelerometer data. I ran this test on 3 android devices for about 30-40 seconds each time
+      - I think I want to eliminate "noise" on the accelerometer readings and I created an experiment to obtain the min/max/range raw accelerometer data. I ran this test on 3 android devices for about 30-40 seconds each time
       - I'm not sure if removing noise is necessary though..
 
       TODO: move "noise" test to it's own scene and display on device
@@ -682,7 +685,6 @@ Sunday 2019-06-09
         X RANGE:   0.01196698 0.01025741 0.00952474
         Y RANGE:   0.08364666 0.03235966 0.03736627
         Z RANGE:   0.01599663 0.01367652 0.01269966
-
 
 ----------
 Saturday 2019-06-08
@@ -752,10 +754,10 @@ Friday 2019-06-07
 
       * so if 20 large box2d units equates to 20 m this ends up around 6 stories IRL, and that would equate to a 2-3 story hula dancer, etc. (this is based on the assumption that 1 large box2d unit = 1 meter)
 
-      - an alterative is designing each RUBE scence to a 4 "METER" BOX2D SCREEN HEIGHT. the phone screen would equate to only a 1 story building, with objects equating to the height of a car. I think this might be more reasonable
+      - an alterative, is to design each RUBE scence to a 4 "METER" BOX2D SCREEN HEIGHT. the phone screen would equate to only a 1 story building, with objects equating to the height of a car. I think this might be more reasonable
         - after making my early proof-of-concept app, I think I'll go back and re-size the box2d scenes to this height
 
-    - for the screen-to-visible-world, I'm using an image overlay of different aspect ratio phone screens, with the target being a narrower device as newer phones seem to be targeting
+    - for the screen-to-visible-world, I'm using an image overlay of different aspect ratio phone screens, with the target being a narrower device aspect ratio as newer phones seem to be targeting this design
 
 ----------
 Thursday 2019-06-06
@@ -774,7 +776,7 @@ Wednesday 2019-06-05
 
     - useful for things like hair
 
-    - add transparency (alpha channel ) to layer
+    - add transparency (alpha channel) to layer
 
     - duplicate layer and rename to "mask"
 
@@ -817,7 +819,6 @@ Wednesday 2019-06-05
 
     - save gimp file for later modification and export
 
-
 ----------
 Tuesday 2019-06-04
 
@@ -827,15 +828,19 @@ Tuesday 2019-06-04
 
     - this "test" project is turning into my actual app I think, right now it's just one scene, but it establishes a streamlined workflow for adding additional scenes
 
-      1) create or obtain images
-      2) TexturePacker composite spritesheet + .plist
-      3) RUBE editor physics scene with standalone images + .json
-      4) create scene with RUBELayer class to load RUBE physics (b2dJson) and TexturePacker sprites
-      5) individual scene customizations
+      SIMPLIFIED WORKFLOW:
+
+        1) create or obtain images
+        2) use TexturePacker to create an optimized spritesheet & .plist
+        3) use RUBE editor to create physics scene using the standalone images & export to .json
+        4) re-create the physics scene with my new "RUBELayer" class to load RUBE physics .json file (b2dJson) and TexturePacker sprites
+        5) customize each individual scene
+
+        - also, to simplify the directory/file resource management, try keeping all files in the same directory
 
   RUBE editor / Box2D
 
-    - so in case I forgot to journal this, it's possible to create "composite" joints to mimic real-world physics objects; this is accomplished by super-positioning box2d joints on top of one another. I have 2 RUBE editor file examples that I created:
+    - so in case I forgot to journal this, it's possible to create "composite" joints to mimic real-world physics objects; this is accomplished by super-imposing box2d joints on top of one another. I have 2 RUBE editor file examples that I created:
 
       "COMPRESSION SPRING" (see compression-spring.rube): by attaching a prismatic and distance joint on the same 2 bodies, I can create something that acts like a regular compression spring of sorts - it's limited to movement along a single axis
 

@@ -57,7 +57,7 @@ Thursday 2019-05-30
       - essentially a "ROTATIONAL SPRING" that attempts to return to it's REFERENCE ANGLE
         - has "frequency" (spring stiffness), oscillation "damping", and a "reference angle" (EDIT 2019-06-08: mass of connected bodies greatly influences the spring effect)
 
-      - a REVOLUTE JOINT with the motor enabled and with a torque has imbues rotational friction, but won't snap back to the reference angle like a spring
+      - a REVOLUTE JOINT with the motor enabled and with a torque imbues rotational friction, but won't snap back to the reference angle like this weld joint
 
 
     FRICTION JOINT
@@ -154,7 +154,7 @@ Tuesday 2019-05-28
         - reference angle (at rest)
         - "negative" motor force doesn't really work like I thought, this should always be positive or 0 I guess; instead, target speed should be -/+
         - many settings can be specified in the definition or at run-time
-        - no instantaneous SetAngle() exists (set limits to accomplish this)
+        - no instantaneous SetAngle() exists (you can, however, set limits to accomplish this)
         - ->EnableMotor(false) for spinning wheels appear to spin indefinitely at the cutoff speed and appear have no "friction"; add "friction" with low torque / zero target speed
 
       * compare this to (Monday 2019-05-20 "Rotating a body to a given angle" - iforce-RotationTest.h)
@@ -192,7 +192,7 @@ Monday 2019-05-27
         * compared this last tutorial, where custom DebugDraw uses inheritance to override "DrawSolidPolygon()"
 
       - once again opengl-specific calls couldn't be used; deprecated in favor of shaders..?
-      - I'm planning to learn opengl shader programming (I really hope not), so I just used DebugDraw calls as much as possible; this doesn't allow for custom image rotation
+      - I'm NOT planning to learn opengl shader programming, so I just used DebugDraw calls as much as possible; this doesn't allow for custom image rotation
   
 
     "user data" (iforce-UserDataTest.h)
@@ -277,7 +277,7 @@ Wednesday 2019-05-22
             -I've found several different versions with similar function signatures: celestial project (GLES-Render.h/.cpp), rube_loader_demo (Box2DDebugDraw.h/.cpp), iOS (GLES1DebugDraw.h/.cpp), etc.
             - attempted to use the Box2D Testbed Framework files "DebugDraw.cpp" and "DebugDraw.h", but I ended up having to fallback to the ones provided with the android loader sample
 
-        * "rube_loader_custom" android project houses my json loader simple box2d scenario test. essentially the hula dancer bobble toy, but with simple shapes. so after using the demo project as a code template, this eventually worked. I also incorporated the ACCELEROMETER to work with this box2d scenario, but this REQUIRED TWEAKING THE MANY SETTINGS: MASS/DENSITY, BOX2D "WELD JOING" SETTINGS, etc. to get this to work properly.
+        * "rube_loader_custom" android project houses my json loader simple box2d scenario test. essentially the hula dancer bobble toy, but with simple shapes. so after using the demo project as a code template, this eventually worked. I also incorporated the ACCELEROMETER to work with this box2d scenario, but this REQUIRED TWEAKING THE MANY SETTINGS: MASS/DENSITY, BOX2D "WELD JOINT" SETTINGS, etc. to get this to work properly.
 
           - this still needs work: b2Sprite integration, PTM_RATIO?, box2d joint limits/adjustments, mouse joint limits?, etc.
 
@@ -533,7 +533,7 @@ Thursday 2019-05-16
 
   IFORCE2D TUTORIALS
 
-    - learning how to use RUBE editor with box2d scenarios AND put these them into the box2d test harness
+    - learning how to use RUBE editor with box2d scenarios AND put into the box2d test harness
 
     * NOTE: to add new tests to the box2d test harness REQUIRES opening and modifying the source code in some type of editor and recompiling .. ending up using visual studio 2019
 
@@ -638,7 +638,7 @@ Monday 2019-05-13
     - I started journaling since 2018-10-07
     - this is about 7.5 months; a total ~71 days ..out of 219 based on my calendar entries -> 32%
 
-    - looking back on the initial chipmunk physics tests (2018-12-05), this was very error-prone as this was pretty much code trial-and-error; I'm not exactly sure how much of this was issues related to chipmunk per se, but even with code-only box2d implementations, this was tedious. the R.U.B.E. editor should really go far streamlining physics implementations..
+    - looking back on the initial chipmunk physics tests (2018-12-05), this was very error-prone as this was pretty much code trial-and-error; I'm not exactly sure how much of this was issues related to chipmunk per se, but even compared with the code-only box2d implementations, this was tedious. the R.U.B.E. editor should really go far streamlining physics implementations..
 
 ----------
 Sunday 2019-05-12

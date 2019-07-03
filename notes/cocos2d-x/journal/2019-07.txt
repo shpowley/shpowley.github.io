@@ -1,0 +1,51 @@
+----------
+Tuesday 2019-07-02
+
+  - review notes 2019-05 + 2019-06 ..that actually took awhile
+
+  audio notes
+
+    - motorcycle "hog" orthogonal view; like earlier car idea with road, suspension
+
+    - toy movement also CONTROLLED BY THE GYROSCOPE in addition to the accelerometer; option setting
+      - idea from hula girl in the app store - stated it was required
+      - possible to use magnetometer in place of the gyroscope? lower end devices only have magnetometer..
+
+    - rubber duck toy moving on a slippery floor shower/bathtub, bubbles, animation frames for 3d
+
+    - sensors test, refine this and put in the option just one extra thing in apps
+
+    - golfer swinging at a golf ball
+
+    - physical hula dashboard doll AND sell??? cross-selling..
+    - green "grass" velcro surface
+
+    + expand on gyro test project
+      - restrict gyroscope to y-axis movement option
+      - swipe left/right to rotate
+      - import any 3d sprite .obj
+      - pan/zoom
+      - reset
+
+----------
+Monday 2019-07-01
+
+  MISC
+    - new journal for June 2019 created
+
+    - stats:
+        - journal start: 2018-10-07
+        - total: 125/280 based => 44.6%
+        - june 2019: 30/30 days => 100%
+
+  ui controls
+    http://en.fairygui.com/
+    - it's in chinese so no and the name.., but at least some GUI control mechanisms and look/feel can be copied
+
+  re-watch rube tutorial videos
+    - last one
+
+    * just a thought, v1.6 introduces samplers and one of the features is to capture images at different physics states ~an animation tool of sorts. this might be useful for animating some things on my desktop toys as an alternative to simulating entirely in box2d.
+      - wind effect on hula skirt, hair, lei, etc.; maybe some other things
+      - QUESTION: would it be more efficient to create 10/15/20/30/60 animation sprite frames or do the box2d thing?
+      - https://www.reddit.com/r/gamedev/comments/4dabac/how_many_frames_should_sprite_animations_have/

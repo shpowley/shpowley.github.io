@@ -162,7 +162,7 @@ SAMPLERS (tutorial 18/18 - https://youtu.be/O68lFQWe7-A)
     - "output width/height" is better defined as an "aspect ratio" defined with a # of samples, whereas the actual world height is defined separately (width is auto-calculated based on this)
 
   - composite image samples that when combined with the "simulation" allow you to create animation frames
-    - a sample window moved/sized to certain positions create "camera effects"
+    - a sample window moved/sized to certain positions create "camera motion effects"
     - example shown on trainWheels.rube (I can't find this anywhere though)
 
     - RUBE isn't really a graphics or animation tool per se, but it's physics capabilities adds an interesting twist --- I HAVE TO THINK ABOUT IT'S BEST USE-CASE..
@@ -238,11 +238,13 @@ JOINTS
 
     *REVOLUTE
       - see iforce2d tutorial log "Tuesday 2019-05-28"
+      - spinning wheel behavior
       - adjust lower/upper limits using properties or adjusting visual "whiskers" (press L key for lower limit, L key again for upper limit..)
       - motor
 
     *PRISMATIC
       - see iforce2d tutorial log "Wednesday 2019-05-29"
+      - "slider" piston-like behavior
       - adjust limits using properties or visually constrained to the local axis (L key for lower limit, L key again for upper limit)
       - adjust axis (R key 3x)
       - adjust local anchor (T key)
@@ -263,16 +265,26 @@ JOINTS
       - motor
 
     WELD (NEW)
-      - basically, a simple "ROTATIONAL JOINT"
-      - see "Thursday 2019-05-30"
+      - essentially a "ROTATIONAL SPRING" that attempts to return to it's REFERENCE ANGLE
+        - has "frequency" (spring stiffness), oscillation "damping", and a "reference angle" (EDIT 2019-06-08: mass of connected bodies greatly influences the spring effect)
+
+      - a REVOLUTE JOINT with the motor enabled and with a torque imbues rotational friction, but won't snap back to the reference angle like this weld joint
+      - info copied over from "Thursday 2019-05-30"
 
     FRICTION (NEW)
-      - joint that only controls FRICTION for ROTATION and DISTANCE
-      - see "Thursday 2019-05-30"
+      - very unique type of joint that controls FRICTION for both ROTATION and DISTANCE
+      - there are only settings for "max torque", "max force" and maybe "collide connected"
+      - usage: ???, maybe simulate object destruction
+      - info copied over from "Thursday 2019-05-30"
 
     MOTOR (NEW)
-      - like FRICTION JOINT with elastic force
-      - see "Thursday 2019-05-30"
+      - at first glance, this seems very much like the FRICTION JOINT
+      - when setting the CORRECTION FACTOR to a non-zero value, however, it behaves as an ELASTIC FORCE that ATTEMPTS TO RETURN TO IT'S INITIAL STATE for DISTANCE and/or ANGLE
+      - high/low values for MAX TORQUE / MAX FORCE determine the overall resistance strength
+      - higher CORRECTION FACTOR result in a fast-snap elastic force, whereas a lower value results in slower/sluggish elastic force
+      - no oscillation upon returning to the initial position
+      - usage: ???
+      - info copied over from "Thursday 2019-05-30"
 
 
 v1.3 
@@ -361,6 +373,39 @@ v1.5
 
   help full-text search
   + online help
+
+
+v1.6
+
+  "UNDO STACK" is new and part of the window > dockbars
+    - kind of cool visual representation of history of actions
+    - clicking on any item, immediately returns that document state
+    - beats using CTRL+Z multiple times
+    - might be slow.. depending on how for in the stack along the stack changes have to be applied
+
+  split fixture (line) NEW - usage https://youtu.be/NHbGtHtccx4?t=360
+  split fixture (polygon) - usage https://youtu.be/NHbGtHtccx4?t=320
+
+  view position script - getViewCenter(), setViewCenter(), getViewHeight(), setViewHeight()
+    - handy for view bookmarks / event binding
+
+  NEGATIVE SCALING
+    - FIXED issues with images, vertex winding, joint limits and motor direction
+    - FIXED script scale() issue similarly
+
+  manipulation script demo - template change manipulation applied to similar fixtures
+    https://youtu.be/NHbGtHtccx4?t=1321
+    - COMMENT: demo shown is valuable info, but couldn't this also be accomplished using object
+
+  before/after export script hook demo
+    - flip the world for export useful for javascript/flash..
+    https://youtu.be/NHbGtHtccx4?t=1609
+
+  samplers added
+
+    * one useful piece of info is to use the 1-step auto-fixture creation script, but keep the sampler so that the control points that are auto-generated can be re-used and a better fixture can be generated from that
+
+    * regarding the animation frame capture, the actual video going more in-depth into samplers shows off a script to auto capture animation snapshots of a certain number of frames - see: https://youtu.be/O68lFQWe7-A?t=428
 
 
 v1.7

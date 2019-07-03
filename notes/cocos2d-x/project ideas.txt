@@ -14,12 +14,16 @@ PROJECT IDEAS CENTRAL DOCUMENT
 
     - each theme need 3-5+ toys
     - many bobble toys could be incorporated in more than one theme
+    - dashboard mode (see "Wednesday 2019-06-26")
 
 
   HAWAII
 
     * hula dancer
       - hula dancer face or face cutout
+
+    - bare feet (similar to flip flops, but looking at soles)
+      - wiggling toes, sand?, belly..
 
     * flip flops + alternate styles
       - dog paws
@@ -101,6 +105,11 @@ PROJECT IDEAS CENTRAL DOCUMENT
     - mech walker / imperial walker
     - tank
 
+    - vehicle orthographic view
+      - wheels spinning + vehicle bouncing in response to accelerometer
+      - logo appears fade-in/shrink to normal size, car appears in front of logo, logo fades out
+      - monster truck, various dream cars (IP?), motorcycle "hog", simple movement
+
 
   OPEN-SOURCE MASCOTS
 
@@ -154,6 +163,7 @@ PROJECT IDEAS CENTRAL DOCUMENT
     - geisha dancer
     - shuriken spinning
     - asian clouds and..
+    - cherry blossom petals background for various toys (naruto music finale)
 
 
   USER CUSTOM
@@ -196,9 +206,11 @@ PROJECT IDEAS CENTRAL DOCUMENT
       - pre-made with images (trump, hillary)
 
     - presidential (republican elephant, democrat donkey, candidates)
+    - golfer swinging club
     - rolling coins - various coin rolling w/ accelerometer; international coins maybe? modes - $1.00, $0.50, collector, international (by country), bitcoin, arcade
     - teddy bear
     - simulated water: boat, boat in a bottle, rubber duck
+      - duck slipping around shower/bathtub + bubbles; duck spinning 3d sprite antimation
 
     * christian:
       - buddy jesus
@@ -239,8 +251,3 @@ PROJECT IDEAS CENTRAL DOCUMENT
     - photo-op cutouts: strong-man muscle posing - upper body wobble flexing
     - palm tree: multiple-segments for trunk(?), more difficult to animate, palm trees actually flex very little unless in an extreme wind / hurricane..
     - animated gifs live wallpaper (already exists..), marketing synergy with existing apps (cross-advertising)
-
-    - vehicle orthographic view
-      - wheels spinning + vehicle bouncing in response to accelerometer
-      - logo appears fade-in/shrink to normal size, car appears in front of logo, logo fades out
-      - monster truck, various dream cars, IP?, simple movement
