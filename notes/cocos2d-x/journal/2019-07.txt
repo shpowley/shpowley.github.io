@@ -1,4 +1,13 @@
 ----------
+Friday 2019-07-05
+
+  CODING
+
+    - custom SettingsManager class to centralize settings layout
+
+    ui::Checkbox
+
+----------
 Thursday 2019-07-04
 
   CODING
