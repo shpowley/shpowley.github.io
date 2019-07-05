@@ -1,4 +1,61 @@
 ----------
+Thursday 2019-07-04
+
+  CODING
+
+    ui::Slider
+      - seems ok so far. sketched images and scaled percentage for a mock "acceleration scaling factor"; callback is working too.
+
+    ui::ScrollView
+      - experimented with the cocos2d-x ui::ScrollView container for my MENU and SETTINGS scenes
+
+      - ScrollView works with Menu, but not exactly how I expected once the number of menu items grows beyond a window height. some ASSUMPTIONS - the ScrollView is as tall / wide as the entire screen AND the menu is set to "align items vertically with padding". this is set work "correctly" on my main menu, but I'm uncertain in long term -- IS THE MENU REALLY EVEN NECESSARY?
+
+      - ScrollView works with DrawNode for drawing simple shapes, it stays in place as a child of the ScrollView
+
+  MISC
+
+    * a note regarding the DEBUG DRAW FILL-PERSIST issue; apparently it's restricted to the certain devices only as the note 4 AND galaxy s3 loaded the RUBE demo without that problem
+
+    * just curious how the cocos2d-x DISPLAY STATS renders text compared to the on screen log implemented from iforce2d code examples
+
+      - glanced at briefly, but for future reference the location is: ../cocos/base/CCDirector.h/.cpp
+        TAGS: "GL verts", "GL calls"
+
+      - screen log font size: ScreenLog/ScreenLog.h/.cpp -> screenLogMessage::createLabel()
+
+----------
+Wednesday 2019-07-03
+
+  settings UI layout
+
+    - so after some consideration, I'm probably going to stick with the cocos2d-x ui. It is native after all. I still need create some experiments (screens + menu or layouts) with these controls and reconsider my prior plans with RUBE.
+
+    - here are the links re: cocos2d-x ui docs:
+
+      https://docs.cocos2d-x.org/api-ref/cplusplus/v3x/dd/df1/group__ui.html
+      https://docs.cocos2d-x.org/cocos2d-x/en/ui_components/
+
+    - as an aside I installed autodesk sketchbook (phone and desktop) for sketching out ui??
+
+
+    - the RUBE DEMO also shows a ui layout with some dials and sliders
+
+      - a bit sparse in the UI controls dept, but they look cool
+        - button, slider, and dial (dial being the most unique)
+        - as a bonus, I could load the .json files directly into the RUBE editor
+
+      - overly complex class inheritance heirarchy:
+        UIControlsRUBELayer < ButtonRUBELayer < RUBELayer < BasicRUBELayer < cocos2d::Layer (WAS THIS REALLY NECESSARY?)
+      
+      - I rebuilt this project in landscape as it was intended(?)..everything looked ok except for the pinball game, but that's a separate issue AND also the physics debug draw fill-persist
+    
+      - also had to fix the physics pre-processor specified in the project's android module ../jni/Application.mk to not use chipmunk so it would build the apk without errors
+
+
+    - I took another look at COCOS CREATOR to see if using it was a viable option create setting UI controls and layout, then importing it somehow to the cocos2d-x c++ environment -- but the IDE is just so unintuitive, clunky and slow - I can't use it
+
+----------
 Tuesday 2019-07-02
 
   - review notes 2019-05 + 2019-06 ..that actually took awhile

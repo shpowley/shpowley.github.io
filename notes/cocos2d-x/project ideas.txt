@@ -205,9 +205,14 @@ PROJECT IDEAS CENTRAL DOCUMENT
       - options: changeable physics, size/position/# eyes, background image, save configs
       - pre-made with images (trump, hillary)
 
+    * rolling coins - various coin rolling w/ accelerometer; international coins maybe? modes - $1.00, $0.50, collector, international (by country), bitcoin, arcade
+
+    - bugs on the screen (lady bugs, roaches, ants) - flick, shake
+
+    - baby trump
+
     - presidential (republican elephant, democrat donkey, candidates)
     - golfer swinging club
-    - rolling coins - various coin rolling w/ accelerometer; international coins maybe? modes - $1.00, $0.50, collector, international (by country), bitcoin, arcade
     - teddy bear
     - simulated water: boat, boat in a bottle, rubber duck
       - duck slipping around shower/bathtub + bubbles; duck spinning 3d sprite antimation

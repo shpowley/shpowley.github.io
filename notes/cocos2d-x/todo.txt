@@ -14,15 +14,17 @@ TODO
 
   TASKS
 
-    - additional hawaiian theme scenes
-      - surfboard
-
     - settings (see "Thursday 2019-06-27")
       - storyboard layout
       - settings object; defaults (hard-code or..)
       - data storage; user-default or json object
         - https://docs.cocos2d-x.org/api-ref/cplusplus/v3x/db/d94/classcocos2d_1_1_user_default.html
       - menus (scrolling movement)
+
+    - try lowering the resolution for performance(?), keeping aspect ratio(s)
+
+    - additional hawaiian theme scenes
+      - surfboard
 
     - RUBE custom properties (see "Sunday 2019-06-30")
       - min/max, default value, label, description, normalized design width/height
