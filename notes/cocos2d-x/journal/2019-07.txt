@@ -1,4 +1,51 @@
 ----------
+Monday 2019-07-08
+
+  CODING
+
+    - next: implement application settings; also, prevent scrollview from moving until full
+
+    - rotation
+
+      - I tried rotation on scene/layer, but the touch didn't stay in-sync. probably have to reload rotated RUBE assets(?) if pursuing this
+
+    - slider panel
+
+      - finished the slider and the base settingsmanager. I ended up putting each panel in a vector array - mostly for maintaining referential integrity for callbacks
+
+      ISSUE:
+      
+        I'm using a spriteframe texture for all the ui control graphics. the slider "progress" graphic, however, has some issue that seems to override the normal graphic at every position of the slider knob. it's just the progress slider for the spriteframe-version only.
+        
+        WORKAROUND FIX(?) - it seems to work fine when altering the code to just load a STANDALONE SPRITE for the progress slider. it's too complicated of a bug for me when I tried to debug the cocos2d-x code.
+
+
+----------
+Sunday 2019-07-07
+
+  CODING
+    - checkbox, divider
+
+    - spriteframe
+
+      * REMEMBER TO MINIFY .PLIST XML
+      https://www.webtoolkitonline.com/xml-minifier.html
+
+      * IMPLEMENT EVERY ~SCENE ON DESTRUCTORS
+        SpriteFrameCache::getInstance()->removeSpriteFrames();
+
+    - thought about altering RUBELayer::create and constructor to handle passing struct data like SettingsManager, but it's already passing by Ref.. so I left it alone
+
+    - slider
+
+    TODO: remove "UI Widgets" scene and related code once done
+
+----------
+Saturday 2019-07-06
+
+  CODING
+
+----------
 Friday 2019-07-05
 
   CODING

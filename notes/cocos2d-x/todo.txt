@@ -11,8 +11,17 @@ TODO
     - remember to disable unused API options to reduce file size (CCCONFIG.H)
       https://docs.cocos2d-x.org/cocos2d-x/en/physics/debugging.html
 
+    - REMEMBER TO MINIFY .PLIST XML
+      https://www.webtoolkitonline.com/xml-minifier.html
 
   TASKS
+
+    - all spriteframe image textures, plist and json files should go in their own directories
+    
+    - all related .h/.cpp should go in their own directories -- easier re-use tracking and possibly separate .git for more important ones(?)
+
+    - IMPLEMENT EVERY ~SCENE ON DESTRUCTORS
+      SpriteFrameCache::getInstance()->removeSpriteFrames();
 
     - settings (see "Thursday 2019-06-27")
       - storyboard layout
@@ -20,8 +29,6 @@ TODO
       - data storage; user-default or json object
         - https://docs.cocos2d-x.org/api-ref/cplusplus/v3x/db/d94/classcocos2d_1_1_user_default.html
       - menus (scrolling movement)
-
-    - try lowering the resolution for performance(?), keeping aspect ratio(s)
 
     - additional hawaiian theme scenes
       - surfboard
