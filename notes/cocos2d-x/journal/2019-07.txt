@@ -1,4 +1,16 @@
 ----------
+Tuesday 2019-07-09
+
+  CODING
+
+    settings
+
+      - implemented INITIAL VALUES for the checkbox and slider
+
+      - implemented custom code for scrollview container inner-container size and widget placement, when the # of widgets exceed the size of the "default" visible size of the scrollview (COMPLICATED by the how widgets are placed by default ..from the bottom-up)
+        - also, changed the SettingsManager to a SettingsLayer for easier object cleanup and scene usage
+
+----------
 Monday 2019-07-08
 
   CODING
