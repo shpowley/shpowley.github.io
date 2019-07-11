@@ -1,4 +1,27 @@
 ----------
+Thursday 2019-07-11
+
+  TODO
+
+    - "title" panel
+    - radio buttons larger to match checkboxes
+    - radio button panel: enabled, event listeners
+
+----------
+Wednesday 2019-07-10
+
+  CODING
+
+    - just MAKING A NOTE that TOGGLE and POTENTIOMETER ui components are available(?) through CC
+      - https://stackoverflow.com/questions/22010953/making-toggle-menuitem-a-sliding-on-off-button-with-cocos2d-x
+      - see cpp_tests\Resources\extensions
+
+    - removed "settings scene B" (used for initial cocos2d-x widget testing)
+    - added "application settings scene"
+      - initial design outline
+    - experimented with ui::RadioButtons
+
+----------
 Tuesday 2019-07-09
 
   CODING

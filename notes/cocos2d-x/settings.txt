@@ -4,9 +4,7 @@ features
   - defaults
 
 
-global
-  - driving vs desktop
-
+global application-level
   - restore all defaults - even for all scenes, are you sure confirmation?
   - keep screen on (during physics scenes): checkbox; boolean, default=true
 
@@ -29,6 +27,8 @@ global
     - show scene images; default=true
     - display stats
     - on-screen logging
+
+  - sensor test
 
 
 scene
