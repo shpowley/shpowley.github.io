@@ -1,7 +1,16 @@
 ----------
-Thursday 2019-07-11
+Friday 2019-07-12
 
   TODO
+
+    - custom panel heights
+    - background panel colors, defaults
+    - begin testing a handful vs a physics scene
+
+----------
+Thursday 2019-07-11
+
+  CODING
 
     - "title" panel
     - radio buttons larger to match checkboxes
