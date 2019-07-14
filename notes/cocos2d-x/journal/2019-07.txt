@@ -1,11 +1,41 @@
+  TODO
+
+    - scene / CREATE_FUNC
+    - custom panel heights
+    - background panel colors, defaults
+
+----------
+Saturday 2019-07-13
+
+  CODING
+
+    - resolved the compile issue from 2019-07-12. apparently, it was a circular include of some sort related to MenuScene.h. I had code to return to the main menu on a back press implemented in the SettingsLayer class; I moved this to the grandchild and now it works fine.
+
+    - replaced all instances of CREATE_FUNC
+
+    - partially implemented PERSIST SETTINGS TO APP-MEMORY
+      - radio button was a bit tricky
+
 ----------
 Friday 2019-07-12
 
-  TODO
+  CODING
 
-    - custom panel heights
-    - background panel colors, defaults
-    - begin testing a handful vs a physics scene
+    * one change I made that I might want to implement on all the scenes is the replacement of CREATE_FUNC, especially on the Scene classes
+
+    - began trying to implement ONE persisted setting, however the GRANDCHILD Layer class has compile errors I can't figure out (re: c++ includes, forward declarations, etc.)
+
+      AppSettingsLayer < SettingsLayer < Layer
+
+      - not sure if this web article will help
+        https://discuss.cocos2d-x.org/t/base-class-has-incomplete-type-why/35087
+        http://www.cplusplus.com/forum/articles/10627/
+
+      * another option is changing the SettingLayer to just a re-usable class implementation so that it looks something more like a PARENT-CHILD inheritance:
+
+      AppSettingsLayer < Layer
+                       < Setting class
+
 
 ----------
 Thursday 2019-07-11
