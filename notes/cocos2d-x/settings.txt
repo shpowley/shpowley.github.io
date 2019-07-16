@@ -1,35 +1,8 @@
 features
-  - application global (game manager)
   - persistence
-  - defaults
 
-
-global application-level
-  - restore all defaults - even for all scenes, are you sure confirmation?
-  - keep screen on (during physics scenes): checkbox; boolean, default=true
-
-  - dark mode for oled black background(?): checkbox; boolean, default=false
-    - confirmation, overrides all scene backgrounds
-
-  - acceleration
-    - accelerometer orientation (this should be automatic)
-    - global acceleration scaling factor: slider; float, range: 0.1 - 100 (needs testing)
-    - flip accelerometer x, y, OR z
-    - minimum acceleration threshold
-    - wobble: x-acceleration OR max x/z-acceleration OR x/z normalized
-    - gravity + acceleration OR linear acceleration OR low-pass filter linear
-
-  - auto-wobble
-    - random factor min/max time, min/max impulse
-
-  - dev debug
-    - turn on/off box2d shapes (debug draw); default=false
-    - show scene images; default=true
-    - display stats
-    - on-screen logging
-
-  - sensor test
-
+application settings (see file layouts)
+  - linear and standard accelerometer have distinct scaling factor, threshold
 
 scene
   - override global scaling factor: checkbox; boolean, default=false

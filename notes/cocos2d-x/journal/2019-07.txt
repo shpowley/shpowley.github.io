@@ -1,8 +1,36 @@
-  TODO
+----------
+Monday 2019-07-15
 
-    - scene / CREATE_FUNC
-    - custom panel heights
-    - background panel colors, defaults
+  - re-org application settings layout (still need to implement)
+
+  - created icons for android based on advice from this website:
+    https://iconhandbook.co.uk/reference/chart/android/
+
+  - changed the application title to "Dashboard Toys"
+    - displays fully on the Note 4, but cuts it down to "Dashboard.." on the moto g
+    - maybe rename it to "DashToys", "Dash Toys", "Desktop Toys", "Desk Toys", "Automotion", "Auto-Motion"
+
+  - implemented a few app settings and NOTES: from test drive around town
+    * app needs strong warning to not drive distracted ...however, PEOPLE MIGHT MESS WITH SETTINGS WHILE DRIVING
+      - maybe another warning if going to settings and in fast motion + settings option to disable
+    - larger icons for all ui controls
+    - larger font (font size changeable in settings)
+
+    - "max acceleration x/z" and "normalized acceleration x/z" don't really work well with the normal accelerometer (acceleration + gravity) - SHOULD BE DISABLED AND DEFAULTED TO X-AXIS MOTION IF NOT LINEAR
+
+    - movement can be "jerky" at times (especially with high sensitivity, linear + x/z normalized)
+      ? perhaps halting any negating accelerometer force opposing current x-velocity direction?
+
+    - separate sensitivity slider for x, y, and z
+
+----------
+Sunday 2019-07-14
+
+  CODING
+
+    - finished implementing PERSIST SETTINGS TO APP-MEMORY
+      - run-time disable some options
+      - still need developer options though
 
 ----------
 Saturday 2019-07-13
@@ -35,7 +63,6 @@ Friday 2019-07-12
 
       AppSettingsLayer < Layer
                        < Setting class
-
 
 ----------
 Thursday 2019-07-11

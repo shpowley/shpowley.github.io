@@ -25,12 +25,34 @@ TODO
     - IMPLEMENT EVERY ~SCENE ON DESTRUCTORS
       SpriteFrameCache::getInstance()->removeSpriteFrames();
 
+    * app needs strong warning to not drive distracted ...however, PEOPLE MIGHT MESS WITH SETTINGS WHILE DRIVING
+
     - settings (see "Thursday 2019-06-27")
-      - storyboard layout
-      - settings object; defaults (hard-code or..)
+      - maybe another warning if going to settings and in fast motion + settings option to disable
+      - larger icons for all ui controls
+      - larger font (font size changeable in settings)
+
+      - "max acceleration x/z" and "normalized acceleration x/z" don't really work well with the normal accelerometer (acceleration + gravity) - SHOULD BE DISABLED AND DEFAULTED TO X-AXIS MOTION IF NOT LINEAR
+
+      - movement can be "jerky" at times (especially with high sensitivity, linear + x/z normalized)
+        ? perhaps halting any negating accelerometer force opposing current x-velocity direction?
+
+      - separate sensitivity slider for x, y, and z
+      - separate sensitivity slider for gyro x, y, and z
+
+      - re-org settings items
+      - spacer panel or re-use line separater panel
+      - top graphic + back button
+      - restore defaults button
+      - invisible buttons to enable touching panels?
+      - custom panel heights
+      - background panel colors; defaults for dark mode on/off
+      - slider progress (disabled) graphic implementation - greyed out
+      - threshold
+      - developer options
+      - slightly larger graphics
       - data storage; user-default or json object
         - https://docs.cocos2d-x.org/api-ref/cplusplus/v3x/db/d94/classcocos2d_1_1_user_default.html
-      - menus (scrolling movement)
 
     - additional hawaiian theme scenes
       - surfboard
