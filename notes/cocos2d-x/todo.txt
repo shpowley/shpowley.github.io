@@ -29,7 +29,7 @@ TODO
 
     - settings (see "Thursday 2019-06-27")
       - maybe another warning if going to settings and in fast motion + settings option to disable
-      - larger icons for all ui controls
+      x larger icons for all ui controls
       - larger font (font size changeable in settings)
 
       - "max acceleration x/z" and "normalized acceleration x/z" don't really work well with the normal accelerometer (acceleration + gravity) - SHOULD BE DISABLED AND DEFAULTED TO X-AXIS MOTION IF NOT LINEAR
@@ -50,7 +50,6 @@ TODO
       - slider progress (disabled) graphic implementation - greyed out
       - threshold
       - developer options
-      - slightly larger graphics
       - data storage; user-default or json object
         - https://docs.cocos2d-x.org/api-ref/cplusplus/v3x/db/d94/classcocos2d_1_1_user_default.html
 
@@ -290,3 +289,5 @@ TODO
       - lookup info on c++ lambda expressions
       - lookup info on "CC_CALLBACK_2"
       - lookup other callback mechanisms
+
+    - add swimming turtles and / or hawaiian flowers to the application settings scene (much later though)

@@ -1,4 +1,16 @@
 ----------
+Tuesday 2019-07-16
+
+  - good discussion on lambda functions
+    https://discuss.cocos2d-x.org/t/lambda-functions/20160/9
+
+  - placed settings title layout with back button graphic and title text
+    - needs a better visual cue when pressing back
+    - in the future this will need ad-placement layout adjustment; with a flexible scrollview height -- I think
+
+  * as an "extra" visual interest add swimming turtles and / or hawaiian flowers (much later though)
+
+----------
 Monday 2019-07-15
 
   - re-org application settings layout (still need to implement)
