@@ -1,4 +1,15 @@
 ----------
+Thursday 2019-07-18
+
+  app settings
+
+    - settings for basic / advanced mostly complete for the ui
+      - still need wobble / dev mode ui completed
+
+    - sensor test added
+      - TODO: some thought needs to into this though, scene or layer? hide for v1? as actual scene needs cleanup and BACK from current scene always go back to the main menu
+
+----------
 Wednesday 2019-07-17
 
   app settings

@@ -28,6 +28,7 @@ TODO
     * app needs strong warning to not drive distracted ...however, PEOPLE MIGHT MESS WITH SETTINGS WHILE DRIVING
 
     - settings (see "Thursday 2019-06-27")
+      - sensor test.. scene or layer? hide for v1? as actual scene needs cleanup and BACK from current scene always go back to the main menu
       - maybe another warning if going to settings and in fast motion + settings option to disable
       x larger icons for all ui controls
       - larger font (font size changeable in settings)
