@@ -1,4 +1,16 @@
 ----------
+Friday 2019-07-19
+
+  app settings
+
+    - making RUBELayer use pointers instead
+      - update all scenes to use "new" RUBELayerInfo
+      - once fixed.. work on HangLooseLayer - needs create method
+
+    - finished basic ui I think
+    - TODO: I want a "secret" method to enable developer mode
+
+----------
 Thursday 2019-07-18
 
   app settings

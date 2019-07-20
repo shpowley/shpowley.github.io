@@ -16,9 +16,15 @@ TODO
 
   TASKS
 
+    - "secret" method to enable developer mode in app settings (toward the end though)
+      - AppSettingsLayer overrides
+        1 - must be in advanced mode
+        2 - scrollview scroll-to-bottom + scroll-to-top + tap title 7 times (in correct sequence)
+        3 - auto reloads with dev options
+
     - moto g issue? gyro not reported, but still works?
 
-    - all spriteframe image textures, plist and json files should go in their own directories
+    - all spriteframe image textures, plist and json files should go in their own cocos2d-x resource directories
     
     - all related .h/.cpp should go in their own directories -- easier re-use tracking and possibly separate .git for more important ones(?)
 
