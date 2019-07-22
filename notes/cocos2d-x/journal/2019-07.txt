@@ -1,4 +1,36 @@
 ----------
+Sunday 2019-07-21
+
+  coding
+
+    FIX #1: fixed issue with RUBELayer create parameter; basically I was passing in a reference to parameters that are no longer in scope - declared in the function instead of the class-module
+
+    FIX #2:
+      - also had to derive classes from RUBELayer in order to support FIX #2 ..specifically the "back" button
+      - so each physics scene now has a corresponding Layer that inherits from RUBELayer - this was done on the HulaScene and then used as a template for the remaining scenes
+
+
+  review my "TODO" items and consolidate
+
+    - created a to-do folder with separate files for each version
+
+
+  licensing? for future reference
+
+    - hello kitty
+      - sanrio
+
+    - rilakkuma
+      - https://www.ingram.co.jp/english/
+
+----------
+Saturday 2019-07-20
+
+  coding
+
+    - having trouble with creating parameters struct to pass into RUBELayer
+
+----------
 Friday 2019-07-19
 
   app settings

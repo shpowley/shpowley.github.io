@@ -1,0 +1,33 @@
+- remove "max acceleration x/z" option and related code
+
+- settings: "normalized acceleration x/z" doesn't work with the normal accelerometer (acceleration + gravity)
+  - the sandals scene is a good example
+  - should be available only for the linear accelerometer, DISABLED and DEFAULTED to x-axis motion
+
+- movement can be "jerky" at times (especially with high sensitivity, linear + x/z normalized)
+  - halt any negating accelerometer force opposing current x-axis (angular) velocity
+  - see gyro code for similar implementation
+
+- accelerometer-controlled torque
+  - not sure exactly how to implement to work with existing gyro code, but some devices like the moto-g don't have the gyro
+  - hang loose scene currently won't work without a gyro
+
+- settings: mark sensors as unavailable where appropriate (ie. gyro sensor label should be disabled and labeld " - UNAVAILABLE)
+
+- move all related spriteframe image textures, plist and json files should go in their own cocos2d-x resource directories
+
+- move all related .h/.cpp should go in their own directories
+
+- "secret" method to enable developer mode in app settings (toward the end though)
+
+  - AppSettingsLayer overrides
+    1 - must be in advanced mode
+    2 - scrollview scroll-to-bottom + scroll-to-top + tap title 7 times (in correct sequence)
+    3 - auto reloads with dev options
+
+  - move sensor tests button here
+
+- sensor test redesign and way to track calling scene for the back button
+
+ADDITIONAL SCENES
+  * strong warning to not drive distracted (scene or layer) @ start-up

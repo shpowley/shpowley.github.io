@@ -1,0 +1,3 @@
+- related .h/.cpp should go in their own directories.. for important/re-usable ones, create separate .git repositories
+
+- invisible buttons (or shape) to enable touching panels for checkbox and radio?

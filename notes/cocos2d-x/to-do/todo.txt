@@ -1,0 +1,243 @@
+- settings (see "Thursday 2019-06-27")
+
+  - custom panel heights
+  - background panel colors; defaults for dark mode on/off
+  - slider progress (disabled) graphic implementation - greyed out
+  - threshold
+  - developer options
+  - data storage; user-default or json object
+    - https://docs.cocos2d-x.org/api-ref/cplusplus/v3x/db/d94/classcocos2d_1_1_user_default.html
+
+- additional hawaiian theme scenes
+  - surfboard
+
+- RUBE custom properties (see "Sunday 2019-06-30")
+  - min/max, default value, label, description, normalized design width/height
+  - category maybe.. some properties would only be useful for controls for instance
+
+- quick config scene overlay (see "Wednesday 2019-06-26")
+
+- "flocking birds" algorithm for turtles?
+
+- linear acceleration tests
+  - low-pass vs hardware option to see the difference
+  - simple physics object connected to the center screen via a distance or rope joint
+  - possible tuning or scaling to get both to match
+  - ideas: adjust filter.a, attempt higher sample rate, scene acceleration scaling
+
+- sensors JNI: if a dev option is enabled, calculate the actual delay & average, as a comparison to the set delay ..devices may have a limitation; also, I vaguely remember android docs having a way to check minimum delay..I think
+- sensors.. not sure where; calibrate out drift..??
+
+- RUBE sampler to create animation
+
+2d animation software
+  Pencil2D - http://www.pencil2d.org/
+  Synfig Studio - https://synfig.org/
+  Blender (grease pencil)
+  Krita
+  + have a look on the android play store also for drawing animation apps
+
+- more efficient logging? using cocos2d-x fps text method
+
+- lower fps on static scenes and restore to normal
+
+- implement on-screen back button
+
+- create a RUBE file with different types of joints and experiment with settings
+  - every type of basic joint with labels describing what's what in the RUBE scene
+  - composite joints with description labels
+  - note my existing experiments
+  - experiment in box2d testbed OR..
+
+- check out RUBE demo code - destroying bodies, pinball "bitplane", camera control/follow
+
+- "dashboard" mode (see Wednesday 2019-06-26)
+  - saved dashboard profiles
+
+- RUBE image opacity / linear filter properties - check how these affect cocos2D-x sprite creation in b2djson import
+
+- clean up notes from Sunday 2019-06-16 JNI - java to c++
+
+- live wallpaper
+  - go back and try modifying Cocos2dxHelper.java again to re-attempt the live wallpaper
+  - try using (AppActivity, this) OR further modifying Context usage instead of sActivity (see "Monday 2019-06-24")
+  - OR b2dJson(java) + android canvas..
+
+- advertising
+
+- sensors - read through this: https://developer.android.com/guide/topics/sensors
+
+- separate notes section for each scene (dev log for each scene - maybe in the .h file)
+    
+- ability to change application or scene orientation; implemented in the app assets, not in the os because of restrictions
++ scale the image size to appropriate normalized design height/width depending on the orientation
+  - in RUBE layout use the faux phone image to create custom properties (normalized design height % AND normalized design width %)
+
+- gimp vids
+  - create a gimp instructions document
+
+USER CONTROLLED TOUCH-BASED MOTION
+  + box2d body induced wobble using a "FINGER TAP"
+  + box2d induced world acceleration using a "FINGER SWIPE"
+  + ability to turn each touch input method ON/OFF
+  + multi-touch? multiple mouse joints?
+  - max length mouse joint OR tweak the mouse joint to break once the position is outside the body
+  - a boolean flag of some sort (or maybe the collision filter) on box2d bodies to control if the body is controlled by touch input
+  - pinch-to-zoom / pan (it might be a good idea to use this as a special user placement/zoom "mode")
+
+- MOTOR JOINT with my turtles scene (see journal Thursday 2019-05-30)
+
+- auto wobble
+  - PROGRAMMED WOBBLE RESPONSE using impulse, force, torque, etc.
+  - INDUCED X-AXIS WOBBLE by y-axis / z-axis / normalized linear acceleration / gyro
+  - INDUCED OR AUTO-MOTION AT IDLE
+  - SIDE-BY-SIDE TESTS of different induced wobble methods and/or modified box2d composite entity settings
+  - ON-SCREEN LOGGING show relevant info
+
+- finish joint RUBE tutorials
+  - look back over my notes / comments (did I take notes?) for my iforce2d tutorial tests in the box2d test harness created in visual studio 2019
+  * BOX2D - review test scenarios for useful box2d usage and study code to implementation for Box2D test harness (copied from journal Monday 2019-05-20)
+    - slider crank - locomotive
+    * cantilever - hula spring, floating dragon or fish
+    - car - great for vehicle project ideas (camera for box2d?)
+    - body types - body type can be changed at run-time
+    - chain vs rope joint
+    - breakable
+    - bridge - vehicle projects
+    - theo jansen's walker - mech walkers
+    - web - spider web + spider
+
+- backup new android projects (compacted) - rube_loader_image, rube_loader_demo, rube_loader_custom
+
+- backup customized RUBE-b2djson (d:\sdk\RUBE-b2djson)
+  - only 1 change so far, but also deleted 2 files..
+  - add to github
+
+- customize iforce2d "QueryCallbacks.h" from demo? right now copied as-is
+
+- put normalized height % in the RUBE file and try to export that in the RUBE json export for programmatic positioning
+
+
+
+APP DEVELOPMENT PROGRESS NOTES
+
+  - name ideas: dashboard toys
+
+  - development goals: hawaii theme => hula dancers => iOS => googly eyes => ?
+
+  * minimum viable app
+
+  * business license => e-mail address => bank account => app store account
+    - later a website, social media..
+
+  - ANDROID RUBE LOADER / COMBINE PHYSICS SCENARIOS: AROUND 3 SIDE-BY-SIDE, PINCH-TO-ZOOM/PAN (OR FIT IN LANDSCAPE VIEW), DESCRIPTIVE LABELS
+    - ex. this scenario has x-acceleration only to control x-force
+      scenario 2: max(x/z-acceleration) to control x-force
+      scenario 3: x/z-acceleration normalized to control x-force
+      scenario 4: auto-wobble?
+      scenario 5: different constants
+      scenario 6: alternate joint configs
+      scenario 7: minimum threshold acceleration
+      
+      different body shapes, distance, densities
+      acceleration moving forward or X/Z normal force
+      y acceleration spring effect
+
+
+R.U.B.E.
+
+  - tutorials + advanced
+    6 - anatomy of a collision: http://www.iforce2d.net/b2dtut/collision-anatomy
+    7 - collision callbacks
+    8 - collision filtering, sensors
+    9 - ray casting
+    10 - world querying, removing bodies safely
+    14 - "can I jump" question
+    15 - ghost vertices
+
+  - rendering: Box2DDebugDraw.cpp/.h vs GLES-Render.cpp/.h
+    - study Box2DDebugDraw.cpp/.h vs GLES-Render.cpp/.h and try to get working again? body (issue with backgrounds not moving)
+    - once "fixed", add to github and add to SDK folder, for new projects create LINK back to this (like cocos2d-x and b2dJSON)
+
+  - video tutorials
+    - Cocos2d-x "on the fly" resource updating: https://youtu.be/Xv4JYqwlGOg
+    - Box2D inverted pendulum control: https://youtu.be/LH0pRDIeZB8
+    - RUBE case study: soft wheels: https://youtu.be/F-aDMZUVw0c
+    - RUBE with Cocos2d-X: https://youtu.be/ePTR5lHE4q0
+    - Creating menus with RUBE (Cocos2d): https://youtu.be/JaHpmLN8DQA
+    - Box2D physics-driven particles tutorial: https://youtu.be/7YXSDhWl-F0
+    - Box2D mountain-bike: https://youtu.be/bBIXpu-D_Zo
+    - Box2D 4-stroke combustion engine: https://youtu.be/8kZRpouZ3OQ
+    - Box2D wind tunnel: https://youtu.be/zhFVMxus3No
+    - Box2D explosion demo: https://youtu.be/KK2XHyObKik
+    - Box2D buoyancy tutorial: https://youtu.be/9fCT-EjlF9I
+    - Box2D rocket platform: https://youtu.be/vYsFVHNavR0
+    - 2-minute ragdoll in R.U.B.E Box2D editor: https://youtu.be/7DXzlE68abA
+    - R.U.B.E Pro Box2D editor usage example (Part 1/2): https://youtu.be/-S-pmWLLGrU
+    - R.U.B.E Pro Box2D editor usage example (Part 2/2): https://youtu.be/foYD3fWpMoo
+      - mouse joint!
+    - Box2D rail joint experiment: https://youtu.be/hTCIRk9vcGA
+    - Box2D tank - rendering over faked conveyor belts: https://youtu.be/-GqEu5gGwpw
+    - Box2D conveyor belt implementation: https://youtu.be/EtvTtUZaVM0
+
+
+CURRENT APP DEVELOPMENT IDEAS
+  - android live wallpaper
+  - android daydream
+
+  SAMPLE LIVE WALLPAPERS
+
+    - gif live wallpaper / other apps too
+      - decent ui
+      - pricey
+
+    - panda bobble head | panda chub
+      - no ads
+      - in-app purchase for full version
+      - app "hidden" from primary list
+      - "cute" well-made images
+
+    - water garden
+      - well made
+      - no ads
+      - in-app purchases
+
+    - 3d earth | beach | kitten live wallpaper
+      - small ad on 1st menu
+      - large full ad on 1st entry to settings
+      - gyro "parallax"
+      - more apps
+      - rate / share / privacy policy
+
+    - falling leaves | GOD | nature live wallpaper
+      - very annoying (INVASIVE) ads
+
+
+IOS
+  iforce2d tutorial - RUBE+cocos2d-x (iOS setup): https://youtu.be/ePTR5lHE4q0
+
+
+MISCELLANEOUS
+
+  - setDesignResolutionSize()
+    - setDesignResolutionSize() .."FIXED_HEIGHT" seemed to work better than "NO_BORDER", but more testing needed
+    - write design pattern to be used in projects
+
+  - cocos2d-x equivalents to android onResume() / onPause() and other life-cycle
+    - TEST THIS: http://docs.cocos2d-x.org/cocos2d-x/en/audio/advanced.html
+    - applicationDidEnterBackground / applicationWillEnterForeground
+
+  ! read "cocos2D-x notes.txt" > SCALING > USING RENDERTEXTURE, test & write notes
+  - read "cocos2D-x notes.txt" > RESOLUTION
+    https://discuss.cocos2d-x.org/t/solved-how-to-really-resize-a-sprite-to-avoid-scaling-it/21458/8
+
+  - read pdf books
+    - "Building Android Games with Cocos2D-x" (CURRENT BOOK)
+    - "Cocos2d-x by Example - Beginner's Guide"
+    - "Cocos2d-x Cookbook"
+
+  - ADMOB (later)
+    - continue with "Building Android Games with Cocos2d-x" p.122 starting at moving the mute button
+    - see "journal.txt" Thursday 2018-12-13
+
+  - add swimming turtles and / or hawaiian flowers to the application settings scene

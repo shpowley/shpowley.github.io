@@ -1,0 +1,16 @@
+*** K.I.S.S. ***
+
+*** it might be a good idea to JUST DRIVE AROUND / WALK to get NEW IDEAS AND RECORD THOUGHTS
+
+
+ONGOING
+
+  - at the beginning of each month, track days worked stats: % days, % actual hours(?)
+
+  - use vs code print monthly journal to pdf and markup using android app "xodo"
+
+  - remember to DISABLE UNUSED API OPTIONS to reduce file size (CCCONFIG.H)
+    https://docs.cocos2d-x.org/cocos2d-x/en/physics/debugging.html
+
+  - remember to MINIFY .PLIST XML
+    https://www.webtoolkitonline.com/xml-minifier.html
