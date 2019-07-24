@@ -1,0 +1,47 @@
+LIVE WALLPAPER
+  - go back and try modifying Cocos2dxHelper.java again to re-attempt the live wallpaper
+  - try using (AppActivity, this) OR further modifying Context usage instead of sActivity (see "Monday 2019-06-24")
+  - OR b2dJson(java) + android canvas..
+
+
+GYRO Z-AXIS PARALLAX BACKGROUND
+  - extra wide background image
+  - full 360
+
+
+STUDY "RUBE DEMO PROJECT CODE"
+  - destroying bodies, pinball "bitplane", camera control/follow (vs. camera in test harness)
+
+
+GIMP VIDS
+  - create a gimp instructions document
+
+
+HELLO KITTY
+  - save for later
+  - other images
+
+
+BOX2D SCENARIO/CODE STUDY
+  - review the test scenarios for useful box2d usage and study code implementation for Box2D test harness (copied from journal Monday 2019-05-20)
+
+  - slider crank - locomotive
+  * cantilever - hula spring, floating dragon or fish
+  - car - great for vehicle project ideas (camera for box2d?)
+  - body types - body type can be changed at run-time
+  - chain vs rope joint
+  - breakable
+  - bridge - vehicle projects
+  - theo jansen's walker - mech walkers
+  - web - spider web + spider
+
+
+RUBE TUTORIALS
+  - look over notes for the ones already completed
+  - advanced tutorials
+
+
+IMAGE SCALING AND IMPACT
+  ! read "cocos2D-x notes.txt" > SCALING > USING RENDERTEXTURE, test & write notes
+  - read "cocos2D-x notes.txt" > RESOLUTION
+    https://discuss.cocos2d-x.org/t/solved-how-to-really-resize-a-sprite-to-avoid-scaling-it/21458/8

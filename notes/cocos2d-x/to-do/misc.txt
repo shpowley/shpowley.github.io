@@ -14,3 +14,81 @@ ONGOING
 
   - remember to MINIFY .PLIST XML
     https://www.webtoolkitonline.com/xml-minifier.html
+
+
+DEVELOPMENT GOALS
+
+  hawaii theme
+  hawaii theme v1.1
+  hula dancers
+  iOS versions
+  googly eyes
+  bugs (ants, roaches, lady bugs?)
+
+
+CONTINUE READING COCOS2D-X BOOKS
+  - "Building Android Games with Cocos2D-x" (CURRENT BOOK)
+  - "Cocos2d-x by Example - Beginner's Guide"
+  - "Cocos2d-x Cookbook"
+
+
+R.U.B.E. TUTORIALS
+
+  tutorials + advanced
+    6 - anatomy of a collision: http://www.iforce2d.net/b2dtut/collision-anatomy
+    7 - collision callbacks
+    8 - collision filtering, sensors
+    9 - ray casting
+    10 - world querying, removing bodies safely
+    14 - "can I jump" question
+    15 - ghost vertices
+
+  video tutorials
+    - Cocos2d-x "on the fly" resource updating: https://youtu.be/Xv4JYqwlGOg
+    - Box2D inverted pendulum control: https://youtu.be/LH0pRDIeZB8
+    - RUBE case study: soft wheels: https://youtu.be/F-aDMZUVw0c
+    - RUBE with Cocos2d-X: https://youtu.be/ePTR5lHE4q0
+    - Creating menus with RUBE (Cocos2d): https://youtu.be/JaHpmLN8DQA
+    - Box2D physics-driven particles tutorial: https://youtu.be/7YXSDhWl-F0
+    - Box2D mountain-bike: https://youtu.be/bBIXpu-D_Zo
+    - Box2D 4-stroke combustion engine: https://youtu.be/8kZRpouZ3OQ
+    - Box2D wind tunnel: https://youtu.be/zhFVMxus3No
+    - Box2D explosion demo: https://youtu.be/KK2XHyObKik
+    - Box2D buoyancy tutorial: https://youtu.be/9fCT-EjlF9I
+    - Box2D rocket platform: https://youtu.be/vYsFVHNavR0
+    - 2-minute ragdoll in R.U.B.E Box2D editor: https://youtu.be/7DXzlE68abA
+    - R.U.B.E Pro Box2D editor usage example (Part 1/2): https://youtu.be/-S-pmWLLGrU
+    - R.U.B.E Pro Box2D editor usage example (Part 2/2): https://youtu.be/foYD3fWpMoo
+      - mouse joint!
+    - Box2D rail joint experiment: https://youtu.be/hTCIRk9vcGA
+    - Box2D tank - rendering over faked conveyor belts: https://youtu.be/-GqEu5gGwpw
+    - Box2D conveyor belt implementation: https://youtu.be/EtvTtUZaVM0
+    - RUBE+cocos2d-x (iOS setup): https://youtu.be/ePTR5lHE4q0
+
+
+REFERENCE SAMPLE LIVE WALLPAPERS
+
+  - gif live wallpaper / other apps too
+    - decent ui
+    - pricey
+
+  - panda bobble head | panda chub
+    - no ads
+    - in-app purchase for full version
+    - app "hidden" from primary list
+    - "cute" well-made images
+
+  - water garden
+    - well made
+    - no ads
+    - in-app purchases
+
+  - 3d earth | beach | kitten live wallpaper
+    - small ad on 1st menu
+    - large full ad on 1st entry to settings
+    - gyro "parallax"
+    - more apps
+    - rate / share / privacy policy
+
+  - falling leaves | GOD | nature live wallpaper
+    - very annoying (INVASIVE) ads

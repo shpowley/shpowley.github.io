@@ -1,3 +1,82 @@
-- related .h/.cpp should go in their own directories.. for important/re-usable ones, create separate .git repositories
+  - new scene: hanging lei
+    - hawaiian shirt + lei option
+    - different color flower options
+    - android robot + hawaiian shirt + lei + sun glasses
+    - https://youtu.be/roXUvqdyyDU @ 0:23 lei and model
+
+
+- RUBE image opacity / linear filter properties - check how these affect cocos2D-x sprite creation in b2djson import
+
+
+- create a RUBE file with different types of joints and experiment with settings
+  - every type of basic joint with labels describing what's what in the RUBE scene
+  - composite joints with description labels
+  - note my existing experiments
+  - experiment in box2d testbed OR..
+
+
+USER CONTROLLED TOUCH-BASED MOTION
+  + box2d body induced wobble using a "FINGER TAP"
+  + box2d induced world acceleration using a "FINGER SWIPE"
+  + multi-touch? multiple mouse joints?
+  - max length mouse joint OR tweak the mouse joint to break once the position is outside the body
+  - a SETTING OPTION of some sort (or maybe the collision filter) on box2d bodies to control if the body is controlled by touch input
+  - pinch-to-zoom / pan (it might be a good idea to use this as a special user placement/zoom "mode")
+
+
+- sensors JNI: if a dev option is enabled, calculate the actual delay & average, as a comparison to the set delay ..devices may have a limitation; also, I vaguely remember android docs having a way to check minimum delay..I think
+
+
+- sensors.. not sure where; calibrate out drift..??
+
+
+- sensor test redesign and way to track calling scene for the back button
+
+
+- self-promotion of my own stuff
+
+
+- SETTINGS: custom panel heights
+
+
+- SETTINGS: background panel colors; defaults for dark mode on/off
+
+
+- each scene needs to be more visually interesting; presented as options
+
 
 - invisible buttons (or shape) to enable touching panels for checkbox and radio?
+
+
+- more efficient logging? using cocos2d-x fps text method
+
+
+- "dashboard" mode (see Wednesday 2019-06-26)
+  - dashboard mode = multiple toys arranged on a virtual dash
+  - saved dashboard profiles
+
+
+- sensors - read through again for detailed info: https://developer.android.com/guide/topics/sensors
+
+
+- RUBE sampler animations: grass skirt blowing in the wind
+
+
+- sounds, music settings
+
+
+- NEW SCENE: dangling keychain - item options ~ hawaiian t-shirt | dollar t-shirt | hula dancer | hang loose | palm tree | surfboard | license plate | turtle | sandals | hibiscus
+
+
+2D ANIMATION
+
+  * compare RUBE sampler to create animations vs. the following..
+
+  Pencil2D - http://www.pencil2d.org/
+  Synfig Studio - https://synfig.org/
+  Blender (grease pencil)
+  Krita
+  + have a look on the android play store also for drawing animation apps
+
+
+- social networking

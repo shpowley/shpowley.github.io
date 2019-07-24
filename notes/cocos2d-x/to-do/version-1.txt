@@ -1,33 +1,137 @@
+0.5
 - remove "max acceleration x/z" option and related code
 
-- settings: "normalized acceleration x/z" doesn't work with the normal accelerometer (acceleration + gravity)
+
+0.5
+- SETTINGS: "normalized acceleration x/z" doesn't work with the normal accelerometer (acceleration + gravity)
   - the sandals scene is a good example
   - should be available only for the linear accelerometer, DISABLED and DEFAULTED to x-axis motion
 
+
+0.5
+- SETTINGS: mark sensors as unavailable where appropriate (ie. gyro sensor label should be disabled and labeld " - UNAVAILABLE)
+
+
+0.5
+- SETTINGS / DEVELOPER MODE: move sensor tests button here
+
+
+0.5
 - movement can be "jerky" at times (especially with high sensitivity, linear + x/z normalized)
   - halt any negating accelerometer force opposing current x-axis (angular) velocity
   - see gyro code for similar implementation
 
+
+1.0
 - accelerometer-controlled torque
   - not sure exactly how to implement to work with existing gyro code, but some devices like the moto-g don't have the gyro
   - hang loose scene currently won't work without a gyro
 
-- settings: mark sensors as unavailable where appropriate (ie. gyro sensor label should be disabled and labeld " - UNAVAILABLE)
 
+2.0
+- PERSIST SETTINGS: data storage; user-default or json object
+  - https://docs.cocos2d-x.org/api-ref/cplusplus/v3x/db/d94/classcocos2d_1_1_user_default.html
+  - app, scene, overlay, backgrounds, etc.
+
+
+1.0
+- new project for actual app vs. general purpose
+
+
+1.0
+- splash screen(s)
+
+
+1.0
+- site map
+
+
+1.0
+- user agreement / privacy statement
+
+
+1.5
+- main menu: cleanup, more interesting
+
+
+1.0
+- main menu: animated background
+
+
+1.0
+- NEW SCENE: android hula dancer
+
+
+0.5
+- SETTINGS: see "Thursday 2019-06-27"
+
+
+0.5
+- sensors - quick read: https://developer.android.com/guide/topics/sensors
+
+
+2.0
+- separate scene settings for each scene; inherit from app settings
+  - presented as a layer or separate scene?
+
+
+2.0
+- scene settings overlay
+
+
+0.5
 - move all related spriteframe image textures, plist and json files should go in their own cocos2d-x resource directories
 
+
+0.5
 - move all related .h/.cpp should go in their own directories
+  - iforce2d "QueryCallbacks.h"
 
-- "secret" method to enable developer mode in app settings (toward the end though)
 
-  - AppSettingsLayer overrides
-    1 - must be in advanced mode
-    2 - scrollview scroll-to-bottom + scroll-to-top + tap title 7 times (in correct sequence)
-    3 - auto reloads with dev options
+0.5
+- remove unneeded scenes
 
-  - move sensor tests button here
 
-- sensor test redesign and way to track calling scene for the back button
+0.5
+- ADDITIONAL SCENE: strong warning to not drive distracted (scene or layer) @ start-up
 
-ADDITIONAL SCENES
-  * strong warning to not drive distracted (scene or layer) @ start-up
+
+1.5
+- ADDITIONAL SCENE: surfboard
+
+
+0.5
+- DISABLE SCENE: hawaiian turtles
+
+
+0.5
+- DISABLE SCENE: hello kitty
+
+
+3.0
+- customized graphics
+
+
+3.0
+ADVERTISING/MONETIZATION
+  - see "journal.txt" Thursday 2018-12-13
+  - continue with "Building Android Games with Cocos2d-x" p.122 starting at moving the mute button
+  - free, banner ads, pay option, ad on menu, 2 "android robot" scenes free (hula dancer, surfer), unlock more scenes with video ad, sunglasses, skin tone, hair color
+  - "unnie doll" ideas - https://play.google.com/store/apps/details?id=com.percent.mybest3
+
+
+2.0
+- auto wobble
+  - PROGRAMMED WOBBLE RESPONSE using impulse, force, torque, etc.
+  - INDUCED X-AXIS WOBBLE by y-axis / z-axis / normalized linear acceleration / gyro
+  - INDUCED OR AUTO-MOTION AT IDLE
+  - SIDE-BY-SIDE TESTS of different induced wobble methods and/or modified box2d composite entity settings
+  - ON-SCREEN LOGGING show relevant info
+
+
+4.0
+BUSINESS-RELATED
+  - business license
+  - business e-mail address
+  - business bank account
+  - app store account

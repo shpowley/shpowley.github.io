@@ -1,0 +1,55 @@
+- tweak physics assemblies
+
+
+- scene backgrounds: pre-defined, user specfied
+
+
+- backup android projects to github (compacted)
+  - rube_loader_image, rube_loader_demo, rube_loader_custom
+  - customized RUBE-b2djson (d:\sdk\RUBE-b2djson)
+  - important/re-usable directories create separate .git repositories
+
+
+- ability to change application or scene orientation; implemented in the app assets, not in the os because of restrictions
+  + RUBE import repercussions
+
+
+- SCENE: hawaiian turtles
+  - "flocking birds" algorithm AND/OR
+  - MOTOR JOINT with my turtles scene (see journal Thursday 2019-05-30)
+  - "swimming" animation or "pre-defined" swim movement
+
+
+- RUBE sampler - turtle swimming (vs puppet assembly), grass skirt, hula dancer lei
+
+
+- quick config scene overlay (see "Wednesday 2019-06-26")
+  - implement on-screen back button (comment: every scene needs actually ..long term ios)
+
+
+- RUBE NORMALIZED DESIGN WIDTH/HEIGHT %
+  - have another look at RUBE + programmatic usage to verify/refine the next steps
+  - in RUBE editor use the faux phone image and grid to best-guess these values for the SUBJECT SPRITE(S)
+  - custom property (see "Sunday 2019-06-30") to export
+  - programmatic sizing to OPTIMAL design width/height in each scene
+    - "optimal" means adjusting height based on the device screen height without exceeding device screen width
+
+
+- linear acceleration tests
+  - low-pass vs hardware option to see the difference
+  - simple physics object connected to the center screen via a distance or rope joint
+  - possible tuning or scaling to get both to match
+  - ideas: adjust filter.a, attempt higher sample rate, scene acceleration scaling
+
+
+- SETTINGS / DEVELOPER MODE: 
+
+  - "SECRET" METHOD TO ENABLE in app settings
+
+  - AppSettingsLayer overrides
+    1 - must be in advanced mode
+    2 - scrollview scroll-to-bottom + scroll-to-top + tap title 7 times (in correct sequence)
+    3 - auto reloads with dev options
+
+
+- SETTINGS / DEVELOPER MODE: implementation
