@@ -21,7 +21,9 @@ USER CONTROLLED TOUCH-BASED MOTION
   + multi-touch? multiple mouse joints?
   - max length mouse joint OR tweak the mouse joint to break once the position is outside the body
   - a SETTING OPTION of some sort (or maybe the collision filter) on box2d bodies to control if the body is controlled by touch input
+  
   - pinch-to-zoom / pan (it might be a good idea to use this as a special user placement/zoom "mode")
+    - verify "setImagePositionsFromPhysicsBodies" still works for image-only items of RUBE imported assets
 
 
 - sensors JNI: if a dev option is enabled, calculate the actual delay & average, as a comparison to the set delay ..devices may have a limitation; also, I vaguely remember android docs having a way to check minimum delay..I think

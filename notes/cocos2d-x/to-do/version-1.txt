@@ -1,22 +1,25 @@
-0.5
+DONE
 - remove "max acceleration x/z" option and related code
 
 
-0.5
+DONE
+- more efficient RUBELayer::setImagePositionsFromPhysicsBodies() ?
+
+
+DONE
 - SETTINGS: "normalized acceleration x/z" doesn't work with the normal accelerometer (acceleration + gravity)
   - the sandals scene is a good example
   - should be available only for the linear accelerometer, DISABLED and DEFAULTED to x-axis motion
 
-
-0.5
-- SETTINGS: mark sensors as unavailable where appropriate (ie. gyro sensor label should be disabled and labeld " - UNAVAILABLE)
-
-
-0.5
+DONE
 - SETTINGS / DEVELOPER MODE: move sensor tests button here
 
 
-0.5
+DONE
+- SETTINGS: mark sensors as unavailable where appropriate (ie. gyro sensor label should be disabled and labeled " - UNAVAILABLE")
+
+
+DONE ~ DIDN'T REALLY WORK AS HOPED
 - movement can be "jerky" at times (especially with high sensitivity, linear + x/z normalized)
   - halt any negating accelerometer force opposing current x-axis (angular) velocity
   - see gyro code for similar implementation
@@ -25,7 +28,19 @@
 1.0
 - accelerometer-controlled torque
   - not sure exactly how to implement to work with existing gyro code, but some devices like the moto-g don't have the gyro
-  - hang loose scene currently won't work without a gyro
+  - hang loose scene currently won't work without a gyro-induced torque
+
+  - make an "Accelerometer" sub-checkbox option(?)
+    - "Accelerometer-Induced Torque" OR "Accelerometer-Induced Rotation"
+
+
+2.0
+- auto wobble
+  - PROGRAMMED WOBBLE RESPONSE using impulse, force, torque, etc.
+  - INDUCED X-AXIS WOBBLE by y-axis / z-axis / normalized linear acceleration / gyro
+  - INDUCED OR AUTO-MOTION AT IDLE
+  - SIDE-BY-SIDE TESTS of different induced wobble methods and/or modified box2d composite entity settings
+  - ON-SCREEN LOGGING show relevant info
 
 
 2.0
@@ -38,28 +53,12 @@
 - new project for actual app vs. general purpose
 
 
-1.0
-- splash screen(s)
-
-
-1.0
-- site map
-
-
-1.0
-- user agreement / privacy statement
-
-
 1.5
 - main menu: cleanup, more interesting
 
 
 1.0
 - main menu: animated background
-
-
-1.0
-- NEW SCENE: android hula dancer
 
 
 0.5
@@ -89,7 +88,19 @@
 
 
 0.5
-- remove unneeded scenes
+- DISABLE SCENE: hawaiian turtles
+
+
+0.5
+- DISABLE SCENE: hello kitty
+
+
+0.5
+- remove additional unneeded scenes
+
+
+1.0
+- NEW SCENE: android hula dancer
 
 
 0.5
@@ -100,16 +111,20 @@
 - ADDITIONAL SCENE: surfboard
 
 
-0.5
-- DISABLE SCENE: hawaiian turtles
-
-
-0.5
-- DISABLE SCENE: hello kitty
+1.0
+- splash screen(s)
 
 
 3.0
 - customized graphics
+
+
+1.0
+- site map
+
+
+1.0
+- user agreement / privacy statement
 
 
 3.0
@@ -118,15 +133,6 @@ ADVERTISING/MONETIZATION
   - continue with "Building Android Games with Cocos2d-x" p.122 starting at moving the mute button
   - free, banner ads, pay option, ad on menu, 2 "android robot" scenes free (hula dancer, surfer), unlock more scenes with video ad, sunglasses, skin tone, hair color
   - "unnie doll" ideas - https://play.google.com/store/apps/details?id=com.percent.mybest3
-
-
-2.0
-- auto wobble
-  - PROGRAMMED WOBBLE RESPONSE using impulse, force, torque, etc.
-  - INDUCED X-AXIS WOBBLE by y-axis / z-axis / normalized linear acceleration / gyro
-  - INDUCED OR AUTO-MOTION AT IDLE
-  - SIDE-BY-SIDE TESTS of different induced wobble methods and/or modified box2d composite entity settings
-  - ON-SCREEN LOGGING show relevant info
 
 
 4.0

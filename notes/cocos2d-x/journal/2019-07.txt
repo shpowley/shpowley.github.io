@@ -1,5 +1,25 @@
 ----------
-Tuesday 2019-07-21
+Thursday 2019-07-25
+
+  - more efficient RUBELayer::setImagePositionsFromPhysicsBodies()
+
+  - SETTINGS: "normalized acceleration x/z" doesn't work with the normal accelerometer (acceleration + gravity)
+    - restrictions set in code and settings ui
+
+  - SETTINGS / DEVELOPER MODE: move sensor tests button here and update some supporting code
+
+  - SETTINGS: mark sensors as unavailable where appropriate
+    - gyro sensor label should be disabled and labeled " (Unavailable)"
+    - accelerometer sensor - same as gyro, though I think accelerometer will always be available
+    - linear accelerometer labeled " (Software)" if unavailable as this is calculated from acceleration low-pass filter
+
+  - halt any negating accelerometer force opposing current x-axis (angular) velocity
+    - this could only be implemented on the linear accelerometer; with the standard accelerometer the effects of gravity create an unwanted oscillation
+
+----------
+Tuesday 2019-07-23
+
+  - remove "max acceleration x/z" option and related code
 
   - I'm guessing I have ~12 days before Jack gets here
   - time estimate to complete v1 ~34 days ===> mid-september?
