@@ -1,4 +1,18 @@
 ----------
+Friday 2019-07-26
+
+  SETTINGS: ACCELEROMETER-INDUCED TORQUE
+
+    - added; off by default; additional "rotation" force induced by the accelerometer; does not override gyroscope torque, nor the accelerometer force
+    - needed for scenarios like the moto-g / "hang loose" scene - due to the lack of a gyro AND the center of mass on the joint
+
+  AUTO-WOBBLE
+
+    - began implementation with on-screen logging of relevant information
+      - display: ACCELERATION X/Y/Z, GYRO Z-AXIS and ANGULAR VELOCITY
+      * I think ANGULAR VELOCITY might be the best statistic to use to determine if a toy is idle
+
+----------
 Thursday 2019-07-25
 
   - more efficient RUBELayer::setImagePositionsFromPhysicsBodies()

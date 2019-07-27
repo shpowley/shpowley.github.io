@@ -23,6 +23,9 @@
 - RUBE sampler - turtle swimming (vs puppet assembly), grass skirt, hula dancer lei
 
 
+- info/tooltip layer(?)
+
+
 - quick config scene overlay (see "Wednesday 2019-06-26")
   - implement on-screen back button (comment: every scene needs actually ..long term ios)
 

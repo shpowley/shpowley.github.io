@@ -21,6 +21,7 @@ DEVELOPMENT GOALS
   hawaii theme
   hawaii theme v1.1
   hula dancers
+  coins rolling
   iOS versions
   googly eyes
   bugs (ants, roaches, lady bugs?)

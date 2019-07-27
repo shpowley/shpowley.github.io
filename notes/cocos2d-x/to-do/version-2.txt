@@ -1,8 +1,8 @@
-  - new scene: hanging lei
-    - hawaiian shirt + lei option
-    - different color flower options
-    - android robot + hawaiian shirt + lei + sun glasses
-    - https://youtu.be/roXUvqdyyDU @ 0:23 lei and model
+- new scene: hanging lei
+  - hawaiian shirt + lei option
+  - different color flower options
+  - android robot + hawaiian shirt + lei + sun glasses
+  - https://youtu.be/roXUvqdyyDU @ 0:23 lei and model
 
 
 - RUBE image opacity / linear filter properties - check how these affect cocos2D-x sprite creation in b2djson import

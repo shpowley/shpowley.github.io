@@ -25,22 +25,24 @@ DONE ~ DIDN'T REALLY WORK AS HOPED
   - see gyro code for similar implementation
 
 
-1.0
+DONE
 - accelerometer-controlled torque
   - not sure exactly how to implement to work with existing gyro code, but some devices like the moto-g don't have the gyro
   - hang loose scene currently won't work without a gyro-induced torque
-
   - make an "Accelerometer" sub-checkbox option(?)
     - "Accelerometer-Induced Torque" OR "Accelerometer-Induced Rotation"
 
 
 2.0
 - auto wobble
+  - ON-SCREEN LOGGING show relevant info
   - PROGRAMMED WOBBLE RESPONSE using impulse, force, torque, etc.
   - INDUCED X-AXIS WOBBLE by y-axis / z-axis / normalized linear acceleration / gyro
   - INDUCED OR AUTO-MOTION AT IDLE
   - SIDE-BY-SIDE TESTS of different induced wobble methods and/or modified box2d composite entity settings
-  - ON-SCREEN LOGGING show relevant info
+
+  vars: enable_wobble, randomize_wobble, wobble_idle_time, wobble_force
+  scheduleOnce(schedule_selector());
 
 
 2.0
