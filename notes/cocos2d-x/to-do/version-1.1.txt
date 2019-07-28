@@ -45,6 +45,10 @@
   - ideas: adjust filter.a, attempt higher sample rate, scene acceleration scaling
 
 
+- SETTINGS: more granular movement control
+  - see "Saturday 2019-07-27"
+
+
 - SETTINGS / DEVELOPER MODE: 
 
   - "SECRET" METHOD TO ENABLE in app settings

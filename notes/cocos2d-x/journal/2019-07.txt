@@ -1,4 +1,29 @@
 ----------
+Saturday 2019-07-27
+
+  auto-wobble
+    - basic concept implemented on 2 scenes
+    * this needs to be customized for each scene as the number of dynamic physics bodies varies, but a code pattern has been established
+    - "threshold angular velocity" needs to be added to the settings, in addition to refined ranges + steps, I think constants would be useful here
+    - random auto-wobble needs to be added, but I'm not sure about the min/max values
+
+  - after some observations driving around today, I think the movement settings need to be even more granular, yet at the same time, the UI needs to appear as simple as possible for the end user
+
+    info boxes
+
+    basic > advanced > advanced+ > developer ???
+
+    accelerometer
+      - the "induce torque" option needs to be moved back toward the top
+      - accelerometer "force applied" also needs to be another option
+
+    auto wobble
+      - "threshold angular velocity" should be another option, but this has to be checked a level higher in the RUBE Scene/Layer child
+
+    developer option
+      - prevent linear acceleration negating physics body angular movement
+
+----------
 Friday 2019-07-26
 
   SETTINGS: ACCELEROMETER-INDUCED TORQUE
@@ -111,6 +136,7 @@ Tuesday 2019-07-16
 
   - good discussion on lambda functions
     https://discuss.cocos2d-x.org/t/lambda-functions/20160/9
+    https://en.cppreference.com/w/cpp/language/lambda
 
     ex. back_button->addClickEventListener([&](cocos2d::Ref* sender) {
           CCLOG("BUTTON CLICKED!!!");

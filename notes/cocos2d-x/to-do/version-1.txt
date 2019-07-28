@@ -41,8 +41,7 @@ DONE
   - INDUCED OR AUTO-MOTION AT IDLE
   - SIDE-BY-SIDE TESTS of different induced wobble methods and/or modified box2d composite entity settings
 
-  vars: enable_wobble, randomize_wobble, wobble_idle_time, wobble_force
-  scheduleOnce(schedule_selector());
+  vars: enable_wobble, randomize_wobble, wobble_threshold_min_velocity, wobble_threshold_idle_time, wobble_impulse
 
 
 2.0
