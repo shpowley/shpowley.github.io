@@ -1,4 +1,60 @@
 ----------
+Wednesday 2019-07-31
+
+  layer overlay tests
+
+----------
+Tuesday 2019-07-30
+
+  data persistence
+
+    - leaning toward fileutils and .plist/xml; see cocos2d-x cookbook and google
+    - complete for app settings read/write; needs some testing
+
+
+    CODE REFERENCE
+
+      map_parent = {
+        {"KEY A", Value(true)},
+        {"KEY B", Value(121)}
+        {"KEY C", Value(map_inner_A)}
+        {"KEY D", Value( ValueMap{ {"key", Value(2)}, {"key next", Value(345)} })},
+        {"KEY E", Value( ValueVector{ Value(2), Value(3), Value(31) })},
+      };
+
+      file_utils->writeToFile(map_parent, full_path_file);
+
+
+    WRITEABLE PATH: FileUtils::getInstance()->getWriteablePath()
+
+----------
+Monday 2019-07-29
+
+  auto-wobble
+    * HUNG UP ON THE SANDALS IMPLEMENTATION; encountered an ODD BUG(?) is very finicky with applying different torque values to each foot.. used a workaround I guess..
+      - hopefully this is isolated won't cause issues in the future
+
+    - scene-specific settings with appropriate defaults is really needed; application-wide defaults isn't pretty on some scenes
+
+    * had to copy joint defs AND re-create joints for a special case, BUT joint .SetFrequency() AND .SetDampingRatio() EXIST ..making using these easier for scene-specific settings later on
+
+  settings
+    - granular acceleration control
+
+    * NOTE: removing 2 UI radio options.. ALL remaining UI elements are slider and checkboxes
+    
+----------
+Sunday 2019-07-28
+
+  - removed unneeded "test" scenes
+
+  auto-wobble
+    - mostly satisfied with motion and code implementation
+    - removed "random" as it didn't make sense how best to implement
+    - template in the HulaScene.h/.cpp
+      ..will implement in other scenes tomorrow, but not sure about the turtles as the "auto-wobble" definition isn't as clear-cut for this physics layout
+
+----------
 Saturday 2019-07-27
 
   auto-wobble
