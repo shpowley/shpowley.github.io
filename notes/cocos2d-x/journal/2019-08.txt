@@ -1,0 +1,51 @@
+  SCENE OVERLAY
+
+    - incorporate new icons
+
+----------
+Friday 2019-08-02
+
+  - re-organized .h/.cpp files + folders
+
+  - replaced menu images with a hawaiian flower
+    - temporary as this entire menu scene will be replaced, but practiced gimp masking technique
+
+----------
+Thursday 2019-08-01
+
+  MISC
+    - new journal for August 2019 created
+
+    - stats:
+        - total: 154/311 based => 49.5%
+        - july 2019: 29/31 days => 93.5%
+
+
+  CREATING ICONS FOR SCENE OVERLAY
+
+    - also created +/- icons for later - slider granular step buttons
+
+
+  LOOKING @ "UNNIEDOLL" APP FOR SOME ICON IDEAS
+    - tapping the screen produces a quick "star" animation visual cue
+
+
+  quick brainstorm re: hula dancer options
+    - base design (or none), skirt, pose, skin tone, hair color, top, lei, flower, sunglasses
+      - bases: bottle cap, coin, coin stack, surfboard, hand (open palm)
+    - wind effects, extra physics
+    - background color/image, visual effects (flowers falling, clouds)
+    - other objects (surfboard(s), beach life)
+
+
+  * ANOTHER THOUGHT, each scene as currently implemented can customize each "toy" look and physics *ONLY*
+    
+    - "BASE" toy + EDIT / SAVE customized toys; which can be used in TOY-MODE
+      - so TOY-MODE wouldn't allow backgrounds, etc. per se; instead an option to create a new dashboard using said toy
+
+    - DASHBOARD-MODE would allow customization of 1+ toys, backgrounds, etc.
+
+
+  * TOUCH
+
+    - right now touch is enabled on all toys, but this should be an option

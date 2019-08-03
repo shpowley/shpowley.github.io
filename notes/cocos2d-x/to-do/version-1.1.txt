@@ -10,7 +10,7 @@
   - important/re-usable directories create separate .git repositories
 
 
-- ability to change application or scene orientation; implemented in the app assets, not in the os because of restrictions
+- ability to change application or scene orientation; implemented in the app assets load, not in the os because of restrictions
   + RUBE import repercussions
 
 
@@ -24,10 +24,6 @@
 
 
 - info/tooltip layer(?)
-
-
-- quick config scene overlay (see "Wednesday 2019-06-26")
-  - implement on-screen back button (comment: every scene needs actually ..long term ios)
 
 
 - RUBE NORMALIZED DESIGN WIDTH/HEIGHT %
@@ -60,3 +56,8 @@
 
 
 - SETTINGS / DEVELOPER MODE: implementation
+
+
+- AUTO-WOBBLE
+  - auto-wobble in-motion checkbox AND in-motion force
+  - auto-wobble at idle checkbox AND at idle force

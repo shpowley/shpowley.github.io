@@ -199,6 +199,8 @@ PROJECT IDEAS CENTRAL DOCUMENT
 
   MISC
 
+    - gyro test enhancement (see Tuesday 2019-07-02)
+
     * GOOGLY EYES
       - standalone app, live wallpaper
       - pick your own image and place some googly eyes

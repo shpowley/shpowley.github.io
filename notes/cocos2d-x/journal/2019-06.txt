@@ -802,6 +802,8 @@ Wednesday 2019-06-05
 
       ??? use soft brush on mask edges OR soften the edge of an existing layer mask, you could just use Filter >> Blur >> Gaussian Blur
 
+      *** TIPS (2019-08-02) - use FUZZY SELECT TOOL for the paintbrush step, with CTRL / SHIFT ***
+
       - edit > cut (removes entire layer into clipboard)
 
     original image layer

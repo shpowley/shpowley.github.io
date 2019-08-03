@@ -1,7 +1,52 @@
-----------
 Wednesday 2019-07-31
 
-  layer overlay tests
+  FALLING FLOWER SAMPLES
+
+    https://www.youtube.com/playlist?list=PLOEAmpSg2ucYC43kD_pPIu1b7Ob9EvTkw
+    - 1st two look good
+    - another option is having flower "float" as if in water; colliding using box2d
+
+
+  LAYER OVERLAY TESTS
+
+
+  LAYER OPACITY
+
+    * in order for LAYER OPACITY TO CASCADE TO CHILD ELEMENTS, remember to call "setCascadeOpacityEnabled(true)"
+      - also, setting layer opacity will multiply opacity of any child objects
+
+
+  LAYER COLOR
+
+    - 2 METHODS I found seem to work
+
+      - #1: https://stackoverflow.com/a/12122164 AND #2: https://stackoverflow.com/a/32520489
+
+
+      - METHOD #1 is preferred (I think), as it's applied directly to the layer
+
+        * inherit from cocos2d::LayerColor
+
+        * override init() as usual, but change
+          "if (Layer::init()).." to "if (LayerColor::initWithColor(Color4B(..))).."
+
+          - https://discuss.cocos2d-x.org/t/disable-back-layers-touch-while-pop-up-is-thrown/6671/5
+            - though not the main topic, it describes the exact method
+
+        - setColor() can later be used to change the layer color
+
+
+      - METHOD #2 is easier, but seems less efficient as it basically adds a new node to the layer
+
+
+      * there is also cocos2d::LayerGradient and cocos2d::LayerRadialGradient
+        - I assume either method #1 or #2 can be used, but has not been tested
+
+
+  LAYER "MODALITY" (PREVENT TOUCHES)
+
+    great example: https://discuss.cocos2d-x.org/t/disable-back-layers-touch-while-pop-up-is-thrown/6671/5
+
 
 ----------
 Tuesday 2019-07-30
@@ -31,8 +76,8 @@ Tuesday 2019-07-30
 Monday 2019-07-29
 
   auto-wobble
-    * HUNG UP ON THE SANDALS IMPLEMENTATION; encountered an ODD BUG(?) is very finicky with applying different torque values to each foot.. used a workaround I guess..
-      - hopefully this is isolated won't cause issues in the future
+    * HUNG UP ON THE SANDALS IMPLEMENTATION; encountered an ODD BUG(?) -- very finicky with applying different torque values to each foot.. used a workaround I guess..
+      - hopefully this is isolated and won't cause issues in the future
 
     - scene-specific settings with appropriate defaults is really needed; application-wide defaults isn't pretty on some scenes
 
@@ -41,7 +86,7 @@ Monday 2019-07-29
   settings
     - granular acceleration control
 
-    * NOTE: removing 2 UI radio options.. ALL remaining UI elements are slider and checkboxes
+    * NOTE: removing 1 UI radio options..
     
 ----------
 Sunday 2019-07-28
@@ -59,7 +104,7 @@ Saturday 2019-07-27
 
   auto-wobble
     - basic concept implemented on 2 scenes
-    * this needs to be customized for each scene as the number of dynamic physics bodies varies, but a code pattern has been established
+    * this needs to be customized for each scene as the number of dynamic physics bodies vary, but a code pattern has been established
     - "threshold angular velocity" needs to be added to the settings, in addition to refined ranges + steps, I think constants would be useful here
     - random auto-wobble needs to be added, but I'm not sure about the min/max values
 
@@ -108,7 +153,7 @@ Thursday 2019-07-25
     - accelerometer sensor - same as gyro, though I think accelerometer will always be available
     - linear accelerometer labeled " (Software)" if unavailable as this is calculated from acceleration low-pass filter
 
-  - halt any negating accelerometer force opposing current x-axis (angular) velocity
+  - halt any negating accelerometer force opposing current z-axis (angular) velocity
     - this could only be implemented on the linear accelerometer; with the standard accelerometer the effects of gravity create an unwanted oscillation
 
 ----------
@@ -176,7 +221,7 @@ Thursday 2019-07-18
       - still need wobble / dev mode ui completed
 
     - sensor test added
-      - TODO: some thought needs to into this though, scene or layer? hide for v1? as actual scene needs cleanup and BACK from current scene always go back to the main menu
+      - TODO: some thought needs to be put into this though, scene or layer? hide for v1? as actual scene needs cleanup and BACK from current scene always go back to the main menu
 
 ----------
 Wednesday 2019-07-17
@@ -372,7 +417,7 @@ Thursday 2019-07-04
     ui::ScrollView
       - experimented with the cocos2d-x ui::ScrollView container for my MENU and SETTINGS scenes
 
-      - ScrollView works with Menu, but not exactly how I expected once the number of menu items grows beyond a window height. some ASSUMPTIONS - the ScrollView is as tall / wide as the entire screen AND the menu is set to "align items vertically with padding". this is set work "correctly" on my main menu, but I'm uncertain in long term -- IS THE MENU REALLY EVEN NECESSARY?
+      - ScrollView works with Menu, but not exactly how I expected once the number of menu items grows beyond a window height. some ASSUMPTIONS - the ScrollView is as tall / wide as the entire screen AND the menu is set to "align items vertically with padding". this is set ot work "correctly" on my main menu, but I'm uncertain in the long term -- IS THE MENU REALLY EVEN NECESSARY?
 
       - ScrollView works with DrawNode for drawing simple shapes, it stays in place as a child of the ScrollView
 
@@ -382,7 +427,7 @@ Thursday 2019-07-04
 
     * just curious how the cocos2d-x DISPLAY STATS renders text compared to the on screen log implemented from iforce2d code examples
 
-      - glanced at briefly, but for future reference the location is: ../cocos/base/CCDirector.h/.cpp
+      - glanced at it briefly, but for future reference the location is: ../cocos/base/CCDirector.h/.cpp
         TAGS: "GL verts", "GL calls"
 
       - screen log font size: ScreenLog/ScreenLog.h/.cpp -> screenLogMessage::createLabel()
@@ -416,7 +461,7 @@ Wednesday 2019-07-03
       - also had to fix the physics pre-processor specified in the project's android module ../jni/Application.mk to not use chipmunk so it would build the apk without errors
 
 
-    - I took another look at COCOS CREATOR to see if using it was a viable option create setting UI controls and layout, then importing it somehow to the cocos2d-x c++ environment -- but the IDE is just so unintuitive, clunky and slow - I can't use it
+    - I took another look at COCOS CREATOR to see if using it was a viable option for creating settings UI controls and layout, then importing it somehow to the cocos2d-x c++ environment -- but the IDE is just so unintuitive, clunky and slow - I can't use it
 
 ----------
 Tuesday 2019-07-02
@@ -440,7 +485,7 @@ Tuesday 2019-07-02
     - physical hula dashboard doll AND sell??? cross-selling..
     - green "grass" velcro surface
 
-    + expand on gyro test project
+    + EXPAND ON GYRO TEST PROJECT
       - restrict gyroscope to y-axis movement option
       - swipe left/right to rotate
       - import any 3d sprite .obj
@@ -451,7 +496,7 @@ Tuesday 2019-07-02
 Monday 2019-07-01
 
   MISC
-    - new journal for June 2019 created
+    - new journal for July 2019 created
 
     - stats:
         - journal start: 2018-10-07
