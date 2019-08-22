@@ -1,7 +1,32 @@
   SCENE OVERLAY
 
     - incorporate new icons
-    - asfklasfld
+
+----------
+Thursday 2019-08-22
+
+  goal: "reset" projects: celestial-test, rube_loader_custom, gyrotest
+  goal: backup computer
+
+----------
+Wednesday 2019-08-21
+
+  I haven't worked on this for a couple weeks, mostly because of Jack's visit
+
+  - some things changed during this period, NOT EXACTLY SURE WHAT HAPPENED TO CAUSE SO MUCH BREAKAGE..
+
+  - upgraded to ANDROID 3.5, switched to CMAKE instead of ndk, AND upgraded to cocos2d-x.3.17.2
+    - the ndk option doesn't seem to work anymore so all existing projects have to be reset into a new project so far
+    * also checked into git (copied over relevenat git files and modified .git)
+
+  - tried this again with rube_demo, but I've noticed that creating A NEW WORKING PROJECT DOESN'T JUST WORK anymore..
+    * I have to reset/re-sync using various options and switch from "cmake" to "ndk-build" back to "cmake" again on a basic project; not really sure what's going on though
+
+
+  SUMMARY:
+    - create a new project and fiddle with gradle.properties > PROP_BUILD_TYPE=cmake|ndk-build
+    - if re-creating a project, copy over relevant files and update CMakeLists.txt
+      - github project tracking - copy over relevant git files and modify .git
 
 ----------
 Friday 2019-08-02

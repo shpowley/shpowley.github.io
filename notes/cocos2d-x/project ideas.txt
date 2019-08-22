@@ -117,6 +117,7 @@ PROJECT IDEAS CENTRAL DOCUMENT
     - swaying linux gnome bare feet
     - gnu wildebeast floating logo
     - tux linux original logo / tux hula
+      - tux sitting feet like sandals physics scenario
     - android logo / android hula
 
 

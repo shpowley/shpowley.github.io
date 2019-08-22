@@ -125,10 +125,6 @@ DONE
 
 
 1.0
-- site map
-
-
-1.0
 - user agreement / privacy statement
 
 
