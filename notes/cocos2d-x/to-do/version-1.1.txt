@@ -1,13 +1,18 @@
 - tweak physics assemblies
+  - OPTION 1: hula-style bobble, check the rube "spring" assembly
+  - OPTION 2: hula-style bobble, mimic the hang loose physics
 
 
-- scene backgrounds: pre-defined, user specfied
+- scene backgrounds:
+  - some pre-defined images
+  - user specified media
+  - gyro-controlled 360/panorama?
 
 
 - backup android projects to github (compacted)
-  - rube_loader_image, rube_loader_demo, rube_loader_custom
+  DONE - rube_loader_image, rube_loader_demo, rube_loader_custom
   - customized RUBE-b2djson (d:\sdk\RUBE-b2djson)
-  - important/re-usable directories create separate .git repositories
+  - other important/re-usable directories create separate .git repositories
 
 
 - ability to change application or scene orientation; implemented in the app assets load, not in the os because of restrictions
@@ -18,9 +23,7 @@
   - "flocking birds" algorithm AND/OR
   - MOTOR JOINT with my turtles scene (see journal Thursday 2019-05-30)
   - "swimming" animation or "pre-defined" swim movement
-
-
-- RUBE sampler - turtle swimming (vs puppet assembly), grass skirt, hula dancer lei
+  - keep "crazy" and "falling" motion
 
 
 - info/tooltip layer(?)
@@ -61,3 +64,13 @@
 - AUTO-WOBBLE
   - auto-wobble in-motion checkbox AND in-motion force
   - auto-wobble at idle checkbox AND at idle force
+
+
+1.5
+- main menu: 
+  - cleanup, more interesting
+  - custom bitmap font
+
+
+1.0
+- main menu: animated background

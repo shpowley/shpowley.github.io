@@ -7,7 +7,7 @@ ONGOING
 
   - at the beginning of each month, track days worked stats: % days, % actual hours(?)
 
-  - use vs code print monthly journal to pdf and markup using android app "xodo"
+  - use vs code print monthly journal to pdf (F1 key + printcode extension) and markup using android app "xodo"
 
   - remember to DISABLE UNUSED API OPTIONS to reduce file size (CCCONFIG.H)
     https://docs.cocos2d-x.org/cocos2d-x/en/physics/debugging.html

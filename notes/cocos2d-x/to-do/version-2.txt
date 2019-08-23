@@ -12,7 +12,7 @@
   - every type of basic joint with labels describing what's what in the RUBE scene
   - composite joints with description labels
   - note my existing experiments
-  - experiment in box2d testbed OR..
+  - experiment in box2d testbed OR in app..
 
 
 USER CONTROLLED TOUCH-BASED MOTION
@@ -61,14 +61,16 @@ USER CONTROLLED TOUCH-BASED MOTION
 - sensors - read through again for detailed info: https://developer.android.com/guide/topics/sensors
 
 
-- RUBE sampler animations: grass skirt blowing in the wind
-
-
 - sounds, music settings
 
 
 - NEW SCENE: dangling keychain - item options ~ hawaiian t-shirt | dollar t-shirt | hula dancer | hang loose | palm tree | surfboard | license plate | turtle | sandals | hibiscus
 
+
+- RUBE sampler animations:
+  - grass skirt blowing in the wind
+  - turtle swimming (vs puppet assembly), hula dancer lei
+  
 
 2D ANIMATION
 

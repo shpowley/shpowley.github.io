@@ -77,7 +77,7 @@ Thursday 2019-06-27
 
   *** CCCONFIG.H - disabling physics (and adjusting other cocos2d-x api parameters)
     - https://docs.cocos2d-x.org/cocos2d-x/en/physics/debugging.html
-      - found this in docs while searching for whether or not I could use scenes creating in cocos creator for settings-type layout ..I don't think it's possible
+      - found this in docs while searching for whether or not I could use scenes created in cocos creator for settings-type layout ..I don't think it's possible
 
     - location: cocos/base/ccConfig.h
     - ie. enable/disable fps stats interval / location, use tiff/jpeg, 3d physics, etc.

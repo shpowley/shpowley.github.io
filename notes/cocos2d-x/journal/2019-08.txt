@@ -1,12 +1,30 @@
-  SCENE OVERLAY
+  GOALS
+    - merge linear/standard acceleration logic
+    - test if force inputs are cumulative on wobble forces
+      - test this out in a box2d / visual studio scene for force and torque
 
-    - incorporate new icons
+    - scene settings
+    - overlay settings
+    - touch overlay button (pan + zoom)
+    - simplified movement setting(s)
+
+----------
+Friday 2019-08-23
+
+  @ RUBEScene::update
+
+  - print out RUBEScene.h / .cpp to pdf
 
 ----------
 Thursday 2019-08-22
 
-  goal: "reset" projects: celestial-test, rube_loader_custom, gyrotest
-  goal: backup computer
+  - read through some of this month's journal and version goals
+
+  BACKUP COMPUTER
+
+  RESET PROJECTS
+    rube_loader_custom, gyrotest, celestial
+    NOTE: rube_loader_custom - og project and version in github has remnants of LIVE WALLPAPER CODE
 
 ----------
 Wednesday 2019-08-21
@@ -16,15 +34,18 @@ Wednesday 2019-08-21
   - some things changed during this period, NOT EXACTLY SURE WHAT HAPPENED TO CAUSE SO MUCH BREAKAGE..
 
   - upgraded to ANDROID 3.5, switched to CMAKE instead of ndk, AND upgraded to cocos2d-x.3.17.2
-    - the ndk option doesn't seem to work anymore so all existing projects have to be reset into a new project so far
-    * also checked into git (copied over relevenat git files and modified .git)
+    - the ndk option doesn't seem to work anymore so all existing projects had to be reset into a new project so far
+    * also checked into git (copied over relevenat git files and modified .git appropriately)
 
-  - tried this again with rube_demo, but I've noticed that creating A NEW WORKING PROJECT DOESN'T JUST WORK anymore..
+  - tried this again with rube_demo, but I've noticed that creating A NEW WORKING PROJECT DOESN'T JUST WORK anymore using "cocos new"..
     * I have to reset/re-sync using various options and switch from "cmake" to "ndk-build" back to "cmake" again on a basic project; not really sure what's going on though
 
 
   SUMMARY:
-    - create a new project and fiddle with gradle.properties > PROP_BUILD_TYPE=cmake|ndk-build
+
+    - create a new project and fiddle with gradle.properties > PROP_BUILD_TYPE=cmake >> ndk-build (kicks off gradle update) >> cmake
+      - compile / run to verify basic project works
+
     - if re-creating a project, copy over relevant files and update CMakeLists.txt
       - github project tracking - copy over relevant git files and modify .git
 
@@ -49,7 +70,7 @@ Thursday 2019-08-01
 
   CREATING ICONS FOR SCENE OVERLAY
 
-    - also created +/- icons for later - slider granular step buttons
+    - also created +/- icons for later - granular slider step buttons
 
 
   LOOKING @ "UNNIEDOLL" APP FOR SOME ICON IDEAS

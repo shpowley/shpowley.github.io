@@ -1,3 +1,95 @@
+ISSUES/BUGS
+  - re-combine linear/standard accelerometer logic
+  - sandals angles need to be a bit further apart and limits also
+  - slightly larger sensor threshold; max 1.5 (noticed on note 4 when lying almost flat)
+
+
+2.0
+- scene settings overlay
+  - quick config scene overlay (see "Wednesday 2019-06-26")
+  - implement on-screen back button (comment: every scene needs this actually ..thinking long term for the eventual app(s) for ios)
+
+
+2.0
+- separate scene settings for each scene; inherit from app settings
+  - presented as a layer or separate scene?
+
+
+0.5
+- sensors - quick read: https://developer.android.com/guide/topics/sensors
+
+
+0.5
+- move all related spriteframe image textures, plist and json files should go in their own cocos2d-x resource directories
+
+
+1.0 MOVE DOWN
+- create a new project for actual hawaiian-themed dashboard toys app vs. what I have now which is intened for a general purpose dashboard toys "master" dev project
+
+
+  0.5
+  - DISABLE SCENE: hawaiian turtles
+
+
+  0.5
+  - DISABLE SCENE: hello kitty
+
+
+  1.0
+  - NEW SCENE: android hula dancer
+
+
+  0.5
+  - ADDITIONAL SCENE: strong warning to not drive distracted (scene or layer) @ start-up
+
+
+  1.5
+  - ADDITIONAL SCENE: surfboard
+
+
+  1.0
+  - splash screen(s)
+
+
+3.0
+- customized graphics
+
+
+1.0
+- user agreement / privacy statement
+
+
+1.0
+- auto-wobble: disable wobble check on physics body in question when user touches it
+  - for numerous bodies in the same scene, only the body being touched should not auto-wobble
+
+
+2.0
+- simplify complex granular settings as much as possible (simplified, standard, advanced/developer)
+- basically there are way too many settings for an average person, simplify wherever possible, replace a lot of motion stuff with just a sensitivity slider if possible
+
+
+3.0
+ADVERTISING/MONETIZATION
+  - see "journal.txt" Thursday 2018-12-13
+  - continue with "Building Android Games with Cocos2d-x" p.122 starting at moving the mute button
+  - free, banner ads, pay option, ad on menu, 2 "android robot" scenes free (hula dancer, surfer), unlock more scenes with video ad, sunglasses, skin tone, hair color
+  - "unnie doll" ideas - https://play.google.com/store/apps/details?id=com.percent.mybest3
+
+
+4.0
+BUSINESS-RELATED
+  - business license
+  - business e-mail address
+  - business bank account
+  - app store account
+
+
+DONE
+- move all related .h/.cpp should go in their own directories
+  - iforce2d "QueryCallbacks.h"
+
+
 DONE
 - remove "max acceleration x/z" option and related code
 
@@ -54,101 +146,3 @@ DONE
 
 DONE
 - PERSIST SETTINGS: file utils; separate .plist for each settings scene + application-level
-
-
-2.0
-- scene settings overlay
-  - quick config scene overlay (see "Wednesday 2019-06-26")
-  - implement on-screen back button (comment: every scene needs actually ..long term ios)
-
-
-2.0
-- separate scene settings for each scene; inherit from app settings
-  - presented as a layer or separate scene?
-
-
-1.0 MOVE DOWN
-- new project for actual app vs. general purpose
-
-
-1.5
-- main menu: cleanup, more interesting
-
-
-1.0
-- main menu: animated background
-
-
-0.5
-- SETTINGS: see "Thursday 2019-06-27"
-
-
-0.5
-- sensors - quick read: https://developer.android.com/guide/topics/sensors
-
-
-0.5
-- move all related spriteframe image textures, plist and json files should go in their own cocos2d-x resource directories
-
-
-DONE
-- move all related .h/.cpp should go in their own directories
-  - iforce2d "QueryCallbacks.h"
-
-
-0.5
-- DISABLE SCENE: hawaiian turtles
-
-
-0.5
-- DISABLE SCENE: hello kitty
-
-
-1.0
-- NEW SCENE: android hula dancer
-
-
-0.5
-- ADDITIONAL SCENE: strong warning to not drive distracted (scene or layer) @ start-up
-
-
-1.5
-- ADDITIONAL SCENE: surfboard
-
-
-1.0
-- splash screen(s)
-
-
-3.0
-- customized graphics
-
-
-1.0
-- user agreement / privacy statement
-
-
-1.0
-- auto-wobble: disable wobble check on physics body in question when user touches it
-  - for numerous bodies in the same scene, only the body being touched should not auto-wobble
-
-
-3.0
-ADVERTISING/MONETIZATION
-  - see "journal.txt" Thursday 2018-12-13
-  - continue with "Building Android Games with Cocos2d-x" p.122 starting at moving the mute button
-  - free, banner ads, pay option, ad on menu, 2 "android robot" scenes free (hula dancer, surfer), unlock more scenes with video ad, sunglasses, skin tone, hair color
-  - "unnie doll" ideas - https://play.google.com/store/apps/details?id=com.percent.mybest3
-
-
-4.0
-BUSINESS-RELATED
-  - business license
-  - business e-mail address
-  - business bank account
-  - app store account
-
-
-ISSUES/BUGS
-  - sandals angles need to be a bit further apart and limits also
-  - slightly larger sensor threshold; max 1.5 (noticed on note 4 when lying almost flat)

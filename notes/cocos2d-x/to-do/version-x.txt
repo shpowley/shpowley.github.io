@@ -1,3 +1,19 @@
+RECORD/PLAYBACK SENSOR LOG DATA
+  - options of accelerometer, linear, gyro log data for dev purposes without having to drive-test
+
+
+CUSTOMIZE OPTIONS (HULA)
+  - (jack's idea) selfie face photo
+  - unie doll style - highly customizeable
+  - user trimmed photos in file-system (multiple physics scenarios)
+
+
+SIMPLIFIED BOX2D SHAPES (CIRCLES)
+  - simplifies custom touch adjustments
+  - user-moveable
+  - multiple touch circles
+
+
 LIVE WALLPAPER
   - go back and try modifying Cocos2dxHelper.java again to re-attempt the live wallpaper
   - try using (AppActivity, this) OR further modifying Context usage instead of sActivity (see "Monday 2019-06-24")
