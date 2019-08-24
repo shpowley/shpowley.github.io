@@ -1,0 +1,113 @@
+/**
+ * OVERRIDE THIS METHOD TO PERFORM ACCELERATION-BASED MOTION UNIQUE TO EACH SCENE
+ * ---
+ * NOTE: KEEP THE FOLLOWING AS A CODE REFERENCE -- DON'T DELETE
+ *
+ * METHOD #1 - AFFECT ONLY SPECIFIC BODIES
+ * m_bobble_body->ApplyForceToCenter(b2Vec2(m_bobble_body->GetMass() * _acceleration.x, m_bobble_body->GetMass() * _acceleration.y), true);
+ *
+ * METHOD #2
+ * _world->SetGravity(b2Vec2(
+ *   (settings.orientation.flip_x ? -acc_x : acc_x) * settings.accelerometer_scaling,
+ *   (settings.orientation.flip_y ? -accelerometer_data->y : accelerometer_data->y) * settings.accelerometer_scaling));
+ **/
+void RUBELayer::updateAcceleration(float dt) {
+  SensorManager::SENSOR_DATA_TYPE_TRIPLE* accelerometer_data = nullptr;
+  GameManager::STRUCT_SETTINGS& settings = _RUBE_parameters->settings;
+
+  switch (settings.accelerometer_type) {
+    case GameManager::ENUM_ACCELEROMETER_TYPE::NONE:
+    case GameManager::ENUM_ACCELEROMETER_TYPE::NORMAL:
+      accelerometer_data = &_sm->sensors.accelerometer;
+
+      if (accelerometer_data) {
+        float
+          acc_x = settings.orientation.flip_x ? -accelerometer_data->x : accelerometer_data->x,
+          acc_y = settings.orientation.flip_y ? -accelerometer_data->y : accelerometer_data->y,
+          acc_z = settings.orientation.flip_z ? -accelerometer_data->z : accelerometer_data->z,
+          body_mass = 0;
+
+        if (settings.on_screen_logging) {
+          _slog->setMessageText(_msg_acc_x, "  x-axis: %6.2f", acc_x);
+          _slog->setMessageText(_msg_acc_y, "  y-axis: %6.2f", acc_y);
+          _slog->setMessageText(_msg_acc_z, "  z-axis: %6.2f", acc_z);
+        }
+
+        b2Body* box2d_body = nullptr;
+
+        for (auto it = _image_info_library.begin(); it != _image_info_library.end(); ++it) {
+          box2d_body = (*it)->body;
+
+          /** NOTE: box2d_body CAN BE NULL WHEN THE ITEM ONLY HOLDS REFERENCE TO A SPRITE IMAGE */
+          if (box2d_body && box2d_body->GetType() == b2BodyType::b2_dynamicBody) {
+            if (settings.induce_accelerometer_torque) {
+              box2d_body->ApplyTorque(-acc_x, true);
+            }
+
+            if (settings.induce_accelerometer_force) {
+              acc_x *= settings.accelerometer_scaling;
+              acc_y *= settings.accelerometer_scaling;
+              body_mass = box2d_body->GetMass();
+              box2d_body->ApplyForceToCenter(b2Vec2(body_mass * acc_x, body_mass * acc_y), true);
+            }
+          }
+        }
+      }
+
+      break;
+
+    case GameManager::ENUM_ACCELEROMETER_TYPE::LINEAR:
+      accelerometer_data = &_sm->sensors.linear_accelerometer;
+
+      if (accelerometer_data) {
+        float
+          acc_x = settings.orientation.flip_x ? -accelerometer_data->x : accelerometer_data->x,
+          acc_y = settings.orientation.flip_y ? -accelerometer_data->y : accelerometer_data->y,
+          acc_z = settings.orientation.flip_z ? -accelerometer_data->z : accelerometer_data->z;
+
+        if (settings.on_screen_logging) {
+          _slog->setMessageText(_msg_acc_x, "  x-axis: %6.2f", acc_x);
+          _slog->setMessageText(_msg_acc_y, "  y-axis: %6.2f", acc_y);
+          _slog->setMessageText(_msg_acc_z, "  z-axis: %6.2f", acc_z);
+        }
+
+        /** RESTRICT X/Z MOTION CONTROL TO THE LINEAR ACCELEROMETER TYPE */
+        if (settings.combine_xz_axes) {
+          acc_x = std::copysign( std::sqrt(acc_x * acc_x + acc_z * acc_z), acc_x );
+        }
+        // ELSE USE EXISTING VALUE (NOTE: LEAVE THIS AS A CODE LOGIC REFERENCE)
+        //   GameManager::ENUM_X_AXIS_MOTION::X_AXIS
+
+        if ( std::abs(acc_x) >= _RUBE_parameters->settings.accelerometer_threshold || (std::abs(acc_y) >= _RUBE_parameters->settings.accelerometer_threshold)) {
+          b2Body* box2d_body = nullptr;
+
+          acc_x *= settings.accelerometer_scaling;
+          acc_y *= settings.accelerometer_scaling;
+
+          float
+            velocity = 0,
+            body_mass = 0;
+
+          for (auto it = _image_info_library.begin(); it != _image_info_library.end(); ++it) {
+            box2d_body = (*it)->body;
+
+            /** NOTE: box2d_body CAN BE NULL WHEN THE ITEM ONLY HOLDS REFERENCE TO A SPRITE IMAGE */
+            if (box2d_body && box2d_body->GetType() == b2BodyType::b2_dynamicBody) {
+              velocity = box2d_body->GetAngularVelocity();
+
+              if (velocity == 0 || std::signbit(acc_x) != std::signbit(velocity)) {
+                if (settings.induce_accelerometer_torque) {
+                  box2d_body->ApplyTorque(-acc_x, true);
+                }
+
+                body_mass = box2d_body->GetMass();
+                box2d_body->ApplyForceToCenter(b2Vec2(body_mass * acc_x, body_mass * acc_y), true);
+              }
+            }
+          }
+        }
+      }
+
+      break;
+  }
+}

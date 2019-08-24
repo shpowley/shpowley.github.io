@@ -1,8 +1,4 @@
   GOALS
-    - merge linear/standard acceleration logic
-    - test if force inputs are cumulative on wobble forces
-      - test this out in a box2d / visual studio scene for force and torque
-
     - scene settings
     - overlay settings
     - touch overlay button (pan + zoom)
@@ -11,7 +7,20 @@
 ----------
 Friday 2019-08-23
 
-  @ RUBEScene::update
+  MERGE LINEAR/STANDARD ACCELERATION LOGIC
+    - merged, but standard acceleration has undesireable wobble; combining both adds complexity
+      - not sure if desired behavior is possible or really makes sense
+
+    TODO
+      * standard: show linear log
+      * both: show angular velocity
+
+  TEST IF FORCE INPUTS ARE CUMULATIVE ON WOBBLE FORCES
+    - test this out in a box2d / visual studio scene for force and torque (iforce-b2djsonCumulative.h added)
+
+    * after setting this test up, I discovered that there are no GETTER methods for retrieving FORCE / TORQUE on a body using Box2D api, but looking at the source code, I discovered that both FORCE / TORQUE is reset for each step, AND is cumulative
+
+  REMINDER: DESIGN EACH RUBE SCENE TO A 4 "METER" BOX2D/RUBE SCREEN HEIGHT (see journal entry 2019-06-07.txt)
 
   - print out RUBEScene.h / .cpp to pdf
 

@@ -2,6 +2,7 @@ ISSUES/BUGS
   - re-combine linear/standard accelerometer logic
   - sandals angles need to be a bit further apart and limits also
   - slightly larger sensor threshold; max 1.5 (noticed on note 4 when lying almost flat)
+  - bug on settings "combine x/z" switching linear to standard
 
 
 2.0

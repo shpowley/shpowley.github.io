@@ -754,7 +754,7 @@ Friday 2019-06-07
 
       * so if 20 large box2d units equates to 20 m this ends up around 6 stories IRL, and that would equate to a 2-3 story hula dancer, etc. (this is based on the assumption that 1 large box2d unit = 1 meter)
 
-      - an alterative, is to design each RUBE scence to a 4 "METER" BOX2D SCREEN HEIGHT. the phone screen would equate to only a 1 story building, with objects equating to the height of a car. I think this might be more reasonable
+      * an alterative, is to DESIGN EACH RUBE SCENE TO A 4 "METER" BOX2D/RUBE SCREEN HEIGHT. the phone screen would equate to only a 1 story building, with objects equating to the height of a car. I think this might be more reasonable
         - after making my early proof-of-concept app, I think I'll go back and re-size the box2d scenes to this height
 
     - for the screen-to-visible-world, I'm using an image overlay of different aspect ratio phone screens, with the target being a narrower device aspect ratio as newer phones seem to be targeting this design
