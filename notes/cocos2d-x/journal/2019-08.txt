@@ -5,6 +5,18 @@
     - simplified movement setting(s)
 
 ----------
+Saturday 2019-08-24
+
+  * the main acceleration logic assumes a bobble-style physics assembly in the linear acceleration portion of code, especially when dealing with angular velocity
+
+  MERGE LINEAR/STANDARD ACCELERATION LOGIC
+    - "special sauce" doesn't work well with the standard accelerometer
+
+  ADDITIONAL INFO FOR ON-SCREEN LOGS
+    - standard accelerometer: show linear acceleration
+    - show angular velocity for all "bobble-style" physics assemblies
+
+----------
 Friday 2019-08-23
 
   MERGE LINEAR/STANDARD ACCELERATION LOGIC
@@ -18,7 +30,7 @@ Friday 2019-08-23
   TEST IF FORCE INPUTS ARE CUMULATIVE ON WOBBLE FORCES
     - test this out in a box2d / visual studio scene for force and torque (iforce-b2djsonCumulative.h added)
 
-    * after setting this test up, I discovered that there are no GETTER methods for retrieving FORCE / TORQUE on a body using Box2D api, but looking at the source code, I discovered that both FORCE / TORQUE is reset for each step, AND is cumulative
+    * after setting this test up, I discovered that there are no GETTER methods for retrieving FORCE / TORQUE on a body using the Box2D api, but looking at the source code, I discovered that both FORCE / TORQUE is reset for each step, AND is cumulative
 
   REMINDER: DESIGN EACH RUBE SCENE TO A 4 "METER" BOX2D/RUBE SCREEN HEIGHT (see journal entry 2019-06-07.txt)
 
