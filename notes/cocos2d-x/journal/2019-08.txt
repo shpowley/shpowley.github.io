@@ -5,6 +5,29 @@
     - simplified movement setting(s)
 
 ----------
+Monday 2019-08-26
+
+  see:
+    GameManager::restoreApplicationSettings()
+    GameManager::saveApplicationSettings()
+    GameManager::saveSceneSettings() NOT YET USED
+    GameManager::STRUCT_SETTINGS
+
+----------
+Sunday 2019-08-25
+
+  CODE WALKTHROUGH
+
+    - trying to determine best method to implement SCENE-SPECIFIC SETTINGS
+
+      GOAL: use application-level settings as a baseline if persist scene settings data doesn't exist
+
+      GameManager.h contains STRUCT_SETTINGS variables for the application AND scenes, but I don't think it's a good idea to do this with the scenes
+        
+        1) as there's only a SUBSET OF THE VARIABLES that really overlap
+        2) each scene will most likely have settings UNIQUE to that scene
+
+----------
 Saturday 2019-08-24
 
   * the main acceleration logic assumes a bobble-style physics assembly in the linear acceleration portion of code, especially when dealing with angular velocity
