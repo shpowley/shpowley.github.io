@@ -7,7 +7,76 @@
 ----------
 Monday 2019-08-26
 
-  see:
+  updated codebase to no longer pass application settings as a parameter to the scenes as it's already a global
+
+  ~~~~~~~~~~~~
+  started working on scene/layer persist, but I forgot about the dashboard concept with multiple toys
+    * CHART BELOW NEEDS MODIFICATION FOR SETTINGS FOR (1) APPLICATION, (2) SCENE / DASHBOARD, AND (3) TOY
+    - I think it would be better to implement many settings specific to a toy now as opposed to later
+    
+    - another consideration in the dashboard, I think, is that toys should not be singular (using c++ "singletons" as a comparison) -- but rather each toy should be a base toy "template" that can be customized
+
+      -- this is just dawning on me, but with the dashboard concept, you should start with an empty scene/dashboard that you can customize. changing the dashboard look + settings, placing toys + customizing each toy (VERSION 2.. but I need to alter my mindset going forward to ease making this happen)
+  ~~~~~~~~~~~~
+
+  ** PLAYING WITH "compression-spring-wacky.rube" SETTINGS
+
+    - this looks promising for the "bobble-style" physics assembly as a replacement for the simple weld-only joint
+
+      - the BASE is either FIXED or DYNAMIC (with a RELATIVELY HIGH DENSITY)
+
+      - the entire assembly mimics an actual spring with a mass at the top and multiple spring weld components
+        - the top mass has a relatively low density compared to each spring component
+        - top mass (density = 0.1)
+        - spring component mass (density = 1)
+      
+      TODO - scene test vs single weld
+      TODO - scene test altering # of spring weld components
+
+
+  ** COMPARING POTENTIAL SETTINGS FOR THE HULA SCENE VS THE APPLICATION SETTINGS
+
+  SETTING NAME                  HULA SCENE | APPLICATION | COMMENTS
+  ------------                  ----------   -----------   -----------------------------------------
+  keep_screen_on                                  x
+  dark_mode                                       x        not in use atm, HIDE FOR NOW
+  -
+  use_gyroscope                     x             x
+  gyro_threshold                    x             x
+  gyro_scaling                      x             x
+  -
+  use_accelerometer                 x             x
+  accelerometer_type                x             x
+  combine xz axes                   x             x
+  induce_accelerometer_torque       x             x
+  induce_accelerometer_force        x             x
+  accelerometer_orientation x                     x
+  accelerometer_orientation y                     x
+  accelerometer_orientation z                     x
+  accelerometer_threshold           x             x
+  accelerometer_scaling             x             x
+  -
+  enable auto-wobble                x             x
+  wobble_threshold_velocity         x             x
+  wobble_threshold_time             x             x
+  wobble_threshold_sensor           x             x
+  wobble_force                      x             x
+  -
+  developer_mode                                  x        TODO persist for convenience and related items too
+  physics_debug_draw                              x
+  show_images                                     x        not in use yet
+  display_stats                                   x
+  on_screen_logging                               x
+  -
+  background type                   x
+  user background                   x
+  app background                    x
+  gyro parallax                     x
+  weld joint frequency              x
+  weld joint damping ratio          x
+
+
+  current code:
     GameManager::restoreApplicationSettings()
     GameManager::saveApplicationSettings()
     GameManager::saveSceneSettings() NOT YET USED
@@ -24,7 +93,7 @@ Sunday 2019-08-25
 
       GameManager.h contains STRUCT_SETTINGS variables for the application AND scenes, but I don't think it's a good idea to do this with the scenes
         
-        1) as there's only a SUBSET OF THE VARIABLES that really overlap
+        1) there's only a SUBSET OF THE VARIABLES that really overlap
         2) each scene will most likely have settings UNIQUE to that scene
 
 ----------
