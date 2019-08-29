@@ -5,13 +5,66 @@
     - simplified movement setting(s)
 
 ----------
+Wednesday 2019-08-28
+
+  - moved the "save scene settings" code back to the GameManager and @ restore scene settings
+
+
+  - while I really like the "TOY" based settings, I need to finish the 1.0 goals first
+
+
+  ** COMPARING POTENTIAL SETTINGS FOR DASHBOARD TOY VS SCENE VS THE APPLICATION
+
+  SETTING NAME                          APPLICATION | SCENE | TOY | COMMENTS
+  ------------                          -----------   -----   ---   --------
+  keep screen on                             x                    | -
+  dark mode                                  x                    | -
+  -
+  use gyroscope (toy default)                x                 x  | -
+  gyro threshold (toy default)               x                 x  | -
+  gyro scaling (toy default)                 x                 x  | -
+  -
+  use accelerometer (toy default)            x                 x  | -
+  accelerometer type                         x                    | -
+  combine xz axes                            x                    | -
+  induce torque (toy default)                x                 x  | -
+  induce force (toy default)                 x                 x  | -
+  flip orientation x                         x                    | -
+  flip orientation y                         x                    | -
+  flip orientation z                         x                    | -
+  threshold (toy default)                    x                 x  | -
+  scaling (toy default)                      x                 x  | -
+  -
+  enable auto-wobble (toy default)           x                 x  | -
+  threshold velocity (toy default)           x                 x  | -
+  threshold time (toy default)               x                 x  | -
+  sensor threshold (toy default)             x                 x  | -
+  wobble force                               x                 x  | -
+  -
+  developer mode                             x                    | -
+  physics debug draw                         x                    | -
+  hide images                                x                    | -
+  display cocos stats                        x                    | -
+  on-screen logging                          x                    | -
+  -
+  background type (scene default)            x          x         | -
+  user-custom background (scene default)     x          x         | -
+  application background (scene default)     x          x         | -
+  background color (scene default)           x          x         | -
+  gyroscope parallax (scene default)         x          x         | -
+  weld joint frequency (toy default)         x                 x  | -
+  weld joint damping ratio (toy default)     x                 x  | -
+
+----------
 Monday 2019-08-26
 
   updated codebase to no longer pass application settings as a parameter to the scenes as it's already a global
 
   ~~~~~~~~~~~~
   started working on scene/layer persist, but I forgot about the dashboard concept with multiple toys
+
     * CHART BELOW NEEDS MODIFICATION FOR SETTINGS FOR (1) APPLICATION, (2) SCENE / DASHBOARD, AND (3) TOY
+
     - I think it would be better to implement many settings specific to a toy now as opposed to later
     
     - another consideration in the dashboard, I think, is that toys should not be singular (using c++ "singletons" as a comparison) -- but rather each toy should be a base toy "template" that can be customized
@@ -36,44 +89,40 @@ Monday 2019-08-26
 
   ** COMPARING POTENTIAL SETTINGS FOR THE HULA SCENE VS THE APPLICATION SETTINGS
 
-  SETTING NAME                  HULA SCENE | APPLICATION | COMMENTS
-  ------------                  ----------   -----------   -----------------------------------------
-  keep_screen_on                                  x
-  dark_mode                                       x        not in use atm, HIDE FOR NOW
+  SETTING NAME                          APPLICATION | SCENE | COMMENTS
+  ------------                          -----------   -----  --------
+  keep screen on                             x              | -
+  dark mode                                  x              | not in use atm, HIDE FOR NOW
   -
-  use_gyroscope                     x             x
-  gyro_threshold                    x             x
-  gyro_scaling                      x             x
+  use gyroscope (scene default)              x           x  | -
+  gyro threshold (scene default)             x           x  | -
+  gyro scaling (scene default)               x           x  | -
   -
-  use_accelerometer                 x             x
-  accelerometer_type                x             x
-  combine xz axes                   x             x
-  induce_accelerometer_torque       x             x
-  induce_accelerometer_force        x             x
-  accelerometer_orientation x                     x
-  accelerometer_orientation y                     x
-  accelerometer_orientation z                     x
-  accelerometer_threshold           x             x
-  accelerometer_scaling             x             x
+  use accelerometer (scene default)          x           x  | -
+  accelerometer type                         x              | -
+  combine xz axes                            x              | -
+  induce torque (scene default)              x           x  | -
+  induce force (scene default)               x           x  | -
+  flip orientation x                         x              | -
+  flip orientation y                         x              | -
+  flip orientation z                         x              | -
+  threshold (scene default)                  x           x  | -
+  scaling (scene default)                    x           x  | -
   -
-  enable auto-wobble                x             x
-  wobble_threshold_velocity         x             x
-  wobble_threshold_time             x             x
-  wobble_threshold_sensor           x             x
-  wobble_force                      x             x
+  enable auto-wobble (scene default)         x           x  | -
+  threshold velocity (scene default)         x           x  | -
+  threshold time (scene default)             x           x  | -
+  sensor threshold (scene default)           x           x  | -
+  wobble force                               x           x  | -
   -
-  developer_mode                                  x        TODO persist for convenience and related items too
-  physics_debug_draw                              x
-  show_images                                     x        not in use yet
-  display_stats                                   x
-  on_screen_logging                               x
+  developer mode                             x              | TODO persist for convenience and related items too
+  physics debug draw                         x              | -
+  hide images                                x              | not in use yet
+  display cocos stats                        x              | -
+  on-screen logging                          x              | -
   -
-  background type                   x
-  user background                   x
-  app background                    x
-  gyro parallax                     x
-  weld joint frequency              x
-  weld joint damping ratio          x
+  weld joint frequency (scene default)       x           x  | -
+  weld joint damping ratio (scene default)   x           x  | -
 
 
   current code:
