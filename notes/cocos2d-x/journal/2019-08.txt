@@ -5,6 +5,17 @@
     - simplified movement setting(s)
 
 ----------
+Thursday 2019-08-29
+
+  - save / restore scene settings, but still need UI
+
+  - application settings
+    - weld joint frequency / damping defaults
+      - TODO: joint control UI + implementation
+
+    - persist developer mode options
+
+----------
 Wednesday 2019-08-28
 
   - moved the "save scene settings" code back to the GameManager and @ restore scene settings
@@ -43,7 +54,7 @@ Wednesday 2019-08-28
   -
   developer mode                             x                    | -
   physics debug draw                         x                    | -
-  hide images                                x                    | -
+  show images                                x                    | -
   display cocos stats                        x                    | -
   on-screen logging                          x                    | -
   -
@@ -117,7 +128,7 @@ Monday 2019-08-26
   -
   developer mode                             x              | TODO persist for convenience and related items too
   physics debug draw                         x              | -
-  hide images                                x              | not in use yet
+  show images                                x              | not in use yet
   display cocos stats                        x              | -
   on-screen logging                          x              | -
   -

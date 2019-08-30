@@ -5,6 +5,16 @@ DONE - re-combine linear/standard accelerometer logic
 DONE - bug on settings "combine x/z" switching linear to standard
 
 
+DONE
+- application settings
+  - weld joint frequency / damping defaults
+  - persist developer mode options
+
+
+- settings
+  - + / - button on sliders
+
+
 2.0
 - scene settings overlay
   - quick config scene overlay (see "Wednesday 2019-06-26")
