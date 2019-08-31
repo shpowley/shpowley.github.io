@@ -5,6 +5,16 @@
     - simplified movement setting(s)
 
 ----------
+Friday 2019-08-30
+
+  - re-enabled debug draw solid fill
+  - test overlay features from menu
+  - hudmenulayer added to RUBEScene
+    - back button sprite added for test
+    - ui::Button will probably have to be used - see SettingsLayer.cpp > SettingsLayer::createPageTitlePanel
+    - another consideration, is that ui events will need to refer to box2d items..maybe.
+
+----------
 Thursday 2019-08-29
 
   - save / restore scene settings, but still need UI
