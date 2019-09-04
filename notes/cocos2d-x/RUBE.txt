@@ -170,33 +170,53 @@ SAMPLERS (tutorial 18/18 - https://youtu.be/O68lFQWe7-A)
   - simulation > step all bodies
     + specify # steps
 
+  capture a sample image to output file
+    - sampler > write sampler output to file
 
-  QUICK AUTO-TRACE (1-STEP)
-
-    - a "rough" trace of image using polygon fixtures
-    - action menu > sampler > create body+fixture from image; use defaults, except for "keep sampler?" (NO)
-    - clean up in vertex mode
+  - sampler images can also adjust tint / opacity
 
 
-  sampler EDGES ===> ADVANCED AUTO-TRACE
+  QUICK AUTO-TRACE (https://youtu.be/O68lFQWe7-A?t=196)
 
+    - creates a "rough" trace of image using polygon fixtures
+    - more useful on "simple" images
+    - use the following steps
+
+    1 drag an image into the scene and select it in images mode
+    2 action menu > sampler > create body+fixture from image; use defaults, except for "keep sampler?" (NO)
+    3 clean up in vertex mode
+
+
+  sampler EDGES ===> ADVANCED AUTO-TRACE (https://youtu.be/O68lFQWe7-A?t=1580)
+
+    - more useful on "complex" images
     - limited by the sample "resolution" (~# samples) and the source image
+
+    - "Edge refresh" button - creates edge
+    - "Edge threshold" - useful on images with alpha opacity
+
     - default edges defined by the image opacity delta
       - "Use color edges" is the other option that defines edges by color + opacity
 
     - sampler PATHS / CONTROL POINTS
       - press "E" to edit control points
       - add control points to have RUBE create a polygon path - uses auto-pathfinding with the control points as user-defined "path-finding assist guides"
-      - as each control point is added the polygon defined by the path finding auto-updated
+      - as each control point is added, a polygon is defined by a path finding algorithm
       - control points added in-between 2 existing points will define it as such
 
       * be sure to add control points in a counter-clockwise direction for efficient "polygon decomposition"
+        * useful to create a control point somewhere near the previous one, and then move it
 
       - keep image/sampler control points in-sync by attaching both to the same body (see https://youtu.be/O68lFQWe7-A?t=2649)
-      - path further refined by adjusting either "Max points" and "Min angle" (not both); "Max points" being the most useful
+
+      - path further refined by adjusting either "Max points" and "Min angle" (not both)
+        - "Max points" is perhaps the most useful
+        - adjust "Max points" to create optimal # of path points
+
+      NOTE: that the last control point is connected to the first via a straight line
 
       - LAST STEP is to generate a fixture from the sampler path
-        - with the body AND relevant sampler selected, use action menu > sampler > create a fixture from sampler
+        - with THE BODY *AND* RELEVANT SAMPLER SELECTED, use ACTION MENU > SAMPLER > CREATE FIXTURE FROM SAMPLER
         - should produce a much more accurate/efficient auto-trace when compared to the QUICK AUTO-TRACE
   
 

@@ -1,0 +1,42 @@
+  GOALS
+    - scene settings
+    - overlay settings
+    - touch overlay button (pan + zoom)
+    - simplified movement setting(s)
+
+----------
+Tuesday 2019-09-03
+
+  MISC
+    - new journal for September 2019 created
+
+    - stats:
+        - total: 164/342 based => 48.0%
+        - august 2019: 10/31 days => 32.3%
+
+
+  HUD MENU SETTINGS OVERLAY
+  
+    - added back button ui-widget
+
+
+  BOBBLE APP DETOUR - ACCELEROMETER-CONTROLLED "BALL" IN A MAZE
+
+    - decided to take a detour from the bobble app as a diversion
+
+    - tried using the RUBE auto-trace feature to generate mazes
+
+      - this was a good refresher, but unfortunately the maze image I found was too complex using the steps outlined in the RUBE how-to; creating the control points alone took a while and only scatched the surface in terms of the ideal fixture needed for a workable maze -- and this was only a "simple" maze
+
+      - I ended up creating a fixture and modifying the vertices.. this is in the early stages, but creates a cleaner end product I suppose; this technique is workable, but still not a quick process
+
+      * another option is creating a bunch of rectangular fixtures on the same body - duplicating / moving / re-sizing
+        pros: this might be faster, more consistent maze wall widths(?)
+        cons: creates a bunch of fixtures
+
+----------
+Sunday 2019-09-01
+
+  rewatching sampler video
+    https://youtu.be/O68lFQWe7-A?t=640
+    https://youtu.be/O68lFQWe7-A?t=1580
