@@ -5,6 +5,25 @@
     - simplified movement setting(s)
 
 ----------
+Thursday 2019-09-05
+
+  HUD MENU SETTINGS OVERLAY
+
+    - HUD Layer is initially invisible, with HUD Layer items inaccessible. HUD layer "Fade-In" effect on touch
+
+    - added a HUD Layer "Fade-Out" effect after some delay AND no user interaction
+
+----------
+Wednesday 2019-09-04
+
+  HUD MENU SETTINGS OVERLAY
+  
+    - added back button functionality
+
+    - this implementation uses a function pointer stored in the GameManager and this solution GREATLY SIMPLIFIED the overall logic for the HUDMenuLayer AND the RUBEScene-inherited scenes
+      - this was a bit hairy because the "back button" implementation was scattered among the various RUBELayers and accessing this from the HUDMenuLayer proved difficult due to visibility constraints, etc.
+
+----------
 Tuesday 2019-09-03
 
   MISC
