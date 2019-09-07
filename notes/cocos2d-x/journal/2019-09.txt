@@ -5,6 +5,28 @@
     - simplified movement setting(s)
 
 ----------
+Friday 2019-09-06
+
+  NEXT
+
+    - HUDMenuLayer::init() change hard-coded png names to "static constexpr const char*" like GameManager.h
+
+    - use AppSettingsScene.h as a template example for scene settings
+      - rename AppSettingsScene.h/.cpp to AppSettings.h/.cpp
+      - create new files SceneSettings.h/.cpp to handle all the scenes
+      
+      - see Monday 2019-08-26 AND Wednesday 2019-08-28 for clarification
+        - also check RUBELayer::restoreSceneSettings()
+
+
+  HUD MENU SETTINGS OVERLAY
+
+    - added gear icon for scene settings
+
+    - testing the show / fade-out effect, this didn't work as expected as subsequent touches didn't reset the fadeout timer -- this was fixed. encountered some issues with the cocos2dx scheduleOnce() function as I could only get lambda expressions to work
+      - added distinct onTouchBegan / onTouchEnded code to handle this; code ended up "cleaner" this way removing duplicate lambda expression code
+
+----------
 Thursday 2019-09-05
 
   HUD MENU SETTINGS OVERLAY
