@@ -3,6 +3,12 @@
   - OPTION 2: hula-style bobble, mimic the hang loose physics
 
 
+- remove cumulative gyro torque if accelerometer-induced torque enabled
+  - acc torque > gyro torque : subtract gyro torque
+  - acc torque < gyro torque : use gyro torque only
+  ~ basically use whichever is greater
+
+
 - scene backgrounds:
   - some pre-defined images
   - user specified media

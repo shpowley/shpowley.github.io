@@ -209,21 +209,38 @@ Wednesday 2019-08-21
 
   - some things changed during this period, NOT EXACTLY SURE WHAT HAPPENED TO CAUSE SO MUCH BREAKAGE..
 
-  - upgraded to ANDROID 3.5, switched to CMAKE instead of ndk, AND upgraded to cocos2d-x.3.17.2
-    - the ndk option doesn't seem to work anymore so all existing projects had to be reset into a new project so far
-    * also checked into git (copied over relevenat git files and modified .git appropriately)
+  - upgraded to ANDROID 3.5, switched to CMAKE instead of NDK, AND upgraded to cocos2d-x.3.17.2
+    - the NDK option doesn't seem to work anymore so all existing projects had to be reset into a new project so far
+
+    - NOTE 2019-09-08: FIX for NDK (sticking with CMAKE going forward though)
+      https://discuss.cocos2d-x.org/t/android-studio-native-build-fails-after-and-upgrade/47477/4
+
+    * also checked into git (copied over relevant git files and modified .git appropriately)
 
   - tried this again with rube_demo, but I've noticed that creating A NEW WORKING PROJECT DOESN'T JUST WORK anymore using "cocos new"..
-    * I have to reset/re-sync using various options and switch from "cmake" to "ndk-build" back to "cmake" again on a basic project; not really sure what's going on though
 
+    *** I HAVE TO RESET/RE-SYNC USING VARIOUS OPTIONS AND SWITCH FROM "CMAKE" TO "NDK-BUILD" AND BACK TO "CMAKE" AGAIN ON A BASIC PROJECT; NOT REALLY SURE WHAT'S GOING ON THOUGH
 
-  SUMMARY:
+    SUMMARY:
 
-    - create a new project and fiddle with gradle.properties > PROP_BUILD_TYPE=cmake >> ndk-build (kicks off gradle update) >> cmake
-      - compile / run to verify basic project works
+      STEP 0: create a new project
 
-    - if re-creating a project, copy over relevant files and update CMakeLists.txt
-      - github project tracking - copy over relevant git files and modify .git
+      STEP 1: gradle.properties changes + "Sync Now"
+        -> PROP_APP_ABI=armeabi-v7a:arm64-v8a:x86
+        -> PROP_BUILD_TYPE=ndk-build
+        -> gradle plugin update
+
+      STEP 2: gradle.properties changes + "Sync Now"
+        -> -> PROP_BUILD_TYPE=cmake
+
+      STEP 3: clean / refresh
+        -> build > clean project
+        -> build > refresh linked c++ projects
+
+      STEP 4: compile / run to verify basic project works
+
+      - if re-creating a project, copy over relevant files and update CMakeLists.txt
+        - github project tracking - copy over relevant git files and modify .git
 
 ----------
 Friday 2019-08-02

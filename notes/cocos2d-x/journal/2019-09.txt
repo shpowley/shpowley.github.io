@@ -4,20 +4,38 @@
     - touch overlay button (pan + zoom)
     - simplified movement setting(s)
 
-----------
-Friday 2019-09-06
-
   NEXT
 
-    - HUDMenuLayer::init() change hard-coded png names to "static constexpr const char*" like GameManager.h
+    - function pointer to previous scene
+      
+    - see Monday 2019-08-26 AND Wednesday 2019-08-28 for clarification
+      - also check RUBELayer::restoreSceneSettings()
+
+----------
+Sunday 2019-09-08
+
+  MAZE "GAME"
+
+    - new project created to test (see Wednesday 2019-08-21 for new project "quirks")
+
+
+  WOBBLE PROJECT
+
+    - HUDMenuLayer::init() changed so that hard-coded png names to "static constexpr const char*" like GameManager.h
 
     - use AppSettingsScene.h as a template example for scene settings
       - rename AppSettingsScene.h/.cpp to AppSettings.h/.cpp
       - create new files SceneSettings.h/.cpp to handle all the scenes
-      
-      - see Monday 2019-08-26 AND Wednesday 2019-08-28 for clarification
-        - also check RUBELayer::restoreSceneSettings()
 
+----------
+Saturday 2019-09-07
+
+  MAZE "GAME"
+
+    - RUBE physics scene made for maze + ball
+
+----------
+Friday 2019-09-06
 
   HUD MENU SETTINGS OVERLAY
 
