@@ -6,10 +6,39 @@
 
   NEXT
 
-    - function pointer to previous scene
-      
     - see Monday 2019-08-26 AND Wednesday 2019-08-28 for clarification
       - also check RUBELayer::restoreSceneSettings()
+
+----------
+Wednesday 2019-09-11
+
+  WOBBLE PROJECT
+
+
+    SCENE SETTINGS
+
+      - modified "scene_settings" variable to a single "catch-all" for all scenes
+        - this is restored from persisted scene settings specific to each scene
+
+      - initial layout complete based on chart made on "Monday 2019-08-26"
+        - still needs underlying code implementation, save scene settings, and joint implementation
+        - joint specific code should be removed or left alone based on the specific scene
+
+
+    DEBUGGER STOPPED WORKING
+      - issues with android sdk "platform tools 29.0.3" - rolled back to "platform tools 29.0.2"
+      - https://www.reddit.com/r/androiddev/comments/d2jdfd/android_sdk_platformtools_2903_breaks_debugging/
+
+----------
+Monday 2019-09-09
+
+  WOBBLE PROJECT
+
+    - moved ApplicationSettings init code to the layer and reduced scope visibility for SettingsLayer stuff
+
+    scene settings back button return to correct RUBE Scene
+      - changed RUBEScene* to Scene* for return type during scene creation to support function pointer for this to work
+      * ***INITIALIZATION FOR STATIC FUNCTION POINTER VARIABLE SYNTAX*** a bit hairy, but eventually worked and helps simplify things
 
 ----------
 Sunday 2019-09-08
