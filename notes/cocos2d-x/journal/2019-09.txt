@@ -10,6 +10,50 @@
       - also check RUBELayer::restoreSceneSettings()
 
 ----------
+Friday 2019-09-13
+
+  WOBBLE PROJECT
+
+    SCENE SETTINGS
+
+      - underlying code implementation
+
+      - joint settings:
+
+          see: Sandals.cpp for some good code examples to use
+            * using the "weld" joint almost exclusively
+            - changing frequency and damping ratio are relatively easy to modify in the Box2D api
+            - changing the reference angle requires redefining the joint definition though
+            - any user-defined joint settings would need to be applied in the scene ::afterLoadProcessing function
+
+          FREQUENCY
+            - approx. the # times / second joint will update it's position constraint
+
+            SOFT JOINT: lower values
+            HARD JOINT: higher values
+            RIGID JOINT: ZERO
+
+            - RUBE tested values: 0, 0.1 - 1000, 50+ is fairly rigid
+              - this is WEIRD in that 50+ has minor effects
+              - the higher the frequency, the less that each step has an effect
+              - this might need to be heavily customized
+
+                0.1 - 5 (0.1 step) => 49 discrete values ==> actual: 0.1 - 5.0
+                5 - 50 (1.0 step) => 45 discrete values ==> actual: 5.0 - 9.5
+                50 - 100 (10.0 step) => 5 discrete values ==> actual: 9.5 - 10.0
+                100 - 1000 (100.0 step) => 9 discrete values ==> actual: 10.0 - 10.9
+                0 (rigid) => 1 discrete value ==> actual: 11.0
+
+                ---
+                total => 109 discrete values ==> actual: 0.1 - 11.0, 0.1 step
+
+          DAMPING RATIO
+            - how quickly springy movement is reduced
+
+          REFERENCE ANGLE
+            - useful on some scenes, ON HOLD
+
+----------
 Wednesday 2019-09-11
 
   WOBBLE PROJECT
