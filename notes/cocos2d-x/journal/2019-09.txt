@@ -10,6 +10,45 @@
       - also check RUBELayer::restoreSceneSettings()
 
 ----------
+Saturday 2019-09-14
+
+  DEBUGGER ISSUES FIXED WITH "platform tools 29.0.4"
+
+
+  WOBBLE PROJECT
+
+    - apply "weld joint" settings - frequency and damping ratio when each scene is loaded
+
+    scene joint summary:
+
+      hang loose hand: weld joint
+        - weld joint
+          name: "joint_hand"
+          - frequency, damping ratio, reference angle
+
+      hula girl: 
+      hello kitty hula girl:
+        - weld + revolute joints SUPER-IMPOSED
+
+        - weld joint:
+          name: "joint_weld"
+          - frequency, damping ratio, reference angle
+
+        - revolute joint
+          name: "joint_revolute"
+          - enable limit, lower limit, upper limit, reference angle (different from weld joint)
+          + enable motor, motor speed, max motor torque
+
+      beach sandals: 
+        - 4 JOINTS, weld + revolute joints SUPER-IMPOSED for each shoe
+
+        - left foot: "joint_left_weld" + "joint_left_revolute"
+        - right foot: "joint_right_weld" + "joint_right_revolute"
+
+      hawaiian turtles: ON HOLD ATM
+        - ideas: wacky spinning turtles, falling
+
+----------
 Friday 2019-09-13
 
   WOBBLE PROJECT
@@ -39,9 +78,9 @@ Friday 2019-09-13
               - this might need to be heavily customized
 
                 0.1 - 5 (0.1 step) => 49 discrete values ==> actual: 0.1 - 5.0
-                5 - 50 (1.0 step) => 45 discrete values ==> actual: 5.0 - 9.5
-                50 - 100 (10.0 step) => 5 discrete values ==> actual: 9.5 - 10.0
-                100 - 1000 (100.0 step) => 9 discrete values ==> actual: 10.0 - 10.9
+                5 - 50 (1.0 step) => 45 discrete values ==> actual: 5.1 - 9.5
+                50 - 100 (10.0 step) => 5 discrete values ==> actual: 9.6 - 10.0
+                100 - 1000 (100.0 step) => 9 discrete values ==> actual: 10.1 - 10.9
                 0 (rigid) => 1 discrete value ==> actual: 11.0
 
                 ---
