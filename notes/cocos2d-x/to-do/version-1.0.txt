@@ -1,164 +1,90 @@
-ISSUES/BUGS
-DONE - re-combine linear/standard accelerometer logic
-  - sandals angles need to be a bit further apart and limits also
-  - slightly larger sensor threshold; max 1.5 (noticed on note 4 when lying almost flat)
-DONE - bug on settings "combine x/z" switching linear to standard
+GIMP VIDS (ongoing)
+  - create a gimp instructions document
 
 
-DONE
-- application settings
-  - weld joint frequency / damping defaults
-  - persist developer mode options
+application settings: gyro / accelerometer / auto-wobble
+  - move to each scene with app-level settings being the scene defaults
+  - enable checkbox should be removed completely, these should always TRUE at the application-level
 
 
-- settings
-  - + / - button on sliders
+scene defaults
+  - these need to be hard coded (best values from trial-and-error)
+    - scene default struct variable for each scene
+  - box2d settings from the rube file
 
 
-2.0
-- scene settings overlay
-  - quick config scene overlay (see "Wednesday 2019-06-26")
-  - implement on-screen back button (comment: every scene needs this actually ..thinking long term for the eventual app(s) for ios)
+scene reset to defaults button
 
 
-2.0
-- separate scene settings for each scene; inherit from app settings
-  - presented as a layer or separate scene?
+hang loose scene settings
+  - min/max angle
+  - show text
+  - restore defaults
 
 
-0.5
-- sensors - quick read: https://developer.android.com/guide/topics/sensors
+hula girl (simple weld joint)
+  - min/max angle
 
 
-0.5
-- move all related spriteframe image textures, plist and json files should go in their own cocos2d-x resource directories
+hula dancer (spring version)
+  - maybe an option for pseudo-spring (multiple welds) or simple rotating joint (weld)
+  - compare to weld version (don't delete either version)
 
 
-1.0 MOVE DOWN
-- create a new project for actual hawaiian-themed dashboard toys app vs. what I have now which is intened for a general purpose dashboard toys "master" dev project
+SIMPLIFIED BOX2D SHAPES (CIRCLES)
+  - simplifies custom touch adjustments
+  - user-moveable?
+  - multiple touch circles
 
 
-  0.5
-  - DISABLE SCENE: hawaiian turtles
+compare all scenes using different scene settings
+  - stationary desk vs. driving
+  - record data
+  - reproduce on moto-g
+  - record video?
 
 
-  0.5
-  - DISABLE SCENE: hello kitty
+remove checkboxes from settings header sections
+  - "enable" checkboxes should be a sub-item
+  - makes room for expand/collapse feature
 
 
-  1.0
-  - NEW SCENE: android hula dancer
+create new icons: expand/collapse, info, hand, rotate, lock/unlock(?)
 
 
-  0.5
-  - ADDITIONAL SCENE: strong warning to not drive distracted (scene or layer) @ start-up
+hud overlay visible at scene load? ..faster navigation
 
 
-  1.5
-  - ADDITIONAL SCENE: surfboard
+NEW PROJECT 
+  - actual hawaiian-themed dashboard toys app vs. what I have now which is intended for a general purpose dashboard toys "master" dev project
+  - only include scenes to be used
 
 
-  1.0
+NEW SCENES
   - splash screen(s)
+  - strong warning to not drive distracted (scene or layer) @ start-up
+  - surfer
+  - android hula
+  - mermaid >>
+  - tux logo + hawaiian shirt + sunglasses (sandals physics)
 
 
-3.0
-- customized graphics
+user agreement / privacy statement
 
 
-1.0
-- user agreement / privacy statement
+SETTINGS
+  - HIDE almost all settings and present an EXTREMELY simplified set of options
+    - way too many options for an average person
+
+  - simplify complex granular settings as much as possible (standar (simplified), advanced, developer)
 
 
-1.0
-- auto-wobble: disable wobble check on physics body in question when user touches it
-  - for numerous bodies in the same scene, only the body being touched should not auto-wobble
+REMOVE CUMULATIVE GYRO TORQUE if accelerometer-induced torque enabled
+  - acc torque > gyro torque : subtract gyro torque
+  - acc torque < gyro torque : use gyro torque only
+  ~ basically use whichever is greater
 
 
-2.0
-- simplify complex granular settings as much as possible (simplified, standard, advanced/developer)
-- basically there are way too many settings for an average person, simplify wherever possible, replace a lot of motion stuff with just a sensitivity slider if possible
-
-
-3.0
-ADVERTISING/MONETIZATION
-  - see "journal.txt" Thursday 2018-12-13
-  - continue with "Building Android Games with Cocos2d-x" p.122 starting at moving the mute button
-  - free, banner ads, pay option, ad on menu, 2 "android robot" scenes free (hula dancer, surfer), unlock more scenes with video ad, sunglasses, skin tone, hair color
-  - "unnie doll" ideas - https://play.google.com/store/apps/details?id=com.percent.mybest3
-
-
-4.0
-BUSINESS-RELATED
-  - business license
-  - business e-mail address
-  - business bank account
-  - app store account
-
-
-0.5
-RE-ORGANIZE VERSION MILESTONES
-  - also, not sure where to put this at the moment, but set milestone for application / scene / toy settings (see journal entry 2019-08-28)
-
-
-DONE
-- move all related .h/.cpp should go in their own directories
-  - iforce2d "QueryCallbacks.h"
-
-
-DONE
-- remove "max acceleration x/z" option and related code
-
-
-DONE
-- more efficient RUBELayer::setImagePositionsFromPhysicsBodies() ?
-
-
-DONE
-- SETTINGS: "normalized acceleration x/z" doesn't work with the normal accelerometer (acceleration + gravity)
-  - the sandals scene is a good example
-  - should be available only for the linear accelerometer, DISABLED and DEFAULTED to x-axis motion
-
-DONE
-- SETTINGS / DEVELOPER MODE: move sensor tests button here
-
-
-DONE
-- SETTINGS: mark sensors as unavailable where appropriate (ie. gyro sensor label should be disabled and labeled " - UNAVAILABLE")
-
-
-DONE ~ DIDN'T REALLY WORK AS HOPED
-- movement can be "jerky" at times (especially with high sensitivity, linear + x/z normalized)
-  - halt any negating accelerometer force opposing current x-axis (angular) velocity
-  - see gyro code for similar implementation
-
-
-DONE
-- accelerometer-controlled torque
-  - not sure exactly how to implement to work with existing gyro code, but some devices like the moto-g don't have the gyro
-  - hang loose scene currently won't work without a gyro-induced torque
-  - make an "Accelerometer" sub-checkbox option(?)
-    - "Accelerometer-Induced Torque" OR "Accelerometer-Induced Rotation"
-
-
-DONE
-- remove unneeded scenes
-
-
-DONE
-- auto wobble
-  - ON-SCREEN LOGGING show relevant info
-  - INDUCED MOTION AT IDLE
-  - removed "random"
-
-
-DONE
-- granular acceleration control: induce force, induce torque..
-
-
-DONE
-- change "motion x-axis / x/z-axis normalized" from a radio with 2 options to just a checkbox and also supporting code
-
-
-DONE
-- PERSIST SETTINGS: file utils; separate .plist for each settings scene + application-level
+main menu 
+  - cleanup, more interesting
+  - custom bitmap font

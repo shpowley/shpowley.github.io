@@ -10,6 +10,18 @@
       - also check RUBELayer::restoreSceneSettings()
 
 ----------
+Monday 2019-09-16
+
+  WOBBLE PROJECT
+
+    - changing application / scene settings; no overlap
+
+----------
+Sunday 2019-09-15
+
+  re-organize version milestones
+
+----------
 Saturday 2019-09-14
 
   DEBUGGER ISSUES FIXED WITH "platform tools 29.0.4"
@@ -18,6 +30,7 @@ Saturday 2019-09-14
   WOBBLE PROJECT
 
     - apply "weld joint" settings - frequency and damping ratio when each scene is loaded
+
 
     scene joint summary:
 

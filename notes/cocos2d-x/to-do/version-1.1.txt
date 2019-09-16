@@ -1,22 +1,51 @@
-- tweak physics assemblies
-  - OPTION 1: hula-style bobble, check the rube "spring" assembly
-  - OPTION 2: hula-style bobble, mimic the hang loose physics
+- application settings: remove "show statistics" (cocos FPS), rename "on-screen logging" -> "statistics", combine FPS data into "statistics" data if possible
+
+- acceleration + gravity mode: a way to "ignore counter force" like the linear accelerometer mode (ie. magic sauce for more responsive motion)
+
+- turtles scene: re-implement physics; swim animation, relatively fixed x/y, able to rotate; imagine this being a similar to an actual desktop toy
+  - options: large 1-2 and/or small 1-5
+
+- auto-wobble: intermittent
+
+- sandals
+  - bug / issue: motion locked to one foot
+  - text on/off
+  - auto-wobble motion - in-sync, mirror or random
+
+- linear acceleration mode, pseudo gravity (phone y axis) on/off
+
+- settings
+  - + / - button on sliders
+
+- scene settings overlay
+  - quick config scene overlay (see "Wednesday 2019-06-26")
+
+- sensors - quick read: https://developer.android.com/guide/topics/sensors
+
+- move all related spriteframe image textures, plist and json files should go in their own COCOS2D-X RESOURCE DIRECTORIES
+
+- customized graphics
+
+- auto-wobble: disable wobble check on physics body in question when user touches it
+  - for numerous bodies in the same scene, only the body being touched should not auto-wobble
 
 
-- remove cumulative gyro torque if accelerometer-induced torque enabled
-  - acc torque > gyro torque : subtract gyro torque
-  - acc torque < gyro torque : use gyro torque only
-  ~ basically use whichever is greater
+1.1+
+ADVERTISING/MONETIZATION
+  - see "journal.txt" Thursday 2018-12-13
+  - continue with "Building Android Games with Cocos2d-x" p.122 starting at moving the mute button
+  - free, banner ads, pay option, ad on menu, 2 "android robot" scenes free (hula dancer, surfer), unlock more scenes with video ad, sunglasses, skin tone, hair color
+  - "unnie doll" ideas - https://play.google.com/store/apps/details?id=com.percent.mybest3
 
 
-- scene backgrounds:
-  - some pre-defined images
-  - user specified media
-  - gyro-controlled 360/panorama?
+BUSINESS-RELATED
+  - business license
+  - business e-mail address
+  - business bank account
+  - app store account
 
 
 - backup android projects to github (compacted)
-  DONE - rube_loader_image, rube_loader_demo, rube_loader_custom
   - customized RUBE-b2djson (d:\sdk\RUBE-b2djson)
   - other important/re-usable directories create separate .git repositories
 
@@ -30,9 +59,6 @@
   - MOTOR JOINT with my turtles scene (see journal Thursday 2019-05-30)
   - "swimming" animation or "pre-defined" swim movement
   - keep "crazy" and "falling" motion
-
-
-- info/tooltip layer(?)
 
 
 - RUBE NORMALIZED DESIGN WIDTH/HEIGHT %
@@ -51,10 +77,6 @@
   - ideas: adjust filter.a, attempt higher sample rate, scene acceleration scaling
 
 
-- SETTINGS: more granular movement control
-  - see "Saturday 2019-07-27"
-
-
 - SETTINGS / DEVELOPER MODE: 
 
   - "SECRET" METHOD TO ENABLE in app settings
@@ -65,19 +87,35 @@
     3 - auto reloads with dev options
 
 
-- SETTINGS / DEVELOPER MODE: implementation
-
-
 - AUTO-WOBBLE
-  - auto-wobble in-motion checkbox AND in-motion force
-  - auto-wobble at idle checkbox AND at idle force
+  - AT IDLE ONLY, ALWAYS (ignore sensors)
 
 
-1.5
-- main menu: 
-  - cleanup, more interesting
-  - custom bitmap font
-
-
-1.0
 - main menu: animated background
+
+
+- create a RUBE file with different types of joints and experiment with settings
+  - every type of basic joint with labels describing what's what in the RUBE scene
+  - composite joints with description labels
+  - note my existing experiments
+  - experiment in box2d testbed OR in app..
+
+
+USER CONTROLLED TOUCH-BASED MOTION
+  + box2d body induced wobble using a "FINGER TAP"
+  + box2d induced world acceleration using a "FINGER SWIPE"
+  + multi-touch? multiple mouse joints?
+  - max length mouse joint OR tweak the mouse joint to break once the position is outside the body
+  ? a SETTING OPTION of some sort (or maybe the collision filter) on box2d bodies to control if the body is controlled by touch input
+
+
+NEW SCENES
+  - dangling keychain
+    - keychain items:
+      - hawaiian t-shirt | dollar t-shirt
+      - hula dancer | hang loose | palm tree | surfboard | license plate | turtle | sandals | hibiscus
+
+  - hanging lei
+    - hawaiian shirt + lei option
+    - different color flower options
+    - https://youtu.be/roXUvqdyyDU @ 0:23 lei and model

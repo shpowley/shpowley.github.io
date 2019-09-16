@@ -1,77 +1,40 @@
-- new scene: hanging lei
-  - hawaiian shirt + lei option
-  - different color flower options
-  - android robot + hawaiian shirt + lei + sun glasses
-  - https://youtu.be/roXUvqdyyDU @ 0:23 lei and model
+pan / pinch-to-zoom "mode"
+  - implementation
 
+(i) info pop-up overlay
+  - maybe a new layer in it's own file, for settings screens and hud settings
 
-- RUBE image opacity / linear filter properties - check how these affect cocos2D-x sprite creation in b2djson import
+scene rotatation for portrait / landscape
+  - lock/unlock
+  - implementation requires more thought as HUD layer, etc. would also be affected
 
+accordion "settings" sections
+  - one section opens and all others close
+  - view positioning might be difficult
 
-- create a RUBE file with different types of joints and experiment with settings
-  - every type of basic joint with labels describing what's what in the RUBE scene
-  - composite joints with description labels
-  - note my existing experiments
-  - experiment in box2d testbed OR in app..
+- scene backgrounds:
+  - some pre-defined images
+  - user specified media
+  - gyro-controlled 360/panorama?
 
-
-USER CONTROLLED TOUCH-BASED MOTION
-  + box2d body induced wobble using a "FINGER TAP"
-  + box2d induced world acceleration using a "FINGER SWIPE"
-  + multi-touch? multiple mouse joints?
-  - max length mouse joint OR tweak the mouse joint to break once the position is outside the body
-  - a SETTING OPTION of some sort (or maybe the collision filter) on box2d bodies to control if the body is controlled by touch input
-  
-  - pinch-to-zoom / pan (it might be a good idea to use this as a special user placement/zoom "mode")
-    - verify "setImagePositionsFromPhysicsBodies" still works for image-only items of RUBE imported assets
-
-
-- sensors JNI: if a dev option is enabled, calculate the actual delay & average, as a comparison to the set delay ..devices may have a limitation; also, I vaguely remember android docs having a way to check minimum delay..I think
-
-
-- sensors.. not sure where; calibrate out drift..??
-
-
-- sensor test redesign and way to track calling scene for the back button
-
-
-- self-promotion of my own stuff
-
-
-- SETTINGS: custom panel heights
-
-
-- SETTINGS: background panel colors; defaults for dark mode on/off
-
+- cross-promotion of my own stuff
 
 - each scene needs to be more visually interesting; presented as options
-
-
-- invisible buttons (or shape) to enable touching panels for checkbox and radio?
-
+  - particle effects, backgrounds, background effects
 
 - more efficient logging? using cocos2d-x fps text method
-
 
 - "dashboard" mode (see Wednesday 2019-06-26)
   - dashboard mode = multiple toys arranged on a virtual dash
   - saved dashboard profiles
 
-
-- sensors - read through again for detailed info: https://developer.android.com/guide/topics/sensors
-
-
 - sounds, music settings
-
-
-- NEW SCENE: dangling keychain - item options ~ hawaiian t-shirt | dollar t-shirt | hula dancer | hang loose | palm tree | surfboard | license plate | turtle | sandals | hibiscus
 
 
 - RUBE sampler animations:
   - grass skirt blowing in the wind
   - turtle swimming (vs puppet assembly), hula dancer lei
   
-
 2D ANIMATION
 
   * compare RUBE sampler to create animations vs. the following..
@@ -82,5 +45,21 @@ USER CONTROLLED TOUCH-BASED MOTION
   Krita
   + have a look on the android play store also for drawing animation apps
 
-
 - social networking
+
+CUSTOMIZE OPTIONS (HULA)
+  - (jack's idea) selfie face photo
+  - unie doll style - highly customizeable
+  - user trimmed photos in file-system (multiple physics scenarios)
+
+LIVE WALLPAPER
+  - go back and try modifying Cocos2dxHelper.java again to re-attempt the live wallpaper
+  - try using (AppActivity, this) OR further modifying Context usage instead of sActivity (see "Monday 2019-06-24")
+  - OR b2dJson(java) + android canvas..
+
+GYRO Z-AXIS PARALLAX BACKGROUND
+  - extra wide background image
+  - full 360
+
+STUDY "RUBE DEMO PROJECT CODE"
+  - destroying bodies, pinball "bitplane", camera control/follow (vs. camera in test harness)

@@ -106,37 +106,35 @@ Monday 2019-08-26
   SETTING NAME                          APPLICATION | SCENE | COMMENTS
   ------------                          -----------   -----  --------
   keep screen on                             x              | -
-  dark mode                                  x              | not in use atm, HIDE FOR NOW
   -
-  use gyroscope (scene default)              x           x  | -
-  gyro threshold (scene default)             x           x  | -
-  gyro scaling (scene default)               x           x  | -
+  use gyroscope (scene default)                          x  | -
+  gyro threshold (scene default)                         x  | -
+  gyro scaling (scene default)                           x  | -
   -
-  use accelerometer (scene default)          x           x  | -
-  accelerometer type                         x              | -
-  combine xz axes                            x              | -
-  induce torque (scene default)              x           x  | -
-  induce force (scene default)               x           x  | -
+  use accelerometer (scene default)                      x  | -
+  accelerometer type                                     x  | -
+  combine xz axes                                        x  | -
+  induce torque (scene default)                          x  | -
+  induce force (scene default)                           x  | -
   flip orientation x                         x              | -
   flip orientation y                         x              | -
   flip orientation z                         x              | -
-  threshold (scene default)                  x           x  | -
-  scaling (scene default)                    x           x  | -
+  threshold (scene default)                              x  | -
+  scaling (scene default)                                x  | -
   -
-  enable auto-wobble (scene default)         x           x  | -
-  threshold velocity (scene default)         x           x  | -
-  threshold time (scene default)             x           x  | -
-  sensor threshold (scene default)           x           x  | -
-  wobble force                               x           x  | -
+  enable auto-wobble (scene default)                     x  | -
+  threshold velocity (scene default)                     x  | -
+  threshold time (scene default)                         x  | -
+  sensor threshold (scene default)                       x  | -
+  wobble force                                           x  | -
   -
   developer mode                             x              | TODO persist for convenience and related items too
   physics debug draw                         x              | -
   show images                                x              | not in use yet
-  display cocos stats                        x              | -
-  on-screen logging                          x              | -
+  display statistics                         x              | -
   -
-  weld joint frequency (scene default)       x           x  | -
-  weld joint damping ratio (scene default)   x           x  | -
+  weld joint frequency (scene default)                   x  | -
+  weld joint damping ratio (scene default)               x  | -
 
 
   current code:

@@ -1,42 +1,5 @@
-RECORD/PLAYBACK SENSOR LOG DATA
-  - options of accelerometer, linear, gyro log data for dev purposes without having to drive-test
-
-
-CUSTOMIZE OPTIONS (HULA)
-  - (jack's idea) selfie face photo
-  - unie doll style - highly customizeable
-  - user trimmed photos in file-system (multiple physics scenarios)
-
-
-SIMPLIFIED BOX2D SHAPES (CIRCLES)
-  - simplifies custom touch adjustments
-  - user-moveable
-  - multiple touch circles
-
-
-LIVE WALLPAPER
-  - go back and try modifying Cocos2dxHelper.java again to re-attempt the live wallpaper
-  - try using (AppActivity, this) OR further modifying Context usage instead of sActivity (see "Monday 2019-06-24")
-  - OR b2dJson(java) + android canvas..
-
-
-GYRO Z-AXIS PARALLAX BACKGROUND
-  - extra wide background image
-  - full 360
-
-
-STUDY "RUBE DEMO PROJECT CODE"
-  - destroying bodies, pinball "bitplane", camera control/follow (vs. camera in test harness)
-
-
-GIMP VIDS
-  - create a gimp instructions document
-
-
 HELLO KITTY
   - save for later
-  - other images
-
 
 BOX2D SCENARIO/CODE STUDY
   - review the test scenarios for useful box2d usage and study code implementation for Box2D test harness (copied from journal Monday 2019-05-20)
@@ -51,11 +14,9 @@ BOX2D SCENARIO/CODE STUDY
   - theo jansen's walker - mech walkers
   - web - spider web + spider
 
-
 RUBE TUTORIALS
   - look over notes for the ones already completed
   - advanced tutorials
-
 
 IMAGE SCALING AND IMPACT
   ! read "cocos2D-x notes.txt" > SCALING > USING RENDERTEXTURE, test & write notes
