@@ -1,20 +1,20 @@
-  GOALS
-    - scene settings
-    - overlay settings
-    - touch overlay button (pan + zoom)
-    - simplified movement setting(s)
+NEXT
 
-  NEXT
-
-    - see Monday 2019-08-26 AND Wednesday 2019-08-28 for clarification
-      - also check RUBELayer::restoreSceneSettings()
+  app settings
+    - remove advanced mode 
 
 ----------
 Monday 2019-09-16
 
   WOBBLE PROJECT
 
-    - changing application / scene settings; no overlap
+    - changing application / scene settings -- removing overlapping settings
+
+    app settings
+      - remove advanced mode button
+      - moved sensor test to where advanced mode button used to be
+      - statistics + fps data combined
+      - start with scene defaults + Box2D joint settings from RUBE file
 
 ----------
 Sunday 2019-09-15

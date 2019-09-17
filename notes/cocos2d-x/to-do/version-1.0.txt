@@ -2,11 +2,6 @@ GIMP VIDS (ongoing)
   - create a gimp instructions document
 
 
-application settings: gyro / accelerometer / auto-wobble
-  - move to each scene with app-level settings being the scene defaults
-  - enable checkbox should be removed completely, these should always TRUE at the application-level
-
-
 scene defaults
   - these need to be hard coded (best values from trial-and-error)
     - scene default struct variable for each scene
