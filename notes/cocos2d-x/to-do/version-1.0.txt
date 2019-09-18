@@ -2,23 +2,24 @@ GIMP VIDS (ongoing)
   - create a gimp instructions document
 
 
-scene defaults
-  - these need to be hard coded (best values from trial-and-error)
-    - scene default struct variable for each scene
-  - box2d settings from the rube file
+acceleration + gravity mode: a way to "ignore counter force"
+  - test using linear x
+  - test combined linear x/z
+  - threshold value could be adjusted, take a look at acc_x_absolute when taking SHARP TURNS
+  - observe with other scenes: hello kitty hula, hula girl "spring", sandals
 
 
-scene reset to defaults button
+scene settings: scene-specific customizations
 
 
 hang loose scene settings
   - min/max angle
   - show text
-  - restore defaults
 
 
 hula girl (simple weld joint)
   - min/max angle
+  - show base stand
 
 
 hula dancer (spring version)
@@ -39,15 +40,7 @@ compare all scenes using different scene settings
   - record video?
 
 
-remove checkboxes from settings header sections
-  - "enable" checkboxes should be a sub-item
-  - makes room for expand/collapse feature
-
-
 create new icons: expand/collapse, info, hand, rotate, lock/unlock(?)
-
-
-hud overlay visible at scene load? ..faster navigation
 
 
 NEW PROJECT 
@@ -71,13 +64,7 @@ SETTINGS
   - HIDE almost all settings and present an EXTREMELY simplified set of options
     - way too many options for an average person
 
-  - simplify complex granular settings as much as possible (standar (simplified), advanced, developer)
-
-
-REMOVE CUMULATIVE GYRO TORQUE if accelerometer-induced torque enabled
-  - acc torque > gyro torque : subtract gyro torque
-  - acc torque < gyro torque : use gyro torque only
-  ~ basically use whichever is greater
+  - simplify complex granular settings as much as possible (standard (simplified), advanced, developer)
 
 
 main menu 

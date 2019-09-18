@@ -1,7 +1,34 @@
 NEXT
+  
+  - acceleration + gravity: better motion response
 
-  app settings
-    - remove advanced mode 
+  - test out various scene settings to use as defaults
+
+----------
+Tuesday 2019-09-17
+
+  WOBBLE PROJECT
+
+    - acceleration + gravity mode: a way to "ignore counter force" like the linear accelerometer mode
+      - code implemented using a threshold value to control when to use the "ignore counter force"
+        COMMENT: this works better than anticipated and might be improved upon
+
+      - tested hula girl WHILE DRIVING and it looks ok I think
+        - threshold value could be adjusted, take a look at acc_x_absolute when taking SHARP TURNS
+
+      * needs testing with other scenes: hello kitty hula, hula girl "spring", sandals
+
+
+    - limit cumulative torque from gyro and accelerometer
+
+    - many variables defined in RUBE update functions moved to the class-level to avoid re-allocation ==> minutely increased performance
+
+    - defaults created for all scenes except TURTLES, applied when no scene settings have been persisted
+      - tested each scene:
+        (1) scene defaults are applied on initial run
+        (2) modified persisted settings override these defaults
+
+    - scene settings: restore defaults button
 
 ----------
 Monday 2019-09-16

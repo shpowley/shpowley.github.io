@@ -1,7 +1,3 @@
-- application settings: remove "show statistics" (cocos FPS), rename "on-screen logging" -> "statistics", combine FPS data into "statistics" data if possible
-
-- acceleration + gravity mode: a way to "ignore counter force" like the linear accelerometer mode (ie. magic sauce for more responsive motion)
-
 - turtles scene: re-implement physics; swim animation, relatively fixed x/y, able to rotate; imagine this being a similar to an actual desktop toy
   - options: large 1-2 and/or small 1-5
 
