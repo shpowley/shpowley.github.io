@@ -259,3 +259,7 @@ PROJECT IDEAS CENTRAL DOCUMENT
     - photo-op cutouts: strong-man muscle posing - upper body wobble flexing
     - palm tree: multiple-segments for trunk(?), more difficult to animate, palm trees actually flex very little unless in an extreme wind / hurricane..
     - animated gifs live wallpaper (already exists..), marketing synergy with existing apps (cross-advertising)
+
+    - hand signs: hang loose, #1 digit, peace sign (plain, hippie..), star trek - live long / prosper, thumbs up, horns, ok, punch, waving, foam hand, pointing, skeletal versions, different style graphics, holding beer
+      - NOT SURE WHERE TO PUT THIS..
+      - graphic: https://jloog.com/images/hand-gesture-clipart-human-hand-1.jpg

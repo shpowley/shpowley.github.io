@@ -4,6 +4,9 @@ pan / pinch-to-zoom "mode"
 (i) info pop-up overlay
   - maybe a new layer in it's own file, for settings screens and hud settings
 
+sensor calibration
+  - on application settings, a button when pressed asks user to place phone on a flat surface to establish baseline threshold values
+
 scene rotatation for portrait / landscape
   - lock/unlock
   - implementation requires more thought as HUD layer, etc. would also be affected

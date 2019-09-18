@@ -5,7 +5,42 @@ NEXT
   - test out various scene settings to use as defaults
 
 ----------
+Wednesday 2019-09-18
+
+  STOPWATCH:
+
+
+  WOBBLE PROJECT
+    - modified "acceleration + gravity mode" to use linear acceleration below acc_x threshold AND adding the combine x/z option as it seems to work well when enabled
+    - combined x/y/z instead of just x/z for better response for bumps in the road
+
+    TODO: icon idea: use multiple combined cog gears to symbolize "advanced" and to access "scene setting (simplified)"
+      - scene settings (advanced) would be the next accessible via a button
+
+    - surfing graphic:
+
+      NEED:
+        - 1+ animated wave graphics
+        - 1+ surfer poses
+
+      - watched some youtube videos for ideas
+
+      * https://youtu.be/x4jwlscqH9s?t=68
+      https://youtu.be/x4jwlscqH9s?t=141
+      https://youtu.be/x4jwlscqH9s?t=204
+      https://youtu.be/x4jwlscqH9s?t=248
+      https://youtu.be/x4jwlscqH9s?t=256
+
+      https://youtu.be/kFjETSa9N7A?t=86
+      https://youtu.be/kFjETSa9N7A?t=131
+      https://youtu.be/kFjETSa9N7A?t=171
+
+      https://youtu.be/A5C0ZG5M7cY?t=34
+
+----------
 Tuesday 2019-09-17
+
+  stopwatch: 4:28
 
   WOBBLE PROJECT
 

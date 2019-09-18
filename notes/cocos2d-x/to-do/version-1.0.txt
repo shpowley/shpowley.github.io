@@ -7,6 +7,12 @@ acceleration + gravity mode: a way to "ignore counter force"
   - test combined linear x/z
   - threshold value could be adjusted, take a look at acc_x_absolute when taking SHARP TURNS
   - observe with other scenes: hello kitty hula, hula girl "spring", sandals
+  * if testing is ok, modify scene option "combine x/y" to be independent of accelerometer type
+
+
+hula dancer (spring version)
+  - maybe an option for pseudo-spring (multiple welds) or simple rotating joint (weld)
+  - compare to weld version (don't delete either version)
 
 
 scene settings: scene-specific customizations
@@ -22,15 +28,9 @@ hula girl (simple weld joint)
   - show base stand
 
 
-hula dancer (spring version)
-  - maybe an option for pseudo-spring (multiple welds) or simple rotating joint (weld)
-  - compare to weld version (don't delete either version)
-
-
-SIMPLIFIED BOX2D SHAPES (CIRCLES)
-  - simplifies custom touch adjustments
-  - user-moveable?
-  - multiple touch circles
+simplified box2d shapes (circles) for touch
+  - multiple touch circles for pre-made
+  - single for custom graphics
 
 
 compare all scenes using different scene settings
@@ -40,7 +40,11 @@ compare all scenes using different scene settings
   - record video?
 
 
-create new icons: expand/collapse, info, hand, rotate, lock/unlock(?)
+icon idea: use multiple combined cog gears to symbolize "advanced" and to access "scene setting (simplified)"
+  - scene settings (advanced) would be the next accessible via a button
+
+
+create new icons: expand/collapse, info, hand, rotate, lock/unlock, multiple combined cog gears
 
 
 NEW PROJECT 
@@ -53,6 +57,7 @@ NEW SCENES
   - strong warning to not drive distracted (scene or layer) @ start-up
   - surfer
   - android hula
+  - dangling lei
   - mermaid >>
   - tux logo + hawaiian shirt + sunglasses (sandals physics)
 
