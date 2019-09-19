@@ -1,21 +1,69 @@
-NEXT
-  
-  - acceleration + gravity: better motion response
+TODO:
+  - menu move the flower
+  - 4 total hula girl scenes
+  - settings to adjust springs and mass of top body
+  - diagnose auto-wobble issue
 
-  - test out various scene settings to use as defaults
 
 ----------
-Wednesday 2019-09-18
+Thursday 2019-09-19
 
   STOPWATCH:
 
 
   WOBBLE PROJECT
+
+    COMMENT: while editing the RUBE scenes I noticed that the NAMES ARE OFTEN DUPLICATED FOR THE VARIOUS PHYSICS ASSEMBLIES. while this is ok right now, it might be an issue later if importing more than one RUBE scene into the same world (multiple dashboard toys in a scene). it might be worth having a name convention maybe a prefix/suffix combo
+
+      ie.
+        hang loose ==> HL{0-9|a-z|A-Z}
+        hula girl ==> HG0, HG1, ... HG0_body_base, HG0_joint_weld
+
+
+    "pseudo-spring physics assembly" (version 2)
+      - rotational oscillation
+        - (1) weld joint: rotational wobble
+        - (1) rotational joint: angle limits
+
+      - straight oscillation
+        - (1) prismatic joint: limits along a single axis
+        - (1) distance joint: oscillation
+
+    "pseudo-spring physics assembly" (version 3)
+      - basically the very similar to v1, but with 4 weld joints
+
+
+    * I'm noticing that AUTO-WOBBLE ISN'T WORKING at all for none except the original single-weld joint
+
+
+
+----------
+Wednesday 2019-09-18
+
+  STOPWATCH: 7:15
+
+
+  WOBBLE PROJECT
+
+    - hula girl using "pseudo-spring physics assembly" scene created separately of the pure weld joint 
+      - testing on the device results in strange behavior due to multiple reasons
+        - body / "spring" joint mass
+        - delicate joint frequency settings
+        - overly sensitive torque response (even scaled to minimum)
+        - accelerometer had to be scaled up to max 5x to work
+        - extremly strange auto-wobble response using either torque or force
+
+      * PERHAPS REDUCING THE # JOINT LEVELS BY 1? CURRENTLY AT 3 LEVELS, BUT WITH 6 WELD JOINTS
+        - OR MODIFYING THE ASSEMBLY A LITTLE MORE..
+
     - modified "acceleration + gravity mode" to use linear acceleration below acc_x threshold AND adding the combine x/z option as it seems to work well when enabled
+  
     - combined x/y/z instead of just x/z for better response for bumps in the road
+
 
     TODO: icon idea: use multiple combined cog gears to symbolize "advanced" and to access "scene setting (simplified)"
       - scene settings (advanced) would be the next accessible via a button
+
 
     - surfing graphic:
 
@@ -40,7 +88,8 @@ Wednesday 2019-09-18
 ----------
 Tuesday 2019-09-17
 
-  stopwatch: 4:28
+  STOPWATCH: 4:28
+
 
   WOBBLE PROJECT
 
