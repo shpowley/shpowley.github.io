@@ -1,14 +1,80 @@
 TODO:
-  - menu move the flower
-  - 4 total hula girl scenes
-  - settings to adjust springs and mass of top body
-  - diagnose auto-wobble issue
+  - 4 total hula girl scenes: 
+    (1) existing weld
+    (2) weld+rotational+prismatic+distance
+    (3) multi-weld to resemble a "2D spring"
+  - scene settings to adjust springs, mass of top body, mass of spring components
+  - diagnose auto-wobble issue on alternate hula scenes
 
+  - pan / zoom : see RUBEDemo project - BasicRUBELayer::onTouchesMoved
+    - need icons + supporting flags
+
+  - rotation: see CCNode.h/.cpp - setRotation()
+    - need standalone test scene
+
+----------
+Friday 2019-09-20
+
+  STOPWATCH: 
+
+
+  WOBBLE PROJECT
+
+    - prevent touch with "touchable" RUBE custom property defined on box2d bodies
+      - hopefully useful on some box2d bodies (ie. spring components parts with a body/fixture)
+
+
+    - RUBEScene.cpp move some function variables to module-level for minute performance gain(?) -- especially those repeatedly called each frame
+
+
+    * added UserData to each box2d body as a reference back to it's image_info item
+
+
+    prevent gyro/acceleration effects with "ethereal" RUBE property defined on box2d bodies
+
+
+    after creating the "Ethereal" test with 2 side-by-side box2d (almost duplicate) assemblies, I noticed that they didn't respond to sensor feedback..
+      - after some digging, it's because neither assembly had images associated with them
+      - in trying to figure out how to resolve this, this actually might work out for the best..
+        
+        - the CODE ACTUALLY NEEDS A LIST OF BOX2D BODIES IN THE "WORLD" with 
+          
+          (1) the DEFAULT BOX2D METHOD FOR ITERATING THROUGH THE BODY LIST DOESN'T WORK (due to a bug? as mentioned in a previous journal entry)
+          (2) STRUCT_RUBE_IMAGE_INFO, which is currently being used only contains standalone IMAGES and IMAGE-BODY entries, but not standalone BODIES
+
+        * b2dJson.h/.cpp NEEDS A NEW METHOD TO CREATE A VALID LIST OF ALL BOX2D BODIES
+
+
+    copied the simple bobble RUBE file to experiment with custom properties; added a duplicate assembly..
+
+      - add the "ethereal" property to bodies defined in RUBE - undefined, true, false
+        - probably best in the RUBELayer::STRUCT_RUBE_IMAGE_INFO
+
+      - also added "content_size" vec2 - Width and Height
+        - store as a b2Vec2 variable
+
+      - these need to be retrieved in the override version of afterLoadProcessing
+        
+        => RUBE box2d body "ethereal" custom user property:
+          json->getCustomBool(body_bobble_B, "ethereal", false);
+
+        => RUBE box2d world "Content" custom user property:
+          json->getCustomVector(_world, "content_size", b2Vec2_zero);
+
+
+    user data vs custom properties
+      - USER DATA IS BOX2D-SPECIFIC and useful in c++ code; discussed in an earlier book tutorial
+      - CUSTOM PROPERTIES IS RUBE-SPECIFIC..
+
+    menu
+      - moved the flower just to get it out of the way for more entries
+      * this menu scene is temporary ATM and will be re-made from scratch
+        - do take a look at the unniedoll-apps re: scenes
 
 ----------
 Thursday 2019-09-19
 
-  STOPWATCH:
+  STOPWATCH: 2:18
 
 
   WOBBLE PROJECT
@@ -34,8 +100,6 @@ Thursday 2019-09-19
 
 
     * I'm noticing that AUTO-WOBBLE ISN'T WORKING at all for none except the original single-weld joint
-
-
 
 ----------
 Wednesday 2019-09-18

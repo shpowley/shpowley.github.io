@@ -75,3 +75,7 @@ SETTINGS
 main menu 
   - cleanup, more interesting
   - custom bitmap font
+
+
+image scaling from RUBE?
+  - when creating a RUBE file with images and importing it, what happens to image scaling at the default box2d world scale?
