@@ -2,20 +2,9 @@ GIMP VIDS (ongoing)
   - create a gimp instructions document
 
 
-acceleration + gravity mode: a way to "ignore counter force"
-  - test using linear x
-  - test combined linear x/z
-  - threshold value could be adjusted, take a look at acc_x_absolute when taking SHARP TURNS
-  - observe with other scenes: hello kitty hula, hula girl "spring", sandals
-  * if testing is ok, modify scene option "combine x/y" to be independent of accelerometer type
-
-
-hula dancer (spring version)
-  - maybe an option for pseudo-spring (multiple welds) or simple rotating joint (weld)
-  - compare to weld version (don't delete either version)
-
-
-scene settings: scene-specific customizations
+hula girl joint options
+  - SINGLE WELD vs. MULTIPLE WELDS (2-4-6) vs. MULTI-JOINT
+  - DON'T DELETE; keep for reference
 
 
 hang loose scene settings

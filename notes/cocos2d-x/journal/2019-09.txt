@@ -1,9 +1,7 @@
 TODO:
-  - 4 total hula girl scenes: 
-    (1) existing weld
-    (2) weld+rotational+prismatic+distance
-    (3) multi-weld to resemble a "2D spring"
+  
   - scene settings to adjust springs, mass of top body, mass of spring components
+
   - diagnose auto-wobble issue on alternate hula scenes
 
   - pan / zoom : see RUBEDemo project - BasicRUBELayer::onTouchesMoved
@@ -13,9 +11,149 @@ TODO:
     - need standalone test scene
 
 ----------
+Wednesday 2019-09-25
+
+  STOPWATCH:
+
+
+  WOBBLE PROJECT
+
+    * interesting note, in the RUBE editor upper/lower limits for revolute joints are in degrees, but in BOX2D, THE UNITS ARE IN RADIANS
+
+    hang loose scene settings
+      - move to 0,0 starting position, added world content_size, added revolute joint for angle limits
+      - added "Enable Limits" checkbox
+
+    * TODO: need scene settings for zoom, offset when that's eventually implemented
+
+----------
+Tuesday 2019-09-24
+
+  STOPWATCH: 2:27
+
+
+  BRAINSTORMING / AUDIO NOTES
+
+    - GOOGLE HAS AN IMAGE SEARCH where it's possible to UPLOAD A PHOTO TO SEARCH for similar
+      * this might be a GOOD SOURCE OF ART REFERENCE MATERIAL, POSES..
+
+    - audio
+      * replace ANGULAR VELOCITY readings with NORMALIZED VELOCITY (adjusting the sign for x-axis direction)
+        - hoping this fixes "auto-wobble" feature on more complex RUBE physics assemblies
+          - also, hoping this method will work in all RUBE physics assemblies
+        - I think the angular velocity is only meaningful relative to the nearest joint
+
+      - "magic sauce" filter to prevent force/torque counter to current movement
+        * NEED A SETTING to turn this ON/OFF
+        - turning this off would remove the filter effect
+        * NEED A SETTING FOR THE THRESHOLD
+          - better than re-compiling each time
+
+      - alter combine x/y/z setting
+        * change to: x-axis (default), combine with z-axis (forward/back), combine with y-axis (up/down)
+        - this would allow for x, x/y, x/z, x/y/z
+        - certain box2d RUBE physics assemblies probably wouldn't need the y-axis effect at all
+
+      - turtle assembly
+        - more like a desktop toy that could actually be made IRL
+          * independent swimming assembly (fins + head)
+            - auto-wobble setting
+          * attached to spring, weld, 2 welds + arm, OR very limited motor(?)
+            - NO flocking or flinging across the screen
+          * multiple turtle assemblies (1-2 adults, 1-5 babies)
+            - # based on a setting
+            - arranged in a cluster (a setting?)
+
+      * linux tux (a newer one) scene with arms flapping and bottom wobble @ feet
+
+      * velocity limit / governer setting
+        - certain scenes can WOBBLE WAY TOO FAST in just the right real-life scenario
+
+      - ideas from doll "dress-up" apps
+        * SHARING PHOTO / ANIMATED GIF ==> LINK OF APP WITH CUSTOM SCENE
+          - create animated gif in code instead of a screen capture
+          - free advertising
+
+        * "GAMIFY" idea from pixelated app
+          - reward system for new graphics (accessories, backgrounds) + unlock with ads
+          - how to gamify though?
+
+        - UI for SCENE CUSTOMIZATION
+          - "unnie"-style with scrollable mini-overlay pop-up (BASELINE IDEA) - bottom-screen, 2-row, horizontal
+          - 2 vertical overlay pop-ups?
+
+        * HOW TO CHANGE SKIN-TONE AND HAIR COLOR AT RUN-TIME
+          - white + tint at run-time, overlay black outline, overlay lighting
+          - would this be different for GRAPHICS MADE IN SOFTWARE VS. PHOTOGRAPH
+
+      - TESTING OF SCENE SETTINGS
+        - ability to TEST OUT SETTINGS with multiple phones at the same time, for consistency across devices and generations
+          - baseline default settings ==> simplified slider to adjust response
+        - mounting issues with power?
+        - video recording?
+
+      - toys
+        - longhorn
+        - skull + bones + jaw (physics assembly) on another joint
+
+      - misc
+        - products
+          - REAL-WORLD BASE TO LIGHT-UP A DASHBOARD TOY AT NIGHT; light sensor, 3-position switch (on, off, use sensor), solar re-chargeable, replaceable battery, adjustable brightness(?)
+          - DASHBOARD PHONE MOUNT (what I need); power requirement, phones are not secure enough though, different size devices (landscape or portrait)
+          - in app advertising
+
+        - target demographic:
+          - sitting at a desk or driving
+            - truck drivers, uber/lyft drivers, food delivery, desk jobs, driving commuter
+
+          - "re-purpose your old device"
+
+          - walking around, on-the-go would be more difficult
+            * requires live wallpaper (android)
+            - decoration for dual-sided phone
+
+      - hawaiian-themed app 
+        - beach sandals, hula dancer, hang loose (peace sign?), key chain, surfer, android robot (hula dancer, surfer, holding leis), tux (hula dancer, surfer (shorts + sunglasses), sandals, holding leis), hanging lei, tiki head (bobble spring), mermaid sitting on a rock with tail moving, swaying palm tree, dolphins, shark(?)
+        - surfer with dolphins (https://dribbble.com/shots/2868858-LA-Gifathon-Day-29)
+        - aloha sticker (https://islandjay.com/products/aloha-hibiscus-die-cut-sticker)
+        - neon sign (https://www.shutterstock.com/image-vector/surf-icons-neon-style-glowing-signs-1366083665)
+        - dolphins (https://irockdecals.com/hawaiian-hawaii-hibiscus-dolphin-style-4-decal/)
+
+----------
+Sunday 2019-09-22
+
+  STOPWATCH: 5:19
+
+
+  WOBBLE PROJECT
+
+    adjust hula girl RUBE assemblies
+      - tried creating multi 4-weld RUBE assembly with smaller joint legs, but the response was no where near as good
+      - with the multi-weld RUBE assembly in particular, a lot of the settings are HIT-OR-MISS AND BEST GUESSES as to what works for frequency, joint leg mass (vs to top bobble), and reference angle
+
+
+    hula girl scenes with alternate box2d physics assemblies for testing
+      (1) existing single weld
+          
+          weld joint: "joint_weld" - frequency, damping ratio, reference angle
+          revolute joint: "joint_revolute" - enable limit, lower limit, upper limit
+      
+      (2) multi-weld to resemble a "2D spring"
+
+          weld joint: "joint_weld" - frequency, damping ratio, reference angle
+
+      (3) weld+rotational+prismatic+distance
+
+          weld joint: "joint_weld" - frequency, damping ratio, reference angle
+          revolute joint: "joint_revolute" - enable limit, lower limit, upper limit
+          prismatic joint: "joint_prismatic" - enable limit, lower limit, upper limit
+          distance joint: "joint_distance" - frequency, damping ratio, length
+
+
+----------
 Friday 2019-09-20
 
-  STOPWATCH: 
+  STOPWATCH: 7:51
 
 
   WOBBLE PROJECT
@@ -50,7 +188,7 @@ Friday 2019-09-20
       - add the "ethereal" property to bodies defined in RUBE - undefined, true, false
         - probably best in the RUBELayer::STRUCT_RUBE_IMAGE_INFO
 
-      - also added "content_size" vec2 - Width and Height
+      - also added "content_size" vec2
         - store as a b2Vec2 variable
 
       - these need to be retrieved in the override version of afterLoadProcessing
@@ -58,7 +196,7 @@ Friday 2019-09-20
         => RUBE box2d body "ethereal" custom user property:
           json->getCustomBool(body_bobble_B, "ethereal", false);
 
-        => RUBE box2d world "Content" custom user property:
+        => RUBE box2d world "Content size" custom user property:
           json->getCustomVector(_world, "content_size", b2Vec2_zero);
 
 
@@ -207,7 +345,7 @@ Saturday 2019-09-14
     - apply "weld joint" settings - frequency and damping ratio when each scene is loaded
 
 
-    scene joint summary:
+    SCENE JOINT SUMMARY:
 
       hang loose hand: weld joint
         - weld joint
@@ -385,7 +523,7 @@ Tuesday 2019-09-03
 
     - tried using the RUBE auto-trace feature to generate mazes
 
-      - this was a good refresher, but unfortunately the maze image I found was too complex using the steps outlined in the RUBE how-to; creating the control points alone took a while and only scatched the surface in terms of the ideal fixture needed for a workable maze -- and this was only a "simple" maze
+      - this was a good refresher, but unfortunately the maze image I found was too complex using the steps outlined in the RUBE how-to; creating the control points alone took a while and only scratched the surface in terms of the ideal fixture needed for a workable maze -- and this was only a "simple" maze
 
       - I ended up creating a fixture and modifying the vertices.. this is in the early stages, but creates a cleaner end product I suppose; this technique is workable, but still not a quick process
 
