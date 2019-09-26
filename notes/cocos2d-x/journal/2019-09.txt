@@ -11,20 +11,41 @@ TODO:
     - need standalone test scene
 
 ----------
-Wednesday 2019-09-25
+Wednesday 2019-09-26
 
-  STOPWATCH:
+  STOPWATCH: 
 
 
   WOBBLE PROJECT
 
-    * interesting note, in the RUBE editor upper/lower limits for revolute joints are in degrees, but in BOX2D, THE UNITS ARE IN RADIANS
+    HANG LOOSE SCENE SETTINGS
+      - show text option
+      - applies to both pieces of text
+      - image_hang_loose, image_hawaii, image_hand (if changing hand graphic at run-time)
 
-    hang loose scene settings
+----------
+Wednesday 2019-09-25
+
+  STOPWATCH: 4:54
+
+
+  WOBBLE PROJECT
+
+    HULA GIRL MULTI-WELD LIMITS -- DISADVANTAGE
+ 
+      NOTE: this RUBE/BOX2D assembly DOESN'T ALLOW ANGULAR LIMITS as easily as the other 2 comparison scenarios
+        - to implement limits, each weld would require superimposed revolute joints OR 2 hidden box2d bodies for the top portion of the hula dancer to collide against
+        - this would only be worthwhile if the performance of this is vastly superier
+
+    HANG LOOSE SCENE SETTINGS
+ 
       - move to 0,0 starting position, added world content_size, added revolute joint for angle limits
       - added "Enable Limits" checkbox
-
-    * TODO: need scene settings for zoom, offset when that's eventually implemented
+      - added upper and lower limit sliders
+        - had to convert from rad->degrees and degrees->radians
+        - note the implementation for constants for PI, RADIANS_TO_DEGREES, DEGREES_TO_RADIANS
+      
+      * interesting note, in the RUBE editor upper/lower limits for revolute joints are in degrees, but in BOX2D, THE UNITS ARE IN RADIANS
 
 ----------
 Tuesday 2019-09-24

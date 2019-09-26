@@ -1,5 +1,6 @@
 pan / pinch-to-zoom "mode"
   - implementation
+  - need scene settings for zoom, offset
 
 (i) info pop-up overlay
   - maybe a new layer in it's own file, for settings screens and hud settings

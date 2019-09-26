@@ -8,7 +8,6 @@ hula girl joint options
 
 
 hang loose scene settings
-  - min/max angle
   - show text
 
 
