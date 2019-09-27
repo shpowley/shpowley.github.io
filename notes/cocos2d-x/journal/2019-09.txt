@@ -1,8 +1,12 @@
 TODO:
   
-  - scene settings to adjust springs, mass of top body, mass of spring components
-
-  - diagnose auto-wobble issue on alternate hula scenes
+  - scene settings
+    - adjust spring limit
+    - mass of primary body
+    - mass of spring components
+    - opposing force/torque filter
+    - option for false downward gravity for linear accelerometer
+    - maybe a built-in "clear all settings" button
 
   - pan / zoom : see RUBEDemo project - BasicRUBELayer::onTouchesMoved
     - need icons + supporting flags
@@ -11,17 +15,72 @@ TODO:
     - need standalone test scene
 
 ----------
-Wednesday 2019-09-26
+Friday 2019-09-27
 
-  STOPWATCH: 
+  STOPWATCH:
 
 
   WOBBLE PROJECT
 
+    hula girl (4-weld) NEXT, BUT THERE ARE NO LIMITS
+
+    hula girl (multi-joint)
+      - revolute joint angle limits
+      - weld joint settings
+      - distance joint frequency and damping
+      - prismatic joint limits
+
+    sandals
+      - reposition assembly to 0,0 and adjust limit angles
+      - show/hide title
+
+----------
+Thursday 2019-09-26
+
+  STOPWATCH: 4:35
+
+
+  NEXT: apply custom scene settings
+
+
+  WOBBLE PROJECT
+
+    - forgot about built-in functions CC_RADIANS_TO_DEGREES and CC_DEGREES_TO_RADIANS, using these instead
+      - here's a sample of what I had
+
+        // DECLARATION
+        static const double PI, DEGREES_TO_RADIANS, RADIANS_TO_DEGREES;
+
+        // DEFINED IN .CPP
+        const double GameManager::PI = std::acos(-1.0L);
+        const double GameManager::DEGREES_TO_RADIANS = GameManager::PI / 180.0L;
+        const double GameManager::RADIANS_TO_DEGREES = 180.0L / GameManager::PI;
+
+        // USAGE EXAMPLES
+        _joint_limit_angle_lower = static_cast<float>(calc_scaled_value * GameManager::DEGREES_TO_RADIANS);
+        params_slider.slider_initial_value = static_cast<float>(_scene_settings.revolute_joint_limit_angle_lower * GameManager::RADIANS_TO_DEGREES);
+
+
+    SANDALS
+      - min/max angle limits
+
+
+    HULA GIRL ALTERNATE SCENE / SPRING ASSEMBLIES
+      - diagnosed auto-wobble issue
+      - auto-wobble induce force vs. torque, only torque seems to work
+
+
+    HULA GIRL (SIMPLE WELD JOINT) + HELLO KITTY HULA
+      - min/max angle limits
+
+
     HANG LOOSE SCENE SETTINGS
-      - show text option
+      - show/hide text images option for "image_hang_loose", "image_hawaii"
       - applies to both pieces of text
-      - image_hang_loose, image_hawaii, image_hand (if changing hand graphic at run-time)
+
+
+    CUSTOM SCENE SETTINGS
+      - considering how to save/restore scene settings specific to each scene, but I don't think it's possible in it's current form; as of now, it has to be "monolithic"
 
 ----------
 Wednesday 2019-09-25

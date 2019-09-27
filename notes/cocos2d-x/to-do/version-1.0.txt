@@ -7,13 +7,8 @@ hula girl joint options
   - DON'T DELETE; keep for reference
 
 
-hang loose scene settings
-  - show text
-
-
-hula girl (simple weld joint)
-  - min/max angle
-  - show base stand
+SANDALS
+  - reference angle
 
 
 simplified box2d shapes (circles) for touch
