@@ -1,18 +1,3 @@
-TODO:
-  
-  - scene settings
-    - adjust spring limit
-    - mass of primary body
-    - mass of spring components
-    - opposing force/torque filter
-    - option for false downward gravity for linear accelerometer
-    - maybe a built-in "clear all settings" button
-
-  - pan / zoom : see RUBEDemo project - BasicRUBELayer::onTouchesMoved
-    - need icons + supporting flags
-
-  - rotation: see CCNode.h/.cpp - setRotation()
-    - need standalone test scene
 
 ----------
 Friday 2019-09-27
@@ -22,7 +7,12 @@ Friday 2019-09-27
 
   WOBBLE PROJECT
 
-    hula girl (4-weld) NEXT, BUT THERE ARE NO LIMITS
+    misc
+      - setting for "counteracting forces filter" on/off
+
+    hula girl (4-weld)
+      - weld joint settings
+      * tried testing with the 6-weld "spring" joint, but it's overly-sensitive no matter the adjustments
 
     hula girl (multi-joint)
       - revolute joint angle limits

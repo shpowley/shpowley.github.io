@@ -7,8 +7,31 @@ hula girl joint options
   - DON'T DELETE; keep for reference
 
 
-SANDALS
-  - reference angle
+  - scene settings
+    - combine x => +y +z
+    - intermittent auto-wobble
+    - mass of primary body
+
+    4-weld (ratio of primary body vs spring components has a profound impact on overall body motion)
+      - mass of spring components
+
+    - option for false downward gravity for linear accelerometer
+    - maybe a built-in "clear all settings" button
+
+  SANDALS
+    - reference angle
+
+  all scenes @ 0,0 and add content_size
+
+  - pan / zoom : see RUBEDemo project - BasicRUBELayer::onTouchesMoved
+    - need icons + supporting flags
+
+  (MOVE THIS)
+  - rotation: see CCNode.h/.cpp - setRotation()
+    - need standalone test scene
+
+
+adjust ranges for app/scene setting to better fit box2d assemblies, make comments re: current range
 
 
 simplified box2d shapes (circles) for touch
