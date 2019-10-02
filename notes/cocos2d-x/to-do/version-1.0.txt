@@ -2,21 +2,21 @@ GIMP VIDS (ongoing)
   - create a gimp instructions document
 
 
-hula girl joint options
-  - SINGLE WELD vs. MULTIPLE WELDS (2-4-6) vs. MULTI-JOINT
-  - DON'T DELETE; keep for reference
+HULA GIRL - SINGLE WELD vs. MULTIPLE WELDS (2-4-6) vs. MULTI-JOINT
+  - test out which is best for the "hula girl" / bobble-head spring
+  - when done testing, DON'T DELETE THIS; keep for reference just in case
 
 
-  - scene settings
-    - combine x => +y +z
-    - intermittent auto-wobble
-    - mass of primary body
+SCENE SETTING
+  - standard acceleration "threshold"
+  - intermittent auto-wobble
+  - mass of primary body
 
-    4-weld (ratio of primary body vs spring components has a profound impact on overall body motion)
-      - mass of spring components
+  4-weld (ratio of primary body vs spring components has a profound impact on overall body motion)
+    - mass of spring components
 
-    - option for false downward gravity for linear accelerometer
-    - maybe a built-in "clear all settings" button
+  - option for false downward gravity for linear accelerometer
+  - maybe a built-in "clear all settings" button
 
   SANDALS
     - reference angle
@@ -31,7 +31,13 @@ hula girl joint options
     - need standalone test scene
 
 
-adjust ranges for app/scene setting to better fit box2d assemblies, make comments re: current range
+adjust ranges for app/scene setting sliders to better fit box2d assemblies, make comments re: current range
+
+
++/- granular slider buttons
+
+
+collapsing sections
 
 
 simplified box2d shapes (circles) for touch

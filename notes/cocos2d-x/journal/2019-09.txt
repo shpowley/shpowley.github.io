@@ -1,14 +1,20 @@
+Monday 2019-09-30
+
+  STOPWATCH: 0:20
+
+  WOBBLE PROJECT SCENE SETTINGS
+    able to control the wobble effect (x-axis motion control) with optional flags for turning on/off the acceleration from the y-axis and/or z-axis
 
 ----------
 Friday 2019-09-27
 
-  STOPWATCH:
+  STOPWATCH: 7:48
 
 
   WOBBLE PROJECT
 
     misc
-      - setting for "counteracting forces filter" on/off
+      - setting for "counteracting forces filter" on/off (or my "magic sauce" for lack of a better name)
 
     hula girl (4-weld)
       - weld joint settings
@@ -492,7 +498,6 @@ Friday 2019-09-13
 Wednesday 2019-09-11
 
   WOBBLE PROJECT
-
 
     SCENE SETTINGS
 
