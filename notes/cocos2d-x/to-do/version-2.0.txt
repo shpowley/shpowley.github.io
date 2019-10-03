@@ -1,6 +1,9 @@
 pan / pinch-to-zoom "mode"
-  - implementation
+  - make sure all RUBE scenes are positioned @ 0,0 and add content_size
   - need scene settings for zoom, offset
+
+  - pan / zoom : see RUBEDemo project - BasicRUBELayer::onTouchesMoved
+    - need icons + supporting flags
 
 (i) info pop-up overlay
   - maybe a new layer in it's own file, for settings screens and hud settings
@@ -11,6 +14,9 @@ sensor calibration
 scene rotatation for portrait / landscape
   - lock/unlock
   - implementation requires more thought as HUD layer, etc. would also be affected
+
+  - see CCNode.h/.cpp - setRotation()
+    - need a standalone test scene with a simple physics object
 
 accordion "settings" sections
   - one section opens and all others close

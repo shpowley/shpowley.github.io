@@ -1,54 +1,35 @@
-GIMP VIDS (ongoing)
-  - create a gimp instructions document
-
-
-HULA GIRL - SINGLE WELD vs. MULTIPLE WELDS (2-4-6) vs. MULTI-JOINT
-  - test out which is best for the "hula girl" / bobble-head spring
-  - when done testing, DON'T DELETE THIS; keep for reference just in case
-
-
 SCENE SETTING
-  - standard acceleration "threshold"
   - intermittent auto-wobble
-  - mass of primary body
-
-  4-weld (ratio of primary body vs spring components has a profound impact on overall body motion)
-    - mass of spring components
-
-  - option for false downward gravity for linear accelerometer
-  - maybe a built-in "clear all settings" button
+  - maybe a built-in developer mode "clear all stored settings" button
 
   SANDALS
-    - reference angle
-
-  all scenes @ 0,0 and add content_size
-
-  - pan / zoom : see RUBEDemo project - BasicRUBELayer::onTouchesMoved
-    - need icons + supporting flags
-
-  (MOVE THIS)
-  - rotation: see CCNode.h/.cpp - setRotation()
-    - need standalone test scene
+    - touch left controls right, but not vice-versa
 
 
+touch primary body should stop auto-wobble
+
+
+really need +/- buttons - now I think
 adjust ranges for app/scene setting sliders to better fit box2d assemblies, make comments re: current range
 
 
-+/- granular slider buttons
+simplified box2d shapes (X circles; maybe simple polygons) for touch
 
 
-collapsing sections
+TESTING - compare all scenes using different settings
 
+  COMMENT:
+  - I need to create a series of recorded motion "experiments" and determine a good SETTINGS BASELINE for each scene
+    - from this baseline, determine a good min/max, ultimately for simplified on-scene HUD virtual slider
 
-simplified box2d shapes (circles) for touch
-  - multiple touch circles for pre-made
-  - single for custom graphics
-
-
-compare all scenes using different scene settings
   - stationary desk vs. driving
+  - stop light (stopping, take-off, fast take off..)
+  - slow driving (parking lot, speed bumps, bumpy road, turns)
+  - 40-50, highway speed
+  - walking around (not a use case at the moment)
+
   - record data
-  - reproduce on moto-g
+  - reproduce setting on different devices (nokia, moto-g, s3, note 4?)
   - record video?
 
 
@@ -91,3 +72,16 @@ main menu
 
 image scaling from RUBE?
   - when creating a RUBE file with images and importing it, what happens to image scaling at the default box2d world scale?
+
+
+hide "developer mode"
+
+
+--- ONGOING ---
+GIMP VIDS (ongoing)
+  - create a gimp instructions document
+
+
+HULA GIRL - SINGLE WELD vs. MULTIPLE WELDS (2-4-6) vs. MULTI-JOINT
+  - test out which is best for the "hula girl" / bobble-head spring
+  - when done testing, DON'T DELETE THIS; keep for reference just in case

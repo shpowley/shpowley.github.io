@@ -1,13 +1,58 @@
 ----------
-Wednesday 2019-10-02
+Thursday 2019-10-03
 
-  STOPWATCH: 
+  STOPWATCH:
 
-  MISC
-    - new journal for october 2019 created
-
-    - stats:
-        - total: 186/372 based => 50.0%
-        - september 2019: 22/30 days => 73%
 
   WOBBLE PROJECT
+
+    custom scene settings
+      restoreCustomSceneSettings (restore persisted data from map OR default data)
+      saveCustomSceneSettings (modify map reference to be saved)
+
+      - planning on in-between overloaded functions in RUBELayer
+        - for restore this would pass the appropriate filename and default settings from originating scene
+        - for save, this would only pass the appropriate filename directly from the originating scene
+        * might not need "current_scene" after it's complete
+      
+      COMMENT: ultimately I hope this reduces the growing size of the save/restore (common) scene settings and partitions the logic a bit better
+
+
+----------
+Wednesday 2019-10-02
+
+  STOPWATCH: 9:20
+
+
+  SEPTEMBER STATS:
+
+    days total:   186/372 based   => 50.0%
+    days:         22/30 days      => 73%
+    
+    hours total:  42:50
+    hours:        42:50 (from 9/17/2019)
+
+
+  WOBBLE PROJECT
+
+    custom scene settings
+      - initial test using STATIC struct on the sandals layer; other methods with member function pointers started getting esoteric syntax and not even sure that was the best route anyways
+      - leaning toward using function pointer similar to existing
+
+    enable advertising flag moved to application settings
+
+    scene settings
+      - weld joint reference angle
+        - limited to the sandals scene, scalar value mirrored for both feet
+        - a bit more complex due to having to destroy/re-create the joints to modify this value
+
+      - mass of primary body (I wasn't sure about adding this one, but I'm glad I did as it has a dramatic impact on the overall motion response)
+        * for the 4-weld "spring" hula dance, the ratio of primary body vs spring components masses has a profound impact on overall body motion; I considered adding a slider to adjust the mass of each spring component body, but I'm leaving this alone to the default value set in the RUBE file
+
+    application settings
+      - on/off setting for motion filter "threshold" used for the standard accelerometer mode
+      - forced linear accelerometer y-axis "gravity" on/off setting
+
+    - for the MULTI-ORIENTATION feature, I would need to REDESIGN the settings screens and the HUD overlay in addition to the box2d scenes
+        - this will take some thought and re-layout; a lot of work I think
+        - because of this, the orientation feature needs to be pushed back to 2.0+
