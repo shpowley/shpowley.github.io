@@ -1,5 +1,7 @@
 SCENE SETTING
+  - flags for scene settings visibility instead of multiple switch statements
   - intermittent auto-wobble
+  - limit angular velocity
   - maybe a built-in developer mode "clear all stored settings" button
 
   SANDALS
@@ -75,6 +77,7 @@ image scaling from RUBE?
 
 
 hide "developer mode"
+  - ideally, scene settings would be hidden (for now) unless "developer mode" = true
 
 
 --- ONGOING ---

@@ -1,21 +1,39 @@
 ----------
-Thursday 2019-10-03
+Friday 2019-10-04
 
-  STOPWATCH:
+  STOPWATCH: 
 
 
   WOBBLE PROJECT
 
     custom scene settings
+      - completed for persist and restore
+      - not throughly tested though
+
+      * scene settings editor is still monolithic with a lot of switch statements
+        - once "fixed", it should de-couple the specific scenes a bit more
+        - maybe a static struct in SceneSettings.h/.cpp, with flags to turn sections on/off instead
+          - bookmarked - something similar to persist/restore function pointer
+
+      * scene data is also monolithic
+        - there's a lot of common data, but in general settings that are not used are just ignored
+        - this is probably the best and easiest approach, but just be smart/flexible going forward?
+
+----------
+Thursday 2019-10-03
+
+  STOPWATCH: 3:09
+
+
+  WOBBLE PROJECT
+
+    custom scene settings
+      working on function pointers for custom scene settings
+
       restoreCustomSceneSettings (restore persisted data from map OR default data)
       saveCustomSceneSettings (modify map reference to be saved)
 
-      - planning on in-between overloaded functions in RUBELayer
-        - for restore this would pass the appropriate filename and default settings from originating scene
-        - for save, this would only pass the appropriate filename directly from the originating scene
-        * might not need "current_scene" after it's complete
-      
-      COMMENT: ultimately I hope this reduces the growing size of the save/restore (common) scene settings and partitions the logic a bit better
+      COMMENTS: ultimately I hope this reduces the growing size of the save/restore (common) scene settings and partitions the logic a bit better
 
 
 ----------
