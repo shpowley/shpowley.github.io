@@ -1,3 +1,6 @@
+really need +/- buttons - now I think
+
+
 SCENE SETTING
   - flags for scene settings visibility instead of multiple switch statements
   - intermittent auto-wobble
@@ -11,7 +14,6 @@ SCENE SETTING
 touch primary body should stop auto-wobble
 
 
-really need +/- buttons - now I think
 adjust ranges for app/scene setting sliders to better fit box2d assemblies, make comments re: current range
 
 

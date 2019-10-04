@@ -1,10 +1,19 @@
 ----------
 Friday 2019-10-04
 
-  STOPWATCH: 
+  STOPWATCH: 8:51
 
 
   WOBBLE PROJECT
+
+    settings slider
+      - got +/- fine-tuning buttons on the slider panel
+
+      TODO
+        - it needs a little more of a space offset from the slider itself
+        - the enable/disable code should change the color and ability for the button click event
+        - change the default color to match checkboxes (lighter blue)
+        - logic to control slider fine-tuning
 
     custom scene settings
       - completed for persist and restore
