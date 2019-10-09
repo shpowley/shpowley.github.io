@@ -1,4 +1,26 @@
 ----------
+Wednesday 2019-10-09
+
+  STOPWATCH: 
+
+
+  WOBBLE PROJECT
+
+    begin intermittent wobble test on the "hang loose" scene
+
+----------
+Tuesday 2019-10-08
+
+  STOPWATCH: 3:15
+
+
+  WOBBLE PROJECT
+
+    settings slider
+      - had to use button user data as the panel* couldn't be passed like the slider onchange()
+      - fixed a bug with the slider not being at the correct % initially
+
+----------
 Friday 2019-10-04
 
   STOPWATCH: 8:51

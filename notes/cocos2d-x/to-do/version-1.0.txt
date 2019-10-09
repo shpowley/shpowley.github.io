@@ -1,23 +1,6 @@
-really need +/- buttons - now I think
+- intermittent auto-wobble
 
-
-SCENE SETTING
-  - flags for scene settings visibility instead of multiple switch statements
-  - intermittent auto-wobble
-  - limit angular velocity
-  - maybe a built-in developer mode "clear all stored settings" button
-
-  SANDALS
-    - touch left controls right, but not vice-versa
-
-
-touch primary body should stop auto-wobble
-
-
-adjust ranges for app/scene setting sliders to better fit box2d assemblies, make comments re: current range
-
-
-simplified box2d shapes (X circles; maybe simple polygons) for touch
+- settings collapsible sections
 
 
 TESTING - compare all scenes using different settings
@@ -35,6 +18,27 @@ TESTING - compare all scenes using different settings
   - record data
   - reproduce setting on different devices (nokia, moto-g, s3, note 4?)
   - record video?
+
+
+- SCENE SETTING: flags for scene settings visibility instead of multiple switch statements
+
+
+- limit angular velocity (make custom per scene)
+
+
+touch primary body should stop auto-wobble
+
+
+adjust ranges for app/scene setting sliders to better fit box2d assemblies, make comments re: current range
+
+
+- SCENE SETTING: maybe a built-in developer mode "clear all stored settings" button
+
+
+- SANDALS: touch left controls right, but not vice-versa
+
+
+simplified box2d shapes (X circles; maybe simple polygons) for touch
 
 
 icon idea: use multiple combined cog gears to symbolize "advanced" and to access "scene setting (simplified)"
