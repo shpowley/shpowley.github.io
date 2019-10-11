@@ -1,26 +1,14 @@
-- custom scene settings
-  - thinking about a function pointer callback for both
-
-    GameManager::restoreSceneSettings()
-    GameManager::saveSceneSettings
-
-  - as more scenes are added/removed, this is becoming more complex to integrate into a common set of scene settings
-
-
 - turtles scene: re-implement physics; swim animation, relatively fixed x/y, able to rotate; imagine this being similar to an actual desktop toy
   - options: large 1-2 and/or small 1-5
 
 
-- auto-wobble: intermittent
+- intermittent auto-wobble
+  @ HangLooseLayer::autoWobble()
 
 
 - sandals
   - bug / issue: motion locked to one foot
   - auto-wobble motion - in-sync, mirror or random
-
-
-- settings
-  - + / - button on sliders
 
 
 - scene settings overlay

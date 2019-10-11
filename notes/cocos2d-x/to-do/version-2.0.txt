@@ -11,16 +11,12 @@ pan / pinch-to-zoom "mode"
 sensor calibration
   - on application settings, a button when pressed asks user to place phone on a flat surface to establish baseline threshold values
 
-scene rotatation for portrait / landscape
+scene rotation for portrait / landscape
   - lock/unlock
   - implementation requires more thought as HUD layer, etc. would also be affected
 
   - see CCNode.h/.cpp - setRotation()
     - need a standalone test scene with a simple physics object
-
-accordion "settings" sections
-  - one section opens and all others close
-  - view positioning might be difficult
 
 - scene backgrounds:
   - some pre-defined images
@@ -32,8 +28,6 @@ accordion "settings" sections
 - each scene needs to be more visually interesting; presented as options
   - particle effects, backgrounds, background effects
 
-- more efficient logging? using cocos2d-x fps text method
-
 - "dashboard" mode (see Wednesday 2019-06-26)
   - dashboard mode = multiple toys arranged on a virtual dash
   - saved dashboard profiles
@@ -44,6 +38,7 @@ accordion "settings" sections
 - RUBE sampler animations:
   - grass skirt blowing in the wind
   - turtle swimming (vs puppet assembly), hula dancer lei
+  
   
 2D ANIMATION
 

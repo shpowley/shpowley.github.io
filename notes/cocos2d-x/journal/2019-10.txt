@@ -1,12 +1,52 @@
 ----------
-Wednesday 2019-10-09
+Friday 2019-10-11
 
-  STOPWATCH: 
+  STOPWATCH:
+
+
+  NEXT: read through versionxx.txt files, re-arrange and determine next step
 
 
   WOBBLE PROJECT
 
-    begin intermittent wobble test on the "hang loose" scene
+    limit angular velocity (per scene settings)
+      * NOTE: this doesn't prevent the angular velocity from exceeding a threshold per se, but it does prevent additional torque / force from being applied when the threshold is reached
+
+      - extensive modification to updateAcceleration/Gyro functions
+
+      - NEEDS TESTING ON SOME SCENES
+
+----------
+Thursday 2019-10-10
+
+  STOPWATCH: 6:21
+
+
+  WOBBLE PROJECT
+
+    limit angular velocity (per scene settings)
+      - mostly implemented
+
+    application settings collapsible sections
+      - "keep screen on" left as is -- just one option
+
+    scene settings collapsible sections
+      - node elements (used for background color, when needed) doesn't have a click event
+      - used a ui:Widget that's invisible (from what I can tell) for controlling the accordion section "click"
+
+----------
+Wednesday 2019-10-09
+
+  STOPWATCH: 8:21
+
+
+  WOBBLE PROJECT
+
+    settings collapsible sections (start)
+
+    SCENE SETTING: flags for scene settings visibility instead of multiple switch statements
+
+    begin intermittent wobble test on the "hang loose" scene -- ON HOLD
 
 ----------
 Tuesday 2019-10-08

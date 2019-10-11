@@ -1,6 +1,6 @@
-- intermittent auto-wobble
-
-- settings collapsible sections
+adjust ranges (combine with TESTING)
+  - record acceptable range data
+  - adjust ranges for app/scene setting sliders to better fit box2d assemblies, make comments re: current range
 
 
 TESTING - compare all scenes using different settings
@@ -20,22 +20,10 @@ TESTING - compare all scenes using different settings
   - record video?
 
 
-- SCENE SETTING: flags for scene settings visibility instead of multiple switch statements
-
-
-- limit angular velocity (make custom per scene)
-
-
 touch primary body should stop auto-wobble
 
 
-adjust ranges for app/scene setting sliders to better fit box2d assemblies, make comments re: current range
-
-
 - SCENE SETTING: maybe a built-in developer mode "clear all stored settings" button
-
-
-- SANDALS: touch left controls right, but not vice-versa
 
 
 simplified box2d shapes (X circles; maybe simple polygons) for touch
