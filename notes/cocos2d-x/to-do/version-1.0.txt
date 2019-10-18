@@ -1,80 +1,59 @@
-adjust ranges (combine with TESTING)
-  - record acceptable range data
-  - adjust ranges for app/scene setting sliders to better fit box2d assemblies, make comments re: current range
+SCENE TESTING (ESTABLISH BASELINE SCENE SETTINGS )
+
+  TESTS
+    - stationary desk vs. driving
+    - stop light (stopping, take-off, fast take off..)
+    - slow driving (parking lot, speed bumps, bumpy road, turns)
+    - 40-50, highway speed
+    - walking around (not a use case at the moment)
+
+    - record data
+    - reproduce setting on different devices (nokia, moto-g, s3, note 4?)
+    - record video?
 
 
-TESTING - compare all scenes using different settings
-
-  COMMENT:
-  - I need to create a series of recorded motion "experiments" and determine a good SETTINGS BASELINE for each scene
-    - from this baseline, determine a good min/max, ultimately for simplified on-scene HUD virtual slider
-
-  - stationary desk vs. driving
-  - stop light (stopping, take-off, fast take off..)
-  - slow driving (parking lot, speed bumps, bumpy road, turns)
-  - 40-50, highway speed
-  - walking around (not a use case at the moment)
-
-  - record data
-  - reproduce setting on different devices (nokia, moto-g, s3, note 4?)
-  - record video?
+  CREATE HUD MOTION-CONTROL SLIDER
+    - based on scene testing baseline data
 
 
-touch primary body should stop auto-wobble
+  ADJUST RANGES
+    - record acceptable range data
+    - adjust ranges for app/scene setting sliders to better fit box2d assemblies
+      - keep current values as comments
 
 
-- SCENE SETTING: maybe a built-in developer mode "clear all stored settings" button
+SETTINGS:
+  - developer mode "clear all stored settings" button
+  - cancel button to return to previous scene
 
 
-simplified box2d shapes (X circles; maybe simple polygons) for touch
+CREATE NEW ICONS:
+  - info (help/tooltips)
+  - hand (pinch-zoom, pan)
+  - rotate (scene/layer rotation)
+  - lock (ad-locked scenes)
+  - multiple combined cog gears (scene settings)
 
 
-icon idea: use multiple combined cog gears to symbolize "advanced" and to access "scene setting (simplified)"
-  - scene settings (advanced) would be the next accessible via a button
+USER AGREEMENT / PRIVACY STATEMENT
 
 
-create new icons: expand/collapse, info, hand, rotate, lock/unlock, multiple combined cog gears
-
-
-NEW PROJECT 
-  - actual hawaiian-themed dashboard toys app vs. what I have now which is intended for a general purpose dashboard toys "master" dev project
-  - only include scenes to be used
-
-
-NEW SCENES
-  - splash screen(s)
-  - strong warning to not drive distracted (scene or layer) @ start-up
-  - surfer
-  - android hula
-  - dangling lei
-  - mermaid >>
-  - tux logo + hawaiian shirt + sunglasses (sandals physics)
-
-
-user agreement / privacy statement
-
-
-SETTINGS
-  - HIDE almost all settings and present an EXTREMELY simplified set of options
-    - way too many options for an average person
-
-  - simplify complex granular settings as much as possible (standard (simplified), advanced, developer)
-
-
-main menu 
+MAIN MENU
   - cleanup, more interesting
   - custom bitmap font
 
 
-image scaling from RUBE?
-  - when creating a RUBE file with images and importing it, what happens to image scaling at the default box2d world scale?
-
-
-hide "developer mode"
+HIDE "DEVELOPER MODE"
   - ideally, scene settings would be hidden (for now) unless "developer mode" = true
 
 
---- ONGOING ---
+CREATE A NEW HAWAIIAN-THEMED PROJECT BASED ON EXISTING WOBBLE PROJECT
+  - a "subset" of the wobble project
+  - wobble project is intended as a general purpose dashboard toys "master" dev project
+
+
+---------- ONGOING ----------
+
 GIMP VIDS (ongoing)
   - create a gimp instructions document
 

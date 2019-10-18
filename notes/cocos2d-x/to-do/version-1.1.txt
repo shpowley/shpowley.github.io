@@ -1,3 +1,9 @@
+SCENE SETTINGS (simplified, standard, advanced views)
+
+
+- touch primary body should stop auto-wobble
+
+
 - turtles scene: re-implement physics; swim animation, relatively fixed x/y, able to rotate; imagine this being similar to an actual desktop toy
   - options: large 1-2 and/or small 1-5
 
@@ -117,3 +123,13 @@ NEW SCENES
     - hawaiian shirt + lei option
     - different color flower options
     - https://youtu.be/roXUvqdyyDU @ 0:23 lei and model
+
+
+NEW SCENES
+  - splash screen(s)
+  - strong warning to not drive distracted (scene or layer) @ start-up
+  - surfer
+  - android hula
+  - dangling lei
+  - mermaid >>
+  - tux logo + hawaiian shirt + sunglasses (sandals physics)

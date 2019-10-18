@@ -1,18 +1,165 @@
+TODO
+  - drive testing
+    - reset app cache on devices
+    - record driving for each scene using defaults only on nokia
+      - announce each driving scenario
+    - duplicate testing on moto-g for a couple scenes
+    * ULTIMATELY, I NEED A RANGE AROUND THE DEFAULTS
+
+
 ----------
-Friday 2019-10-11
+Friday 2019-10-18
 
   STOPWATCH:
 
 
-  NEXT: read through versionxx.txt files, re-arrange and determine next step
+  WOBBLE PROJECT
+    
+
+    - reasonable defaults created for the various scenes
+
+----------
+Thursday 2019-10-17
+
+  STOPWATCH: 7:17
+
+  WOBBLE PROJECT
+    - EXPERIMENT WITH DEFAULTS FOR OTHER SCENES IN DESKTOP STATIONARY ENVIRONMENT
+      - use these as driving test defaults
+
+    - defaults based on box2d physics (joints, angles, density/mass) are taken directly from the RUBE JSON file
+      - these values should be changed in RUBE only after enough testing is done
+
+    - bug fix: sandals scene - reference angle redefinition fixed frequency/damping not being set to new adjustments
+
+    - watch videos
+      - from the videos and settings I used it's difficult to tell what is better ATM, but here are a few things to change in further testing:
+        a) exact same test route: storage -> left @ mailbox -> left toward main road -> u -> u -> storage
+        b) when recording video, move camera higher to get speedometer and road in the frame
+
+----------
+Wednesday 2019-10-16
+
+  STOPWATCH: 3:49
+
+
+  WOBBLE PROJECT
+    - watch videos
+      - future recording needs to be
+        a) slightly higher to record speedometer
+        b) angled just 1-2 degrees ccw to have better level
+      
+      * USE VLC POST PROCESSING
+        - fixes angle, crops to a better frame size, and MUCH SMALLER FILE SIZE (122.94MB -> 18.10MB)
+          - https://www.vlchelp.com/edit-video-apply-effects-filters-save-permanently-vlc
+          - https://steemit.com/utopian-io/@ted7/how-to-crop-video-using-vlc-media-player
+          - above URLs helped get started, but modified for my use-case
+
+        STEPS:
+          1) tools > effects and filters (ctrl+E) => video effects
+            a) crop tab; adjust and RECORD VALUES
+            b) geometry tab => rotate; adjust
+          2) tools > preferences (ctrl+P) => show settings => all
+            a) select "filters"
+            b) check "rotate video filter" (already a default I think) and "video cropping filter"
+            c) expand "filter"
+            d) select "cropadd" and put in values from step 1-a
+          3) media => convert/save (ctrl+R)
+            a) "+ add"; select source video
+            b) press "convert/save" button
+            c) select "convert"; select "profile" - "video - h.264 + mp3 (mp4)"
+            d) click wrench icon => "video codec" tab => "filters" tab
+            e) select "rotate video filter" and "video cropping filter" + save
+            f) copy source video to a another file (serves as destination container) and use browse button to select
+            g) press start (and sometimes press play button to initiate conversion)
+          4) tools > preferences (ctrl+P) => reset preferences
+            a) close and re-open vlc
+            *** THIS IS AN IMPORTANT STEP ***
+
+----------
+Tuesday 2019-10-15
+
+  STOPWATCH: 3:09
+
+
+  WOBBLE PROJECT
+
+    drive motion tests
+      - "hang loose hawaii" scenario
+        - 0-10mph with speed bumps, 0-50mph local, camera video
+        - one key piece of info - velocity constraint only works on sensor feedback, not on the auto-wobble
+          - FIXED: applied to the "hang loose hawaii" scenario and tested OK
+          - FIXED: applied to other physics scenes, the sandals scene is a bit trickier though
+        
+      * the "auto-wobble" feature ALMOST needs to be tested independently of the drive motion tests, except for the STOP/GO and AUTO-WOBBLE DELAY
+
+    fixed an issue with the application settings collapsible sections not resettings
+
+----------
+Monday 2019-10-14
+
+  STOPWATCH: 3:05
+
+
+  WOBBLE PROJECT
+
+    MOTION TESTS
+      auto-wobble
+        - "sensor threshold" min 0.05 -> 0.01
+
+      updated test data sheet
+        - filled in default settings for all test scenes
+
+      planned setup:
+        camera recording video (no ois)
+        slow driving (parking lot)
+        medium driving (0-50MPH)
+        default settings for scenes - "Hang Loose" and "Hula Girl (Single Weld)"
+        only for motion testing
+
+      initial drive test
+        - ~5PM
+        - 11:30 (720p) @710.8MB ==> ~61.81MB/min
+        - 0-50MPH (apartment complex and main road)
+        - UNABLE TO SEE SPEEDOMETER
+        - camera setup jostles recording a bit, but stays in place
+        - maybe higher orientation, more anchors, and at night
+
+----------
+Sunday 2019-10-13
+
+  STOPWATCH: 3:23
+
+
+  WOBBLE PROJECT
+
+    MOTION TESTS
+      - created a test data sheet
+
+      - tested video recording on a digital camera
+        - I want to record the motion tests while driving with some audio notes
+
+
+    misc bug fixes
+      - reference angle
+      - wrong key label on combine xy
+      - forgot to persist the "enable velocity threshold constraint" parameter
+
+----------
+Friday 2019-10-11
+
+  STOPWATCH: 3:32
+
+
+  read through versionxx.txt files, re-arrange and determine next step
 
 
   WOBBLE PROJECT
 
     limit angular velocity (per scene settings)
-      * NOTE: this doesn't prevent the angular velocity from exceeding a threshold per se, but it does prevent additional torque / force from being applied when the threshold is reached
+      * NOTE: this doesn't prevent the angular velocity from exceeding a threshold per se, but it does prevent additional torque / force from being applied once the threshold is reached
 
-      - extensive modification to updateAcceleration/Gyro functions
+      - extensive modifications to updateAcceleration/updateGyro functions
 
       - NEEDS TESTING ON SOME SCENES
 
