@@ -1,0 +1,70 @@
+TODO:
+
+  button background panel(s) (?)
+
+  active button states (eye, wobble, light, gyro, accelerometer)
+
+  short press - on/off logic
+  long press
+
+  button scene visibility
+
+  paint brush - button set + logic, but non-functional beyond that; version 2..
+
+  mass - functional slider
+
+  spring - functional slider
+
+  GRAPHICS
+    - hand - darker outline
+    - multi-gears - slightly larger
+    - mass - kg slightly down
+    - rotate - arrows light grey
+    - gyro - slightly larger, all lightest grey
+    - selected - smaller line width, bright, light blue or yellow
+    - light bulb
+      - slightly larger
+      - replace yellow "on" rays with "on" gradient
+      - remove bulb outline
+
+  FAKE AD BANNERS
+    - see: https://developers.google.com/admob/android/banner
+    - additional logic for dynamic ui
+
+    - long-term logic for ads ON/OFF for paid version(?)
+      - developer options > "Show Ads"
+
+    - integrate fake ads with app and scene settings
+
+  HIGHLIGHT ACTIVE BUTTON
+    - needs different color and additional logic
+
+  hand
+
+  question mark
+
+  - back arrow update texture for "ui-widgets"
+
+  - IDEAS FROM 2010-10-22
+  
+  - TAKE A LOOK AT "MOMO'S DRESSUP"
+    - quick sliders in/out
+    - background effect
+    - pixel art style
+
+----------
+Friday 2019-11-01
+
+  STOPWATCH: 
+
+
+  OCTOBER STATS:
+
+    days total:   208/403 based   => 51.6%
+    days:         22/31 days      => 71%
+    
+    hours total:  157:51
+    hours:        115:01
+
+
+  WOBBLE PROJECT

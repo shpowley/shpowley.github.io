@@ -8,7 +8,6 @@ SCENE TESTING (ESTABLISH BASELINE SCENE SETTINGS )
     - walking around (not a use case at the moment)
 
     - record data
-    - reproduce setting on different devices (nokia, moto-g, s3, note 4?)
     - record video?
 
 
@@ -25,14 +24,6 @@ SCENE TESTING (ESTABLISH BASELINE SCENE SETTINGS )
 SETTINGS:
   - developer mode "clear all stored settings" button
   - cancel button to return to previous scene
-
-
-CREATE NEW ICONS:
-  - info (help/tooltips)
-  - hand (pinch-zoom, pan)
-  - rotate (scene/layer rotation)
-  - lock (ad-locked scenes)
-  - multiple combined cog gears (scene settings)
 
 
 USER AGREEMENT / PRIVACY STATEMENT

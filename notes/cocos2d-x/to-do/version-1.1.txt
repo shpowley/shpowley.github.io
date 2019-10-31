@@ -39,6 +39,8 @@ ADVERTISING/MONETIZATION
   - see "journal.txt" Thursday 2018-12-13
   - continue with "Building Android Games with Cocos2d-x" p.122 starting at moving the mute button
   - free, banner ads, pay option, ad on menu, 2 "android robot" scenes free (hula dancer, surfer), unlock more scenes with video ad, sunglasses, skin tone, hair color
+  - https://developers.google.com/admob/android/quick-start
+  - may need cocos2d-x specific reference also
   - "unnie doll" ideas - https://play.google.com/store/apps/details?id=com.percent.mybest3
 
 

@@ -1,20 +1,269 @@
-TODO
-  - drive testing
-    - reset app cache on devices
-    - record driving for each scene using defaults only on nokia
-      - announce each driving scenario
-    - duplicate testing on moto-g for a couple scenes
-    * ULTIMATELY, I NEED A RANGE AROUND THE DEFAULTS
+Thursday 2019-10-31
 
+  STOPWATCH: 7:49
+
+
+  WOBBLE PROJECT
+
+    - experimenting with long-press
+      - found a reference for timing measurement: https://stackoverflow.com/a/41077420
+
+      - also, using ui::Button addTouchEventListener for short vs long press timing:
+        _button_gear->addTouchEventListener([&](cocos2d::Ref* sender, ui::Widget::TouchEventType type)
+
+    - highlight ACTIVE button
+      - needs different color and additional logic
+
+    - HUD test ads
+      - initial placement on top and bottom @ 320x100
+      - fadeout with other buttons
+      - still needs additional logic for dynamic ui
+
+    - fixed bug on multi-gear set B fadeout
+
+    - graphics updated
+
+    - HUD fadeout time changes from initial state has SHORT FADEOUT TIME to non-initial state LONG FADEOUT TIME (3-5x time) - user might be contemplating what to do and fadeout too early I think would be annoying
+
+----------
+Wednesday 2019-10-30
+
+  STOPWATCH: 3:22
+
+
+  WOBBLE PROJECT
+
+    - graphics updated
+      - more robust colors, dummy ads, "active" graphic
+
+    - hud menu animations for gear / multi-gear
+      - always leave back button in top left corner as part of button sets; ALWAYS ACCESSIBLE
+      + gear (primary) to open close HUD buttons
+
+      - multi-gears button sets
+        SET A: back, eye, auto-wobble, mass, spring,
+        SET B: back, light, gyro, accelerometer, rotate
+
+    - separated HUDLayer class into it's own cpp files as the RUBEScene file was becoming unwieldingly large
+      - somehow avoided circular include issue using forward declaration + moving the HUDLayer include into to RUBEScene.cpp file
+
+----------
+Tuesday 2019-10-29
+
+  STOPWATCH: 4:21
+
+
+  WOBBLE PROJECT - hud menu animations
+
+----------
+Sunday 2019-10-27
+
+  STOPWATCH: 3:23
+
+
+  WOBBLE PROJECT
+
+    hud menu animations
+      - animation, visibility and enable logic
+      - animation Sequences:: action logic is independent for each button to allow staggering visual effect
+
+----------
+Friday 2019-10-25
+
+  STOPWATCH: 5:22
+
+
+  WOBBLE PROJECT
+
+    hud menu
+      - animation for "quick settings" main buttons
+      - hud states logic
+      - multi-gears button animations
+
+----------
+Thursday 2019-10-24
+
+  STOPWATCH: 7:37
+
+
+  WOBBLE PROJECT
+
+    add icons to HUD layer init
+      - positioning and to get a sense of overall look
+      - resize icons slightly larger
+
+    draw new hud icons - light bulb (light sensor), paint brush (visual settings)
+
+    *NOTE: after looking at "MOMO'S DRESSUP", considering lowering resolution on images to be SLIGHTLY PIXELATED
+      - good visual style and substantial asset size reduction
+
+----------
+Wednesday 2019-10-23
+
+  STOPWATCH: 7:22
+
+
+  WOBBLE PROJECT
+
+    draw new hud icons - multi-gears, rotate, lock
+
+
+    IMPLEMENTATION FOR HUD OVERLAY BUTTONS AND SLIDERS
+      - not exactly sure how I want to approach this HUD layer..mostly because the more I think about it, the more I want multiple HUD items appearing/disappearing in response to user interaction ("quick settings" vertical button strip), slider panel, customization strip
+      * I can see this evolving to include a light sensor button, image options, image effects, music(?)
+
+      CURRENT IMPLEMENTATION:
+
+        "BACK" BUTTON (return to main menu)
+        "GEAR" BUTTON (scene settings)
+
+      PLAN:
+
+        PRIMARY BUTTONS
+
+          "BACK" BUTTON (return to main menu)
+
+          "GEAR" BUTTON (vertical icon menu appears on the current scene - "QUICK SETTINGS")
+            - spinning gear "mechanical" visual effect
+
+            - "QUICK SETTINGS" buttons appear from the right
+              - one-by-one, from top to bottom, each icon movement is slightly delayed from the previous
+                OR all icons move in unison
+              - not sure about a background colored panel for better visibility; background panel slides in from the sides slightly before (or after) the icons
+
+            - 2nd press of gear - reverse spinning gear and hide "QUICK SETTINGS" using similar visual effect
+            * if "QUICK SETTINGS" is visible, either cancel auto-fadeout or make the increase auto-fadeout delay time
+
+        "QUICK SETTINGS" VERTICAL BUTTON STRIP (RIGHT)
+
+          "MULTI-GEAR" BUTTON (open "SENSOR HUD SETTINGS")
+            - display "SENSOR HUD SETTINGS" VERTICAL BUTTON STRIP
+            - highlight when secondary is open
+
+          "PICTURE/PAINT BRUSH" BUTTON (open "PICTURE CUSTOMIZATIONS")
+            - display "VISUAL CUSTOMIZATIONS" VERTICAL BUTTON STRIP
+            - highlight when secondary is open
+
+          "HAND" BUTTON (enter "PAN AND ZOOM" mode)
+            - enter a mode that allow pinch-zoom and/or panning of content
+
+            - should somehow be visually obvious.. color overlay or text..
+              - highlight when mode is active
+
+            - disable box2d body interaction while in this mode
+            - press hand or any other button to exit pan/zoom mode
+
+          "QUESTION MARK" BUTTON (new scene explaining button functions)
+            - show tooltip for relevant icons
+
+
+        "SENSOR HUD SETTINGS" VERTICAL BUTTON STRIP (LEFT)
+
+          "ROTATE" BUTTON (switches portrait to landscape view of current scene?)
+            - hide/disable for now, phase 2.. as this is a bit complex
+            - quick application setting
+
+          "KEEP SCREEN ON" BUTTON (keep screen on - on/off)
+            - application setting
+
+          "AUTO-WOBBLE" BUTTON (auto-wobble - on/off)
+            - long-press to access auto-wobble section of scene settings (simple view)
+
+          "GYROSCOPE" BUTTON (gyroscope - on/off)
+            - hide if unavailable
+            - long-press to access gyroscope section of scene settings (simple view)
+
+          "ACCELEROMETER" BUTTON (accelerometer - on/off)
+            - long-press to access accelerometer section of scene settings (simple view)
+
+          "LIGHT BULB" BUTTON (light sensor - on/off)
+            - hide if unused by dashboard toy
+
+          "MASS" BUTTON (show "BOBBLE MASS" SLIDER)
+            - hide existing bottom panels, show slider panel on the bottom display area
+            - highlight when slider panel is open
+
+          "SPRING" BUTTON (show "MOTION RESPONSE" SLIDER on the current scene)
+            - hide existing bottom panels, show slider panel on the bottom display area
+            - highlight when slider panel is open
+
+
+        "VISUAL CUSTOMIZATIONS" VERTICAL BUTTON STRIP (LEFT)
+          TODO - SCENE-SPECIFIC icon buttons to open bottom panel for:
+            "BACKGROUND", "POSES", "HAIR", "SKIN COLOR", "HAIR COLOR", "ACCESSORIES", etc.
+
+
+        BOTTOM PANEL
+
+          AD STRIP
+            - display when primary buttons visible and not in use by other functionality
+            - maybe top(?)
+
+          SLIDER PANELS
+            - spring frequency motion response
+            - bobble mass
+
+          IMAGE OPTIONS
+            - backgrounds, poses, hair, color, accessories, text options
+          
+----------
+Tuesday 2019-10-22
+
+  STOPWATCH: 3:10
+
+
+  IDEAS
+    - separate motion filter and flag for gyroscope (under gyroscope settings)
+      - move existing motion filter option to accelerometer settings
+
+    - gyroscope z-axis as an option to control wobble (right/left/u-turns)
+    - sudden jerk on y-axis for better bump response (not likely though)
+    - 0.6 torque on sandals auto-wobble
+    - auto-wobble separate joint characteristics? (just a thought)
+    - gyro test - create scene with duplicate functionality to wobble project that can load custom 3d/obj files
+    - googly eyes scene
+
+
+  WOBBLE PROJECT
+
+    draw new hud icons - mass, spring, hand
+    shorten slider slightly
+
+----------
+Sunday 2019-10-20
+
+  STOPWATCH: 7:36
+
+
+  WOBBLE PROJECT
+
+    BUG FIXES
+      settings slider
+        - FIXED A BUG with the slider not being at the correct % initially for frequency defaults from RUBE -- I had to create a function to lock frequencies to discrete values
+        - steps not discrete enough and values become off converting from slider-to-frequency and vice-versa; not sure why..
+
+
+    RANGE VALUES AROUND THE DEFAULTS
+      - using frequency and mass for simplified HUD slider controls
+      * remember, these defaults have to be changed directly in the RUBE scene
+      * min/max values - set these in the appropriate scene as constants
+
+                              frequency                       mass
+      scene                   default     min       max       default     min       max
+      hang loose              1.2         1.0       2.0       -           -         -
+      hula girl               3.9         2.8       5.1       0.30        0.10      1.00
+      hula girl (4-weld)      7.5         6.0       8.0       0.30        0.10      0.60
+      hula girl (multi-joint) 4.1         2.8       5.1       0.30        0.10      1.00
+      hello kitty hula        2.6         2.0       5.0       0.30        0.10      1.00
+      beach sandals           2.2         1.5       3.5       0.80        0.10      1.00
 
 ----------
 Friday 2019-10-18
 
-  STOPWATCH:
+  STOPWATCH: 1:28
 
 
   WOBBLE PROJECT
-    
 
     - reasonable defaults created for the various scenes
 
@@ -93,7 +342,7 @@ Tuesday 2019-10-15
         
       * the "auto-wobble" feature ALMOST needs to be tested independently of the drive motion tests, except for the STOP/GO and AUTO-WOBBLE DELAY
 
-    fixed an issue with the application settings collapsible sections not resettings
+    fixed an issue with the application settings collapsible sections not resetting
 
 ----------
 Monday 2019-10-14
