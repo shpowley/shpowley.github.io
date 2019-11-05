@@ -1,13 +1,14 @@
 TODO:
 
-  button background panel(s) (?)
+  try black button panels instead
 
   active button states (eye, wobble, light, gyro, accelerometer)
 
   short press - on/off logic
   long press
 
-  button scene visibility
+  scene-controlled granular button visibility
+    - ie. sometimes certain buttons shouldn't be available
 
   paint brush - button set + logic, but non-functional beyond that; version 2..
 
@@ -15,17 +16,8 @@ TODO:
 
   spring - functional slider
 
+
   GRAPHICS
-    - hand - darker outline
-    - multi-gears - slightly larger
-    - mass - kg slightly down
-    - rotate - arrows light grey
-    - gyro - slightly larger, all lightest grey
-    - selected - smaller line width, bright, light blue or yellow
-    - light bulb
-      - slightly larger
-      - replace yellow "on" rays with "on" gradient
-      - remove bulb outline
 
   FAKE AD BANNERS
     - see: https://developers.google.com/admob/android/banner
@@ -53,9 +45,38 @@ TODO:
     - pixel art style
 
 ----------
+Monday 2019-11-04
+
+  STOPWATCH: 7:08
+
+
+  WOBBLE PROJECT
+
+    HUD
+      eye and auto-wobble buttons now display current setting, work on-press and persist
+        - next: light-sensor, gyro, accelerometer
+
+      ISSUE FIXED: ui::Widget objects apparently don't propagate touches (I tried several approaches); my fade-in/fade-out code was moved from the RUBELayer to the HUDLayer to make this work
+      - for example, repeatedly pressing the "eye" button would never reset the HUD fadeout timer properly
+
+      ISSUE FIXED: enable/disable primary buttons on fadein/fadeout to prevent weird button state ..a very narrow time window
+
+      - use ->setTouchEnabled() instead of ->setEnabled() for ui::Button; functionaly it seems the same for my purposes - I think; prevents the icons' color changing to grey when disabled
+
+----------
+Sunday 2019-11-03
+
+  STOPWATCH: 1:02
+
+
+  WOBBLE PROJECT
+
+    HUD graphics
+
+----------
 Friday 2019-11-01
 
-  STOPWATCH: 
+  STOPWATCH: 2:27
 
 
   OCTOBER STATS:
@@ -68,3 +89,7 @@ Friday 2019-11-01
 
 
   WOBBLE PROJECT
+
+    HUD graphics
+      - getting a good mix of colors to work is difficult
+      - planning to incorporate a squircle onto most button icons I think
