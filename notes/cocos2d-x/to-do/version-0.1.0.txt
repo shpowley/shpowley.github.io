@@ -1,0 +1,104 @@
+MISC
+
+  separate motion filter for gyro and accelerometer (check if already on todo)
+
+  gyro y-axis motion control
+
+  light sensor implementation
+    - needs: scene setting struct, scene settings, persist logic, RUBE update motion control logic, HUD button on/off
+
+  scene-controlled granular button visibility
+    - ie. sometimes certain buttons shouldn't be available
+
+  paint brush - button set + logic, but non-functional beyond that; version 2..
+    - foreground primary image (human)
+      - hair, face, body poses, accessories, lei, skirt...
+    - backgrounds (simple mountains + sun)
+    - scene items (twinkles?)
+      - effects
+      - text
+      - speech bubbles..
+      - stationary image items
+
+  mass - functional slider
+
+  spring - functional slider
+
+
+  GRAPHICS
+
+  FAKE AD BANNERS
+    - see: https://developers.google.com/admob/android/banner
+    - additional logic for dynamic ui
+
+    - long-term logic for ads ON/OFF for paid version(?)
+      - developer options > "Show Ads"
+
+    - integrate fake ads with app and scene settings
+
+  HIGHLIGHT ACTIVE BUTTON
+    - needs different color and additional logic
+
+  hand HUD button implementation
+
+  question mark HUD button implementation
+
+  - back arrow update texture for "ui-widgets"
+
+  - IDEAS FROM 2010-10-22
+  
+  - TAKE A LOOK AT "MOMO'S DRESSUP"
+    - quick sliders in/out
+    - background effect
+    - pixel art style
+
+  - android "toast"-like message should display context-specific info when HUD buttons are pressed
+
+
+SCENE TESTING (ESTABLISH BASELINE SCENE SETTINGS )
+
+  TEST SCENARIOS
+    - speed bump, bumpy road
+    - stationary desk vs. driving
+    - stop light (stopping, take-off, fast take off..)
+    - slow driving (parking lot, speed bumps, bumpy road, turns)
+    - 40-50, highway speed
+    - walking around (not a use case at the moment)
+
+
+SETTINGS:
+  - developer mode "clear all stored settings" button
+  - cancel button to return to previous scene
+
+
+USER AGREEMENT / PRIVACY STATEMENT
+
+
+MAIN MENU
+  - cleanup, more interesting
+  - custom bitmap font
+
+
+HIDE "DEVELOPER MODE"
+  - ideally, scene settings would be hidden (for now) unless "developer mode" = true
+
+
+CREATE A NEW HAWAIIAN-THEMED PROJECT BASED ON EXISTING WOBBLE PROJECT
+  - a "subset" of the wobble project
+  - wobble project is intended as a general purpose dashboard toys "master" dev project
+
+
+---------- ONGOING ----------
+
+RECORD VIDEO
+  - at some point for reference material, practice, and possibly advertising
+  - see VLC POST PROCESSING notes from "Wednesday 2019-10-16"
+
+
+GIMP VIDS (ongoing)
+  - create a gimp instructions document
+
+
+HULA GIRL - SINGLE WELD vs. MULTIPLE WELDS (2-4-6) vs. MULTI-JOINT
+  - test out which is best for the "hula girl" / bobble-head spring
+  - when done testing, DON'T DELETE THESE SCENES; keep for reference just in case

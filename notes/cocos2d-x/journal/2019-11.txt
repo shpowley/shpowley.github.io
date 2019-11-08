@@ -1,48 +1,144 @@
-TODO:
+- PAN/ZOOM implementation (TODO)
+  - persist/restore
+  - reset location
 
-  try black button panels instead
+----------
+Friday 2019-11-08
 
-  active button states (eye, wobble, light, gyro, accelerometer)
-
-  short press - on/off logic
-  long press
-
-  scene-controlled granular button visibility
-    - ie. sometimes certain buttons shouldn't be available
-
-  paint brush - button set + logic, but non-functional beyond that; version 2..
-
-  mass - functional slider
-
-  spring - functional slider
+  STOPWATCH: 4:43
 
 
-  GRAPHICS
+  WOBBLE PROJECT
 
-  FAKE AD BANNERS
-    - see: https://developers.google.com/admob/android/banner
-    - additional logic for dynamic ui
+    - PERSIST DATA PLAN: new struct items created, but needs implementation
 
-    - long-term logic for ads ON/OFF for paid version(?)
-      - developer options > "Show Ads"
 
-    - integrate fake ads with app and scene settings
+    PERSIST DATA PLAN
 
-  HIGHLIGHT ACTIVE BUTTON
-    - needs different color and additional logic
+      (AUTO SAVE/RESTORE + RESTORE DEFAULTS)
+      - pan scene/layer position    =====> scene_settings.scene_position_x
+                                    =====> scene_settings.scene_position_y
+                                    =====> scene_settings.use_scene_persist_position
 
-  hand
+      - zoom scene/layer scale      =====> scene_settings.scene_scale
+                                    =====> scene_settings.use_scene_persist_scale
 
-  question mark
+      (SCENE DEFAULTS, SCENE SETTINGS, SCENE VISIBILITY)
+      - gyro motion filter          =====> scene_settings.use_motion_filter_gyroscope
+      - gyro y-axis                 =====> scene_settings.gyroscope_y_axis_x_motion_control
+                                    =====> scene_settings.gyroscope_y_axis_background_parallax
+      - gyro z-axis (existing)      =====> scene_settings.gyroscope_z_axis_x_motion_control
 
-  - back arrow update texture for "ui-widgets"
+      - use light sensor enable     =====> scene_settings.use_light_sensor
+        - light sensor threshold    =====> scene_settings.light_sensor_threshold
 
-  - IDEAS FROM 2010-10-22
-  
-  - TAKE A LOOK AT "MOMO'S DRESSUP"
-    - quick sliders in/out
-    - background effect
-    - pixel art style
+      (OTHER)
+      - ads
+        (APPLICATION SETTINGS > DEVELOPER OPTIONS)
+        - paid                      =====> application_settings.app_paid_for
+
+        (SCENE SETTINGS > DEVELOPER VISIBILITY)
+        - scene unlocked            =====> scene_settings.scene_unlocked
+
+
+    HUD
+      - hand PAN/ZOOM
+        - this appears to be working more-or-less how I envisioned it
+
+        * NOTE: WHILE THIS DOES WORK, IT SHOULD BE NOTED THAT THIS AFFECTS THE RUBE LAYER AS A WHOLE, NOT THE INDIVIDUAL BOX2D ASSEMBLY
+
+        - MOSTLY COPIED FROM THE RUBE DEMO with adjustments
+          - applied min/max limits to the scaling and panning
+          - allows CONTINOUS TOUCH to pan (based on initial touch-0) and scale when using 2-finger pinch-to-zoom, and back to panning, etc. -- a bit more of a natural feel than the RUBE demo
+
+----------
+Thursday 2019-11-07
+
+  STOPWATCH: 6:34
+
+
+  WOBBLE PROJECT
+
+    HUD
+      - PAN/ZOOM implementation: min/max WIP
+        - zoom min/max works..
+        - pan min/max sorta ok, but re-scaling it breaks it though I think
+
+      - hand button UI logic + related bug fixes
+
+      - PAN/ZOOM implementation
+        - this was removed when re-purposed for my project; I didn't like the combined PAN/PINCH-TO-ZOOM + SINGLE TOUCH BOX2D INTERACTION
+
+        * for my project, I want these modes distinct
+          - pressing the HUD "hand" button
+            - PAN/PINCH-TO-ZOOM (enabled)
+              - single touch PAN
+              - 2-finger PINCH-TO-ZOOM
+
+            - SINGLE TOUCH BOX2D INTERACTION (disabled)
+            - PAN/ZOOM mode visual indicator
+
+          - otherwise, only SINGLE TOUCH BOX2D INTERACTION (enabled)
+
+        - re-implement code from "RUBE Demo project"
+          BasicRUBELayer.cpp > void BasicRUBELayer::onTouchesMoved()
+
+----------
+Wednesday 2019-11-06
+
+  STOPWATCH: 5:42
+
+
+  watched google play ad video
+    - https://developersonair.withgoogle.com/
+    - ideas: in-app sharing, intro special offer
+
+
+  WOBBLE PROJECT
+
+    HUD
+      - paintbrush button and logic related secondary paintbrush buttons
+        - secondary paintbrush buttons graphics created (foreground, background, scene)
+        - THIS IS A DUMMY FEATURE FOR NOW
+
+      - primary highlight moves in response to "active" button state
+
+----------
+Tuesday 2019-11-05
+
+  STOPWATCH: 4:38
+
+
+  WOBBLE PROJECT
+
+    HUD
+      - black background button panels + updated button colors
+
+      - short/long-press detection implementation
+
+        + high resolution timer:
+          https://stackoverflow.com/a/41077420
+          http://www.cplusplus.com/reference/chrono/high_resolution_clock/now/
+          http://www.cplusplus.com/reference/chrono/duration/duration/
+
+        + touch listener
+
+        - 1st test/attempt worked, but didn't quite work as a "long-press"..it was more of a long-press + release; HIGH-RESOLUTION TIMER INFO MIGHT BE USEFUL IN THE FUTURE THOUGH
+
+        - 2nd long-press attempt works as expected; uses a standard cocos2d-x scheduleOnce mechanism
+        - implemented for gear, accelerometer, gyroscope, auto-wobble HUD buttons, opening the corresponding scene settings accordion section
+
+
+      - HUD button gear modified to use touch listener instead of click event handler -- works ok
+        - almost all HUD buttons use touch listener now
+        - reason: primarily for short/long-press detection
+
+      - persist scene data modified to test / persist @ deconstructor or HUD fadeout
+      - implemented active HUD buttons for accelerometer and gyroscope on/off
+
+      NOTE: HUDLayer uses .getInstance() method similar to GameManager etc. to get static instance of the HUDLayer; this seems to work ok so far and makes it much easier to access the HUD layer from the RUBE layer
+
+      ISSUE #1 FIXED: HUD buttons init is happening too early, prior to loading the scene settings, which happens during the RUBELayer constructor. at first this was okay, but now the HUD button states are dependent on the scene settings being valid
 
 ----------
 Monday 2019-11-04
@@ -53,7 +149,7 @@ Monday 2019-11-04
   WOBBLE PROJECT
 
     HUD
-      eye and auto-wobble buttons now display current setting, work on-press and persist
+      eye and auto-wobble buttons now display current setting, works on-press and persist
         - next: light-sensor, gyro, accelerometer
 
       ISSUE FIXED: ui::Widget objects apparently don't propagate touches (I tried several approaches); my fade-in/fade-out code was moved from the RUBELayer to the HUDLayer to make this work
@@ -61,7 +157,7 @@ Monday 2019-11-04
 
       ISSUE FIXED: enable/disable primary buttons on fadein/fadeout to prevent weird button state ..a very narrow time window
 
-      - use ->setTouchEnabled() instead of ->setEnabled() for ui::Button; functionaly it seems the same for my purposes - I think; prevents the icons' color changing to grey when disabled
+      - use ->setTouchEnabled() instead of ->setEnabled() for ui::Button; functionaly it seems the same for my purposes (I think), but prevents the button icons' color changing to grey when disabled
 
 ----------
 Sunday 2019-11-03
