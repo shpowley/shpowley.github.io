@@ -1,5 +1,7 @@
 SCENE SETTINGS (simplified, standard, advanced views)
 
+- "Tuesday 2019-11-12" notes re: multi-toy dashboard; move this action item to another version??
+
 
 - touch primary body should stop auto-wobble
 

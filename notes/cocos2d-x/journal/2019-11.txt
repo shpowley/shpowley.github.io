@@ -1,6 +1,125 @@
-- PAN/ZOOM implementation (TODO)
-  - persist/restore
-  - reset location
+goals
+
+  pan/zoom mode
+    - "toast" like label
+    - slightly differene hud color
+    - hide ads
+
+  help
+    - context tooltip labels
+    - long press to new scene for more in depth help
+
+  mass / spring - sliders
+
+----------
+Wednesday 2019-11-13
+
+  STOPWATCH: 8:39
+
+
+  WOBBLE PROJECT
+
+    ads
+      - change top/bottom ad strip visibility to appear / disappear to be in-sync with secondary button set (slightly less annoying)
+        
+      - add test ad for application/scene settings
+
+
+    "sensor electronics" primary button
+      - icon graphic created
+
+      - "sensor electronics" secondary button strip
+        - light sensor
+        - gyroscope
+        - accelerometer
+
+      - multi-gear button changed to only trigger one secondary button strip
+        - eye, auto-wobble, mass, spring, rotate
+
+
+    context-relevant labels
+      - begin creating "tooltip" labels for use with tooltip help and actions
+
+----------
+Tuesday 2019-11-12
+
+  STOPWATCH: 1:47
+
+
+  WOBBLE PROJECT
+
+    "DASHBOARD" CONCEPT WITH MULTIPLE BOBBLE TOYS
+      - THOUGHTS ABOUT SCALING RUBE/BOX2D ASSEMBLIES
+
+      - I'm not sure if I got this idea driving around or from the "unnie doll" app (or both)
+      - right now my app was designed for only one RUBE .json dashboard toy, similar to the RUBE demo
+
+      - MULTIPLE dashboard toys, like a desk/dashboard in real life would require importing more than one RUBE file and adding customizations defined by the user within the app
+
+      - I think I would like something similar to the "unnie doll" approach, with some modifications
+        - customized dashboard toys from a "base RUBE template" dashboard toy, which can then be placed on a scene or desktop/dashboard
+
+        - multiple customized dashboard toys can be placed on the dashboard and moved
+
+        - "UNNIE DOLL" TAKES THE APPROACH OF NOT ALLOWING ANY CUSTOMIZED "DOLLS" TO BE RESIZED, they can only be moved, and the z-order can be changed using a "last touched" approach for the top layer z-order
+
+        - I could go with the "unnie doll" approach, or somehow resize the dashboard toys to create a simulated 3D "vanishing point" perspective, which would be much more cool, but also more difficult to implement
+          - upon reflection, I think these options would be good: vanishing point perspective (toy resize) vs. flat "sticker" panel
+
+        *** EXPERIMENTING IN THE RUBE EDITOR AND RESIZING THE MULTI-JOING HULA DOLL
+          
+          - RE-SIZING THE MULTI-JOING HULA DOLL IN THE RUBE EDITOR APPEARS TO KEEP THE PHYSICAL MOTION RESPONSE NEARLY IDENTICAL
+            - the prismatic joint's upper lower/limit didn't scale properly, but a manual calculation fixed it
+          
+          - re-sizing in my app would have to be done programmatically -- I THINK IT'S TECHNICALLY FEASIBLE
+          - I'M NOT SURE HOW THIS WOULD BE BEST IMPLEMENTED IN THE UI THOUGH
+
+          NOTES:
+          - all dashboard toys would ideally exist in the same b2World (and c++ RUBELayer) to take advantange of the update algorithm / physical wobble effects
+          - I had considered a multi-RUBE layer stack, but I think one RUBELayer would be more ideal
+          - the existing c++ RUBELayer would need modifications to be able to handle multiple custom RUBE assemblies (add/remove/clear/move/resize/persist)
+
+            ** FROM THE RUBE EDITOR EXPERIMENT: **
+            - resizing affects size and relative positions for images, body, fixture, joints, etc.; anchor positions also fall within this category -- anything having to do with sizing
+              - relative image heights were used for scaling %
+
+            - fixtures maintain density
+            - joints maintain frequency, damping, etc.
+
+          - also, multiple dashboard toy assemblies shouldn't be able to collide at different z-axis "distance zones", collision should be possible for those at nearly the same x-axis (I'm not sure if this makes sense, but basically objects in front shouldn't interfere physically with objects in the back)
+
+----------
+Monday 2019-11-11
+
+  STOPWATCH: 2:39
+
+
+  WOBBLE PROJECT
+
+    - persist data keys added for additional new settings
+      + new option for intermittent auto-wobble
+      - save / restore functions updated
+
+    - application settings
+      - moved "Sensor Test" button to the developer options tab
+      - modified "Restore Default" to "Application Reset"
+        - this now resets the application defaults and purges all persisted data
+      * NOKIA 6.1 WRITEABLE PATH: /data/data/com.rube.master/files
+        - found using android studio device explorer
+
+----------
+Saturday 2019-11-09
+
+  STOPWATCH: 2:42
+
+
+  WOBBLE PROJECT
+
+    - fixed issue with back button accidentally being disabled
+
+    PAN/ZOOM implementation
+      - persist/restore
+      - reset location
 
 ----------
 Friday 2019-11-08
