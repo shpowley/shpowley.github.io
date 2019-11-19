@@ -1,15 +1,126 @@
-goals
+HUD mass / frequency sliders
+  - needs slider AND +/- update logic
+  - needs persist
+  - needs combined slider
+  - needs slider animation
 
-  pan/zoom mode
-    - "toast" like label
-    - slightly differene hud color
-    - hide ads
+spring button click, disable/enable ALL other buttons for animation sequence
 
-  help
-    - context tooltip labels
-    - long press to new scene for more in depth help
+persist data flag for app/scene settings similar to HUD persist
 
-  mass / spring - sliders
+slider images
+  - can't be used from texture, so...
+  - remove "slider-done.png" and "slider-disabled.png" from sprite texture
+  - also remove GameManager::IMAGE_SLIDER_PROGRESS, GameManager::IMAGE_SLIDER_PROGRESS_DISABLED
+
+*** multi-toy dashboard update function BRAINSTORMING.. ***
+  - each toy need to have it's own distinct motion response
+  - current b2Body storage mechanism has ALL b2Body objects, but there should be a way to partition/identify each body and which toy it belongs to with an additional field in the storage container AND/OR have a linked list of b2Body objects in specific toys...
+  - with the intention of being able to more easily apply toy-specific physics (ie. gyro y/n, linear or standard acceleration, auto-wobble, motion-filter, etc.)
+
+language translation lookup and replace
+  - english or alternate language
+  - tools: https://www.johnwordsworth.com/projects/plist-pad/
+  - c++ set + struct: search "_image_info_library" in code
+  - use "static constexpr const char*" for actual text instead of hard-coding OR struct containing char* + key
+
+developer options
+  - separate options for top ad and bottom ad - ON/OFF
+
+new scenes code seperation
+  - method for separating scene-specific references from code as include files, etc.
+  - the intention of being able to add/remove new scenes easily
+
+HUD spring button
+  - consolidate functionality (2 modes):
+    1 - DEVELOPER MODE spring frequency AND mass slider (developer mode - ON/OFF)
+    2 - USER MODE simplified slider (steps 0 - 10, combined frequency / mass)
+
+----------
+Monday 2019-11-18
+
+  STOPWATCH: 7:05
+
+
+  WOBBLE PROJECT
+
+    BUG FIX: application settings "developer options" crashing when OFF and pressing header
+
+    - adding sliders; debating whether to use ui::text or sliders..
+      - not exactly sure the difference and why I chose ui::text for settings
+      * I think for the HUD panel containing sliders, etc., it should slide up/down for consistency with sliding left/right button sets
+
+    GOAL - make the HUD ui simple/quick without being too distracting from app itself
+
+    - HUD mass / frequency sliders
+      - init complete
+      - some changes reflected back to SettingsLayer.h/.cpp
+
+----------
+Saturday 2019-11-16
+
+  STOPWATCH: 5:28
+
+
+  WOBBLE PROJECT
+
+    language translations
+      - assuming this is marketable, planning a language translation scheme
+      - see GameManager.h search commented "STRUCT_TRANSLATION_CODEX" section
+
+    button "spring" motion response ("quick settings" secondary buttons set)
+      - logic for the highlight effect on this button and also a basic "container panel" for the slider(s)
+
+----------
+Friday 2019-11-15
+
+  STOPWATCH: 3:15
+
+
+  WOBBLE PROJECT
+
+    toast labels
+      - implemented for specific secondary buttons
+      - toast label unused for certain buttons that perform a visible action or create additional UI
+      - quick-fade logic for ON/OFF secondary hud buttons; it works, but logic seems convoluted(?) -- ok for now
+
+    HUD ads show/hide/fade out logic cleanup
+      - hide ads in pan/zoom mode
+
+    HUD spring button
+      - eliminate "mass" hud button altogether
+
+    clean up graphics
+      - remove question mark, mass icon
+
+----------
+Thursday 2019-11-14
+
+  STOPWATCH: 7:00
+
+
+  WOBBLE PROJECT
+
+    - hud buttons visibility bug fix
+
+    hud labels class (HUDLabel .h/.cpp)
+      - this will be made into it's own class
+      - designed for HUD text labels + background panel
+
+      - used by the HUD-RUBE layer
+        - in the future, dashboard-mode and toy-edit-mode will both most likely be composed of the HUD/RUBE
+
+      - 3 types of labels: toast, right tooltips, left tooltips
+      - pre-allocate labels, show/hide, fade out, etc.
+
+      X change of plans after partial implementation
+        - rename this to ToastLabel .h/.cpp
+        - support only an android "toast" like message
+        - usable by any scene
+        - remove the question mark help altogether
+        - for the HUD, the "toast" will appear with just about any button push
+
+        * COMPLETED FOR PRIMARY HUD BUTTONS
 
 ----------
 Wednesday 2019-11-13
