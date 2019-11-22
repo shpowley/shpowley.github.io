@@ -1,40 +1,66 @@
-HUD mass / frequency sliders
-  - needs slider AND +/- update logic
-  - needs persist
-  - needs combined slider
-  - needs slider animation
+SCENE DEFAULTS FOR "SIMPLIFIED" HUD SLIDER ON/OFF
+  - ON: use scene default slider preset
+    - what about scene settings for mass/frequency slider?
+      disable control sliders 
+      OR turn developer preset option OFF
 
-spring button click, disable/enable ALL other buttons for animation sequence
+  - OFF: use scene defaults mass/frequency
 
-persist data flag for app/scene settings similar to HUD persist
+----------
+Friday 2019-11-22
 
-slider images
-  - can't be used from texture, so...
-  - remove "slider-done.png" and "slider-disabled.png" from sprite texture
-  - also remove GameManager::IMAGE_SLIDER_PROGRESS, GameManager::IMAGE_SLIDER_PROGRESS_DISABLED
+  STOPWATCH: 4:27
 
-*** multi-toy dashboard update function BRAINSTORMING.. ***
-  - each toy need to have it's own distinct motion response
-  - current b2Body storage mechanism has ALL b2Body objects, but there should be a way to partition/identify each body and which toy it belongs to with an additional field in the storage container AND/OR have a linked list of b2Body objects in specific toys...
-  - with the intention of being able to more easily apply toy-specific physics (ie. gyro y/n, linear or standard acceleration, auto-wobble, motion-filter, etc.)
 
-language translation lookup and replace
-  - english or alternate language
-  - tools: https://www.johnwordsworth.com/projects/plist-pad/
-  - c++ set + struct: search "_image_info_library" in code
-  - use "static constexpr const char*" for actual text instead of hard-coding OR struct containing char* + key
+  WOBBLE PROJECT
 
-developer options
-  - separate options for top ad and bottom ad - ON/OFF
+    HUD sliders
 
-new scenes code seperation
-  - method for separating scene-specific references from code as include files, etc.
-  - the intention of being able to add/remove new scenes easily
+      "simplified" HUD slider
+        - added "preset_value_simple_slider" (scene settings)
+        - added "KEY_PRESET_VALUE_SIMPLE_SLIDER" (data persistence) + scene persistence logic
+        - logic implementation
 
-HUD spring button
-  - consolidate functionality (2 modes):
-    1 - DEVELOPER MODE spring frequency AND mass slider (developer mode - ON/OFF)
-    2 - USER MODE simplified slider (steps 0 - 10, combined frequency / mass)
+      +/- granular buttons
+
+----------
+Thursday 2019-11-21
+
+  STOPWATCH: 5:25
+
+
+  WOBBLE PROJECT
+
+    HUD spring button
+      - consolidate functionality (2 modes):
+        1 - DEVELOPER MODE spring frequency AND mass slider (developer mode - ON/OFF)
+        2 - USER MODE simplified slider (steps 0 - 10, combined frequency / mass)
+
+      "simplified" HUD slider
+        - intended for the actual user to adjust the motion response in real-time, while the bobble toy is visible
+        - I have SO many settings, that even for me are hard to keep track of.. SO this simplified slider will have 11 presets positions (0..10) that gradually change the motion response in discrete steps
+          - most settings will be hidden from the user or buried
+
+        - developer mode has the option of turning this ON/OFF
+          - when OFF, I can adjust mass/frequency sliders in real-time, basically to help determine the presets I want to use
+
+        - I need to store the preset as a scene setting variable, that is persisted
+          - depending on the developer mode ON/OFF setting for the simplified HUD slider, it will use either the scene setting preset variable or the scene settings mass/frequency
+
+    TODO SUMMARY
+      - HUD sliders, granular buttons, panel graphic..
+      - support for new application and scene settings
+
+----------
+Wednesday 2019-11-20
+
+  STOPWATCH: 6:05
+
+
+  WOBBLE PROJECT
+
+    HUD sliders
+      - mass / frequency sliders appear to be working for all scenes
 
 ----------
 Monday 2019-11-18
@@ -52,7 +78,7 @@ Monday 2019-11-18
 
     GOAL - make the HUD ui simple/quick without being too distracting from app itself
 
-    - HUD mass / frequency sliders
+    HUD mass / frequency sliders
       - init complete
       - some changes reflected back to SettingsLayer.h/.cpp
 

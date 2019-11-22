@@ -1,3 +1,19 @@
+PAINT BRUSH - BUTTON SET
+  - foreground primary image (human)
+    - hair, face, body poses, accessories, lei, skirt...
+
+  - backgrounds (simple mountains + sun)
+    - some pre-defined images
+    - user specified media
+    - gyro-controlled 360/panorama?
+
+  - scene items (twinkles?)
+    - effects
+    - text
+    - speech bubbles..
+    - stationary image items
+
+
 pan / pinch-to-zoom "mode"
   - make sure all RUBE scenes are positioned @ 0,0 and add content_size
   - need scene settings for zoom, offset
@@ -5,11 +21,14 @@ pan / pinch-to-zoom "mode"
   - pan / zoom : see RUBEDemo project - BasicRUBELayer::onTouchesMoved
     - need icons + supporting flags
 
+
 (i) info pop-up overlay
   - maybe a new layer in it's own file, for settings screens and hud settings
 
+
 sensor calibration
   - on application settings, a button when pressed asks user to place phone on a flat surface to establish baseline threshold values
+
 
 scene rotation for portrait / landscape
   - lock/unlock
@@ -18,10 +37,6 @@ scene rotation for portrait / landscape
   - see CCNode.h/.cpp - setRotation()
     - need a standalone test scene with a simple physics object
 
-- scene backgrounds:
-  - some pre-defined images
-  - user specified media
-  - gyro-controlled 360/panorama?
 
 - cross-promotion of my own stuff
 

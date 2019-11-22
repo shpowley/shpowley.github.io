@@ -1,6 +1,26 @@
 SCENE SETTINGS (simplified, standard, advanced views)
 
-- "Tuesday 2019-11-12" notes re: multi-toy dashboard; move this action item to another version??
+
+JERK PHYSICS
+  - better speed bumps, etc.
+  - detection + implementation ???
+  - boolean ON/OFF if implemented
+
+
+LANGUAGE TRANSLATION LOOKUP AND REPLACE
+  - english or alternate language
+  - tools: https://www.johnwordsworth.com/projects/plist-pad/
+  - c++ set + struct: search "_image_info_library" in code
+  - use "static constexpr const char*" for actual text instead of hard-coding OR struct containing char* + key
+
+
+*** MULTI-TOY DASHBOARD UPDATE FUNCTION BRAINSTORMING.. ***
+  - move this action item to future version??
+  - "Tuesday 2019-11-12" notes re: multi-toy dashboard
+  - RUBE forums: https://www.iforce2d.net/forums/viewtopic.php?f=6&t=390&sid=a5a68f074a5a72229a98f6192ac3805e
+  - each toy need to have it's own distinct motion response
+  - current b2Body storage mechanism has ALL b2Body objects, but there should be a way to partition/identify each body and which toy it belongs to with an additional field in the storage container AND/OR have a linked list of b2Body objects in specific toys...
+  - with the intention of being able to more easily apply toy-specific physics (ie. gyro y/n, linear or standard acceleration, auto-wobble, motion-filter, etc.)
 
 
 - touch primary body should stop auto-wobble

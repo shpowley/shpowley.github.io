@@ -1,4 +1,32 @@
-MISC
+APP/SCENE SETTINGS
+  application
+    developer_mode ...what to do?
+    show_images TODO
+
+    HUD_simple_slider
+    app_paid_for
+    enable_advertising
+    scene_top_ad
+    scene_bottom_ad
+
+  scene
+    use_light_sensor
+    use_motion_filter_gyroscope
+    use_gyroscope_y_axis
+    use_gyroscope_z_axis
+    gyroscope_y_axis_background_parallax
+    use_motion_filter_accelerometer (move to accelerometer section)
+    scene_unlocked
+    intermittent_auto_wobble
+    show_text_images (this needs to go away)
+    light_sensor_threshold
+    angular_velocity_threshold - maybe rename this to more meaningful "angular_velocity_limit"
+
+
+  - ui controls for all new settings + logic (this might take a while)
+  - persist data flag for app/scene settings similar to HUD persist
+
+  advertising
 
   separate motion filter for gyro and accelerometer (check if already on todo)
 
@@ -7,71 +35,50 @@ MISC
   light sensor implementation
     - needs: scene setting struct, scene settings, persist logic, RUBE update motion control logic, HUD button on/off
 
-  scene-controlled granular button visibility
-    - ie. sometimes certain buttons shouldn't be available
+  - toast messages for reset/restore defaults
 
-  paint brush - button set + logic, but non-functional beyond that; version 2..
-    - foreground primary image (human)
-      - hair, face, body poses, accessories, lei, skirt...
-    - backgrounds (simple mountains + sun)
-    - scene items (twinkles?)
-      - effects
-      - text
-      - speech bubbles..
-      - stationary image items
-
-  mass - functional slider
-
-  spring - functional slider
+  developer mode
+    - separate options for top ad and bottom ad - ON/OFF
 
 
-  GRAPHICS
+HUD sliders
+  - experiment to determine a good range of usable presets
+    - app setting to control simple slider ON/OFF needs to be complete
 
-  FAKE AD BANNERS
-    - see: https://developers.google.com/admob/android/banner
-    - additional logic for dynamic ui
+  - panel graphic: shape/opacity/look/feel, animations
 
-    - long-term logic for ads ON/OFF for paid version(?)
-      - developer options > "Show Ads"
 
-    - integrate fake ads with app and scene settings
+SPRING BUTTON CLICK - disable/enable ALL other buttons for animation sequence
 
-  HIGHLIGHT ACTIVE BUTTON
-    - needs different color and additional logic
 
-  hand HUD button implementation
+SLIDER IMAGES
+  - can't be used from texture, so...
+  - remove "slider-done.png" and "slider-disabled.png" from sprite texture
+  - also remove GameManager::IMAGE_SLIDER_PROGRESS, GameManager::IMAGE_SLIDER_PROGRESS_DISABLED
 
-  question mark HUD button implementation
 
-  - back arrow update texture for "ui-widgets"
+SCAN THROUGH CODE, VERIFY ALL POINTERS ARE DELETED
+  - search for "new" keyword
 
-  - IDEAS FROM 2010-10-22
+
+SCENE-CONTROLLED GRANULAR BUTTON VISIBILITY (?)
+  - sometimes certain buttons shouldn't be available (ie. light sensor "solar powered" auto-wobble)
+
+
+CLEANED UP GRAPHICS + CUSTOM
+  - new graphic for pinch-zoom/pan HUD hand
+    - keep the existing graphic in the SVG for another use.. (jojo's hand? or something else)
+
+
+AD BANNERS
+  - fake test ad banners (see: https://developers.google.com/admob/android/banner)
+  - additional logic for dynamic ui
+  - integrate fake ads with app and scene settings
   
-  - TAKE A LOOK AT "MOMO'S DRESSUP"
-    - quick sliders in/out
-    - background effect
-    - pixel art style
-
-  - android "toast"-like message should display context-specific info when HUD buttons are pressed
-
-
-SCENE TESTING (ESTABLISH BASELINE SCENE SETTINGS )
-
-  TEST SCENARIOS
-    - speed bump, bumpy road
-    - stationary desk vs. driving
-    - stop light (stopping, take-off, fast take off..)
-    - slow driving (parking lot, speed bumps, bumpy road, turns)
-    - 40-50, highway speed
-    - walking around (not a use case at the moment)
-
-
-SETTINGS:
-  - developer mode "clear all stored settings" button
-  - cancel button to return to previous scene
-
-
-USER AGREEMENT / PRIVACY STATEMENT
+  
+IDEAS FROM "MOMO'S DRESSUP"
+  - default background effects
+  - pixel art style
 
 
 MAIN MENU
@@ -79,14 +86,30 @@ MAIN MENU
   - custom bitmap font
 
 
-HIDE "DEVELOPER MODE"
-  - ideally, scene settings would be hidden (for now) unless "developer mode" = true
+DEVELOPER MODE
+  - separate scene settings (simple, advanced, developer mode)
+
+
+NEW SCENES CODE SEPARATION
+  - method for separating scene-specific references from code as include files, etc.
+  - the intention of being able to add/remove new scenes easily
 
 
 CREATE A NEW HAWAIIAN-THEMED PROJECT BASED ON EXISTING WOBBLE PROJECT
   - a "subset" of the wobble project
   - wobble project is intended as a general purpose dashboard toys "master" dev project
 
+
+USER AGREEMENT / PRIVACY STATEMENT
+
+
+SCENE TEST SCENARIOS
+  - speed bump, bumpy road
+  - stationary desk vs. driving
+  - stop light (stopping, take-off, fast take off..)
+  - slow driving (parking lot, speed bumps, bumpy road, turns)
+  - 40-50, highway speed
+  - walking around (not a use case at the moment)
 
 ---------- ONGOING ----------
 
