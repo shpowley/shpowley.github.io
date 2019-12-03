@@ -1,10 +1,103 @@
-SCENE DEFAULTS FOR "SIMPLIFIED" HUD SLIDER ON/OFF
-  - ON: use scene default slider preset
-    - what about scene settings for mass/frequency slider?
-      disable control sliders 
-      OR turn developer preset option OFF
+Saturday 2019-11-30
 
-  - OFF: use scene defaults mass/frequency
+  STOPWATCH: 3:13
+
+
+  WOBBLE PROJECT
+
+    simple slider
+      - tweak data point for each scene; see function initHUDSliderData() of each scene
+
+      faster <====> slower??
+
+      - not 100%, hang loose scene might have an issue with not being balanced weight around revolute point
+
+
+      BUGS:
+
+        +/- buttons fail to reset fadeout timer, slider works though -- FIXED
+
+        - auto-wobble > torque 0.7 jumps down to 0.5 with "-" button push -- FIXED
+          - similar to bobble mass 0.70 down to 0.68
+          - similar to "+" button also..
+          - only with initial value
+          FIX - used std::lround() (nearbyint() and lrint() the same?)
+
+
+      NOTE:
+        - torque induced should perhaps be added to simple slider data and developer mode sliders
+
+
+      hang loose scene
+        - angular damping needs to be ~0.1
+        - auto wobble force 0.7
+
+----------
+Monday 2019-11-25
+
+  STOPWATCH: 3:51
+
+
+  WOBBLE PROJECT
+
+    HUD icon images
+      - slightly larger (125%) - this is better; a bit large maybe, but much easier to identify icon details
+      - still playing with color scheme though
+
+----------
+Sunday 2019-11-24
+
+  STOPWATCH: 7:30
+
+
+  WOBBLE PROJECT
+
+    images
+      - background panel removed (this needs to be put back, but with a different graphic)
+      - outlines created for graphic buttons
+      - removed "slider-done.png" and "slider-disabled.png" from sprite texture
+        - also remove GameManager::IMAGE_SLIDER_PROGRESS, GameManager::IMAGE_SLIDER_PROGRESS_DISABLED
+
+      GOAL: create up to 5 buttons per column for primary/secondary button sets so that it can possibly be re-used in landscape orientation
+
+    BUG FIX
+      - slider presets for frequency stored "slider positions" and had to be converted to angular frequencies
+      - only noticeable at higher frequencies
+
+    motion filter
+      - previously the "motion filter" was applied to both the gyroscope and accelerometer; either ON/OFF for both sensors. I noticed that with the "hang loose" scene, with just the gyroscope enabled, the motion was much more true to life without the "motion filter" enabled
+      - motion filter definition redefined into separate gyro and accelerometer versions, with the gyro defaulted to OFF
+
+----------
+Saturday 2019-11-23
+
+  STOPWATCH: 2:21
+
+
+  WOBBLE PROJECT
+
+    developer mode
+
+      - checkbox removed from application settings
+      - main menu item added to turn developer mode ON/OFF (temporary until a better solution)
+
+    HUD sliders
+
+      "simplified" HUD slider
+        - application settings developer mode checkbox to enable/disable
+
+        RUBE file defaults
+
+          SCENE                   MASS    FREQUENCY
+          hang loose              0.48    1.2
+          hula (single weld)      0.30    3.9
+          hula (4-weld spring)    0.30    7.5
+          hula (multi-joint)      0.30    4.1
+          hello kitty hula        0.30    2.6
+          beach sandals           0.80    2.2
+
+          - these are the defaults read from the RUBE .json / box2d objects
+          * NOTE: REMEMBER to update the appropriate initHUDSliderData() file simple slider presets whenever the RUBE file is modified
 
 ----------
 Friday 2019-11-22

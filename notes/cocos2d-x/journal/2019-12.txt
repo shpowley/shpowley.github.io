@@ -1,0 +1,126 @@
+SIMPLE SLIDER
+  - complex slider might not be necessary.. another scene with hula-style might better determine this
+  
+
+BUGS
+  - hud slider panel allows touching rubelayer toys through the panel..
+    - this keeps the fadeout timers working correctly, but it should prevent actually touching the rube objects
+
+
+MINOR ISSUES
+  - gyroscope/accelerometer ON/OFF issue?
+    - stats freeze, gyroscope/accelerometer sections should appear/disappear I think
+
+
+scene settings
+  use_gyroscope_y_axis
+  use_gyroscope_z_axis
+
+
+SCENE DEFAULTS FOR "SIMPLIFIED" HUD SLIDER ON/OFF
+  * ON: use scene default slider preset
+    - WHAT ABOUT SCENE SETTINGS FOR MASS/FREQUENCY SLIDER?
+      user mode
+        - should be hidden
+
+      developer mode
+        disable control sliders 
+        OR override developer preset values..
+
+  - OFF: use scene defaults mass/frequency
+
+----------
+Tuesday 2019-12-03
+
+  STOPWATCH: 
+
+
+  WOBBLE PROJECT
+
+----------
+Monday 2019-12-02
+
+  STOPWATCH: 7:31
+
+
+  WOBBLE PROJECT
+
+    developer mode options
+      - many options only enabled when developer mode ON
+
+    developer mode "statistics"
+      - slider stats
+
+      - restricting statistics to only one at a time, basically a radio, but not implemented as a radio
+        a) visible only using developer mode
+        b) worried about space constraints
+
+    restrict scene settings to developer mode only
+      - scene settings
+        - remove ad place holder completely as this will only be developer mode
+
+      - hud layer
+        - restrict to "developer mode"-only for long-press hud layer buttons
+        - spring (developer mode) long-press now opens scene settings spring section
+        * light bulb (light sensor) implementation still required for both long/short-press
+
+    simple slider ("hang loose" scene)
+      - implementation complete, but still needs tweaking
+      - fixed issue with "restore defaults", several scene settings weren't being restored
+        * "scene_unlocked" parameter needs to be separated out to persist/restore from it's own file
+
+----------
+Sunday 2019-12-01
+
+  STOPWATCH: 6:30
+
+
+  NOVEMBER STATS:
+
+    days (month):   22/30 days      => 73.3%
+    hours (month):  103:41
+    
+    days (total):   230/433 based   => 53.1%
+    hours (total):  261:32
+
+
+  COMPUTER BACKUP
+
+
+  WOBBLE PROJECT
+    - adjust hud slider heights to fit a large and simple sliders
+
+    * GameManager::GameManager() for scene defaults
+
+    experimenting with "hang loose" scene for the simple slider min/max ranges
+      - based on experimentation, the simple slider seed data needs to be expanded
+
+        1 bobble_mass
+        2 weld_frequency
+        3 weld_damping (NEW)
+        4 gyroscope_scaling (NEW)
+        5 accelerometer_scaling (NEW)
+        6 velocity_constraint (NEW)
+        7 auto_wobble_torque (NEW)
+
+      - GOOGLE DRIVE SPREADSHEET created to determine in-between steps using min/max/middle presets
+
+      hang loose scene - min/max/middle presets
+
+        middle presets
+          - gyroscope scaling 0.5 --- gyroscope angular velocity limit?
+          - accelerometer scaling 0.3
+          - weld damping 0.01
+          - angle upper 210 lower -30
+          - constrain angular velocity 6.5
+
+        slow
+          - accelerometer scaling 0.1
+          - weld frequency 0.4
+          - weld damping 0.10
+
+        fast
+          - gyroscope scaling 2.0
+          - weld frequency 2.0
+          - constrain angular velocity 20.0
+          - auto-wobble torque 2.0

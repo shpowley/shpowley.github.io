@@ -19,8 +19,8 @@ Monday 2019-04-22
 
     - backup strategy:
       - delete temporary files (clear space)
-      - file history (files)
-      - system restore
+      - file history (files) (2019-12-01 STILL VALID)
+      - system restore (2019-12-01 "CONFIGURE" EACH DRIVE TO REMOVE)
       - macrium reflect (drive/partition backup)
 
 ----------

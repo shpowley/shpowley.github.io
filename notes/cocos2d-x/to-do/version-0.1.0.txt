@@ -1,25 +1,23 @@
 APP/SCENE SETTINGS
   application
-    developer_mode ...what to do?
     show_images TODO
 
-    HUD_simple_slider
     app_paid_for
     enable_advertising
     scene_top_ad
     scene_bottom_ad
 
   scene
-    use_light_sensor
-    use_motion_filter_gyroscope
     use_gyroscope_y_axis
     use_gyroscope_z_axis
     gyroscope_y_axis_background_parallax
-    use_motion_filter_accelerometer (move to accelerometer section)
+
+    use_light_sensor
+    light_sensor_threshold
+
     scene_unlocked
     intermittent_auto_wobble
     show_text_images (this needs to go away)
-    light_sensor_threshold
     angular_velocity_threshold - maybe rename this to more meaningful "angular_velocity_limit"
 
 
@@ -27,8 +25,6 @@ APP/SCENE SETTINGS
   - persist data flag for app/scene settings similar to HUD persist
 
   advertising
-
-  separate motion filter for gyro and accelerometer (check if already on todo)
 
   gyro y-axis motion control
 
@@ -48,20 +44,21 @@ HUD sliders
   - panel graphic: shape/opacity/look/feel, animations
 
 
+"scene_unlocked" parameter needs to be separated out to persist/restore from it's own file
+  - developer mode option to easily test implementation without actual ads
+
+
+light bulb (light sensor) implementation required for both long/short-press
+
+
 SPRING BUTTON CLICK - disable/enable ALL other buttons for animation sequence
-
-
-SLIDER IMAGES
-  - can't be used from texture, so...
-  - remove "slider-done.png" and "slider-disabled.png" from sprite texture
-  - also remove GameManager::IMAGE_SLIDER_PROGRESS, GameManager::IMAGE_SLIDER_PROGRESS_DISABLED
 
 
 SCAN THROUGH CODE, VERIFY ALL POINTERS ARE DELETED
   - search for "new" keyword
 
 
-SCENE-CONTROLLED GRANULAR BUTTON VISIBILITY (?)
+SCENE-CONTROLLED GRANULAR BUTTON VISIBILITY (NOT 100% ABOUT THIS?)
   - sometimes certain buttons shouldn't be available (ie. light sensor "solar powered" auto-wobble)
 
 
@@ -110,6 +107,9 @@ SCENE TEST SCENARIOS
   - slow driving (parking lot, speed bumps, bumpy road, turns)
   - 40-50, highway speed
   - walking around (not a use case at the moment)
+
+
+developer_mode - hidden / konami code
 
 ---------- ONGOING ----------
 
