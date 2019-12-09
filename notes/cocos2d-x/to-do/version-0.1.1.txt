@@ -23,15 +23,8 @@ LANGUAGE TRANSLATION LOOKUP AND REPLACE
   - with the intention of being able to more easily apply toy-specific physics (ie. gyro y/n, linear or standard acceleration, auto-wobble, motion-filter, etc.)
 
 
-- touch primary body should stop auto-wobble
-
-
 - turtles scene: re-implement physics; swim animation, relatively fixed x/y, able to rotate; imagine this being similar to an actual desktop toy
   - options: large 1-2 and/or small 1-5
-
-
-- intermittent auto-wobble
-  @ HangLooseLayer::autoWobble()
 
 
 - sandals
@@ -50,10 +43,6 @@ LANGUAGE TRANSLATION LOOKUP AND REPLACE
 
 
 - customized graphics
-
-
-- auto-wobble: disable wobble check on physics body in question when user touches it
-  - for numerous bodies in the same scene, only the body being touched should not auto-wobble
 
 
 1.1+
@@ -115,26 +104,14 @@ BUSINESS-RELATED
     3 - auto reloads with dev options
 
 
-- AUTO-WOBBLE
-  - AT IDLE ONLY, ALWAYS (ignore sensors)
-
-
 - main menu: animated background
 
-
-- create a RUBE file with different types of joints and experiment with settings
-  - every type of basic joint with labels describing what's what in the RUBE scene
-  - composite joints with description labels
-  - note my existing experiments
-  - experiment in box2d testbed OR in app..
 
 
 USER CONTROLLED TOUCH-BASED MOTION
   + box2d body induced wobble using a "FINGER TAP"
   + box2d induced world acceleration using a "FINGER SWIPE"
   + multi-touch? multiple mouse joints?
-  - max length mouse joint OR tweak the mouse joint to break once the position is outside the body
-  ? a SETTING OPTION of some sort (or maybe the collision filter) on box2d bodies to control if the body is controlled by touch input
 
 
 NEW SCENES

@@ -1,5 +1,23 @@
-SIMPLE SLIDER
-  - complex slider might not be necessary.. another scene with hula-style might better determine this
+BASELINE RANGES FOR EACH SCENE HUD SIMPLE SLIDER
+
+
+HUD BUTTON ICONS
+  - outline white (outer) + black (inner) + image
+
+
+INTERMITTENT AUTO-WOBBLE
+  - be sure to make note of the fact auto-wobble is "AT IDLE"
+  - scene settings: intermittent_auto_wobble (controls intermittent vs. continuous)
+
+  - wobble time-on / time-off + min/max for each
+    - each iteration cycle should pick a random amount of time between each min/max range
+
+    - new scene settings variables:
+      idle_auto_wobble_ON_min, idle_auto_wobble_ON_max (0.5s - 5.0s)
+      idle_auto_wobble_OFF_min, idle_auto_wobble_OFF_max (0.5s - 5.0s)
+
+
+TOUCH DISABLES AUTO-WOBBLE
   
 
 BUGS
@@ -16,26 +34,121 @@ scene settings
   use_gyroscope_y_axis
   use_gyroscope_z_axis
 
-
-SCENE DEFAULTS FOR "SIMPLIFIED" HUD SLIDER ON/OFF
-  * ON: use scene default slider preset
-    - WHAT ABOUT SCENE SETTINGS FOR MASS/FREQUENCY SLIDER?
-      user mode
-        - should be hidden
-
-      developer mode
-        disable control sliders 
-        OR override developer preset values..
-
-  - OFF: use scene defaults mass/frequency
-
 ----------
-Tuesday 2019-12-03
+Sunday 2019-12-08
 
-  STOPWATCH: 
+  STOPWATCH: 8:03
 
 
   WOBBLE PROJECT
+
+    * altered each scenes ::initHUDSliderData() function to call a common HUDLayer::initHelperHUDSliderData() function
+      - this helps to simplify slider preset creation by only having to create the min/max slider presets
+      - HUDLayer::initHelperHUDSliderData() takes the min/max presets and creates the in-between presets
+      - my spreadsheet calculating the in-between presets and having to manually copy the values is no longer necessary
+
+
+    MIN/MAX PRESETS EXPERIMENT (continue chart from Wednesday 2019-12-04)
+
+      SCENES COMPLETE (min/max):
+        hang loose, hula girl, hula girl "spring", hula girl multi-joint, hello kitty, beach sandals
+
+    - MIN/MAX scene PRESETS finally complete, but SOME ADJUSTMENTS STILL NEEDED FOR AUTO-WOBBLE FORCE
+      - in particular, auto-wobble force in the middle preset is often too strong
+        - adjust auto-wobble force for middle preset (5) to a reasonable value and calculate the preset step necessary ..adjust the MIN/MAX preset auto-wobble force (most likely the MAX)
+      - hopefully the auto-wobble force is the only value that needs adjustment
+
+    * sandals scene still needs independent feet if possible
+      - at MIN scene preset, one foot doesn't move with gravity (slightly related issue)
+
+
+----------
+Thursday 2019-12-05
+
+  STOPWATCH: 5:08
+
+
+  WOBBLE PROJECT
+
+    MIN/MAX/MIDDLE PRESETS EXPERIMENT (continued)
+      - finish chart below
+
+      MIN/MAX PHYSICS MOTION TUNING PROCEDURE
+
+        STEP 1 - reset to defaults
+        STEP 2 - disable velocity constraint
+        STEP 3 - turn off auto-wobble, gyro, accelerometer
+        STEP 4 - tune motion response based on touch/mouse joint
+        STEP 5 - tune gyro and accelerometer separately
+        STEP 6 - tune auto-wobble separately
+        STEP 7 - enable velocity constraint and repeat STEPS 3 - 6
+        STEP 8 - enable all options
+
+      SCENES COMPLETE (min/max/middle): hula girl
+
+
+      * DECIDED TO GO WITH A DIFFERENT APPROACH of just determining MIN/MAX motion values only
+        - from the MIN/MAX experiments, my spreadsheet determines the in-between presets
+        - this is simpler that what I had previously and results in a more gradual progression
+
+        SCENES COMPLETE (min/max): hang loose
+
+----------
+Wednesday 2019-12-04
+
+  STOPWATCH: 8:22
+
+
+  WOBBLE PROJECT
+
+    BUG FIXES
+
+
+    simple slider middle presets
+      - determine scene variable defaults for the simple slider
+      - this data is in turn placed into the "simple_slider_data_points" middle (default) preset, and all other data points for now..
+
+      - FIXED slider log function (RUBELayer::updateHUDSliderLog() and related functions) to display preset variables EVEN IF the simple slider is OFF
+        - this is necessary for the next step MIN/MAX/MIDDLE PRESETS EXPERIMENT when altering values in the scene settings or HUD sliders (mass/frequency)
+
+
+      MIN/MAX/MIDDLE PRESETS EXPERIMENT
+        - completed for the "hang loose" scene -- established the proof-of-concept technique used here
+
+        - manual experiment to determine min/max (app: developer mode = ON, simple slider = OFF)
+
+        - use spreadsheet to determine in-between steps
+          https://docs.google.com/spreadsheets/d/1O96YadRlapuM5GgnM3pHP4vDeK3vls1kWqce76LAoOk
+
+        standard scene defaults
+                          hula      hula (spring)   hula (multi)    kitty       sandals
+          mass            0.3       0.3             0.3             0.3         0.8
+          frequency       3.93518   29.6759         4.13704         2.62315     2.21944
+          damping         0.05      0.5             0.05            0.05        0.05
+          gyro scaling   *1.5       1.0             1.0             1.0         1.0
+          accel scaling   1.0       1.0             1.0             1.0         1.0
+          velocity        4.0       2.5             3.5             3.5         3.5
+          wobble force    1.0       0.6             1.0             0.5         1.0
+
+        min (heavy/slow)
+                          hula      hula (spring)   hula (multi)    kitty       sandals
+          mass            1.0       0.4             0.3             0.5         1.0
+          frequency       3.0       20.0            1.8             1.2         1.0
+          damping         0.15      0.05            0.15            0.1         0.1
+          gyro scaling    0.9       0.4             0.2             0.04        0.35
+          accel scaling   0.25      0.13            0.15            0.04        0.1
+          velocity        2.0       2.0             2.0             1.5         2.0
+          wobble force    0.65      0.3             0.3             0.1         0.2
+
+        max (light/fast)
+                          hula      hula (spring)   hula (multi)    kitty       sandals
+          mass            0.3       0.1             0.3             0.3         0.6
+          frequency       7.0       37.0            7.0             7.0         4.5
+          damping         0         0.05            0.05            0           0.05
+          gyro scaling    3.0       2.0             3.5             2.5         3.0
+          accel scaling   2.0       0.45            2.5             0.8         1.4
+          velocity        6.0       8.5             10.0            4.0         8.0
+          wobble force    5.5       1.1             3.75            4.0         6.5
 
 ----------
 Monday 2019-12-02

@@ -1,13 +1,25 @@
-APP/SCENE SETTINGS
-  application
-    show_images TODO
+- touch primary body should stop auto-wobble
+  - auto-wobble: disable wobble check on physics body in question when user touches it
+
+
+- max length mouse joint OR tweak the mouse joint to break once the position is outside the body
+
+
+- intermittent auto-wobble
+  @ HangLooseLayer::autoWobble()
+
+
+SETTINGS
+
+  application settings  
+    APPLICATION SETTINGS - show_images IMPLEMENTATION
 
     app_paid_for
     enable_advertising
     scene_top_ad
     scene_bottom_ad
 
-  scene
+  scene settings
     use_gyroscope_y_axis
     use_gyroscope_z_axis
     gyroscope_y_axis_background_parallax
@@ -22,16 +34,17 @@ APP/SCENE SETTINGS
 
 
   - ui controls for all new settings + logic (this might take a while)
-  - persist data flag for app/scene settings similar to HUD persist
+
+  * PERSIST DATA FLAG FOR APP/SCENE SETTINGS SIMILAR TO HUD PERSIST
 
   advertising
 
   gyro y-axis motion control
 
-  light sensor implementation
+  LIGHT SENSOR IMPLEMENTATION
     - needs: scene setting struct, scene settings, persist logic, RUBE update motion control logic, HUD button on/off
 
-  - toast messages for reset/restore defaults
+  TOAST MESSAGES FOR RESET/RESTORE DEFAULTS
 
   developer mode
     - separate options for top ad and bottom ad - ON/OFF
@@ -48,7 +61,13 @@ HUD sliders
   - developer mode option to easily test implementation without actual ads
 
 
-light bulb (light sensor) implementation required for both long/short-press
+LIGHT BULB (LIGHT SENSOR) IMPLEMENTATION
+  - implementation required for both long/short-press
+  - scene settings (developer mode + long-press)
+  - solar powered toys are either ON/OFF
+    - once ON, motion is continuous auto-wobble
+    - QUESTION: if solar-power option = TRUE, should all other motion options be disabled?
+      - ie. ignore gyro and accelerometer sensors? disable intermittent auto-wobble?
 
 
 SPRING BUTTON CLICK - disable/enable ALL other buttons for animation sequence
@@ -60,11 +79,6 @@ SCAN THROUGH CODE, VERIFY ALL POINTERS ARE DELETED
 
 SCENE-CONTROLLED GRANULAR BUTTON VISIBILITY (NOT 100% ABOUT THIS?)
   - sometimes certain buttons shouldn't be available (ie. light sensor "solar powered" auto-wobble)
-
-
-CLEANED UP GRAPHICS + CUSTOM
-  - new graphic for pinch-zoom/pan HUD hand
-    - keep the existing graphic in the SVG for another use.. (jojo's hand? or something else)
 
 
 AD BANNERS
@@ -81,10 +95,6 @@ IDEAS FROM "MOMO'S DRESSUP"
 MAIN MENU
   - cleanup, more interesting
   - custom bitmap font
-
-
-DEVELOPER MODE
-  - separate scene settings (simple, advanced, developer mode)
 
 
 NEW SCENES CODE SEPARATION
