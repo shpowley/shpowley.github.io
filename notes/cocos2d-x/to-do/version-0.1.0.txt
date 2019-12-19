@@ -1,18 +1,7 @@
-- touch primary body should stop auto-wobble
-  - auto-wobble: disable wobble check on physics body in question when user touches it
-
-
-- max length mouse joint OR tweak the mouse joint to break once the position is outside the body
-
-
-- intermittent auto-wobble
-  @ HangLooseLayer::autoWobble()
-
-
 SETTINGS
 
   application settings  
-    APPLICATION SETTINGS - show_images IMPLEMENTATION
+    show_images IMPLEMENTATION
 
     app_paid_for
     enable_advertising
@@ -20,57 +9,26 @@ SETTINGS
     scene_bottom_ad
 
   scene settings
-    use_gyroscope_y_axis
-    use_gyroscope_z_axis
     gyroscope_y_axis_background_parallax
 
-    use_light_sensor
-    light_sensor_threshold
-
     scene_unlocked
-    intermittent_auto_wobble
     show_text_images (this needs to go away)
-    angular_velocity_threshold - maybe rename this to more meaningful "angular_velocity_limit"
 
+  - ui controls for all new settings above + logic (this might take a while)
 
-  - ui controls for all new settings + logic (this might take a while)
-
-  * PERSIST DATA FLAG FOR APP/SCENE SETTINGS SIMILAR TO HUD PERSIST
 
   advertising
 
-  gyro y-axis motion control
-
-  LIGHT SENSOR IMPLEMENTATION
-    - needs: scene setting struct, scene settings, persist logic, RUBE update motion control logic, HUD button on/off
 
   TOAST MESSAGES FOR RESET/RESTORE DEFAULTS
+
 
   developer mode
     - separate options for top ad and bottom ad - ON/OFF
 
 
-HUD sliders
-  - experiment to determine a good range of usable presets
-    - app setting to control simple slider ON/OFF needs to be complete
-
-  - panel graphic: shape/opacity/look/feel, animations
-
-
 "scene_unlocked" parameter needs to be separated out to persist/restore from it's own file
   - developer mode option to easily test implementation without actual ads
-
-
-LIGHT BULB (LIGHT SENSOR) IMPLEMENTATION
-  - implementation required for both long/short-press
-  - scene settings (developer mode + long-press)
-  - solar powered toys are either ON/OFF
-    - once ON, motion is continuous auto-wobble
-    - QUESTION: if solar-power option = TRUE, should all other motion options be disabled?
-      - ie. ignore gyro and accelerometer sensors? disable intermittent auto-wobble?
-
-
-SPRING BUTTON CLICK - disable/enable ALL other buttons for animation sequence
 
 
 SCAN THROUGH CODE, VERIFY ALL POINTERS ARE DELETED
@@ -120,6 +78,18 @@ SCENE TEST SCENARIOS
 
 
 developer_mode - hidden / konami code
+
+
+HUD simple slider presets
+  - refine/tune motion for MIN/MAX/MIDDLE @ HUDLayer::initHelperHUDSliderData()
+
+
+intermittent wobble tuning
+
+
+RUBELayer::updateAcceleration() issue?
+  - not 100% sure of logic with box2d bodies that don't fit the "bobble" definition
+  - for example, the hawaiian sea turtles with a main "bobble" body and separate appendanges (joints + bodies)
 
 ---------- ONGOING ----------
 

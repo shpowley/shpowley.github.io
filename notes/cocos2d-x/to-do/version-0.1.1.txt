@@ -29,7 +29,9 @@ LANGUAGE TRANSLATION LOOKUP AND REPLACE
 
 - sandals
   - bug / issue: motion locked to one foot
-  - auto-wobble motion - in-sync, mirror or random
+    - possible solution?
+      - re-create each joint
+      - try a separate base body for each foot?
 
 
 - scene settings overlay

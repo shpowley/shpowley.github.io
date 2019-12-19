@@ -1,38 +1,208 @@
-BASELINE RANGES FOR EACH SCENE HUD SIMPLE SLIDER
+
+----------
+Wednesday 2019-12-18
+
+  STOPWATCH: 4:50
 
 
-HUD BUTTON ICONS
-  - outline white (outer) + black (inner) + image
+  WOBBLE PROJECT
+
+    GYROSCOPE (Y-AXIS)
+      - I think "gyro_scaling" can be used for both Y and Z axes, after some tests
+      - implement gyro orientation similar to acceleromter
+      - implement y-axis gyro in scene settings
+
+    SPRING BUTTON CLICK
+      hide/show animations + fade
+
+----------
+Tuesday 2019-12-17
+
+  STOPWATCH: 6:04
 
 
-INTERMITTENT AUTO-WOBBLE
-  - be sure to make note of the fact auto-wobble is "AT IDLE"
-  - scene settings: intermittent_auto_wobble (controls intermittent vs. continuous)
+  WOBBLE PROJECT
 
-  - wobble time-on / time-off + min/max for each
-    - each iteration cycle should pick a random amount of time between each min/max range
+    SPRING BUTTON CLICK
+      hide/show animations - WIP
 
-    - new scene settings variables:
-      idle_auto_wobble_ON_min, idle_auto_wobble_ON_max (0.5s - 5.0s)
-      idle_auto_wobble_OFF_min, idle_auto_wobble_OFF_max (0.5s - 5.0s)
+    PERSIST DATA FLAG FOR APP/SCENE SETTINGS SIMILAR TO HUD PERSIST
 
+    FIXES
+      - resolved issue with circuit hud buttons initial "enabled" state when use_light_sensor = true
 
-TOUCH DISABLES AUTO-WOBBLE
-  
+----------
+Monday 2019-12-16
 
-BUGS
-  - hud slider panel allows touching rubelayer toys through the panel..
-    - this keeps the fadeout timers working correctly, but it should prevent actually touching the rube objects
+  STOPWATCH: 8:54
 
 
-MINOR ISSUES
-  - gyroscope/accelerometer ON/OFF issue?
-    - stats freeze, gyroscope/accelerometer sections should appear/disappear I think
+  WOBBLE PROJECT
+
+    TOAST LABELS
+      - background panels dynamically size to string content
+
+    LIGHT SENSOR
+      - new scene settings variable: light_sensor_intermittent
+        - persistence logic, scene ui + logic, update logic
+    
+    HUD buttons
+      - replace light bulb images with sun to signify "solar-powered"
+
+      - switch multi-gear and circuit hud button positions
+      - move "idle wobble" hud button to circuit hud button category
+      - fix animations appropriately
+
+      - light sensor ("solar powered") + idle wobble, now have 3 states:
+        CONTINUOUS, INTERMITTENT, OFF
+
+      - light sensor button
+        - "ON"/"INTERMITTENT" disables "IDLE WOBBLE", "GYRO", and "ACCELEROMETER" buttons
+        - "OFF" enables "IDLE WOBBLE", "GYRO", and "ACCELEROMETER" buttons
+
+    - re-organize scene settings
+
+----------
+Saturday 2019-12-14
+
+  STOPWATCH: 6:46
 
 
-scene settings
-  use_gyroscope_y_axis
-  use_gyroscope_z_axis
+  WOBBLE PROJECT
+
+    LIGHT SENSOR
+      - init (HUDLayer::initHelperCircuitButtons()) displays correct state
+      - developer logging now includes light intensity
+
+      IMPLEMENTATION
+        - update motion control logic
+
+        - "solar powered" toys are either ON/OFF
+          - light sensor = ON
+            - motion is a continuous auto-wobble (IRL)
+            - can only be influenced by user touch
+
+          - light sensor = OFF
+            - use standard motion sensors: gyro + accelerometer
+            - intermittent auto-wobble
+
+      - fix:
+        - resetAutoWobbleState() added to reset the auto-wobble variables and timers
+
+        - visually doesn't really impact most scenes, but for the sandals scene it resets the physics state where the sandals' rest angle can be in one of two different conditions
+
+
+    MISC
+      - initBobbleLogging() + updateBobbleInfo() made virtual to support 1 or more primary bobble box2d bodies
+
+----------
+Friday 2019-12-13
+
+  STOPWATCH: 4:53
+
+
+  REFERENCE CODE: GET (BOX2D) MOUSE JOINT LENGTH
+    auto diff = _mouse_joint->GetAnchorA() - _mouse_joint->GetAnchorB();
+    CCLOG("MOUSE JOINT LENGTH = %8.2F", diff.Length());
+
+
+  WOBBLE PROJECT
+
+    LIGHT SENSOR
+      - move "light_sensor_threshold" from scene settings to application setting; updated persist logic
+      - application settings: slider
+      - scene settings: checkbox
+      - HUD button on/off (short-press)
+      - HUD button scene settings (developer mode + long-press)
+
+      - settings
+          use_light_sensor (scene setting)
+          light_sensor_threshold (application setting)
+
+    TOUCH
+      - touch primary box2d bobble body TEMPORARILY disables auto-wobble
+      - break the mouse joint once the touch position is outside the body
+      - tweaked auto-wobble to reset with touch / break mouse joint
+
+----------
+Thursday 2019-12-12
+
+  STOPWATCH: 0:48
+
+
+  WOBBLE PROJECT
+
+    bugs
+      - fixed hawaiian turtles scene from crashing at load; still crashes when trying to use the simple slider, but the scene is incomplete, as the RUBE physics is still in the early stages and the .cpp/.h needs to be brought on par with the other completed scenes
+
+----------
+Wednesday 2019-12-11
+
+  STOPWATCH: 8:21
+
+
+  MISC
+    - using "MARK:" in single or multi-line comments in both .h/.cpp files helps to better organize android studio's structure tree
+
+
+  WOBBLE PROJECT
+
+    HUD slider background panel
+      - still needs animation at some point
+
+    HUD BUTTON ICONS
+      - outline white (outer) + black (inner) + image
+      - tried this, but unfortunately this double outline doesn't work
+
+----------
+Tuesday 2019-12-10
+
+  STOPWATCH: 5:47
+
+
+  WOBBLE PROJECT
+
+    misc
+      - replaced line "variant.mergeAssets.doLast {" with "variant.mergeAssetsProvider.get().doLast {" in
+        D:\code\android_projects\rube_wobble_master\proj.android\app\build.gradle
+
+        - fixes constant warning about obsolete method
+          - https://discuss.cocos2d-x.org/t/cocos2d-x-3-17-and-android-studio-3-3-build-issue-or-error/45503/6
+      
+
+    intermittent wobble
+      - create a new function GameManager::getRandomFloat() to generate random delay times for use here
+        - based on http://www.cplusplus.com/reference/random/random_device/
+          AND http://www.cplusplus.com/reference/random/uniform_real_distribution/
+
+      - implementation: persistence + scene settings UI + autoWobble()
+        intermittent_auto_wobble
+        wobble_ON_min, wobble_ON_max (NEW)
+        wobble_OFF_min, wobble_OFF_max (NEW)
+
+      - implementation for beach sandals scene using as much common code as possible
+
+----------
+Monday 2019-12-09
+
+  STOPWATCH: 5:16
+
+
+  WOBBLE PROJECT
+
+    "bobble" angular velocity related code consolidated, removing a lot of repeated code
+      - still necessary to override RUBELayer init() and update() in scenes like the beach sandals
+      - logging code simplified/consolidated especially for angular velocity
+
+
+    intermittent wobble -- WIP
+      - similar to RUBELayer inherited scenes init() / update(), autoWobble() consolidated since the code is duplicated in every scene except the beach sandals
+
+
+    refined HUDLayer::initHelperHUDSliderData() to allow MIN/MAX presets OR MIN/MIDDLE presets to calculate ALL PRESETS 0 - 10
+      - MIDDLE presets are basically the scene default parameters used prior creating the HUD simple slider
+      - REASONING IS THIS. the MIDDLE presets / scene defaults have the "best overall" motion response. by using a MIDDLE preset, I'm hoping for better motion response for every PRESET
+      * while this works, each scene presets still needs refinement
 
 ----------
 Sunday 2019-12-08
