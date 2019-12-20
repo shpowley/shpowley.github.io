@@ -1,3 +1,128 @@
+SLIDER PRESET TUNING: "hula (multi-joint)", "hello kitty hula", "beach sandals"
+
+----------
+Friday 2019-12-20
+
+  STOPWATCH: 5:54
+
+
+  WOBBLE PROJECT
+
+    FIXES
+      - _scene_settings.use_gyroscope_y_axis was being ignored; fixed and updated gyro function
+
+
+    SLIDER PRESET TUNING (see Thursday 2019-12-05)
+
+      "hang loose" scene
+
+        acc threshold = 0.07
+
+        preset 0
+          gyro scaling = 0.10
+          wobble force = 0.22
+
+        preset 5
+          gyro scaling = 0.25
+          acc scaling = 0.25
+          wobble force = 0.50
+          weld damping = 0.05
+          velocity constraint = 10.0
+
+      "hula (single weld)" scene
+
+        acc threshold = 0.25
+
+        preset 0
+          velocity_constraint = 2.5
+
+        preset 5
+          bobble_mass = 0.65
+          weld_frequency = 4.10
+          weld_damping = 0.10
+          gyroscope_scaling = 0.80
+          accelerometer_scaling = 0.60
+          velocity_constraint = 4.0
+          wobble_force = 0.90
+
+      "hula (single weld)" scene
+
+        acc threshold = 0.25
+
+        preset 0
+          velocity_constraint = 2.5
+
+        preset 5
+          bobble_mass = 0.25
+          weld_frequency = 28.5
+          weld_damping = 0.05
+          gyroscope_scaling = 0.9
+          accelerometer_scaling = 0.40
+          velocity_constraint = 4.5
+          wobble_force = 0.75
+
+
+    AUDIO NOTES
+      - create a test scene to open file (3d .obj OR custom graphic) for code reference
+
+      - surveys:
+        in person, electronic? motivatation? (free app)
+        potential users (truck drivers, policeman, desk employee, delivery survey), random strangers?
+
+      - salt life / life is good
+        - palm tree swaying - leaves, trunk, coconuts falling/rolling or fade-away/regrowing, deserted island, christmas lights..
+
+      - sandals: alternate graphics, 1 foot (gnome foot) or 2, fix linked motion?
+
+      - youtube solar-powered toys ideas:
+        - "toy packaging" as static image background
+        - base - alternate designs, "solar" base
+        - movement "clacking sound" like IRL
+        - button sounds
+
+        - youtube saved playlist
+        - skeleton: loose joints OR somewhat rigid to allow re-positioning (position persistence..)
+
+        - unnie doll style scene + bobble toys
+          CURRENT: scene with ONE bobble toy
+          GOAL: user-customized "PICKABLE TOY INSTANCES" created from "TOY TEMPLATES" which can be place on scenes (0-MANY "PICKABLE TOY INSTANCES")
+            - once a "PICKABLE TOY INSTANCES" is placed on a scene, it becomes an independent "SCENE TOY INSTANCE" that CAN NO LONGER BE EDITED
+            - difficult logic, but similar to unnie doll's scene dolls
+            - unlike unnie doll, however, "TOY INSTANCES" have much more complex attributes
+          - need to complete rotation logic prior to scene-toy heirarchy
+
+        - startup scene
+          - application setting, maybe a random option
+          - when driving this might be useful
+
+    NEW IDEAS
+      - STATUS BADGES showing what is currently enabled?
+        ie. "solar-powered", "auto-wobble", gyro, accelerometer
+        - at a glance, user would know what's enabled without having to touch the settings
+        - application settings to turn this ON/OFF
+        - if ON, not sure of placement / screen real-estate especially with ads, slider, etc.
+        - should NOT be part of the HUD layer, so status is visible "always"
+        - status badges would be relevant only to a "TOY INSTANCE" view
+
+      - move PAN/ZOOM button as a MULTI-GEAR subitem
+      - create a SHARE button where the PAN/ZOOM buttom is currently
+
+----------
+Thursday 2019-12-19
+
+  STOPWATCH: 4:53
+
+
+  WOBBLE PROJECT
+
+    SOLUTION FOR NON-LINEAR WELD FREQUENCY (SPRING STIFFNESS)
+      - HUDLayer::initHelperHUDSliderData() modified
+        the presets still store frequency, but the in-between steps make use of my scene settings slider conversion functions; horribly inefficient code, but works I think
+      - more necessary for larger frequency ranges, toward the "steeper" end of the scale (ie. Hula 4-weld spring)
+
+    SOLUTION TO PRE-CALCULATE SIMPLE SLIDER PRESETS AND GENERATE USABLE C++ CODE (NOTE 1)
+      - see HUDLayer::initHelperHUDSliderData() and HangLooseLayer::initHUDSliderData() for comments and usage
+      - this was a little work, but if I really plan on making many, MANY RUBE/BOX2D scenes, this should greatly steamline the HUD simple slider tuning process
 
 ----------
 Wednesday 2019-12-18
@@ -245,7 +370,7 @@ Thursday 2019-12-05
 
       MIN/MAX PHYSICS MOTION TUNING PROCEDURE
 
-        STEP 1 - reset to defaults
+        STEP 1 - reset to defaults (or an existing preset)
         STEP 2 - disable velocity constraint
         STEP 3 - turn off auto-wobble, gyro, accelerometer
         STEP 4 - tune motion response based on touch/mouse joint
