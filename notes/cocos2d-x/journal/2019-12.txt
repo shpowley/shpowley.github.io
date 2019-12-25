@@ -1,4 +1,123 @@
-SLIDER PRESET TUNING: "hula (multi-joint)", "hello kitty hula", "beach sandals"
+
+----------
+Wednesday 2019-12-25
+
+  STOPWATCH: 2:03
+
+
+  WOBBLE PROJECT
+
+    BUG FIXES
+      - toast label "hiccup" with timing would cause label to disappear if pressed at exactly the time it was fading out; resolved and simplified
+
+----------
+Tuesday 2019-12-24
+
+  STOPWATCH: 6:17
+
+
+  WOBBLE PROJECT
+
+    sharing icons
+      - default share ==> instagram, twitter, facebook
+      - only make the default share button for now, as a dummy placeholder
+
+----------
+Monday 2019-12-23
+
+  STOPWATCH: 2:07
+
+
+  WOBBLE PROJECT
+
+    BUG FIXES
+      - sandals scene / light sensor bug -- fixed (described below)
+      - reference angle issue; confusion with degrees/radians -- fixed
+
+----------
+Sunday 2019-12-22
+
+  STOPWATCH: 9:29
+
+
+  WOBBLE PROJECT
+
+    SLIDER PRESET TUNING (continued)
+
+      - altering gyro scaling factor:
+        a) try keeping z-axis rotatation "in step" with starting point
+        b) more pronounced y-axis rotation with the goal of "leaning" while making turns in a moving vehicle
+
+      - after some usage the gyro y-axis sensor effect might work for vehicle turns, but doesn't "play nice" with the overall use case
+        - I'm not sure how to fix this yet ..perhaps detect a threshold X-AXIS ACCELERATION and/or upright ORIENTATION prior to using the gyro y-axis sensor? ON HOLD for now and disabled by default
+          * using ORIENTATION would require me to update my JNI sensor code AND I would need to be able to figure out how to use the orientation data too
+
+        - actually added GYRO Y-AXIS SCALING MULTIPLIER as a scene setting, as the gyro scaling factor always was greater for the y-axis sensor to create the leaning effect
+
+      - copied the multi-joint hula girl slider data to the standard hula girl scene; this seemed to work ok
+      - the multi-joint hula girl keeps the mass constant at each preset
+      - altered the multi-joint hula girl slider variables for a better up/down spring effect
+
+
+      misc tuning
+      * increase accelerometer threshold for each scene? test this acc on only - removing wobble "noise" at still
+
+
+      "hello kitty hula" scene
+        - tried copying the multi-joint hula girl slider data, but it's just too different
+
+        acc threshold = 0.1
+
+        preset 0
+          mass = 0.30
+          frequency = 1.00
+          damping = 0.01
+          gyro scaling = 0.10
+          acc scaling = 0.02
+          wobble force = 0.03
+          velocity_constraint = 1.0
+
+        preset 10
+          mass = 0.30
+          frequency = 5.00
+          damping = 0.01
+          gyro scaling = 1.0
+          acc scaling = 0.5
+          wobble force = 1.50
+          velocity_constraint = 2.0
+
+
+      "sandals" scene
+        - modified RUBE file so that each sandals has a different base static body; not sure if it fixed anything related to the independent action issue yet
+
+        bugs:
+          - switching the slider and idle-wobble, default frequency shifts
+            - FIXED - weld joint definitions needed to update to new slider frequency and damping for opposing wobble + reset
+
+          - light sensor mode always uses synch mode
+            - light sensor code starts in RUBELayer and bypasses random synch/mirror movement
+            - RUBELayer::updateLightSensor() needs to be overriden
+
+        acc threshold = 0.23
+
+        preset 0
+          mass = 0.60
+          frequency = 1.0
+          damping = 0.20
+          gyro scaling = 0.5
+          acc scaling = 0.17
+          wobble force = 0.50
+          velocity_constraint = 4.0
+
+        preset 10
+          mass = 0.60
+          frequency = 4.80
+          damping = 0.01
+          gyro scaling = 3.5
+          acc scaling = 2.0
+          wobble force = 6.50
+          velocity_constraint = 8.0
+
 
 ----------
 Friday 2019-12-20
@@ -496,7 +615,7 @@ Sunday 2019-12-01
 
 
   WOBBLE PROJECT
-    - adjust hud slider heights to fit a large and simple sliders
+    - adjust hud slider heights to fit "large" and simple sliders
 
     * GameManager::GameManager() for scene defaults
 

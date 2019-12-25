@@ -1,10 +1,12 @@
-SCENE SETTINGS (simplified, standard, advanced views)
+vehicle turn + toy leaning
+  - Sunday 2019-12-22
 
 
 JERK PHYSICS
+  - "jerk" induced impulse?
+  - verify response of current motion-tuned scenes first to see if really needed
+  - very small time slices measuring change in direction + rapid change in acceleration
   - better speed bumps, etc.
-  - detection + implementation ???
-  - boolean ON/OFF if implemented
 
 
 LANGUAGE TRANSLATION LOOKUP AND REPLACE
