@@ -1,0 +1,73 @@
+AUDIO NOTE ITEMS
+  LAYERS
+  - toast layer to root
+  - RUBE sprite layer
+  - RUBE physics debug layer on top of RUBE sprites; child of RUBE scene
+  - HUD layer
+  - ADVERTISING layer
+  - background graphics; possibly 1 or more actual layers or maybe just sprites sprites (parallax effect)
+  - 2 particle effect layers (behind AND in front of RUBE sprites)
+
+  HUD wobble button
+    - touch cycles through for now; possibly slide out selector in the future
+  
+  TOUCH SPARKLES / TWINKLES
+
+  "BOBBLE BODY" DEFINITION
+    - primary?
+    - potential problem when logging shows angular velocity for the primary bobble body (toy-mode)
+    - also, issue with velocity constraint?
+    - take a look at single vs multiple (hula girl vs sandals)
+
+    - implemented as RUBE user property similar to "ethereal" vs the name
+    - composite scene with multiple toys has potentially more than one "bobble body"
+
+
+SCENE DEFAULTS
+  - scene defaults for turtles (original)
+  - scene defaults for turtles (new)
+    - appropriate scale, world width/height min/max?
+
+
+VERIFY/FIX DEV MODE SLIDER ON NEW SCENES
+  - remove altogether
+
+
+NEW SCENES
+  - surfer
+    - bobble movement example: https://youtu.be/O2ay_oGVI-c?t=226
+
+  - android surfer
+
+  - hawaiian tux penguin sandals
+    By Larry Ewing, Simon Budig, Garrett LeSage - http://www.home.unix-ag.org/simon/penguin/, garrett/Tux on GitHub, CC0, https://commons.wikimedia.org/w/index.php?curid=753970
+
+  - android hula dancer
+
+  - the duke (tux, android versions)
+
+
+BUG - RUBELayer::updateAcceleration()
+* in RUBELayer::updateAcceleration() and possibly RUBELayer::updateGyroscope(), I think there's a bug with how the primary "bobble body" is handled
+  - basically, I believe that every box2d body is treated the same whether or not it is the primary "bobble"
+  - for the sandals scene, this works out fine; and the logging of each shoe is handled within the class..
+  - only of the "spring hula girl" and the "original turtle" scenes really have a multi-body assembly that demonstrate this; the hula girl sort of removes this effect with the "ethereal" property implementation, but this effect can be clearly seen on the original turtles head/fins with the properties set just so
+
+  * once a FIX is determined and implemented, the "original turtle" scene needs to have the broken update function(s) maintained as overloaded versions (Jack's "crazy" turtles)
+
+
+LIVE WALLPAPER
+* live wallpaper: re-try cocos2d-x experiment, android/java implementation?
+  - see "Tuesday 2019-06-25"
+  - https://discuss.cocos2d-x.org/t/solved-creating-android-live-wallpaper-with-cocos2d-x/24370/1
+  - https://stackoverflow.com/questions/19099904/cocos2dx-android-live-wallpaper
+  - https://discuss.cocos2d-x.org/t/3-2rc0-android-live-wallpaper/15460/13
+  - https://discuss.cocos2d-x.org/t/how-to-implement-a-live-wallpaper-with-a-cocos2d-x-3-1/14563
+
+
+
+----------
+Wednesday 2020-02-12
+
+  TUX FEET
+    - hawaiian shirt

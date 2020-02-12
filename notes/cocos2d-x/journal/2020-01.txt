@@ -1,0 +1,299 @@
+Monday 2020-01-27
+
+  TUX FEET
+    - hawaiian shirt
+
+----------
+Sunday 2020-01-26
+
+  TUX FEET IMAGE ITEMS
+    - hawaiian shirt, island drink, sunglasses, lei
+
+  TUX FEET, ANDROID
+    - base for android hula dancer, android surfer, for now
+    - base for tux hawaiian shirt beach bum (ie. beach sandals)
+
+    - learned about "clipping" technique to create hard-edged lighting effects
+      - clipping z-order is important
+
+      http://tavmjong.free.fr/INKSCAPE/MANUAL/html/Clip-Clipping.html
+      https://design.tutsplus.com/tutorials/quick-tip-what-are-clipping-and-masking-in-inkscape--vector-24947
+
+----------
+Thursday 2020-01-23
+
+  GIMP - TUX FEET
+
+----------
+Wednesday 2020-01-22
+
+  NEW SCENES
+    - downloaded reference images for open source, surfer, etc.
+
+----------
+Tuesday 2020-01-21
+
+  TURTLE (NEW SCENE)
+    - bug fixes
+
+    - new scene uses "circle" fixtures, but debugdraw implementation kept crashing; circle fixtures were not used elsewhere; replaced debugdraw implementation with GLES-Render.h/.cpp, which fixed this, but lost physics/box2d z-order ..being drawn on top of images
+
+  - implemented "show images" application setting for RUBE sprites
+
+  NEXT: fix scene settings crashing
+
+----------
+Monday 2020-01-20
+
+  - continued NEW SCENE PROCESS DOCUMENTATION and adding TURTLE (NEW SCENE)
+    - compiled okay, but needs fixes to stabilize the basic scene performance and prevent crashing
+    - BUG found RUBELayer::updateAcceleration() that affects composite body assemblies like the turtles
+
+----------
+Sunday 2020-01-19
+
+  *** NO LONGER KEEPING TRACK OF TIME ***
+
+
+  TURTLE (NEW SCENE)
+    - not happy with the previous multi-turtle scene RUBE physics implementation; I kept the original files and based on Jack's suggestion, I'm keeping the scene as a "crazy mode" out takes
+
+    - current scene is a single turtle swimming to the center
+
+    - I'm not sure how a multi-turtle would work exactly
+      - maybe presented as an option of the toy
+        - 2 alternate RUBE assembly files loaded in the toy
+          - the current single turtle
+          - group of turtles (2 large + 3 small); similar physics to the single turtle
+
+
+  NEW SCENE PROCESS DOCUMENTATION (Tuesday 2020-01-14)
+
+    1 - copy RUBE .json file + sprite sheet files (.png + .plist) to appropriate /Resources folder
+
+    2 - <c++ RUBE scene>::init() contains HARD-CODED RELATIVE PATHS to RUBE .json and sprite sheet .plist files
+        * this should be changed to a central c++ include
+
+    3 - create a new scene folder in /Classes/Scenes
+      - copy some existing RUBE scene .h/.cpp as templates to the new folder and rename
+      - rename internal class names, includes, etc.
+
+    4 - modify appropriate project include files for android/cocos2d-x project
+        - CMakeLists.txt
+        - proj.android/app/jni/Android.mk (no longer really necessary..)
+
+    5 - add new files to git
+
+    6 - android "project sync"
+
+    7 - modify FUNCTION <new scene>Layer::create()
+
+      a - add new ENUM to GameManager.h ==> GameManager::ENUM_SCENE
+          *** REFACTOR CANDIDATE ***
+
+        - alter LINE "RUBELayer::current_scene = "
+
+      b - add new char constant for the scene settings to GameManager.h
+          *** REFACTOR CANDIDATE ***
+
+        - alter LINE "RUBELayer::_scene_settings_filename = "
+
+      c - add new scene defaults to GameManager.h
+          *** REFACTOR CANDIDATE ***
+
+        - alter LINE "RUBELayer::_scene_settings_defaults = "
+        - alter FUNCTION ::afterLoadProcessing() ==> LINE "auto& SCENE_DEFAULTS = "
+
+      d - modify FUNCTION SceneSettings.cpp ==> SceneSettingsLayer::callbackButton()
+        - add lines for new ENUM from (a)
+
+    8 - modify FUNCTION GameManager.cpp ==> GameManager::GameManager()
+      - add lines appropriate for the new SCENE DEFAULT settings
+        *** REFACTOR CANDIDATE ***
+        *** TODO ITEM CANDIDATE ***
+
+    9 - modify FUNCTIONS <new scene>Layer::
+        persistCustomSettings(), restoreCustomSettings(), restoreDefaults(), settingsItemVisibility()
+        - add/remove appropriate settings and visibility items for the new scene
+
+      *** TODO ITEM: HUDLayer class should only show dev mode sliders if bobble body + weld joint present ***
+   10 - modify/delete FUNCTION <new scene>Layer::updateHUDSettings()
+        - primarily used for "bobble" style physics
+
+   11 - modify FUNCTION <new scene>Layer::afterLoadProcessing() or remove override
+
+   12 - modify FUNCTION <new scene>Layer::initHUDSliderData()
+
+      *** TODO: MOVE OUT OF SCENES FOLDER - NOT A RUBELayer ***
+   13 - modify MenuScene .h/.cpp (or equivalent) to accomodate new scene / menu entry
+
+   14 - update GameManager::saveSceneSettings() and add new ENUM code
+
+   15 - update GameManager::removeDataFiles() and add new ENUM code
+
+
+  RUBE CUSTOM PROPERTIES RECAP
+
+    CLASS   TYPE    NAME          DISPLAY NAME
+    body    bool    ethereal      Ethereal
+    body    bool    touchable     Touchable
+    world   vec2    content_size  Content size
+
+    - see "Friday 2019-09-20"
+
+    SCRIPT:
+
+      addCustomProperty('body','ethereal','Ethereal','bool');
+      addCustomProperty('body','touchable','Touchable','bool');
+      addCustomProperty('world','content_size','Content size','vec2');
+
+
+----------
+Friday 2020-01-17
+
+  STOPWATCH: 2:00
+
+
+  COMPARISION OF TURTLE GRAPHICS FOR RE-USE
+    - re-using graphics available on the web may work, but could be hit or miss
+    - instead use graphics available as models and re-create
+
+
+  RUBE ALTERNATE GRAPHICS IMPLEMENTATION
+    1 - new rube assembly for each custom graphic
+    2 - common box2d body height/width
+    3 - common box2d body anchor point
+
+
+  RUBE GRAPHICS POSITIONING
+    BOX2D BODY (PARENT): -0.544083, 1.8451 (world position)
+
+      GRAPHIC (CHILD): 0.049674, -0.0472473
+        * offset from BOX2D BODY (PARENT);
+        - .json file attribute: image -> center
+
+      FIXTURE (CHILD):
+        - unavailable, not needed as the vertex points define the fixture position
+
+  --
+
+  LIVE WALLPAPER
+    * hold off until next version
+
+    re-attempt native cocos2d-x (1st step)
+
+    OR
+
+    physics: box2d java - http://www.jbox2d.org/
+
+    graphics:
+      - android canvas(correct terminology?) vs. opengl es (research pros/cons)
+      - sprite sheets would need to be remade into rectangular sprite mode
+
+    file read:
+      - rube java read (missing graphics implementation) vs 
+        - c++ -> java complex data types
+        - file read rube js, settings
+
+----------
+Tuesday 2020-01-14
+
+  STOPWATCH: 2:01
+
+
+  NEW SCENE (TURTLE) + DOCUMENT PROCESS
+    - experimenting with a modified RUBE turtles scene, reduced to just one single turtle
+      - RUBE-turtle-single.rube
+      - currently off center and using a primary motor joint to return the turtle to it's initial position / angle
+      - many settings can be re-used for the head/fin joints
+
+      * a new scene needs to be created, using either revolute (hang loose scene) or possibly revolute/slider (hula multi-weld)
+
+      * "toy" composed of just one turtle (maybe)
+        - select art style
+        - specify large/adult or small/baby in toy mode
+        - use composite scene to create turtle clusters..
+
+----------
+Monday 2020-01-13
+
+  STOPWATCH: 3:30
+
+
+  ACCELEROMETER CODE CONSOLIDATION
+
+    - accelerometer update logic refactored/consolidated and "normalized sensor values with motion filter OFF" BUG fixed I think (see Thursday 2019-12-26)
+      - this might need further testing, but appears to work ok so far
+
+      COMMENTS:
+        - for now, accelerometer motion filter = ON based on personal observation
+        - keep IMPULSE "JERK" LOGIC in mind for future experimentation
+
+    - fixed a new bug introduced for the standard accelerometer "bypass the motion-filter special case"
+
+
+  GYROSCOPE UPDATE + MOTION FILTER
+
+    - previously, the gyroscope-induced motion would only move when the motion filter was OFF
+    - this has been fixed, but honestly still WORKS BEST WHEN MOTION FILTER IS OFF
+
+----------
+Sunday 2020-01-12
+
+  STOPWATCH: 5:50
+
+
+  HUD buttons
+    - maintain consistency for selected highlight
+    - increase hit box sizes
+
+
+  NOTE 9 LAYOUT ISSUES
+    - installed samsung note 9 android skin / avd and successfully ran the app to duplicate and hopefully resolve hud button margin issues
+
+    - resolution? AppDelegate::applicationDidFinishLaunching() modified.. ResolutionPolicy::NO_BORDER changed to ResolutionPolicy::FIXED_WIDTH
+
+    - useful link possibly in the future?
+      https://stackoverflow.com/questions/48837591/iphone-x-samsung-galaxy-s8-aspect-ratio-issues-for-cocos2dx-games
+
+----------
+Saturday 2020-01-11
+
+  STOPWATCH: 1:23
+
+
+  DECEMBER STATS:
+
+    days (month):   22/31 days      => 71.0%
+    hours (month):  121:34
+    
+    days (total):   252/464 based   => 54.3%
+    hours (total):  383:06
+
+
+  AUDIO NOTES
+
+    - highlight on the HUD back button only, make consistent
+
+    - currently, acceleration applies force/torque with motion filter (many hours already); mostly works, but toying with impulses either in conjunction with force/torque or standalone. impulse = change in direction + "jerk" threshold? + delay for re-trigger of impulse detection; + time interval(s) ..COMPLEX, end product might be better
+
+    - HUD icon margins on note 9 is cut off; google maps button margins is ok
+
+    - undecided on using 4-weld or multi-joint for hula
+
+    - gyro y-axis / leaning; cool effect, but shouldn't break existing stationary use-case; note sensor values making turns; 2 use cases - moving and "stationary"
+
+    - android live wallpaper - make an attempt to use cocos-2dx only from earlier live wallpaper experiment; use jni for loading rube + toy/scene settings only for code re-use (how to pass complex data structs from c++ to java), re-write other code in java (duplicate logic); advantage to java for this? such an appealing piece, that the live wallpaper needs work somehow
+      - ios doesn't support live wallpaper, maybe an animated gif, re-using share code
+
+    - primary hud buttons appear/disappear like media youtube, etc.,; possible issue with primary hud buttons appearing/disappearing too often.. maybe a delay incorporated?
+
+    - hud buttons hit boxes need to be bigger; strong warning
+
+    - hit boxes on bobble toys need to be bigger also; box2d bodies simplified and re-usable for different graphics; different position on y-axis? delicate "small" areas removed
+
+    - default scene to auto-load after a delay, and live wallpaper default scene; how to pick? radio, drop-down, checkbox on scenes
+
+    - sharing: scene still image, animated gif to sharing. new type of share (ADVANCED SHARE) would be a graphics/physics toy assembly somehow --> direct to individual, but how and would this bypass advertising; sharing toys only vs sharing a whold scene? link to play store..? sharing customized toy with a friend vs sharing completely custom graphics (NO), other person has app installed; if sharing a whold scene, are the toys available to use individually -- a little bit more difficult and hairy; FEATURE TO ADD MUCH LATER
+
+    - different countries - how to determine what's "popular" and known for toy graphics, ie. india dieties? how to research what might be popular for each culture?

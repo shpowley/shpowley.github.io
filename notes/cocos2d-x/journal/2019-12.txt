@@ -1,14 +1,30 @@
+Thursday 2019-12-26
+
+  STOPWATCH: 2:25
+
+
+  WOBBLE PROJECT
+
+    BUG? I noticed that when turning the "accelerometer motion filter" OFF and turning the "combine with accelerometer z-axis" ON, the motion didn't respond to z-axis acceleration. ditto y-axis.
+
+    - printed "update()" source code and created a wall map as a reference and to better visualize what's going on, etc.
 
 ----------
 Wednesday 2019-12-25
 
-  STOPWATCH: 2:03
+  STOPWATCH: 3:16
 
 
   WOBBLE PROJECT
 
     BUG FIXES
       - toast label "hiccup" with timing would cause label to disappear if pressed at exactly the time it was fading out; resolved and simplified
+      - prior toast label fix caused an issue where the entire app would crash after ~3 scenes with the toast message; pointer init to nullptr resolved this, also added deconstructor and reset()
+
+    look back 3/6/12 months
+      - 3 months ago: hula 4-weld "faux angle limits" solution
+      - 6 months ago: frame rate experimentation, cocos2dx + android live wallpaper experiment results
+      - 12 months ago: learning cocos2d-x (Cocos2d-x by Example, ch. 3), jack demo failures (chromebox + crouton)
 
 ----------
 Tuesday 2019-12-24

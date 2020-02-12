@@ -76,7 +76,7 @@ Thursday 2019-09-26
 
 
     CUSTOM SCENE SETTINGS
-      - considering how to save/restore scene settings specific to each scene, but I don't think it's possible in it's current form; as of now, it has to be "monolithic"
+      - considering how to save/restore settings specific to each scene, but I don't think it's possible in it's current form; as of now, it has to be "monolithic"
 
 ----------
 Wednesday 2019-09-25
@@ -86,7 +86,7 @@ Wednesday 2019-09-25
 
   WOBBLE PROJECT
 
-    HULA GIRL MULTI-WELD LIMITS -- DISADVANTAGE
+    HULA GIRL "4-WELD SPRING" LIMITS -- DISADVANTAGE
  
       NOTE: this RUBE/BOX2D assembly DOESN'T ALLOW ANGULAR LIMITS as easily as the other 2 comparison scenarios
         - to implement limits, each weld would require superimposed revolute joints OR 2 hidden box2d bodies for the top portion of the hula dancer to collide against
@@ -98,9 +98,9 @@ Wednesday 2019-09-25
       - added "Enable Limits" checkbox
       - added upper and lower limit sliders
         - had to convert from rad->degrees and degrees->radians
-        - note the implementation for constants for PI, RADIANS_TO_DEGREES, DEGREES_TO_RADIANS
+        - note the implementation for constants PI, RADIANS_TO_DEGREES, DEGREES_TO_RADIANS
       
-      * interesting note, in the RUBE editor upper/lower limits for revolute joints are in degrees, but in BOX2D, THE UNITS ARE IN RADIANS
+      * INTERESTING NOTE, in the RUBE editor upper/lower limits for revolute joints are in degrees, but in BOX2D, THE UNITS ARE IN RADIANS
 
 ----------
 Tuesday 2019-09-24

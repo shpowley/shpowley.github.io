@@ -138,3 +138,4 @@ NEW SCENES
   - dangling lei
   - mermaid >>
   - tux logo + hawaiian shirt + sunglasses (sandals physics)
+  - muscle beach guy flexing
