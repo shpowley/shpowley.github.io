@@ -281,7 +281,7 @@ JOINTS
 
     WHEEL
       - basically, a REVOLUTE joint with suspension similar to PRISMATIC
-      - visually adust the "suspension" local axis (R key 3x)
+      - visually adjust the "suspension" local axis (R key 3x)
       - motor
 
     WELD (NEW)

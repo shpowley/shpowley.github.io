@@ -65,9 +65,132 @@ LIVE WALLPAPER
   - https://discuss.cocos2d-x.org/t/how-to-implement-a-live-wallpaper-with-a-cocos2d-x-3-1/14563
 
 
+----------
+Monday 2020-02-17
+
+  REVOLUTE JOINT "POSEABLE" POSITIONS
+    
+    TAGS: revolute joint, enable motor, torque, poseable
+
+    EFFECT: "poseable" box2d bodies when attached to a revolute joint
+
+    - I wanted to write a note regarding this for later reference. I thought I had written about this previously, but couldn't find anything with a search.
+    - basically, I noticed this effect a while ago in the RUBE editor, but apparently didn't make any notes regarding this "unusual" effect
+    - currently, I wanted the ANDROID HULA ROBOT to have poseable arms and may be useful in the near future
+
+    - to ENABLE THIS FEATURE, in the settings for a revolute joint, set "enable motor = true" and "max motor torque > 0"
+      - the value for "max motor torque" defines the torque strength necessary to move the joint
+      - when a weld joint is superimposed onto a revolute joint, the value for MOTOR TORQUE be tested against the weld-spring settings (frequency, reference angle)
+        - see "sandals.rube" and experiment with this file to better understand this relationship
+
+
+  SURFER / TUX FEET / ANDROID HULA ROBOT
+    - creating RUBE box2d assemblies
+
+    ANDROID HULA ROBOT
+      - copying the HULA GIRL MULTI-JOINT - RUBE "spring assembly" for use here
+        - bobble body: superimposed WELD-REVOLUTE on a superimposed DISTANCE-PRISMATIC
+        - poseable arms: superimposed WELD-REVOLUTE (x2) + motor torque
+        - bouncing antenna: superimposed WELD-REVOLUTE (x2)
+        - grass skirt fronds: TODO (based on an animated gif I have, I'm planning on having 4-5 fronds move in response to the bobble body, just for the added visual effect; this could also be used for other hula-style scenes or other visual components - hair and a lei come to mind)
+
+----------
+Sunday 2020-02-16
+
+  SURFER / TUX FEET / ANDROID HULA ROBOT
+    - exporting to bitmap and related creating RUBE box2d assemblies
+
+    * experimenting with image size / dpi
+      - currently, all scene resources use ~40dpi
+      - for the ANDROID HULA scene, I'm trying both 40dpi and 200dpi
+
+      TEXTURE PACKER notes:
+        - 2048 pixels x 2048 pixels appears to be the optimal spritesheet size for mobile; for the ANROID HULA @ 200dpi this was split (other options not tried include TEXTURE PACKER scaling OR a max spritesheet of 4096 pixels x 4096 pixels OR a smaller DPI - 100-160dpi maybe)
+        - duplicate graphics (ie. ANDROID arms, legs, antenna) are handled quite well by TEXTURE PACKER, but need to be in the same orientation
+
+      RUBE notes:
+        - image assets appear to INTERCHANGEABLE with different image densities (just move the .rube file or similar programmatic method and the image appears to be scaled to fit automatically)
+        - of note is each image asset and the "filter" property
+          - by default "filter = linear" which smooths out pixels with the alternative of "filter = nearest"
+          - the default "filter = linear" seems to create an unwanted outline effect @ 40dpi
+
+----------
+Friday 2020-02-14
+
+  SURFER / TUX FEET / ANDROID HULA ROBOT
+    - basic svg graphics created; next time export to bitmap and begin new scenes creation
+
+
+  INKSCAPE LINE DRAWING TECHNIQUE
+
+    - pencil tool settings: bezier path, smooth = 50, LPE based interactive simplify = false, shape = none
+    - draw lines
+    - draw path shape(s) for pattern
+    - copy path shape to clipboard
+    - select lines to apply pattern
+    - select path effects + add "pattern along path"
+    - select "link to path on clipboard"
+
+----------
+Thursday 2020-02-13
+
+  GIMP SCALING
+
+    pixel art alternative? scaling selection or image with resize filters for SVG created art
+
+
+  INKSCAPE TUTORIALS
+
+    select (z-order stack)                alt + mouse click
+
+    move selected z-order item            alt + mouse click + move mouse
+
+    pan                                   ctrl + arrow keys
+                                          space + move mouse
+                                          mouse wheel (up/down)
+                                          shift + mouse wheel (left/right)
+
+    scrollbars                            ctrl + b
+
+    zoom                                  + / = / -
+
+    z-order (single step)                 page up / page down
+    z-order (top)                         home
+    z-order (bottom)                      end
+
+    show / hide dialogs                   f12
+
+    select similar objects                edit > select same > ...
+
+    shape to path                         ctrl + shift + c
+
+    bezier drawing options                click, click + drag, click + drag + shift, backspace, enter
+
+    bezier edit options
+      add node at location                ctrl + alt + click
+      delete node (retain path shape)     delete OR ctrl + alt + click
+      delete node                         ctrl + delete
+      add node at segment                 insert
+      delete bezier handle                ctrl
+      duplicate nodes                     shift + d
+      break path                          shift + b
+      join path                           shift + j
+      combine compound paths              ctrl + k
+      break apart compound paths          shift + ctrl + k
+
+    inset path                            ctrl + (
+    outset path                           ctrl + )
+    dynamic offset                        ctrl + j
+    linked offset (preferred)             path > linked offset
+
+    simplify                              ctrl + l
 
 ----------
 Wednesday 2020-02-12
 
-  TUX FEET
-    - hawaiian shirt
+  - break due to move
+
+  SURFER SCENE
+    - surf board
+
+  TUX FEET / ANDROID HULA ROBOT

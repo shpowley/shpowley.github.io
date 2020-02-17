@@ -62,7 +62,7 @@ Sunday 2019-12-22
 
       - altering gyro scaling factor:
         a) try keeping z-axis rotatation "in step" with starting point
-        b) more pronounced y-axis rotation with the goal of "leaning" while making turns in a moving vehicle
+        b) more pronounced y-axis rotation with the goal of creating a "leaning effect" while making turns in a moving vehicle
 
       - after some usage the gyro y-axis sensor effect might work for vehicle turns, but doesn't "play nice" with the overall use case
         - I'm not sure how to fix this yet ..perhaps detect a threshold X-AXIS ACCELERATION and/or upright ORIENTATION prior to using the gyro y-axis sensor? ON HOLD for now and disabled by default
@@ -133,7 +133,6 @@ Sunday 2019-12-22
           acc scaling = 2.0
           wobble force = 6.50
           velocity_constraint = 8.0
-
 
 ----------
 Friday 2019-12-20
@@ -211,11 +210,11 @@ Friday 2019-12-20
 
       - youtube solar-powered toys ideas:
         - "toy packaging" as static image background
-        - base - alternate designs, "solar" base
+        - toy base graphic visual - show a choice of alternate designs to the user, "solar" base
         - movement "clacking sound" like IRL
         - button sounds
 
-        - youtube saved playlist
+        - see youtube saved playlist
         - skeleton: loose joints OR somewhat rigid to allow re-positioning (position persistence..)
 
         - unnie doll style scene + bobble toys
@@ -594,7 +593,7 @@ Monday 2019-12-02
     developer mode "statistics"
       - slider stats
 
-      - restricting statistics to only one at a time, basically a radio, but not implemented as a radio
+      - restricting statistics to only one at a time, basically acts like a radio, but not implemented as a radio button
         a) visible only using developer mode
         b) worried about space constraints
 

@@ -36,7 +36,9 @@ Tuesday 2020-01-21
   TURTLE (NEW SCENE)
     - bug fixes
 
-    - new scene uses "circle" fixtures, but debugdraw implementation kept crashing; circle fixtures were not used elsewhere; replaced debugdraw implementation with GLES-Render.h/.cpp, which fixed this, but lost physics/box2d z-order ..being drawn on top of images
+    - new scene uses "circle" fixtures, but debugdraw implementation kept crashing -- circle fixtures were never used prior;
+      replaced debugdraw implementation with GLES-Render.h/.cpp, which fixed this, but LOST PHYSICS/BOX2D Z-ORDER
+      - LOST THE DEBUG DRAW BEING DRAWN ON TOP OF IMAGES -- this could be possibly fixed using a separate layer, but not a big deal at the moment
 
   - implemented "show images" application setting for RUBE sprites
 
@@ -52,11 +54,12 @@ Monday 2020-01-20
 ----------
 Sunday 2020-01-19
 
-  *** NO LONGER KEEPING TRACK OF TIME ***
+  *** NO LONGER KEEPING TRACK OF TIME - GOOD I GUESS, BUT OVERALL TOO MUCH TIME WASTED ***
 
 
   TURTLE (NEW SCENE)
-    - not happy with the previous multi-turtle scene RUBE physics implementation; I kept the original files and based on Jack's suggestion, I'm keeping the scene as a "crazy mode" out takes
+    - not happy with the previous multi-turtle scene RUBE physics implementation;
+      I kept the original files and based on Jack's suggestion, I'm keeping the scene as a "crazy mode" out takes
 
     - current scene is a single turtle swimming to the center
 
@@ -165,7 +168,7 @@ Friday 2020-01-17
     3 - common box2d body anchor point
 
 
-  RUBE GRAPHICS POSITIONING
+  RUBE GRAPHICS POSITIONING HEIRARCHY
     BOX2D BODY (PARENT): -0.544083, 1.8451 (world position)
 
       GRAPHIC (CHILD): 0.049674, -0.0472473
