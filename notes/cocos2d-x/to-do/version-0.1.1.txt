@@ -119,18 +119,6 @@ USER CONTROLLED TOUCH-BASED MOTION
 
 
 NEW SCENES
-  - dangling keychain
-    - keychain items:
-      - hawaiian t-shirt | dollar t-shirt
-      - hula dancer | hang loose | palm tree | surfboard | license plate | turtle | sandals | hibiscus
-
-  - hanging lei
-    - hawaiian shirt + lei option
-    - different color flower options
-    - https://youtu.be/roXUvqdyyDU @ 0:23 lei and model
-
-
-NEW SCENES
   - splash screen(s)
   - strong warning to not drive distracted (scene or layer) @ start-up
   - surfer

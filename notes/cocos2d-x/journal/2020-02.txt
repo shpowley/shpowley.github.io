@@ -1,3 +1,10 @@
+SEPARATE ACCELERATION SCALING FOR EACH AXIS
+  - not sure if this was noted elsewhere, but separate scaling for each axis might be a good idea, especially for exaggerated bounce motion along the y-axis
+    - this might be good for speed bumps.. vs. the impulse/jerk idea
+    - this should be easy to test just be altering existing code with a fixed scalar on the y-axis to test out this hypothesis
+    - full implementation would be a pain though
+
+
 AUDIO NOTE ITEMS
   LAYERS
   - toast layer to root
@@ -44,7 +51,15 @@ NEW SCENES
 
   - android hula dancer
 
-  - the duke (tux, android versions)
+  SUMMARY + POSSIBLE NEW SCENES
+    beach sandals | hawaiian tux feet
+    hula girl | android hula robot | tux hula (NEW)
+    hawaiian turtle
+    hang loose
+    surfer | android surfer (NEW)
+    muscle guy (NEW)
+    mermaid (NEW)
+    "solar-powered" hibiscus flower (NEW)
 
 
 BUG - RUBELayer::updateAcceleration()
@@ -66,6 +81,70 @@ LIVE WALLPAPER
 
 
 ----------
+Sunday 2020-02-13
+
+    TUX FEET
+
+      - scale had to be increased as the phone resolutions guide was initially set to the wrong height; adjustment made for the weld joint resting angle with gravity effects
+
+      - eyeballs now move within a constrained area; primary eyeballs "body" had a "fix rotation" setting which help prevent eyeballs rolling at the end of the distance joint
+
+      TODO: the eyelids graphic needs to be larger on top to prevent eyeballs being visible at the top edge when they move
+
+
+    SURFER
+
+      - scale increased 2x similar to TUX FEET + joint adjustments
+
+      design notes:
+      
+        - when scaling, prismatic joint limits aren't affected and adjustments must be manual
+
+
+    ANDROID HULA ROBOT
+
+      - scale increased 2x similar to TUX FEET + joint adjustments
+
+      - the current joint settings allow for the poseable arms
+
+      TODO: white/black outline for robot shapes, especially the arms; the body outline should be a separate graphic behind everything else
+
+      TODO: in order to "lock" the arms in place, the weld frequency should be set to zero and the weld reference angle should be set to the pose angle programmatically (body angle? not sure yet)
+
+----------
+Friday 2020-02-11
+
+  SURFER / TUX FEET / ANDROID HULA ROBOT
+
+    TUX FEET
+
+      - conceptually similar to the beach sandals scene, with the addition of moveable eyeballs
+
+      design notes:
+
+        - stopped @ eyeball joints
+          - eyeballs are 1 unit at the moment
+          - needs static + middle + eyeball bodies similar to hula multi-weld
+          - more tests needed
+
+        TODO: the "body" graphic needs shortening on the graphic left-side leg portion to allow for greater visual rotation of the foot graphic -- FIXED
+
+        - for each foot, the rest position at each weld joint with frequency=2.3, the weld joint reference angle must be customized to counter the effects of gravity
+          - unfortunately, the resting reference angle is affected by gravity, weld frequency and body mass distribution
+
+----------
+Tuesday 2020-02-18
+
+  SURFER / TUX FEET / ANDROID HULA ROBOT
+    - creating RUBE box2d assemblies
+
+    SURFER
+
+      design notes:
+        - peripheral joint/bodies shouldn't be directly affected by the motion sensors - these are marked "ethereal"
+        - TODO: the main body / shorts waist band should be altered visually to allow more movement on the revolute joint
+
+----------
 Monday 2020-02-17
 
   REVOLUTE JOINT "POSEABLE" POSITIONS
@@ -74,13 +153,13 @@ Monday 2020-02-17
 
     EFFECT: "poseable" box2d bodies when attached to a revolute joint
 
-    - I wanted to write a note regarding this for later reference. I thought I had written about this previously, but couldn't find anything with a search.
+    - I wanted to write a note regarding this for later reference. I thought I had written about this previously, but couldn't find anything with a search of my notes
     - basically, I noticed this effect a while ago in the RUBE editor, but apparently didn't make any notes regarding this "unusual" effect
-    - currently, I wanted the ANDROID HULA ROBOT to have poseable arms and may be useful in the near future
+    - currently, I want the ANDROID HULA ROBOT to have poseable arms and this may be useful in the future
 
     - to ENABLE THIS FEATURE, in the settings for a revolute joint, set "enable motor = true" and "max motor torque > 0"
       - the value for "max motor torque" defines the torque strength necessary to move the joint
-      - when a weld joint is superimposed onto a revolute joint, the value for MOTOR TORQUE be tested against the weld-spring settings (frequency, reference angle)
+      - when a weld joint is superimposed onto a revolute joint, the value for MOTOR TORQUE should be tested against the weld-spring settings (frequency, reference angle)
         - see "sandals.rube" and experiment with this file to better understand this relationship
 
 
@@ -88,17 +167,29 @@ Monday 2020-02-17
     - creating RUBE box2d assemblies
 
     ANDROID HULA ROBOT
-      - copying the HULA GIRL MULTI-JOINT - RUBE "spring assembly" for use here
-        - bobble body: superimposed WELD-REVOLUTE on a superimposed DISTANCE-PRISMATIC
-        - poseable arms: superimposed WELD-REVOLUTE (x2) + motor torque
-        - bouncing antenna: superimposed WELD-REVOLUTE (x2)
-        - grass skirt fronds: TODO (based on an animated gif I have, I'm planning on having 4-5 fronds move in response to the bobble body, just for the added visual effect; this could also be used for other hula-style scenes or other visual components - hair and a lei come to mind)
+      - bobble body: superimposed WELD-REVOLUTE on a superimposed DISTANCE-PRISMATIC
+        - copying the HULA GIRL MULTI-JOINT - RUBE "spring assembly" for use here
+
+        * NOTE: I've often noticed that the hula box2d assemblies often are displaced a small distance whenever a scene first loads
+          - I think I've found a fix -- for the distance joint, INCREASE THE LENGTH PROPERTY by the displacement measured in the RUBE simulator grid
+            for instance, on the ANDROID HULA ROBOT, I typically see a 0.01 displacement when the world gravity = 0, -10; so increase the distance joint length from 0.2 to 0.21 to counter the displacement effect
+
+      - poseable arms: superimposed WELD-REVOLUTE (x2) + motor torque (see NOTE 1)
+      - bouncing antenna: superimposed WELD-REVOLUTE (x2)
+      - grass skirt fronds: TODO (based on an animated gif I have, I'm planning on having 4-5 fronds move in response to the bobble body, just for the added visual effect; this could also be used for other hula-style scenes or other visual components - hair and a lei come to mind)
+
+      NOTE 1:
+        - relatively happy with the RUBE scene physics. this bobble spring joint assembly seems pretty good and should be used as a reference.
+
+        - using the WELD-REVOLUTE joint settings alone, however, is insufficient to implement the poseable arms feature. fully rigid weld joints are needed to keep the arms in place while dance-wobbling, but flexible during the user-touch when posing the arms. 
+        
+        TODO: this needs to be done programmatically during user-touch (weld frequency = 1), otherwise it should be rigid (weld frequency = 0). once finished with posing an arm, the weld reference angle should be set (clockwise direction is +angle). hopefully, this works. also, each arm pose should be remembered.
 
 ----------
 Sunday 2020-02-16
 
   SURFER / TUX FEET / ANDROID HULA ROBOT
-    - exporting to bitmap and related creating RUBE box2d assemblies
+    - exported to bitmap => started creation of RUBE box2d assemblies
 
     * experimenting with image size / dpi
       - currently, all scene resources use ~40dpi
@@ -106,29 +197,31 @@ Sunday 2020-02-16
 
       TEXTURE PACKER notes:
         - 2048 pixels x 2048 pixels appears to be the optimal spritesheet size for mobile; for the ANROID HULA @ 200dpi this was split (other options not tried include TEXTURE PACKER scaling OR a max spritesheet of 4096 pixels x 4096 pixels OR a smaller DPI - 100-160dpi maybe)
-        - duplicate graphics (ie. ANDROID arms, legs, antenna) are handled quite well by TEXTURE PACKER, but need to be in the same orientation
+        - duplicate graphics (ie. ANDROID arms, legs, antenna) are handled quite well by TEXTURE PACKER, but need to be in the same orientation for texture packer to recognize duplicates
 
       RUBE notes:
-        - image assets appear to INTERCHANGEABLE with different image densities (just move the .rube file or similar programmatic method and the image appears to be scaled to fit automatically)
-        - of note is each image asset and the "filter" property
+        - image assets appear to be INTERCHANGEABLE with different image densities -- just move the .rube file to another folder with duplicate image resource names (or equivalent programmatic method); the image appears to be scaled to fit automatically
+
+        * note is each image asset and the "filter" property
           - by default "filter = linear" which smooths out pixels with the alternative of "filter = nearest"
           - the default "filter = linear" seems to create an unwanted outline effect @ 40dpi
+          - "filter = nearest" allows for easier re-positioning of moveable graphics on a reference image
 
 ----------
 Friday 2020-02-14
 
   SURFER / TUX FEET / ANDROID HULA ROBOT
-    - basic svg graphics created; next time export to bitmap and begin new scenes creation
+    - basic svg graphics created; tomorrow export to bitmap and begin new scenes creation
 
 
-  INKSCAPE LINE DRAWING TECHNIQUE
+  INKSCAPE LINE DRAWING + PATTERN TECHNIQUE
 
     - pencil tool settings: bezier path, smooth = 50, LPE based interactive simplify = false, shape = none
     - draw lines
     - draw path shape(s) for pattern
     - copy path shape to clipboard
     - select lines to apply pattern
-    - select path effects + add "pattern along path"
+    - select path effects + add "PATTERN ALONG PATH"
     - select "link to path on clipboard"
 
 ----------
