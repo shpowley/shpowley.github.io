@@ -1,3 +1,7 @@
+NEW SCENES ===> LIVE WALLPAPER ==> TOY CUSTOMIZER PROJECT OR FINISH HAWAIIAN THEME?
+  - remember to double check GameManager::GameManager() for appropriate scene defaults
+
+
 SEPARATE ACCELERATION SCALING FOR EACH AXIS
   - not sure if this was noted elsewhere, but separate scaling for each axis might be a good idea, especially for exaggerated bounce motion along the y-axis
     - this might be good for speed bumps.. vs. the impulse/jerk idea
@@ -81,7 +85,38 @@ LIVE WALLPAPER
 
 
 ----------
-Sunday 2020-02-13
+Tuesday 2020-02-25
+
+  adding new scenes to android project (step 9 of "NEW SCENE PROCESS DOCUMENTATION" - Sunday 2020-01-19)
+    - look at each RUBE physics assembly before proceeding
+
+
+  * my android "wobble" project will most likely make a slight detour. for some time now, I've had the idea of customizable template scenes that use either:
+    a) very BASIC BOX2D/RUBE PHYSICS MODEL (pure rotational - "hang loose" OR a simplified multi-joint - "hula girl")
+    b) GYROSCOPE CONTROLLED SPINNING 3D .OBJ (similar to spaceship demo)
+
+    - the key difference between what I'm currently working on and this is that the GRAPHICS WILL BE SUPPLIED BY THE END-USER - with perhaps a few demo graphics
+
+    - in the beginning, ONLY ONE OF EACH TYPE OF SCENE WILL PERSIST. with the POSSIBLILITY OF CREATING MULTIPLE SCENES BASED OFF OF ONE OF THE TEMPLATES LATER ON
+
+    - the box2d/rube scenes should be able to specify the primary box2d-body graphic AND one additional background graphic. each graphic can then be moved/resized around to better compose the physics "toy"
+
+    - the 3d .obj scenes should only be able to specify a .obj. I'm not sure if that can be customized - size or angle..
+
+    * the background image should be able to be customized, but this functionality is blurred with the ongoing "toy" vs. "multi-toy scene" development. this type of customization might be better utilized in the scene composition
+
+    - this project diverges from my original hawaiian-themed "wobble" project, but obviously will SHARE A SIGNIFICANT CODE BASE and SHOULD EXIST AS IT'S OWN INDEPENDENT APP
+      - I'm not sure of a good name yet: dashboard customizer
+
+    - I'm not sure if these scene templates would really fit into the hawaiian-themed "wobble" project per se, but I could re-purpose some logic to create a hula dancer (or similar scene) with a cut-out face where the end-user could specify a face photo that could be moved/resized
+
+----------
+Sunday 2020-02-23
+
+    android project
+      - final prep + compressed scene resource files
+      - copied resource files to the android project and addded to git source control
+
 
     TUX FEET
 
@@ -112,7 +147,7 @@ Sunday 2020-02-13
       TODO: in order to "lock" the arms in place, the weld frequency should be set to zero and the weld reference angle should be set to the pose angle programmatically (body angle? not sure yet)
 
 ----------
-Friday 2020-02-11
+Friday 2020-02-21
 
   SURFER / TUX FEET / ANDROID HULA ROBOT
 

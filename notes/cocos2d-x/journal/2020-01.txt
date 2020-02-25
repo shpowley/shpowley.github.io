@@ -74,12 +74,11 @@ Sunday 2020-01-19
 
     1 - copy RUBE .json file + sprite sheet files (.png + .plist) to appropriate /Resources folder
 
-    2 - <c++ RUBE scene>::init() contains HARD-CODED RELATIVE PATHS to RUBE .json and sprite sheet .plist files
-        * this should be changed to a central c++ include
-
-    3 - create a new scene folder in /Classes/Scenes
+    2 - create a new scene folder in /Classes/Scenes
       - copy some existing RUBE scene .h/.cpp as templates to the new folder and rename
       - rename internal class names, includes, etc.
+
+    3 - update HARD-CODED RELATIVE PATHS to RUBE .json and sprite sheet .plist files in <c++ RUBE scene>::init()
 
     4 - modify appropriate project include files for android/cocos2d-x project
         - CMakeLists.txt
