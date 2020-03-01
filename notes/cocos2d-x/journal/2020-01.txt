@@ -123,6 +123,7 @@ Sunday 2020-01-19
         - primarily used for "bobble" style physics
 
    11 - modify FUNCTION <new scene>Layer::afterLoadProcessing() or remove override
+        - update all names to match RUBE assembly
 
    12 - modify FUNCTION <new scene>Layer::initHUDSliderData()
 

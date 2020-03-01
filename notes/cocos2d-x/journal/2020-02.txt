@@ -1,5 +1,20 @@
 NEW SCENES ===> LIVE WALLPAPER ==> TOY CUSTOMIZER PROJECT OR FINISH HAWAIIAN THEME?
   - remember to double check GameManager::GameManager() for appropriate scene defaults
+  - RUBELayer::updateLightSensor() - doesn't this need check of _body_bobble existence like RUBELayer::updateIdleWobble()
+    - also rename to "updateLightSensorWobble()"
+
+
+"BOBBLE BODY" DEFINITION
+  - _body_bobble defined in overloaded ::afterLoadProcessing()
+    ex. _body_bobble = json->getBodyByName("body_top");
+
+  - primary?
+  - potential problem when logging shows angular velocity for the primary bobble body (toy-mode)
+  - also, issue with velocity constraint?
+  - take a look at single vs multiple (hula girl vs sandals)
+
+  - implement as RUBE user property similar to "ethereal" instead of the box2d body name?
+  - composite scene with multiple toys has potentially more than one "bobble body"
 
 
 SEPARATE ACCELERATION SCALING FOR EACH AXIS
@@ -23,15 +38,6 @@ AUDIO NOTE ITEMS
     - touch cycles through for now; possibly slide out selector in the future
   
   TOUCH SPARKLES / TWINKLES
-
-  "BOBBLE BODY" DEFINITION
-    - primary?
-    - potential problem when logging shows angular velocity for the primary bobble body (toy-mode)
-    - also, issue with velocity constraint?
-    - take a look at single vs multiple (hula girl vs sandals)
-
-    - implemented as RUBE user property similar to "ethereal" vs the name
-    - composite scene with multiple toys has potentially more than one "bobble body"
 
 
 SCENE DEFAULTS
@@ -83,12 +89,93 @@ LIVE WALLPAPER
   - https://discuss.cocos2d-x.org/t/3-2rc0-android-live-wallpaper/15460/13
   - https://discuss.cocos2d-x.org/t/how-to-implement-a-live-wallpaper-with-a-cocos2d-x-3-1/14563
 
+----------
+Thursday 2020-02-27
+
+  live wallpaper
+
+    notes: Saturday 2019-06-22 - Wednesday 2019-06-26
+
+    https://developer.android.com/reference/android/service/wallpaper/package-summary
+    https://androiddvlpr.com/android-live-wallpaper-tutorial/ (newer)
+    https://youtu.be/WWywGPDfx1g (newer youtube)
+
+    - tried the vogella live wallpaper example, it compiles and works, but it's rather old from 2010
+      https://www.vogella.com/tutorials/AndroidLiveWallpaper/article.html
+      - prefs are deprecated, but still work, though they don't immediately take effect..
+      
+      vogella tutorial is based on:
+      https://www.pushing-pixels.org/2010/02/01/live-wallpapers-with-android-sdk-2-1.html
+      - good explanations
+
+    - combined vogella + tuts+ tutorial for simple image + animated gif
+      tuts+ animated gif tutorial:
+      https://code.tutsplus.com/tutorials/create-a-live-wallpaper-on-android-using-an-animated-gif--cms-23088
+
+    - android canvas api might be useful
+      https://developer.android.com/reference/android/graphics/Canvas
+
+    - an alternative of creating animated gifs from image captures..
+      https://stackoverflow.com/questions/16331437/how-to-create-an-animated-gif-from-jpegs-in-android-development
+
+
+
+  surfer scene
+
+    TODO: perhaps a new setting for accelerometer induced torque, separate from the current accelerometer scaling effect; why? because sometime both induced force AND induced torque are enabled, and the current scaling effect isn't necessarily desirable on both
+
+    TODO: tuning still necessary, but required joints "wired" appropriately to be controlled by the developer settings; return later
+
+    TODO: step ::initHUDSliderData() needs experimental refinement
+
+    TODO: images - surfboard color is too close to skin-tone; better artwork; fix waist artwork to allow for more rotation
+    TODO: RUBE physics - arms too wobbly, slightly higher frequency
+
+
+  tux feet
+
+    FIX: when RUBE scene is initially loaded, physics is ok, but RIGHT FOOT ANGLE SETTINGS BECOME MANGLED after 
+    returning from developer settings
+
+      SCENES            BEACH SANDALS                       TUX FEET
+
+                        LEFT WELD       RIGHT WELD          LEFT WELD       RIGHT WELD
+      REFERENCE ANGLE   -3              3                   1.81            -1.2
+
+                        LEFT REVOLUTE   RIGHT REVOLUTE      LEFT REVOLUTE   RIGHT REVOLUTE
+      REFERENCE ANGLE   -90             -90                 -140            -60
+      LOWER LIMIT       30              30                  110             30
+      UPPER LIMIT       150             150                 190             110
+
+      - comparing the "tux feet" and "beach sandals" scenes, the exact code for handling the feet weld/revolute joints can't be reused
+      - the "beach sandals" scene are an exact mirror, whereas the "tux feet" scene has custom values for each foot
+      * the tux feet revolute joint code has been removed along with the revolute joint visibility in developer mode ..THIS ONLY PARTLY FIXES THE ISSUE
+
+      TODO: the tux feet weld joint reference angle code still needs fixed, but is bit more complex
+
+
+    NOTE / TODO: accelerometer "noise" at steady state actually work pretty well for idle wobble visual effect compared to what I have for the beach sandals - the weld joint frequency, etc. might have something to do with this. this needs experimentation and depending on the results could carry over to the beach sandals. this is only at steady state as slightest vibration causes pronounced movement..
 
 ----------
 Tuesday 2020-02-25
 
-  adding new scenes to android project (step 9 of "NEW SCENE PROCESS DOCUMENTATION" - Sunday 2020-01-19)
-    - look at each RUBE physics assembly before proceeding
+  - traced "_body_bobble" variable and it's effects in update() and related functions
+      RELATED NOTE:
+        - there are now 2 turtles scenes that behave erratically depending on various scene settings
+        - this erratic behavior is what prompted the _body_bobble evaluation
+        - neither turtle .cpp scene overrides ::afterLoadProcessing()
+        - also, some erratic behavior could possibly be solved by marking the body appendages (including the head) as "ethereal"; I'm not sure about "touchable" yet
+
+
+  add new scenes to android project ("NEW SCENE PROCESS DOCUMENTATION" - Sunday 2020-01-19)
+    - "android hula" and "surfer" RUBE assemblies are more-or-less based on the "hula-multi-joint"
+    + "tux feet" RUBE assembly is similarly based on the "sandals" RUBE assembly
+      - code for these scenes re-purposes much of the same code
+
+    - basic scene settings established with more precise tuning later on
+
+    TODO: step ::initHUDSliderData() needs experimental refinement for each new scene
+    TODO: "android hula" arm re-position logic needs implementation
 
 
   * my android "wobble" project will most likely make a slight detour. for some time now, I've had the idea of customizable template scenes that use either:
@@ -106,7 +193,7 @@ Tuesday 2020-02-25
     * the background image should be able to be customized, but this functionality is blurred with the ongoing "toy" vs. "multi-toy scene" development. this type of customization might be better utilized in the scene composition
 
     - this project diverges from my original hawaiian-themed "wobble" project, but obviously will SHARE A SIGNIFICANT CODE BASE and SHOULD EXIST AS IT'S OWN INDEPENDENT APP
-      - I'm not sure of a good name yet: dashboard customizer
+      - I'm not sure of a good name yet: "dashboard customizer" OR "dashboard toy customizer"
 
     - I'm not sure if these scene templates would really fit into the hawaiian-themed "wobble" project per se, but I could re-purpose some logic to create a hula dancer (or similar scene) with a cut-out face where the end-user could specify a face photo that could be moved/resized
 

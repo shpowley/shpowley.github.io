@@ -1,0 +1,35 @@
+Tutorial: https://androiddvlpr.com/android-live-wallpaper-tutorial/
+
+(STEP 1)
+AndroidManifest.xml
+
+  REQUIRED EXACTLY AS IS:
+
+  <uses-feature
+    android:name="android.software.live_wallpaper"
+    android:required="true">
+  </uses-feature>
+
+  <application>
+    ..
+    <service 
+      android:name=".GIFWallpaperService"     (CREATE SERVICE THAT MATCHES THIS NAME - SEE STEP 2)
+      android:enabled="true"
+      android:label="Daytime LWP"
+      android:permission="android:permission.BIND_WALLPAPER">
+      
+      <intent-filter>
+        <action android:name="android.service.wallpaper.WallpaperService" />
+      </intent-filter>
+      
+      <meta-data
+        android:name="android.service.wallpaper"
+        android:resource="@xml/wallpaper">
+      </meta-data>
+      
+    </service>
+
+(STEP 2)
+CREATE SERVICE THAT EXTENDS WallpaperService
+
+  - MUST IMPLEMENT onCreateEngine()
