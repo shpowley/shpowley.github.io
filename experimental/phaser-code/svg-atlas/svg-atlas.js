@@ -10,8 +10,8 @@ var
   RESOURCE = {
     PIGGLY_SPRITESHEET: {
       id: "PIGGLY_SPRITESHEET",
-      location: "/wiggly/svg-sheet/piggly-wiggly-sheet-min.svg",
-      json: "/wiggly/svg-sheet/piggly-wiggly-sheet.json"
+      location: "../../wiggly/svg-sheet/piggly-wiggly-sheet-min.svg",
+      json: "../../wiggly/svg-sheet/piggly-wiggly-sheet.json"
     }
   },
 
