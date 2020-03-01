@@ -1,0 +1,80 @@
+- create index.html links / descriptions for all pages so far
+* create playable yahtzle using chrome debugger - better ui / logic separation
+
+DESIGN DOCUMENT:
+- concurrent mobile / tablet + desktop (android chrome container, web, chrome web store)
+
+pure html5 (android + web)
+https://play.google.com/store/apps/details?id=hearts.trickster
+
+web canvas
+solitaire frvr
+
+test pages
+- git
+
+- scale individual element
+  - http://www.html5rocks.com/en/mobile/touch/
+  - http://stackoverflow.com/questions/11183174/simplest-way-to-detect-a-pinch
+
+- elevator (full page / div swipes)
+- sound
+- data store
+
+yahtzle
+- thumbnails of overall design
+  - play
+    - trump suit
+    - deal count
+    - hand
+      - 12 cards
+      - buttons: deal, bunch, discard / keep all
+    - scoring section overview - just shows labels & score: transparent black / green, solid black
+      - detail subview / pop-up (click to show) - repeat info + cards for section (transparent white / yellow / green or solid)
+
+- use svg graphics
+  - suits
+  - card front (simple front with swappable value / suit)
+  - card back
+
+* separate ui and actual logic
+
+- game states: title screen, playing, configuration.. (this would be a good design starting point)
+- play screen fixed, transparent, collapsible, overlay (ex. http://www.bicyclecards.com/how-to-play/pinochle-2/)
+
+- screens
+  - title
+  - trump suit select (random suit animation)
+  - play
+  - scoring
+  - rules
+  - configuration
+  - debugging
+
+- integrate debug mode from the start
+  - suit select
+  - hand select
+
+    D=DIAMONDS, S=SPADES, H=HEARTS, C=CLUBS
+    A=ACE, T=TEN, K=KING, Q=QUEEN, J=JACK, 9=NINE
+
+    sample | AS QH QS TD 9H 9S JD AD KS KD QD TC
+
+- options:
+  - sound
+  - initial card draw in discard / keep state (option) ...maybe a button on the main play (keep / discard all)
+  - scoring modes (double marriage - trump value = 300 / 80)
+
+- randomize trump selection (advantageous selecting diamonds / spades)
+- deck cards unique id
+- ui: no text selection / highlight dom elements & maintain mouse cursor
+
+- as card are designated "keep" / "discard", visually indicate in score box categories
+  - "squish" hand in scoring categories
+
+- bonus: +100 if Nines + Jacks + Queens + Kings + Aces > 300 BONUS
+- re-mix discards back into deck checkbox (in-play option)
+- "YAHTZEE"-like category..DOUBLE-RUN?
+- chance should show scoring categories: "run (150) + pinochle (40) + marriage (40)"
+- drag / touch-drag or re-arrange hand
+- bid option bonus??

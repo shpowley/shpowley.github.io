@@ -1,0 +1,21 @@
+body {
+  visibility: hidden;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+#canvas-main {
+  position: absolute;
+  background-color: #F5F5DC;
+  left: 0;
+  top: 0;
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+  -webkit-transform: scale(0.5);
+  transform: scale(0.5);
+}
+
+html {
+  height: 100%;
+}

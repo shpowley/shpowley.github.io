@@ -1,0 +1,9 @@
+#main {
+  height: 300px;
+  width: 300px;
+}
+.svg-text-middle {
+  font: 1em Tahoma, Geneva, sans-serif;
+  text-anchor: middle;
+  text-align: center;
+}

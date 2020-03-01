@@ -1,0 +1,10 @@
+html { height: 100%; width: 100% }
+body { height: 100%; width: 100%; margin: 0; }
+#flat {
+    height: 30%;
+    width: 30%;
+    position: absolute;
+    top: 35%;
+    left: 35%;
+    background: #004880;
+}

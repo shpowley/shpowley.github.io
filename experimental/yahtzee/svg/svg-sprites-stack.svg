@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <style>
+    <![CDATA[
+      svg {
+        display: none;
+      }
+      svg:target {
+        display: inline;
+      }
+    ]]>
+  </style>
+
+  <def>
+    <!-- dice components -->
+    <rect id="rec" rx="34.35" ry="34.35" x="8.735" y="8.735" height="199.3" width="199.3" stroke-width="17.47" stroke="#000" fill="none"/><!-- dice rectangle body -->
+    <circle id="nw" cx="54.13" cy="54.09" r="19"/><!-- pip nw -->
+    <circle id="n" cx="108.4" cy="54.09" r="19"/><!-- pip n -->
+    <circle id="ne" cx="162.64" cy="54.09" r="19"/><!-- pip ne -->
+    <circle id="w" cx="54.13" cy="108.38" r="19"/><!-- pip w -->
+    <circle id="mid" cx="108.4" cy="108.38" r="19"/><!-- pip center -->
+    <circle id="e" cx="162.64" cy="108.38" r="19"/><!-- pip e -->
+    <circle id="sw" cx="54.13" cy="162.64" r="19"/><!-- pip sw -->
+    <circle id="s" cx="108.4" cy="162.64" r="19"/><!-- pip s -->
+    <circle id="se" cx="162.64" cy="162.64" r="19"/><!-- pip se -->
+  </def>
+
+  <!-- dice (no fill) -->
+  <svg id="dice-1" viewBox="0 0 217 217">
+    <use xlink:href="#rec"/>
+    <use xlink:href="#mid" fill="#000"/>
+  </svg>
+
+  <svg id="dice-2" viewBox="0 0 217 217">
+    <use xlink:href="#rec"/>
+    <g fill="#000">
+      <use xlink:href="#ne"/>
+      <use xlink:href="#sw"/>
+    </g>
+  </svg>
+
+  <svg id="dice-3" viewBox="0 0 217 217">
+    <use xlink:href="#rec"/>
+    <g fill="#000">
+      <use xlink:href="#ne"/>
+      <use xlink:href="#mid"/>
+      <use xlink:href="#sw"/>
+    </g>
+  </svg>
+
+  <svg id="dice-4" viewBox="0 0 217 217">
+    <use xlink:href="#rec"/>
+    <g fill="#000">
+      <use xlink:href="#nw"/>
+      <use xlink:href="#ne"/>
+      <use xlink:href="#sw"/>
+      <use xlink:href="#se"/>
+    </g>
+  </svg>
+
+  <svg id="dice-5" viewBox="0 0 217 217">
+    <use xlink:href="#rec"/>
+    <g fill="#000">
+      <use xlink:href="#nw"/>
+      <use xlink:href="#ne"/>
+      <use xlink:href="#mid"/>
+      <use xlink:href="#sw"/>
+      <use xlink:href="#se"/>
+    </g>
+  </svg>
+
+  <svg id="dice-6" viewBox="0 0 217 217">
+    <use xlink:href="#rec"/>
+    <g fill="#000">
+      <use xlink:href="#nw"/>
+      <use xlink:href="#n"/>
+      <use xlink:href="#ne"/>
+      <use xlink:href="#sw"/>
+      <use xlink:href="#s"/>
+      <use xlink:href="#se"/>
+    </g>
+  </svg>
+
+  <!-- arrow graphic -->
+  <svg id="arrow" viewBox="4 0 577 151">
+    <g stroke="#000" stroke-width="13.46" fill="none">
+      <path d="M182.8,146.3,245.8,76.53,182.8,6.732"/>
+      <path d="M9.232,146.3,72.23,76.53,9.232,6.732"/>
+      <path d="M52.63,146.3,115.6,76.53,52.63,6.732"/>
+      <path d="M96.03,146.3,159,76.53,96.03,6.732"/>
+      <path d="M139.4,146.3,202.4,76.53,139.4,6.732"/>
+      <path d="M6.732,76.53,467.3,76.53"/>
+    </g>
+    <path fill="#000" d="M438,120.2,452.7,129.2s44.6-45.47,124.9-45.97v-13.4c-80.2-0.5-124.9-46-124.9-46l-14.7,9c16.3,29.4,28.7,37.4,28.7,37.4v12.6s-12.4,8-28.7,37.37z"/>
+  </svg>
+</svg>

@@ -1,0 +1,44 @@
+/* fade in animation */
+.fade-in {
+  -webkit-animation: fade-in 2s ease;
+  animation: fade-in 2s ease;
+}
+@-webkit-keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.label {
+  /* specifying width and height here in the css class help maintain the div size as it's rendering,
+  `  otherwise it appears much larger pre-loading */
+  width: 240px;
+  height: 42px;
+
+  background: rgb(224, 231, 180);
+
+  /* drop shadow */
+  box-shadow: 0.3mm 0.3mm 1.5mm #000;
+  border-radius: 1.5mm;
+
+  position: relative;
+  display: block;
+  margin: 0 0 5mm 0;
+}
+iframe {
+  border: none;
+}
+.hidden {
+  visibility: hidden;
+}

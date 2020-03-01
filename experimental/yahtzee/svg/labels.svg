@@ -1,0 +1,18 @@
+<!-- height / width doesn't seem to matter for svg.. -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <style type="text/css">
+    .dialog-center {
+      font-family: Arial;
+      text-anchor: middle;
+      text-align: center;
+    }
+  </style>
+
+  <!-- dice placeholder -->
+  <use xlink:href="svg-sprites.svg#dice-1" height="24" width="24" y="8.9" x="129" fill="#fff"/>
+
+  <g class="dialog-center">
+    <text y="21" x="65.5" font-size="30px" dy="0.35em">Aces</text>
+    <text y="21" x="195.2" font-size="20px" dy="0.35em">= 6</text>
+  </g>
+</svg>

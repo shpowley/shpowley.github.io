@@ -1,0 +1,171 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Sprite Sheet Admin</title>
+    <link rel="stylesheet" href="sprite-admin.css">
+  </head>
+
+  <body>
+    <div id="main">
+      <h1>Sprite Sheet Administration Tool</h1>
+
+      <h3 id="tab-descriptor">Sprite Descriptors</h3>
+      <h3 id="tab-builder" class="color-disabled">Sprite Builder</h3>
+      <h3 id="tab-cache" class="color-disabled">Cache (localStorage)</h3>
+
+      <section id="section-descriptor">
+        <div id="descriptor-download">
+          <label for="text-descriptor-url">Sprite Descriptor Template URL (Relative or Absolute URL)</label>
+          <form>
+            <input id="text-descriptor-url" type="text"></input>
+            <button id="button-descriptor-download">Download</button>
+          </form>
+        </div>
+        <label for="list-descriptor">Sprite File Names</label>
+        <div>
+          <select id="list-descriptor" size="20"></select>
+          <div id="list-descriptor-buttons">
+            <div>
+              <button id="button-descriptor-up">&#11014;</button>
+              <button id="button-descriptor-edit">&#8943;</button>
+              <button id="button-descriptor-delete">&#9249;</button>
+              <button id="button-descriptor-down">&#11015;</button>
+            </div>
+          </div>
+        </div>
+        <div id="descriptor-edit">
+          <form>
+            <input id="text-descriptor-filename" type="text" maxlength="50"></input>
+            <button id="button-descriptor-add">Add</button>
+            <button id="button-descriptor-update" hidden>Update</button>
+            <button id="button-descriptor-cancel" hidden>Cancel</button>
+          </form>
+        </div>
+        <div>
+          <button id="button-descriptor-save">Save As..</button>
+        </div>
+        <div id="descriptor-status">
+          <label>Status: </label>
+          <label id="descriptor-status-msg"></label>
+        </div>
+      </section>
+
+      <section id="section-builder" hidden>
+        <div id="builder-download">
+          <label for="text-builder-url">Sprite Descriptor URL</label>
+          <form>
+            <input id="text-builder-url" type="text"></input>
+            <button id="button-builder-download">Download</button>
+          </form>
+        </div>
+        <div id="builder-lists">
+          <div id="builder-sprites">
+            <label for="list-builder">Sprite Sheet</label>
+            <div>
+              <select id="list-builder" size="18"></select>
+              <div id="list-builder-buttons">
+                <div>
+                  <button id="button-builder-up" disabled>&#11014;</button>
+                  <button id="button-builder-preview" title="Preview" disabled>&#128269;</button>
+                  <button id="button-builder-copy" title="Copy" disabled>&#9112;</button>
+                  <button id="button-builder-delete" title="Delete" disabled>&#9249;</button>
+                  <button id="button-builder-next-row" title="New Row" disabled>&#8629;</button>
+                  <button id="button-builder-down" disabled>&#11015;</button>
+                </div>
+              </div>
+            </div>
+            <div id="builder-edit">
+              <div>
+                <label for="text-builder-id">Sprite ID</label>
+                <input id="text-builder-id" type="text" maxlength="20" disabled></input>
+              </div>
+              <div>
+                <label for="text-builder-scale">Scale</label>
+                <input id="text-builder-scale" type="text" maxlength="5" disabled></input>
+              </div>
+              <div>
+                <label for="text-builder-rotation">Rotation</label>
+                <input id="text-builder-rotation" type="text" maxlength="3" disabled></input>
+              </div>
+              <div>
+                <button id="button-builder-set" disabled>Set</button>
+              </div>
+            </div>
+            <div id="builder-generate-sheet">
+              <div>
+                <label for="text-builder-sheet-version">Version</label>
+                <input id="text-builder-sheet-version" type="text" maxlength="4" disabled></input>
+              </div>
+              <div>
+                <label for="text-builder-sheet-scale">Sheet Scale</label>
+                <input id="text-builder-sheet-scale" type="text" maxlength="5" disabled></input>
+              </div>
+              <div>
+                <button id="button-builder-sheet-set" disabled>Set</button>
+              </div>
+              <div>
+                <button id="button-builder-generate-sheet" disabled>Create Sheet</button>
+              </div>
+            </div>
+          </div>
+          <div id="builder-preview">
+            <label>Preview</label>
+            <div id="builder-preview-content"></div>
+            <div id="builder-save">
+              <div>
+                <label for="list-builder-save">Save Options</label>
+                <select id="list-builder-save" disabled>
+                  <option>JSON Sprite Sheet + Map</option>
+                  <option>Sprite Sheet</option>
+                  <option>JSON Sprite Map</option>
+                </select>
+              </div>
+              <div>
+                <button id="button-builder-save" disabled>Save As..</button>
+              </div>
+              <div>
+                <button id="button-builder-backup" title="Backup current Sprite Sheet configuration">Backup</button>
+              </div>
+              <div>
+                <button id="button-builder-restore" title="Restore Sprite Sheet configuration">Restore</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="builder-status">
+          <label>Status: </label>
+          <label id="builder-status-msg"></label>
+        </div>
+      </section>
+
+      <section id="section-cache" hidden>
+        <label for="list-cache">Cached Entries (localStorage)</label>
+        <div>
+          <select id="list-cache" size="16">
+          </select>
+          <div id="list-cache-buttons">
+            <div>
+              <button id="button-cache-up">&#11014;</button>
+              <button id="button-cache-edit">&#8943;</button>
+              <button id="button-cache-delete">&#9249;</button>
+              <button id="button-cache-down">&#11015;</button>
+            </div>
+          </div>
+        </div>
+        <div id="cache-commands">
+          <button id="button-cache-refresh">Refresh</button>
+          <button id="button-cache-clear">Clear Cache</button>
+        </div>
+      </section>
+    </div>
+
+    <script src="/yahtzle/js/util.js"></script>
+    <script src="/yahtzle/js/canvas.js"></script>
+    <script src="/yahtzle/js/sprites.js"></script>
+    <script src="sprite-admin.js"></script>
+  </body>
+
+</html>

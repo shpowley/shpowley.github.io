@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid meet" viewBox="0 0 303 1135">
+  <style>
+    .description {
+      text-anchor: start;
+      font: 1.2em Tahoma, Geneva, sans-serif;
+    }
+    .score {
+      text-anchor: middle;
+      font: 1.5em Tahoma, Geneva, sans-serif;
+    }
+    text {
+      <!-- required here to prevent highlighting text -->
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+  </style>
+
+  <def>
+    <rect id="rect_score" width="301" height="80" opacity="0"/>
+  </def>
+
+  <g stroke="#000" stroke-width="0.4">
+    <rect x="0.5" y="0.5" width="302" height="1134" fill="none"/>
+    <path d="M221.5,0.5,221.5,1134.5"/>
+    <path d="M0.5,81.5,302.5,81.5"/>
+    <path d="M0.5,162.5,302.5,162.5"/>
+    <path d="M0.5,243.5,302.5,243.5"/>
+    <path d="M0.5,324.5,302.5,324.5"/>
+    <path d="M0.5,405.5,302.5,405.5"/>
+    <path d="M0.5,486.5,302.5,486.5"/>
+    <path d="M0.5,567.5,302.5,567.5"/>
+    <path d="M0.5,648.5,302.5,648.5"/>
+    <path d="M0.5,729.5,302.5,729.5"/>
+    <path d="M0.5,810.5,302.5,810.5"/>
+    <path d="M0.5,891.5,302.5,891.5"/>
+    <path d="M0.5,972.5,302.5,972.5"/>
+    <path d="M0.5,1053.5,302.5,1053.5"/>
+  </g>
+
+  <!--ACES-->
+  <svg x="1" y="1">
+    <text class="description" x="10" y="40" dy="0.4em">Aces</text>
+    <text id="text_aces" class="score" x="261" y="40" dy="0.4em"></text>
+    <use id="cell_aces" xlink:href="#rect_score"/>
+  </svg>
+
+  <!--TWOS-->
+  <svg x="1" y="82">
+    <text class="description" x="10" y="40" dy="0.4em">Twos</text>
+    <text id="text_twos" class="score" x="261" y="40" dy="0.4em"></text>
+    <use id="cell_twos" xlink:href="#rect_score"/>
+  </svg>
+
+  <!--THREES-->
+  <svg x="1" y="163">
+    <text class="description" x="10" y="40" dy="0.4em">Threes</text>
+    <text id="text_threes" class="score" x="261" y="40" dy="0.4em"></text>
+    <use id="cell_threes" xlink:href="#rect_score"/>
+  </svg>
+
+  <!--FOURS-->
+  <svg x="1" y="244">
+    <text class="description" x="10" y="40" dy="0.4em">Fours</text>
+    <text id="text_fours" class="score" x="261" y="40" dy="0.4em"></text>
+    <use id="cell_fours" xlink:href="#rect_score"/>
+  </svg>
+
+  <!--FIVES-->
+  <svg x="1" y="325">
+    <text class="description" x="10" y="40" dy="0.4em">Fives</text>
+    <text id="text_fives" class="score" x="261" y="40" dy="0.4em"></text>
+    <use id="cell_fives" xlink:href="#rect_score"/>
+  </svg>
+
+  <!--SIXES-->
+  <svg x="1" y="406">
+    <text class="description" x="10" y="40" dy="0.4em">Sixes</text>
+    <text id="text_sixes" class="score" x="261" y="40" dy="0.4em"></text>
+    <use id="cell_sixes" xlink:href="#rect_score"/>
+  </svg>
+
+  <!--3 OF A KIND-->
+  <svg x="1" y="487">
+    <text class="description" x="10" y="40" dy="0.4em">3 of a Kind</text>
+    <text id="text_3k" class="score" x="261" y="40" dy="0.4em"></text>
+    <use id="cell_3k" xlink:href="#rect_score"/>
+  </svg>
+
+  <!--4 OF A KIND-->
+  <svg x="1" y="568">
+    <text class="description" x="10" y="40" dy="0.4em">4 of a Kind</text>
+    <text id="text_4k" class="score" x="261" y="40" dy="0.4em"></text>
+    <use id="cell_4k" xlink:href="#rect_score"/>
+  </svg>
+
+  <!--FULL HOUSE-->
+  <svg x="1" y="649">
+    <text class="description" x="10" y="40" dy="0.4em">Full House</text>
+    <text id="text_fullhouse" class="score" x="261" y="40" dy="0.4em"></text>
+    <use id="cell_fullhouse" xlink:href="#rect_score"/>
+  </svg>
+
+  <!--SMALL STRAIGHT-->
+  <svg x="1" y="730">
+    <text class="description" x="10" y="40" dy="0.4em">Small Straight</text>
+    <text id="text_sm" class="score" x="261" y="40" dy="0.4em"></text>
+    <use id="cell_sm" xlink:href="#rect_score"/>
+  </svg>
+
+  <!--LARGE STRAIGHT-->
+  <svg x="1" y="811">
+    <text class="description" x="10" y="40" dy="0.4em">Large Straight</text>
+    <text id="text_lg" class="score" x="261" y="40" dy="0.4em"></text>
+    <use id="cell_lg" xlink:href="#rect_score"/>
+  </svg>
+
+  <!--YAHTZEE-->
+  <svg x="1" y="892">
+    <text class="description" x="10" y="40" dy="0.4em">Yahtzee</text>
+    <text id="text_yahtzee" class="score" x="261" y="40" dy="0.4em"></text>
+    <use id="cell_yahtzee" xlink:href="#rect_score"/>
+  </svg>
+
+  <!--CHANCE-->
+  <svg x="1" y="973">
+    <text class="description" x="10" y="40" dy="0.4em">Chance</text>
+    <text id="text_chance" class="score" x="261" y="40" dy="0.4em"></text>
+    <use id="cell_chance" xlink:href="#rect_score"/>
+  </svg>
+
+  <!--TOTAL-->
+  <svg x="1" y="1054">
+    <text class="description" x="10" y="40" dy="0.4em">Total</text>
+    <text id="text_total" class="score" x="261" y="40" dy="0.4em"></text>
+    <use id="cell_total" xlink:href="#rect_score"/>
+  </svg>
+</svg>

@@ -1,0 +1,14 @@
+#canvas-main, #img-exported {
+  position: absolute;
+}
+
+#canvas-main {
+  background-color: #F5F5DC;
+  left: 0;
+  top: 0;
+}
+
+#img-exported {
+  left: 225px;
+  top: 210px;
+}

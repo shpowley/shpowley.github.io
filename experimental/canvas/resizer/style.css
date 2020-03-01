@@ -1,0 +1,45 @@
+html {
+  height: 100%
+}
+body {
+  /*
+   * makes body height the same as the browser window
+   * - also requires (css) html>height: 100% for this to work
+   */
+  min-height: 100%;
+  margin: 0;
+}
+.button_block {
+  margin: 1mm auto 0 auto;
+  padding: 1mm;
+  width: 40mm;
+  display: block;
+  font: 0.8em Arial;
+}
+#control_box {
+  padding: 2mm;
+  border-radius: 2mm;
+  background: #f8f8ff;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 99;
+  
+  -webkit-box-shadow: -5px 5px 17px -4px rgba(0,0,0,1);
+  -moz-box-shadow: -5px 5px 17px -4px rgba(0,0,0,1);
+  box-shadow: -5px 5px 17px -4px rgba(0,0,0,1);
+}
+input[type="text"], #scale_button {
+  width: 23mm;
+  text-align: center;
+}
+#position_button {
+  margin-top: 3mm;
+  margin-bottom: 3mm;
+}
+#scale_div {
+  margin-bottom: 3mm;
+}
+select {
+  width: 23mm;
+}

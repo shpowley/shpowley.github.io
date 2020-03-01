@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>INEW 2330 | Life Simulation</title>
+    <script src="modernizr.custom.js"></script>
+    <script src="io.common.js"></script>
+    <script src="life.js"></script>
+    <script src="main.js"></script>
+  </head>
+
+  <body>
+    <canvas id="canvas-grid" width="50" height="50"
+      style="position:absolute; left:0; top:0; z-index:2">
+    </canvas>
+    <canvas id="canvas-entities" width="50" height="50"
+      style="position:absolute; left:0; top:0; z-index:1">
+    </canvas>
+    <canvas id="canvas-ground" width="50" height="50"
+      style="position:absolute; left:0; top:0; z-index:0">
+    </canvas>
+  </body>
+</html>

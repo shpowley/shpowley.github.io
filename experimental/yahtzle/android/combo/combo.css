@@ -1,0 +1,22 @@
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  background-color: #269069;
+}
+
+html {
+  height: 100%;
+}
+
+canvas {
+  position: absolute; /* REQUIRED for android fullscreen; otherwise small gap appears @ screen bottom */
+  /*image-rendering: pixelated;*/
+}
+
+/* class is auto-added in script for desktop environment */
+.desktop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

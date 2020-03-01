@@ -1,0 +1,136 @@
+* {
+  font-family: arial, helvetica, sans-serif;
+}
+body {
+  margin: 4px;
+}
+#button_set_trump {
+  visibility: hidden;
+  margin-left: 8px;
+}
+.buttons {
+  display: inline-flex;
+}
+.buttons > button[type="button"] {
+  width: 90px;
+  margin: 0 2px 0 2px;
+}
+.card {
+  display: inline-flex;
+  border: 1px solid black;
+  margin: 1px;
+  /*smaller size cards*/
+  /*margin: -4px;*/
+  /*transform: scale(0.7);*/
+  width: 30px;
+  height: 46px;
+  align-items: center;
+  justify-content: center;
+  line-height: 0.85em;
+  border-radius: 4px;
+  position: relative;
+}
+.card, h3, h4, form {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: default;
+}
+#card_deck, #hand > form {
+  margin-top: 8px;
+}
+#card_hand {
+  margin-top: 20px;
+}
+.card_selected {
+  opacity: 0.4;
+}
+.card_selected_caution {
+  border-color: #f1f148;
+}
+.card_selected_proceed {
+  border-color: #83f15d;
+}
+.card_suit {
+  margin-left: 1px;
+  font-size: 0.8em;
+}
+.card_value {
+  font-size: 0.6em;
+}
+#column_left, #column_right {
+  display: inline-block;
+  vertical-align: top;
+}
+.columns {
+  display: flex;
+}
+.columns_40 {
+  width: 40%;
+}
+.columns_60 {
+  width: 60%;
+}
+#deck, #hand {
+  height: 240px;
+  margin-bottom: 4px;
+}
+#deck, #hand, #score_bottom, #score_top {
+  border: 1px solid blue;
+  border-radius: 6px;
+  padding: 10px 4px 4px 4px;
+  width: 408px;
+}
+.discard {
+  top: -10px;
+}
+.hidden {
+  visibility: hidden;
+}
+h3 {
+  margin: 0 0 0 2px;
+}
+h4 {
+  margin: 0 0 0 2px;
+  font-size: 0.6em;
+}
+.red {
+  color: red;
+}
+.same_line {
+  display: inline;
+  margin-right: 10px;
+}
+.selected_caution, .selected_proceed {
+  opacity: 0.3;
+}
+.selected_caution {
+  border-color: #f1f148;
+}
+.selected_proceed {
+  border-color: #83f15d;
+}
+#score_bottom, #score_top {
+  height: 410px;
+}
+.score_category {
+  margin: 2px 0 10px 0;
+  height: 50px;
+}
+#score_bonus, #score_total {
+  margin: 2px 0 0 4px;
+  font-size: 0.8em;
+}
+.scoring_caution {
+  background-color: #f1f148;
+}
+.scoring_proceed {
+  background-color: #83f15d;
+}
+.spacer {
+  height: 30px;
+}
+.transparent {
+  opacity: 0.15;
+}

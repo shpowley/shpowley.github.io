@@ -1,0 +1,198 @@
+html {
+  height: 100%
+}
+
+body {
+  /*
+   * makes body height the same as the browser window
+   * - also requires (css) html>height: 100% for this to work
+   */
+  margin: 0;
+  font: 100% arial, sans-serif;
+}
+
+button {
+  font-size: 8pt;
+  width: 18mm;
+}
+
+#builder-edit, #builder-generate-sheet, #builder-save {
+  margin-top: 6px;
+}
+
+#builder-edit div, #builder-generate-sheet div, #builder-save div {
+  display: inline-block;
+}
+
+#builder-edit label, #builder-generate-sheet label, #builder-save label {
+  display: block;
+}
+
+#builder-lists {
+  display: inline-flex;
+}
+
+#builder-preview {
+  width: 112mm;
+}
+
+#builder-preview-content {
+  width: 110mm;
+  height: 83mm;
+  overflow: overlay;
+  border: 1px solid rgba(165,165,165,1);
+  background-color: white;
+}
+
+#builder-sprites {
+  width: 84mm;
+}
+
+#builder-sprites > div:first-of-type {
+  position: relative;
+}
+
+#button-builder-generate-sheet {
+  width: 22mm;
+}
+
+#button-descriptor-delete, #button-builder-delete, #button-cache-delete,
+#button-builder-copy, #button-builder-next {
+  font-size: 1.1em;
+}
+
+#button-descriptor-save {
+  display: block;
+  margin-top: 4px;
+}
+
+#cache-commands button {
+  width: 24mm;
+}
+
+.color-disabled {
+  background-color: #D2D2D2;
+}
+
+#descriptor-download, #builder-download {
+  margin-bottom: 10px;
+}
+
+#descriptor-edit, #cache-commands {
+  margin-top: 4px;
+}
+
+#descriptor-edit button, #button-builder-set, #button-builder-sheet-set {
+  width: 14mm;
+}
+
+#descriptor-status, #builder-status {
+  position: absolute;
+  bottom: 6px;
+}
+
+h1 {
+  margin: 0;
+}
+
+h3 {
+  font-size: 0.7em;
+  margin: 0;
+  padding: 6px 6px 2px 6px;
+  display: inline-block;
+  background-color: #C9D8E6;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: default;
+}
+
+label {
+  font-size: 0.6em;
+  margin-bottom: 2px;
+}
+
+#descriptor-status label, #builder-status label {
+  margin: 0;
+}
+
+#list-builder {
+  width: 71mm;
+}
+
+#list-builder-save {
+  font-size: 8pt;
+}
+
+#list-descriptor, #list-cache {
+  width: 91mm;
+}
+
+#list-descriptor, #list-builder, #list-cache {
+  overflow-y: overlay;
+  display: inline;
+}
+
+#list-descriptor, #list-builder, #list-cache, input[type="text"] {
+  font: 8pt monospace;
+}
+
+#list-descriptor-buttons, #list-builder-buttons, #list-cache-buttons {
+  position: absolute;
+  height: 100%;
+  display: inline-flex;
+}
+
+#list-descriptor-buttons button, #list-builder-buttons button, #list-cache-buttons button {
+  display: block;
+  width: 9mm;
+  height: 8mm;
+  margin: 4px;
+}
+
+#list-descriptor-buttons > div:first-of-type, #list-builder-buttons > div:first-of-type, #list-cache-buttons > div:first-of-type {
+  align-self: center;
+}
+
+#main {
+  margin: 5mm 0 0 5mm;
+  width: 200mm;
+  padding: 0;
+}
+
+#main > h1 {
+  text-align: center;
+  margin-bottom: 4mm;
+}
+
+section {
+  padding: 3mm;
+  height: 120mm;
+  background-color: #C9D8E6;
+}
+
+#section-descriptor, #section-builder, #section-cache,
+#section-descriptor > div:nth-of-type(2), #section-builder > div:nth-of-type(2), #section-cache > div:first-of-type {
+  position: relative;
+}
+
+#text-builder-id {
+  width: 26mm;
+}
+
+#text-builder-scale, #text-builder-rotation, #text-builder-sheet-version {
+  width: 12mm;
+}
+
+#text-builder-sheet-scale {
+  width: 15mm;
+}
+
+#text-descriptor-filename {
+  width: 90mm;
+}
+
+#text-descriptor-url, #text-builder-url {
+  width: 150mm;
+}

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+  <head>
+    <!-- modified from: http://www.albertosarullo.com/demos/accelerometer/ -->
+    <title>Accelerometer Javascript Test</title>
+    <meta name="viewport" content="width=device-width,user-scalable=yes" />
+    <style>
+      body {
+        font-family: helvetica, arial, sans serif;
+        height: 100%;
+        margin: 0;
+      }
+      #content {
+        position: absolute;
+        top: 0;
+      }
+      .hidden {
+        visibility: hidden;
+      }
+      html {
+        height: 100%;
+      }
+      #sphere {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        border-radius: 50px;
+        -webkit-radius: 50px;
+        background-color: blue;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="content">
+      <div id="sphere" class="hidden"></div>
+    </div>
+    <script src="js/util.timer.js"></script>
+    <script>
+      /* global TIMER */
+      var
+        $id = document.getElementById.bind(document),
+
+        sphere = $id("sphere"),
+
+        ACCELEROMETER = {
+          x: 0,
+          y: 0,
+          z: 0,
+
+          noise: 0.3,
+          delay: 100,
+
+          triggered: function(a) {
+            return (Math.abs(this.x - a.x) >= this.noise || Math.abs(this.y - a.y) >= this.noise || Math.abs(this.z - a.z) >= this.noise);
+          },
+
+          update: function(a) {
+            if (this.triggered(a)) {
+              this.x = Math.abs(a.x) > this.noise ? a.x : 0;
+              this.y = Math.abs(a.y) > this.noise ? a.y : 0;
+              this.z = Math.abs(a.z) > this.noise ? a.z : 0;
+            }
+          },
+
+          log: function() {
+            console.log("acceleration: [" + this.x + ", " + this.y + ", " + this.z + "]");
+          }
+        },
+
+        bounceDecay = 0.85, // 1 = no decay (super bouncy)
+        velocityScale = 50,
+        velocityRollingDecay = 0.98,
+        velocityFilter = 0.021,
+
+        objectSize = sphere.clientWidth,
+        boundXMax = document.documentElement.clientWidth - objectSize,
+        boundYMax = document.documentElement.clientHeight - objectSize,
+
+        center = {
+          x: boundXMax / 2,
+          y: boundYMax / 2
+        },
+
+        x = center.x,
+        y = center.y,
+        vx = 0,
+        vy = 0,
+
+        motionTimer = null,
+        timeStart = 0,
+        timeCurrent = 0;
+
+      if (window.DeviceMotionEvent != undefined) {
+        window.ondevicemotion = function(e) {
+          ACCELEROMETER.update(e.accelerationIncludingGravity);
+        };
+
+        motionTimer = TIMER.create();
+
+        motionTimer.interval(function() {
+          // var landscapeOrientation = window.innerWidth / window.innerHeight > 1;
+
+          timeCurrent = new Date().getTime();
+
+          var t = (timeCurrent - timeStart) / 1000;
+          timeStart = timeCurrent;
+
+          /*
+          THIS MIGHT BE BETTER HANDLED USING THE ORIENTATION API?
+          if (landscapeOrientation) {
+            vx = vx - ax * t;
+            vy = vy + ay * t;
+          }
+          else {
+            vx = vx - ax * t;
+            vy = vy + ay * t;
+          }
+          */
+
+          // v = v(0) + at (physics)
+          vx = vx - ACCELEROMETER.x * t;
+          vy = vy + ACCELEROMETER.y * t;
+
+          // velocity "noise" filter for low speeds
+          vx = Math.abs(vx) > velocityFilter ? vx * velocityRollingDecay : 0;
+          vy = Math.abs(vy) > velocityFilter ? vy * velocityRollingDecay : 0;
+
+
+          // scales relative "speed"
+          y = parseInt(y + vy * velocityScale, 10);
+          x = parseInt(x + vx * velocityScale, 10);
+
+          boundingBoxCheck(); // also controls velocity "decay"
+
+          sphere.style.top = y + "px";
+          sphere.style.left = x + "px";
+        }, 20);
+        /**
+         * 60 fps = ~16.667ms
+         * 30 fps = ~33.333ms
+         */
+
+        // this places the ball in the center of the page and makes it visible
+        sphere.style.top = y + "px";
+        sphere.style.left = x + "px";
+        sphere.removeAttribute("class");
+
+        timeStart = new Date().getTime();
+      }
+
+
+      function boundingBoxCheck() {
+        if (x < 0) {
+          x = 0;
+          vx = -(vx * bounceDecay);
+        }
+
+        if (y < 0) {
+          y = 0;
+          vy = -(vy * bounceDecay);
+        }
+
+        if (x > boundXMax) {
+          x = boundXMax;
+          vx = -(vx * bounceDecay);
+        }
+
+        if (y > boundYMax) {
+          y = boundYMax;
+          vy = -(vy * bounceDecay);
+        }
+      }
+    </script>
+  </body>
+
+</html>

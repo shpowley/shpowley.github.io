@@ -1,0 +1,10 @@
+* {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+#proof {
+  height: 201px;
+  width: 181px;
+}

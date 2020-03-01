@@ -1,0 +1,20 @@
+REVIEW SOLUTIONS FOR:
+- roman number converter
+- filter objects
+
+- html
+  - negative margins..
+  - page tab icon : <link rel="icon" type="image/x-icon" href="favicon.ico" />
+
+- javascript
+  - js object literal lookup vs switch statement
+  - need practice or read more about regular expressions
+  - arrays
+    - .map(): alters each element of an array
+    - .reduce(): performs calc against array elements into a single return value
+    - .filter(): exclude specific elements
+    - .sort(): re-arrange array elements
+    - .reverse()
+    - .concat()
+    - string.split(): split a string based on delimiter
+    - string.join(): recombine array elements into 1 string using delimiter

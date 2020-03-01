@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>SVG Alignment Test | Align SVG Elements</title>
+    <link rel="stylesheet" href="css/tests.css" />
+    <link rel="stylesheet" href="css/align.css" />
+  </head>
+
+  <body>
+
+    <p id="description">
+      Align SVG Elements
+      <br/> - align child elements within a parent SVG
+      <br/> - nested SVGs
+    </p>
+
+    <div id="graphics">
+      <!-- NESTED SVG ELEMENTS: http://stackoverflow.com/a/13613406 -->
+      <svg id="main">
+        <def>
+          <rect id="text_rectangle" ry="0" height="100" width="100" fill="#0fe" fill-opacity="0.1" />
+        </def>
+
+        <svg x="0">
+          <text class="svg-text-middle" x="50" y="50" dy="0.3em">Aces</text>
+          <use xlink:href="#text_rectangle" />
+        </svg>
+
+        <svg x="150">
+          <text class="svg-text-middle" x="50" y="50" dy="0.3em">Twos</text>
+          <use xlink:href="#text_rectangle" />
+        </svg>
+
+        <svg x="0" y="150">
+          <text class="svg-text-middle" x="50" y="50" dy="0.3em">Threes</text>
+          <use xlink:href="#text_rectangle" />
+        </svg>
+
+        <!--
+          MULTI-LINE SVG TEXT:
+          - based on 0.3em (font = 1em)
+          - subtract 1 line for each line shifted "up" (here it's 0.3em - 1.2em = -0.9em)
+          - also note that x is 51.5px instead of 50px (visual approximation)
+          - x and dy must be specified for each TSPAN line
+        -->
+        <svg x="150" y="150">
+          <text class="svg-text-middle" y="50" dy="-0.9em">
+            <tspan x="51.5">Itsa</tspan>
+            <tspan x="51.5" dy="1.2em">SUPA DUPA</tspan>
+            <tspan x="51.5" dy="1.2em">Mario!</tspan>
+          </text>
+          <use xlink:href="#text_rectangle" />
+        </svg>
+      </svg>
+    </div>
+
+  </body>
+
+</html>

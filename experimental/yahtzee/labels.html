@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Labels | SVG Load Techniques</title>
+    <link rel="stylesheet" href="css/tests.css" />
+    <link rel="stylesheet" href="css/labels.css" />
+  </head>
+
+  <body>
+    <p id="description">
+      Custom SVG Labels (Load Techniques)<br/>
+      - &lt;obj&gt; maintains svg size<br/>
+      - inline svg (fastest) > iframe > obj (slowest)
+    </p>
+    <div id="graphics" class="hidden">
+      <!--
+        svg loading techniques: http://edutechwiki.unige.ch/en/Using_SVG_with_HTML5_tutorial
+
+        NOTE: don't use the shorthand closing tags for <obj> and <iframe>, otherwise the rest of DOM will not load correctly..
+      -->
+      <object class="label" type="image/svg+xml" data="svg/labels.svg"></object>
+
+      <iframe class="label" src="svg/labels.svg"></iframe>
+
+      <svg class="label">
+        <g style="text-anchor:middle;text-align:center;" font-family="Arial">
+          <text y="21" x="65.5" font-size="30px" dy="0.35em">Aces</text>
+          <text y="21" x="195.2" font-size="20px" dy="0.35em">= 6</text>
+        </g>
+        <use xlink:href="svg/svg-sprites.svg#dice-1" height="24" width="24" y="8.9" x="129" fill="white"/>
+      </svg>
+    </div>
+
+    <script src="script/labels.js"></script>
+  </body>
+
+</html>

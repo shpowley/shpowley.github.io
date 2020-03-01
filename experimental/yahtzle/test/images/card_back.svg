@@ -1,0 +1,29 @@
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="167.0869141pt"
+   height="242.6669922pt"
+   viewBox="0 0 167.0869141 242.6669922"
+   xml:space="preserve"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.0 r9654"
+   sodipodi:docname="ace_of_spades2.svg"
+   inkscape:export-filename="/home/byron/art/cards/final/ace_of_spades2.png"
+   inkscape:export-xdpi="215.44792"
+   inkscape:export-ydpi="215.44792">
+ <metadata id="metadata43">image/svg+xml</metadata>
+ <g>
+  <title>Layer 1</title>
+  <g id="Layer_x0020_1" stroke-miterlimit="4" stroke="#000000" clip-rule="nonzero" fill-rule="nonzero">
+   <path d="m166.837006,235.548004c0,3.776993 -3.087006,6.869003 -6.871002,6.869003h-152.855164c-3.7749,0 -6.86084,-3.09201 -6.86084,-6.869003v-228.427884c0,-3.77735 3.08594,-6.87012 6.86084,-6.87012h152.855164c3.784012,0 6.871002,3.09277 6.871002,6.87012v228.427884l0,0z" id="path5" stroke-width="0.5" fill="#FFFFFF"/>
+  </g>
+  <rect id="svg_11" height="212.999992" width="135.500005" y="14.833512" x="15.793503" stroke-width="5" fill="#007fff"/>
+ </g>
+</svg>

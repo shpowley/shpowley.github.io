@@ -1,0 +1,126 @@
+old yahtzee index
+x 5 align svg text
+x a custom dialog + overlay
+x 1 json data structure
+x 8 svg dialog (load techniques)
+  b svg dialog (layout)
+  c svg dialog (animation)
+x 9 retro scorecard (png graphic)
+~ 7 digital scorecard (svg object)
+x 4 rotating dice (svg as <img>)
+x 6 scorecard (proof of concept)
+x 3 svg "sprites"
+x 2 javascript aliases
+
+
+new yahtzee index (combine / refactor yahtzee.2.0)
+x javascript
+  1 json data structure
+  2 javascript aliases
+
+x svg sprites
+  3 svg "sprites"
+  4 rotating dice (svg as <img>)
+
+x align
+  5 align svg text
+
+x scorecard (proof)
+  6 scorecard (proof of concept)
+
+x digital scorecard
+  7 digital scorecard (svg object)
+  - ..
+  - logo
+  - zoom feature
+  - different layouts for desktop vs mobile (media query?)
+  - collapse to fit / one column scoring
+  - optimize
+
+x svg (load techniques)
+  8 svg dialog (load techniques)
+
+- custom svg dialog
+  a custom dialog + overlay
+  b svg dialog (layout)
+  c svg dialog (animation)
+
+x retro png REMOVE
+  9 retro scorecard (png graphic)
+
+---
+
+general
+- convert px > mm (stop using css pixels)
+- copy useful css, js, html to misc folder
+
+
+custom svg dialog
+x block text highlight selection using css OR div overlay
+x problem: current div overlay allow scrolling background
+  - http://stackoverflow.com/questions/16637031/completely-disable-scrolling-of-webpage
+
+
+HERE:
+  - open files:
+    - dialog(html/css/js/svg) + TODO
+    - label-layout(html/css/js)
+    - labels(html/svg)
+
+  - move nodes around: http://stackoverflow.com/a/20910214
+
+  ??????? NOT SURE ABOUT THIS.. COMPLEX SVG "DIALOGS" CAN'T BE USED LIKE SVG SPRITES DUE TO MULTI-LEVEL SPRITES ??????
+  - create a custom svg that contains different dialogs..
+    - create test html using iframe version label
+      - manipulate dice image / text with javascript
+    - styled completely in the svg document: svg + css OR svg-only
+    - scale this idea to different dialog versions
+    - maybe multiple iframe svg files..
+      - 1 for each dialog style (this avoids the MULTI-LEVEL SPRITE issue) - enables better re-use
+        - OR 1 reusable, self-contained, iframe
+      - all hidden until a specific dialog is needed
+
+
+- custom number pad (default entry method all score categories)
+  - css styled buttons
+- experiment w/ shadow effects
+- incorporate open/close animations
+- later: custom score visual selector based on score categories (make this an option)
+- return an integer value
+- center position (later: near entry field for larger screens)
+- determine page size / device orientation + scale dialog with min / max for mobile
+
+
+misc
+- index.html mouse icon
+- sound
+- determine screen size & device orientation
+- touch + drag svg object
+- slide page div left/right
+- thumbnails for app workflow (ongoing): splash | main menu | scoresheet | score selection | settings (clear high scores) | high scores (top 20: date, name, score)
+- test inkscape svg effect filters ---> web
+- svg pre-loading..
+- load js + other assets on-demand
+
+
+notes
+
+  scale an individual html element (vs. pinch-zoom the entire screen)
+  - http://stackoverflow.com/questions/15233076/prevent-that-a-fixed-element-resizes-when-zooming-on-touchscreen
+  - http://stackoverflow.com/questions/11183174/simplest-way-to-detect-a-pinch
+  - http://www.sitepen.com/blog/2008/07/10/touching-and-gesturing-on-the-iphone/
+  - http://www.html5rocks.com/en/mobile/touch/
+
+  - switch statements vs. method lookup - http://ericleads.com/2012/12/switch-case-considered-harmful/
+
+  /* disable selections / cut copy paste actions (make sure you want this) */
+  -webkit-user-select: none;
+  * { -webkit-user-select: none; }
+
+  /* disable callout, image save panel on long press */
+  -webkit-touch-callout: none;
+
+   /* "turn off" link highlight, good for custom pressed states */
+  -webkit-tap-highlight-color: transparent;
+
+  https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Using_CSS_transitions#Using_transitions_to_make_JavaScript_functionality_smooth

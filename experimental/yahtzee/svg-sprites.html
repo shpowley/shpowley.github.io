@@ -1,0 +1,104 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>SVG Test | Sprite Sheet</title>
+    <link rel="stylesheet" href="css/tests.css" />
+    <link rel="stylesheet" href="css/svg-sprites.css" />
+  </head>
+
+  <body>
+    <!--
+      TODO:
+      - add fallbacks
+
+      links:
+      - http://24ways.org/2014/an-overview-of-svg-sprite-creation-techniques/
+      - https://css-tricks.com/svg-fragment-identifiers-work/
+      - http://simurai.com/blog/2012/04/02/svg-stacks/
+      - view definition: https://msdn.microsoft.com/en-us/library/ie/ff972134%28v=vs.85%29.aspx
+    -->
+
+    <!--
+      image pre-loading method | embed as hidden div
+      - mostly needed for FIREFOX, based on developer tools / network timing (method 2 / dice-c click)
+      - http://stackoverflow.com/a/20762198 (this)
+      - http://www.thecssninja.com/css/even-better-image-preloading-with-css2 (css only)
+      - http://perishablepress.com/3-ways-preload-images-css-javascript-ajax/ (javascript method)
+    -->
+    <div id="image-preload">
+      <img src="svg/svg-sprites-fragments.svg#dice-1"/>
+      <img src="svg/svg-sprites-fragments.svg#dice-2"/>
+      <img src="svg/svg-sprites-fragments.svg#dice-3"/>
+      <img src="svg/svg-sprites-fragments.svg#dice-4"/>
+      <img src="svg/svg-sprites-fragments.svg#dice-5"/>
+      <img src="svg/svg-sprites-fragments.svg#dice-6"/>
+    </div>
+
+    <p id="description">
+      SVG "sprite sheet"<br/>
+      - click on dice images<br/>
+      - random dice spin animation
+    </p>
+    <div id="graphics">
+      <!--
+        METHOD 1 (BEST OVERALL)
+        - svg sprites are stacked using as <symbol>
+        - consistent in chrome, firefox, chrome webview
+        - none of the methods work for android stock browser (old..)
+      -->
+      <p>external svg sprites (traditional approach)</p>
+      <!--
+        NOTE:
+
+        firefox requires a DIV wrapper around each SVG to use .innerHTML correctly: http://stackoverflow.com/a/23003795
+        - previously, only chrome allows changing SVG .innerHTML (check scorecard.html/.js for more granular control of svg dom)
+        - this solution works in chrome & firefox
+      -->
+      <span id="dice-a">
+        <svg class="dice">
+          <!-- (2) note that fill attribute can be used here directly as an alternative to (1) in CSS file -->
+          <use xlink:href="svg/svg-sprites.svg#dice-1"/>
+        </svg>
+      </span>
+
+      <!-- see javascript file: this method appears best overall for sprite image swapping based on testing.. -->
+      <svg id="dice-b" class="dice">
+        <use xlink:href="svg/svg-sprites.svg#dice-1"/>
+      </svg>
+
+      <svg id="arrow-a" class="arrow">
+        <use xlink:href="svg/svg-sprites.svg#arrow"/>
+      </svg>
+
+      <!--
+        METHOD 2
+        - this "sprite sheet" is more traditional in the x-y arrangement of icons..these are not stacked
+        - <g> svg element has no x-y property! use svg or transform/translate
+          - http://tutorials.jenkov.com/svg/g-element.html
+        - Android 4.4 iffy.. Chrome browser ok, Chrome webview fails
+      -->
+      <p>external svg sprites (svg fragment identifiers and views)</p>
+      <img id="dice-c" src="svg/svg-sprites-fragments.svg#dice-1" alt="dice" class="dice"/>
+      <img id="dice-d" src="svg/svg-sprites-fragments.svg#dice-1" alt="dice" class="dice"/>
+      <img src="svg/svg-sprites-fragments.svg#arrow" alt="arrow" class="arrow"/>
+
+      <!--
+        METHOD 3
+        - "easiest" method, however
+        - Firefox v36 doesn't display images until clicked
+        - Android 4.4 iffy.. Chrome browser ok, Chrome webview fails
+      -->
+      <p>external svg sprites (svg stack + css :target identifier)</p>
+      <img id="dice-e" src="svg/svg-sprites-stack.svg#dice-1" alt="dice" class="dice"/>
+      <img id="dice-f" src="svg/svg-sprites-stack.svg#dice-1" alt="dice" class="dice"/>
+      <img src="svg/svg-sprites-stack.svg#arrow" alt="arrow icon" class="arrow"/>
+    </div>
+
+    <script src="script/util.timer.js"></script>
+    <script src="script/svg-sprites.js"></script>
+  </body>
+
+</html>

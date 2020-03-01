@@ -1,0 +1,116 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Yahtzle Proof of Concept</title>
+  <link rel="stylesheet" href="yahtzle.css">
+</head>
+
+<body>
+  <!--<h1>"YAHTZLE" Proof of Concept</h1>-->
+
+  <div id="column_left">
+    <div id="hand">
+      <div class="buttons">
+        <button type="button" id="button_new">New Game</button>
+      </div>
+      <div class="spacer"></div>
+      <div class="columns">
+        <div class="columns_60">
+          <h3>Trump Suit</h3>
+          <form id="suits">
+            <input type="radio" name="suit" id="select_hearts" disabled><span class="card_suit red">&hearts;</span>
+            <input type="radio" name="suit" id="select_clubs" disabled><span class="card_suit">&clubs;</span>
+            <input type="radio" name="suit" id="select_diamonds" disabled><span class="card_suit red">&diams;</span>
+            <input type="radio" name="suit" id="select_spades" disabled><span class="card_suit">&spades;</span>
+            <button type="button" id="button_set_trump">OK</button>
+          </form>
+        </div>
+        <div class="columns_40">
+          <h3>Deal Count</h3>
+          <form id="deal_count">
+            <input type="checkbox" disabled>
+            <input type="checkbox" disabled>
+            <input type="checkbox" disabled>
+          </form>
+        </div>
+      </div>
+
+      <div class="spacer"></div>
+      <h3 class="same_line">Hand</h3>
+      <div class="buttons">
+        <button type="button" id="button_deal" disabled>Deal</button>
+        <button type="button" id="button_redeal" disabled>Discard All</button>
+        <button type="button" id="button_bunch" disabled>Bunch</button>
+      </div>
+      <div id="card_hand"></div>
+    </div>
+
+    <div id="score_bottom">
+      <h4 class="transparent">Nines: <span></span></h4>
+      <div class="score_category" id="score_nines">
+        <div class="card"></div>
+      </div>
+      <h4 class="transparent">Jacks: <span></span></h4>
+      <div class="score_category" id="score_jacks">
+        <div class="card"></div>
+      </div>
+      <h4 class="transparent">Queens: <span></span></h4>
+      <div class="score_category" id="score_queens">
+        <div class="card"></div>
+      </div>
+      <h4 class="transparent">Kings: <span></span></h4>
+      <div class="score_category" id="score_kings">
+        <div class="card"></div>
+      </div>
+      <h4 class="transparent">Aces: <span></span></h4>
+      <div class="score_category" id="score_aces">
+        <div class="card"></div>
+      </div>
+      <h4 class="transparent">Bonus</h4>
+      <div id="score_bonus"></div>
+    </div>
+  </div>
+
+  <div id="column_right">
+    <div id="deck">
+      <h3 class="same_line">Deck</h3>
+      <div class="buttons">
+        <button type="button" id="button_toggle">Show</button>
+        <button type="button" id="button_shuffle">Shuffle</button>
+      </div>
+      <div id="card_deck"></div>
+    </div>
+
+    <div id="score_top">
+      <h4 class="transparent">Marriages: <span></span></h4>
+      <div class="score_category" id="score_marriages">
+        <div class="card"></div>
+      </div>
+      <h4 class="transparent">240 Around the House: <span></span></h4>
+      <div class="score_category" id="score_240">
+        <div class="card"></div>
+      </div>
+      <h4 class="transparent">Pinochle: <span></span></h4>
+      <div class="score_category" id="score_pinochle">
+        <div class="card"></div>
+      </div>
+      <h4 class="transparent">Runs: <span></span></h4>
+      <div class="score_category" id="score_runs">
+        <div class="card"></div>
+      </div>
+      <h4 class="transparent">Chance: <span></span></h4>
+      <div class="score_category" id="score_chance">
+        <div class="card"></div>
+      </div>
+      <h4 class="transparent">Total</h4>
+      <div id="score_total"></div>
+    </div>
+  </div>
+
+  <script src="yahtzle.js"></script>
+</body>
+
+</html>

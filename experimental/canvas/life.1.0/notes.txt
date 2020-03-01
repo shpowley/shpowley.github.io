@@ -1,0 +1,67 @@
+Videos (conway's life):
+https://www.youtube.com/watch?v=C2vgICfQawE
+http://pmav.eu/stuff/javascript-game-of-life-v3.1.1/
+http://www.quesucede.com/public/gameoflife/game.html
+
+[Board]
+rows=20
+columns=30
+wrap_horizontal=false
+wrap_vertical=false
+timer_delay=1000
+
+[Grass]
+consume_time=2
+regeneration_time=2
+locations=mouse input
+
+[Herbivores]
+male_birth_%=0.4
+starvation_time=0
+female_birth_wait_time=1
+life_span=n
+locations+sex=mouse input
+
+[Carnivores]
+male_birth_%=0.4
+starvation_time=0
+female_birth_wait_time=1
+life_span=n
+locations+sex=mouse input
+
+
+ITERATION: 0       | STATUS: STEP         | SPEED: MANUAL
+
+COMMANDS: Play[ENTER] | Speed[+/-] | Step[SPACE] | Save[S] | Load[L] | Info[?] | Exit[Q]
+
+  0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9
+0 .   F .                                                    
+1     F M                                                    
+2                                                            
+3                                                            
+4         .                                                  
+5                                                            
+6                                                            
+7                                                            
+8                                                            
+9                                                            
+0                                                            
+1                                                            
+2                                                            
+3                                                            
+4                                                            
+5                                                            
+6                                                            
+7                                                            
+8                                                            
+9                                                            
+
+
+
+
+
+
+
+
+
+

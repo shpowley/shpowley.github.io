@@ -1,0 +1,25 @@
+/*
+ * flex box alignment
+ * - http://css-tricks.com/snippets/css/a-guide-to-flexbox/
+ * - the following applies to a container object
+ * - use css "align-self" to vertically align a specific element within a flex container
+ *   - overrides parent's css "align-items"
+ */
+.dead_center {
+  display: flex;
+  /*justify-content: center;*/
+  align-items: center
+}
+
+/*
+ * "older" centering method
+ * - directly applied to an element css class
+ * - css element width must be specified for this to work
+ * - css "flex" solution is BEST
+ * - "vertical align middle", the best cross-browser is UTIL.alignMiddle() ..css "flex" preferred
+ */
+.justify_center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto
+}

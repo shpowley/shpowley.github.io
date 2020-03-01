@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Custom Dialog Tests</title>
+    <link rel="stylesheet" href="css/tests.css" />
+    <link rel="stylesheet" href="css/dialog.css" />
+  </head>
+
+  <body>
+    <div id="overlay_container" class="hidden center">
+      <div id="overlay"></div>
+      <div id="dialog">
+        <!-- custom svg dialog goes here -->
+        <button type="button" id="button_response">OK</button>
+      </div>
+    </div>
+
+    <p id="description">
+      Custom SVG Dialog
+      <br> - click each cell for score dialog
+    </p>
+
+    <div id="graphics">
+      <!--<object id="scorecard" type="image/svg+xml" data="svg/dialog.svg"></object>-->
+      <iframe id="scorecard" src="svg/dialog.svg"></iframe>
+    </div>
+
+    <script src="script/dialog.js"></script>
+  </body>
+
+</html>

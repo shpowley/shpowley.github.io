@@ -1,0 +1,191 @@
+KISS
+
+#draw-area {
+  width: 250mm;
+  height: 250mm;
+  background-color: #269069;
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+  -webkit-transform: scale(0.5);
+  transform: scale(0.5);
+}
+
+- combo test
+  - determine resolution (browser / page)
+  - dynamically create layers
+  - determine "middle"
+  - stacked high/low res canvas layers
+    - high res for still images
+    - low res for moving images
+  - hit box
+  - animation
+  - 1 deck of cards at the top of the screen
+    - top card face up
+    - tap / click top card results in it "falling" to a new stack at the bottom of the screen
+
+
+CANVAS TESTS
+- hit box
+  - backup and rewrite
+  X simple test with one card
+  X multiple cards
+  - stacked cards
+    - 1+ id's OR all
+    - id of top most visible only OR
+    - array of cards with visible T/F
+  - repeat w/ stacked canvases
+    - scaled + unscaled
+
+- canvas optimal size
+  - http://www.html5gamedevs.com/topic/1112-what-is-the-best-resolution-for-a-html5-game/
+  - fps performance
+  - aspect resolution of device
+
+- admin page for new card designs
+  - lower priority
+  - use parallel download technique for faster svg loading & conversion
+  - upon script completion
+    - acquire and display position/size data (stringify)
+    - display image of entire deck for downloading
+
+- new canvas tests going forward..
+  - download pre-made deck spritesheet
+  - stringified position/size data (ajax)
+    - cache to localStorage
+
+- animation
+  x animation timer
+  - interleave low res layer(s)
+    - less noticeable in animations where blur is acceptable
+    - backgrounds in the distance that are naturally less sharp
+  - "simple" move card animations
+    x linear
+    - "blur" trail
+    - curved
+  - discard/keep selection
+  - animate to discards pile
+  - deal new cards from deck to hand
+  - consolidate (squish) hand
+  - re-arrange individual cards in hand
+  * make use of 3 stacked canvases
+  - canvases with animation movement could be lower res, and stills in higher res
+    - if this works, maybe interleave high res / low res
+
+
+1) TEST playing
+2) RULES writeup
+3) THUMBNAILS of possible screen(s)
+  - current "screens" for console version
+  - single player / multiplayer
+  - different screen sizes
+
+
+RULES
+- hybrid yahtzee / pinochle = "Yahtzle"
+  - hopefully most people are familiar with Yahtzee(TM?) rules (show link if not)
+  - instead of dice, a standard pinochle deck is used
+- show pinochle deck
+- compare to poker scoring and list meld scoring categories
+- meld categories are used
+
+
+YAHTZLE category
+- additional YAHTZLEs count toward YAHTZLE Bonus and as "wildcard" for any other FIXED category (only 240 AROUND is actually the only fixed category)
+- SCORECARD
+  - .create()
+  - .restore()
+
+- score detail
+  - breakdown of current hand (NICE TO HAVE)
+    - ACES 3/8, TENS 2/8, etc.
+
+
+YAHTZLE.STORAGE
+1 separate settings / players in actual local storage
+- GAME_RESTORE
+  - new SESSION object
+  - splash + resume from previous session
+  - data necessary for restoring a game in-progress
+    - trump suit, states "stack", scorecards, players, settings
+  - mobile-device only (onPause) for app-switching / phone call
+
+
+HIGH_SCORES TODO: add suit & date/time
+
+
+STATISTICS
+- session / device data
+  - games played (started, completed), highest score, lowest score, average score, total time, average game time
+
+
+SINGLE MULTI-PLAYER MODES
+- SINGLE PLAYER
+  - FINISH THIS FIRST
+  - minimal # of screens (aim for just one screen)
+  - free
+- MULTI-PLAYER
+  $ paid
+
+
+HIGH SCORE result code; yahtzle.js/SCORECARD.pick()
+
+
+GRAPHICAL
+  yahtzle.js/setSuitRandom() (BUG-2 | re-implement)
+
+ PLAYING CARD DESIGNS
+  - http://code.google.com/p/vector-playing-cards/
+  - start with bare minimum SVG design, and return with improved designs later
+  - BACK
+  - OUTLINE
+  - SUITS
+  - FACES
+  $ different designs
+    - minimize SVG asset size
+
+  HTML tests
+  - scrolling message bar
+  - multiple screen elevator (swipe)
+  - dialog (see yahtzee scoresheet)
+  - card auto-movements
+    - deal
+    - discard
+    - flip
+  - tiled graphic objects to simulate hand
+    - scroll hand horizontally to account for small displays
+    - click/drag re-order single object
+
+  STATUS POP-UPS* / MESSAGE AREA
+  - it's possible that this is only possible graphically and not in console environment
+  - POP-UPS / OVERLAY must be acknowledged / closed
+    - could be used for verifications (quit current game / reset high scores)
+    - game over
+    - new high score
+  - MESSAGE AREA is more passive
+
+  delay / dialog between score picks
+  - delay auto advance to the next player (setting 0 - 5 sec)
+  - OR dialog with "OK" / "Next" (next turn / player)
+
+  multiplayer
+  - game over for individual players in multiplayer games
+    - achieved high score - show message?
+
+
+multiplayer
+- AI for computer players (initially all players are human)
+
+
+SCORING SUGGESTIONS feature (NEW POSSIBLE FEATURE)
+$ scoring combo + points possible + # cards needs (% complete) + probability %
+- based on: cards kept, cards left in deck & categories already marked as "scored"
+
+
+SPRITE BUILDER ADMIN CONSOLE
+- admin console
+  - separate function to download full sprite sheet / json data map
+  - sprite image data should be deleted using an explicit function to do so (stores "original" graphic)
+
+  - "cached" tab
+    - remove completely??
+    - "cached" indicator with version #, # sprites, sprite sheet size

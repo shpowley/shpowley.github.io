@@ -1,0 +1,44 @@
+.arrow {
+  height: 8mm;
+  width: 30.32mm;
+}
+.dice {
+  height: 13mm;
+  width: 13mm;
+
+  /*
+    (1) only affects svg and cascades
+    - css property "unrecognized" by non-svg elements
+    - this only works for METHOD 1
+  */
+  fill: #fff;
+}
+#image-preload {
+  display: none;
+}
+
+/* dice "rolling" animation */
+.rolling {
+  -webkit-transform-origin: center center;
+  transform-origin: center center;
+
+  /* name duration timing-function delay iteration-count direction fill-mode play-state; */
+  -webkit-animation: rolling 0.9s linear 0s infinite;
+  animation: rolling 0.9s linear 0s infinite;
+}
+@-webkit-keyframes rolling {
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@keyframes rolling {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* NOTE: quirk pause needs to be after the css animation declaration */
+.pause {
+  -webkit-animation-play-state: paused;
+  animation-play-state: paused;
+}

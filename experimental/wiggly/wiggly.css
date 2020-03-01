@@ -1,0 +1,39 @@
+body {
+  height: 100%;
+  margin: 0;
+}
+
+#container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+#container > iframe {
+  border: none;
+  height: 80%;
+  width: 80%;
+  min-height: 46.1mm;
+  min-width: 43.7mm;
+  max-height: 92.1mm;
+  max-width: 87.3mm;
+
+  position: relative;
+  transition: all 0.05s;
+  transition-timing-function: linear;
+}
+
+html {
+  height: 100%;
+}
+
+/* QUIRK: pause needs to be after the css animation declaration */
+.pause {
+  -webkit-animation-play-state: paused;
+  animation-play-state: paused;
+}
+
+.wobble {
+  transform: translateX(20px);
+}

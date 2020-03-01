@@ -1,0 +1,50 @@
+#BIN_CODE, #HEX_CODE {
+  display: block;
+  font-family: "Lucida Console", monospace;
+  border: 0;
+  font-size: 0.95em;
+  background: ivory;
+  padding: 6px;
+}
+#codes > label {
+  font-size: 0.9em;
+}
+label {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+#results {
+  padding: 6px;
+  transform: scale(1.5);
+  transform-origin: top left;
+}
+#score_categories {
+  padding: 6px 10px 6px 6px;
+}
+#score_categories, #results {
+  display: inline-block;
+  vertical-align: top;
+  border: 1px solid #C8DC86;
+  background: ivory;
+}
+#score_categories > div {
+  display: flex;
+  align-items: center;
+  height: 6mm;
+}
+#score_categories > div > input[type="checkbox"] {
+  position: relative;
+  top: 1px;
+  margin: 0 4px 2px 2px;
+}
+#score_categories > div > label {
+  font-size: 0.8em;
+}
+#score_categories, #results {
+  font-family: arial, helvetica, sans-serif;
+}
+#spacer {
+  height: 4mm;
+}

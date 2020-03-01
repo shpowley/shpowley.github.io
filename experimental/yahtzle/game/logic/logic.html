@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Yahtzle Builder</title>
+  <style>
+    body {
+      height: 100%;
+      margin: 0;
+      background-color: #1C1F21;
+    }
+
+    html {
+      height: 100%;
+    }
+
+    form {
+      margin-top: 20mm;
+    }
+
+    input[type="submit"] {
+      width: 40mm;
+      height: 8mm;
+      font-size: 0.9em;
+      margin: 0 auto 0 auto;
+    }
+
+    #text_data {
+      width: 38mm;
+      height: 8mm;
+      font: 1.0em monospace;
+      padding: 0 1mm 0 1mm;
+      border-width: 0;
+      margin-bottom: 1mm;
+    }
+
+    #main {
+      height: 100%;
+      display: flex;
+      /*align-items: center;*/
+      justify-content: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="main">
+    <form id="input_area">
+      <input name="input_data" id="text_data" type="text"></input><br>
+      <input type="submit"></input>
+    </form>
+  </div>
+
+  <script src="/js/util.js"></script>
+  <script src="/js/yahtzle.js"></script>
+  <script src="logic.js"></script>
+</body>
+
+</html>

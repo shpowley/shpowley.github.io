@@ -1,0 +1,122 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Yahtzle bin/hex Generator</title>
+    <link rel="stylesheet" href="generator.css">
+  </head>
+
+  <body>
+    <div id="score_categories">
+      <div>
+        <input type="checkbox" id="DRP">
+        <label for="DRP">Double Run (Diamonds/Spades)</label>
+      </div>
+      <div>
+        <input type="checkbox" id="DRN">
+        <label for="DRN">Double Run (Hearts/Clubs)</label>
+      </div>
+      <div>
+        <input type="checkbox" id="A1K">
+        <label for="A1K">1000 Aces</label>
+      </div>
+      <div>
+        <input type="checkbox" id="K8H">
+        <label for="K8H">800 Kings</label>
+      </div>
+      <div>
+        <input type="checkbox" id="Q6H">
+        <label for="Q6H">600 Queens</label>
+      </div>
+      <div>
+        <input type="checkbox" id="J4H">
+        <label for="J4H">400 Jacks</label>
+      </div>
+      <div>
+        <input type="checkbox" id="DPN">
+        <label for="DPN">Double Pinochle</label>
+      </div>
+      <div>
+        <input type="checkbox" id="DMG">
+        <label for="DMG">Double Marriage (Trump)</label>
+      </div>
+      <div>
+        <input type="checkbox" id="ARD">
+        <label for="ARD">240 Around the House</label>
+      </div>
+      <div>
+        <input type="checkbox" id="RUN">
+        <label for="RUN">Run</label>
+      </div>
+      <div>
+        <input type="checkbox" id="A1H">
+        <label for="A1H">100 Aces</label>
+      </div>
+      <div>
+        <input type="checkbox" id="K80">
+        <label for="K80">80 Kings</label>
+      </div>
+      <div>
+        <input type="checkbox" id="Q60">
+        <label for="Q60">60 Queens</label>
+      </div>
+      <div>
+        <input type="checkbox" id="J40">
+        <label for="J40">40 Jacks</label>
+      </div>
+      <div>
+        <input type="checkbox" id="PNC">
+        <label for="PNC">Pinochle</label>
+      </div>
+      <div>
+        <input type="checkbox" id="MGT">
+        <label for="MGT">Marriage (Trump)</label>
+      </div>
+      <div>
+        <input type="checkbox" id="MG1">
+        <label for="MG1">Marriage #1</label>
+      </div>
+      <div>
+        <input type="checkbox" id="MG2">
+        <label for="MG2">Marriage #2</label>
+      </div>
+      <div>
+        <input type="checkbox" id="MG3">
+        <label for="MG3">Marriage #3</label>
+      </div>
+      <div>
+        <input type="checkbox" id="MG4">
+        <label for="MG4">Marriage #4</label>
+      </div>
+      <div>
+        <input type="checkbox" id="MG5">
+        <label for="MG5">Marriage #5</label>
+      </div>
+      <div>
+        <input type="checkbox" id="MG6">
+        <label for="MG6">Marriage #6</label>
+      </div>
+      <div>
+        <input type="checkbox" id="NT1">
+        <label for="NT1">Nine (Trump) #1</label>
+      </div>
+      <div>
+        <input type="checkbox" id="NT2">
+        <label for="NT2">Nine (Trump) #2</label>
+      </div>
+    </div>
+    <div id="results">
+      <div id="codes">
+        <label for="BIN_CODE">BINARY CODE</label>
+        <input type="textbox" id="BIN_CODE" value="0000 0000 0000 0000 0000 0000" size="32" maxlength="29">
+        <div id="spacer"></div>
+        <label for="HEX_CODE">HEXADECIMAL CODE</label>
+        <input type="textbox" id="HEX_CODE" value="0x000000" size="32" maxlength="8">
+      </div>
+    </div>
+
+    <script src="generator.js"></script>
+  </body>
+
+</html>

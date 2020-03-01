@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  
+  <head>
+    <meta charset="UTF-8">
+    <style>
+      #div-main, #fullscreen_button {
+        position: absolute;
+      }
+      #div-main {
+        top: 0;
+        left: 0;
+        z-index: 1;
+        border: 1px solid blue;
+        display: flex;
+      }
+      #canvas-main {
+        background: aliceblue;
+      }
+      #fullscreen_button {
+        top: 0;
+        left: 0;
+        z-index: 2;
+        
+        -webkit-transition-duration: 0.75s;
+        -webkit-transform-origin: left top;
+        transition-duration: 0.75s;
+        transform-origin: left top;
+      }
+      #fullscreen_button:hover {
+        -webkit-transform: scale(2);
+        transform: scale(2);
+      }
+    </style>
+
+    <title>Testing</title>
+  </head>
+  
+  <body>
+    <input type="button" value="Go" id="fullscreen_button" />
+    <div id="div-main">
+      <canvas id="canvas-main">
+        <p>HTML5 Canvas not supported!</p>
+      </canvas>
+    </div>
+  </body>
+
+</html>

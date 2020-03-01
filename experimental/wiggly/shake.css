@@ -1,0 +1,14 @@
+@-webkit-keyframes shakey {
+	0%   { -webkit-transform: translate(1.0px, 0px) rotate(1.0deg); }
+	33%  { -webkit-transform: translate(0px, -1.0px) rotate(0deg); }
+	66%  { -webkit-transform: translate(-1.0px, 0px) rotate(-1.0deg); }
+	100% { -webkit-transform: translate(0px, 1.0px) rotate(0deg); }
+}
+.shake {
+	-webkit-animation-name: 'shakey';
+	-webkit-animation-duration: 0.1s;
+	-webkit-transform-origin: 50% 50%;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-timing-function: ease-in-out;
+	-webkit-animation-direction: alternate;
+}

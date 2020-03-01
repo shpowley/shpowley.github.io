@@ -1,0 +1,22 @@
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+
+  /*background-color: #000;*/
+
+  /* background image */
+  background-image: url(../img/background-beach.jpg);
+  background-size: cover;
+  background-position: center 100%;
+  background-repeat: no-repeat;
+
+  /* center all content */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

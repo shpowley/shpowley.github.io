@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="style.css" />
+  <script src="web.util.js"></script>
+  <script src="web.canvas.js"></script>
+  <script src="code.js"></script>
+  <title>Testing</title>
+</head>
+
+<body>
+  <div id="control_box">
+    <div>
+      <input type="text" placeholder="x" id="stage_x" />
+      <select id="x_select">
+        <option></option>
+        <option>Left</option>
+        <option>Center</option>
+        <option>Right</option>
+      </select>
+    </div>
+    <div>
+      <input type="text" placeholder="y" id="stage_y" />
+      <select id="y_select">
+        <option></option>
+        <option>Top</option>
+        <option>Center</option>
+        <option>Bottom</option>
+      </select>
+    </div>
+    <div>
+      <input type="text" placeholder="width" id="stage_width" />
+      <input type="text" placeholder="height" id="stage_height" />
+    </div>
+    <input type="button" class="button_block" value="Apply" id="position_button" />
+
+    <div id="scale_div">
+      <input type="text" placeholder="scale" id="scale_value" />
+      <input type="button" value="Scale" id="scale_button" />
+    </div>
+
+    <input type="button" class="button_block" value="Border" id="border_button" />
+    <input type="button" class="button_block" value="Match Screen" id="match_screen_button" />
+    <input type="button" class="button_block" value="Scale Window" id="window_button" />
+    <input type="button" class="button_block" value="Full Screen" id="fullscreen_button" />
+  </div>
+  <div id="canvas_container"></div>
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+html {
+  height: 100%
+}
+
+body {
+  /*
+   * makes body height the same as the browser window
+   * - also requires (css) html>height: 100% for this to work
+   */
+  margin: 0;
+  min-height: 100%;
+  font: 100% arial, sans-serif;
+  color: #FFF;
+  background-color: #FFF;
+}
+
+#description {
+  margin: 0;
+  padding: 5mm;
+}
+
+#graphics {
+  padding: 5mm 0 20mm 5mm;
+}

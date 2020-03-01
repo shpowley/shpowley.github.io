@@ -1,0 +1,72 @@
+GLOBAL namespace
+
+  getElement() - document.getElementById() replacement (web.util.js)
+
+
+CANVAS - web.canvas.js
+
+  enumerations (public):
+    SCALE | FACTOR, WINDOW, FULLSCREEN
+    POSITION | XY, START, CENTER, END
+  
+  methods:
+    init() - create an object instance of a "canvas" stage container containing 1+ canvas DOM elements and 1+ "buffer" canvas DOM elements
+      
+      parameters:
+        container - div element string id or dom object
+        dimen - div container "stage" location and size (optional)
+              - object literal
+                - horizonal, vertical (optional, type CANVAS.POSITION)
+                - x, y coordinates (optional, integer, has precedence over horizontal / vertical)
+                - w, h of div container (optional, integer)
+                - scale (optional, type CANVAS.SCALE)
+                - ratio (optional, scale factor)
+                
+      return:
+        "stage" object instance
+        
+        properties:
+          canvas - stage canvas children (array); note: canvas[0] is automatically created during CANVAS.init()
+          buffer - fast-blit buffers (array); note: buffer[0] is automatically created during CANVAS.init()
+          obj - stage container reference to DOM element
+          
+        methods:
+        * addCanvas() - create a new canvas DOM element and add as a child to the stage container; return reference to new canvas object literal
+        
+        * addBuffer() - create a new canvas DOM element to be used as a buffer; return reference to new canvas object literal
+            canvas object literal
+            - obj - canvas HTML5 node element
+            - ctx - 2d context
+            - erased - flag specifying if canvas has been erased
+            
+        * getDimensions() - returns copy of "dimensions" object literal - position, size, and scale
+          proportionate() - adjusts the size of the stage and all child canvas elements to match the screen h+w ratio
+          scale() - scales the stage and child canvas elements to ratio, full browser window, or fullscreen
+          setDimensions() - set the stage position and dimensions; scale type + ratio are read-only -- must use scale() function
+          setFullscreenCallback() - set a callback function to be notified when the screen is no longer fullscreen
+          toString() - message with the ID of the original stage container parent
+
+         
+TIMER - web.timer.js
+
+  methods:
+    intervalClear() - cancels intervalRequest()
+    intervalRequest() - replacement for window.setInterval() using better requestAnimationFrame()
+    requestAnimationFrame() - shim fallback replacement for timers
+    timeoutClear() - cancels timeoutRequest()
+    timeoutRequest() - replacement for window.setTimerout() using better requestAnimationFrame()
+
+
+UTIL - web.util.js
+
+  properties:
+    loggingEnabled - controls logging messages to the console
+
+  methods:
+    checkEnum() - matches enum value against an enumeration list (object literal)
+    error() - log error messages in specialized format
+    floor() - replacement for Math.floor()
+    getSupported() - returns supported css property from a list of candidates
+    isInteger() - check if variable is an integer
+    log() - log console message if enabled
+    swap() - swap two numbers

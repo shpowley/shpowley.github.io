@@ -1,0 +1,95 @@
+OPTIMIZING INKSCAPE SVG FOR THE WEB
+
+- try avoid unnecessary "transform="translate(...)""
+
+- create a backup of the original inkscape svg file
+
+* svg objects to root level only
+  - use cut & paste to move all svg objects onto the root level
+  - delete all layers
+
+* resize page to content
+
+- file > vacuum defs
+
+- save as optimized svg
+  NEW
+  - # significant digits = 3-4
+  - shorten color values = TRUE
+  - convert CSS attributes to XML attributses = TRUE
+  - collapse groups = TRUE
+  - create groups for similar attributes = TRUE
+  - keep editor data = FALSE
+  - keep unreferenced definitions = FALSE
+  - work around renderer bugs = TRUE (?)
+  - remove the XML declaration = TRUE
+  - remove metadata = TRUE
+  - remove comments = TRUE
+  - embed raster images = FALSE
+  - enable viewboxing = FALSE
+  - format output with line-breaks and indentation = FALSE
+  - indentation characters = NONE
+  - depth of indentation = 0
+  - strip the "xml:space" attribute from the root SVG element = TRUE
+  - remove unused IDs = TRUE
+  - shorten IDs = TRUE
+  - prefix shortened IDs with: < LEAVE BLANK >
+  - preserve manually created IDs not ending with digits = TRUE
+  - preserve the following IDs: < LEAVE BLANK >
+  - preserve IDs starting with: < LEAVE BLANK >
+
+  OLD
+  - convert all colors to #rrggbb (or #rgb if possible)
+  - style to xml
+  - group collapsing
+  - enable id stripping
+  - embed raster (OFF I think, as it should not be used)
+  - keep editor data (OFF as this will only be export data anyway)
+  - enable viewboxing (recommended OFF - disturbs browser positioning)
+  - strip xml prolog
+  - set precision (web 3 or 4)
+  - indent NONE
+
+- use CLONES instead of duplicates
+
+- simplify the drawing
+  - look for hidden objects (view > displaymode > outline)
+  - careful use of path > simplify
+
+- avoid filters / clip mask
+
+- website: https://jakearchibald.github.io/svgomg/
+  - use defaults
+  - precision = 3
+  - SVGO (server)
+
+* hand-modify optimized svg based on previous web pre-optimized files (ie. dice)
+- <svg> root level
+  - "xmlns" REQUIRED
+  - "xmlns:xlink" - for symbols or anything requiring an ID
+  - "viewBox" - internal coordinate system mapped on viewport coordinates
+  - "height" (viewport), "width" (viewport) OPTIONAL (if not specified, grow to container)
+  - remove "style=", "white-space=", "solid-color=", and other tags out of the ordinary
+
+- if an image is TRIMMING edges of an image modify original viewport dimensions
+  - viewBox="x-min y-min original-width original-height" <= adjust-x = 0.005 * original-width <= x-min = -adjust-x AND width = original-width + adjust-x
+  - repeat for y and height
+  - new height="<value>", width="value"; original-svg-height * 1.01, etc.
+
+- modify xlink image color by omitting color attribute "fill" from the original symbol
+
+
+PUTTING SVG IN HTML FILES
+
+<object id="svgObject" data="img/svgfile.svg" type="image/svg+xml" height="50" width="50">
+Your browser doesn't support SVG
+</object>
+
+
+http://xn--dahlstrm-t4a.net/svg/html/get-embedded-svg-document-script.html
+- examples for <object> <embed> <iframe>
+- javascript example for affecting fill color
+
+
+http://stackoverflow.com/questions/4476526/do-i-use-img-object-or-embed-for-svg-files
+http://css-tricks.com/svg-fallbacks/

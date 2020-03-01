@@ -1,0 +1,586 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="650" width="530">
+  <style>
+    text {
+      <!-- required here to prevent highlighting text -->
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+  </style>
+  <rect height="650" width="530" y="0" x="0" fill="#d0d3dc"/>
+
+  <g fill="#000">
+    <rect height="200" width="476" y="132" x="27"/>
+    <rect height="217" width="476" y="358" x="27"/>
+  </g>
+
+  <g fill="#d0d3dc">
+    <rect height="20" width="49" y="135" x="204"/>
+    <rect height="20" width="49" y="135" x="254"/>
+    <rect height="20" width="49" y="135" x="304"/>
+    <rect height="20" width="49" y="135" x="354"/>
+    <rect height="20" width="49" y="135" x="404"/>
+    <rect height="20" width="57" y="135" x="144"/>
+    <rect height="20" width="117" y="135" x="26"/>
+    <rect height="20" width="49" y="156" x="204"/>
+    <rect height="20" width="49" y="156" x="254"/>
+    <rect height="20" width="49" y="156" x="304"/>
+    <rect height="20" width="49" y="156" x="354"/>
+    <rect height="20" width="49" y="156" x="404"/>
+    <rect height="20" width="57" y="156" x="144"/>
+    <rect height="20" width="117" y="156" x="26"/>
+    <rect height="20" width="49" y="177" x="204"/>
+    <rect height="20" width="49" y="177" x="254"/>
+    <rect height="20" width="49" y="177" x="304"/>
+    <rect height="20" width="49" y="177" x="354"/>
+    <rect height="20" width="49" y="177" x="404"/>
+    <rect height="20" width="57" y="177" x="144"/>
+    <rect height="20" width="117" y="177" x="26"/>
+    <rect height="20" width="49" y="198" x="204"/>
+    <rect height="20" width="49" y="198" x="254"/>
+    <rect height="20" width="49" y="198" x="304"/>
+    <rect height="20" width="49" y="198" x="354"/>
+    <rect height="20" width="49" y="198" x="404"/>
+    <rect height="20" width="57" y="198" x="144"/>
+    <rect height="20" width="117" y="198" x="26"/>
+    <rect height="20" width="49" y="219" x="204"/>
+    <rect height="20" width="49" y="219" x="254"/>
+    <rect height="20" width="49" y="219" x="304"/>
+    <rect height="20" width="49" y="219" x="354"/>
+    <rect height="20" width="49" y="219" x="404"/>
+    <rect height="20" width="57" y="219" x="144"/>
+    <rect height="20" width="117" y="219" x="26"/>
+    <rect height="20" width="49" y="240" x="204"/>
+    <rect height="20" width="49" y="240" x="254"/>
+    <rect height="20" width="49" y="240" x="304"/>
+    <rect height="20" width="49" y="240" x="354"/>
+    <rect height="20" width="49" y="240" x="404"/>
+    <rect height="20" width="57" y="240" x="144"/>
+    <rect height="20" width="117" y="240" x="26"/>
+    <rect height="20" width="49" y="263" x="204"/>
+    <rect height="20" width="49" y="263" x="254"/>
+    <rect height="20" width="49" y="263" x="304"/>
+    <rect height="20" width="49" y="263" x="354"/>
+    <rect height="20" width="49" y="263" x="404"/>
+    <rect height="20" width="57" y="263" x="144"/>
+    <rect height="20" width="117" y="263" x="26"/>
+    <rect height="20" width="49" y="286" x="204"/>
+    <rect height="20" width="49" y="286" x="254"/>
+    <rect height="20" width="49" y="286" x="304"/>
+    <rect height="20" width="49" y="286" x="354"/>
+    <rect height="20" width="49" y="286" x="404"/>
+    <rect height="20" width="57" y="286" x="144"/>
+    <rect height="20" width="117" y="286" x="26"/>
+    <rect height="20" width="49" y="309" x="204"/>
+    <rect height="20" width="49" y="309" x="254"/>
+    <rect height="20" width="49" y="309" x="304"/>
+    <rect height="20" width="49" y="309" x="354"/>
+    <rect height="20" width="49" y="309" x="404"/>
+    <rect height="20" width="57" y="309" x="144"/>
+    <rect height="20" width="117" y="309" x="26"/>
+    <rect height="20" width="49" y="361" x="204"/>
+    <rect height="20" width="49" y="361" x="254"/>
+    <rect height="20" width="49" y="361" x="304"/>
+    <rect height="20" width="49" y="361" x="354"/>
+    <rect height="20" width="49" y="361" x="404"/>
+    <rect height="20" width="57" y="361" x="144"/>
+    <rect height="20" width="117" y="361" x="26"/>
+    <rect height="20" width="49" y="382" x="204"/>
+    <rect height="20" width="49" y="382" x="254"/>
+    <rect height="20" width="49" y="382" x="304"/>
+    <rect height="20" width="49" y="382" x="354"/>
+    <rect height="20" width="49" y="382" x="404"/>
+    <rect height="20" width="57" y="382" x="144"/>
+    <rect height="20" width="117" y="382" x="26"/>
+    <rect height="20" width="49" y="403" x="204"/>
+    <rect height="20" width="49" y="403" x="254"/>
+    <rect height="20" width="49" y="403" x="304"/>
+    <rect height="20" width="49" y="403" x="354"/>
+    <rect height="20" width="49" y="403" x="404"/>
+    <rect height="20" width="57" y="403" x="144"/>
+    <rect height="20" width="117" y="403" x="26"/>
+    <rect height="20" width="49" y="424" x="204"/>
+    <rect height="20" width="49" y="424" x="254"/>
+    <rect height="20" width="49" y="424" x="304"/>
+    <rect height="20" width="49" y="424" x="354"/>
+    <rect height="20" width="49" y="424" x="404"/>
+    <rect height="20" width="57" y="424" x="144"/>
+    <rect height="20" width="117" y="424" x="26"/>
+    <rect height="20" width="49" y="445" x="204"/>
+    <rect height="20" width="49" y="445" x="254"/>
+    <rect height="20" width="49" y="445" x="304"/>
+    <rect height="20" width="49" y="445" x="354"/>
+    <rect height="20" width="49" y="445" x="404"/>
+    <rect height="20" width="57" y="445" x="144"/>
+    <rect height="20" width="117" y="445" x="26"/>
+    <rect height="20" width="57" y="466" x="144"/>
+    <rect height="20" width="49" y="466" x="204"/>
+    <rect height="20" width="49" y="466" x="254"/>
+    <rect height="20" width="49" y="466" x="304"/>
+    <rect height="20" width="49" y="466" x="354"/>
+    <rect height="20" width="49" y="466" x="404"/>
+    <rect height="20" width="117" y="466" x="26"/>
+    <rect height="20" width="57" y="487" x="144"/>
+    <rect height="20" width="49" y="487" x="204"/>
+    <rect height="20" width="49" y="487" x="254"/>
+    <rect height="20" width="49" y="487" x="304"/>
+    <rect height="20" width="49" y="487" x="354"/>
+    <rect height="20" width="49" y="487" x="404"/>
+    <rect height="20" width="117" y="487" x="26"/>
+    <rect height="20" width="57" y="508" x="144"/>
+    <rect height="20" width="49" y="508" x="204"/>
+    <rect height="20" width="49" y="508" x="254"/>
+    <rect height="20" width="49" y="508" x="304"/>
+    <rect height="20" width="49" y="508" x="354"/>
+    <rect height="20" width="49" y="508" x="404"/>
+    <rect height="20" width="117" y="508" x="26"/>
+    <rect height="20" width="57" y="531" x="144"/>
+    <rect height="20" width="49" y="531" x="204"/>
+    <rect height="20" width="49" y="531" x="254"/>
+    <rect height="20" width="49" y="531" x="304"/>
+    <rect height="20" width="49" y="531" x="354"/>
+    <rect height="20" width="49" y="531" x="404"/>
+    <rect height="20" width="117" y="531" x="26"/>
+    <rect height="20" width="57" y="552" x="144"/>
+    <rect height="20" width="49" y="552" x="204"/>
+    <rect height="20" width="49" y="552" x="254"/>
+    <rect height="20" width="49" y="552" x="304"/>
+    <rect height="20" width="49" y="552" x="354"/>
+    <rect height="20" width="49" y="552" x="404"/>
+    <rect height="20" width="50" y="135" x="454"/>
+    <rect height="20" width="50" y="156" x="454"/>
+    <rect height="20" width="50" y="177" x="454"/>
+    <rect height="20" width="50" y="198" x="454"/>
+    <rect height="20" width="50" y="219" x="454"/>
+    <rect height="20" width="50" y="240" x="454"/>
+    <rect height="20" width="50" y="263" x="454"/>
+    <rect height="20" width="50" y="286" x="454"/>
+    <rect height="20" width="50" y="309" x="454"/>
+    <rect height="20" width="50" y="361" x="454"/>
+    <rect height="20" width="50" y="382" x="454"/>
+    <rect height="20" width="50" y="403" x="454"/>
+    <rect height="20" width="50" y="424" x="454"/>
+    <rect height="20" width="50" y="445" x="454"/>
+    <rect height="20" width="50" y="466" x="454"/>
+    <rect height="20" width="50" y="487" x="454"/>
+    <rect height="20" width="50" y="508" x="454"/>
+    <rect height="20" width="50" y="531" x="454"/>
+    <rect height="20" width="50" y="552" x="454"/>
+    <rect height="20" width="117" y="552" x="26"/>
+  </g>
+
+  <g stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="1">
+    <g stroke="#d0d3dc">
+      <path d="M202.5,133.5,202.5,330.5"/>
+      <path d="M26,133.5,504,133.5"/>
+      <path d="M26,261.5,504,261.5"/>
+      <path d="M26,284.5,504,284.5"/>
+      <path d="M26,307.5,504,307.5"/>
+      <path d="M26,330.5,504,330.5"/>
+      <path d="M26,359.5,504,359.5"/>
+      <path d="M26,573.5,504,573.5"/>
+      <path d="M202.5,359.5,202.5,573.5"/>
+      <path d="M26,529.5,504,529.5"/>
+    </g>
+
+    <path d="M357,55.5,502,55.5" stroke="#000"/>
+  </g>
+
+  <!-- text -->
+  <g style="writing-mode:lr-tb;" font-family="Arial">
+    <g style="text-anchor:middle;text-align:center;">
+      <g transform="scale(1.184,0.8446)">
+        <g font-size="5.9472px">
+          <text><tspan x="145.7067" y="167.27399">COUNT AND</tspan><tspan x="145.7067" y="173.81592">ADD ONLY</tspan><tspan x="145.7067" y="180.35786">ACES</tspan></text>
+          <text><tspan y="192.13814" x="145.7067">COUNT AND</tspan><tspan y="198.68007" x="145.7067">ADD ONLY</tspan><tspan y="205.22203" x="145.7067">TWOS</tspan></text>
+          <text><tspan x="145.7067" y="217.0023">COUNT AND</tspan><tspan x="145.7067" y="223.54424">ADD ONLY</tspan><tspan x="145.7067" y="230.08618">THREES</tspan></text>
+          <text><tspan y="241.86646" x="145.7067">COUNT AND</tspan><tspan y="248.40842" x="145.7067">ADD ONLY</tspan><tspan y="254.95033" x="145.7067">FOURS</tspan></text>
+          <text><tspan x="145.7067" y="266.73062">COUNT AND</tspan><tspan x="145.7067" y="273.27255">ADD ONLY</tspan><tspan x="145.7067" y="279.81448">FIVES</tspan></text>
+          <text><tspan y="291.59476" x="145.7067">COUNT AND</tspan><tspan y="298.13672" x="145.7067">ADD ONLY</tspan><tspan y="304.67865" x="145.7067">SIXES</tspan></text>
+          <text><tspan y="438.12601" x="145.70721">ADD TOTAL</tspan><tspan y="444.66794" x="145.70721">OF ALL DICE</tspan></text>
+          <text><tspan x="145.70721" y="462.99014">ADD TOTAL</tspan><tspan x="145.70721" y="469.5321">OF ALL DICE</tspan></text>
+        </g>
+        <g font-size="6.9614px">
+          <text><tspan x="71.703186" y="143.26566">MINIMUM</tspan><tspan x="71.703186" y="150.22707">REQUIRED FOR BONUS</tspan></text>
+          <text xml:space="preserve"><tspan y="143.26675" x="145.80334">HOW</tspan><tspan y="150.22816" x="145.80334">TO   SCORE</tspan></text>
+          <text id="text_c1_label"><tspan y="143.26675" x="192.99753">GAME</tspan><tspan y="150.22827" x="192.99753">#1</tspan></text>
+          <text id="text_c2_label"><tspan x="235.2278" y="143.26785">GAME</tspan><tspan x="235.2278" y="150.22926">#2</tspan></text>
+          <text id="text_c3_label"><tspan y="143.2684" x="277.4581">GAME</tspan><tspan y="150.22981" x="277.4581">#3</tspan></text>
+          <text id="text_c4_label"><tspan x="319.68835" y="143.2684">GAME</tspan><tspan x="319.68835" y="150.22981">#4</tspan></text>
+          <text id="text_c5_label"><tspan y="143.26895" x="361.91858">GAME</tspan><tspan y="150.23036" x="361.91858">#5</tspan></text>
+          <text id="text_c6_label"><tspan x="404.1489" y="143.27005">GAME</tspan><tspan x="404.1489" y="150.23157">#6</tspan></text>
+        </g>
+      </g>
+      <g transform="scale(1.024,0.9765)">
+        <text xml:space="preserve" font-size="14.469px" font-weight="bold" y="101.71458" x="379.80954">S C O R E   C A R D</text>
+        <text id="text_player_name" font-size="23.9952px" y="47.097061" x="419.44128">###</text>
+      </g>
+      <g font-size="5.6909px">
+        <text><tspan y="454.40494" x="124.03128">Sequence</tspan><tspan y="460.09583" x="124.03128">of 5</tspan></text>
+        <text><tspan y="433.75687" x="124.03128">Sequence</tspan><tspan y="439.44775" x="124.03128">of 4</tspan></text>
+      </g>
+      <g font-size="5.9694px">
+        <text><tspan y="540.45172" x="112.20267">OF</tspan><tspan y="545.82416" x="112.20267">UPPER HALF</tspan></text>
+        <text><tspan y="517.45172" x="112.21869">OF</tspan><tspan y="522.82416" x="112.21869">LOWER HALF</tspan></text>
+        <text><tspan y="318.45169" x="112.20267">OF</tspan><tspan y="323.82416" x="112.20267">UPPER HALF</tspan></text>
+      </g>
+      <g font-size="7.7px">
+        <text><tspan y="294.46329" x="172.53906">SCORE</tspan><tspan y="303.26328" x="172.53906">35</tspan></text>
+        <text><tspan y="411.46524" x="172.53906">SCORE</tspan><tspan y="420.26523" x="172.53906">25</tspan></text>
+        <text><tspan y="432.46329" x="172.53906">SCORE</tspan><tspan y="441.26328" x="172.53906">30</tspan></text>
+        <text><tspan y="453.46524" x="172.53906">SCORE</tspan><tspan y="462.26523" x="172.53906">40</tspan></text>
+        <text><tspan y="474.46524" x="172.53906">SCORE</tspan><tspan y="483.26523" x="172.53906">50</tspan></text>
+        <text><tspan x="112.16351" y="294.46329">IF 63</tspan><tspan x="112.16351" y="302.93329">OR OVER</tspan></text>
+      </g>
+
+      <!-- addressable text values -->
+      <g font-size="12px">
+        <!-- upper portion -->
+        <text id="text_c1_1s" y="149.29773" x="228.51758"></text>
+        <text id="text_c2_1s" y="149.29773" x="278.51758"></text>
+        <text id="text_c3_1s" y="149.29773" x="328.51758"></text>
+        <text id="text_c4_1s" y="149.29773" x="378.51758"></text>
+        <text id="text_c5_1s" y="149.29773" x="428.51758"></text>
+        <text id="text_c6_1s" y="149.29773" x="478.51758"></text>
+        <text id="text_c1_2s" y="170.29773" x="228.51758"></text>
+        <text id="text_c2_2s" y="170.29773" x="278.51758"></text>
+        <text id="text_c3_2s" y="170.29773" x="328.51758"></text>
+        <text id="text_c4_2s" y="170.29773" x="378.51758"></text>
+        <text id="text_c5_2s" y="170.29773" x="428.51758"></text>
+        <text id="text_c6_2s" y="170.29773" x="478.51758"></text>
+        <text id="text_c1_3s" y="191.29773" x="228.51758"></text>
+        <text id="text_c2_3s" y="191.29773" x="278.51758"></text>
+        <text id="text_c3_3s" y="191.29773" x="328.51758"></text>
+        <text id="text_c4_3s" y="191.29773" x="378.51758"></text>
+        <text id="text_c5_3s" y="191.29773" x="428.51758"></text>
+        <text id="text_c6_3s" y="191.29773" x="478.51758"></text>
+        <text id="text_c1_4s" y="212.29773" x="228.51758"></text>
+        <text id="text_c2_4s" y="212.29773" x="278.51758"></text>
+        <text id="text_c3_4s" y="212.29773" x="328.51758"></text>
+        <text id="text_c4_4s" y="212.29773" x="378.51758"></text>
+        <text id="text_c5_4s" y="212.29773" x="428.51758"></text>
+        <text id="text_c6_4s" y="212.29773" x="478.51758"></text>
+        <text id="text_c1_5s" y="233.29773" x="228.51758"></text>
+        <text id="text_c2_5s" y="233.29773" x="278.51758"></text>
+        <text id="text_c3_5s" y="233.29773" x="328.51758"></text>
+        <text id="text_c4_5s" y="233.29773" x="378.51758"></text>
+        <text id="text_c5_5s" y="233.29773" x="428.51758"></text>
+        <text id="text_c6_5s" y="233.29773" x="478.51758"></text>
+        <text id="text_c1_6s" y="254.29773" x="228.51758"></text>
+        <text id="text_c2_6s" y="254.29773" x="278.51758"></text>
+        <text id="text_c3_6s" y="254.29773" x="328.51758"></text>
+        <text id="text_c4_6s" y="254.29773" x="378.51758"></text>
+        <text id="text_c5_6s" y="254.29773" x="428.51758"></text>
+        <text id="text_c6_6s" y="254.29773" x="478.51758"></text>
+
+        <!-- lower portion -->
+        <text id="text_c1_3k" y="375.29773" x="228.51758"></text>
+        <text id="text_c2_3k" y="375.29773" x="278.51758"></text>
+        <text id="text_c3_3k" y="375.29773" x="328.51758"></text>
+        <text id="text_c4_3k" y="375.29773" x="378.51758"></text>
+        <text id="text_c5_3k" y="375.29773" x="428.51758"></text>
+        <text id="text_c6_3k" y="375.29773" x="478.51758"></text>
+        <text id="text_c1_4k" y="396.29773" x="228.51758"></text>
+        <text id="text_c2_4k" y="396.29773" x="278.51758"></text>
+        <text id="text_c3_4k" y="396.29773" x="328.51758"></text>
+        <text id="text_c4_4k" y="396.29773" x="378.51758"></text>
+        <text id="text_c5_4k" y="396.29773" x="428.51758"></text>
+        <text id="text_c6_4k" y="396.29773" x="478.51758"></text>
+        <text id="text_c1_full" y="417.29773" x="228.51758"></text>
+        <text id="text_c2_full" y="417.29773" x="278.51758"></text>
+        <text id="text_c3_full" y="417.29773" x="328.51758"></text>
+        <text id="text_c4_full" y="417.29773" x="378.51758"></text>
+        <text id="text_c5_full" y="417.29773" x="428.51758"></text>
+        <text id="text_c6_full" y="417.29773" x="478.51758"></text>
+        <text id="text_c1_sm" y="438.29773" x="228.51758"></text>
+        <text id="text_c2_sm" y="438.29773" x="278.51758"></text>
+        <text id="text_c3_sm" y="438.29773" x="328.51758"></text>
+        <text id="text_c4_sm" y="438.29773" x="378.51758"></text>
+        <text id="text_c5_sm" y="438.29773" x="428.51758"></text>
+        <text id="text_c6_sm" y="438.29773" x="478.51758"></text>
+        <text id="text_c1_lg" y="459.29773" x="228.51758"></text>
+        <text id="text_c2_lg" y="459.29773" x="278.51758"></text>
+        <text id="text_c3_lg" y="459.29773" x="328.51758"></text>
+        <text id="text_c4_lg" y="459.29773" x="378.51758"></text>
+        <text id="text_c5_lg" y="459.29773" x="428.51758"></text>
+        <text id="text_c6_lg" y="459.29773" x="478.51758"></text>
+        <text id="text_c1_yahtzee" y="480.29773" x="228.51758"></text>
+        <text id="text_c2_yahtzee" y="480.29773" x="278.51758"></text>
+        <text id="text_c3_yahtzee" y="480.29773" x="328.51758"></text>
+        <text id="text_c4_yahtzee" y="480.29773" x="378.51758"></text>
+        <text id="text_c5_yahtzee" y="480.29773" x="428.51758"></text>
+        <text id="text_c6_yahtzee" y="480.29773" x="478.51758"></text>
+        <text id="text_c1_chance" y="501.2977" x="228.51758"></text>
+        <text id="text_c2_chance" y="501.2977" x="278.51758"></text>
+        <text id="text_c3_chance" y="501.2977" x="328.51758"></text>
+        <text id="text_c4_chance" y="501.2977" x="378.51758"></text>
+        <text id="text_c5_chance" y="501.2977" x="428.51758"></text>
+        <text id="text_c6_chance" y="501.2977" x="478.51758"></text>
+
+        <!-- totals: grouped to allow easier hide / show -->
+        <g id="c1_totals">
+          <text id="text_c1_upsub" y="277.29773" x="228.51758"></text>
+          <text id="text_c1_bonus" y="300.29773" x="228.51758"></text>
+          <text id="text_c1_upper" y="323.29773" x="228.51758"></text>
+          <text id="text_c1_lower" y="522.29779" x="228.51758"></text>
+          <text id="text_c1_upper_x" y="545.29779" x="228.51758"></text>
+          <text id="text_c1_score" y="566.29779" x="228.51758"></text>
+        </g>
+        <g id="c2_totals">
+          <text id="text_c2_upsub" y="277.29773" x="278.51758"></text>
+          <text id="text_c2_bonus" y="300.29773" x="278.51758"></text>
+          <text id="text_c2_upper" y="323.29773" x="278.51758"></text>
+          <text id="text_c2_lower" y="522.29779" x="278.51758"></text>
+          <text id="text_c2_upper_x" y="545.29779" x="278.51758"></text>
+          <text id="text_c2_score" y="566.29779" x="278.51758"></text>
+        </g>
+        <g id="c3_totals">
+          <text id="text_c3_upsub" y="277.29773" x="328.51758"></text>
+          <text id="text_c3_bonus" y="300.29773" x="328.51758"></text>
+          <text id="text_c3_upper" y="323.29773" x="328.51758"></text>
+          <text id="text_c3_lower" y="522.29779" x="328.51758"></text>
+          <text id="text_c3_upper_x" y="545.29779" x="328.51758"></text>
+          <text id="text_c3_score" y="566.29779" x="328.51758"></text>
+        </g>
+        <g id="c4_totals">
+          <text id="text_c4_upsub" y="277.29773" x="378.51758"></text>
+          <text id="text_c4_bonus" y="300.29773" x="378.51758"></text>
+          <text id="text_c4_upper" y="323.29773" x="378.51758"></text>
+          <text id="text_c4_lower" y="522.29779" x="378.51758"></text>
+          <text id="text_c4_upper_x" y="545.29779" x="378.51758"></text>
+          <text id="text_c4_score" y="566.29779" x="378.51758"></text>
+        </g>
+        <g id="c5_totals">
+          <text id="text_c5_upsub" y="277.29773" x="428.51758"></text>
+          <text id="text_c5_bonus" y="300.29773" x="428.51758"></text>
+          <text id="text_c5_upper" y="323.29773" x="428.51758"></text>
+          <text id="text_c5_lower" y="522.29779" x="428.51758"></text>
+          <text id="text_c5_upper_x" y="545.29779" x="428.51758"></text>
+          <text id="text_c5_score" y="566.29779" x="428.51758"></text>
+        </g>
+        <g id="c6_totals">
+          <text id="text_c6_upsub" y="277.29773" x="478.51758"></text>
+          <text id="text_c6_bonus" y="300.29773" x="478.51758"></text>
+          <text id="text_c6_upper" y="323.29773" x="478.51758"></text>
+          <text id="text_c6_lower" y="522.29779" x="478.51758"></text>
+          <text id="text_c6_upper_x" y="545.29779" x="478.51758"></text>
+          <text id="text_c6_score" y="566.29779" x="478.51758"></text>
+        </g>
+      </g>
+
+      <text font-size="7.3086px"><tspan y="474.55328" x="124.17345">5 of</tspan><tspan y="481.86188" x="124.17345">a kind</tspan></text>
+      <text style="letter-spacing:-0.03px;word-spacing:5.249px;" transform="scale(1.024,0.9765)" font-size="10.6293px" y="610.24292" x="258.62756">PLEASE USE OTHER SIDE TO RECORD PLAYERS SCORES</text>
+      <text style="letter-spacing:0.52px;word-spacing:1px;" font-family="Serif" font-weight="bold" font-size="5.9694px" y="581.77161" x="405.68256">Copyright 1956  E. S. Lowe Company, Inc.</text>
+    </g>
+
+    <g style="text-anchor:start;text-align:start;">
+      <g transform="scale(1.024,0.9765)">
+        <g font-size="12.0564px">
+          <text y="152.71645" x="32.952919">Aces</text>
+          <text y="174.20978" x="32.652679">Twos</text>
+          <text y="195.71172" x="32.652679">Threes</text>
+          <text y="217.21365" x="31.946247">Fours</text>
+          <text y="238.71558" x="31.946247">Fives</text>
+          <text y="260.28815" x="32.393654">Sixes</text>
+          <text y="307.31702" x="32.052212">Bonus</text>
+          <text y="384.17734" x="32.428978">3 of a kind</text>
+          <text y="405.68518" x="32.782192">4 of a kind</text>
+          <text y="427.11353" x="31.946247">Full House</text>
+          <text y="447.49103" x="32.393654">Sm. Straight</text>
+          <text y="468.99298" x="32.052212">Lg. Straight</text>
+          <text y="513.19177" x="32.334805">Chance</text>
+        </g>
+        <g font-size="14.471px">
+          <text y="284.70572" x="32.596092">TOTAL</text>
+          <text y="331.80515" x="32.596092">TOTAL</text>
+          <text y="492.55414" x="32.892857">YAHTZEE</text>
+          <text y="535.56146" x="32.596092">TOTAL</text>
+          <text y="559.11133" x="32.596092">TOTAL</text>
+          <text y="580.61328" x="32.16674">GRAND TOTAL</text>
+        </g>
+        <text font-size="10.632px" y="56.53233" x="260.84506">PLAYERS NAME</text>
+      </g>
+
+      <g font-size="8px">
+        <text y="147.82693" x="125.55298">=</text>
+        <text y="168.82994" x="125.55298">=</text>
+        <text y="189.82994" x="125.55298">=</text>
+        <text y="210.87994" x="125.55298">=</text>
+        <text y="231.82994" x="125.55298">=</text>
+        <text y="252.84995" x="125.55298">=</text>
+      </g>
+      <text font-size="11px" y="276.84006" x="99.554688">=</text>
+    </g>
+
+    <g style="text-anchor:end;text-align:end;" font-size="8px">
+      <text y="147.82693" x="141.33423">3</text>
+      <text y="168.82994" x="141.33423">6</text>
+      <text y="189.82994" x="141.33423">9</text>
+      <text y="210.87994" x="141.33423">12</text>
+      <text y="231.82994" x="141.33423">15</text>
+      <text y="252.84995" x="141.33423">18</text>
+      <text y="275.82419" x="141.33423">63</text>
+    </g>
+  </g>
+
+  <!-- dice image sprites (separate file) -->
+  <g fill="none">
+    <use x="77" y="138" width="14" height="14" xlink:href="svg-sprites.svg#dice-1"/>
+    <use x="92" y="138" width="14" height="14" xlink:href="svg-sprites.svg#dice-1"/>
+    <use x="107" y="138" width="14" height="14" xlink:href="svg-sprites.svg#dice-1"/>
+
+    <use x="77" y="159" width="14" height="14" xlink:href="svg-sprites.svg#dice-2"/>
+    <use x="92" y="159" width="14" height="14" xlink:href="svg-sprites.svg#dice-2"/>
+    <use x="107" y="159" width="14" height="14" xlink:href="svg-sprites.svg#dice-2"/>
+
+    <use x="77" y="180" width="14" height="14" xlink:href="svg-sprites.svg#dice-3"/>
+    <use x="92" y="180" width="14" height="14" xlink:href="svg-sprites.svg#dice-3"/>
+    <use x="107" y="180" width="14" height="14" xlink:href="svg-sprites.svg#dice-3"/>
+
+    <use x="77" y="201" width="14" height="14" xlink:href="svg-sprites.svg#dice-4"/>
+    <use x="92" y="201" width="14" height="14" xlink:href="svg-sprites.svg#dice-4"/>
+    <use x="107" y="201" width="14" height="14" xlink:href="svg-sprites.svg#dice-4"/>
+
+    <use x="77" y="222" width="14" height="14" xlink:href="svg-sprites.svg#dice-5"/>
+    <use x="92" y="222" width="14" height="14" xlink:href="svg-sprites.svg#dice-5"/>
+    <use x="107" y="222" width="14" height="14" xlink:href="svg-sprites.svg#dice-5"/>
+
+    <use x="77" y="243" width="14" height="14" xlink:href="svg-sprites.svg#dice-6"/>
+    <use x="92" y="243" width="14" height="14" xlink:href="svg-sprites.svg#dice-6"/>
+    <use x="107" y="243" width="14" height="14" xlink:href="svg-sprites.svg#dice-6"/>
+  </g>
+
+  <!-- arrow image sprites (separate file) -->
+  <use x="158" y="255" width="5.5%" height="5.5%" xlink:href="svg-sprites.svg#arrow"/>
+  <use x="158" y="301" width="5.5%" height="5.5%" xlink:href="svg-sprites.svg#arrow"/>
+  <use x="158" y="500" width="5.5%" height="5.5%" xlink:href="svg-sprites.svg#arrow"/>
+  <use x="158" y="523" width="5.5%" height="5.5%" xlink:href="svg-sprites.svg#arrow"/>
+  <use x="158" y="544" width="5.5%" height="5.5%" xlink:href="svg-sprites.svg#arrow"/>
+
+  <!-- selectable regions -->
+  <g id="selectable_region" opacity="0.1" fill="yellow">
+    <rect id="descriptions" height="463" width="175" y="112" x="27"/>
+    <rect id="c1_label" height="20" width="49" y="112" x="204"/>
+    <rect id="c2_label" height="20" width="49" y="112" x="254"/>
+    <rect id="c3_label" height="20" width="49" y="112" x="304"/>
+    <rect id="c4_label" height="20" width="49" y="112" x="354"/>
+    <rect id="c5_label" height="20" width="49" y="112" x="404"/>
+    <rect id="c6_label" height="20" width="50" y="112" x="454"/>
+    <rect id="c1_1s" class="click" height="20" width="49" y="135" x="204"/>
+    <rect id="c2_1s" class="click" height="20" width="49" y="135" x="254"/>
+    <rect id="c3_1s" class="click" height="20" width="49" y="135" x="304"/>
+    <rect id="c4_1s" class="click" height="20" width="49" y="135" x="354"/>
+    <rect id="c5_1s" class="click" height="20" width="49" y="135" x="404"/>
+    <rect id="c6_1s" class="click" height="20" width="50" y="135" x="454"/>
+    <rect id="c1_2s" class="click" height="20" width="49" y="156" x="204"/>
+    <rect id="c2_2s" class="click" height="20" width="49" y="156" x="254"/>
+    <rect id="c3_2s" class="click" height="20" width="49" y="156" x="304"/>
+    <rect id="c4_2s" class="click" height="20" width="49" y="156" x="354"/>
+    <rect id="c5_2s" class="click" height="20" width="49" y="156" x="404"/>
+    <rect id="c6_2s" class="click" height="20" width="50" y="156" x="454"/>
+    <rect id="c1_3s" class="click" height="20" width="49" y="177" x="204"/>
+    <rect id="c2_3s" class="click" height="20" width="49" y="177" x="254"/>
+    <rect id="c3_3s" class="click" height="20" width="49" y="177" x="304"/>
+    <rect id="c4_3s" class="click" height="20" width="49" y="177" x="354"/>
+    <rect id="c5_3s" class="click" height="20" width="49" y="177" x="404"/>
+    <rect id="c6_3s" class="click" height="20" width="50" y="177" x="454"/>
+    <rect id="c1_4s" class="click" height="20" width="49" y="198" x="204"/>
+    <rect id="c2_4s" class="click" height="20" width="49" y="198" x="254"/>
+    <rect id="c3_4s" class="click" height="20" width="49" y="198" x="304"/>
+    <rect id="c4_4s" class="click" height="20" width="49" y="198" x="354"/>
+    <rect id="c5_4s" class="click" height="20" width="49" y="198" x="404"/>
+    <rect id="c6_4s" class="click" height="20" width="50" y="198" x="454"/>
+    <rect id="c1_5s" class="click" height="20" width="49" y="219" x="204"/>
+    <rect id="c2_5s" class="click" height="20" width="49" y="219" x="254"/>
+    <rect id="c3_5s" class="click" height="20" width="49" y="219" x="304"/>
+    <rect id="c4_5s" class="click" height="20" width="49" y="219" x="354"/>
+    <rect id="c5_5s" class="click" height="20" width="49" y="219" x="404"/>
+    <rect id="c6_5s" class="click" height="20" width="50" y="219" x="454"/>
+    <rect id="c1_6s" class="click" height="20" width="49" y="240" x="204"/>
+    <rect id="c2_6s" class="click" height="20" width="49" y="240" x="254"/>
+    <rect id="c3_6s" class="click" height="20" width="49" y="240" x="304"/>
+    <rect id="c4_6s" class="click" height="20" width="49" y="240" x="354"/>
+    <rect id="c5_6s" class="click" height="20" width="49" y="240" x="404"/>
+    <rect id="c6_6s" class="click" height="20" width="50" y="240" x="454"/>
+    <rect id="c1_upsub" height="20" width="49" y="263" x="204"/>
+    <rect id="c2_upsub" height="20" width="49" y="263" x="254"/>
+    <rect id="c3_upsub" height="20" width="49" y="263" x="304"/>
+    <rect id="c4_upsub" height="20" width="49" y="263" x="354"/>
+    <rect id="c5_upsub" height="20" width="49" y="263" x="404"/>
+    <rect id="c6_upsub" height="20" width="50" y="263" x="454"/>
+    <rect id="c1_bonus" height="20" width="49" y="286" x="204"/>
+    <rect id="c2_bonus" height="20" width="49" y="286" x="254"/>
+    <rect id="c3_bonus" height="20" width="49" y="286" x="304"/>
+    <rect id="c4_bonus" height="20" width="49" y="286" x="354"/>
+    <rect id="c5_bonus" height="20" width="49" y="286" x="404"/>
+    <rect id="c6_bonus" height="20" width="50" y="286" x="454"/>
+    <rect id="c1_upper" height="20" width="49" y="309" x="204"/>
+    <rect id="c2_upper" height="20" width="49" y="309" x="254"/>
+    <rect id="c3_upper" height="20" width="49" y="309" x="304"/>
+    <rect id="c4_upper" height="20" width="49" y="309" x="354"/>
+    <rect id="c5_upper" height="20" width="49" y="309" x="404"/>
+    <rect id="c6_upper" height="20" width="50" y="309" x="454"/>
+    <rect id="c1_3k" class="click" height="20" width="49" y="361" x="204"/>
+    <rect id="c2_3k" class="click" height="20" width="49" y="361" x="254"/>
+    <rect id="c3_3k" class="click" height="20" width="49" y="361" x="304"/>
+    <rect id="c4_3k" class="click" height="20" width="49" y="361" x="354"/>
+    <rect id="c5_3k" class="click" height="20" width="49" y="361" x="404"/>
+    <rect id="c6_3k" class="click" height="20" width="50" y="361" x="454"/>
+    <rect id="c1_4k" class="click" height="20" width="49" y="382" x="204"/>
+    <rect id="c2_4k" class="click" height="20" width="49" y="382" x="254"/>
+    <rect id="c3_4k" class="click" height="20" width="49" y="382" x="304"/>
+    <rect id="c4_4k" class="click" height="20" width="49" y="382" x="354"/>
+    <rect id="c5_4k" class="click" height="20" width="49" y="382" x="404"/>
+    <rect id="c6_4k" class="click" height="20" width="50" y="382" x="454"/>
+    <rect id="c1_full" class="click" height="20" width="49" y="403" x="204"/>
+    <rect id="c2_full" class="click" height="20" width="49" y="403" x="254"/>
+    <rect id="c3_full" class="click" height="20" width="49" y="403" x="304"/>
+    <rect id="c4_full" class="click" height="20" width="49" y="403" x="354"/>
+    <rect id="c5_full" class="click" height="20" width="49" y="403" x="404"/>
+    <rect id="c6_full" class="click" height="20" width="50" y="403" x="454"/>
+    <rect id="c1_sm" class="click" height="20" width="49" y="424" x="204"/>
+    <rect id="c2_sm" class="click" height="20" width="49" y="424" x="254"/>
+    <rect id="c3_sm" class="click" height="20" width="49" y="424" x="304"/>
+    <rect id="c4_sm" class="click" height="20" width="49" y="424" x="354"/>
+    <rect id="c5_sm" class="click" height="20" width="49" y="424" x="404"/>
+    <rect id="c6_sm" class="click" height="20" width="50" y="424" x="454"/>
+    <rect id="c1_lg" class="click" height="20" width="49" y="445" x="204"/>
+    <rect id="c2_lg" class="click" height="20" width="49" y="445" x="254"/>
+    <rect id="c3_lg" class="click" height="20" width="49" y="445" x="304"/>
+    <rect id="c4_lg" class="click" height="20" width="49" y="445" x="354"/>
+    <rect id="c5_lg" class="click" height="20" width="49" y="445" x="404"/>
+    <rect id="c6_lg" class="click" height="20" width="50" y="445" x="454"/>
+    <rect id="c1_yahtzee" class="click" height="20" width="49" y="466" x="204"/>
+    <rect id="c2_yahtzee" class="click" height="20" width="49" y="466" x="254"/>
+    <rect id="c3_yahtzee" class="click" height="20" width="49" y="466" x="304"/>
+    <rect id="c4_yahtzee" class="click" height="20" width="49" y="466" x="354"/>
+    <rect id="c5_yahtzee" class="click" height="20" width="49" y="466" x="404"/>
+    <rect id="c6_yahtzee" class="click" height="20" width="50" y="466" x="454"/>
+    <rect id="c1_chance" class="click" height="20" width="49" y="487" x="204"/>
+    <rect id="c2_chance" class="click" height="20" width="49" y="487" x="254"/>
+    <rect id="c3_chance" class="click" height="20" width="49" y="487" x="304"/>
+    <rect id="c4_chance" class="click" height="20" width="49" y="487" x="354"/>
+    <rect id="c5_chance" class="click" height="20" width="49" y="487" x="404"/>
+    <rect id="c6_chance" class="click" height="20" width="50" y="487" x="454"/>
+    <rect id="c1_lower" height="20" width="49" y="508" x="204"/>
+    <rect id="c2_lower" height="20" width="49" y="508" x="254"/>
+    <rect id="c3_lower" height="20" width="49" y="508" x="304"/>
+    <rect id="c4_lower" height="20" width="49" y="508" x="354"/>
+    <rect id="c5_lower" height="20" width="49" y="508" x="404"/>
+    <rect id="c6_lower" height="20" width="50" y="508" x="454"/>
+    <rect id="c1_upper_x" height="20" width="49" y="531" x="204"/>
+    <rect id="c2_upper_x" height="20" width="49" y="531" x="254"/>
+    <rect id="c3_upper_x" height="20" width="49" y="531" x="304"/>
+    <rect id="c4_upper_x" height="20" width="49" y="531" x="354"/>
+    <rect id="c5_upper_x" height="20" width="49" y="531" x="404"/>
+    <rect id="c6_upper_x" height="20" width="50" y="531" x="454"/>
+    <rect id="c1_score" height="20" width="49" y="552" x="204"/>
+    <rect id="c2_score" height="20" width="49" y="552" x="254"/>
+    <rect id="c3_score" height="20" width="49" y="552" x="304"/>
+    <rect id="c4_score" height="20" width="49" y="552" x="354"/>
+    <rect id="c5_score" height="20" width="49" y="552" x="404"/>
+    <rect id="c6_score" height="20" width="50" y="552" x="454"/>
+    <rect id="player_name" class="click" height="38" width="246" y="24" x="262"/>
+  </g>
+</svg>

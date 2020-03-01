@@ -1,0 +1,74 @@
+kings league
+- video ad
+- loading % splash
+  - start game button
+  - with / without sound
+- armor games swords
+- developer animation
+- main menu
+
+kingdom rush
+- video ad
+- loading % splash
+  - armor games link
+  - studio link
+  - ad
+  - start game button
+- armor games swords
+- developer animation
+- main menu
+  - sound / music icons
+  - links
+  - credits
+  - start
+
+zombie tactics
+- video ad
+- loading % splash
+  - play game button
+- host splash
+- main menu
+
+sword and souls
+- video ad
+- loading % splash
+  - armor games link
+  - studio link
+  - play game button
+  - simple animation
+- armor games swords
+- developer animation + sound
+- main menu
+  - simple animation + looping sound
+  - quality / sound / music icons
+  - links
+  - credits
+  - play
+- char builder
+
+crusaders of the lost idols
+- video ad
+- loading % splash
+  - armor games link
+  - studio link
+  - ad
+  - start game button
+- main menu
+  - sound / music icons
+  - links
+  - credits
+  - start
+
+~
+
+yahtzle
+- loading
+  - fade in
+  - load % + animation > start / play button
+  - fade out
+- developer animation + sound
+  - fade in
+  - effect
+  - fade out
+- menu
+  - fade in
