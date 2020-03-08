@@ -1,0 +1,38 @@
+----------
+Sunday 2020-03-07
+
+  JAVA MASTERCLASS
+
+    - literal suffixes exist for long(l or L), float (f) and double (d)
+
+    - suffixes for other primitives don't exist
+      - must use explicit cast (ie. byte my_var = (byte) 128)
+
+
+    float (single precision) and double (double precision)
+      - double is preferred
+      - when more precision is required (ie. currency calculations), java BigDecimal class is recommended
+
+
+    char and boolean
+      - char is a single character
+      - char is 16-bits because of unicode
+      - unicode-table.com shows char unicode equivalents
+
+
+    String "class" data type
+      - Java treats Strings in a "special" way
+      - immutable, so appending to existing strings, etc. is inefficient
+      - StringBuffer fixes this, but more later..
+
+
+
+----------
+Friday 2020-03-05
+
+  - udemy java programming masterclass
+    - setup jdk (amazon corretto) + ide (intellij idea community edition)
+
+
+    JAVA PRIMITIVE DATA TYPES
+      boolean, byte, char, short, int, long, float, double
