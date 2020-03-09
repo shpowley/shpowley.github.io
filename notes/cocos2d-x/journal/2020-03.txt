@@ -1,0 +1,246 @@
+https://learning.oreilly.com/ "OpenGL ES 2 for Android"
+
+
+moot issue? android drawables folder as a "link" to cocos2d-x "resource" folder? so as to re-use assets?
+
+
+wobble master project
+  - check out androidmanifest.xml and permissions??
+  - AndroidManifest.xml tags and publishing to the play store
+
+
+NEW SCENES ===> LIVE WALLPAPER ==> TOY CUSTOMIZER PROJECT OR FINISH HAWAIIAN THEME?
+  - remember to double check GameManager::GameManager() for appropriate scene defaults
+  - RUBELayer::updateLightSensor() - doesn't this need check of _body_bobble existence like RUBELayer::updateIdleWobble()
+    - also rename to "updateLightSensorWobble()"
+
+
+"BOBBLE BODY" DEFINITION
+  - _body_bobble defined in overloaded ::afterLoadProcessing()
+    ex. _body_bobble = json->getBodyByName("body_top");
+
+  - primary?
+  - potential problem when logging shows angular velocity for the primary bobble body (toy-mode)
+  - also, issue with velocity constraint?
+  - take a look at single vs multiple (hula girl vs sandals)
+
+  - implement as RUBE user property similar to "ethereal" instead of the box2d body name?
+  - composite scene with multiple toys has potentially more than one "bobble body"
+
+
+SEPARATE ACCELERATION SCALING FOR EACH AXIS
+  - not sure if this was noted elsewhere, but separate scaling for each axis might be a good idea, especially for exaggerated bounce motion along the y-axis
+    - this might be good for speed bumps.. vs. the impulse/jerk idea
+    - this should be easy to test just be altering existing code with a fixed scalar on the y-axis to test out this hypothesis
+    - full implementation would be a pain though
+
+
+AUDIO NOTE ITEMS
+  LAYERS
+  - toast layer to root
+  - RUBE sprite layer
+  - RUBE physics debug layer on top of RUBE sprites; child of RUBE scene
+  - HUD layer
+  - ADVERTISING layer
+  - background graphics; possibly 1 or more actual layers or maybe just sprites sprites (parallax effect)
+  - 2 particle effect layers (behind AND in front of RUBE sprites)
+
+  HUD wobble button
+    - touch cycles through for now; possibly slide out selector in the future
+  
+  TOUCH SPARKLES / TWINKLES
+
+
+SCENE DEFAULTS
+  - scene defaults for turtles (original)
+  - scene defaults for turtles (new)
+    - appropriate scale, world width/height min/max?
+
+
+VERIFY/FIX DEV MODE SLIDER ON NEW SCENES
+  - remove altogether
+
+
+NEW SCENES
+  - surfer
+    - bobble movement example: https://youtu.be/O2ay_oGVI-c?t=226
+
+  - android surfer
+
+  - hawaiian tux penguin sandals
+    By Larry Ewing, Simon Budig, Garrett LeSage - http://www.home.unix-ag.org/simon/penguin/, garrett/Tux on GitHub, CC0, https://commons.wikimedia.org/w/index.php?curid=753970
+
+  - android hula dancer
+
+  SUMMARY + POSSIBLE NEW SCENES
+    beach sandals | hawaiian tux feet
+    hula girl | android hula robot | tux hula (NEW)
+    hawaiian turtle
+    hang loose
+    surfer | android surfer (NEW)
+    muscle guy (NEW)
+    mermaid (NEW)
+    "solar-powered" hibiscus flower (NEW)
+
+
+BUG - RUBELayer::updateAcceleration()
+* in RUBELayer::updateAcceleration() and possibly RUBELayer::updateGyroscope(), I think there's a bug with how the primary "bobble body" is handled
+  - basically, I believe that every box2d body is treated the same whether or not it is the primary "bobble"
+  - for the sandals scene, this works out fine; and the logging of each shoe is handled within the class..
+  - only of the "spring hula girl" and the "original turtle" scenes really have a multi-body assembly that demonstrate this; the hula girl sort of removes this effect with the "ethereal" property implementation, but this effect can be clearly seen on the original turtles head/fins with the properties set just so
+
+  * once a FIX is determined and implemented, the "original turtle" scene needs to have the broken update function(s) maintained as overloaded versions (Jack's "crazy" turtles)
+
+
+----------
+Sunday 2020-03-08
+
+  ANDROID WARNING:
+
+    "API 'variant.getMergeAssets()' is obsolete and has been replaced with 'variant.getMergeAssetsProvider()'"
+
+  FIX:
+
+    IN FILE "build.gradle"
+    CHANGE "variant.mergeAssets.doLast" TO "variant.mergeAssetsProvider.get().doLast"
+
+
+  LIST OF CURRENT ANDROID PROJECTS (code\android_projects)
+
+    celestial (github)
+      - 1st attempt at hand-coding box2d collisions, debug draw, and cocos2d-x layers
+      - safe to delete
+
+    gyrotest (github)
+      - 3d sprite rotated using gyro sensor using source originally from github
+      - logic was originally fixed by me some months ago for better rotation tracking
+      - fixed cmake just now to prevent crashing
+      - basis for my JNI sensor code used in my "wobble master" project
+      * template for my future "CUSTOM 3D OBJECT VIEWER" APP / ANDROID LIVE WALLPAPER
+        - current rotation tracks gyroscope, but compass/magnetometer might be a better option(?)
+          - track only y-axis spin feature
+        - touch-swipe induced y-axis spin, touch-stop features, spin friction(?) to slow over time
+        - configuration: use your own 3d .obj files (other formats?) OR pre-made list
+        - configuration: initial size, x or z-axis angle
+        - quick HUD button control modes for above features? (similar to wobble master)
+
+    LWP_simple
+    lwp_test
+    lwp_verify
+    maze_test
+    og/rube_loader_custom
+    og/rube_loader_image
+    rube_custom
+    rube_demo
+    rube_wobble_master
+    Vogella_LWP
+
+
+  LIST OF CURRENT ANDROID PROJECTS (backup (read-only)\android)
+
+    cocos2dx_template_project
+    LWP_simple
+    LWP_simple_pic_only
+    TutorialOnLWP
+    Vogella_LWP
+
+
+
+  LIVE WALLPAPER
+
+    Cocos2dHelper.java absolutely requires an Activity for initialization. There doesn't seem to be any way around this as the variable "sActivity" is used throughout.
+      - THIS IS SOMEWHAT FRUSTRATING.
+      - This eliminates a lot of potential code re-use!!
+
+
+    CODE RE-USE AT ALL POSSIBLE? 
+      - image textures? 
+      - RUBE .json files? 
+      - the cocos2d-x application for configuration? 
+      - any existing c++ source code using JNI (RUBE loader, logic)?
+
+
+    OPENGL 2.0 FOR ANDROID seems to be the next thing to research I guess
+      
+      relevant links:
+        http://www.learnopengles.com/how-to-use-opengl-es-2-in-an-android-live-wallpaper/
+        http://www.learnopengles.com/check-out-these-cool-live-wallpapers-games-and-tutorials-by-fellow-learn-opengl-esers/
+      * https://code.tutsplus.com/tutorials/how-to-use-opengl-es-in-android-apps--cms-28464 (interesting)
+        http://www.jbox2d.org/
+        https://www.iforce2d.net/rube/?panel=loaders + https://www.iforce2d.net/forums/viewtopic.php?f=6&t=240
+
+      book: "OpenGL ES 2 for Android" (https://pragprog.com/book/kbogla/opengl-es-2-for-android)
+        OpenGL ES 2.0 API Quick Reference Card: http://www.khronos.org/opengles/sdk/docs/reference_cards/OpenGL-ES-2_0-Reference-card.pdf
+        OpenGL ES 2.0 Reference Pages: http://www.khronos.org/opengles/sdk/docs/man/
+        OpenGL ES Shading Language (GLSL ES) Reference Pages: http://www.khronos.org/opengles/sdk/docs/manglsl/
+        The OpenGL® ES Shading Language: http://www.khronos.org/registry/gles/specs/2.0/GLSL_ES_Specification_1.0.17.pdf
+        OpenGL® ES Common Profile Specification Version 2.0.25 (Full Specification): http://www.khronos.org/registry/gles/specs/2.0/es_full_spec_2.0.25.pdf
+        Khronos EGL API Registry: http://www.khronos.org/registry/egl/
+
+
+
+----------
+Thursday 2020-03-04
+
+  live wallpaper
+
+    - read links:
+
+      1: https://www.pushing-pixels.org/2010/02/01/live-wallpapers-with-android-sdk-2-1.html
+      2: https://discuss.cocos2d-x.org/t/3-2rc0-android-live-wallpaper/15460
+
+
+      link 1: pushing pixels (2010)
+        - good reference
+
+        - what is android.os.Handler AND java.lang.Runnable?
+        - references Engine AND AnimationEngine - what's "AnimationEngine"?
+        - example of swipe-scroll parallax
+        - able to identify if live wallpaper is in "preview" mode using "this.isPreview()"
+        - "synchronized()" ?
+        - canvas.save(), canvas.drawColor(), canvas.restore()?
+        - onCommand() user touch example
+
+        referenced opengl alternative:
+          https://web.archive.org/web/20181202175012/http://www.rbgrn.net/content/354-glsurfaceview-adapted-3d-live-wallpapers
+          https://github.com/GLWallpaperService/GLWallpaperService
+          https://groups.google.com/forum/#!forum/glwallpaperservice (buried link)
+          http://www.learnopengles.com/how-to-use-opengl-es-2-in-an-android-live-wallpaper/ (buried link)
+
+        android.service.wallpaper.WallpaperService.Engine internal class methods:
+          onCreate() – called when the engine is initialized. At this point the drawing surface has not yet been created
+          onDestroy() – called when the engine is destroyed. After this method is called, the engine is no longer valid
+          onSurfaceCreated() – called when the drawing surface has been created
+          onSurfaceChanged() – called when structural changes (such as size or format) have been made to the drawing surface
+          onSurfaceDestroyed() – called when the drawing surface has been destroyed
+          onVisibilityChanged() – called when the wallpaper becomes visible or hidden. When the wallpaper is hidden, you should suspend your animation and not draw anything to save the CPU cycles
+          onOffsetsChanged() – called when the wallpaper offsets are changed after the user “swipes” the home screen to one of the sides. Can be used to create a “parallax” effect when the wallpaper is moving along with the home screen
+          onTouchEvent() – called when the user performs touch-screen interaction with the window that is showing the wallpaper
+          onCommand() – called to process a command
+
+
+      link 2: cocos2d-x forums - live wallpaper
+
+        referenced links:
+          *** http://www.learnopengles.com/how-to-use-opengl-es-2-in-an-android-live-wallpaper/
+
+----------
+Tuesday 2020-03-02
+
+  - create re-usable cocos2d-x/android base project and add to github repository
+
+
+  live wallpaper
+
+    lwp_test (starting template "live wallpaper" project)
+
+      android activity
+        => simple native android live wallpaper
+        => cocos2d-x project with simple graphic
+
+      - IMPERFECT, but works to sort of combine native android live wallpaper + cocos2d-x
+        - one issue is that when starting a cocos2d-x activity from android, TWO activities now exist
+
+      - this was difficult to get working and diagnose issues
+        - see github check-in, but basically, besides the standard live wallpaper implementation, gradle.properties needs androidX support and AndroidManifest.xml needs correct theme style
+        - THIS WAS NOT OBVIOUS AT ALL WHAT WAS WRONG..
