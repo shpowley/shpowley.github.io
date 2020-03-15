@@ -12,14 +12,20 @@ Q: several jobs with similar titles - different reference numbers. would I need 
 Applications Developer R-23842
 18th 10am $55-56k/year Java
 
-Q: team members. how long at Blue Cross?
+Q: junior developer
 
-Q: IT org structure and how does the team fits in?
+Q: describe the team. team size. team members - how long at Blue Cross?
 
-Q: typical work day hours? 8-5
+Q: who would I be working with?
 
-Q: projects and personell and teams. teams shuffling?
+Q: more than one job available for "Application Developer.." I incorrectly assumed these were re-posted job requirements for the same position.. based on this, IT org structure and how does this team fit in?
 
-Q: software stack, hardware
+Q: projects / tech used (pure java? j2ee? frameworks? DB backend? web?), personel and teams.
+
+Q: typical software stack (IDEs), hardware/development environment?
+
+Q: internal coding naming conventions, coding standards?
 
 Q: start training? ongoing? certification maintainence?
+
+Q: typical work day schedule?

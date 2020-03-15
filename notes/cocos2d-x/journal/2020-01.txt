@@ -13,6 +13,8 @@ Sunday 2020-01-26
     - base for android hula dancer, android surfer, for now
     - base for tux hawaiian shirt beach bum (ie. beach sandals)
 
+
+  INKSCAPE "CLIPPING" TECHNIQUE
     - learned about "clipping" technique to create hard-edged lighting effects
       - clipping z-order is important
 

@@ -1,0 +1,33 @@
+LIST OF CURRENT ANDROID PROJECTS (code\android_projects)
+
+  celestial (github)
+    - 1st attempt at hand-coding box2d collisions, debug draw, and cocos2d-x layers
+    - safe to delete
+
+  gyrotest (github)
+    - 3d sprite rotated using gyro sensor using source originally from github
+    - logic was originally fixed by me some months ago for better rotation tracking
+    - fixed cmake just now to prevent crashing
+    - basis for my JNI sensor code used in my "wobble master" project
+    * template for my future "CUSTOM 3D OBJECT VIEWER" APP / ANDROID LIVE WALLPAPER
+
+  LWP_simple
+  lwp_test
+  lwp_verify
+  maze_test
+  og/rube_loader_custom
+  og/rube_loader_image
+  rube_custom
+  rube_demo
+  rube_wobble_master
+  Vogella_LWP
+
+
+
+LIST OF CURRENT ANDROID PROJECTS (backup (read-only)\android)
+
+  cocos2dx_template_project
+  LWP_simple
+  LWP_simple_pic_only
+  TutorialOnLWP
+  Vogella_LWP

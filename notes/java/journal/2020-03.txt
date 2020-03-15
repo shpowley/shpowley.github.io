@@ -1,4 +1,52 @@
 ----------
+Friday 2020-03-13
+
+  JAVA MASTERCLASS (continued)
+
+----------
+Thursday 2020-03-12
+  
+
+  JAVA MASTERCLASS
+
+
+    USER INPUT
+    
+      Scanner scanner = new Scanner(System.in);
+
+
+    CLASSES
+
+      * when a constructors calls an overloaded version -- RULE: THIS MUST BE THE VERY FIRST LINE
+      
+      * RECOMMENDATION: don't use getters/setters in the constructor
+
+
+        INHERITANCE
+
+        * RECOMMENDATION: try not to use "super." prefix when using base class methods
+          - inherited class method is called by default if it's NOT overridden/implemented
+          - see project masterclass\Classes, class Dog, method run() for an example
+
+
+        COMPOSITION / ENCAPSULATION / POLYMORPHISM
+        
+
+----------
+Tuesday 2020-03-10
+
+  JAVA MASTERCLASS
+
+    - diff tools - just to show concept
+
+    - coding exercises + online verification
+
+    - intellij idea IDE has useful code shortcuts:
+      "sout" => expands to System.out.println()
+      "psvr" => expands to public static void main(String[] args) {}
+
+
+----------
 Sunday 2020-03-07
 
   JAVA MASTERCLASS
