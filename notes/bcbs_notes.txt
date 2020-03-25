@@ -1,31 +1,37 @@
-notes:
+NOTES:
 
 Applications Developer X R-23842
 Application Developer/Analyst X R-24011 | X R-23444 | X R-21427
 Applications Developer Analyst - Java/JavaScript X R-23520
 Application Systems Analyst Specialist X R-22348
 
-Q: several jobs with similar titles - different reference numbers. would I need to apply to each individually online or does process handle a best fit?
-
--
-
+==============================
 Applications Developer R-23842
 18th 10am $55-56k/year Java
 
-Q: junior developer
+March 18, 2020 at 10 am
+phone number: 1-800-503-2899, ext. 535-4228
 
-Q: describe the team. team size. team members - how long at Blue Cross?
+Interview panel:
+  Neelima Maddy – IS Team Lead
+  Arjun Muthalagu- AppSystems Analyst Specialist
+  Vineel Arekapudi – AppSystems Analyst Specialist*
 
-Q: who would I be working with?
+Brooke Cordell | BlueCross BlueShield of Tennessee
+Principal Recruiter
+p. 423.535.5787 | brooke_cordell@bcbst.com
+-
 
-Q: more than one job available for "Application Developer.." I incorrectly assumed these were re-posted job requirements for the same position.. based on this, IT org structure and how does this team fit in?
+Q: junior developer position? responsibilities.
 
-Q: projects / tech used (pure java? j2ee? frameworks? DB backend? web?), personel and teams.
+Q: describe the team. team size7. how long has everyone been at Blue Cross?
+
+Q: more than one "Application Developer.." position on blue cross website. how does how does this team fit in overall IT org structure?
 
 Q: typical software stack (IDEs), hardware/development environment?
 
-Q: internal coding naming conventions, coding standards?
-
-Q: start training? ongoing? certification maintainence?
+Q: projects / tech used (pure java? j2ee? frameworks? DB backend? web?), personel and teams.
 
 Q: typical work day schedule?
+
+Q: tell me about working for BCBST?

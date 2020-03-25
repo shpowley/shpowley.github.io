@@ -1,4 +1,37 @@
 ----------
+Tuesday 2020-03-16
+
+  JAVA MASTERCLASS (continued)
+
+    final, static
+
+      - final variables can actually be modified, but only once in the constructor
+      - marking a class as "final" prevents sub-classing
+      - marking class methods "final" prevents them from being overridden
+      - static initializer ("static" constructor); rarely used, but only executes first time object in the class is instanced; rarely used and syntax is different than most ("static {}" code block)
+        - static final variables can be modified in the static initializer
+
+
+    packages
+
+      - generate "artifact / .jar file" library to import into new project as an external library
+
+
+    interfaces, inner classes, anonymous classes, abstract classes, generics
+
+      - discussion @abstract (4:48) lecture mentions allowing FLEXIBLE INTERFACES using more generic "List" vs. more constrained type
+
+      - generics (~c++ templates) can be restricted to specific abstract classes (BOUNDED TYPE PARAMETERS)
+        + generics comparable demoed; allows use with Collections.sort
+
+----------
+Sunday 2020-03-15
+
+  JAVA MASTERCLASS (continued)
+
+    ArrayList, autoboxing
+
+----------
 Friday 2020-03-13
 
   JAVA MASTERCLASS (continued)
@@ -13,6 +46,10 @@ Thursday 2020-03-12
     USER INPUT
     
       Scanner scanner = new Scanner(System.in);
+
+      NOTES:
+        - use <Scanner instance>.nextLine() to avoid reading keyboard input infinite loops
+        - use <Scanner instance>.close() when created within a method - recommended(?) Scanner instance as a static variable
 
 
     CLASSES

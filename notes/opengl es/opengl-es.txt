@@ -1,0 +1,121 @@
+"opengl es 2 for android" - kevin brothhaler
+
+- source code downloaded
+
+---
+CHAPTER 1
+
+* create and test "FirstOpenGLProject"
+  - instructions for re-usable boilerplate template code
+  - only "clears" the screen
+
+  GLSurfaceView
+  TextureView (android 4.0+)
+    - able to replace GLSurfaceView(?)
+    - ability to adapt GLSurfaceView code (NOTE: methodology not actually shown)
+
+  - query android config if opengl es 2.0 supported
+
+  "RENDERER"
+    - called on a separate thread
+    * CALL OPENGL ONLY ON THE RENDERING THREAD and CALL ONLY ANDROID UI CALLS WITHIN THE MAIN THREAD
+
+  - methods to handle android activity lifecycle
+
+---
+CHAPTER 2/3
+
+  - expands boilerplate code
+
+  - android.opengl.GLES20 package - SDK actually calling JNI behind the scenes
+
+
+  vertices
+    - list (array) of floating point number (for 2D examaple, each pair is a vertice)
+    - defines points, lines, triangles
+    - created as a java FloatBuffer
+    - copied to native memory, not managed by the java garbage collector
+    - not mentioned in the beginning, but vertices map to positions in the range[-1,1] in both x/y and regardless of actual screen resolution
+
+
+  winding order
+    - arrange triangle vertices "counter-clockwise"
+    - optimizes performance
+
+
+  "SHADER"
+
+    - small subroutine that tells the graphics processing unit (GPU) how to draw our data
+
+    - 2 types of shaders:
+
+      VERTEX SHADER
+        - generates final position of each vertex; visible vertices assembled into points, lines, and triangles
+        - called once for every vertex
+        - "attribute" set on each vertex, vec4 = x, y, z, w
+        - must write something to "gl_Position" variable
+        - "gl_PointSize" ?
+
+      FRAGMENT SHADER
+        - generates final color of each "fragment"
+        - fragment is usually analogous to a pixel, but not always
+        - called once for every shape primitive
+        - "uniform" keeps the same value for all vertices until we change it, vec4 = r, g, b, a
+        - must write something to "gl_FragColor" variable
+        - must specify precision - lowp, mediump, or highp
+
+    - separate resource containing .glsl "shader" files read and compiled for opengl
+      - re-usable custom android/java utility class method for creating a string variable containing GLSL read from resource files (/util/TextResourceReader.java)
+
+
+  GLSL - opengl's shading language similar to C
+
+
+  RGB "additive" color model
+    - follows properties of light, where mixing colors produce brighter colors
+    - mixing all colors produce white
+    - each color maps to range [0,1]
+
+
+  generalized steps (renderer)
+    - create VERTEX DATA and copy to native memory (constructor)
+    - LOAD SHADERS from GLSL resource files (onSurfaceCreated)
+    - COMPILE SHADERS
+    - LINK SHADERS into an OpenGL program
+    - VALIDATE PROGRAM if logging = true
+    - ENABLE OPENGL PROGRAM
+    - GET LOCATION OF A UNIFORM (?)
+      - tied to fragment shader variable
+    - GET LOCATION OF AN ATTRIBUTE (?)
+      - tied to vertex shader variable
+    - ASSOCIATE AN ARRAY OF VERTEX DATA WITH AN ATTRIBUTE
+      * glVertexAttribPointer() : important opengl function
+    - ENABLE THE VERTEX ARRAY
+
+
+  - unlike ch. 1, clear to black(?) - glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+
+
+  * re-usable custom android/java utility class for opengl shader-specific tasks (/util/ShaderHelper.java)
+    - quite a few complex opengl-specific tasks wrapped in compile/link method calls
+    
+    - compile shader
+      COMPILE STEPS: glCreateShader() > glShaderSource() > glCompileShader() > glGetShaderiv()
+      LOGGING: glGetShaderInfoLog()
+      IF COMPILE FAILED: glDeleteShader()
+
+    * compiled shader can be re-used in multiple programs
+
+    - link shaders
+      LINK STEPS: glCreateProgram() > glAttachShader() > glLinkProgram() > glGetProgramiv()
+      LOGGING: glGetProgramInfoLog()
+      IF COMPILE FAILED: glDeleteProgram()
+
+    - validate program
+      VALIDATE STEPS: glValidateProgram() > glGetProgramiv() > glGetProgramInfoLog()
+
+
+@ch3 - drawing to the screen STOPPED TAKING NOTES HERE
+  - finish reading and come back to take notes(?); note-taking is slowing down getting through this material..
+
+@ch7 Creating a New Class Structure for Our Vertex Data
