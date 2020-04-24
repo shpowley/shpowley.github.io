@@ -2,7 +2,8 @@ LIST OF CURRENT ANDROID PROJECTS (code\android_projects)
 
   celestial (github)
     - 1st attempt at hand-coding box2d collisions, debug draw, and cocos2d-x layers
-    - safe to delete
+    - cocos2d-x project
+    - SAFE TO DELETE
 
   gyrotest (github)
     - 3d sprite rotated using gyro sensor using source originally from github
@@ -10,24 +11,53 @@ LIST OF CURRENT ANDROID PROJECTS (code\android_projects)
     - fixed cmake just now to prevent crashing
     - basis for my JNI sensor code used in my "wobble master" project
     * template for my future "CUSTOM 3D OBJECT VIEWER" APP / ANDROID LIVE WALLPAPER
+    - cocos2d-x project
 
-  LWP_simple
-  lwp_test
-  lwp_verify
-  maze_test
-  og/rube_loader_custom
-  og/rube_loader_image
+  lwp_test (github)
+    - android test project
+      - android activity that launches android live wallpaper OR cocos2d-x app
+    - issue with multiple activities when cocos2d-x is launched?
+    - cocos2d-x "combo" project
+
   rube_custom
+    - initial RUBE + sensor test to control a simple box2d weld joint with a weighted mass "bobble"
+    - cocos2d-x project
+
+  og/rube_loader_custom (github)
+    - essentially the same as the "rube_custom" project, but as an live wallpaper implementation
+    - NOTE: this PROJECT DOES NOT ACTUALLY WORK due to the Cocos2dHelper.java sActivity issue
+    - the live wallpaper code implementation (I believe) is copied from from https://discuss.cocos2d-x.org/t/3-2rc0-android-live-wallpaper/15460
+    - cocos2d-x "combo" project
+
+  og/rube_loader_image
+    - an early working version of the "wobble" project
+    - contains scenes: hula girl, hang loose, hello kitty, sandals, turtles, app settings
+    - no HUD, simple slider, etc.
+    - cocos2d-x project
+
   rube_demo
-  rube_wobble_master
-  Vogella_LWP
+    - the RUBE demo project (pinball, side-scroller, joints, body textures..)
+    - cocos2d-x project
+
+  rube_wobble_master (github)
+    - primary "wobble" project
+    - cocos2d-x project
+
+  maze_game
+    - diversion game project
+    - simple ball navigation through a maze
+    - uses "rube_custom" project as a template
 
 
 
 LIST OF CURRENT ANDROID PROJECTS (backup (read-only)\android)
 
-  cocos2dx_template_project
   LWP_simple
+    - live wallpaper: turtle (static bitmap) + animated gif
+    - main activity > live wallpaper preview > live wallpaper settings
+    - good code template
+    - android project
+
   LWP_simple_pic_only
-  TutorialOnLWP
-  Vogella_LWP
+    - live wallpaper: turtle (static bitmap)
+    - android project

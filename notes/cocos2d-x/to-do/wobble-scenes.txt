@@ -1,3 +1,14 @@
+DESCRIPTION: CONTAINS WOBBLE SCENE OBSERVATIONS, TO-DO ITEMS, ETC.
+
+
+surfer
+  TODO:
+    - better graphics
+    - stationary wave graphic
+    - animated wave graphic (later)
+    - chest/waist + waist band adjustments greater movement
+    - surfboard color needs to be less like a skintone
+
 hang loose
   - too much rotation angle
   - text hangs and crashes.. maybe; "hang loose" motif
