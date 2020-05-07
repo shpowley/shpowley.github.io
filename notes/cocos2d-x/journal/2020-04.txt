@@ -1,108 +1,47 @@
-PLAN
+Wednesday 2020-04-29
 
-  - finish primary app w/o live wallpaper feature
-    + customizable template scenes (see "Tuesday 2020-02-25")
+  TIME: 1:40
 
-  - review (?) Cocos2dHelper.java again to review sActivity usage (pdf and printout)
+----------
+Tuesday 2020-04-28
 
-  - TODO items in notes from 2020-01 - present; mark complete or delete
+  TIME: 6:43
 
+  KRITA - continue watching tutorial videos
 
-wobble master project
-  - check out androidmanifest.xml and permissions??
-  - AndroidManifest.xml tags and publishing to the play store
+  - research some cheaper drawing tablets to replace what I have
 
+----------
+Monday 2020-04-27
 
-HERE
+  TIME: 4:30
 
-
-SEPARATE ACCELERATION SCALING FOR EACH AXIS
-  - not sure if this was noted elsewhere, but separate scaling for each axis might be a good idea, especially for exaggerated bounce motion along the y-axis
-    - this might be good for speed bumps.. vs. the impulse/jerk idea
-    - this should be easy to test just be altering existing code with a fixed scalar on the y-axis to test out this hypothesis
-    - full implementation would be a pain though
+  - BACK TO TRACKING TIME spent working I think would be useful. this last month or so, I haven't made as much progress as I've wanted due to various circumstances
 
 
-AUDIO NOTE ITEMS
-  LAYERS
-  - toast layer to root
-  - RUBE sprite layer
-  - RUBE physics debug layer on top of RUBE sprites; child of RUBE scene
-  - HUD layer
-  - ADVERTISING layer
-  - BACKGROUND GRAPHICS LAYER(S); possibly 1 or more actual layers or just a layer + moving "background" sprites (parallax effect)
-  - 2 PARTICLE EFFECT LAYERS (behind AND in front of RUBE sprites)
+  - while the android/c++ programming side is slow, I need to learn some digital art software in addition to gimp and inkscape
 
-  HUD wobble button
-    - touch cycles through for now; possibly slide out selector in the future
-  
-  TOUCH PARTICLE EFFECT (SPARKLES / TWINKLES)
+    - summarizing the opengl/live wallpaper research, I ran into a dead-end because of it's complexity and time spent for little return. not sure how to proceed for the live wallpaper..
+    
+    - notes for the following graphics software tools should be created in their own files, including any existing notes
 
+    GIMP
+      - best for photo/image manipulation and post-processing
+      - I've used this for taking existing artwork, removing backgrounds, etc. and using these as ready images for use in my apps
 
-SCENE DEFAULTS
-  - scene defaults for turtles (original)
-  - scene defaults for turtles (new)
-    - appropriate scale, world width/height min/max?
+    INKSCAPE
+      - clean, scaleable art
+      - hard to be "creative" as the methodology is slow for me
+    
+    KRITA
+      - this is well-documented, with many tutorials, and animation capibility. 2d art focused. so I'll try to get familiar with this.
 
-
-VERIFY/FIX DEV MODE SLIDER ON NEW SCENES
-  - remove altogether
+    BLENDER
+      - I'll look into this also with "grease pencil", but is in earlier stages of the dev cycle and blender is a more comlex software package
 
 
-NEW SCENES
-  - surfer
-    - bobble movement example: https://youtu.be/O2ay_oGVI-c?t=226
-
-  - android surfer
-
-  - hawaiian tux penguin sandals
-    By Larry Ewing, Simon Budig, Garrett LeSage - http://www.home.unix-ag.org/simon/penguin/, garrett/Tux on GitHub, CC0, https://commons.wikimedia.org/w/index.php?curid=753970
-
-  - android hula dancer
-
-  SUMMARY + POSSIBLE NEW SCENES
-    beach sandals | hawaiian tux feet
-    hula girl | android hula robot | tux hula (NEW)
-    hawaiian turtle
-    hang loose
-    surfer | android surfer (NEW)
-    muscle guy (NEW)
-    mermaid (NEW)
-    "solar-powered" hibiscus flower (NEW)
-
-
-BUG - RUBELayer::updateAcceleration()
-* in RUBELayer::updateAcceleration() and possibly RUBELayer::updateGyroscope(), I think there's a bug with how the primary "bobble body" is handled
-  - basically, I believe that every box2d body is treated the same whether or not it is the primary "bobble"
-  - for the sandals scene, this works out fine; and the logging of each shoe is handled within the class..
-  - only the "spring hula girl" and the "original turtle" scenes really have a multi-body assembly that demonstrate this; the hula girl sort of removes this effect with the "ethereal" property implementation, but this effect can be clearly seen on the original turtles head/fins with the properties set just so
-
-  * once a FIX is determined and implemented, the "original turtle" scene needs to have the broken update function(s) maintained as overloaded versions (Jack's "crazy" turtles)
-
-
-BACK BURNER..
-
-  ANDROID NDK (more in-depth)
-    - direct c++ api sensors?
-    - c++ opengl es + ndk (https://stackoverflow.com/questions/8578002/android-tutorials-for-opengl-es-2-0-using-the-ndk)
-    - possibility of using parts of cocos2d-x codebase without invoking cocos2d-x directly
-    - books:
-      - Android NDK: Beginner's Guide - Second Edition
-      - Android NDK Game Development Cookbook
-      - Mastering Android NDK
-
-  LIVE WALLPAPER + OPENGL ES
-    - moot issue? android drawables folder as a "link" to cocos2d-x "resource" folder? so as to re-use assets?
-
-    - read the book opengl es 2.0 (OpenGL ES 2 for Android: A Quick-Start Guide (Pragmatic Programmers) - safari 30 day trial)
-      - https://learning.oreilly.com/ "OpenGL ES 2 for Android"
-      - "gave up" @ ch7/8; possibly buy the ebook if returning to this topic
-
-    - website: blender + opengl es tutorial (https://code.tutsplus.com/tutorials/how-to-use-opengl-es-in-android-apps--cms-28464)
-    - read Android opengl es page (https://developer.android.com/guide/topics/graphics/opengl)
-    - other:
-      https://blog.jayway.com/2013/05/09/opengl-es-2-0-tutorial-for-android-part-i-getting-started/
-
+  krita video tutorials
+    - simple drawing and practice learned shortcuts
 
 ----------
 Thursday 2020-04-23
@@ -114,7 +53,6 @@ Thursday 2020-04-23
       * sunglasses
       - island hat
       - hawaiian shirt patterns: palm tree, tux pattern, gnu, android
-
 
 ----------
 Monday 2020-04-20

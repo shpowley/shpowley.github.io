@@ -8,7 +8,9 @@ Tuesday 2020-03-31
 
     - plan to use "rube_wobble_master" project as a template, but a bit of work to "downgrade" code
 
+
     RUBE design notes
+
       - the walls for the RUBE maze are simple "edge" fixtures that are relatively easy to define with a minimal # of vertices (this is actually version 2)
         - with the walls not having a thickness, I'm not sure how the collision distance is determined ATM
         
@@ -67,7 +69,7 @@ Wednesday 2020-03-25
 
   LIVE WALLPAPER + OPENGL ES
     - attempted to read the book "OpenGL ES 2 for Android: A Quick-Start Guide" (safari 30 day trial)
-    - got as far as ch7/8, but as it got toward 3D projections and textures, the COMPLEXITY+TIME BECOMES AN ISSUE
+    - got as far as ch7/8, but as it got toward 3D projections and textures, the COMPLEXITY+TIME BECOMES AN ISSUE!! VERY COMPLEX
     
     POSSIBLY RETURN TO THIS TOPIC..
       - CHECK OUT FREE RESOURCES 1ST (BOOK AUTHOR WEBSITE - OPENGL ANDROID TUTORIAL)

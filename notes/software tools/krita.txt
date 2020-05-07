@@ -1,0 +1,162 @@
+KRITA NOTES
+
+  TUTORIALS
+    
+    learn krita from zero: https://www.youtube.com/playlist?list=PLhqJJNjsQ7KEtFciikafqWU-OeU4SEejC
+      @ selection tools
+
+
+  TODO
+    - duplication?
+    - reference image?
+    - textures?
+
+    - watch different digital drawing videos to learn different techniques
+      - krita "overview mode" docker
+      - color "blobs" for quick eye-dropper access
+
+    - practice shortcuts X
+    - practive color modes
+    - krita manual
+
+
+  YOUTUBE CHANNELS
+
+    GDQUEST : https://www.youtube.com/channel/UCxboW7x0jZqFdvMdCFKTMsQ/featured
+
+    DAVID REROY : https://www.youtube.com/channel/UCnAbNwJjusY7zQ__sQyJlSA
+
+
+
+  USEFUL SHORTCUT KEYS
+
+    distraction free                  : TAB
+
+    color picker                      : CTRL
+
+    pan                               : SPACE + MOVE CURSER
+                                      : MIDDLE MOUSE + MOVE
+
+    zoom free                         : CTRL + SPACE
+    zoom increment                    : + OR -
+
+    zoom 100%                         : 1
+    zoom drawing                      : 2
+    zoom width                        : 3
+    
+    rotate free                       : SHIFT + SPACE
+
+    rotate ccw increment              : 4
+                                      : CTRL + [
+
+    rotate reset                      : 5
+
+    rotate cw increment               : 6
+                                      : CTRL + ]
+
+    brush size free                   : SHIFT + DRAG L/R
+    brush size increment              : [ OR ]
+
+    swap foreground/background color  : X
+    reset foreground/background       : D
+
+    switch current/previous brushes   : /
+
+    
+  POP-UP PALETTE
+
+    - mouse right-click
+    - color picker, brushes, color history, primary/secondary colors, etc.
+
+
+  BLENDING MODES
+
+    - access with toolbar or layers docker
+      - destructive; toolbar blending modes affect entire drawing
+      - non-destructive; layers bleding modes affect only the selected layer
+
+    - use "preserve alpha" toolbar option to maintain transparent areas
+    - modes work differently with each brush (ex. "airbrush soft" brush seems to work well with multiply/screen)
+
+    demonstrated modes
+      - normal, erase
+
+      - multiply/screen
+        - darken/lighten to selected color
+
+      - darken/lighten
+        - affects areas darker/lighter than selected color
+        - best for in-between areas, existing highlights and shadows
+
+      - overlay/dodge
+        - like multiply and screen combined
+        - stated as "useful"
+
+      - color
+        - replace existing colors (hue and saturation)
+        - retains luminosity
+
+
+    SYMMETRY
+
+      - toolbar for simple horizontal/vertical symmetry mirror drawing
+      - multi-brush + tool options for more complex symmetry patterns
+
+      TRICK: selection-symmetry using opaque paint-over + right-click layer > "select opaque"
+        - not available by default
+
+
+    WRAP-AROUND MODE
+
+      - good for tilesets
+      - toolbar > view > "wrap around mode" (assigned to "W")
+      - combine with mirror tool / multi-brush (snowflake works well)
+      - zoom in/out recommended for better visualization
+
+    
+    SELECTION TOOLS @2:55
+
+      - limit drawing to be within  selections shape
+
+      modifier keys (pressed BEFORE creating selection)
+        shift: add to existing selections
+        alt: selection difference
+        shift+alt: selection intersection
+        ctrl: free selection - polygon mode
+
+      modifier keys (circle/rectange selection pressed DURING selection)
+        ctrl: create selection from center of the existing shape vs. top-left corner
+        shift: constrain selection sizing to match existing proportion resizing
+        ctrl+shift: create and shape-constrain selection from the existing selection shape
+        alt: move selection during the creation
+
+      - move existing selection areas by selecting an edge and dragging to a new desired position
+
+      - lower-left corner "button" toggles "marching-ant" style / colored areas selections
+
+      - menu item: select > "show global selection mask"
+        - creates a layer mask of current selections
+
+
+    TRANSFORM
+
+      - powerful tranform tool to change perspective or reshape
+
+      - tutorial demo shows doorway tranformed from front-on view to perspective view, moved onto a house
+        - similar with roof tiles
+        - each house element can be created independently and tranformed/stacked
+
+      modes:
+
+        (placement)
+          free
+            - rotation
+            - scale (x/y/z) : y/z using CTRL allows some perspective
+          perspective
+            - tranform selection to perspective
+            - manipulate 4-corners or vanishing points
+
+        (sculpting)
+          warp - tranform with control points both inside and outside the shape
+          cage - tranform with control points defined with closed shape cage
+          liquify - sculpt shape with brush
