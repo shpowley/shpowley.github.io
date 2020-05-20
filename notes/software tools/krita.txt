@@ -1,11 +1,5 @@
 KRITA NOTES
 
-  TUTORIALS
-    
-    learn krita from zero: https://www.youtube.com/playlist?list=PLhqJJNjsQ7KEtFciikafqWU-OeU4SEejC
-      @ selection tools
-
-
   TODO
     - duplication?
     - reference image?
@@ -20,6 +14,14 @@ KRITA NOTES
     - krita manual
 
 
+  TUTORIALS
+    
+    learn krita from zero: https://www.youtube.com/playlist?list=PLhqJJNjsQ7KEtFciikafqWU-OeU4SEejC
+    @ WHAT'S NEW IN KRITA 3
+
+    https://docs.krita.org/en/index.html
+
+
   YOUTUBE CHANNELS
 
     GDQUEST : https://www.youtube.com/channel/UCxboW7x0jZqFdvMdCFKTMsQ/featured
@@ -28,9 +30,7 @@ KRITA NOTES
 
 
 
-  USEFUL SHORTCUT KEYS
-
-    distraction free                  : TAB
+  GENERAL SHORTCUTS
 
     color picker                      : CTRL
 
@@ -63,17 +63,13 @@ KRITA NOTES
     switch current/previous brushes   : /
 
     
-  POP-UP PALETTE
-
-    - mouse right-click
-    - color picker, brushes, color history, primary/secondary colors, etc.
-
-
   BLENDING MODES
 
     - access with toolbar or layers docker
       - destructive; toolbar blending modes affect entire drawing
-      - non-destructive; layers bleding modes affect only the selected layer
+      - non-destructive; layers blending modes affect only the selected layer
+
+      COMMENT: this doesn't make sense right now. when using the toolbar, the selected brush stores the blending mode unless it's reset. switching to another brush restores it's blending mode.
 
     - use "preserve alpha" toolbar option to maintain transparent areas
     - modes work differently with each brush (ex. "airbrush soft" brush seems to work well with multiply/screen)
@@ -96,67 +92,184 @@ KRITA NOTES
         - replace existing colors (hue and saturation)
         - retains luminosity
 
-
-    SYMMETRY
-
-      - toolbar for simple horizontal/vertical symmetry mirror drawing
-      - multi-brush + tool options for more complex symmetry patterns
-
-      TRICK: selection-symmetry using opaque paint-over + right-click layer > "select opaque"
-        - not available by default
+      COMMENT: I need better examples. I don't understand this enough to use it.
 
 
-    WRAP-AROUND MODE
+  SYMMETRY
 
-      - good for tilesets
-      - toolbar > view > "wrap around mode" (assigned to "W")
-      - combine with mirror tool / multi-brush (snowflake works well)
-      - zoom in/out recommended for better visualization
+    - toolbar for simple horizontal/vertical symmetry mirror drawing
+    - multi-brush + tool options for more complex symmetry patterns
 
-    
-    SELECTION TOOLS @2:55
+    TRICK: selection-symmetry using opaque paint-over + right-click layer > "select opaque"
+      - not available by default
 
-      - limit drawing to be within  selections shape
-
-      modifier keys (pressed BEFORE creating selection)
-        shift: add to existing selections
-        alt: selection difference
-        shift+alt: selection intersection
-        ctrl: free selection - polygon mode
-
-      modifier keys (circle/rectange selection pressed DURING selection)
-        ctrl: create selection from center of the existing shape vs. top-left corner
-        shift: constrain selection sizing to match existing proportion resizing
-        ctrl+shift: create and shape-constrain selection from the existing selection shape
-        alt: move selection during the creation
-
-      - move existing selection areas by selecting an edge and dragging to a new desired position
-
-      - lower-left corner "button" toggles "marching-ant" style / colored areas selections
-
-      - menu item: select > "show global selection mask"
-        - creates a layer mask of current selections
+    COMMENT: not planning on using right now; rewatch videos if needed
 
 
-    TRANSFORM
+  WRAP-AROUND MODE
 
-      - powerful tranform tool to change perspective or reshape
+    - good for tilesets
+    - toolbar > view > "wrap around mode" (assigned to "W")
+    - combine with mirror tool / multi-brush (snowflake works well)
+    - zoom in/out recommended for better visualization
 
-      - tutorial demo shows doorway tranformed from front-on view to perspective view, moved onto a house
-        - similar with roof tiles
-        - each house element can be created independently and tranformed/stacked
+    QUESTION: once created, how to actually use it in other drawings?
+    COMMENT: not planning on using right now; rewatch videos if needed
 
-      modes:
+  
+  SELECTION TOOLS
 
-        (placement)
-          free
-            - rotation
-            - scale (x/y/z) : y/z using CTRL allows some perspective
-          perspective
-            - tranform selection to perspective
-            - manipulate 4-corners or vanishing points
+    - limit drawing to be within a selections shape
 
-        (sculpting)
-          warp - tranform with control points both inside and outside the shape
-          cage - tranform with control points defined with closed shape cage
-          liquify - sculpt shape with brush
+    modifier keys (pressed BEFORE creating selection)
+      shift: add to existing selections
+      alt: selection difference
+      shift+alt: selection intersection
+      ctrl: free selection - polygon mode
+
+    modifier keys (circle/rectangle selection and pressed DURING selection)
+      ctrl: create selection from center of the existing shape vs. top-left corner
+      shift: constrain selection sizing to match existing proportion
+      ctrl+shift: create and shape-constrain selection from the existing selection shape
+      alt: move selection during the creation
+
+    - move existing selection areas by selecting an edge and dragging to a new desired position
+
+    - lower-left corner "button" toggles "marching-ant" style / colored areas selections
+
+    - menu item: select > "show global selection mask"
+      - creates a layer mask of current selections
+
+    QUESTION: is there a way to actually use an existing mask to define a selection area?
+
+
+  TRANSFORM
+
+    - powerful tranform tool to change perspective or reshape
+
+    - tutorial demo shows doorway tranformed from front-on view to perspective view, moved onto a house
+      - similar with roof tiles
+      - each house element can be created independently and tranformed/stacked
+
+    modes:
+
+      (placement)
+        free
+          - rotation
+          - scale (x/y/z) : y/z using CTRL allows some perspective
+        perspective
+          - tranform selection to perspective
+          - manipulate 4-corners or vanishing points
+
+      (sculpting)
+        warp - tranform with control points both inside and outside the shape
+        cage - tranform with control points defined with closed shape cage
+        liquify - sculpt shape with brush
+
+      COMMENT: useful tool, but I need to re-watch video or other examples. sculpting modes especially.
+
+
+  LAYERS
+
+    - works similar to other apps
+    - group transforms possible and "isolate layer" is new
+
+    NOTE: if transform resizing a layer to be smaller, detail is lost when saved. this is lossy compared to SVG, so when creating assets remember to somehow create backups.
+
+
+  WHAT'S NEW IN KRITA 3 (RE-WATCH)
+
+    - features summary:
+      - grid, snapping, etc.
+
+
+  ANIMATION
+
+    - transform tools might be useful from  keyframe to keyframe
+
+    - animation video reference
+      - create timed video of self or subject multiple times
+      - extract images from VLC video
+        - https://otechworld.com/extract-frames-from-video/
+      - krita: file > "import animation frames"
+
+    - concept: "active layer" / "active keyframe"
+
+    - additional right-click options on timeline keyframes and upper timeline columns
+      - some options not mentioned ("hold"/"pull" frame)
+
+
+    SHORTCUTS
+
+      insert blank keyframe             : DEL
+      duplicate keyframe                : (just start drawing on an empty keyframe)
+      resize timeline keyframes         : SPACE + right-click/drag
+      pan timeline keyframes            : SPACE + click/drag
+      scrub timeline                    : click+drag top timeline
+      move keyframe                     : click+drag lower timeline keyframe
+      reverse/forward 1 keyframe        : left/right arrow
+
+      select keyframe(s)                : CTRL+left/right arrow + SPACE
+                                        : CTRL+click
+                                        : SHIFT+click
+
+      move keyframe + all frames ahead  : ALT+click/drag
+      duplicate keyframe(s)             : CTRL+click/drag
+
+
+  COLORING
+
+    MY "FLAT COLORING" TECHNIQUE
+
+      COMMENT: there's a few techniques mentioned for "flat coloring", but after some initial experimentation here's what I like so far
+
+      - create line art in it's own layer
+
+      - duplicate the line art in it's own layer and call it "colorized"
+
+      - select the newer "Colorize Mask Editing Tool"
+        - add colorizing marks to the intended areas including the background and let the tool update
+
+      - create a new layer named "color" underneath the line art "ink" layer
+        - use the "Contiguous Selection Tool" (magic wand) to select colorized areas within the "colorized" layer
+        - right-click the "color" layer and select "add > local selection" (create a "selection mask")
+        - repeat for each separate logical color block
+
+      - the "color" layer should now have multiple child "selection masks" that can now be turned on/off as necessary
+
+      * in addition, these "selection masks" can be easily moved to other layers for re-use
+
+
+    SHADOWS / HIGHLIGHTS
+
+      - using a flat color layer, put in a group (CTRL+G or right-click+"Group > Quick Group")
+      - change the group layer name to "colorizing group"
+
+      SHADOWS
+        - add a new layer named "shadows" to the group
+        - change the layer blending mode to "multiply"
+        - change "inherit alpha" ON
+        - add shadows using a DARKER color, a brush that doesn't streak on repeated strokes, and "selection masks"
+
+      HIGHLIGHTS
+        - add a new layer named "highlights" to the group
+        - change the layer blending mode to "screen"
+        - change "inherit alpha" ON
+        - add shadows using a LIGHTER color, a brush that doesn't streak on repeated strokes, and "selection masks"
+
+
+  INKING
+
+    - use "/" to quickly switch brush presets (ie. ink <> eraser)
+
+    - for better contrast of the sketch layer, layer properties > de-activate blue channgel, and reduce layer opacity
+      - allows sketch refinement
+      - technique also works on groups
+
+    - transforms
+      - transforms can be applied to grouped layers
+      - lock individual layers to prevent group transform effects
+
+    - MOTION LINES
+      - use "parallel ruler assistant" and others
+      - transform motion lines 
