@@ -88,7 +88,7 @@ BUSINESS-RELATED
   - custom property (see "Sunday 2019-06-30") to export
   - programmatic sizing to OPTIMAL design width/height in each scene
     - "optimal" means adjusting height based on the device screen height without exceeding device screen width
-    * DESIGN EACH RUBE SCENCE TO A 4 "METER" BOX2D/RUBE SCREEN HEIGHT (see journal entry 2019-06-07.txt) using "phone_resolutions.png" as an overlay, scaled to 4 large RUBE grid unit tall, with scene content / phone overlay center-aligned to world 0,1 -- I *THINK* this is correct
+    * DESIGN EACH RUBE SCENE TO A 4 "METER" BOX2D/RUBE SCREEN HEIGHT (see journal entry 2019-06-07.txt) using "phone_resolutions.png" as an overlay, scaled to 4 large RUBE grid unit tall, with scene content / phone overlay center-aligned to world 0,1 -- I *THINK* this is correct
 
 
 - linear acceleration tests

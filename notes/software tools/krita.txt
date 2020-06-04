@@ -1,19 +1,5 @@
 KRITA NOTES
 
-  TODO
-    - duplication?
-    - reference image?
-    - textures?
-
-    - watch different digital drawing videos to learn different techniques
-      - krita "overview mode" docker
-      - color "blobs" for quick eye-dropper access
-
-    - practice shortcuts X
-    - practive color modes
-    - krita manual
-
-
   TUTORIALS
     
     learn krita from zero: https://www.youtube.com/playlist?list=PLhqJJNjsQ7KEtFciikafqWU-OeU4SEejC
@@ -221,7 +207,9 @@ KRITA NOTES
 
     MY "FLAT COLORING" TECHNIQUE
 
-      COMMENT: there's a few techniques mentioned for "flat coloring", but after some initial experimentation here's what I like so far
+      COMMENTS:
+        - there's a few techniques mentioned for "flat coloring", but after some initial experimentation here's what I like so far
+        - the resulting "selection masks" can be easily moved to other layers for re-use
 
       - create line art in it's own layer
 
@@ -229,41 +217,42 @@ KRITA NOTES
 
       - select the newer "Colorize Mask Editing Tool"
         - add colorizing marks to the intended areas including the background and let the tool update
+        COMMENT: the exact colors don't matter so much since this is an intermediate step
 
       - create a new layer named "color" underneath the line art "ink" layer
         - use the "Contiguous Selection Tool" (magic wand) to select colorized areas within the "colorized" layer
-        - right-click the "color" layer and select "add > local selection" (create a "selection mask")
+        - right-click the "color" layer and select "add > local selection" (creates a "selection mask")
         - repeat for each separate logical color block
 
       - the "color" layer should now have multiple child "selection masks" that can now be turned on/off as necessary
 
-      * in addition, these "selection masks" can be easily moved to other layers for re-use
+      - create flat colors in each "selection masks" area using the fill tool or brushes
 
 
     SHADOWS / HIGHLIGHTS
 
-      - using a flat color layer, put in a group (CTRL+G or right-click+"Group > Quick Group")
+      - using a flat color layer, put it in a group (CTRL+G or right-click+"Group > Quick Group")
       - change the group layer name to "colorizing group"
 
       SHADOWS
-        - add a new layer named "shadows" to the group
+        - add a new layer named "shadows" to the group and put it above the "flat color" layer
         - change the layer blending mode to "multiply"
         - change "inherit alpha" ON
-        - add shadows using a DARKER color, a brush that doesn't streak on repeated strokes, and "selection masks"
+        - add shadows using a DARKER color, a brush that doesn't streak on repeated strokes, and the "selection masks"
 
       HIGHLIGHTS
-        - add a new layer named "highlights" to the group
+        - add a new layer named "highlights" to the group and put it above the "flat color" layer
         - change the layer blending mode to "screen"
         - change "inherit alpha" ON
-        - add shadows using a LIGHTER color, a brush that doesn't streak on repeated strokes, and "selection masks"
+        - add shadows using a LIGHTER color, a brush that doesn't streak on repeated strokes, and the "selection masks"
 
 
-  INKING
+  INKING TIPS
 
-    - use "/" to quickly switch brush presets (ie. ink <> eraser)
+    - use "/" to quickly switch between the last two brush presets used (ie. ink <> eraser)
 
-    - for better contrast of the sketch layer, layer properties > de-activate blue channgel, and reduce layer opacity
-      - allows sketch refinement
+    - for better contrast of the sketch layer, layer properties > de-activate the blue channel, and reduce layer opacity
+      - allows for sketch refinement
       - technique also works on groups
 
     - transforms
@@ -272,4 +261,12 @@ KRITA NOTES
 
     - MOTION LINES
       - use "parallel ruler assistant" and others
-      - transform motion lines 
+      - transform resulting motion lines for wave effects, etc.
+
+
+  PENCIL SKETCH TO DIGITAL
+
+    https://youtu.be/sE6iw3LOCew
+
+
+    fill block, fill circle, ink ballpen, 

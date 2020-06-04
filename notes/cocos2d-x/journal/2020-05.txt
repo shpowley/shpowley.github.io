@@ -105,6 +105,8 @@ BACK BURNER..
 
 
 ----------
-Monday 2020-05-04
+Monday 2020-05-28
 
-  TIME: x
+  KRITA SURFER
+
+    - image created and resized
