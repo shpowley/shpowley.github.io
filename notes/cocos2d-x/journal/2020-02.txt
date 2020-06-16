@@ -41,8 +41,8 @@ Thursday 2020-02-27
 
   tux feet
 
-    FIX: when RUBE scene is initially loaded, physics is ok, but RIGHT FOOT ANGLE SETTINGS BECOME MANGLED after 
-    returning from developer settings
+    TODO: when RUBE scene is initially loaded, physics is ok, but RIGHT FOOT ANGLE SETTINGS BECOME MANGLED after 
+    returning from developer settings (FIXED?)
 
       SCENES            BEACH SANDALS                       TUX FEET
 
@@ -181,6 +181,7 @@ Tuesday 2020-02-18
 
       design notes:
         - peripheral joint/bodies shouldn't be directly affected by the motion sensors - these are marked "ethereal"
+          - to clarify - the arms wobble, but only is response to the surfer's torso (bobble) and NOT directly by the accelerometer/gyro
         - TODO: the main body / shorts waist band should be altered visually to allow more movement on the revolute joint
 
 ----------
@@ -194,7 +195,7 @@ Monday 2020-02-17
 
     - I wanted to write a note regarding this for later reference. I thought I had written about this previously, but couldn't find anything with a search of my notes
     - basically, I noticed this effect a while ago in the RUBE editor, but apparently didn't make any notes regarding this "unusual" effect
-    - currently, I want the ANDROID HULA ROBOT to have poseable arms and this may be useful in the future
+    - this effect should allow the ANDROID HULA ROBOT to have poseable arms and this technique may be useful in the future
 
     - to ENABLE THIS FEATURE, in the settings for a revolute joint, set "enable motor = true" and "max motor torque > 0"
       - the value for "max motor torque" defines the torque strength necessary to move the joint
@@ -241,12 +242,12 @@ Sunday 2020-02-16
         - for the ANROID HULA @ 200dpi, TEXTURE PACKER split this file, but hasn't yet been tested in the android project
           - other options not tried include TEXTURE PACKER scaling OR a max spritesheet of 4096 pixels x 4096 pixels OR a smaller DPI (100-160dpi maybe) to avoid the TEXTURE PACKER split
 
-        - DUPLICATE GRAPHICS (ie. ANDROID arms, legs, antenna) are handled quite well by TEXTURE PACKER, but need to be in the same orientation for texture packer to recognize duplicates
+        *** DUPLICATE GRAPHICS (ie. ANDROID arms, legs, antenna) are handled quite well by TEXTURE PACKER, but need to be in the same orientation for texture packer to recognize duplicates
 
       RUBE notes:
-        - image assets appear to be INTERCHANGEABLE with different image densities -- just move the .rube file to another folder with duplicate image resource names (or equivalent programmatic method); the image appears to be scaled to fit automatically
+        *** image assets appear to be INTERCHANGEABLE with different image densities -- just move the .rube file to another folder with duplicate image resource names (or equivalent programmatic method); the image appears to be scaled to fit automatically
 
-        * note is each image asset and the "filter" property
+        * note each image asset and it's "filter" property
           - by default "filter = linear" which smooths out pixels with the alternative of "filter = nearest"
           - the default "filter = linear" seems to create an unwanted outline effect @ 40dpi
           - "filter = nearest" allows for easier re-positioning of moveable graphics on a reference image
@@ -266,64 +267,12 @@ Thursday 2020-02-13
     PIXEL ART ALTERNATIVE? scaling selection or image with resize filters for SVG created art
 
 
-  INKSCAPE LINE DRAWING + PATTERN TECHNIQUE
+  INKSCAPE LINE DRAWING + PATTERN TECHNIQUE (moved to inkscape.txt)
   
     NOTE: I think this was used to more easily create "grass" fronds on the android hula skirt
 
-    - pencil tool settings: bezier path, smooth = 50, LPE based interactive simplify = false, shape = none
-    - draw lines
-    - draw path shape(s) for pattern
-    - copy path shape to clipboard
-    - select lines to apply pattern
-    - select path effects + add "PATTERN ALONG PATH"
-    - select "link to path on clipboard"
 
-
-  INKSCAPE REFERENCE + KEYBOARD SHORTCUTS
-
-    select (z-order stack)                alt + mouse click
-
-    move selected z-order item            alt + mouse click + move mouse
-
-    pan                                   ctrl + arrow keys
-                                          space + move mouse
-                                          mouse wheel (up/down)
-                                          shift + mouse wheel (left/right)
-
-    scrollbars                            ctrl + b
-
-    zoom                                  + / = / -
-
-    z-order (single step)                 page up / page down
-    z-order (top)                         home
-    z-order (bottom)                      end
-
-    show / hide dialogs                   f12
-
-    select similar objects                edit > select same > ...
-
-    shape to path                         ctrl + shift + c
-
-    bezier drawing options                click, click + drag, click + drag + shift, backspace, enter
-
-    bezier edit options
-      add node at location                ctrl + alt + click
-      delete node (retain path shape)     delete OR ctrl + alt + click
-      delete node                         ctrl + delete
-      add node at segment                 insert
-      delete bezier handle                ctrl
-      duplicate nodes                     shift + d
-      break path                          shift + b
-      join path                           shift + j
-      combine compound paths              ctrl + k
-      break apart compound paths          shift + ctrl + k
-
-    inset path                            ctrl + (
-    outset path                           ctrl + )
-    dynamic offset                        ctrl + j
-    linked offset (preferred)             path > linked offset
-
-    simplify                              ctrl + l
+  INKSCAPE REFERENCE + KEYBOARD SHORTCUTS (moved to inkscape.txt)
 
 ----------
 Wednesday 2020-02-12

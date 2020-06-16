@@ -40,7 +40,8 @@ Tuesday 2020-01-21
 
     - new scene uses "circle" fixtures, but debugdraw implementation kept crashing -- circle fixtures were never used prior;
       replaced debugdraw implementation with GLES-Render.h/.cpp, which fixed this, but LOST PHYSICS/BOX2D Z-ORDER
-      - LOST THE DEBUG DRAW BEING DRAWN ON TOP OF IMAGES -- this could be possibly fixed using a separate layer, but not a big deal at the moment
+      
+      TODO: LOST THE DEBUG DRAW BEING DRAWN ON TOP OF IMAGES -- this could be possibly fixed using a separate layer, but not a big deal at the moment
 
   - implemented "show images" application setting for RUBE sprites
 
@@ -280,7 +281,8 @@ Saturday 2020-01-11
 
     - highlight on the HUD back button only, make consistent
 
-    - currently, acceleration applies force/torque with motion filter (many hours already); mostly works, but toying with impulses either in conjunction with force/torque or standalone. impulse = change in direction + "jerk" threshold? + delay for re-trigger of impulse detection; + time interval(s) ..COMPLEX, end product might be better
+    IMPULSE "JERK" LOGIC
+      - currently, acceleration applies force/torque with motion filter (many hours already); mostly works, but toying with impulses either in conjunction with force/torque or standalone. impulse = change in direction + "jerk" threshold? + delay for re-trigger of impulse detection; + time interval(s) ..COMPLEX, end product might be better
 
     - HUD icon margins on note 9 is cut off; google maps button margins is ok
 
@@ -299,6 +301,14 @@ Saturday 2020-01-11
 
     - default scene to auto-load after a delay, and live wallpaper default scene; how to pick? radio, drop-down, checkbox on scenes
 
-    - sharing: scene still image, animated gif to sharing. new type of share (ADVANCED SHARE) would be a graphics/physics toy assembly somehow --> direct to individual, but how and would this bypass advertising; sharing toys only vs sharing a whold scene? link to play store..? sharing customized toy with a friend vs sharing completely custom graphics (NO), other person has app installed; if sharing a whold scene, are the toys available to use individually -- a little bit more difficult and hairy; FEATURE TO ADD MUCH LATER
+    SHARING
+      scene still image OR animated gif?
+
+      new type of share (ADVANCED SHARE) would be a graphics/physics toy assembly somehow
+        - sent directly to individual
+        - how and would this bypass advertising
+        - sharing toys only vs sharing a whole scene? link to play store..?
+        - other person has app installed
+        - "hairy" logic
 
     - different countries - how to determine what's "popular" and known for toy graphics, ie. india dieties? how to research what might be popular for each culture?

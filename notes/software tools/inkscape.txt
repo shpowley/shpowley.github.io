@@ -1,0 +1,58 @@
+INKSCAPE
+
+  LINE DRAWING + PATTERN TECHNIQUE
+  
+    - pencil tool settings: bezier path, smooth = 50, LPE based interactive simplify = false, shape = none
+    - draw lines
+    - draw path shape(s) for pattern
+    - copy path shape to clipboard
+    - select lines to apply pattern
+    - select path effects + add "PATTERN ALONG PATH"
+    - select "link to path on clipboard"
+
+
+  REFERENCE + KEYBOARD SHORTCUTS
+
+    select (z-order stack)                alt + mouse click
+
+    move selected z-order item            alt + mouse click + move mouse
+
+    pan                                   ctrl + arrow keys
+                                          space + move mouse
+                                          mouse wheel (up/down)
+                                          shift + mouse wheel (left/right)
+
+    scrollbars                            ctrl + b
+
+    zoom                                  + / = / -
+
+    z-order (single step)                 page up / page down
+    z-order (top)                         home
+    z-order (bottom)                      end
+
+    show / hide dialogs                   f12
+
+    select similar objects                edit > select same > ...
+
+    shape to path                         ctrl + shift + c
+
+    bezier drawing options                click, click + drag, click + drag + shift, backspace, enter
+
+    bezier edit options
+      add node at location                ctrl + alt + click
+      delete node (retain path shape)     delete OR ctrl + alt + click
+      delete node                         ctrl + delete
+      add node at segment                 insert
+      delete bezier handle                ctrl
+      duplicate nodes                     shift + d
+      break path                          shift + b
+      join path                           shift + j
+      combine compound paths              ctrl + k
+      break apart compound paths          shift + ctrl + k
+
+    inset path                            ctrl + (
+    outset path                           ctrl + )
+    dynamic offset                        ctrl + j
+    linked offset (preferred)             path > linked offset
+
+    simplify                              ctrl + l

@@ -1,0 +1,165 @@
+BLENDER NOTES
+
+
+  TUTORIALS
+
+    @ UDEMY - FREE BLENDER 2.8 CRASH COURSE
+      8. MODELING THE AIRPLANE (RE-WATCH + NOTES + FOLLOW)
+
+
+  DRAWING TABLET SHORTCUT CANDIDATES
+
+    switch between OBJECT MODE <=> EDIT MODE = TAB
+    add object - "SHIFT+A"
+    reset cursor - "SHIFT+C"
+    grab - "G"
+
+
+  BASIC NAVIGATION
+
+    - zoom / pan / orbit
+      zoom = "CTRL+ALT+LMB"
+      pan = "SHIFT+ALT+LMB"
+      orbit = "ALT+LMB"
+
+    - middle mouse button is the default to perform many basic actions
+
+    - for digital tablet / pen, set edit > preferences > input > "Emulate 3 Button Mouse" = true
+      - ALT+LMB basically replaces having to use the MMB
+
+
+  SELECTION
+
+    select all = "A"
+    deselect all = "ALT+A"  OR  LMB empty area
+
+
+  ALTERNATE MANIPULATION SHORTCUTS
+
+    grab / free move = "G" (somewhat useful to quickly move things)
+    rotate = "R"
+    scale = "S"
+
+
+  ADD NEW OBJECT ITEMS
+
+    - add meshes, grease pencil, etc.
+
+    * NOTE: NEW OBJECT OPTIONS ONLY AVAILABLE IMMEDIATELY AFTER THE NEW OBJECT IS CREATED
+      - these new object options are accessible in a panel, briefly visible at the time of creation
+
+    add object (in-place menu) = "SHIFT+A"  OR  on-screen menu
+
+
+  CURSOR
+
+    - determines where new items are created
+
+    reset cursor = "SHIFT+C"
+    move cursor = "SHIFT+RMB"  OR  on-screen tool + LMB
+
+
+  INTERACTION MODES
+
+    OBJECT MODE
+      - interact with whole objects (rotate, scale, move, ..)
+      
+      rotation manipulation in 5 degree increments = "rotate+CTRL"
+
+      alignment of objects
+        (EDIT MODE) select vertices
+        > right-click (vertext context menu)
+        > "snap vertices"
+        > "cursor to selected"
+        (OBJECT MODE) select object
+        > right-click (object context menu)
+        > snap
+        > selection to cursor
+
+      create parent-child object heirarchy
+        - (OBJECT MODE) select child object
+        > SHIFT+ select parent object
+        > right-click (object context menu)
+        > parent>object
+
+        NOTE: transforms to parent affect parent+child, but transforms to child objects only apply to the child
+
+
+    EDIT MODE
+      - edit individual object (VERTICES, EDGES, FACES ..)
+      - must return to OBJECT MODE to edit a different object
+      - use SHIFT+LMB to multi-select
+      - resize, scale, move selected components
+
+      switch between OBJECT MODE <=> EDIT MODE = TAB
+      select contiguous sub-outline hemisphere = ALT+LMB (multi-select SHIFT+)
+      simple way to delete an edge = CTRL+DELETE (similar to DELETE>"dissolve edges")
+      mirror features - (EDIT MODE) "A" > Mesh > Symmetrize
+
+      selection more/less = "CTRL+'+'" (more) / "CTRL+'-'" (less)
+        increase/decrease adjacent polygons selected
+
+      * as previously mentioned with OBJECT MODE, some options are ONLY AVAILABLE IMMEDIATELY AFTER that operation
+
+      - many operations specific to EDIT MODE (LOOP CUT, etc.)
+
+        LOOP CUT
+
+        EXTRUDE
+          - "+" modifier to create NEW extrusion
+          - arrow modifier to adjust existing extrusion
+          - usually in the direction of the normal
+
+        INSET
+          - use on-screen inset menu  OR "I" (preferred)
+
+          TIP: if having problems with inset faces having unequal border widths
+            - (object mode) CTRL+A >> scale => (edit mode) inset "I"
+
+            - https://blender.stackexchange.com/questions/50876/how-do-i-inset-a-face-equally
+              - https://blender.stackexchange.com/a/112215 (basically scaled in EDIT MODE helps)
+                "transformations in object mode are what you want it to look like, but transformations in edit mode (or that are applied using Ctrl-A menu in object mode) are what it is like"
+
+
+        BEVEL
+
+
+    ANIMATION
+
+      - default 24 fps
+      - each object has it's own timeline/dopesheet
+
+      KEYFRAMES
+        (OBJECT MODE) select object
+        > on-screen menu "Object" > "Animation" > "Insert Keyframe"  OR  "I"
+        > select type of keyframe
+        > move playhead to desired frame
+        > manipulate object (move, rotate, etc.)
+        > add new keyframe of the same type as above
+
+      - copy/paste keyframes = "CTRL+C"/"CTRL+V"
+
+
+    SIDEBAR
+      - "N" hotkey
+      - manipulation using property values
+
+
+    LIGHTING (FREE BLENDER 2.8 CRASH COURSE | ADJUSTING THE LIGHT AND THE CAMERA)
+      - adjust scene lighting and shadows
+
+
+    CAMERA
+      - move camera based on viewport = view > "align view" > "align active camera to view"  OR  "numpad-0"
+
+      - tweak camera position
+        - toggle camera view so that rectangular viewport is visible (camera icon next to hand)
+        > camera selected in scene collection
+        
+        - move horizontally and vertically = "G" key
+        - move back and forth = "G+Z+Z" key
+
+
+    RENDERING ((FREE BLENDER 2.8 CRASH COURSE | RENDERING THE FINAL VIDEO))
+      - rendering options
+      - default "eevee" (?) is significantly faster to render, but doesn't have motion blur

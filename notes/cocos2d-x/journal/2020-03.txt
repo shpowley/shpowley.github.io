@@ -41,7 +41,7 @@ Thursday 2020-03-26
 
   BOBBLE BODY
 
-    - some FORWARD THINKING about having multiple bobble toys in a scene
+    - some FORWARD THINKING about having MULTIPLE BOBBLE TOYS IN A SCENE
 
       - currently the RUBEScene/RUBELayer works for individual "toy" scenes, but won't work with multiple RUBE definitions
         - I thought about iterating through a scene with updates to multiple RUBELayer instances, but there will be too much CONFLICTING CODE (ie. pan/zoom touch and possibly other problems)
@@ -126,7 +126,7 @@ Sunday 2020-03-08
       - any existing c++ source code using JNI (RUBE loader, logic)?
 
 
-    OPENGL 2.0 FOR ANDROID seems to be the next thing to research I guess
+    OPENGL ES 2.0 FOR ANDROID seems to be the next thing to research I guess
       
       relevant links:
         http://www.learnopengles.com/how-to-use-opengl-es-2-in-an-android-live-wallpaper/

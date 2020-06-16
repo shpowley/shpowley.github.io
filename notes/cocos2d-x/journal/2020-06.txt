@@ -1,0 +1,102 @@
+
+
+----------
+Monday 2020-06-15
+
+  I was planning on trying to separate the HUDLayer and RUBELayer code modules so that RUBELayer could be more independent and re-usable in other projects. HUDLayer is referenced far too often to really do this easily.
+  
+    TODO:
+      - create a NEW version of the RUBELayer module.
+        - copy over only the requisite parts for the "maze" test project
+        - somehow add the ability to add/remove more than one RUBE assembly
+          - issues? world physics, collision during RUBE import
+
+  -
+
+  IT'S BEEN A WHILE since I actually sat down and worked on this. I need to review my journal notes going back a few months.
+
+    NOTES REVIEW
+
+      2020-01
+
+        "HULA STYLE" SCENES => use the MULTI-JOINT physics assembly
+
+        ANDROID LIVE WALLPAPER
+          - leaning toward a separate live wallpaper app that can load scene info from my other apps
+          - ideally OPENGL ES2 c++
+          - sprite sheets would need to be remade into rectangular sprite mode (Friday 2020-01-17)
+
+        TURTLE SCENE
+          - MULTI-JOINT physics assembly
+          - adjustable angle?
+          - just ONE turtle
+          - original turtle scene .."crazy mode" out takes
+
+        RUBE GRAPHICS POSITIONING HEIRARCHY (Friday 2020-01-17)
+          - interesting line of thought if I plan to re-use RUBE physics assemblies and swap out graphics
+          - multiple images tied to a BODY turning opacity ON/OFF? this would probably work for "accessory" images (sunglasses, clothing, hair, ..)
+          - better to create/load new RUBE .json files for graphics that vary too much? this might be easier
+            - .json file sizes: 4 - 12 KB, 43KB
+          - requires some experimentation
+
+      2020-02
+
+        ANDROID HULA POSEABLE ARMS
+
+        3D SCENE COMPASS IMPLEMENTATION TEST
+
+      2020-03
+
+        LIVE WALLPAPER
+          - opengl es 2.0
+            - SO difficult
+            - I bought the ebook
+            - check out open source app on android: "3D Model Viewer"
+
+        "BODY BOBBLE" DEFINITION
+          - only ONE per RUBE assembly?
+
+
+
+----------
+Tuesday 2020-06-11
+
+  planning on "simplifying" the wobble project into individual wobble toy themes. instead of a hawaiian-themed wobble toys, each toy "theme" will be created as an individual app.
+
+    Hang Loose
+    + user graphic
+
+    Beach Sandals
+    + sandals (multiple designs)
+    + vinyl/bumper sticker
+    + Bare Feet
+    + paws
+    + foot prints
+    + attached to body (looking down OR looking up)
+    + backgrounds (beach sand, hammock, flowers)
+    + Sitting Linux Tux (hawaiian version)
+    + custom images
+    + custom text
+
+    Hula Dancer
+    + Hula Android
+
+    Open Source Mascots
+    + Android Robot
+      + Hula
+    + GNU
+    + GNOME Foot
+    + Sitting Linux Tux
+      + Hawaiian version
+      + Sticker Effect
+    
+    Surfer
+
+    Hawaiian Turtle
+
+----------
+Monday 2020-05-28
+
+  KRITA SURFER
+
+    - image created (krita) and resized
