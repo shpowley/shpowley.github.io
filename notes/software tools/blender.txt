@@ -3,15 +3,17 @@ BLENDER NOTES
 
   TUTORIALS
 
-    @ UDEMY - FREE BLENDER 2.8 CRASH COURSE
-      8. MODELING THE AIRPLANE (RE-WATCH + NOTES + FOLLOW)
+    FREE BLENDER 2.8 CRASH COURSE (UDEMY)
+      - https://www.udemy.com/course/blender-crash-course/learn/lecture/16951598#overview
+      - part 8. Modeling the Airplane
 
 
   DRAWING TABLET SHORTCUT CANDIDATES
 
     switch between OBJECT MODE <=> EDIT MODE = TAB
     add object - "SHIFT+A"
-    reset cursor - "SHIFT+C"
+    reset cursor to origin - "SHIFT+C"
+    pop-up left menu - "SHIFT+SPACE"
     grab - "G"
 
 
@@ -55,8 +57,10 @@ BLENDER NOTES
 
     - determines where new items are created
 
-    reset cursor = "SHIFT+C"
+    reset cursor to origin = "SHIFT+C"
     move cursor = "SHIFT+RMB"  OR  on-screen tool + LMB
+
+    type in cursor coordinates => sidebar "N" => "view" tab => "3d cursor"
 
 
   INTERACTION MODES
@@ -77,8 +81,8 @@ BLENDER NOTES
         > selection to cursor
 
       create parent-child object heirarchy
-        - (OBJECT MODE) select child object
-        > SHIFT+ select parent object
+        - (OBJECT MODE) select child object (1st)
+        > SHIFT+ select parent object (2nd)
         > right-click (object context menu)
         > parent>object
 
@@ -93,6 +97,7 @@ BLENDER NOTES
 
       switch between OBJECT MODE <=> EDIT MODE = TAB
       select contiguous sub-outline hemisphere = ALT+LMB (multi-select SHIFT+)
+      new edge face from vertices => select bounding vertices/edges => "F" key  OR  vertex => new edge/face from vertices
       simple way to delete an edge = CTRL+DELETE (similar to DELETE>"dissolve edges")
       mirror features - (EDIT MODE) "A" > Mesh > Symmetrize
 
@@ -118,10 +123,17 @@ BLENDER NOTES
 
             - https://blender.stackexchange.com/questions/50876/how-do-i-inset-a-face-equally
               - https://blender.stackexchange.com/a/112215 (basically scaled in EDIT MODE helps)
-                "transformations in object mode are what you want it to look like, but transformations in edit mode (or that are applied using Ctrl-A menu in object mode) are what it is like"
+                "transformations in object mode are what you want it to look like, but transformations in edit mode (or that are applied using Ctrl+A menu in object mode) are what it is like"
 
 
         BEVEL
+
+
+    MATERIALS
+
+      - FREE BLENDER 2.8 CRASH COURSE (UDEMY) - 10. CREATING MATERIALS
+
+      purge unwanted/unused materials = outliner > orphan data > select materials > purge button
 
 
     ANIMATION
@@ -137,7 +149,13 @@ BLENDER NOTES
         > manipulate object (move, rotate, etc.)
         > add new keyframe of the same type as above
 
+      INTERPOLATION
+        - select keyframes
+        - right-click > interpolation mode
+
       - copy/paste keyframes = "CTRL+C"/"CTRL+V"
+        - able to copy/paste an entire sequence of keyframes
+        - with the play head on an existing keyframe, paste will start at that time interval..which works well if the existing keyframe is exactly the same as the starting keyframe of the pasted keyframe sequence
 
 
     SIDEBAR

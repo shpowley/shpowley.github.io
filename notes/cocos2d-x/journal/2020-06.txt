@@ -1,4 +1,110 @@
+----------
+Wednesday 2020-06-24
 
+  HAND GESTURES
+
+    - krita > .png
+      - remove ref + background layers
+      - flatten image (CTRL+SHIFT+E)
+      - scale image to new size (CTRL+ALT+I) > 15%, BSpline
+      - image > trim to current layer
+      - export to png
+
+    existing asset sizes:
+      hang loose 794x557
+      hello kitty 249x351
+      android hula 327x387 1637x1938
+      hula 368x769
+      sandals 205x434 215x439
+      surfer 453x1206
+      turtle 292x265
+      tux feet 519x619
+
+
+  COMBINED HUD auto-wobble button
+
+    - I wrote a plan to implement an auto-wobble button that would combine the "solar-powered" and "idle auto-wobble" functions
+    - after some thought, I'll leave the text plan in my TODO (back burner list), but probably LEAVE IT UNCHANGED
+
+
+  3D COMPASS (.OBJ) / ANIMATED 3D LUCKY CAT
+
+    - I had this idea of using cocos2d-x to load either my pre-made OR user 3d models
+    - once loaded, they would be position-rotated (swipe left/right) and/or zoomed (HUD pinch-zoom)
+    - z-axis spin would be controlled via left-right swipes (+ slowing friction?) OR gyro OR compass sensors
+
+    * this idea has EVOLVED as I noticed that the cocos2d-x demo also allows animated 3d sprites
+      - my goal is to create an "ANIMATED 3D LUCKY CAT" that rotates in-sync with the compass
+
+    technical issues:
+      - becoming more proficient with blender modeling
+      - cocos2d-x limited to .obj (static 3d models) and .c3b (animated 3d models, proprietary)
+
+    TEST 1:
+      - a "simple compass 3d model" exported as .obj into my gyro test (3d spaceship)
+
+      - this was "okay", but oriented wrong and completely red; the colored texture was missing completely
+        - I think this link might help, but I need to complete some more blender lessons regarding UV mapping
+        https://blender.stackexchange.com/questions/90301/export-obj-file-with-png-texture
+
+    TEST 2:
+      - 3d compass re-created using inkscape > .svg (simple) > blender 3d model (.svg import) > .obj export
+      - resulting 3d model looked much nicer, but still missing the textures
+      - using INKSCAPE is much easier to create 2d vector graphics (for me)
+
+      * .svg to 3d mesh can't create CURVES
+        - unfortunately many triangles are created to emulate the curves
+        - edges/vertices must be deleted or handled some other way to REDUCE THE POLYGON COUNT
+        
+
+----------
+Friday 2020-06-19
+
+  - tried out android new built-in WIFI adb
+    https://developer.android.com/studio/command-line/adb#wireless
+
+
+  - resolved(?) android studio IDE slowdown issues while typing
+
+
+  MAZE GAME
+
+    - worked on this briefly
+    - not intended so much a game at this stage..
+
+    - as mentioned elsewhere, RUBEScene/RUBELayer modules are customized for the wobble project, but not generic enough to be used for other apps ..re-creating the RUBE modules to be AS GENERIC AS POSSIBLE to be a "boilerplate" template for any game ideas I might have
+
+      - load RUBE .json/images
+
+      - application settings
+      - persistence
+
+      - RUBE duplication -- NEW
+      - unload RUBE .json/images -- NEW
+      - load multiple RUBE .json/images -- NEW
+
+----------
+Thursday 2020-06-18
+
+  - removed the "complex" HUD sliders, leaving only the simplified HUD slider
+    - reduces code size
+    - adjustments should be made directly in the developer-mode settings anyways
+
+  - modified the "solar-powered: disabled" icon to have a black outline for better visibility
+
+  RUBE export to .json (TESTED)
+    - compare export file size VS. non HEX-values
+    - non-human-readable is smaller; hang loose scene => 5KB VS. 6KB
+
+
+  TODO ITEMS:
+
+    HAND IMAGE ALTERNATIVES
+      - hang loose, thumbs up (side), pointing, rock and roll (rock on), peace, vulcan, #1 (foam finger), ok, user graphic
+      - different art styles
+
+    COMPASS IN BLENDER
+      - X/Y PLANE compass image -> .obj format
 
 ----------
 Monday 2020-06-15

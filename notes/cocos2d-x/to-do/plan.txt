@@ -1,8 +1,26 @@
-RUBE export to .json
-  - compare export file size VS. non HEX-values
+HAND GESTURES (HANG LOOSE)
+  - test out swapping graphics of a few hand gestures
+  - RUBE > remove static images? hang loose / hawaii
+
+  - texture packer still needed here? ..now that primary graphic is swappable
+
+  - Friday 2020-01-17 > image position > offset from body
+    - verify in code + image scaling methodology
+
+
+IDLE AUTO-WOBBLE
+  IF idle-wobble OR idle-wobble intermittent are "ON"
+  AND the gyro sensor is "OFF"
+  AND the accelerometer sensor is "OFF"
+  there should be no wait for idle delay
+
+  - change text to "IDLE AUTO-WOBBLE"
 
 
 ANDROID SENSOR READING - use NDK c++ if possible (redundant TODO?)
+
+
+TOPIC: create texture in memory once scene images are known?
 
 
 SEPARATE ACCELERATION SCALING FOR EACH AXIS
@@ -13,7 +31,7 @@ SEPARATE ACCELERATION SCALING FOR EACH AXIS
 
 
 AUDIO NOTE ITEMS
-  LAYERS
+  LAYERS (** SHP - move this "layer" plan into code comments)
   - toast layer to root
   - RUBE sprite layer
   * RUBE physics debug layer on top of RUBE sprites; child of RUBE scene
@@ -23,9 +41,6 @@ AUDIO NOTE ITEMS
   - BACKGROUND GRAPHICS LAYER(S); possibly 1 or more actual layers or just a layer + moving "background" sprites (parallax effect)
   - 2 PARTICLE EFFECT LAYERS (behind AND in front of RUBE sprites)
 
-  HUD wobble button
-    - touch cycles through for now; possibly slide out selector in the future
-  
   TOUCH PARTICLE EFFECT (SPARKLES / TWINKLES)
 
 
@@ -70,6 +85,7 @@ BUG - RUBELayer::updateAcceleration()
   * once a FIX is determined and implemented, the "original turtle" scene needs to have the broken update function(s) maintained as overloaded versions (Jack's "crazy" turtles)
 
 
+
 BACK BURNER..
 
   ANDROID NDK (more in-depth)
@@ -81,6 +97,7 @@ BACK BURNER..
       - Android NDK Game Development Cookbook
       - Mastering Android NDK
 
+
   LIVE WALLPAPER + OPENGL ES
 
     - read the book opengl es 2.0 (OpenGL ES 2 for Android: A Quick-Start Guide (Pragmatic Programmers))
@@ -88,5 +105,20 @@ BACK BURNER..
 
     - website: blender + opengl es tutorial (https://code.tutsplus.com/tutorials/how-to-use-opengl-es-in-android-apps--cms-28464)
     - read Android opengl es page (https://developer.android.com/guide/topics/graphics/opengl)
-    - other:
-      https://blog.jayway.com/2013/05/09/opengl-es-2-0-tutorial-for-android-part-i-getting-started/
+
+    - https://blog.jayway.com/2013/05/09/opengl-es-2-0-tutorial-for-android-part-i-getting-started/
+
+
+  COMBINED HUD auto-wobble button (ON HOLD, MAYBE DON'T IMPLEMENT AT ALL)
+    - combine solar-wobble and idle-wobble buttons into ONE BUTTON
+
+    - when the button is touched, the existing left HUD button set fades out and is replaced by the IDLE-WOBBLE HUD BUTTON options
+      - IDLE-WOBBLE HUD BUTTONS
+        - "solar-powered" wobble
+        - "solar-powered" intermittent
+        - idle wobble
+        - idle wobble intermittent
+        - off
+
+      - the active idle-wobble state is highlighted
+      - this kind of matches the existing HUD UI
