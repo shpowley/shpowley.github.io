@@ -1,6 +1,12 @@
 BLENDER NOTES
 
 
+  TOPICS TO RESEARCH
+
+    - mirroring methods
+    - grease pencil
+
+
   TUTORIALS
 
     FREE BLENDER 2.8 CRASH COURSE (UDEMY)
@@ -15,32 +21,106 @@ BLENDER NOTES
     reset cursor to origin - "SHIFT+C"
     pop-up left menu - "SHIFT+SPACE"
     grab - "G"
+    orbit to face = "ALT+MMB"
 
 
-  BASIC NAVIGATION
-
-    - zoom / pan / orbit
-      zoom = "CTRL+ALT+LMB"
-      pan = "SHIFT+ALT+LMB"
-      orbit = "ALT+LMB"
+  NAVIGATION
 
     - middle mouse button is the default to perform many basic actions
+      - for digital tablet / pen, set edit > preferences > input > "Emulate 3 Button Mouse" = true
+        - ALT+LMB basically replaces having to use the MMB
 
-    - for digital tablet / pen, set edit > preferences > input > "Emulate 3 Button Mouse" = true
-      - ALT+LMB basically replaces having to use the MMB
+    - zoom / pan / orbit
+      zoom = "CTRL+MMB"
+      pan = "SHIFT+MMB"
+      orbit = "MMB"
+      orbit to face = "ALT+MMB" (can't be emulated with pen because of "ALT")
+
+    - frame all = HOME
+    - frame selected = "." (NUMPAD)
 
 
   SELECTION
 
+    - typically use SHIFT modifier to add to existing selections
+
     select all = "A"
-    deselect all = "ALT+A"  OR  LMB empty area
+    deselect all = "ALT+A"  OR  "A+A" (quickly)  OR  LMB empty area
 
 
-  ALTERNATE MANIPULATION SHORTCUTS
+    MENU (ACTIVE SELECTION METHOD)
 
-    grab / free move = "G" (somewhat useful to quickly move things)
+      tweak
+        - select items one by one, but also moves items
+
+      rectangle
+        - box select
+
+      circle
+        - select items like a brush
+        - middle mouse button temporarily changes selection brush size
+
+      lasso
+        - freeform selection
+
+
+    TEMPORARY SELECT METHOD
+
+      - works regardless of active selection method
+
+      box select = "B"
+      box deselect = "B>SHIFT(HOLD)"
+
+      lasso select = "CTRL+RMB"
+      lasso deselect = "CTRL+SHIFT+RMB"
+        - must lasso over object origins
+
+      circle select = "C"
+        deselect = +SHIFT
+        - note: kinda stays active despite active menu selection
+        - press ESC to return to active menu selection
+
+
+    OUTLINER selection
+      - CTRL+select to add/remove individual objects
+      - SHIFT+select to add/remove object range
+
+
+    - when multiple objects are selected, only one is "active"
+      - use "SHIFT+LMB" to change "active"
+      - if object is already active, "SHIFT+LMB" will deselect
+
+
+  KEYBOARD MANIPULATION SHORTCUTS
+
+    - works regardless of active menu method
+    - default axis to user view
+
+    grab / free move = "G"
     rotate = "R"
     scale = "S"
+
+    - constrain axis by using "X", "Y", "Z" keys 
+    - constrain to 2-axes using SHIFT+ "X", "Y", "Z" key of the axis NOT being used
+
+    - rotation manipulation in 5 degree increments = "rotate+CTRL"
+    - exact rotation typed = "rotate+<TYPE ANGLE>"
+
+
+  CLEAR / APPLY TRANSFORMATIONS
+
+    CLEAR - reset transform
+      - object>clear>[location, rotation, scale]
+      
+      keyboard: 
+        location = "ALT+G"
+        rotation = "ALT+R"
+        scale = "ALT+S"
+
+    APPLY - set current transform as zero (or default)
+      - object>apply>[location, rotation, scale]
+      
+      keyboard: "CTRL+A"
 
 
   ADD NEW OBJECT ITEMS
@@ -53,11 +133,57 @@ BLENDER NOTES
     add object (in-place menu) = "SHIFT+A"  OR  on-screen menu
 
 
+  MISC USEFUL
+
+    - duplicate object = "SHIFT+D" (automatically starts move)
+    - repeat last command = "SHIFT+R"
+
+    top-right shading icons > "viewport shading: solid" > down arrow options > color: random
+      - good for seeing model differences
+
+    shading pie menu = "Z" key
+
+    viewport overlays (top-right icon set) controls visualization elements in the primary viewport
+      * press the main icon to quickly enable/disable all overlay elements
+
+    - quick capture image = view>"viewport render image"
+
+    TWO COORDINATES (ie. x and y) that will have IDENTICAL VALUES
+      - click in X, drag down to "link" them temporarily, drag left/right or type in numerical value
+      - both values should be the same
+
+    STARTUP FILE
+      - file>default>"save startup file"
+      - sets current environment as startup
+
+    HIDE SELECTED OBJECTS = "H"
+
+    UNHIDE ALL = "ALT+H"
+
+    TOGGLE LOCAL VIEW (SELECTED OBJECTS) = "/"
+
+    ISOLATE VIEW COLLECTIONS (IN ORDER FROM SCENE COLLECTION) = "1..0"
+      - UNHIDE ALL = "ALT+H" (IN OUTLINER)
+
+    QUICK FAVORITES = "Q"
+      - add/remove menu shortcuts, accessible by press "Q" first
+
+    ASSIGN SHORTCUT
+      - similar to QUICK FAVORITES, but assigned to KEYBOARD SHORTCUT
+      - not sure how these impact preference shortcuts..
+
+    IMMERSION MODE = "CTRL+SPACE"
+      - current view area is temporarily maximimized
+      - press a 2nd time to return
+
+    ZOOM TO BORDER (selected rectangle) = "SHIFT+B"
+
+
   CURSOR
 
     - determines where new items are created
 
-    reset cursor to origin = "SHIFT+C"
+    reset cursor to origin = "SHIFT+C"  OR  right-click>snap>"cursor to world origin"
     move cursor = "SHIFT+RMB"  OR  on-screen tool + LMB
 
     type in cursor coordinates => sidebar "N" => "view" tab => "3d cursor"
@@ -65,10 +191,12 @@ BLENDER NOTES
 
   INTERACTION MODES
 
+    blender modes pie menu = "CTRL+TAB"
+
+
     OBJECT MODE
+
       - interact with whole objects (rotate, scale, move, ..)
-      
-      rotation manipulation in 5 degree increments = "rotate+CTRL"
 
       alignment of objects
         (EDIT MODE) select vertices
@@ -90,16 +218,32 @@ BLENDER NOTES
 
 
     EDIT MODE
-      - edit individual object (VERTICES, EDGES, FACES ..)
+
+      - edit individual components (VERTICES, EDGES, FACES ..)
+        * hold "SHIFT" + select component type icons to work with combined component types (ie. EDGES+VERTICES)
+        - select ONE different component type using "1, 2, OR 3" keys (SHIFT modifier also works for multi-component type selection)
+
       - must return to OBJECT MODE to edit a different object
-      - use SHIFT+LMB to multi-select
+        * MULTI-OBJECT EDIT MODE is possible by selecting more than one object in OBJECT MODE and then entering EDIT MODE
+
+      - use "SHIFT+LMB" to multi-select
       - resize, scale, move selected components
 
-      switch between OBJECT MODE <=> EDIT MODE = TAB
-      select contiguous sub-outline hemisphere = ALT+LMB (multi-select SHIFT+)
+      switch between OBJECT MODE <=> EDIT MODE = "TAB"
+
+      select contiguous sub-outline hemisphere = "ALT+LMB" (multi-select "SHIFT+")
+        - contiguous hemisphere of parallel edges = "CTRL+ALT+LMB"
+
+      select contiguous segments between two components = "CTRL+LMB"
+        - hold down "CTRL" to select BRANCHING SEGMENTS in different directions (demo on UV SPHERE)
+
       new edge face from vertices => select bounding vertices/edges => "F" key  OR  vertex => new edge/face from vertices
-      simple way to delete an edge = CTRL+DELETE (similar to DELETE>"dissolve edges")
+
+      dissolve edges = "CTRL+DELETE"  OR  "CTRL+X" (similar to DELETE>"dissolve edges")
+
       mirror features - (EDIT MODE) "A" > Mesh > Symmetrize
+
+      select object sub-mesh = mouse-hover over desired mesh + "L"
 
       selection more/less = "CTRL+'+'" (more) / "CTRL+'-'" (less)
         increase/decrease adjacent polygons selected
@@ -108,7 +252,26 @@ BLENDER NOTES
 
       - many operations specific to EDIT MODE (LOOP CUT, etc.)
 
-        LOOP CUT
+        LOOP CUT = "CTRL+R"
+          - insert new edge perpendicular to selected area
+          - pre-select number of cuts = "MOUSE HOVER + MOUSE WHEEL SCROLL"
+          - initial LMB-click allows adjustment of loop cut position, 2nd LMB-click appies loop cut
+
+          OFFSET EDGE LOOP CUT = "CTRL+SHIFT+R"
+            - sub-icon tool
+            - with an edge selected, creates 2 equi-distant cuts on either side
+
+        KNIFE TOOL = "K"
+          - create edges along surface normals that follow the mouse/pen
+          - each time the mouse crosses an existing edge, a new vertice is created
+          - results in a non-linear path of edges created by the mouse
+
+          BISECT
+            - sub-icon tool
+            - only works if PLANES ARE PRE-SELECTED
+            - create "large cut" straight path of edges through the selected planes
+            - parallel to the current view
+            - offset and angle can only be modified immediately after placing the bisect cut
 
         EXTRUDE
           - "+" modifier to create NEW extrusion
@@ -116,68 +279,146 @@ BLENDER NOTES
           - usually in the direction of the normal
 
         INSET
-          - use on-screen inset menu  OR "I" (preferred)
+          - inset group of vertices that are "bevel-like", but flat
+          - use on-screen inset menu  OR  "I" (preferred)
 
           TIP: if having problems with inset faces having unequal border widths
-            - (object mode) CTRL+A >> scale => (edit mode) inset "I"
+            - (object mode) "CTRL+A" >> scale => (edit mode) inset "I"
 
             - https://blender.stackexchange.com/questions/50876/how-do-i-inset-a-face-equally
               - https://blender.stackexchange.com/a/112215 (basically scaled in EDIT MODE helps)
-                "transformations in object mode are what you want it to look like, but transformations in edit mode (or that are applied using Ctrl+A menu in object mode) are what it is like"
+                "transformations in object mode are what you want it to look like, but transformations in edit mode (or that are applied using "CTRL+A" menu in object mode) are what it is like"
 
 
         BEVEL
+          - actual bevel created along edge of faces
 
 
-    MATERIALS
+      - NUMEROUS commands are NOT available through the left-hand icons, but through the EDIT MODE sub-menus
 
-      - FREE BLENDER 2.8 CRASH COURSE (UDEMY) - 10. CREATING MATERIALS
+        SUB-MENUS:
+          - view
+          - select
+          - add ("SHIFT+A")
+          - mesh
+          - vertex ("CTRL+V")
+          - edge ("CTRL+E")
+          - face ("CTRL+F")
+          - uv ("U")
 
-      purge unwanted/unused materials = outliner > orphan data > select materials > purge button
-
-
-    ANIMATION
-
-      - default 24 fps
-      - each object has it's own timeline/dopesheet
-
-      KEYFRAMES
-        (OBJECT MODE) select object
-        > on-screen menu "Object" > "Animation" > "Insert Keyframe"  OR  "I"
-        > select type of keyframe
-        > move playhead to desired frame
-        > manipulate object (move, rotate, etc.)
-        > add new keyframe of the same type as above
-
-      INTERPOLATION
-        - select keyframes
-        - right-click > interpolation mode
-
-      - copy/paste keyframes = "CTRL+C"/"CTRL+V"
-        - able to copy/paste an entire sequence of keyframes
-        - with the play head on an existing keyframe, paste will start at that time interval..which works well if the existing keyframe is exactly the same as the starting keyframe of the pasted keyframe sequence
+        example: edge>subdivide
 
 
-    SIDEBAR
-      - "N" hotkey
-      - manipulation using property values
+  JOIN / SEPARATE GEOMETRIES
+
+    join object geometries = "CTRL+J"
+      - active object contains both geometries
+      - active object origin becomes origin for the new joined object
+      * note that this is different from parent-child object
+
+    separate object geometries
+      - EDIT MODE
+      - select sub-object geometry ("L" (select linked))
+      - mesh (menu) > separate > selection
 
 
-    LIGHTING (FREE BLENDER 2.8 CRASH COURSE | ADJUSTING THE LIGHT AND THE CAMERA)
-      - adjust scene lighting and shadows
+  MATERIALS
+
+    - FREE BLENDER 2.8 CRASH COURSE (UDEMY) - 10. CREATING MATERIALS
+
+    purge unwanted/unused materials = outliner > orphan data > select materials > purge button
 
 
-    CAMERA
-      - move camera based on viewport = view > "align view" > "align active camera to view"  OR  "numpad-0"
+  ANIMATION
 
-      - tweak camera position
-        - toggle camera view so that rectangular viewport is visible (camera icon next to hand)
-        > camera selected in scene collection
-        
-        - move horizontally and vertically = "G" key
-        - move back and forth = "G+Z+Z" key
+    - default 24 fps
+    - each object has it's own timeline/dopesheet
+
+    KEYFRAMES
+      (OBJECT MODE) select object
+      > on-screen menu "Object" > "Animation" > "Insert Keyframe"  OR  "I"
+      > select type of keyframe
+      > move playhead to desired frame
+      > manipulate object (move, rotate, etc.)
+      > add new keyframe of the same type as above
+
+    INTERPOLATION
+      - controls speed-up/slow-down, easing effects
+      - select keyframes
+      - right-click > interpolation mode
+
+    - copy/paste keyframes = "CTRL+C"/"CTRL+V"
+      - able to copy/paste an entire sequence of keyframes
+      - with the play head on an existing keyframe, paste will start at that time interval..which works well if the existing keyframe is exactly the same as the starting keyframe of the pasted keyframe sequence
 
 
-    RENDERING ((FREE BLENDER 2.8 CRASH COURSE | RENDERING THE FINAL VIDEO))
-      - rendering options
-      - default "eevee" (?) is significantly faster to render, but doesn't have motion blur
+  SIDEBAR
+    - "N" hotkey
+    - manipulation using property values
+
+
+  LIGHTING (FREE BLENDER 2.8 CRASH COURSE | ADJUSTING THE LIGHT AND THE CAMERA)
+    - adjust scene lighting and shadows
+
+
+  CAMERA
+    - move camera based on viewport
+      - view > "align view" > "align active camera to view"  OR  "numpad-0"  OR  movie camera icon
+
+    - tweak camera position
+      - toggle camera view so that rectangular viewport is visible (camera icon next to hand)
+      > camera selected in scene collection
+      
+      - move horizontally and vertically = "G" key
+      - move back and forth = "G+Z+Z" key
+
+
+  RENDERING ((FREE BLENDER 2.8 CRASH COURSE | RENDERING THE FINAL VIDEO))
+    - rendering options
+    - default "eevee" (?) is significantly faster to render, but doesn't have motion blur
+
+
+  GREASE PENCIL
+
+    pen strength = "SHIFT+F"
+
+    pen radius = "F"
+
+    - radius / strength hotkeys also work on the other drawing modes and eraser
+
+
+  SVG IMPORT
+
+    - much simpler for complex paths vs. trying to model in blender alone
+
+    * great way to simplify 3d printing stuff (even possible to use bitmap images)
+
+
+    INKSCAPE
+      - gradients fills, objects with line widths, embedded images WILL NOT WORK
+
+      - COMBINE PATHS for logical groups as these are recognized by blender
+
+      - scale primary svg width to 2000 mm (should fit imported svg into 2 squares default view)
+        - NOTE: at this scale, blender doesn't seem to mangle vertices
+
+      - re-position primary svg center to document bottom-left of document (svg should import into blender world 0,0)
+        - blender option imported svg "set origin > geometry to origin" also would work ("CTRL+ALT+SHIFT+C")
+
+      * HANDLING CURVES
+        - select the object(s) > menu "extensions" > "modify path" > "flatten beziers"
+        - experiment with a number around 2.0 to optimize the number of vertices and make the image still look curved
+
+      * png images converted to svg is possible using built-in inkscape feature
+
+      - best to save as "plain svg" (not "inkscape" or "optimized") to maintain many features
+
+    BLENDER
+      - convert to mesh (NOTE: not really sure how "paths" work yet)
+        - curves can only be approximated
+        - default curves conversion creates an extremely large number of vertices
+        - requires a lot of cleanup to reduce the polygon count
+        - dissolve unneeded edges works, but this is tedius
+        ** see inkscape step "HANDLING CURVES" >> this WILL SAVE A LOT OF TIME as the process is more automated
+
+      - extrusion can then be used and the mesh can be modified as normal
