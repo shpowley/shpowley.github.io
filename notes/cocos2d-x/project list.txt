@@ -1,5 +1,9 @@
 LIST OF CURRENT ANDROID PROJECTS (code\android_projects)
 
+  code_test
+    - misc test code
+    - safe to delete
+
   celestial (github)
     - 1st attempt at hand-coding box2d collisions, debug draw, and cocos2d-x layers
     - cocos2d-x project
@@ -24,7 +28,7 @@ LIST OF CURRENT ANDROID PROJECTS (code\android_projects)
     - cocos2d-x project
 
   og/rube_loader_custom (github)
-    - essentially the same as the "rube_custom" project, but as an live wallpaper implementation
+    - essentially the same as the "rube_custom" project, but as a live wallpaper implementation
     - NOTE: this PROJECT DOES NOT ACTUALLY WORK due to the Cocos2dHelper.java sActivity issue
     - the live wallpaper code implementation (I believe) is copied from from https://discuss.cocos2d-x.org/t/3-2rc0-android-live-wallpaper/15460
     - cocos2d-x "combo" project

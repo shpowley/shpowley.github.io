@@ -1,3 +1,24 @@
+
+----------
+Tuesday 2020-06-30
+
+  WOBBLE PROJECT - SPRITE IMAGE SWAPPING
+
+    - experimented with swapping sprite images
+
+      - swapping sprite images on an existing SPRITE works and MAINTAINS its center point
+        - this IS DESIRED, but some images may NEED TO BE OFFSET to maintain the visual illusion of rotating at it's IDEAL CENTER OF ROTATION
+        - in the experiment, I associated the image file name and IMAGE ANCHOR POINTS in a struct vector array to accomplish this
+          * OF NOTE, I created a vector array created on the stack vs heap allocation using vector .resize()
+
+      - swapping between spriteframe and normal images works, but doesn't play well with the spriteframe polygon shaping ==> SO JUST STICK WITH ONE OR THE OTHER for now
+        ->setSpriteFrame() apparently sets the polygon shape
+        ->setTexture swaps the image texture, but the original spriteframe polygon is maintained (ie. a hand shape with a completely different image)
+
+    - created a new scene called "hand signs" (essentially a duplicate of the "hang loose" scene)
+      - using "Sunday 2020-01-19 - NEW SCENE PROCESS DOCUMENTATION"
+      - this will serve as a baseline for the NEW HAND SIGNS APP
+
 ----------
 Wednesday 2020-06-24
 

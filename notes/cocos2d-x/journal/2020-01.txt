@@ -73,7 +73,7 @@ Sunday 2020-01-19
           - group of turtles (2 large + 3 small); similar physics to the single turtle
 
 
-  NEW SCENE PROCESS DOCUMENTATION (Tuesday 2020-01-14)
+  NEW SCENE PROCESS DOCUMENTATION
 
     1 - copy RUBE .json file + sprite sheet files (.png + .plist) to appropriate /Resources folder
 
@@ -97,6 +97,7 @@ Sunday 2020-01-19
           *** REFACTOR CANDIDATE ***
 
         - alter LINE "RUBELayer::current_scene = "
+          COMMENT: use android studio key "CTRL+B" to quickly locate
 
       b - add new char constant for the scene settings to GameManager.h
           *** REFACTOR CANDIDATE ***

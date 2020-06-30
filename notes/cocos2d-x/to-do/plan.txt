@@ -1,11 +1,24 @@
 HAND GESTURES (HANG LOOSE)
-  - test out swapping graphics of a few hand gestures
   - RUBE > remove static images? hang loose / hawaii
-
-  - texture packer still needed here? ..now that primary graphic is swappable
 
   - Friday 2020-01-17 > image position > offset from body
     - verify in code + image scaling methodology
+
+
+  TASKS:
+
+    HUD HANDS SELECTION TOOL
+      - houses primary images selection
+
+    HAND BOX2D BODY / IMAGE + CUSTOM IMAGE
+
+      - body needs 2 fixtures
+        - 1ST FIXTURE: primary mass, circular, NOT touchable, with physics, invisible
+        - 2ND FIXTURE: negligible mass, circular, touchable, associated with the image, NO physics
+        - PROGRAMMATIC OFFSET should be on the 2nd fixture (vs sprite position or sprite-anchor)
+          - this should result in being able to touch-control the image
+
+      * MECHANISM TO REPOSITION 2nd fixture a FIXED DISTANCE from the primary + PERSISTENCE
 
 
 IDLE AUTO-WOBBLE

@@ -31,6 +31,7 @@ CREATING A NEW PROJECT
     WINDOWS
       - this has to be done using the ADMIN COMMAND LINE
       ex. mklink /d [LINK] [TARGET FOLDER]
+      ex. mklink /d cocos2d d:\SDK\cocos2d-x
 
 --------------------------------------------------
 PRE-BUILT LIBRARIES
