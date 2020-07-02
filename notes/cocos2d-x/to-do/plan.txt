@@ -1,14 +1,6 @@
-HAND GESTURES (HANG LOOSE)
-  - RUBE > remove static images? hang loose / hawaii
-
-  - Friday 2020-01-17 > image position > offset from body
-    - verify in code + image scaling methodology
-
+HAND SIGNS (BASED HANG LOOSE)
 
   TASKS:
-
-    HUD HANDS SELECTION TOOL
-      - houses primary images selection
 
     HAND BOX2D BODY / IMAGE + CUSTOM IMAGE
 
@@ -19,6 +11,16 @@ HAND GESTURES (HANG LOOSE)
           - this should result in being able to touch-control the image
 
       * MECHANISM TO REPOSITION 2nd fixture a FIXED DISTANCE from the primary + PERSISTENCE
+
+    HUD HANDS SELECTION TOOL
+      - houses primary images selection
+
+    static images
+      - remove existings static images (hang loose / hawaii)
+      - add static text selections (hang loose, live long, etc. ..)
+
+    ? Friday 2020-01-17 > image position > offset from body
+      - verify in code + image scaling methodology
 
 
 IDLE AUTO-WOBBLE

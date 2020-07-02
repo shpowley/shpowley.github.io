@@ -1,0 +1,35 @@
+----------
+Friday 2020-07-03
+
+  WOBBLE PROJECT - HAND SIGNS
+
+    - TODO: additional box2d body
+
+----------
+Thursday 2020-07-02
+
+  WOBBLE PROJECT - SPRITE IMAGE SWAPPING
+
+    - duplicated "hang loose" scene => "hand signs"
+    - successful test using multiple hand sign images sprite sheet and swapping the image on image-touch
+
+----------
+Wednesday 2020-07-01
+
+  WOBBLE PROJECT - SPRITE IMAGE SWAPPING
+
+    - in order to re-position images as mentioned on 2020-06-30 this is now the plan:
+
+      1) secondary box2d body (attached to primary, image, no physics, touch)
+      2) primary "wobble" box2d body (attached to static body, no image, physics, no touch)
+      3) static box2d body
+
+      - all 3 box2d bodies should have the exact same position
+      - the primary and static body assemblies are the same
+
+      * the KEY is with the secondary to primary connection
+        - the associated FIXTURE AND IMAGE SHOULD SOMEHOW STAY IN SYNC
+        - the fixture has to be destroyed and recreated for each image swap
+          OR repositioning the image
+
+          - sample code for fixtures: https://www.iforce2d.net/b2dtut/fixtures

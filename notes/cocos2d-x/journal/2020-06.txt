@@ -1,5 +1,3 @@
-
-----------
 Tuesday 2020-06-30
 
   WOBBLE PROJECT - SPRITE IMAGE SWAPPING
@@ -7,7 +5,7 @@ Tuesday 2020-06-30
     - experimented with swapping sprite images
 
       - swapping sprite images on an existing SPRITE works and MAINTAINS its center point
-        - this IS DESIRED, but some images may NEED TO BE OFFSET to maintain the visual illusion of rotating at it's IDEAL CENTER OF ROTATION
+        * this IS DESIRED, but some images may NEED TO BE OFFSET to maintain the visual illusion of rotating at it's IDEAL CENTER OF ROTATION
         - in the experiment, I associated the image file name and IMAGE ANCHOR POINTS in a struct vector array to accomplish this
           * OF NOTE, I created a vector array created on the stack vs heap allocation using vector .resize()
 
