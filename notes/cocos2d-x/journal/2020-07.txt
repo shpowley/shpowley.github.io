@@ -3,7 +3,9 @@ Friday 2020-07-03
 
   WOBBLE PROJECT - HAND SIGNS
 
-    - TODO: additional box2d body
+    - successfully destroy/re-create secondary touch fixture on the wobble box2d body
+    - hand sprite image position also stays in-sync with the touch fixture
+    - list of hand sprite images and associated x/y-positions created
 
 ----------
 Thursday 2020-07-02
@@ -12,6 +14,9 @@ Thursday 2020-07-02
 
     - duplicated "hang loose" scene => "hand signs"
     - successful test using multiple hand sign images sprite sheet and swapping the image on image-touch
+
+    - tried additional box2d body, but unable to cause rotation through it to the primary body
+      - now attempting a 2nd fixture on the primary body
 
 ----------
 Wednesday 2020-07-01
