@@ -1,924 +1,993 @@
-BLENDER NOTES
+TOPICS TO RESEARCH
+
+  - boolean
+  - modeling quick organic shapes
+  - grease pencil
+  - mirroring
+  - denoising (see rending engine - cycles) > compositing
 
 
-  TOPICS TO RESEARCH
+TUTORIALS
 
-    - mirroring methods
-    - grease pencil
+  FREE BLENDER 2.8 CRASH COURSE (UDEMY - FREE)
+    - https://www.udemy.com/course/blender-crash-course/
+    - part 8. Modeling the Airplane
+
+  LEARN BLENDER 2.8x THE RIGHT WAY (UDEMY - PAID)
+    - https://www.udemy.com/course/learn-blender-28/
 
 
-  TUTORIALS
+DRAWING TABLET SHORTCUT CANDIDATES
 
-    FREE BLENDER 2.8 CRASH COURSE (UDEMY - FREE)
-      - https://www.udemy.com/course/blender-crash-course/
-      - part 8. Modeling the Airplane
+  switch between OBJECT MODE <=> EDIT MODE = TAB
+  add object - "SHIFT+A"
+  reset cursor to origin - "SHIFT+C"
+  pop-up left menu - "SHIFT+SPACE"
+  grab - "G"
+  orbit to face = "ALT+MMB"
 
-    LEARN BLENDER 2.8x THE RIGHT WAY (UDEMY - PAID)
+
+NAVIGATION
+
+  - middle mouse button is the default to perform many basic actions
+    - for digital tablet / pen, set edit > preferences > input > "Emulate 3 Button Mouse" = true
+      - ALT+LMB basically replaces having to use the MMB
+
+  - zoom / pan / orbit
+    zoom = "CTRL+MMB"
+    pan = "SHIFT+MMB"
+    orbit = "MMB"
+    orbit to face = "ALT+MMB" (can't be emulated with pen because of "ALT")
+
+  - frame all = HOME
+  - frame selected = "." (NUMPAD)
+
+
+SELECTION
+
+  - typically use SHIFT modifier to add to existing selections
+
+  select all = "A"
+  deselect all = "ALT+A"  OR  "A+A" (quickly)  OR  LMB empty area
+
+
+  MENU (ACTIVE SELECTION METHOD)
+
+    tweak
+      - select items one by one, but also moves items
+
+    rectangle
+      - box select
+
+    circle
+      - select items like a brush
+      - middle mouse button temporarily changes selection brush size
+
+    lasso
+      - freeform selection
+
+
+  TEMPORARY SELECT METHOD
+
+    - works regardless of active selection method
+
+    box select = "B"
+    box deselect = "B>SHIFT(HOLD)"
+
+    lasso select = "CTRL+RMB"
+    lasso deselect = "CTRL+SHIFT+RMB"
+      - must lasso over object origins
+
+    circle select = "C"
+      deselect = +SHIFT
+      - note: kinda stays active despite active menu selection
+      - press ESC to return to active menu selection
+
+
+  OUTLINER selection
+    - CTRL+select to add/remove individual objects
+    - SHIFT+select to add/remove object range
+
+
+  MISC
+
+    when multiple objects are selected, only one is "active"
+      - use "SHIFT+LMB" to change "active"
+      - if object is already active, "SHIFT+LMB" will deselect
+
+    select contiguous sub-outline hemisphere = "ALT+LMB" (multi-select "SHIFT+")
+      - contiguous hemisphere of parallel edges = "CTRL+ALT+LMB"
+      * emulate 3-button mouse needs to be disabled
+
+    select contiguous segments between two components = "CTRL+LMB"
+      - hold down "CTRL" to select BRANCHING SEGMENTS in different directions (demo on UV SPHERE)
+
+    select object sub-mesh = mouse-hover over desired mesh + "L"
+
+    selection more/less = "CTRL+'+'" (more) / "CTRL+'-'" (less)
+      increase/decrease adjacent polygons selected
+
+
+KEYBOARD MANIPULATION SHORTCUTS
+
+  - works regardless of active menu method
+  - default axis to user view
+
+  grab / free move = "G"
+  rotate = "R"
+  scale = "S"
+
+  - constrain axis by using "X", "Y", "Z" keys 
+  - constrain to 2-axes using SHIFT+ "X", "Y", "Z" key of the axis NOT being used
+
+  - rotation manipulation in 5 degree increments = "rotate+CTRL"
+  - exact rotation typed = "rotate+<TYPE ANGLE>"
+
+
+CLEAR / APPLY TRANSFORMATIONS
+
+  CLEAR - reset transform
+    - object>clear>[location, rotation, scale]
+    
+    keyboard: 
+      location = "ALT+G"
+      rotation = "ALT+R"
+      scale = "ALT+S"
+
+  APPLY - set current transform as zero (or default)
+    - object>apply>[location, rotation, scale]
+    
+    keyboard: "CTRL+A"
+
+
+  NOTE:
+    - many EDIT MODE tool issues can be resolved using OBJECT MODE apply transform (see INSET problem/resolution)
+
+    - transforms applied in OBJECT MODE really need to APPLY TRANSFORM
+      - particularly OBJECT MODE - SCALING
+      - scaling in EDIT MODE would also avoid issues
+
+    - video tutorial demonstrates this well
       - https://www.udemy.com/course/learn-blender-28/
+      - section 2: polygonal modeling, 40. applying the scale
 
 
-  DRAWING TABLET SHORTCUT CANDIDATES
+ADD NEW OBJECT ITEMS
 
-    switch between OBJECT MODE <=> EDIT MODE = TAB
-    add object - "SHIFT+A"
-    reset cursor to origin - "SHIFT+C"
-    pop-up left menu - "SHIFT+SPACE"
-    grab - "G"
-    orbit to face = "ALT+MMB"
+  - add meshes, grease pencil, etc.
 
+  * NOTE: NEW OBJECT OPTIONS ONLY AVAILABLE IMMEDIATELY AFTER THE NEW OBJECT IS CREATED
+    - these new object options are accessible in a panel, briefly visible at the time of creation
 
-  NAVIGATION
-
-    - middle mouse button is the default to perform many basic actions
-      - for digital tablet / pen, set edit > preferences > input > "Emulate 3 Button Mouse" = true
-        - ALT+LMB basically replaces having to use the MMB
-
-    - zoom / pan / orbit
-      zoom = "CTRL+MMB"
-      pan = "SHIFT+MMB"
-      orbit = "MMB"
-      orbit to face = "ALT+MMB" (can't be emulated with pen because of "ALT")
-
-    - frame all = HOME
-    - frame selected = "." (NUMPAD)
+  add object (in-place menu) = "SHIFT+A"  OR  on-screen menu
 
 
-  SELECTION
+USEFUL PIE MENUS
 
-    - typically use SHIFT modifier to add to existing selections
+  blender interaction modes pie menu = "CTRL+TAB"
 
-    select all = "A"
-    deselect all = "ALT+A"  OR  "A+A" (quickly)  OR  LMB empty area
+  shading pie menu = "Z" key
 
+  snap pie menu = "SHIFT+S"
+    - menu > snap > ...
 
-    MENU (ACTIVE SELECTION METHOD)
-
-      tweak
-        - select items one by one, but also moves items
-
-      rectangle
-        - box select
-
-      circle
-        - select items like a brush
-        - middle mouse button temporarily changes selection brush size
-
-      lasso
-        - freeform selection
+  main menu commands = "SHIFT+SPACEBAR"
 
 
-    TEMPORARY SELECT METHOD
+MISC USEFUL
 
-      - works regardless of active selection method
+  TOGGLE LOCAL VIEW (SELECTED OBJECTS) = "/"
+  SHOW/HIDE MODELING VIEWPORT TOOLS = "T"
 
-      box select = "B"
-      box deselect = "B>SHIFT(HOLD)"
+  IMMERSION MODE = "CTRL+SPACE"
+    - current view area is temporarily maximimized
+    - press a 2nd time to return
 
-      lasso select = "CTRL+RMB"
-      lasso deselect = "CTRL+SHIFT+RMB"
-        - must lasso over object origins
+  ZOOM TO BORDER (selected rectangle) = "SHIFT+B"
 
-      circle select = "C"
-        deselect = +SHIFT
-        - note: kinda stays active despite active menu selection
-        - press ESC to return to active menu selection
+  - duplicate object = "SHIFT+D" (automatically starts move)
+  - repeat last command = "SHIFT+R"
 
+  top-right shading icons > "viewport shading: solid" > down arrow options > color: random
+    - good for seeing model differences
 
-    OUTLINER selection
-      - CTRL+select to add/remove individual objects
-      - SHIFT+select to add/remove object range
+  viewport overlays (top-right icon set) controls visualization elements in the primary viewport
+    * press the main icon to quickly enable/disable all overlay elements
 
+  - quick capture image = view>"viewport render image"
 
-    MISC
+  TWO COORDINATES (ie. x and y) that will have IDENTICAL VALUES
+    - click in X, drag down to "link" them temporarily, drag left/right or type in numerical value
+    - both values should be the same
 
-      when multiple objects are selected, only one is "active"
-        - use "SHIFT+LMB" to change "active"
-        - if object is already active, "SHIFT+LMB" will deselect
+  STARTUP FILE
+    - file>default>"save startup file"
+    - sets current environment as startup
 
-      select contiguous sub-outline hemisphere = "ALT+LMB" (multi-select "SHIFT+")
-        - contiguous hemisphere of parallel edges = "CTRL+ALT+LMB"
-        * emulate 3-button mouse needs to be disabled
+  HIDE SELECTED OBJECTS = "H"
 
-      select contiguous segments between two components = "CTRL+LMB"
-        - hold down "CTRL" to select BRANCHING SEGMENTS in different directions (demo on UV SPHERE)
+  UNHIDE ALL = "ALT+H"
 
-      select object sub-mesh = mouse-hover over desired mesh + "L"
+  ISOLATE VIEW COLLECTIONS (IN ORDER FROM SCENE COLLECTION) = "1..0"
+    - UNHIDE ALL = "ALT+H" (IN OUTLINER)
 
-      selection more/less = "CTRL+'+'" (more) / "CTRL+'-'" (less)
-        increase/decrease adjacent polygons selected
+  QUICK FAVORITES = "Q"
+    - add/remove menu shortcuts, accessible by press "Q" first
 
+  ASSIGN SHORTCUT
+    - similar to QUICK FAVORITES, but assigned to KEYBOARD SHORTCUT
+    - not sure how these impact preference shortcuts..
 
-  KEYBOARD MANIPULATION SHORTCUTS
+  FLATTEN MULTIPLE EXTRUSION FACES
+    - for when composite of faces isn't flat
+    - scale > restrict axis > type "0+ENTER"
 
-    - works regardless of active menu method
-    - default axis to user view
-
-    grab / free move = "G"
-    rotate = "R"
-    scale = "S"
-
-    - constrain axis by using "X", "Y", "Z" keys 
-    - constrain to 2-axes using SHIFT+ "X", "Y", "Z" key of the axis NOT being used
-
-    - rotation manipulation in 5 degree increments = "rotate+CTRL"
-    - exact rotation typed = "rotate+<TYPE ANGLE>"
+  SLIDER VALUES ARE OFTEN CLAMPED, but typing in a number allow values outside that range
 
 
-  CLEAR / APPLY TRANSFORMATIONS
+CURSOR
 
-    CLEAR - reset transform
-      - object>clear>[location, rotation, scale]
+  - determines where new items are created
+
+  reset cursor to origin = "SHIFT+C"  OR  right-click>snap>"cursor to world origin"
+  move cursor = "SHIFT+RMB"  OR  on-screen tool + LMB
+
+  type in cursor coordinates => sidebar "N" => "view" tab => "3d cursor"
+
+  MOVE CURSOR TO CENTER BETWEEN TWO OBJECTS
+    - select objects > "SHIFT+S" ((menu > snap) > "cursor to selected"
+
+
+OBJECT MODE
+
+  - interact with whole objects (rotate, scale, move, ..)
+
+  alignment of objects
+    (EDIT MODE) select vertices
+    > right-click (vertext context menu)
+    > "snap vertices"
+    > "cursor to selected"
+    (OBJECT MODE) select object
+    > right-click (object context menu)
+    > snap
+    > selection to cursor
+
+  create parent-child object heirarchy
+    - (OBJECT MODE) select child object (1st)
+    > SHIFT+ select parent object (2nd)
+    > right-click (object context menu)
+    > parent>object
+
+    NOTE: transforms to parent affect parent+child, but transforms to child objects only apply to the child
+
+
+EDIT MODE
+
+  - edit individual components (VERTICES, EDGES, FACES ..)
+    * hold "SHIFT" + select component type icons to work with combined component types (ie. EDGES+VERTICES)
+    - select ONE different component type using "1, 2, OR 3" keys (SHIFT modifier also works for multi-component type selection)
+
+  - must return to OBJECT MODE to edit a different object
+    * MULTI-OBJECT EDIT MODE is possible by selecting more than one object in OBJECT MODE and then entering EDIT MODE
+
+  - use "SHIFT+LMB" to multi-select
+  - resize, scale, move selected components
+
+  switch between OBJECT MODE <=> EDIT MODE = "TAB"
+
+  new edge face from vertices => select bounding vertices/edges => "F" key  OR  vertex => new edge/face from vertices
+
+  mirror features - (EDIT MODE) "A" > Mesh > Symmetrize
+    - note that the symmetrize occurs around the object origin - the origin must be adjusted as needed
+
+  * as previously mentioned with OBJECT MODE, some options are ONLY AVAILABLE IMMEDIATELY AFTER that operation
+
+  - many operations specific to EDIT MODE (LOOP CUT, etc.)
+
+    LOOP CUT = "CTRL+R"
+      - insert new edge perpendicular to selected area
+      - pre-select number of cuts = "MOUSE HOVER + MOUSE WHEEL SCROLL"
+      - initial LMB-click allows adjustment of loop cut position, 2nd LMB-click appies loop cut
+
+      OFFSET EDGE LOOP CUT = "CTRL+SHIFT+R"
+        - sub-icon tool
+        - with an edge selected, creates 2 equi-distant cuts on either side
+
+    KNIFE TOOL = "K"
+      - create edges along surface normals that follow the mouse/pen
+      - each time the mouse crosses an existing edge, a new vertice is created
+      - results in a non-linear path of edges created by the mouse
+
+      BISECT
+        - sub-icon tool
+        - only works if PLANES ARE PRE-SELECTED
+        - create "large cut" straight path of edges through the selected planes
+        - parallel to the current view
+        - offset and angle can only be modified immediately after placing the bisect cut
+
+    EXTRUDE
+      - default extrusion tool is EXTRUDE REGION
+
+      - works on selected FACES, EDGES or VERTICES
+        - EDGE extrusion creates FACES
+        - VERTEX extrusion creates EDGES
+        - VERTEX/EDGE extrusion good for 2D-type shape creation, but 3D works well also
+        - works best with ACTIVE TOOL SETTINGS > axis type = "XYZ"
+
+      - push/pull face along the normal direction of the face plane
+      - use "+" ICON MODIFIER appears allowing creation of NEW extrusion
+        - using the "+" ICON MODIFIER repeatedly will create multiple extrusions
+
+      - use the ARROW GRAPHIC MODIFIER to adjust existing extrusion
+
+      extrude menu = "ALT+E"
+
+      extrude = "E"
+        * careful though, as this combines 2 commands (create new face + move) and "+" icon step is skipped
+          - so, when trying to cancel using "ESC", an ADDITIONAL OVERLAPPING FACE WILL STILL EXIST IN THE MODEL
+
+      other EXTRUSION TOOLS:
+
+        EXTRUDE ALONG NORMALS
+          - more ideal for a group of adjacent faces (eg. select uv sphere ring)
+          - treats extrusion as if the adjecent faces are one solid extrusion mass
+
+        EXTRUDE INDIVIDUAL
+          - similar to EXTRUDE ALONG NORMALS, but each selected face extrusion is independent
+
+        EXTRUDE TO CURSOR
+          - good for shaping the overall multi-extrusion (eg. teapot handle)
+          - ideal view would be a side profile when creating the overall extrusion shape
+
+    INSET
+      - works on selected FACES
+      - create inset FACES that are "bevel-like", but flat
+
+      - by default, adjacent faces will be treated as an individual unit
+        - CREATION OPTIONS DIALOG allows for adjustments including the inset created on each INDIVIDUAL face
+        - ACTIVE TOOL SETTING tab (properties panel) also allows pre-setting the INDIVIDUAL option
+
+      - use on-screen inset menu  OR  "I" (preferred)
+
+      TIP: if having problems with inset faces having unequal border widths
+        - (object mode) "CTRL+A" >> scale => (edit mode) inset "I"
+
+        - https://blender.stackexchange.com/questions/50876/how-do-i-inset-a-face-equally
+          - https://blender.stackexchange.com/a/112215 (basically scaled in EDIT MODE helps)
+            "transformations in object mode are what you want it to look like, but transformations in edit mode (or that are applied using "CTRL+A" menu in object mode) are what it is like"
+
+
+    BEVEL
+      - created along edges
+      - CREATION OPTIONS DIALOG adjusts the bevel offset and shape
+
+      - keyboard = "CTRL+B"
+      - use the MOUSE WHEEL TO CONTROL THE NUMBER OF SEGMENTS that define the bevel when dragging the initial bevel offset
+
+
+  - NUMEROUS commands are NOT available through the left-hand icons, but through the EDIT MODE sub-menus
+
+    SUB-MENUS:
+      - view
+      - select
+      - add ("SHIFT+A")
+      - mesh
+      - vertex ("CTRL+V")
+      - edge ("CTRL+E")
+      - face ("CTRL+F")
+      - uv ("U")
+
+    example: edge>subdivide
+
+
+BRIDGING
+
+  - creates "bridge" of faces on selected faces OR open edges
+  - select items > edge (menu OR "CTRL+E") > "bridge edge loops"
+
+
+SPIN TOOL
+
+  - create arcs OR duplicate clones along an arc path
+
+  - spin is initially around the pivot point, so adjust appropriately
+    - the "spin pivot" can be adjusted during the spin operation graphically or with the CREATION OPTIONS DIALOG
+
+  - control axis of arc creation with the ACTIVE TOOL SETTINGS
+    - adjusted during spin operation
+
+  - select a face normal to the spin extrusion
+  - control CW or CCW direction
+
+
+SMOOTH SHADING
+
+  - object menu > "shade smooth" OR "shade flat"
+
+  leave sharp creases in "shade smooth" mode
+    - object data properties (green triangle icon) > normals > "auto smooth" = true
+
+  mark individual edges as "sharp"
+    - object EDIT mode > select edges > edge menu > "mark/clear sharp"
+    - only visible if object data properties "auto smooth" = true
+
+
+FORM ADJUSTMENT TOOLS
+
+  SMOOTH - smooth all selected faces
+
+  RANDOMIZE
+    - randomize size/position of all selected faces
+    - organic/rough surfacesl
+
+  SHRINK/FATTEN - skinny/fatten overall shape
+
+  PUSH/PULL - similar to shrink/fatten, but from a single point in the object center
+
+  SHEAR - 6 possible directions to shear the object
+
+  TO SPHERE - object becomes more sphere-like
+
+
+FILL OPEN AREAS
+
+  CREATE A SINGLE FACE on an open face
+    - select edges that define the open area > vertex (menu OR "CTRL+V") > "new edge/face from vertices" ("F")
+
+  CREATE A GRID OF FACES on an open face
+    - select egdes that define the open area > face (menu OR "CTRL+F") > "grid fill"
+    * ONLY WORKS if the selected hole has an EVEN NUMBER OF EDGES
+
+
+POLY BUILD
+
+  - "free form"
+
+  - some changes from original video ..blender 2.81
+    - default creates quad from an edge
+    - "CTRL" near an edge creates triangle
+    - select vertex > "E" - extrudes an edge
+    - "SHIFT" + select - delete items
+
+
+PROPORTIONAL EDITING
+
+  - vertices follow a decayed tool curvature effect (demo of "bell curve" around vertex move)
+
+  - actived with SMALL CIRCLE ICON ("O" shortcut) near the magnet
+    - also available as an option in the TOOL POST-OPERATION OPTIONS DIALOG
+
+    - options:
+      - curvature shape
+      - size of area affected
+      - "projected from view": curvature effect only in 2 axes
+      - "connected only":
+        OFF = curvature effects shapes even NOT CONNECTED if close enough
+        ON = curvature effect restricted to current shape, however curvature is slightly "OFF LOOKING"
+
+  - limited to MOVE tool (?)
+
+
+SEPARATING / MERGING VERTICES
+
+  "RIP REGION" TOOL
+    - separate VERTICES or EDGES only from an existing intersection
+
+  MERGING (vertices)
+    - select vertices > mesh menu ("CTRL+V") > merge (directly using "M") > ..
+
+    - MOVE command > ACTIVE TOOL SETTINGS > "auto merge" option = TRUE (this option effectively welds or joins vertices)
+      + SNAP (magnet icon OR "SHIFT+TAB") = ON
+      + SNAP OPTIONS: vertex, closest, "project onto self", affect - move
+
+
+VISIBILITY
+
+  - only affects EDIT MODE
+
+  - select components > mesh menu > show/hide > ..
+    - HIDE ("H")
+    - HIDE UNSELECTED ("SHIFT+H")
+    - REVEAL ("ALT+H")
+
+
+DELETE PART OF GEOMETRIES
+
+  vertice/edge/face selected > "DELETE" > menu selection to delete or dissolve
+    delete destroys all geometry components that depend on that deleted object
+    dissolve
+
+  dissolve selected geomtries = "CTRL+DELETE"  OR  "CTRL+X"
+    - geomtries = vertices, edges, or faces (multiple faces dissolves in-between edges)
+
+  * don't try deleting an object by deleting all the parts of it's geometries - it still exists in the object heirarchy
+
+
+JOIN / SEPARATE GEOMETRIES
+
+  join object geometries = "CTRL+J"
+    - active object contains both geometries
+    - active object origin becomes origin for the new joined object
+    * note that this is different from parent-child object
+
+  separate object geometries
+    - EDIT MODE
+    - select sub-object geometry ("L" (select linked))
+    - mesh (menu) > separate > selection
+
+
+MODELING "FIXES"
+
+  OVERLAPPING VERTICES
+    - usually created by "accident" (eg. "E" (extrude) cancelled)
+    FIX: select all vertices on shape (or "A") > mesh menu > merge ("M") > "by distance"
+
+
+  LOOSE EDGES
+    - ex. delete edges leaves perpendicular edges with no face
+      ex. extrude vertices
+
+    FIX: edge selection mode > select menu > "select all by trait" > "loose geometry" > "DELETE" > edges
+
+
+  INTERIOR FACES
+    - ex. uv sphere ring > new face > creates an interior face
+
+    FIX: nothing selected > select menu > "select all by trait" > "interior faces" > "DELETE" > faces
+
+
+ANIMATION
+
+  - default 24 fps
+  - each object has it's own timeline/dopesheet
+
+  KEYFRAMES
+    (OBJECT MODE) select object
+    > on-screen menu "Object" > "Animation" > "Insert Keyframe"  OR  "I"
+    > select type of keyframe
+    > move playhead to desired frame
+    > manipulate object (move, rotate, etc.)
+    > add new keyframe of the same type as above
+
+  INTERPOLATION
+    - controls speed-up/slow-down, easing effects
+    - select keyframes
+    - right-click > interpolation mode
+
+  - copy/paste keyframes = "CTRL+C"/"CTRL+V"
+    - able to copy/paste an entire sequence of keyframes
+    - with the play head on an existing keyframe, paste will start at that time interval..which works well if the existing keyframe is exactly the same as the starting keyframe of the pasted keyframe sequence
+
+
+SIDEBAR
+  - "N" hotkey
+  - manipulation using property values
+
+
+ORIGIN ADJUST
+
+  - object mode > object menu (or RMB) > "set origin" > ..
+
+
+< NOTES REVIEW BOOKMARK (GOING UP) >
+POLYGON SHAPES
+
+  triangles - TRIS
+  rectangular - QUADS
+  5+ sides - N-GONS
+
+  POLE - vertex
+  POLE "STAR" - vertex with 5+ edges
+
+  * QUADS ARE PREFERRED for 3d modeling
+
+
+SUBDIVISION OF SURFACES
+
+  - modifier (wrench icon) > "subdivision surface"
+  - auto-calculates and increases polygons
+  - "catmull clark" option creates smoother surfaces
+  - optimal smoothing effect with a lower number of subdivisions, combined with "shade smooth" option
+
+  * if edit mode final render is difficult to see with the default modifier settings
+    - enable the "upside down triangle" icon in the modifier ("on cage" = original shape)
+
+  - temporarily disable "subdivision surface" modifier
+    - disable the "monitor" icon in the modifier ("realtime")
+
+
+  "CREASE" EDGES
+    - controls edge smoothness
+    - edit mode > select edges > "N" (sidebar) > item tab > transform > "mean crease" = 1 (or value near 1)
+    - works in conjunction with "subdivision surface" modifier
+
+
+  CONTROL EDGES
+    - adding additional edges to the actual model so that they "interfere" with the "subdivision surface" effect  
+      - an alternative to "crease" edges
+
+    - a "doubling" of edges
+    - beveling an edge will also work
+
+    - control edges affect bends and edge corners wherever they are applied
+
+
+  SURFACE IMPERFECTIONS and "SUBDIVISION SURFACE" MODIFIER
+
+    * avoid TRIS AND N-GONS, especially those that create POLE "STARS" LOCATED ALONG EDGE BEND CURVATURES
+
+    * avoid LARGE VARIATION OF QUAD SIZES NEAR BEND CURVATURES
+      - FIXED using CONTROL EDGES
+
+    - though not obvious at first glance, an UNEVEN DISTRIBUTION of quads can create n-gons
+      - edge loops avoid the uneven distribution
+
+    - POLE "STARS" located on FLAT PLANES DO NOT create visual surface imperfections
+
+
+RENDERING
+
+  - combines CAMERA, LIGHTING, MATERIAL, TEXTURE, and OUTPUT
+
+  - render properties tab
+  - rendering engine + options
+  - USE "VIEWPORT SHADING: RENDERED" to preview the rendered output
+
+  - "resolution %" < 100% for quick render testing/adjustment
+
+  "output properties" tab
+    - "render image (F12)" - captures still from camera view; animation current progress bar frame
+
+    - animation frame start/end
+
+    animation output:
+      * CRITICAL TO MAKE SURE TO SPECIFY LOCATION AND FILE FORMAT, OTHERWISE RENDERED OUTPUT WILL NOT BE SAVED
+
+      - if image format is used, each animation frame is saved as an image
+        - for post-production in video editing software for movie output later
+
+      - video: "ffmpeg video" is recommended
+        - additional "encoding" settings available
+          - default settings are ok
+          - container: mpeg-4 recommended
+  
+
+RENDER ENGINES
+
+  EEVEE (default engine)
+    - significantly faster to render vs cycles, but doesn't have motion blur
+
+    ambient occlusion
+      - global illumination near contact of surfaces
+      - "distance" has most impact
+
+    bloom
+      - camera effect near areas of intense brightness
+      - "radius" and "intensity" most important
+        - typing "intensity" > clamped 0.1 max, exaggerates effect
+
+    screen space reflections
+      - off: only use light and reflections from ambient image
+      - on: +reflections from scene
+
+      - "refraction": transparent material refraction of scene objects "through" the material
+        - must be enabled + each transparent material individually
+        - object selected > material tab > settings > "screen space refraction" = true
+
+  CYCLES
+    - "physics-based production renderer"
+    - realistic vs eevee, but time-consuming
+
+    - automatically takes care of most settings that must be configured in eevee - except "bloom"
+
+    - "sampling" properties affect "noise"
+      - higher sampling numbers reduce noise, but take longer
+      - # samples <> render time <> quality
+      - "grainy" image result is "noise"
+      - demo @ 4096 samples, noise-free, takes ~20min
+
+      default denoise:
+        - "view layer properties" tab > denoising
+          - 256 samples comparison on my pc
+            - off: 57:84
+            - on: 53:20 ("noise" free)
+
+      AI Denoise Node:
+        - https://youtu.be/Pw-OxOHHu5I (from comments)
+        - https://docs.blender.org/manual/en/dev/compositing/types/filter/denoise.html
+
+  WORKBENCH
+    - basically the same as blender editor "solid mode"
+
+
+MATERIALS
+
+  - material properties used in both rendering engines (for the most part)
+
+
+  "material properties" tab (method 1 - checkered ball icon)
+
+    - create new materials + add/remove/assign to "slots"
+
+    - materials-assigned-to-slot specific to object selected
+      - this allows re-using materials
+
+    - use "viewport shading: material preview"  OR  "viewport shading: rendered"
+
+    - "base color" affects material and rendered only, "viewport shading: solid" requires "viewport display" > color to be set
+
+    - material reflection is controlled with the "roughness" property (0 - relective, 1 - flat)
+      - "specular" property also impacts this, but more so the relected light
+
+    - use "metallic" property for metal materials
+      + "roughness" property for metal "polish"-level
+
+    - for glass-like materials use:
+      "transmission" (0 - opaque, 1 - glass-like)
+      + "material properties" > settings > "screen space refraction" = true
+      + "roughness"
+
+    - wax, skin, fruit, etc. use "subsurface" property (small value nearer to zero)
+
+    - copy materials
+      - object > select from existing
+        OR
+      - select objects > select active object with required material > object (menu) > "make links" ("CTRL+L") > materials
+
+
+  "shader editor" (method 2 - see "TEXTURE")
+
+
+  MISC TIPS:
+    - purge unwanted/unused materials = outliner > orphan data > select materials > purge button
+
+
+MULTIPLE MATERIALS
+  - assign multiple materials to an individual object, with granular material assignment to each object "face"
+
+  OBJECT "MATERIAL PROPERTIES" TAB
+    > create multiple "slots", with a unique material assigned to each
+    > enter object "edit mode"
+    > select faces for alternate materials
+    > in object "material properties" tab, press "assign" button
+
+  SHADER EDITOR
+    - when manipulating multiple materials only one material can be edited at a time
+    - use the "material properties" tab and select the appropriate material slot to switch the material being edited in the shader editor
+
+
+TEXTURES
+
+  - assign image instead of material base color
+
+  - uses "shader editor" (new panel)
+    - node-based system
+    - zoom/pan like 3d-view
+    - sidebar like 3d-view ("N")
+
+  - "shading" workspace is a streamlined view for working with textures
+
+  - add image texture:
+    - add menu ("SHIFT+A") > texture > "image texture"
+    - open image file
+        OR
+    - drag and drop image file from OS
+
+    - connect "color" (texture node) to "base color" (principled BSDF node)
+    - view material object with "viewport shader: material OR render"
+
+  - remove image texture:
+    - break connection  OR  delete the material node
+
+  - "UV mapping" controls texture positioning
+
+
+  PBR TEXTURES ("PHYSICALLY BASED RENDERING")
+
+    - using image textures instead of parameter numerical values
+
+    - from photos, manual painting, and image "texture packs" (internet sites)
+      - "texture pack" sources: 3dtextures.me texturehaven.com cc0textures.com cgbookcase.com
+
+    - besides "base color", image textures can also be assigned to other parameters such as "metallic", "roughness", "normal", etc.
+      - "base color", "roughness", "normal" is usually sufficient
+
+      "base color" parameter (yellow), "color space" texture input = "sRGB"
+
+      "roughness" parameter (gray), "color space" texture input = "non-color" (darker = glossy, lighter = matte)
+
+      "metallic" parameter (gray), "color space" texture input = "non-color" (black = non-metallic, white = metallic)
+
+      "normal" parameter (purple), "color space" texture input = "non-color" 
+        - normal orientation information (kind of a "pseudo-3d", but actually affects light reflections)
+        * requires an intermediate node, "vector: normal map"
+          - connections: texture color > "vector: normal map" normal > bsdf normal
+
+      "displacement"
+        - not covered (future video)
+        - see  "How To Setup PBR and Displacement in EEVEE AND Cycles [Blender 2.8]" of a channel called "Blender Binge"
+
+      ** note the parameter input dot color:
+        yellow = color (texture color space = "sRGB")
+        gray = value (texture color space = "non-color")
+        purple = vector (texture color space = "non-color")
+
+    - texture resizing
+      - default texture size may be too large
+      - to adjust, additional nodes are required: "vector: mapping" and "input: texture coordinate"
+
+      "input: texture coordinate" (output: uv)
+      > (input: vector) "vector: mapping" (output: vector) 
+      > (input: vector) "texture: image texture" ...etc.
+
+      - in the "vector: mapping" node, adjust scale, rotation, location properties
+      - for other "parallel" inter-related PBR texture nodes, the same "vector: mapping" node output should be re-used so that all the PBR texture images stay in-sync
+
+
+LIGHTING
+
+  - adjust scene lighting and shadows
+  - best way to view is "viewport shading: rendered"
+
+  - light "object data properties"
+
+      - color, power, specular, radius, etc.
+      - properties available depend on the type of light selected
       
-      keyboard: 
-        location = "ALT+G"
-        rotation = "ALT+R"
-        scale = "ALT+S"
+      - radius/size controls light diffusion and is most noticeable (enabled) with "render properties">shadow>"soft shadows"=true
 
-    APPLY - set current transform as zero (or default)
-      - object>apply>[location, rotation, scale]
-      
-      keyboard: "CTRL+A"
+  - types: point, sun, spot, area
+    - type of light can be changed at any time
+    - sun angle can be controlled using the rotate tool
 
 
-    NOTE:
-      - many EDIT MODE tool issues can be resolved using OBJECT MODE apply transform (see INSET problem/resolution)
+ENVIRONMENT IMAGES (HDR)
 
-      - transforms applied in OBJECT MODE really need to APPLY TRANSFORM
-        - particularly OBJECT MODE - SCALING
-        - scaling in EDIT MODE would also avoid issues
+  - HDR environment-induced lighting and reflections (reflected landscape)
 
-      - video tutorial demonstrates this well
-        - https://www.udemy.com/course/learn-blender-28/
-        - section 2: polygonal modeling, 40. applying the scale
+  - works with "viewport shading: material preview" OR "viewport shading: rendered"
+  - works with eevee OR cycles render engines
 
+  "viewport shading: material preview"
+    - some pre-made "quick-preview" environments to select from in the "viewport shading" menu drop-down
 
-  ADD NEW OBJECT ITEMS
+  "viewport shading: rendered"
+    - uses default scene lighting and reflections
 
-    - add meshes, grease pencil, etc.
+  - edit the scene environment using "world properties" tab OR "shader editor"
 
-    * NOTE: NEW OBJECT OPTIONS ONLY AVAILABLE IMMEDIATELY AFTER THE NEW OBJECT IS CREATED
-      - these new object options are accessible in a panel, briefly visible at the time of creation
+  "SHADER EDITOR"
+    - use "shader type" drop-down and select "world"
+      - "object" used for object model rendering
+      - "line style" used for 2d drawing modes
 
-    add object (in-place menu) = "SHIFT+A"  OR  on-screen menu
+    - default node layout:
+      "shader: background" (output: background) > (input: surface) "output: world output"
 
+    SCENES WITHOUT AN ENVIRONMENT IMAGE and ONLY ILLUMINATED BY THE SCENE LIGHTS
+      * the BACKGROUND NODE COLOR SHOULD BE COMPLETELY BLACK
+      - not really sure if this needs to be manually configured or if this is the default
 
-  USEFUL PIE MENUS
+    SCENES WITH AN ENVIRONMENT IMAGE
+      - add ("SHIFT+A") > texture > "environment texture" (creates "environment texture" node)
+      - "environment texture": color > background: color
 
-    blender interaction modes pie menu = "CTRL+TAB"
+      - ideal image source: 360-degree ambient image + high dynamic range (brightness information)
+        - sources: http://www.hdrihaven.com
+        - .hdr format
 
-    shading pie menu = "Z" key
+      - disable scene lighting
+      - cycles rendering engine has the best environment lighting effects
 
-    snap pie menu = "SHIFT+S"
-      - menu > snap > ...
+    SCENES WITH AN ENVIRONMENT IMAGE (NO BACKGROUND)
+      - use lighting and reflections only
 
-    main menu commands = "SHIFT+SPACEBAR"
+      - shader editor
+      > add a new background node (however, "world output" node can only accept one input)
+        - background color can be adjusted and will take effect after the next steps
 
+      > add a "mix shader" node to combine multiple background nodes
+        - add > shader > "mix shader"
+        - default to 50-50% mix
+        - adjust "fac" setting to favor one shader
 
-  MISC USEFUL
+      > add a "light path" node to control the "mix shader": fac
+        - add > input > "light path"
+        - "light path": "is camera ray" > "mix shader": fac
+        - this should eliminate the background image while maintaining environment light and reflections
+        * the background node connections may need to be swapped for the "light path" node to have any effect
 
-    TOGGLE LOCAL VIEW (SELECTED OBJECTS) = "/"
-    SHOW/HIDE MODELING VIEWPORT TOOLS = "T"
 
-    IMMERSION MODE = "CTRL+SPACE"
-      - current view area is temporarily maximimized
-      - press a 2nd time to return
+CAMERA
 
-    ZOOM TO BORDER (selected rectangle) = "SHIFT+B"
+  - possible to have MORE THAN ONE CAMERA
+    - create just like any other object
+    - when rendering, only the "active" camera is used (denoted by solid black triangle above it)
+      - view > cameras > "set active object as camera"  OR  "CTRL+NUMPAD-0"  OR  green camera icon in scene selection
+  
 
-    - duplicate object = "SHIFT+D" (automatically starts move)
-    - repeat last command = "SHIFT+R"
-
-    top-right shading icons > "viewport shading: solid" > down arrow options > color: random
-      - good for seeing model differences
-
-    viewport overlays (top-right icon set) controls visualization elements in the primary viewport
-      * press the main icon to quickly enable/disable all overlay elements
-
-    - quick capture image = view>"viewport render image"
-
-    TWO COORDINATES (ie. x and y) that will have IDENTICAL VALUES
-      - click in X, drag down to "link" them temporarily, drag left/right or type in numerical value
-      - both values should be the same
-
-    STARTUP FILE
-      - file>default>"save startup file"
-      - sets current environment as startup
-
-    HIDE SELECTED OBJECTS = "H"
-
-    UNHIDE ALL = "ALT+H"
-
-    ISOLATE VIEW COLLECTIONS (IN ORDER FROM SCENE COLLECTION) = "1..0"
-      - UNHIDE ALL = "ALT+H" (IN OUTLINER)
-
-    QUICK FAVORITES = "Q"
-      - add/remove menu shortcuts, accessible by press "Q" first
-
-    ASSIGN SHORTCUT
-      - similar to QUICK FAVORITES, but assigned to KEYBOARD SHORTCUT
-      - not sure how these impact preference shortcuts..
-
-    FLATTEN MULTIPLE EXTRUSION FACES
-      - for when composite of faces isn't flat
-      - scale > restrict axis > type "0+ENTER"
-
-
-  CURSOR
-
-    - determines where new items are created
-
-    reset cursor to origin = "SHIFT+C"  OR  right-click>snap>"cursor to world origin"
-    move cursor = "SHIFT+RMB"  OR  on-screen tool + LMB
-
-    type in cursor coordinates => sidebar "N" => "view" tab => "3d cursor"
-
-    MOVE CURSOR TO CENTER BETWEEN TWO OBJECTS
-      - select objects > "SHIFT+S" ((menu > snap) > "cursor to selected"
-
-
-  OBJECT MODE
-
-    - interact with whole objects (rotate, scale, move, ..)
-
-    alignment of objects
-      (EDIT MODE) select vertices
-      > right-click (vertext context menu)
-      > "snap vertices"
-      > "cursor to selected"
-      (OBJECT MODE) select object
-      > right-click (object context menu)
-      > snap
-      > selection to cursor
-
-    create parent-child object heirarchy
-      - (OBJECT MODE) select child object (1st)
-      > SHIFT+ select parent object (2nd)
-      > right-click (object context menu)
-      > parent>object
-
-      NOTE: transforms to parent affect parent+child, but transforms to child objects only apply to the child
-
-
-  EDIT MODE
-
-    - edit individual components (VERTICES, EDGES, FACES ..)
-      * hold "SHIFT" + select component type icons to work with combined component types (ie. EDGES+VERTICES)
-      - select ONE different component type using "1, 2, OR 3" keys (SHIFT modifier also works for multi-component type selection)
-
-    - must return to OBJECT MODE to edit a different object
-      * MULTI-OBJECT EDIT MODE is possible by selecting more than one object in OBJECT MODE and then entering EDIT MODE
-
-    - use "SHIFT+LMB" to multi-select
-    - resize, scale, move selected components
-
-    switch between OBJECT MODE <=> EDIT MODE = "TAB"
-
-    new edge face from vertices => select bounding vertices/edges => "F" key  OR  vertex => new edge/face from vertices
-
-    mirror features - (EDIT MODE) "A" > Mesh > Symmetrize
-      - note that the symmetrize occurs around the object origin - the origin must be adjusted as needed
-
-    * as previously mentioned with OBJECT MODE, some options are ONLY AVAILABLE IMMEDIATELY AFTER that operation
-
-    - many operations specific to EDIT MODE (LOOP CUT, etc.)
-
-      LOOP CUT = "CTRL+R"
-        - insert new edge perpendicular to selected area
-        - pre-select number of cuts = "MOUSE HOVER + MOUSE WHEEL SCROLL"
-        - initial LMB-click allows adjustment of loop cut position, 2nd LMB-click appies loop cut
-
-        OFFSET EDGE LOOP CUT = "CTRL+SHIFT+R"
-          - sub-icon tool
-          - with an edge selected, creates 2 equi-distant cuts on either side
-
-      KNIFE TOOL = "K"
-        - create edges along surface normals that follow the mouse/pen
-        - each time the mouse crosses an existing edge, a new vertice is created
-        - results in a non-linear path of edges created by the mouse
-
-        BISECT
-          - sub-icon tool
-          - only works if PLANES ARE PRE-SELECTED
-          - create "large cut" straight path of edges through the selected planes
-          - parallel to the current view
-          - offset and angle can only be modified immediately after placing the bisect cut
-
-      EXTRUDE
-        - default extrusion tool is EXTRUDE REGION
-
-        - works on selected FACES, EDGES or VERTICES
-          - EDGE extrusion creates FACES
-          - VERTEX extrusion creates EDGES
-          - VERTEX/EDGE extrusion good for 2D-type shape creation, but 3D works well also
-          - works best with ACTIVE TOOL SETTINGS > axis type = "XYZ"
-
-        - push/pull face along the normal direction of the face plane
-        - use "+" ICON MODIFIER appears allowing creation of NEW extrusion
-          - using the "+" ICON MODIFIER repeatedly will create multiple extrusions
-
-        - use the ARROW GRAPHIC MODIFIER to adjust existing extrusion
-
-        extrude menu = "ALT+E"
-
-        extrude = "E"
-          * careful though, as this combines 2 commands (create new face + move) and "+" icon step is skipped
-            - so, when trying to cancel using "ESC", an ADDITIONAL OVERLAPPING FACE WILL STILL EXIST IN THE MODEL
-
-        other EXTRUSION TOOLS:
-
-          EXTRUDE ALONG NORMALS
-            - more ideal for a group of adjacent faces (eg. select uv sphere ring)
-            - treats extrusion as if the adjecent faces are one solid extrusion mass
-
-          EXTRUDE INDIVIDUAL
-            - similar to EXTRUDE ALONG NORMALS, but each selected face extrusion is independent
-
-          EXTRUDE TO CURSOR
-            - good for shaping the overall multi-extrusion (eg. teapot handle)
-            - ideal view would be a side profile when creating the overall extrusion shape
-
-      INSET
-        - works on selected FACES
-        - create inset FACES that are "bevel-like", but flat
-
-        - by default, adjacent faces will be treated as an individual unit
-          - CREATION OPTIONS DIALOG allows for adjustments including the inset created on each INDIVIDUAL face
-          - ACTIVE TOOL SETTING tab (properties panel) also allows pre-setting the INDIVIDUAL option
-
-        - use on-screen inset menu  OR  "I" (preferred)
-
-        TIP: if having problems with inset faces having unequal border widths
-          - (object mode) "CTRL+A" >> scale => (edit mode) inset "I"
-
-          - https://blender.stackexchange.com/questions/50876/how-do-i-inset-a-face-equally
-            - https://blender.stackexchange.com/a/112215 (basically scaled in EDIT MODE helps)
-              "transformations in object mode are what you want it to look like, but transformations in edit mode (or that are applied using "CTRL+A" menu in object mode) are what it is like"
-
-
-      BEVEL
-        - created along edges
-        - CREATION OPTIONS DIALOG adjusts the bevel offset and shape
-
-        - keyboard = "CTRL+B"
-        - use the MOUSE WHEEL TO CONTROL THE NUMBER OF SEGMENTS that define the bevel when dragging the initial bevel offset
-
-
-    - NUMEROUS commands are NOT available through the left-hand icons, but through the EDIT MODE sub-menus
-
-      SUB-MENUS:
-        - view
-        - select
-        - add ("SHIFT+A")
-        - mesh
-        - vertex ("CTRL+V")
-        - edge ("CTRL+E")
-        - face ("CTRL+F")
-        - uv ("U")
-
-      example: edge>subdivide
-
-
-  BRIDGING
-
-    - creates "bridge" of faces on selected faces OR open edges
-    - select items > edge (menu OR "CTRL+E") > "bridge edge loops"
-
-
-  SPIN TOOL
-
-    - create arcs OR duplicate clones along an arc path
-
-    - spin is initially around the pivot point, so adjust appropriately
-      - the "spin pivot" can be adjusted during the spin operation graphically or with the CREATION OPTIONS DIALOG
-
-    - control axis of arc creation with the ACTIVE TOOL SETTINGS
-      - adjusted during spin operation
-
-    - select a face normal to the spin extrusion
-    - control CW or CCW direction
-
-
-  SMOOTH SHADING
-
-    - object menu > "shade smooth" OR "shade flat"
-
-    leave sharp creases in "shade smooth" mode
-      - object data properties (green triangle icon) > normals > "auto smooth" = true
-
-    mark individual edges as "sharp"
-      - object EDIT mode > select edges > edge menu > "mark/clear sharp"
-      - only visible if object data properties "auto smooth" = true
-
-
-  FORM ADJUSTMENT TOOLS
-
-    SMOOTH - smooth all selected faces
-
-    RANDOMIZE
-      - randomize size/position of all selected faces
-      - organic/rough surfacesl
-
-    SHRINK/FATTEN - skinny/fatten overall shape
-
-    PUSH/PULL - similar to shrink/fatten, but from a single point in the object center
-
-    SHEAR - 6 possible directions to shear the object
-
-    TO SPHERE - object becomes more sphere-like
-
-
-  FILL OPEN AREAS
-
-    CREATE A SINGLE FACE on an open face
-      - select edges that define the open area > vertex (menu OR "CTRL+V") > "new edge/face from vertices" ("F")
-
-    CREATE A GRID OF FACES on an open face
-      - select egdes that define the open area > face (menu OR "CTRL+F") > "grid fill"
-      * ONLY WORKS if the selected hole has an EVEN NUMBER OF EDGES
-
-
-  POLY BUILD
-
-    - "free form"
-
-    - some changes from original video ..blender 2.81
-      - default creates quad from an edge
-      - "CTRL" near an edge creates triangle
-      - select vertex > "E" - extrudes an edge
-      - "SHIFT" + select - delete items
-
-
-  PROPORTIONAL EDITING
-
-    - vertices follow a decayed tool curvature effect (demo of "bell curve" around vertex move)
-
-    - actived with SMALL CIRCLE ICON ("O" shortcut) near the magnet
-      - also available as an option in the TOOL POST-OPERATION OPTIONS DIALOG
-
-      - options:
-        - curvature shape
-        - size of area affected
-        - "projected from view": curvature effect only in 2 axes
-        - "connected only":
-          OFF = curvature effects shapes even NOT CONNECTED if close enough
-          ON = curvature effect restricted to current shape, however curvature is slightly "OFF LOOKING"
-
-    - limited to MOVE tool (?)
-
-
-  SEPARATING / MERGING VERTICES
-
-    "RIP REGION" TOOL
-      - separate VERTICES or EDGES only from an existing intersection
-
-    MERGING (vertices)
-      - select vertices > mesh menu ("CTRL+V") > merge (directly using "M") > ..
-
-      - MOVE command > ACTIVE TOOL SETTINGS > "auto merge" option = TRUE (this option effectively welds or joins vertices)
-        + SNAP (magnet icon OR "SHIFT+TAB") = ON
-        + SNAP OPTIONS: vertex, closest, "project onto self", affect - move
-
-
-  VISIBILITY
-
-    - only affects EDIT MODE
-
-    - select components > mesh menu > show/hide > ..
-      - HIDE ("H")
-      - HIDE UNSELECTED ("SHIFT+H")
-      - REVEAL ("ALT+H")
-
-
-  DELETE PART OF GEOMETRIES
-
-    vertice/edge/face selected > "DELETE" > menu selection to delete or dissolve
-      delete destroys all geometry components that depend on that deleted object
-      dissolve
-
-    dissolve selected geomtries = "CTRL+DELETE"  OR  "CTRL+X"
-      - geomtries = vertices, edges, or faces (multiple faces dissolves in-between edges)
-
-    * don't try deleting an object by deleting all the parts of it's geometries - it still exists in the object heirarchy
-
-
-  JOIN / SEPARATE GEOMETRIES
-
-    join object geometries = "CTRL+J"
-      - active object contains both geometries
-      - active object origin becomes origin for the new joined object
-      * note that this is different from parent-child object
-
-    separate object geometries
-      - EDIT MODE
-      - select sub-object geometry ("L" (select linked))
-      - mesh (menu) > separate > selection
-
-
-  MODELING "FIXES"
-
-    OVERLAPPING VERTICES
-      - usually created by "accident" (eg. "E" (extrude) cancelled)
-      FIX: select all vertices on shape (or "A") > mesh menu > merge ("M") > "by distance"
-
-
-    LOOSE EDGES
-      - ex. delete edges leaves perpendicular edges with no face
-        ex. extrude vertices
-
-      FIX: edge selection mode > select menu > "select all by trait" > "loose geometry" > "DELETE" > edges
-
-
-    INTERIOR FACES
-      - ex. uv sphere ring > new face > creates an interior face
-
-      FIX: nothing selected > select menu > "select all by trait" > "interior faces" > "DELETE" > faces
-
-
-  ANIMATION
-
-    - default 24 fps
-    - each object has it's own timeline/dopesheet
-
-    KEYFRAMES
-      (OBJECT MODE) select object
-      > on-screen menu "Object" > "Animation" > "Insert Keyframe"  OR  "I"
-      > select type of keyframe
-      > move playhead to desired frame
-      > manipulate object (move, rotate, etc.)
-      > add new keyframe of the same type as above
-
-    INTERPOLATION
-      - controls speed-up/slow-down, easing effects
-      - select keyframes
-      - right-click > interpolation mode
-
-    - copy/paste keyframes = "CTRL+C"/"CTRL+V"
-      - able to copy/paste an entire sequence of keyframes
-      - with the play head on an existing keyframe, paste will start at that time interval..which works well if the existing keyframe is exactly the same as the starting keyframe of the pasted keyframe sequence
-
-
-  SIDEBAR
-    - "N" hotkey
-    - manipulation using property values
-
-
-  ORIGIN ADJUST
-
-    - object mode > object menu (or RMB) > "set origin" > ..
-
-NOTES REVIEW BOOKMARK (GOING UP)
-  POLYGON SHAPES
-
-    triangles - TRIS
-    rectangular - QUADS
-    5+ sides - N-GONS
-
-    POLE - vertex
-    POLE "STAR" - vertex with 5+ edges
-
-    * QUADS ARE PREFERRED for 3d modeling
-
-
-  SUBDIVISION OF SURFACES
-
-    - modifier (wrench icon) > "subdivision surface"
-    - auto-calculates and increases polygons
-    - "catmull clark" option creates smoother surfaces
-    - optimal smoothing effect with a lower number of subdivisions, combined with "shade smooth" option
-
-    * if edit mode final render is difficult to see with the default modifier settings
-      - enable the "upside down triangle" icon in the modifier ("on cage" = original shape)
-
-    - temporarily disable "subdivision surface" modifier
-      - disable the "monitor" icon in the modifier ("realtime")
-
-
-    "CREASE" EDGES
-      - controls edge smoothness
-      - edit mode > select edges > "N" (sidebar) > item tab > transform > "mean crease" = 1 (or value near 1)
-      - works in conjunction with "subdivision surface" modifier
-
-
-    CONTROL EDGES
-      - adding additional edges to the actual model so that they "interfere" with the "subdivision surface" effect  
-        - an alternative to "crease" edges
-
-      - a "doubling" of edges
-      - beveling an edge will also work
-
-      - control edges affect bends and edge corners wherever they are applied
-
-
-    SURFACE IMPERFECTIONS and "SUBDIVISION SURFACE" MODIFIER
-
-      * avoid TRIS AND N-GONS, especially those that create POLE "STARS" LOCATED ALONG EDGE BEND CURVATURES
-
-      * avoid LARGE VARIATION OF QUAD SIZES NEAR BEND CURVATURES
-        - FIXED using CONTROL EDGES
-
-      - though not obvious at first glance, an UNEVEN DISTRIBUTION of quads can create n-gons
-        - edge loops avoid the uneven distribution
-
-      - POLE "STARS" located on FLAT PLANES DO NOT create visual surface imperfections
-
-
-  RENDERING
-
-    - combines CAMERA, LIGHTING, MATERIAL, TEXTURE, and OUTPUT
-
-    - render properties tab
-    - rendering engine + options
-    - use "viewport shading: rendered" to preview the rendered output
+  MOVE CAMERA BASED ON CURRENT VIEWPORT
+    - view > "align view" > "align active camera to view"  OR  "CTRL+ALT+NUMPAD-0"
     
-    engines:
+  TOGGLE CAMERA VIEW
+    - "numpad-0"  OR  movie camera icon
 
-      eevee (default)
-        - significantly faster to render vs cycles, but doesn't have motion blur
+  TWEAK CAMERA POSITION (METHOD 1)
+    - create 2 viewports
+    - make 1 viewport a camera view
+    - in the standard viewport, adjust the camera position/angle using move/rotate tools
+    * recommended to use "local" mode transform orientation so that movements are adjusted to the camera viewport
 
-      cycles
-        - "physics-based production renderer"
-        - realistic vs eevee, but time-consuming
+  TWEAK CAMERA POSITION (METHOD 2)
+    - toggle camera view
+    - move horizontally and vertically = "G" key
+    - move back and forth = "G+Z+Z" key
 
-      workbench
-        - basically the same as blender editor "solid mode"
+  CAMERA PROPERTIES
+    - camera object selected, "object data properties" tab
+    - control the focal length, camera type, etc.
 
 
-  MATERIALS
+OUPUT PROPERTIES
 
-    - material properties used in both rendering engines (for the most part)
+  - output properties tab
+  - resolution (controls camera viewport "square"), animation # frames, animation fps, output formats..
 
 
-    "material properties" tab (method 1 - checkered ball icon)
+GREASE PENCIL
 
-      - create new materials + add/remove/assign to "slots"
+  - more notes needed
 
-      - materials-assigned-to-slot specific to object selected
-        - this allows re-using materials
+  pen strength = "SHIFT+F"
 
-      - use "viewport shading: material preview"  OR  "viewport shading: rendered"
+  pen radius = "F"
 
-      - "base color" affects material and rendered only, "viewport shading: solid" requires "viewport display" > color to be set
+  * radius / strength hotkeys also work on the other drawing modes and eraser
 
-      - material reflection is controlled with the "roughness" property (0 - relective, 1 - flat)
-        - "specular" property also impacts this, but more so the relected light
 
-      - use "metallic" property for metal materials
-        + "roughness" property for metal "polish"-level
+SVG IMPORT
 
-      - for glass-like materials use:
-        "transmission" (0 - opaque, 1 - glass-like)
-        + "material properties" > settings > "screen space refraction" = true
-        + "roughness"
+  - much simpler for complex paths vs. trying to model in blender alone
 
-      - wax, skin, fruit, etc. use "subsurface" property (small value nearer to zero)
+  * great way to simplify 3d printing stuff (even possible to use bitmap images)
 
-      - copy materials
-        - object > select from existing
-          OR
-        - select objects > select active object with required material > object (menu) > "make links" ("CTRL+L") > materials
 
+  INKSCAPE
+    - gradients fills, objects with line widths, embedded images WILL NOT WORK
 
-    "shader editor" (method 2 - see "TEXTURE")
+    - COMBINE PATHS for logical groups as these are recognized by blender
 
+    - scale primary svg width to 2000 mm (should fit blender imported svg into 2 squares default view)
+      - NOTE: also at this scale, blender doesn't seem to mangle vertices
 
-    MISC TIPS:
-      - purge unwanted/unused materials = outliner > orphan data > select materials > purge button
+    - re-position primary svg center to document bottom-left of document (svg should import into blender world 0,0)
+      - ALTERNATE METHOD: blender imported svg "set origin > geometry to origin" also would work ("CTRL+ALT+SHIFT+C")
 
+    * HANDLING CURVES
+      - select the object(s) > menu "extensions" > "modify path" > "flatten beziers"
+      - experiment with a number around 2.0 to optimize the number of vertices and make the image still look curved
 
-  MULTIPLE MATERIALS
-    - assign multiple materials to an individual object, with granular material assignment to each object "face"
+    * png images converted to svg is possible using built-in inkscape feature (needs testing)
 
-    OBJECT "MATERIAL PROPERTIES" TAB
-      > create multiple "slots", with a unique material assigned to each
-      > enter object "edit mode"
-      > select faces for alternate materials
-      > in object "material properties" tab, press "assign" button
+    - best to save as "plain svg" (not "inkscape" or "optimized") to maintain many features
 
-    SHADER EDITOR
-      - when manipulating multiple materials only one material can be edited at a time
-      - use the "material properties" tab and select the appropriate material slot to switch the material being edited in the shader editor
+  BLENDER
+    - convert to mesh (NOTE: not really sure how "paths" work yet)
+      - curves can only be approximated
+      - default curves conversion creates an extremely large number of vertices
+      - requires a lot of cleanup to reduce the polygon count
+      - dissolve unneeded edges works, but this is tedius
+      ** see inkscape step "HANDLING CURVES" >> this WILL SAVE A LOT OF TIME as the process is more automated
 
+    - extrusion can then be used and the mesh can be modified as normal
 
-  TEXTURE
 
-    - assign image instead of material base color
+MODELING TIPS
 
-    - uses "shader editor" (new panel)
-      - node-based system
-      - zoom/pan like 3d-view
-      - sidebar like 3d-view ("N")
+  x-axis: model symmetry (default)
+  y-axis: model front/back
 
-    - "shading" workspace is a streamlined view for working with textures
 
-    - add image texture:
-      - add menu ("SHIFT+A") > texture > "image texture"
-      - open image file
-          OR
-      - drag and drop image file from OS
+QUESTIONS
 
-      - connect "color" (texture node) to "base color" (principled BSDF node)
-      - view material object with "viewport shader: material OR render"
-
-    - remove image texture:
-      - break connection  OR  delete the material node
-
-    - "UV mapping" controls texture positioning
-
-
-    PBR TEXTURES ("PHYSICALLY BASED RENDERING")
-
-      - using image textures instead of parameter numerical values
-
-      - from photos, manual painting, and image "texture packs" (internet sites)
-        - "texture pack" sources: 3dtextures.me texturehaven.com cc0textures.com cgbookcase.com
-
-      - besides "base color", image textures can also be assigned to other parameters such as "metallic", "roughness", "normal", etc.
-        - "base color", "roughness", "normal" is usually sufficient
-
-        "base color" parameter (yellow), "color space" texture input = "sRGB"
-
-        "roughness" parameter (gray), "color space" texture input = "non-color" (darker = glossy, lighter = matte)
-
-        "metallic" parameter (gray), "color space" texture input = "non-color" (black = non-metallic, white = metallic)
-
-        "normal" parameter (purple), "color space" texture input = "non-color" 
-          - normal orientation information (kind of a "pseudo-3d", but actually affects light reflections)
-          * requires an intermediate node, "normal map"
-            - connections: texture color > "normal map" normal > bsdf normal
-
-        "displacement"
-          - not covered (future video)
-          - see  "How To Setup PBR and Displacement in EEVEE AND Cycles [Blender 2.8]" of a channel called "Blender Binge"
-
-        ** note the parameter input dot color:
-          yellow = color (texture color space = "sRGB")
-          gray = value (texture color space = "non-color")
-          purple = vector (texture color space = "non-color")
-
-
-  LIGHTING
-
-    - adjust scene lighting and shadows
-    - best way to view is "viewport shading: rendered"
-
-    - light "object data properties"
-
-        - color, power, specular, radius, etc.
-        - properties available depend on the type of light selected
-        
-        - radius/size controls light diffusion and is most noticeable (enabled) with "render properties">shadow>"soft shadows"=true
-
-    - types: point, sun, spot, area
-      - type of light can be changed at any time
-      - sun angle can be controlled using the rotate tool
-
-
-  ENVIRONMENT IMAGES (HDR)
-
-    - HDR environment-induced lighting and reflections (reflected landscape)
-
-    - works with "viewport shading: material preview" OR "viewport shading: rendered"
-    - works with eevee OR cycles render engines
-
-    "viewport shading: material preview"
-      - some pre-made "quick-preview" environments to select from in the "viewport shading" menu drop-down
-
-    "viewport shading: rendered"
-      - uses default scene lighting and reflections
-
-    - edit the scene environment using "world properties" tab OR "shader editor"
-
-    "SHADER EDITOR"
-      - use "shader type" drop-down and select "world"
-        - "object" used for object model rendering
-        - "line style" used for 2d drawing modes
-
-      - default node layout: background: background > "world output": surface
-
-      SCENES WITHOUT AN ENVIRONMENT IMAGE and ONLY ILLUMINATED BY THE SCENE LIGHTS
-        * the BACKGROUND NODE COLOR SHOULD BE COMPLETELY BLACK
-        - not really sure if this needs to be manually configured or if this is the default
-
-      SCENES WITH AN ENVIRONMENT IMAGE
-        - add ("SHIFT+A") > texture > "environment texture" (creates "environment texture" node)
-        - "environment texture": color > background: color
-
-        - ideal image source: 360-degree ambient image + high dynamic range (brightness information)
-          - sources: http://www.hdrihaven.com
-          - .hdr format
-
-        - disable scene lighting
-        - cycles rendering engine has the best environment lighting effects
-
-      SCENES WITH AN ENVIRONMENT IMAGE (NO BACKGROUND)
-        - use lighting and reflections only
-
-        - shader editor
-        > add a new background node (however, "world output" node can only accept one input)
-          - background color can be adjusted and will take effect after the next steps
-
-        > add a "mix shader" node to combine multiple background nodes
-          - add > shader > "mix shader"
-          - default to 50-50% mix
-          - adjust "fac" setting to favor one shader
-
-        > add a "light path" node to control the "mix shader": fac
-          - add > input > "light path"
-          - "light path": "is camera ray" > "mix shader": fac
-          - this should eliminate the background image while maintaining environment light and reflections
-          * the background node connections may need to be swapped for the "light path" node to have any effect
-
-
-  CAMERA
-
-    - possible to have MORE THAN ONE CAMERA
-      - create just like any other object
-      - when rendering, only the "active" camera is used (denoted by solid black triangle above it)
-        - view > cameras > "set active object as camera"  OR  "CTRL+NUMPAD-0"  OR  green camera icon in scene selection
-    
-
-    MOVE CAMERA BASED ON CURRENT VIEWPORT
-      - view > "align view" > "align active camera to view"  OR  "CTRL+ALT+NUMPAD-0"
-      
-    TOGGLE CAMERA VIEW
-      - "numpad-0"  OR  movie camera icon
-
-    TWEAK CAMERA POSITION (METHOD 1)
-      - create 2 viewports
-      - make 1 viewport a camera view
-      - in the standard viewport, adjust the camera position/angle using move/rotate tools
-      * recommended to use "local" mode transform orientation so that movements are adjusted to the camera viewport
-
-    TWEAK CAMERA POSITION (METHOD 2)
-      - toggle camera view
-      - move horizontally and vertically = "G" key
-      - move back and forth = "G+Z+Z" key
-
-    CAMERA PROPERTIES
-      - camera object selected, "object data properties" tab
-      - control the focal length, camera type, etc.
-
-
-  OUPUT PROPERTIES
-
-    - output properties tab
-    - resolution (controls camera viewport "square"), animation # frames, animation fps, output formats..
-
-
-  GREASE PENCIL
-
-    - more notes needed
-
-    pen strength = "SHIFT+F"
-
-    pen radius = "F"
-
-    * radius / strength hotkeys also work on the other drawing modes and eraser
-
-
-  SVG IMPORT
-
-    - much simpler for complex paths vs. trying to model in blender alone
-
-    * great way to simplify 3d printing stuff (even possible to use bitmap images)
-
-
-    INKSCAPE
-      - gradients fills, objects with line widths, embedded images WILL NOT WORK
-
-      - COMBINE PATHS for logical groups as these are recognized by blender
-
-      - scale primary svg width to 2000 mm (should fit blender imported svg into 2 squares default view)
-        - NOTE: also at this scale, blender doesn't seem to mangle vertices
-
-      - re-position primary svg center to document bottom-left of document (svg should import into blender world 0,0)
-        - ALTERNATE METHOD: blender imported svg "set origin > geometry to origin" also would work ("CTRL+ALT+SHIFT+C")
-
-      * HANDLING CURVES
-        - select the object(s) > menu "extensions" > "modify path" > "flatten beziers"
-        - experiment with a number around 2.0 to optimize the number of vertices and make the image still look curved
-
-      * png images converted to svg is possible using built-in inkscape feature (needs testing)
-
-      - best to save as "plain svg" (not "inkscape" or "optimized") to maintain many features
-
-    BLENDER
-      - convert to mesh (NOTE: not really sure how "paths" work yet)
-        - curves can only be approximated
-        - default curves conversion creates an extremely large number of vertices
-        - requires a lot of cleanup to reduce the polygon count
-        - dissolve unneeded edges works, but this is tedius
-        ** see inkscape step "HANDLING CURVES" >> this WILL SAVE A LOT OF TIME as the process is more automated
-
-      - extrusion can then be used and the mesh can be modified as normal
-
-
-  MODELING TIPS
-
-    x-axis: model symmetry (default)
-    y-axis: model front/back
-
-
-  QUESTIONS
-
-    shade smooth, is this useful outside 3d modeling?
+  shade smooth, is this useful outside 3d modeling?
