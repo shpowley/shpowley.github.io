@@ -1,4 +1,32 @@
 ----------
+Tuesday 2020-07-21
+
+  CORONAVIRUS TOTAL INFECTED: 14.82 MILLION
+
+
+  - no log entry for a while. been working on various things - a lot is artwork-related. learning blender to make an animated 3d "lucky cat", etc.
+
+
+  WOBBLE PROJECT
+
+    HAND SIGNS / FOAM FINGER
+
+      changing sprite color programmatically
+        - I've had this TODO item written down for a while. did a quick test today in the wobble project with the white "hang loose" text and changed it to the foam finger red.
+
+        * I think the BASE SPRITE COLOR SHOULD BE WHITE
+          * because of this, many GRAPHICS WILL NEED SEPARATE BASE COLOR AND LINE ART
+
+        - this can be re-used (surfer/hula dancer skin tone color, foam finger, clothing items, flowers, etc.)
+
+        - 1st noted here: https://docs.cocos2d-x.org/cocos2d-x/v4/en/sprites/manipulation.html
+
+          - sprite>node method setColor(Color3B(R,G,B))
+
+          - Color3B RGB values are 0-255, but HEX LITERAL VALUES can be used, which makes it easier
+            ex. ee221bff (RGBA from relevant art app) R="0xEE" G="0x22", B="0x1B"
+
+----------
 Friday 2020-07-03
 
   WOBBLE PROJECT - HAND SIGNS

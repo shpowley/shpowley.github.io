@@ -1,10 +1,14 @@
 TOPICS TO RESEARCH
 
+  - box cutter add-on
   - boolean
-  - modeling quick organic shapes
   - grease pencil
-  - mirroring
+  - modeling quick organic shapes
+  - mirroring techniques
+  - sculpting
   - denoising (see rending engine - cycles) > compositing
+  - freestyle renderer
+  - cell shader
 
 
 TUTORIALS
@@ -15,6 +19,9 @@ TUTORIALS
 
   LEARN BLENDER 2.8x THE RIGHT WAY (UDEMY - PAID)
     - https://www.udemy.com/course/learn-blender-28/
+
+  marco bucci youtube vids (2)
+    - SO MANY ADVANCED TECHNIQUES
 
 
 DRAWING TABLET SHORTCUT CANDIDATES
@@ -223,6 +230,9 @@ MISC USEFUL
     - scale > restrict axis > type "0+ENTER"
 
   SLIDER VALUES ARE OFTEN CLAMPED, but typing in a number allow values outside that range
+
+  PURGE UNWANTED/UNUSED MATERIALS 
+    - outliner (top-left icon pulldown) > orphan data (2nd icon pulldown) > select materials > purge button
 
 
 CURSOR
@@ -738,10 +748,6 @@ MATERIALS
   "shader editor" (method 2 - see "TEXTURE")
 
 
-  MISC TIPS:
-    - purge unwanted/unused materials = outliner > orphan data > select materials > purge button
-
-
 MULTIPLE MATERIALS
   - assign multiple materials to an individual object, with granular material assignment to each object "face"
 
@@ -822,6 +828,60 @@ TEXTURES
 
       - in the "vector: mapping" node, adjust scale, rotation, location properties
       - for other "parallel" inter-related PBR texture nodes, the same "vector: mapping" node output should be re-used so that all the PBR texture images stay in-sync
+
+
+UV MAPPING
+
+  - 2d images mapped to 3d object faces
+
+  - UV signify the X/Y axes in the "uv editor"
+    - U = x axis, V = y axis
+    - each logical group of faces are "uv islands" or "uv shells"
+
+  - need "uv editor" and "3d viewport"  OR  "uv editing" workspace
+    - "3d viewport" > select object > "edit mode" > select all
+    - access UV commands with the "UV" menu  OR  "U" hotkey
+
+  - edge SEAMS must be defined on the 3d object edges
+    * activate the "uv sync selection" icon in the "uv editor" view to see a synced uv map
+    - select edges > UV (menu) OR edge (menu) OR right-click > "mark seams"
+
+    - select all > uv (menu) > unwrap
+      - activate the "uv (menu)" > "live unwrap" option to have this step automatically update
+        * unwrap must be manually performed at least once
+
+    - no "correct" way of marking seams / uv unwrapping, except to eliminate face deformation
+
+  - upon uv unwrap completion, selecting any face in either the "uv editor" or "3d viewport" will highlight the corresponding face in the other view
+
+  - "uv islands" can be arranged / rotated / scaled as necessary for better visibility
+    - select entire "uv islands": select inividual faces on an island + use the "L" hotkey
+    - AUTO-SCALE: use UV (menu) > "average island scale"
+    - AUTO-PACK: use UV (menu) > "pack islands" 
+
+
+  UV UNWRAPPING COMPLEX 3D MODELS
+
+    - teddy bear example
+    - similar previous SEAM + unwrap method
+    
+    initial steps:
+      - edit mode > select all > uv (menu) > unwrap + check "live unwrap"
+        - NOTE: "live unwrap" is separate for the "uv editor", in case marking seams from this viewport
+        
+      - "uv editor" > activate the "uv sync selection" icon
+      - "uv editor" > sidebar (N) > view tab > display > overlays > check "stretching" > type = area
+        - faces closer to RED are more DISTORTED
+        - faces closer to BLUE are very UNDISTORTED 
+
+    - create SEAMS in logical areas
+      TIP: is to think about having to reconstruct the object as cloth / origami paper
+      TIP: separate front / back
+
+    - for mirror-type object parts (ie. teddy bear arm/leg) this shortcut helps to speed along the seam-creation
+      - select a seam edge > select (menu) > "select similar" (SHIFT+G) > seam
+      - select (menu) > "mirror selection" (SHIFT+CTRL+M)
+      - right-click > "make seam"
 
 
 LIGHTING
@@ -934,9 +994,145 @@ OUPUT PROPERTIES
   - resolution (controls camera viewport "square"), animation # frames, animation fps, output formats..
 
 
+DATA BLOCKS
+
+  - "sub-components" within the scene collection
+  - data blocks of the same category can be shared within the heirarchy and re-used (eg. textures, meshes)
+
+  - the data block object heirarchy view shows a NUMBER signifying how many times it is being shared
+    - clicking this number creates an exact copy (separate instance)
+    - any changes to a shared data block is reflected everywhere it's used
+
+  - the data block object heirarchy view has a COMBO-BOX to select different data blocks
+    - data block items with a "0" in front signify that they are not in use and in the garbage collection queue
+    - upon closing the project, data block items in the garbage collection queue are DELETED UNLESS MARKED WITH A "FAKE USER" (shield icon); also "0" is replaced with a "F"
+
+
+  OBJECT DUPLICATION AND SEPARATE VS SHARED DATA BLOCKS
+
+    - DUPLICATING an object (SHIFT+D) will create a SEPARATE INSTANCE of any child data blocks
+      - COMMENT: the separate instance is at most 1-generation down from the parent (eg. duplicating an object creates a separate new mesh, but both meshes would SHARE THE SAME MATERIAL)
+
+    - DUPLICATE LINK (object > "duplicate linked"  OR  "ALT+D") will create a SHARED INSTANCE of any child data blocks
+
+
+  MAKE LINKS (object menu > make links  OR  "CTRL+L")
+
+    - quickly copy an object's data blocks to other objects
+    - select destination objects > selection source object (active) > "CTRL+L" > select type of data block
+
+
+  EXTERNAL DATA
+
+    - default is to store external data via RELATIVE PATHS
+    - PACK option forces external data to be stored in the .blend file
+      - file > external data > "pack all into .blend"
+
+
 GREASE PENCIL
 
-  - more notes needed
+  Grease Pencil Tutorial - Blender 2.8 [ Concept Art ] - PART 1 (himesh anand)
+
+    start > 2d animation > 2d canvas
+
+    xyz gizmo
+
+    symmetry (mirror effect) >  modifiers (gear) > mirror
+      - choose axis (y-axis preferred?)
+
+    drawing plane (@ top-center icon)
+      - to change 2d drawing plane
+    
+    use edit mode to move line around, rotate, scale
+      - use select mode / select all stroke point
+
+
+  Grease Pencil Tutorial - 3D to 2D Workflow [ Blender 2.8 ] - PART 2 (himesh anand)
+
+    3d grease pencil > screen capture / .png export
+
+    3d perspective "skeleton" use as a 2d reference image for 2d graphics software (ie. photoshop, krita)
+
+
+  Grease Pencil Tutorial - Blender 2.8 [ Concept Art ] - PART 3 (himesh anand)
+
+    grease pencil drawing to 3d mesh
+
+    > object mode
+    > select grease pencil drawing
+    > object (menu) > convert to > bezier curve
+    > hide / remove grease pencil "stroke" from scene collection
+
+    > select new "lines" from scene collection
+
+      (useful?)
+      > "object data properties" tab > geometry
+        > bevel > depth - for "wires"
+        > extrude - for "sticks"
+
+      > object (menu) > convert to > mesh from curve/meta/surf/text
+        > create fills from edges
+        > create exterior 3d "panels" using 2 edges at different distances along the intended body
+
+
+  Background Animation in Blender 2.81 - Timelapse Video (himesh anand)
+
+    2d artwork created and exported individual layers to .png
+    import to blender
+    2d ground plane for water kinda works
+    animate some background items + camera movement for depth animation
+
+
+  How to Animate in Grease Pencil - 2D & 3D - Beginners Tutorial! [BLENDER 2.83] (himesh anand)
+
+    layers
+      > object data properties (stroke) > layers
+
+    draw mode keyboard modifiers
+      ALT - draw straight lines
+      SHIFT - lag stabilizer
+      CTRL - eraser
+
+      - hold keyboard modifiers before / during draw action for slightly different effect
+
+    right arrow to advance 1 frame (vs. using "I")
+
+    NOTE: practiced a bouncing ball animation
+      - a good idea to LOCK non-moving layers when advancing each frame (edit mode > moved ball each frame) so that keyframes are added only for the moving grease pencil layer
+
+    STACKING animation layers
+      - good idea for multiple moving/non-moving layers
+      - each new layer can be 3d or 2d
+        - 3d layers can be fully rendered
+          - toon shader might be a good choice
+        - 2d layers can be 2d stills (.png or grease pencil) or animated (grease pencil or movie?)
+
+    camera "animation"
+      - select camera > "N" > view tab > "view lock" > "lock camera to view" = true
+      - select camera > navigate to timeline frame > "I" (insert keyframe) > "LocRot" (location only would probably work) - REPEAT FOR EACH KEYFRAME
+      - "animation" workspace seems best for camera animation movement and dopesheet
+
+    light "animation"
+      - similar to camera steps except using just "Loc" keyframes
+
+    NOTE: easy to drag-select keyframes + drag move entire set
+
+
+  Draw character concepts from any angle & any lighting. Gamechanger tools! (marco bucci)
+
+    - draw on 3d model (@9:06)
+      - add (SHIFT-A) > "grease pencil" > blank > draw mode
+      - "stroke placement" = surface + offset = 0.05
+      - orbit camera + draw details on surface (overall rythms / volumes)
+
+      NOTE: the following is ok, but it seems like there's probably a better method
+      - hide the 3d model
+      - hide some background lines - sidebar ("N") > view > end = 20 (or something appropriate for the model)
+
+      - from comments.. RGB shader(maybe best for .png extport? toon shader?)
+      - my method so far: "viewport shading: solid" > settings > lighting: flat + color: texture (no .png render export though)
+        
+
 
   pen strength = "SHIFT+F"
 
