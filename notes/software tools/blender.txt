@@ -234,6 +234,9 @@ MISC USEFUL
   PURGE UNWANTED/UNUSED MATERIALS 
     - outliner (top-left icon pulldown) > orphan data (2nd icon pulldown) > select materials > purge button
 
+  SHOW OBJECT VOLUME BOUNDS
+    - "object properties" (tab) > "viewport display" > "display as" = bounds  OR  "bounds" checkbox
+
 
 CURSOR
 
@@ -251,24 +254,6 @@ CURSOR
 OBJECT MODE
 
   - interact with whole objects (rotate, scale, move, ..)
-
-  alignment of objects
-    (EDIT MODE) select vertices
-    > right-click (vertext context menu)
-    > "snap vertices"
-    > "cursor to selected"
-    (OBJECT MODE) select object
-    > right-click (object context menu)
-    > snap
-    > selection to cursor
-
-  create parent-child object heirarchy
-    - (OBJECT MODE) select child object (1st)
-    > SHIFT+ select parent object (2nd)
-    > right-click (object context menu)
-    > parent>object
-
-    NOTE: transforms to parent affect parent+child, but transforms to child objects only apply to the child
 
 
 EDIT MODE
@@ -574,12 +559,90 @@ SIDEBAR
   - manipulation using property values
 
 
-ORIGIN ADJUST
+PIVOT POINT
+  - "transform pivot point" icon
+    - median, active element
+    - individual (each selected object will transform around individual pivot)
+    - 3d cursor, bounding box
 
-  - object mode > object menu (or RMB) > "set origin" > ..
+    - "only origins" option REPLACED with sidebar ("N") > tool (tab) > options > transform > locations
+      - causes transforms to only rotate/scale objects in relation to one another instead of altering the objects
 
 
-< NOTES REVIEW BOOKMARK (GOING UP) >
+ADJUSTING THE ORIGIN
+  - each object has an origin point that act as the default point for transforms
+
+  - move an object's origin:
+    - "active tool and workspace settings" (tab) > "options" > "transform" > "affect only" > toggle "origins" ON/OFF
+
+    OR sidebar ("N") > "tool" > "options" > "transform" > "affect only" > toggle "origins" ON/OFF
+
+    - move operations now only affect the object's origin point instead of moving the object itself
+
+  - advanced:
+    - use "object" (menu) > "set origin"  OR  "RMB" > "set origin"
+    - options:
+      - "geometry to origin"
+      - "origin to geometry"
+      - "origin to 3d cursor" (recommended)
+      - "origin to center of mass"
+
+    - for complex objects, use edit mode + "snap to" / move cursor + move origin to cursor
+      * only the vertex selection mode context menu has the "snap to" / move cursor option
+
+
+SNAP
+
+  - "SHIFT+S"  OR  "object" (menu) > "snap"  OR  RMB > "snap"
+    - "selection to grid"
+    - "selection to cursor"
+    - "selection to cursor" (keep offset) : maintains selected objects offsets to one another
+    - "selection to active"
+    - "cursor to selected"
+    - "cursor to world origin" ("SHIFT+C")
+    - "cursor to grid"
+    - "cursor to active"
+
+
+  SNAP DURING TRANSFORM
+    - "snap" magnet icon  OR  "SHIFT+TAB" (quickly toggle magnet icon during transform operation)
+    - too many options, but enable snap to vertices, edges, faces, volumes, grid, centers on move/scale/rotation
+    - combined with pivot point options, this allows multiple precise snapping methods
+
+
+TRANSFORM ORIENTATION
+  - default axes used during all transform operations
+  - "global", "local", "normal", etc.
+
+  * interesting option is the "create orientation" ("+" button) as this creates an orientation that matches an existing object
+
+
+PARENTING OBJECTS
+
+  create parent-child object heirarchy
+    - (OBJECT MODE) select child object (1st)
+    > SHIFT+ select parent object (2nd - active object)
+    > right-click (object context menu) > parent  OR  "CTRL+P"
+    > object
+
+
+  NOTE: transforms to parent affect parent+child, but transforms to child objects only apply to the child
+
+  - parent objects can have many children
+  - child objects can only have one parent
+  
+  - heirarchy of parent-child objects ok (eg. grandparent-parent-child)
+    - robot arm model demonstrates this well
+
+  - relationship lines (dotted lines) show parent-child relationships
+    - toggle on/off using "viewport overlays" > "relationship lines"
+
+  clear parent-child relationship
+    - choose child object
+    > right-click (object context menu) > parent  OR  "ALT+P"
+    > "clear parent" (resets transformations)  OR  "clear and keep transformation"
+
+
 POLYGON SHAPES
 
   triangles - TRIS
@@ -868,7 +931,7 @@ UV MAPPING
     initial steps:
       - edit mode > select all > uv (menu) > unwrap + check "live unwrap"
         - NOTE: "live unwrap" is separate for the "uv editor", in case marking seams from this viewport
-        
+
       - "uv editor" > activate the "uv sync selection" icon
       - "uv editor" > sidebar (N) > view tab > display > overlays > check "stretching" > type = area
         - faces closer to RED are more DISTORTED
@@ -882,6 +945,133 @@ UV MAPPING
       - select a seam edge > select (menu) > "select similar" (SHIFT+G) > seam
       - select (menu) > "mirror selection" (SHIFT+CTRL+M)
       - right-click > "make seam"
+
+
+TEXTURE PAINTING
+
+  - usually, in the "shader editor", a new material must be added to the object, with a NEW "image texture" node for the color input
+
+  - recommended to save image textures to external .png in textures subdirectory using "image editor" viewport > save / "save as"
+    - COMMENT: pretty sure it saves internal to .blend file if not specified
+
+  - 3rd party tools:
+    - substance painter (paid)
+    - armor paint (free)
+    - quixel mixer (free)
+    - comparison: https://youtu.be/FeJFg5uIIrc
+
+
+  TEXTURE PAINT VIEWPORT TOOLS: draw, soften, smear, clone, fill, mask, annotate
+
+    draw - paint strokes
+    soften - blurs existing paint strokes
+    smear - smear existing paint strokes
+
+    clone
+      - paints clone area near cursor ("SHIFT+RMB" OR "CTRL+LMB") OR paint slot(?)
+      - exact operation is "weird" in that the 3d viewport only seems to work correctly(?) and then only at the source image's face/angle; 2d viewport texture paint doesn't seem to work at all
+      * BRUSH TEXTURE / STENCIL probably more in-line with how I perceive that I want to believe it should work for an existing image (see below)
+
+    fill - paint bucket fills entire model surface
+
+    mask
+      - mask affects all other texture paint tools
+      - compared to "texture mask" (see below)
+
+      - "active tool and workspace settings" (tab) > "masking" > "stencil mask"
+      
+        - create a new mask, give it an appropriate name, and change the color to black
+          - BLACK AREAS of the mask ALLOW DRAWING TOOLS to work
+          - WHITE AREAS of the mask BLOCK DRAWING TOOLS operation
+
+        - in the "image editor" viewport > specify the new mask created earlier in the "image to be linked" drop-down
+
+        - at this point, with the mask tool selected, drawing on either viewport will update the mask texture
+          - "display color" on the 3d viewport just shows the visual color of the mask, and this can be changed just for easier visualization (instructor recommends using white to match the mask color in the "image editor" viewport)
+          - erase mask areas by painting with the "CTRL" key pressed
+
+        - switching to any other tool is affected by the mask
+          - easily enable/disable a mask by using the "masking" > "stencil mask" checkbox
+
+  BRUSH CONTROLS
+    - configure with tools menu OR top toolbar
+    - mirror x|y|z (only on the 3d viewport)
+
+    - on-screen brush radius = "F" key
+    - on-screen brush pressure = "SHIFT+F"
+    - on-screen color picker sample = "S" (immediately sample color under the cursor)
+
+    - color picker has 2 color fields; primary/secondary
+      - switch primary/secondary color: "X" key
+      - temporary switch primary/secondary color: "CTRL" key
+
+  STROKE
+    - control stroke method, jitter, stabilization
+
+    - interesting stroke methods: space, airbrush, anchored, line, curved
+      - airbrush: keeps applying "ink"
+      - anchored: resizeable "ink dots"
+      - line: straight lines
+
+      - curved: 
+        - bezier curve data block "templates"
+        - strange, but re-useable
+        - use "CTRL+RMB" to create bezier points
+        - press "ENTER" to create drawing
+
+  FALLOFF
+    - controls the stroke opacity from the center outwards
+    - use the "anchored" stroke method to best test/visualize falloff
+    - demo shows that it's possible to create "banded shells" effect
+
+  BRUSH TEXTURE
+    - "active tool and workspace settings" tab > "brush settings" > "texture"
+    - use images/movies OR pre-defined procedural textures instead of solid colors
+
+    initial steps:
+      - "active tool" menu > create a new texture > rename it
+      - "texture properties" menu > new/open image + mapped to new texture
+      - alpha is also supported
+
+    - any color other that white, applies a tint
+    - size of the image is proportional to the brush size
+
+    - pre-defined procedural textures have the ability to maintain continuity across a shape's faces when using "3d" mapping
+
+    - "stencil" mapping allows previewing the image prior to the brush stroke
+      - adjust the "stencil" position ("RMB") / rotation ("CTRL+RMB") / scale ("SHIFT+RMB") prior to the painting the stroke
+
+  TEXTURE MASK
+    - "active tool and workspace settings" tab > "brush settings" > "texture mask"
+
+    - texture mask images are usually black and white
+      - black sections BLOCK all brush strokes, white sections allow brush strokes
+      - color images are interpreted as grey-scale images
+      - grey-scale images block a percentage of the paintbrush color
+
+    - similar setup to BRUSH TEXTURE, but make sure to use the correct "brush mask" in the "texture properties" tab
+
+    - mask mapping options are similar to BRUSH TEXTURE
+      - "stencil" mask mapping appears most appropriate for this tool
+        - adjust the "stencil" position ("ALT+RMB") / rotation ("CTRL+ALT+RMB") / scale ("SHIFT+ALT+RMB")
+
+  FACE SELECTION MASKING MODE
+    - in the 3d viewport (texture paint mode) > select the "paint mask" button to select which faces can be painted
+
+    - the "texture paint" and "edit" modes are linked, so faces can be selected in either mode
+      - "edit" mode is slightly easier to select the faces and just switching to "texture paint" mode
+      - "texture paint" mode requires using "SHIFT+LMB" and only individual faces can be toggled on/off
+        - use "ALT+A" to de-select all the faces and "A" to select all the faces
+    
+    - all the tools are affected by the masked faces
+
+  PAINT BLEED
+    - "paint bleed" can be seen in the "image editor" viewport uv islands as the 3d viewport model is painted ..essentially the extra painted pixels outside the uv island outlines
+
+    - "active tool and workspace settings" tab > "options" > "bleed"
+      - controls amount of paint bleed in pixels
+
+    - an example is shown using the subdivision modifier where the paint bleed needs to be increased when switching between subdivision and normal modes
 
 
 LIGHTING
@@ -1184,6 +1374,66 @@ MODELING TIPS
   y-axis: model front/back
 
 
+MODELING EXERCISES
+
+  HELICOPTER
+
+    VERTEX PAINTING
+
+      - shading workspace > "shader type: world" > "shader type: object"
+
+      * I couldn't see the shader nodes in the "shader editor" viewport for some reason.. it appeared empty. it was just outside of view, clicking "view" (menu) > "view all" ("HOME" key) fixed this.
+
+      - add "image texture" node, rename it, increase to 2048x2048 pixels because of the amount of detail, and change the default base color to a predominant color
+
+      - "texture paint" workspace > isolate helicopter body ("/" key)
+      - activate the display port real-time subdivision modifier prior to painting
+
+      - create a re-usable color palette
+        - "active tool and workspace settings" tab > "brush settings" > "color palette"
+        - use "S" key to sample the exising base color
+        - create a "camouflage" color palette
+
+        - experiment with the colors while adjusting the "falloff" and "strength" properties
+          - also use "viewport shading - material preview"
+
+      - while painting, make any corrections just by picking/painting the original base color
+        - use "S" key sample or the color palette to easily switch colors
+
+      - save the texture painting as a separate .png texture
+
+      - use FACE SELECTION MASK to isolate painting just the glass faces
+        - invert this mask to make any fixes near the glass
+
+      STENCILS
+
+        - "texture mask" > create a new texture mask and name it
+          - "texture properties" (tab) > select texture mask name from above > open existing b/w .png that contain texture mask stencils
+          - "active tool and workspace settings" (tab) > "texture mask" > change "mask mapping" to stencil
+
+        - the b/w texture mask .png can contain multiple images
+
+    HELICOPTER BODY ROUGHNESS
+
+      - existing body looks too "plastic"
+      - in the "shading" workspace, note the "principled bsdf" roughness parameter
+      - IRL window glass might be polished, and the body might be more rough or dirty
+
+      - create a new image texture node, rename it, set size to 2048x2048px, leave color with default black, and connect color to "principled bsdf" roughness input
+        - note that black corresponds to zero roughness (shiny)
+        - selected image texture is automatically opened in the "texture paint" workspace
+
+      - recommends having 3d viewports x 2 (solid and material preview) to see in real-time the effect of modifying the roughness color
+      - use face selection mask to change the roughness of the glass and metal body
+
+      - variation on the body for "dirt" effect
+        - use texture mask (image provided)
+        - google "texture alpha brushes" for more ideas OR create in krita
+        - change the "dirt" texture mask "mask mapping" to random
+          - random angle, symmetry on/off, brush strength, strategically select areas that might get dirtier, etc.
+        - make sure to save the dirty texture image
+
+
 QUESTIONS
 
-  shade smooth, is this useful outside 3d modeling?
+  the stencil mask seems "somewhat limited" in that we can only created masked brush strokes. is it possible to use more complex black/white images - moving/scaling/rotating them as necessary?
