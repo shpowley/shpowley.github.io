@@ -6,9 +6,10 @@ TOPICS TO RESEARCH
   - modeling quick organic shapes
   - mirroring techniques
   - sculpting
-  - denoising (see rending engine - cycles) > compositing
+  - denoising (see rendering engine - cycles) > compositing
   - freestyle renderer
   - cell shader
+  - baking textures
 
 
 TUTORIALS
@@ -31,7 +32,12 @@ DRAWING TABLET SHORTCUT CANDIDATES
   reset cursor to origin - "SHIFT+C"
   pop-up left menu - "SHIFT+SPACE"
   grab - "G"
-  orbit to face = "ALT+MMB"
+  loop cut - "CTRL+R"
+  bevel - "CTRL+B"
+  extrude - "E"
+  extrude along normals - "ALT+E"
+  inset faces - "I"
+  rotate to face = "`"
 
 
 NAVIGATION
@@ -476,6 +482,28 @@ SEPARATING / MERGING VERTICES
       + SNAP OPTIONS: vertex, closest, "project onto self", affect - move
 
 
+BOOLEAN MODIFIER
+  - interset, union, difference
+  - both objects need to be separate objects
+  - one object selected, 2nd object selected with picker > apply
+  - original object still remains and needs deletion
+
+  - a lot of manual cleanup
+    - vertices that are created aren't "clean" in that quads aren't prioritized
+    - edit mode OR add subsurface modifier to see the problem
+
+    - slide/merge vertices with the goal of creating QUADS
+      - "active tool and workspace settings" tab > options > "auto merge" = ON
+      - slide vertices = "SHIFT+V"  OR  "G+G"
+        - also works on 2 vertices that define a edge
+
+    - strategically move/join vertices + judicious use of knife tool
+      - check my boolean.blend file vs. this tutorial (https://youtu.be/WbULqtUIyvw)
+      - comparing to the video, try to avoid complex ripping of vertices; for instance, where triangles need to be converted to quads, just extend existing nearby quads
+
+  - last step is to add some bevel / control loops to create a "clean" looking subsurface modifier
+
+
 VISIBILITY
 
   - only affects EDIT MODE
@@ -508,7 +536,7 @@ JOIN / SEPARATE GEOMETRIES
   separate object geometries
     - EDIT MODE
     - select sub-object geometry ("L" (select linked))
-    - mesh (menu) > separate > selection
+    - mesh (menu)  OR  "P" key > separate > selection
 
 
 MODELING "FIXES"
@@ -533,21 +561,43 @@ MODELING "FIXES"
 
 ANIMATION
 
-  - default 24 fps
+  FRAME RATE
+    - default 24 fps
+    - common 24, 25, 30 fps for animation
+    - change in: "output properties" > dimensions > "frame rate" 
+    - best to set this prior to creating animations
+
+
   - each object has it's own timeline/dopesheet
 
+
   KEYFRAMES
+
+    - any object transformations are lost in animation scenario if the keyframe state is not saved
+
     (OBJECT MODE) select object
+    > make transforms
     > on-screen menu "Object" > "Animation" > "Insert Keyframe"  OR  "I"
     > select type of keyframe
     > move playhead to desired frame
     > manipulate object (move, rotate, etc.)
     > add new keyframe of the same type as above
 
-  INTERPOLATION
+
+  AUTOMATIC KEYFRAME INSERTION (AUTO-KEYFRAME)
+    - potential to greatly speed up animation process
+    - to enable, toggle the circle icon ON next to the play controls
+    * be careful of accidentally creating auto-keyframes (ie. repositioning other elements such as the camera)
+
+    - set the playhead position + make object transformations => keyframe is automatically created
+    - set the playhead to a new position + make object transformations => next keyframe is automatically created
+
+
+  INTERPOLATION MODE
     - controls speed-up/slow-down, easing effects
     - select keyframes
     - right-click > interpolation mode
+
 
   - copy/paste keyframes = "CTRL+C"/"CTRL+V"
     - able to copy/paste an entire sequence of keyframes
@@ -630,7 +680,7 @@ PARENTING OBJECTS
 
   - parent objects can have many children
   - child objects can only have one parent
-  
+
   - heirarchy of parent-child objects ok (eg. grandparent-parent-child)
     - robot arm model demonstrates this well
 
@@ -696,6 +746,17 @@ SUBDIVISION OF SURFACES
       - edge loops avoid the uneven distribution
 
     - POLE "STARS" located on FLAT PLANES DO NOT create visual surface imperfections
+
+
+MIRRORING
+
+  - default blender tools object mirroring
+
+  steps:
+    - object rotation must be "applied", zeroed x/y/z axes
+    - "transform pivot point" should also be set appropriately (ie. "3d cursor" set to the world origin)
+    - make a duplicate of the original object if creating symmetrical objects
+    - object (menu) > mirror > ...
 
 
 RENDERING
@@ -1372,66 +1433,6 @@ MODELING TIPS
 
   x-axis: model symmetry (default)
   y-axis: model front/back
-
-
-MODELING EXERCISES
-
-  HELICOPTER
-
-    VERTEX PAINTING
-
-      - shading workspace > "shader type: world" > "shader type: object"
-
-      * I couldn't see the shader nodes in the "shader editor" viewport for some reason.. it appeared empty. it was just outside of view, clicking "view" (menu) > "view all" ("HOME" key) fixed this.
-
-      - add "image texture" node, rename it, increase to 2048x2048 pixels because of the amount of detail, and change the default base color to a predominant color
-
-      - "texture paint" workspace > isolate helicopter body ("/" key)
-      - activate the display port real-time subdivision modifier prior to painting
-
-      - create a re-usable color palette
-        - "active tool and workspace settings" tab > "brush settings" > "color palette"
-        - use "S" key to sample the exising base color
-        - create a "camouflage" color palette
-
-        - experiment with the colors while adjusting the "falloff" and "strength" properties
-          - also use "viewport shading - material preview"
-
-      - while painting, make any corrections just by picking/painting the original base color
-        - use "S" key sample or the color palette to easily switch colors
-
-      - save the texture painting as a separate .png texture
-
-      - use FACE SELECTION MASK to isolate painting just the glass faces
-        - invert this mask to make any fixes near the glass
-
-      STENCILS
-
-        - "texture mask" > create a new texture mask and name it
-          - "texture properties" (tab) > select texture mask name from above > open existing b/w .png that contain texture mask stencils
-          - "active tool and workspace settings" (tab) > "texture mask" > change "mask mapping" to stencil
-
-        - the b/w texture mask .png can contain multiple images
-
-    HELICOPTER BODY ROUGHNESS
-
-      - existing body looks too "plastic"
-      - in the "shading" workspace, note the "principled bsdf" roughness parameter
-      - IRL window glass might be polished, and the body might be more rough or dirty
-
-      - create a new image texture node, rename it, set size to 2048x2048px, leave color with default black, and connect color to "principled bsdf" roughness input
-        - note that black corresponds to zero roughness (shiny)
-        - selected image texture is automatically opened in the "texture paint" workspace
-
-      - recommends having 3d viewports x 2 (solid and material preview) to see in real-time the effect of modifying the roughness color
-      - use face selection mask to change the roughness of the glass and metal body
-
-      - variation on the body for "dirt" effect
-        - use texture mask (image provided)
-        - google "texture alpha brushes" for more ideas OR create in krita
-        - change the "dirt" texture mask "mask mapping" to random
-          - random angle, symmetry on/off, brush strength, strategically select areas that might get dirtier, etc.
-        - make sure to save the dirty texture image
 
 
 QUESTIONS

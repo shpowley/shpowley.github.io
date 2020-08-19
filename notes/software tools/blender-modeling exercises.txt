@@ -1,0 +1,191 @@
+3D MODELING EXERCISES
+
+  HELICOPTER
+
+    VERTEX PAINTING
+
+      - shading workspace > "shader type: world" > "shader type: object"
+
+      * I couldn't see the shader nodes in the "shader editor" viewport for some reason.. it appeared empty. it was just outside of view, clicking "view" (menu) > "view all" ("HOME" key) fixed this.
+
+      - add "image texture" node, rename it, increase to 2048x2048 pixels because of the amount of detail, and change the default base color to a predominant color
+
+      - "texture paint" workspace > isolate helicopter body ("/" key)
+      - activate the display port real-time subdivision modifier prior to painting
+
+      - create a re-usable color palette
+        - "active tool and workspace settings" tab > "brush settings" > "color palette"
+        - use "S" key to sample the exising base color
+        - create a "camouflage" color palette
+
+        - experiment with the colors while adjusting the "falloff" and "strength" properties
+          - also use "viewport shading - material preview"
+
+      - while painting, make any corrections just by picking/painting the original base color
+        - use "S" key sample or the color palette to easily switch colors
+
+      - save the texture painting as a separate .png texture
+
+      - use FACE SELECTION MASK to isolate painting just the glass faces
+        - invert this mask to make any fixes near the glass
+
+      STENCILS
+
+        - "texture mask" > create a new texture mask and name it
+          - "texture properties" (tab) > select texture mask name from above > open existing b/w .png that contain texture mask stencils
+          - "active tool and workspace settings" (tab) > "texture mask" > change "mask mapping" to stencil
+
+        - the b/w texture mask .png can contain multiple images
+
+    HELICOPTER BODY ROUGHNESS
+
+      - existing body looks too "plastic"
+      - in the "shading" workspace, note the "principled bsdf" roughness parameter
+      - IRL window glass might be polished, and the body might be more rough or dirty
+
+      - create a new image texture node, rename it, set size to 2048x2048px, leave color with default black, and connect color to "principled bsdf" roughness input
+        - note that black corresponds to zero roughness (shiny)
+        - selected image texture is automatically opened in the "texture paint" workspace
+
+      - recommends having 3d viewports x 2 (solid and material preview) to see in real-time the effect of modifying the roughness color
+      - use face selection mask to change the roughness of the glass and metal body
+
+      - variation on the body for "dirt" effect
+        - use texture mask (image provided)
+        - google "texture alpha brushes" for more ideas OR create in krita
+        - change the "dirt" texture mask "mask mapping" to random
+          - random angle, symmetry on/off, brush strength, strategically select areas that might get dirtier, etc.
+        - make sure to save the dirty texture image
+
+    PARENTING
+      - make sure that all objects that will be made into parent-child relationships have a scale of 1.0 for x/y/x
+        - easiest to select all the objects in question and "apply" the scale
+
+      - next, verify that all moveable objects spin on the correct origin axis; adjust the origin positions as necessary (ex. spinning helicopter blades)
+        - only necessary for objects that will be animated
+
+    ANIMATION
+      - fix rotors slowing down towards the end of the animation by moving final keyframe outside the animation end time
+
+      - rear rotor has a problem with gimbal-lock(?) - self axis doesn't match global
+        - rotor doesn't rotate as expected
+        - fixed by using "object (menu) > apply > rotation"
+
+      * FYI: pressing "I" key over a transform numerical value will insert a keyframe of that type just for that value
+
+    ANIMATING THE CAMERA
+
+      - "0" key to set to the camera view
+
+      tip: set view, then set camera to the current view
+        - "view (menu) > align view > align active camera to view (CTRL+ALT+NUMPAD 0)"
+
+      - change focal length to a smaller value for a wider field of view, and camera can be closer to the scene
+
+      - using "local view" will make it easier to reposition the camera
+        - move z-axis to move camera in/out
+        - move y-axis, camera up/down
+        - move x-axis, camera left/right
+
+      - add initial keyframe location/rotation @ frame 1
+      - use move gizmo for easier manipulation
+      - scrub playhead and adjust camera to keep copter in frame; set a new keyframe
+
+    VIDEO RENDER (EEVEE)
+      - output properties: name/location, format = "FFmpeg video", container="mpeg-4"
+      - render properties: ambient occlusion=1.0m+ (shadows), bloom=ON, screen space reflections=ON
+      - render animation
+      - eevee doesn't have object motion blur - rotors don't blur
+
+    VIDEO RENDER (CYCLES)
+      - render properties > motion blur = ON
+        - effect can be tested on a single image render
+
+      - "shadow catcher"
+        - creates invisible object effect that still has visible shadows
+        - only works in CYCLES renderer
+
+      - render sampling increased to 256 to reduce noise
+      + "view layer properties" > denoising = ON
+
+      FOR TESTING PURPOSES: 128 samples (render sampling), shortened frame start/end, resolution=50%
+
+      - output properties (sequence of images)
+        - name/location, format = .png
+
+        - advantages:
+          - avoids video compression
+          - rendering work not lost if blender crashes and subsequent rendering can start at any frame
+
+    VIDEO EDITING
+      - demonstrates blender as video editing software
+      - processes image renders into movie format
+      - "video sequencer" viewport > add > image sequence > select folder > select all ("A")
+      - configure output: "output properties" (tab) > end frame, name/location, file format="ffmpeg video", container=mpeg-4
+
+
+  ROBOT
+
+    REFERENCE IMAGES
+      - this is my own technique so far
+      - add reference images to BOTH left/right + front/back + top/bottom (if needed)
+      - add the reference images FAR AWAY from the 3d model because of camera orthographic effect
+      - reduce opacity of each image: "object data properties" > transparency > opacity = ~0.1 or so
+      - add all reference images to a collection
+      - add selection mode filter (next item) and "lock" reference images collection
+
+    "SELECTIONS" SCENE COLLECTIONS FILTER
+      - use the "filter" icon and choose "selections" arrow
+      - this arrow is now visible in the scene heirarchy and makes it easy to disable selection of any object or collection - effectively replacing the LOCK MECHANISM, but much faster for my purposes
+
+
+    3D MODELING
+
+      HEAD
+        - don't forget "shade smooth" + "object data properties" > normals > "auto smooth"
+        - join objects that make logical sense for animation
+
+      TORSO
+        - very good / smooth results using low poly features + subdivision modifier
+        - create loop cuts to line-up with major feature inflection points
+        - remember to type in numbers where applicable (ie. "S > Z > 0" / scale > z-axis > 0)
+        - LOOP TOOLS add-on used to "force" circular shape on an edge ring
+
+      - SUBDIVISION MODIFIER + SHADE SMOOTH CREATES A VERY SMOOTH OBJECT, but the subdivision modifier creates a smaller than expected result and HAS TO BE "TWEAKED" A LOT
+        - hold off on bevel/creasing until the model better resembles the reference image
+        - using bevel/creasing are necessary to create crisp edges (I THINK BEVELS ARE PREFERRED)
+        - note that creasing can be marked on an edge, but also in the sidebar (not sure if there's a difference)
+        - subdivision modifier kind of hides sloppy vertex placment, so be careful
+
+      STOMACH
+        - just 2 spheres joined using the boolean modifier
+
+      HIPS
+        - cube used as the starting shape with subdivision modifier
+        - general shape defined, then loop cuts added
+        * remember, extrude starts along normal, but can be change on-the-fly with x/y/z
+        - used boolean add-on for the ball joint
+
+        - hide separate meshes with "H" key, unhide with "ALT+H"
+        - MEAN CREASE used in demo for sharp edges, whereas I used mostly bevel
+          - going back, combining both was effective
+
+      ARMS
+        * dialog settings can be reset individually with right-click
+        - extruding 2 opposing faces can be accomplished with "extrude along normals (ALT+E)"
+        - circular shapes like the forearm can be quickly modeled with "loop cut + # segments" or "single loop cut + bevel + bevel smoothness"
+
+      HANDS
+        - finger segments in demo are separate objects
+          * remember, it is possible to enter edit mode for multiple selected objects
+
+        - recommended to select all objects and "apply scale" at some point during the modeling process
+          - similarly, reset the transform orientation to global
+
+      LEGS
+        - hole created on the hip joint by select opposing faces > edge > "bridge edge loops"
+        * remember to use the "L" key to select entire separate geometries while in edit mode
+
+      FEET
+        - circular sections use cube => circle created with subdivision surface modifier applied -- the default uv sphere vertice arrangement isn't ideal
+          - COMMENT: while this method was fast and ok for the most part, it is difficult to shape
