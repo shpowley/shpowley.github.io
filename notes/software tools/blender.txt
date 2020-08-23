@@ -11,6 +11,8 @@ TOPICS TO RESEARCH
   - cell shader
   - baking textures
 
+  - flipped normals: https://www.katsbits.com/codex/flip-normals/
+
 
 TUTORIALS
 

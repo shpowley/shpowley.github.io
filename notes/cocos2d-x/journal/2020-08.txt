@@ -1,0 +1,11 @@
+----------
+Tuesday 2020-08-21
+
+  CORONAVIRUS TOTAL INFECTED: 22.78 MILLION
+  CORONAVIRUS TOTAL INFECTED: 14.82 MILLION (7/21/2020)
+
+  updated android studio
+    - last 2 updates "No cached version of com.android.tools.build:aapt2 .." message and project won't compile
+    - resolved: https://stackoverflow.com/a/60524210
+      - gradle tab > select project > toggle offline mode (icon)
+      * I've been using "power save" / gradle "offline mode" because of editor performance hit while typing etc.
