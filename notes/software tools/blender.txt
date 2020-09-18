@@ -245,6 +245,10 @@ MISC USEFUL
   SHOW OBJECT VOLUME BOUNDS
     - "object properties" (tab) > "viewport display" > "display as" = bounds  OR  "bounds" checkbox
 
+  FLIPPED NORMALS
+    - quickly check: overlays > geometry > face orientation = checked
+    - fix: select objects > edit mode > select meshes > mesh (menu) > normals > recalculate outside
+
 
 CURSOR
 
@@ -871,7 +875,7 @@ MATERIALS
       - select objects > select active object with required material > object (menu) > "make links" ("CTRL+L") > materials
 
 
-  "shader editor" (method 2 - see "TEXTURE")
+  "shader editor" (method 2 - see "TEXTURES")
 
 
 MULTIPLE MATERIALS
@@ -986,16 +990,23 @@ UV MAPPING
     - AUTO-PACK: use UV (menu) > "pack islands" 
 
 
+  * SMART UV UNWRAP
+    - automated uv unwrap option that does an ok job, but doesn't create a uv unwrap that's as "refined"
+    - ideal for "rush jobs"
+
+
   UV UNWRAPPING COMPLEX 3D MODELS
 
-    - teddy bear example
-    - similar previous SEAM + unwrap method
+    - TEDDY BEAR EXAMPLE
+
+    - similar to previous SEAM + unwrap method
     
     initial steps:
-      - edit mode > select all > uv (menu) > unwrap + check "live unwrap"
+      - edit mode > select all > uv (menu)  OR  "U" > unwrap + check "live unwrap"
         - NOTE: "live unwrap" is separate for the "uv editor", in case marking seams from this viewport
 
       - "uv editor" > activate the "uv sync selection" icon
+
       - "uv editor" > sidebar (N) > view tab > display > overlays > check "stretching" > type = area
         - faces closer to RED are more DISTORTED
         - faces closer to BLUE are very UNDISTORTED 
@@ -1025,6 +1036,9 @@ TEXTURE PAINTING
 
 
   TEXTURE PAINT VIEWPORT TOOLS: draw, soften, smear, clone, fill, mask, annotate
+
+    * "texture paint" workspace  OR  if using layout workspace, viewport = "image editor" + mode = paint
+      - also, make sure object is selected > edit mode > select all faces/vertices > uv mode - enable "uv sync selection" (to see face boundaries)
 
     draw - paint strokes
     soften - blurs existing paint strokes
@@ -1435,6 +1449,45 @@ MODELING TIPS
 
   x-axis: model symmetry (default)
   y-axis: model front/back
+
+  FAST GEOMETRY REDUCTION
+    - CTRL+ALT+select an edge for sideways edge selection
+    - edit mode > select > "checkered deselect" to select alternate pattern, with adjustments using the context dialog
+    - X / DELETE > "dissolve edges"
+
+
+TRIS / QUADS
+
+  - everything is eventually broken into tris by the renderer
+
+  * designing 3d models in "quads" is best for long-term maintainenance
+    - quads allow for continuous edge loop selection
+    - forcing a non-quad (tri or poly) breaks edge loop continuity, which can be intentional
+
+  
+  TRIANGLES TO QUADS
+
+    source: https://youtu.be/3qkRI8tJe3Q
+      
+      COLLAPSE EDGES = select parallel edges > X > "collapse edges and faces"
+        - used to create a triangle in an existing plane
+
+    method 1
+      - loop cut on any side of the triangle
+
+    method 2
+      - select knife cut, start making cut from a vertex > press "C" for angle constraint > finish knife cut
+      - select central triangle edge > CTRL+X to delete the edge
+
+    method 3
+      - select edge loop to triange vertex
+      - create bezel
+      - select residual edge > CTRL+X to delete it
+
+    method 4
+      - object mode
+      - subdivision surface modifier
+      - view setting = 1, "simple" > apply
 
 
 QUESTIONS

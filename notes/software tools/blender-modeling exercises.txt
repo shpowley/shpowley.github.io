@@ -134,6 +134,7 @@
       - add all reference images to a collection
       - add selection mode filter (next item) and "lock" reference images collection
 
+
     "SELECTIONS" SCENE COLLECTIONS FILTER
       - use the "filter" icon and choose "selections" arrow
       - this arrow is now visible in the scene heirarchy and makes it easy to disable selection of any object or collection - effectively replacing the LOCK MECHANISM, but much faster for my purposes
@@ -189,3 +190,287 @@
       FEET
         - circular sections use cube => circle created with subdivision surface modifier applied -- the default uv sphere vertice arrangement isn't ideal
           - COMMENT: while this method was fast and ok for the most part, it is difficult to shape
+
+
+    TEXTURES
+
+      HEAD
+        - 1st material slot
+        - starting with a new material for the base color
+        - roughness lowered to create a more "glossy" look
+
+        EYE SOCKETS / JAW BOLTS
+          - 2nd material slot
+          - use "L" to select each sub-mesh
+          - metal material created and assigned to sub-mesh faces
+          - metallic > 1.0, roughness lowered
+
+        GLOWING EYES
+          - 3rd material slot
+          - glowing material created and assigned
+          - "base color" property drag/drop to "emission" property
+          - eevee render settings, bloom = true
+          - modify "emission" property hsv, type in v > 1.0
+
+      NECK
+        - 2 material slot using above materials
+        - base yellow + metal
+        - use CTRL+mouse drag select to de-select faces
+        - use SHIFT+mouse drag select to select faces
+
+      CHEST
+        - re-use 3 materials from the head
+
+      STOMACH
+        - 4th material
+        - black, slightly rough, metallic
+
+      - remaining texture colors subjective
+
+
+      MIRRORING ARMS/LEGS
+        - this saves having to repeat a lot of the texture-assign steps
+        - set the transform pivot point to the cursor
+        - duplicate relevant arm/legs
+        - use object > mirror > global x-axis
+        - reset the transform pivot point
+
+
+    RIGIFY ADDON
+      - complex topic
+      - without the add-on, only single bones "armatures" can be added
+
+      * do not add/delete armature bones to the pre-built "metarig" defined by the rigify add-on, otherwise certain features will not work
+
+      - enable in preferences
+        - skeletons for human and various creatures
+
+      - enable "legacy mode"
+        - simplified human skeleton without facial controls
+
+      - view skeleton axes
+        - select skeleton > object data properties > viewport display > axes = checked
+        - visually see each skeleton armature axes
+
+        * in general the armature bone rotates on the x-axis, with the +z-axis pointing inward torward the "primary" rotation action
+          - adjust the "roll" parameter appropriately
+          * this is most noticeable on the elbow joint
+
+          NOTES:
+            - I had to go back 2x and adjust these axes and re-GENERATE the control rigs
+            - I think the armature control axis is actually one joint ahead of where it should be "visually/logically" (if that makes sense)
+
+      - view rig skeleton
+        - use x-ray mode  OR  select skeleton > object data properties > viewport display > in front = checked
+
+      - ROBOT uses "legacy mode" human skeleton
+        - wireframe
+        - select skeleton > edit mode > resize skeleton to approximately match robot
+        - adjust each bone head/tail position and fix roll angle for any twisted bones
+
+        - use cursor position method to exactly place bone vertices
+          - vertex mode > select vertices > right-click > snap > cursor to selected
+
+        - for the hand joints, the positioning doesn't have to be as precise
+          - enable snap to volume centers
+
+        - if necessary, apply any object transformations
+
+        - generate the rig controls
+          - select the skeleton > object data properties > rigify buttons > generate
+          - "rig layers" now appears in the side bar
+
+          * do a quick check of the control rig if possible, in case any adjustments are needed, as the control rig has to be generated again (not 100% if parenting is required 1st)
+
+        - scene organization
+          - original 3d mesh objects
+          - "skeleton" meta-rig (this can be safely deleted once the rig controls are generated; save a file backup at this stage maybe)
+          - "widgets" collection (hidden)
+          - generated "rig" (also contains skeleton armature bones that need parenting)
+
+
+        PARENTING
+          *** select skeleton "rig" > object data properties > MAKE SURE that only the very last layer (bottom right circle) in the "Layers:" group is selected (this ensures that you seeing something similar to the original skeleton bones created earlier)
+
+          - general procedure
+            - object mode > select 3d mesh object > SHIFT+select rig object > pose mode (CTRL+TAB) > select the target parent bone > pose (menu) > parent > bone > back to object mode (CTRL+TAB)
+
+          notes:
+            - 3d mesh object > object properties > relations (this shows the rig-bone parent relationship)
+            - when using the parenting "general procedure", the "keep transforms" option often needed to be enabled
+
+
+        POSING / RIGIFY CONTROLS
+          - select the skeleton object > pose mode
+
+          - select any armature control + "R (rotate) + X/Y/Z"  OR  "R+R" (free rotation)
+
+          - for the hands, there are additional controls at the fingertips - use "S" to open/close a finger
+            * I MESSED UP ON THE THUMB as it has a "roll" angle that isn't zero/90; once the control rig generated this can't be adjusted from what I've learned so far
+            - had to go back to previous file, make adjustment for the thumb and re-parent everything
+
+          - middle box can move the entire character
+
+          - reset to base pose
+            - pose mode > select all rig layers > "A" (select all) > pose (menu) > clear transforms
+
+          - hide relationship lines using overlay options
+
+
+          Tweak controls - control individual bones (more complex posing, ignore for now)
+
+          FK vs IK - use one or the other
+
+          FK controls
+            - individual bones (default posing mode)
+
+          IK controls
+            - more "organic" posing, but sidebar > "rig main properties" > FK/IK must be set to 1.000 for IK and 0.00 for FK (rhetorical question: why a decimal?)
+            - possible object deformations when posing to extreme positions
+              - to prevent this, select the IK rig controls > open the side frame > change the "auto-stretch IK" from 1.0 to 0
+
+          - rig controls saved for animation (robot: disable all tweaks, fk arms, ik legs (sidebar sliders set))
+
+
+        WALK CYCLE
+
+          - not sure of an original source, but google search "animation walk cycle"
+            - https://rustyanimator.com/walk-cycle-animation/
+
+          - use pose controls setup from previous rigify/posing step
+
+          - walk cycle ~1 sec = right + left step
+          
+          - setup environment:
+            - 2 viewports: front and side in pose mode
+            - timeline viewport with 1 second timeline length 24 frames; start frame 0, end frame 24
+
+          4 KEY FRAMES:
+            contact position (left)
+              - STEP 1
+              - use the global axis for most of the posing
+              - slide left/right legs forward and back
+              - rotate front ball 30/45 degrees back as if about to step on it
+              - rotate back heel forward as if propelling the body forward
+              - twist hip forward slightly toward the front leg
+              - twist upper torso in the opposite direction of the hip
+              - twist head in the opposite direction of the upper torso, so it's pointing foward
+              * exact values are subjective
+              - optional step: move both legs inward toward the center without having them overlap from the front view
+              - move the torso "box" down slightly so that the legs are just slightly bent; the front leg also needs to be slid forward slightly to achieve this
+              - for both arms make use the "local" axes
+              - rotate both arms down
+
+              - arm positions should be rotated oppose the leg poses
+                - back hand slightly bent back
+                - front hand and front forearm slightly bent forward
+
+              - adjust fingers for a more natural pose
+                - note that the thumb is difficult to adjust 2nd joint for the robot (the instructor actually used the 1st joint that typically resides in the palm, I thought he actually made a mistake); the joint connected to the palm responds differently than the fingers
+
+              - copy pose to the right hand using built-in pose shortcuts:
+                - select posed finger > pose (menu) > copy pose > pose (menu) > paste pose flipped
+
+              - generate keyframe
+                - select all pose controls ("A") > "I" > location+rotation+scale
+                - keyframe placed in frame 1
+
+            down position
+              - STEP 4
+              - upper torso at lowest point, front foot completely flat
+              - at frame 3
+              - front foot flat > choose heel > "ALT+R" (clear rotation)
+              - torso slightly down
+              - back foot slightly off the ground
+              - head tilts just slightly back (because of impact?)
+              - select all rig controls > copy pose > go to frame 15 > paste pose flipped
+
+            passing position (middle position; moment legs pass one another)
+              - STEP 3
+              - 1st passing position at frame 6
+              - identify passing leg > adjust position forward to be near the heel of the front foot and also clear the heel rotation ("ALT+R")
+              - clear the heel rotation of the stationary foot so that it is completely flat on the ground
+              - use the balls near the knees to adjust the angle slightly
+              - raise the entire upper torso slightly
+              - adjust upper torso left/right toward the center of gravity on the planted foot
+              - adjust hip angled up toward planted foot
+              - rotate upper torso angle in the opposite direction of the hips
+              - rotte the head so that it is level
+              - arm swinging back is bent slightly to form an arc; exaggerate the "swinging back" (animation "follow-through")
+              - use similar logic for the arm swinging forward
+              - adjust finger positions to express a differential; select the fingers > copy pose > paste pose flipped (for the other hand)
+              - safety step: select all > "I" > location+rotation+angle
+              - paste passing position (flipped) on frame 18
+
+
+            up position
+              - STEP 5
+              - upper torso at the highest position
+              - back heel angled up so that torso can be moved higher
+              - back leg almost straight, but bent just slightly
+              - front foot raise just a little
+              - head angled slightly DOWN similar, but opposite to down position
+              - copy/paste flipped pose to frame 21
+
+            contact position (right - left mirror)
+              - STEP 2
+              - continued from "contact position (left)"
+              - select all pose controls ("A") > copy pose  > move playhead to frame 12 (mid walk cycle) > paste pose flipped > "I" > location+rotation+scale
+              - copy 1st keyframe to frame 24 of the timeline: select frame 1 diamond > duplicate the frame "SHIFT+D" > move to frame 24
+              - move the 1st keyframe to frame 0 for a more "correct" animation
+
+
+        5 second walk cycle
+          - @ 24 frames x 5 = 120 frames
+          - adjust end frame to 120
+          - select all rig controls > select all keyframes > "SHIFT+D" (duplicate keyframes) > move 1st keyframe to overlap the last keyframe > repeat
+
+    
+    RENDERING
+      - walking platform (cylinder) + round bevel
+
+      - rendered mode on 3d viewport
+
+      - add lighting (pay attention for the lucky cat)
+        - area light, angled from front/above (yellow dot can be used to point to a certain area)
+        - slightly closer, increase power and size
+        - not too bright ..adding hdr background image will add environmental lighting
+
+      - hdr background image
+        - "shader editor" on one of the viewports, "world" mode
+
+        - add "environment texture" node
+          - hdr image from hdrhaven.com (for environment lighting and reflections only)
+
+        - add additional "background" (solid color) 
+        - "mix" shader w/ both "background" shaders plugged in
+
+        - add "light path" shader 
+          - "is camera path" output to "mix" shader "factor" input
+
+      - camera
+        - add camera
+        - adjust view to preferred and set camera to the view ("CTRL+ALT+NUMPAD-0")
+        - replace shader viewport with another 3d viewport and adjust camera position/angle using this view
+        - adjust focal length to 35mm
+
+      - light
+        - enable shadows > "contact shadows"
+        - shader editor > hdr image > reduce strength (reduces scene lighting influence)
+        - increase light intensity
+
+        - "render properties"
+          > enable "ambient occlusion" + adjust "distance" (additional shadow effect)
+          > enable "screen space reflections" (self reflections)
+          > enable/verify "shadows" > "soft shadows"
+
+      - base material added with reduced roughness (robot reflected slightly)
+
+      - glowing robot lights
+        - increase brightness > adjust material > emission HSV - "V" value
+        - also "render properties" > bloom > intensity / radius
+
+      - output properties
+        - full 1920x1080
+        - location
+        - ffmpeg / mpeg-4
