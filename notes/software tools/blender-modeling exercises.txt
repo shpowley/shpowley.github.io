@@ -39,12 +39,12 @@
 
     HELICOPTER BODY ROUGHNESS
 
-      - existing body looks too "plastic"
+      - existing body looks too "plastic"; the following technique creates a "dirty" surface as the body/window accumulate dirt over time
       - in the "shading" workspace, note the "principled bsdf" roughness parameter
       - IRL window glass might be polished, and the body might be more rough or dirty
 
       - create a new image texture node, rename it, set size to 2048x2048px, leave color with default black, and connect color to "principled bsdf" roughness input
-        - note that black corresponds to zero roughness (shiny)
+        - note that black corresponds to zero roughness (clean and shiny), white (dirty), and shades of grey (in-between roughness)
         - selected image texture is automatically opened in the "texture paint" workspace
 
       - recommends having 3d viewports x 2 (solid and material preview) to see in real-time the effect of modifying the roughness color
@@ -54,7 +54,7 @@
         - use texture mask (image provided)
         - google "texture alpha brushes" for more ideas OR create in krita
         - change the "dirt" texture mask "mask mapping" to random
-          - random angle, symmetry on/off, brush strength, strategically select areas that might get dirtier, etc.
+          - random angle, symmetry on/off, brush strength, strategically select areas that might get dirtier, change the color (black/white/grey shades), etc.
         - make sure to save the dirty texture image
 
     PARENTING

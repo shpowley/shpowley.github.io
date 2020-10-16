@@ -10,6 +10,7 @@ TOPICS TO RESEARCH
   - freestyle renderer
   - cell shader
   - baking textures
+  - nurbs
 
   - flipped normals: https://www.katsbits.com/codex/flip-normals/
 
@@ -39,7 +40,6 @@ DRAWING TABLET SHORTCUT CANDIDATES
   extrude - "E"
   extrude along normals - "ALT+E"
   inset faces - "I"
-  rotate to face = "`"
 
 
 NAVIGATION
@@ -56,6 +56,11 @@ NAVIGATION
 
   - frame all = HOME
   - frame selected = "." (NUMPAD)
+
+  - align viewport to face normal (or "align view to active")
+    - edit mode > select face > "SHIFT+NUMPAD-7"
+      back of face: "SHIFT+CTRL+NUMPAD-7"
+      others: "SHIFT+/CTRL+/NUMPAD-1/NUMPAD-3"
 
 
 SELECTION
@@ -135,8 +140,22 @@ KEYBOARD MANIPULATION SHORTCUTS
   - constrain axis by using "X", "Y", "Z" keys 
   - constrain to 2-axes using SHIFT+ "X", "Y", "Z" key of the axis NOT being used
 
-  - rotation manipulation in 5 degree increments = "rotate+CTRL"
-  - exact rotation typed = "rotate+<TYPE ANGLE>"
+  CTRL key modifier 
+    - works with gizmos or shortcuts
+    - move + snap to grid = "move+CTRL"
+    - rotation manipulation in 5 degree increments = "rotate+CTRL"
+
+  SHIFT key modifier
+    - very small, precise adjustments
+
+  ALT key modifier
+    - clear a specific transform (ie. clear rotation = "ALT+R")
+
+  EXACT VALUE
+    - exact value typed 
+    - move: "move+<LOCATION>"
+    - rotation: "rotate+<TYPE ANGLE>"
+    - scale: "scale+<SCALE FACTOR>"
 
 
 CLEAR / APPLY TRANSFORMATIONS
@@ -188,8 +207,19 @@ USEFUL PIE MENUS
 
   main menu commands = "SHIFT+SPACEBAR"
 
+  view presets = "`"
+
 
 MISC USEFUL
+
+  ROLL
+    SHIFT+NUMPAD-4/NUMPAD-6
+
+    custom keymap for the mouse scroll wheel
+    - https://blender.stackexchange.com/questions/15049/how-to-roll-the-viewport
+
+  REDO LAST = "F9"
+    - great for calling back the object creation dialog that typically disappears
 
   TOGGLE LOCAL VIEW (SELECTED OBJECTS) = "/"
   SHOW/HIDE MODELING VIEWPORT TOOLS = "T"
@@ -533,6 +563,9 @@ DELETE PART OF GEOMETRIES
 
 
 JOIN / SEPARATE GEOMETRIES
+
+  Q: join vs. parenting
+    - https://blender.stackexchange.com/questions/123255/should-i-join-or-parent
 
   join object geometries = "CTRL+J"
     - active object contains both geometries
@@ -1035,6 +1068,37 @@ TEXTURE PAINTING
     - comparison: https://youtu.be/FeJFg5uIIrc
 
 
+  LAYERS
+    - still figuring this out ..add-ons also available..
+
+    - nodes approach:
+
+      https://youtu.be/nSByASy15-4 and https://youtu.be/fCRivuw9N7U (similar)
+        - key is to use "mix RGB" shader to combine 2 texture nodes "layers"
+          - 1st texture node "layer" : color > "mix RGB" : color1 input
+          - 2nd texture node "layer"
+            - when defining the texture, the alpha set to zero (1st texture node layer also perhaps.. if there is a base material color)
+            - : color > "mix RGB" : color2
+            - alpha should plug in to the "mix RGB" factor
+
+        - additional texture "layers"
+          - add another "mix RGB" after the first
+          - "mix RGB" (original) : color > "mix RGB" (new) : color1
+          - new texture node "layer" with similar connections as the 2nd texture node "layer" setup
+          * end result: 1st texture (bottom layer), 2nd texture (above 1st), 3rd texture (above both)
+            - see image: "texture paint layers.png" (same location as this file)
+
+        - "principled BSDF" node can be bypassed or left
+
+      https://youtu.be/HC6hHnSseXI
+        - "like substance painter"
+        - more advanced technique (?) to maintain normal maps, etc.
+
+  
+  COLOR PALETTE (see helicopter exercise notes)
+    * (ERASE/ERASING) create an initial color palette item that matches the base color  OR  press "S" (sample) from the base color
+
+
   TEXTURE PAINT VIEWPORT TOOLS: draw, soften, smear, clone, fill, mask, annotate
 
     * "texture paint" workspace  OR  if using layout workspace, viewport = "image editor" + mode = paint
@@ -1051,9 +1115,11 @@ TEXTURE PAINTING
 
     fill - paint bucket fills entire model surface
 
-    mask
+    mask tool
       - mask affects all other texture paint tools
-      - compared to "texture mask" (see below)
+
+      ** combine this with TEXTURE MASK / STENCIL (see below) for fine-tuning a detailed mask (example: exact placement of b/w yin-yang symbols on the uv map / mask)
+        - comment: GREAT! at first this mask tool didn't seem worthwhile with only simple hand-drawn lines. slight exaggeration, but combined, this is more powerful than individual methods alone.
 
       - "active tool and workspace settings" (tab) > "masking" > "stencil mask"
       
@@ -1070,6 +1136,8 @@ TEXTURE PAINTING
         - switching to any other tool is affected by the mask
           - easily enable/disable a mask by using the "masking" > "stencil mask" checkbox
 
+        * control the mask visibility using "viewport overlays > stencil opacity"
+      
   BRUSH CONTROLS
     - configure with tools menu OR top toolbar
     - mirror x|y|z (only on the 3d viewport)
@@ -1085,25 +1153,38 @@ TEXTURE PAINTING
   STROKE
     - control stroke method, jitter, stabilization
 
-    - interesting stroke methods: space, airbrush, anchored, line, curved
-      - airbrush: keeps applying "ink"
-      - anchored: resizeable "ink dots"
-      - line: straight lines
+    - stroke methods: space, airbrush, anchored, line, curved
+      - space:
+        - continuous line
+        - "spacing" might be the most important - % of brush diameter of new dot placement; ~10% is most efficient; 1% too expensize
+        * stabilize stroke > radius & "input samples" both help stabilize the stroke
+
+      - dot: similar to space, but faster strokes increase distance between dots
+      - drag dot: precisely place single dot (or shapes?)
+
+      - airbrush:
+        - keeps applying "paint" at paused locations
+        - somewhat similar to space, but uses a time interval between dot placement
+
+      - anchored: resizeable "ink dots" from center-to-edge or edge-to-edge
+      - line: straight lines with similar settings to space
 
       - curved: 
-        - bezier curve data block "templates"
-        - strange, but re-useable
+        - somewhat re-usable bezier curve data block "templates"
         - use "CTRL+RMB" to create bezier points
         - press "ENTER" to create drawing
+        - select bezier points and handles, manipulate with "G" (grab), "R" (rotate), "S" (scale)
+        - somewhat strange: not locked to any axis, rotate is "finicky"
 
   FALLOFF
-    - controls the stroke opacity from the center outwards
+    - controls each stroke dot opacity from the center outwards - not the stroke itself (a limitation? vs. other drawing software)
     - use the "anchored" stroke method to best test/visualize falloff
     - demo shows that it's possible to create "banded shells" effect
 
   BRUSH TEXTURE
     - "active tool and workspace settings" tab > "brush settings" > "texture"
     - use images/movies OR pre-defined procedural textures instead of solid colors
+    * POTENTIAL FOR MORE CREATIVE BRUSH STROKES
 
     initial steps:
       - "active tool" menu > create a new texture > rename it
@@ -1113,22 +1194,30 @@ TEXTURE PAINTING
     - any color other that white, applies a tint
     - size of the image is proportional to the brush size
 
-    - pre-defined procedural textures have the ability to maintain continuity across a shape's faces when using "3d" mapping
+    * pre-defined PROCEDURAL TEXTURES have the ability to maintain continuity across a shape's faces when using mapping > "3D" (COOL EFFECT)
 
-    - "stencil" mapping allows previewing the image prior to the brush stroke
+    *** PREFERRED MODE - COLORED DECAL ***
+    * mapping > "STENCIL" allows previewing the image prior to the brush stroke
+      * THIS OPERATES MUCH LIKE APPLYING A "COLOR DECAL"
+        - images with alpha channel background
+
       - adjust the "stencil" position ("RMB") / rotation ("CTRL+RMB") / scale ("SHIFT+RMB") prior to the painting the stroke
+      - remove the stencil using the X button -- however, this is retained in the blender file for quick access clicking the square-checkered image (useful for quickly switching stencil images)
 
   TEXTURE MASK
     - "active tool and workspace settings" tab > "brush settings" > "texture mask"
 
     - texture mask images are usually black and white
-      - black sections BLOCK all brush strokes, white sections allow brush strokes
+      * black sections BLOCK all brush strokes, white sections allow brush strokes
       - color images are interpreted as grey-scale images
       - grey-scale images block a percentage of the paintbrush color
 
     - similar setup to BRUSH TEXTURE, but make sure to use the correct "brush mask" in the "texture properties" tab
 
+    *** PREFERRED MODE - PAINT STENCIL ***
     - mask mapping options are similar to BRUSH TEXTURE
+      * THIS OPERATES MUCH LIKE A "TRADITIONAL REAL-LIFE" SPRAY PAINT STENCIL
+
       - "stencil" mask mapping appears most appropriate for this tool
         - adjust the "stencil" position ("ALT+RMB") / rotation ("CTRL+ALT+RMB") / scale ("SHIFT+ALT+RMB")
 
@@ -1287,6 +1376,7 @@ DATA BLOCKS
 
     - quickly copy an object's data blocks to other objects
     - select destination objects > selection source object (active) > "CTRL+L" > select type of data block
+    * great for copying existing object materials, all modifiers, ...
 
 
   EXTERNAL DATA
@@ -1426,9 +1516,11 @@ SVG IMPORT
     - re-position primary svg center to document bottom-left of document (svg should import into blender world 0,0)
       - ALTERNATE METHOD: blender imported svg "set origin > geometry to origin" also would work ("CTRL+ALT+SHIFT+C")
 
+
     * HANDLING CURVES
       - select the object(s) > menu "extensions" > "modify path" > "flatten beziers"
       - experiment with a number around 2.0 to optimize the number of vertices and make the image still look curved
+        - use NODE tool to better visualize nodes + "flatten beziers" live preview
 
     * png images converted to svg is possible using built-in inkscape feature (needs testing)
 
@@ -1443,6 +1535,22 @@ SVG IMPORT
       ** see inkscape step "HANDLING CURVES" >> this WILL SAVE A LOT OF TIME as the process is more automated
 
     - extrusion can then be used and the mesh can be modified as normal
+
+  OTHER USEFUL TECHNIQUES (SOMEWHAT RELATED TO THIS WORKFLOW)
+    * techniques obviously useful elsewhere
+
+    - import to another .blend file
+      - open destination .blend file
+      - file > append > select .blend file containing the SVG mesh > objects > select SVG object
+
+    - align SVG mesh object to any face
+      - select destination face
+        - mesh > snap > cursor to selected
+        - transform orientations > "+" button to temporarily add face orientation
+
+      - select SVG mesh object
+        - object > transform > align transform orientation
+        - rotate SVG mesh object on z-axis to desired
 
 
 MODELING TIPS
@@ -1463,6 +1571,23 @@ TRIS / QUADS
   * designing 3d models in "quads" is best for long-term maintainenance
     - quads allow for continuous edge loop selection
     - forcing a non-quad (tri or poly) breaks edge loop continuity, which can be intentional
+
+
+  flatten faces
+
+    https://blender.stackexchange.com/questions/7729/how-to-flatten-a-face-to-avoid-distortion-make-an-ngon-planar
+
+      COMMENT: after trying each on a deformed cube, I'm not 100% which is best as each deform the faces around it to achieve the flat faces
+      
+        there's also: mesh > cleanup > split non-planar faces
+
+    mesh > cleanup > make planar faces
+      - select faces first
+      - select # of iterations in context dialog
+
+    loop tools (add-on)
+    - loop tools > flatten
+    * also of note, loop tools > gstretch (straightens connected segments )
 
   
   TRIANGLES TO QUADS
@@ -1492,4 +1617,4 @@ TRIS / QUADS
 
 QUESTIONS
 
-  the stencil mask seems "somewhat limited" in that we can only created masked brush strokes. is it possible to use more complex black/white images - moving/scaling/rotating them as necessary?
+  empty object - parenting to empty vs parenting to the same type

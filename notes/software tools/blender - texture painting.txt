@@ -1,0 +1,121 @@
+learn blender the right way
+
+section 7: texture painting
+
+  an abbrevieted version of my texture painting notes, specifically geared toward the use case for decal/stickers and stencil-masks
+
+
+  PRELIMINARY STEP
+
+    select object
+
+    switch to "shading" workspace
+
+    add image texture node
+      new image
+      name it, size it (ie. 2048px x 2048px), choose a base color
+      connect ::"color" > bsdf::"base color"
+
+    switch to "texture paint" workspace
+
+    object is now ready to paint
+
+
+  SAVE IMAGE TEXTURES
+
+    default saved internally in blender file
+
+    recommended in external "textures" subfolder
+
+
+  PAINTING SYMMETRY
+
+    active tool and workspace settings > symmetry > mirror > x | y | z
+
+    works only on 3d view AND only if the model is symmetrical
+
+
+  TEXTURE ("sticker/decal" using existing images)
+
+    active tool and workspace settings (tab) > brush settings > texture
+
+    CREATE (BRUSH) TEXTURE
+      create "new" texture  OR  click checkered icon to browse existing textures
+      name it OR leave default
+
+    ASSOCIATE IMAGE TO (BRUSH) TEXTURE
+      texture properties (tab) > image > settings > open existing image file
+
+    (BRUSH) TEXTURE SETTINGS
+      mapping: stencil
+      select "image aspect"
+    
+    STENCIL CONTROL
+      position ("RMB")
+      rotation ("CTRL+RMB")
+      scale ("SHIFT+RMB")
+
+    paint over the desired (brush) texture "decal" image with 100% white color to reveal the underlying image
+
+    alpha - source image ALPHA WORKS FINE using the default texture settings
+
+
+  TEXTURE MASK (stencils)
+
+    active tool and workspace settings (tab) > brush settings > texture mask
+
+    CREATE (MASK) TEXTURE
+      create "new" texture  OR  click checkered icon to browse existing textures
+      name it OR leave default
+
+    ASSOCIATE IMAGE TO (MASK) TEXTURE
+      texture properties (tab) > image > settings > open existing image file
+      * STENCIL ITEMS SHOULD BE WHITE, non-stencil items should be black or alpha
+
+    (MASK) TEXTURE SETTINGS
+      mapping: stencil
+      select "image aspect"
+    
+    STENCIL CONTROL
+      position ("ALT+RMB")
+      rotation ("ALT+CTRL+RMB")
+      scale ("ALT+SHIFT+RMB")
+
+    paint over the texture mask "stencil" image
+      stencil either blocks or allows painting
+      source image areas that are BLACK, ALPHA, OR OUTSIDE THE "STENCIL" ARE BLOCKED
+      source image areas that are WHITE AREAS ALLOW PAINTING
+      source image areas that are BLACK/WHITE GRADIENT works ..not so great
+
+
+  COMBINE BRUSH and MASK TEXTURES techniques to create sticker/decals with stencil-effect
+
+
+  VIEWPORT TO PERPENDICULAR TO A FACE
+    for applying stencils to face normals
+    edit mode > select face > "SHIFT+NUMPAD-7"
+
+
+  MASK TOOL (fixed stencils)
+
+    active tool and workspace settings (tab) > masking
+
+    check "stencil mask" and expand
+
+    CREATE MASK "STENCIL IMAGE"
+      create "new" texture
+      name it, size it (probably to match UV size)
+      display color: default black
+
+    IMAGE EDITOR VIEWPORT
+      select "stencil image" to see masked areas
+
+    select the MASK TOOL icon to draw the mask
+      mask areas that are BLACK allow painting
+      mask areas that are WHITE block painting (use "CTRL" to remove mask areas)
+
+      * use the TEXTURE MASK TECHNIQUE to draw DETAILED MASK
+
+    toggle "stencil mask" to enable/disable the mask
+
+    invert the mask by using toggle next to "display color"
