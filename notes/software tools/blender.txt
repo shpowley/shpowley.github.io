@@ -633,7 +633,7 @@ ANIMATION
 
 
   INTERPOLATION MODE
-    - controls speed-up/slow-down, easing effects
+    - controls speed-up/slow-down and easing effects
     - select keyframes
     - right-click > interpolation mode
 
@@ -973,8 +973,190 @@ TEXTURES
           - connections: texture color > "vector: normal map" normal > bsdf normal
 
       "displacement"
-        - not covered (future video)
-        - see  "How To Setup PBR and Displacement in EEVEE AND Cycles [Blender 2.8]" of a channel called "Blender Binge"
+        - not covered in this training
+
+        How To Setup PBR and Displacement in EEVEE AND Cycles [Blender 2.8]
+          - https://youtu.be/UkU0-QeWUcU
+
+          - mesh (grid example) with UV map option checked
+          - "shading" workspace > select mesh > new material - results in BSDF shader node
+          - "file browser" viewport > navigate to PBR texture pack (from internet, etc.)
+
+          - drag "_diffuse" texture into the "shader editor" viewport
+            - this creates an image texture node pre-assigned to the correct texture
+            - "_diffuse" texture is just the texture colors
+
+          - connect "image texture":color -> "BSDF":base color
+
+          - normal map
+            - drag "_normal" texture into the "shader editor" viewport
+              - bluish-colored thumbnail
+              - "_normal" texture contains vector data
+              - change "color space" to "non-color"
+
+            - add vector > "normal map" node (translates data)
+            - connect "_normal image texture":color -> "normal map":color | :normal -> "BSDF":normal
+            - select "normal map" node empty field and change to "UVMap"
+            - adjust "normal map" strength to adjust
+            - moving light should now interact with bump displacement
+
+          - additional height data
+            - add vector > "bump" node between "normal map" and BSDF nodes
+            - drag "_height" texture into the "shader editor" viewport
+            - change "_height" texture "color space" to "non-color"
+            - connect "_height image texture":color -> "bump":height
+            - add converter > "RBG to BW" node between "_height" texture and "bump" nodes (instructor isn't 100% if this is really necessary)
+            - adjust "bump" node strength, distance settings as needed
+
+          - BSDF roughness
+            - drag "_roughness" texture into the "shader editor" viewport
+            - change "_roughness" texture "color space" to "non-color"
+            - connect "_roughness image texture":color -> "BSDF":roughness
+
+            - add converter > "colorramp" node between "_roughness" and "BSDF" nodes (more granular control)
+              - note there are 2 sliders to control B/W
+
+          - image "flatness"
+            - overall shader effects should produce a nice-looking image at this point, but it's still technically a FLAT 2D IMAGE
+            
+            METHOD 1: SUBDIVISION SURFACE + DISPLACEMENT MODIFIERS
+              - temporarily unplug "bump" node normal connection
+              - add subdivision surface modifier
+                - simple, render/viewport subdivisions = ~3 (be careful not to set too high)
+              - add displace modifier
+                - new texture, rename it
+
+              - "texture properties" tab > select "_height" texture
+                - result in very blocky/faceted displacements
+
+              - use "shade smooth" object option
+
+              - "modifier properties" tab
+                - increase subdivisions to 5 OR 6 (6 seems ideal)
+
+              - adjust displace modifier "strength" to a desired value
+              - reconnect "bump" node normal connection for 2D effects
+                - try disconnecting either the "_height" OR "_normal" shader effect OR adjusting various strength values to see WHAT LOOKS BEST
+
+            METHOD 2: CYCLES RENDERER ONLY
+              - switch to cycles renderer
+              - disable/remove "displace" modifier, unplug "bump" node normal connection
+              - subdivision surface modifier and settings need to remain from previous method
+              - cycles "experiment" NOT NEEDED for 2.9
+              - copy "_height" texture and move near the "material output" node
+              - add vector > displacement node between new "_height" texture and "material output" nodes, connect all
+              - "material properties" tab > settings> surface > displacement > choose "displacement" OR "displacement and bump" option
+              - change displacement node scale to an acceptable value
+
+            * COMMENT: I think METHOD 1 IS BETTER OVERALL, casually comparing the end results of each look identical and METHOD 1 seems valid for either eevee or the cycles renderer
+
+
+        Bake PERFECT Displacement Maps (with blender)
+          - https://youtu.be/arvhK4tvYuY
+
+          - this baking/displacement technique is great for extreme detail / extreme poly count objects (baked "cheating" without additional polygons)
+
+          - camera set to bird's eye view over the object of interest
+
+          - object data properties (camera) > lens
+            > type = orthographic 
+            > adjust "orthographic scale" = number so that entire object fills the camera view nicely
+
+          - output properties > dimensions
+            - TIP: square textures are usually used for this type of thing
+            - TIP: higher the resolution translates to better detail
+            - resolution X&Y = at least 2048x2048
+            - object data properties (camera) > lens > re-adjust "orthographic scale"
+
+          - select object > shader workspace
+            - rename slot 1 material name
+            - remove BSDF node
+            - add input > geometry node
+            - add converter > "separate xyz" node
+
+            - add converter > math node
+              - change to "multiply"
+
+            - add converter > math node
+              - change to "greater than"
+              - change value "threshold" = 1.00
+              - NOTE: this node is temporary; just to determine maximum value for the "multiply" math node
+
+            - connections:
+              geometery:position
+              > vector:"separate xyz":z
+              > value:"multiply" (math node):value
+              > value:"greater than" (math node):value
+              > surface:"material output"
+
+            - adjust the "multiply" math node value until the ideal maximum threshold value is determined (entire model just turns black)
+              - delete the "greater than" math node
+
+          - render texture
+            - return to layout workspace, camera view
+
+            - render properties > "color management" > "view transform" = standard
+              - keeps height @ 1.0 white
+
+            - remove background (sets it to black / lowest elevation)
+              - render properties > film > transparent = true
+              - removing the alpha channel will effectively make the background black
+
+            - need to output FILE FORMAT THAT SUPPORTS LINEAR SPACE
+              - output properties > output > file format
+              - TIP: don't buy texture packs that use more common image formats due to slight curvature in the linear space, resulting in SLIGHTLY DEFORMED GEOMETRIES (do not use .png/.jpg)
+              - use openEXR (possibly .tiff)
+              - output properties > output > color = RGB (RGBA might actually be useful, but not used in the example)
+              - output properties > output > color depth = "float (full)" (32-bit w/ lots of precision, reducing possible "block-like" elevation)
+              - render image > save as (defaults should be from output properties set in this step)
+
+          - make sure to save the file
+            - TIP: remember the height for later
+
+          - CREATE A NEW BLENDER FILE (this will make use of the .exr displacement)
+            - create a plane (or any geometry apparently)
+            - at this point, similar to "How To Setup PBR and Displacement in EEVEE AND Cycles [Blender 2.8]"?
+
+            - render properties
+              > render engine = cycles
+              > device = gpu compute
+              > feature set = experimental
+
+            - modifier properties > add "subdivision surface"
+              - simple, "ADAPTIVE SUBDIVISION" = true
+
+            - shading workspace
+              - new material, rename
+              - material properties > settings > surface > displacement = "displacement and bump" OR "displacement"
+
+              - add texture > image texture node (or drag/drop .exr) that uses .exr from previous blender baking exercise
+
+              - add vector > displacement node
+                - midlevel = 0
+                - scale = 0.1 - 0.2 (not sure how this is determined; 1.0 seemed to work on my test)
+
+              - connections:
+                - .exr "image texture":color
+                > height:"displacement":displacement
+                > displacement:"material output"
+
+              - "subdivision surface" > "dicing scale" = 0.1 (reduces distortion)
+              * THIS WILL NOT "WORK" UNLESS "viewport shading" = rendered (actually uses cycles)
+
+              - additional demo nodes
+                * need to "play" with various node values to shift the displacement x/y position
+
+                - add input > "texture coordinate" node
+                - add vector > mapping node
+
+                - connections:
+                  - "texture coordinate":uv
+                  - vector:"mapping":vector
+                  - vector:"image texture"
+
+
+        ** "subdivision surface" "ADAPTIVE SUBDIVISION" WORKED on the "How To Setup PBR and Displacement.." tutorial ONCE THE "DISPLACEMENT" MODIFIER WAS REMOVED ALTOGETHER. while the CYCLES renderer is slower, overall the ADAPTIVE SUBDIVISION seems easier to set up with better results based on the brick tiles sample
+
 
       ** note the parameter input dot color:
         yellow = color (texture color space = "sRGB")

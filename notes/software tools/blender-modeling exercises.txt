@@ -395,7 +395,7 @@
               - adjust upper torso left/right toward the center of gravity on the planted foot
               - adjust hip angled up toward planted foot
               - rotate upper torso angle in the opposite direction of the hips
-              - rotte the head so that it is level
+              - rotate the head so that it is level
               - arm swinging back is bent slightly to form an arc; exaggerate the "swinging back" (animation "follow-through")
               - use similar logic for the arm swinging forward
               - adjust finger positions to express a differential; select the fingers > copy pose > paste pose flipped (for the other hand)

@@ -91,7 +91,7 @@ section 7: texture painting
   COMBINE BRUSH and MASK TEXTURES techniques to create sticker/decals with stencil-effect
 
 
-  VIEWPORT TO PERPENDICULAR TO A FACE
+  VIEWPORT SET PERPENDICULAR TO A FACE
     for applying stencils to face normals
     edit mode > select face > "SHIFT+NUMPAD-7"
 
