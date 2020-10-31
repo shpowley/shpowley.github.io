@@ -30,6 +30,7 @@ CREATING A NEW PROJECT
 
     WINDOWS
       - this has to be done using the ADMIN COMMAND LINE
+      - change to the intended directory and type in from there
       ex. mklink /d [LINK] [TARGET FOLDER]
       ex. mklink /d cocos2d d:\SDK\cocos2d-x
 

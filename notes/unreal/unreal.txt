@@ -1,0 +1,117 @@
+STUFF
+
+  Learn Unreal Engine for Blender Users - UE4 Beginner Tutorial
+    https://www.youtube.com/watch?v=3jM_VLzRqlE
+
+    MATERIALS (@25:38) - 2 parts.. kind of advanced for me
+
+  - very similar, but longer than previous
+  Unreal Engine 4 Beginner Tutorial - Create Worlds in UE4
+    https://youtu.be/_a6kcSP8R1Y
+
+
+  CODING - study unreal docs
+    https://docs.unrealengine.com/en-US/index.html
+    - programming guide
+
+
+SCENE NAVIGATION
+
+  LMB+move - FLY/NAVIGATE
+  MMB+move | LMB+RMB+move - PAN
+  RMB+move - ROTATE COMERA
+  middle-scroll - FORWARD/BACK
+
+  LMB+ALT+move - orbit around focal point
+    *** IMPORTANT: 
+      - still kind of figuring this out, but based on "unreal sensei" tutorial this can be manipulated to act like Blender control
+      - first set focus on an object ("F" or select in tree)
+        - this is the important as it establishes the focal point of the orbit
+        - if this is skipped, the focal point is "invisible"
+      - use ALT+LMB+move to orbit
+      - use ALT+RMB+forward/back to change the focal distance
+      - pen control (huion) also works
+
+  arrow keys | WASD - side-side, forward/back
+    - numpad arrows also work
+    - numpad-7 / numpad "-" - down
+    - numpad-9 / numpad "+" - up
+    - RMB+middle-scroll - fine-tune navigation speed (useful for large levels)
+
+  lock camera to object while moving it (translate gizmo "trick")
+    - ALT + move object using translate gizmo arrows
+
+
+RECOMMENDED SHORTCUTS/HOTKEYS
+
+  W - move/translate object
+  E - rotate object
+  R - scale object
+
+  F - focus on selected object
+    - double-clicking object in the "world outliner" also work
+
+  G - game mode toggle ON/OFF
+  CTRL+# - set bookmark
+  # - restore bookmark
+  F11 - toggle immersive mode
+
+  H - hide selected objects
+  CTRL+H - unhide everything
+
+
+COMMANDS
+
+  DUPLICATE
+    - "CTRL+W" : duplicate in place (almost hidden)
+    - "ALT + TRANSLATE GIZMO" (preferred - very quick)
+
+
+LIGHTING EXPOSURE
+
+  helps prevent recompile warnings for re-baking lighting maps..
+    - select directional light source > details panel > transform > mobility = moveable
+
+  prevent dynamic lighting exposure in editor design mode
+    - unreal > "LIT" > exposure > "game settings" (checked = dynamically adjusts to location; unchecked = static value like blender) + adjust "EV100" setting
+    - compare this to blender > "render properties" (tab) > "color management" > exposure
+    - does not affect play mode
+
+  prevent dynamic lighting exposure in game play mode AND design mode (advanced technique)
+    - requires POST-PROCESS VOLUME actor be added to the scene
+      - special effects + color gradient
+
+      - details panel > "color grading" > global > saturation = checked; set "saturation value" = 0 (demonstration example setting only ..sets everything to greyscale)
+        - there is no noticeable effect unless the camera POV is actually in-bounds within the POST-PROCESSING VOLUME
+
+      - entire scene: details panel > "post process volume settings" > "infinite extent (unbound)" = checked
+
+      - constant exposure: details panel > lens > exposure > "metering mode" = manual
+        + "LIT" > exposure > "game settings" = checked
+        + details panel > lens > exposure > "exposure compensation" = adjust appropriately (COMMENT: this didn't seem to do anything until IDE "epic" graphic settings used)
+
+
+UNREAL UNITS
+  - centimeters (cm)
+
+
+MATERIALS (@25:38)
+
+
+CODING
+
+  TEXT FORMATTING
+    FString::Printf() using %i %s, etc.
+
+  TEXT HANDLING
+    https://docs.unrealengine.com/en-US/Programming/UnrealArchitecture/StringHandling/index.html
+
+  FSTRING / PRINTF
+    https://docs.unrealengine.com/en-US/Programming/UnrealArchitecture/StringHandling/FString/index.html
+
+    * USEFUL FEATURES: print to viewport / output log
+
+
+https://www.reddit.com/r/unrealengine/comments/882myy/best_way_to_learn_ue4_beginner/
+https://forums.unrealengine.com/development-discussion/c-gameplay-programming/1489388-best-way-to-learn-c-for-ue4
+https://forums.unrealengine.com/community/general-discussion/114864-unreal-engine-best-way-to-learn

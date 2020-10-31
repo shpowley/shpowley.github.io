@@ -1,0 +1,63 @@
+blender "retopology": study techniques + notes
+
+blender "retopology": reduce lucky cat vertex count => .fbx export => .c3b => cocos2d-x gyro test project import + simple test => compare vertex count vs the original
+
+blender "baking": study technique + notes
+
+blender "baking": fake metal material
+
+cocos2d-x: try viewing baked metal material => is this acceptable?
+
+blender "baking": complex model feature set => baked texture => placed on an simplified version of the same model
+
+blender "baking": complex model feature set => baked texture NORMAL MAP => placed on an simplified version of the same model
+
+unreal engine: mobile sensors
+
+blender "rigging": study techniques + notes
+
+blender "rigging": SINGLE ANIMATION => .fbx => .c3b => cocos2d-x test
+
+blender "rigging": MULTIPLE ANIMATIONS => .fbx => .c3b => cocos2d-x test
+
+blender "rigging": MULTIPLE ANIMATIONS => .fbx => unreal engine test
+
+unreal engine: android setup (dev enabled youtube)
+
+unreal engine: android bare minimum project, note file size
+
+unreal engine: android bare minimum project => optimization => note file size
+
+unreal engine: blender-to-unreal add-on
+
+project (libgdx): lucky cat with sensors
+unreal engine: lucky cat + sensors (so easy to import existing .fbx animation.. can't resist)
+cocos2d-x: lucky cat + sensors (.fbx/.c3b) (place holder)
+
+project (cocos2d-x/libgdx): android robot + "hula" version of "wobble dashboard toy" (easiest to complete?)
+project (cocos2d-x/libgdx): "hula girl"
+project (cocos2d-x/libgdx): top-down accelerometer-controlled project => early tests
+
+cocos2d-x: complete simplified box2d + sensor template
+
+opengl es 2: deep sigh.. got the e-book already
+
+opengl es 2: shaders to create / granular control of materials on .obj + incorporate textures
+
+unreal engine: learn unreal engine for blender users - ue4 beginner tutorial (youtube @25:38)
+udemy: blender 2.8 the complete guide from beginner to pro
+udemy: unreal engine c++ developer: learn c++ and make video games
+udemy: blender 2.81 - spiders and insects creation from scratch
+udemy: the ultimate blender 3d sculpting course
+
+blender: grease pencil.. (but why?)
+
+box2d: accelerometer 2d spring physics to fake 3d "bobble" motion (jack conversation..) => test
+
+cocos2d-x: cpp_tests => study and make notes of relevant code samples
+
+unreal engine: mobile ui overlay controls
+
+coco2d-x: .obj vs .fbx/.c3b comparison - resource handling, import issues, orientation/size, multiple objects, textures, etc.
+
+

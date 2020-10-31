@@ -2,7 +2,7 @@ LIST OF CURRENT ANDROID PROJECTS (code\android_projects)
 
   code_test
     - misc test code
-    - safe to delete
+    - SAFE TO DELETE
 
   celestial (github)
     - 1st attempt at hand-coding box2d collisions, debug draw, and cocos2d-x layers

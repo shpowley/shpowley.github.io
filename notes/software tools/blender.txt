@@ -1,7 +1,9 @@
 TOPICS TO RESEARCH
 
+  - retopology
+    - Blender Quick tip №6. Retopology: creating stone pt.2 (https://youtu.be/rUzJefYNQlI)
+
   - box cutter add-on
-  - boolean
   - grease pencil
   - modeling quick organic shapes
   - mirroring techniques
@@ -25,7 +27,7 @@ TUTORIALS
     - https://www.udemy.com/course/learn-blender-28/
 
   marco bucci youtube vids (2)
-    - SO MANY ADVANCED TECHNIQUES
+    - SO MANY ADVANCED UNORTHODOX TECHNIQUES
 
 
 DRAWING TABLET SHORTCUT CANDIDATES
@@ -519,6 +521,9 @@ SEPARATING / MERGING VERTICES
 
 
 BOOLEAN MODIFIER
+  * BOOL TOOL add-on is highly recommended
+    - essentially the BOOLEAN MODIFIER, but made much easier to use
+
   - interset, union, difference
   - both objects need to be separate objects
   - one object selected, 2nd object selected with picker > apply
@@ -787,7 +792,7 @@ SUBDIVISION OF SURFACES
     - POLE "STARS" located on FLAT PLANES DO NOT create visual surface imperfections
 
 
-MIRRORING
+MIRRORING`
 
   - default blender tools object mirroring
 
@@ -1496,6 +1501,14 @@ ENVIRONMENT IMAGES (HDR)
         * the background node connections may need to be swapped for the "light path" node to have any effect
 
 
+  CUBEMAPS
+    - I don't think this is a "blender" thing per se. required to create a "skybox" in cocos2d-x however (https://docs.cocos.com/cocos2d-x/manual/en/3d/skybox.html).
+    
+    - basically, a HDRI image on a cube texture map, but "HOW TO ACCOMPLISH THIS?"..
+      THE EASY WAY: https://matheowis.github.io/HDRI-to-CubeMap/
+      BLENDER: https://blender.stackexchange.com/questions/187664/cube-projected-image-texture-as-hdri
+
+
 CAMERA
 
   - possible to have MORE THAN ONE CAMERA
@@ -1795,6 +1808,44 @@ TRIS / QUADS
       - object mode
       - subdivision surface modifier
       - view setting = 1, "simple" > apply
+
+
+OBJECT CONSTRAINTS
+
+  Blender 2.8 The complete guide from beginner to pro (16. 2.8 object constraints)
+
+  - "object constraint properties" tab
+
+  - a toolbox of pre-made "programmed" constraints
+    - categories: motion tracking, transform, tracking, relationship
+    - assigned to individual objects
+
+  ex. limit location
+    - min/max for object x/y/z position
+
+  ex. limit rotation + copy rotation
+    - limit rotation: min/max for object rotation about x/y/z axes
+    - copy rotation: copies rotation of another object that itself has "limit rotation" active
+      - rotation invert and % influence also possible
+
+  ex. tracking: track-to (camera object)
+    * GREAT EXAMPLE
+    - set camera to ideal position pointing toward an object
+    - set "target:" to the same object
+    - set "track axis: -z" and "up: y"
+    - when moving either the camera or the target object, the camera will always point to the target object
+    - create 1st view for object placement and a 2nd view from the camera viewport to best visualize what's going on
+
+  ex. "robotic fingers"
+    - not a rig, but a demo of what is possible when combining "copy rotation" + "child of" object constraints for finger digits and controller (empty) + "limit rotation" object constraint
+
+    - 3rd finger digit is offset by extra distance on the z-axis (not 100% why this is, except perhaps due to the offset of the 2nd finger digit ..and this is a sub-child..?) - fixed using the "set inverse" button located on the "child of" object constraint
+
+    - duplicated into 4 "fingers"
+
+  child-of: similar to parenting, but granular control of location, scale, rotation effects
+
+
 
 
 QUESTIONS

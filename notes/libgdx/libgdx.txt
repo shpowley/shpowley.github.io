@@ -1,0 +1,39 @@
+TRAINING
+
+  UDEMY: 2D GAME DEVELOPMENT WITH LIBGDX (FREE)
+    github course content: https://github.com/udacity/ud405
+    @ 1-9 configure android studio
+
+
+  udemy: how to make a platformer using libgdx (free)
+
+
+  3d and libgdx
+    https://xoppa.github.io
+    https://xoppa.github.io/blog/basic-3d-using-libgdx/
+
+  youtube / foreignguymike
+    https://www.youtube.com/c/ForeignGuyMike/featured
+
+  youtube / brent aureli
+    https://www.youtube.com/c/BrentAurelisCodeSchool/featured
+
+  youtube / dermetfan
+    https://www.youtube.com/c/dermetfan/featured
+
+
+  libgdx.com getting started
+    https://libgdx.com/
+
+  libgdx (official??) > getting started
+    https://libgdx.badlogicgames.com/index.html
+
+  libgdx wiki
+    https://github.com/libgdx/libgdx/wiki
+
+
+  live wallpaper
+    https://molotuspi.blogspot.com/2013/09/how-to-make-simple-android-live.html
+
+
+  

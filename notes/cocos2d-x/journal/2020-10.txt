@@ -1,0 +1,228 @@
+CORONAVIRUS TOTAL INFECTED: 41.02 MILLION (10/20/2020)
+CORONAVIRUS TOTAL INFECTED: 22.78 MILLION (8/21/2020)
+CORONAVIRUS TOTAL INFECTED: 14.82 MILLION (7/21/2020)
+
+----------
+Tuesday 2020-10-20
+
+  I haven't created a journal entry in a couple months. been on udemy.com mostly, studying BLENDER (3d modeling) and to a less extent UNREAL ENGINE.
+
+  BLENDER courses on udemy: 1 free "intro", 2 "intro", 1 sculpting, 1 specialized 3d modeling (realistic spider)
+
+  UNREAL ENGINE course on udemy: 1 "intro" course
+  
+  with BLENDER, I thought learning 3d modeling might be a good idea for many reasons. it kinda fits with my initial study path at collin college (3d animation). BLENDER is quite complex and I'm still just scratching the surface of it's capabilities.
+
+    broad topics: 3d modeling, sculpting, texturing, rigging, grease pencil ("2d+"), animation, game engine export
+
+  -
+
+  one idea I had prior to studying BLENDER was to create an animated LUCKY CAT with a waving arm just like real-life.
+
+    FEATURES:
+      PINCH-TO-ZOOM
+
+      Z-AXIS TURNING MODES:
+        - GYRO/COMPASS SENSORS (not sure which)
+        - TOUCH
+      
+      TURN RADIUS:
+        - 360-FREE, 180, or some value less than 180
+
+      WAVING MODES:
+        - ON/OFF: solar-mode, accelerometer-mode, always-waving-mode
+        - SPEED-UP/SLOW-DOWN: acceleromoter-mode only
+
+  -
+
+  I've created a satisfactory animated 3d model (I struggled and this took a while with my existing knowledge). at this point, I need to begin trying to EXPORT the object, textures, and animation to COCOS-2DX (possibly UNREAL).
+
+    - a couple months ago I was able to create a simple 3D COMPASS in BLENDER and export to .obj format WITHOUT TEXTURES. this was tested in the gyro test app.
+    - next I need to figure out some of the more complex techniques for use with COCOS-2DX. my best bet is studying the source code from the sample c++ android app.
+
+  -
+
+  COCOS-2DX ANDROID SAMPLE
+
+    I wanted this running on my existing phone to more easily view the running source code. Previously, it was only running on my hp-touchpad.
+
+    I had a problem getting this to run with the defaults and had to make the following changes to get the Resources to load correctly - https://discuss.cocos2d-x.org/t/android-cpp-tests-missing-resources/46776/33
+
+    next, I need to identify which cpp-test sections might be useful..
+
+----------
+Wednesday 2020-10-21
+
+  REVIEW OF THE COCOS-2DX ANDROID "CPP TESTS" SAMPLE
+    - highlight 3d-related and other interesting samples
+    - see "cpp_test_notes.txt"
+
+----------
+Thursday 2020-10-22
+
+  COCOS2D-X 3D MODEL TESTS
+
+    BLENDER .OBJ/TEXTURE EXPORT
+      - 1 plain textured cube + 1 textured / metallic material cube + untextured compass
+      - exported to .obj format
+
+    COCOS2D-X GYRO PROJECT .OBJ IMPORT
+      - restore project to spaceship and verify it still works -- OK
+
+      - attempt 2 cubes + compass -- OK
+        - actually contained 3 separate blender "objects" and a separate .png texture file for each cube object
+        - .png texture files did not have to be explicitly specified in code, but have to exist in the same android resource directory; I guess the .obj has it "hard-wired"
+        - one cube was designed with a shiny gold metal material, but this material didn't appear for some reason (I know the teapot from the cocos2d-x c++_tests had a shiny silver material)
+
+      - 2nd attempt with metallic material compass
+        - app loaded, but FAILED with material
+
+    UNREAL ENGINE .OBJ IMPORT
+      - I was curious to see how well this would work with the same mesh data I made in blender
+      - the scale was a bit too small, I didn't do any special conversion
+      - otherwise it was pretty much the same as in the cocos2d-x import test
+      - one key difference I suppose was that each blender "object" was treated as an individual object in the UE editor -- as such, the relative positioning was no longer maintained (refering to the "compass 3d model")
+
+----------
+Sunday 2020-10-25
+
+  INTERESTING VOXEL SOFTWARE
+
+    MagicaVoxel
+      https://youtu.be/y4hpQGpNFJM
+
+
+  Learn Unreal Engine for Blender Users - UE4 Beginner Tutorial
+    https://www.youtube.com/watch?v=3jM_VLzRqlE
+
+----------
+Tuesday 2020-10-27
+
+  so I've been kinda switching between tutorials for unreal engine and blender, while at the same time getting my head around how to proceed with the cocos2d-x/lucky cat project.
+
+
+  COCOS2D-X/LUCKY CAT TASK OUTLINE
+
+  X 1 simple .obj cocos2d-x import
+
+    2 fix material issue
+  X   - study shiny silver material teapot from the cocos2d-x c++_tests
+
+    3 simple .fbx (no animations)
+  X   - .fbx export
+  X   - .fbx convert to .c3b
+  X   - .c3b cocos2d-x import
+  X   - verify .c3b textures
+
+    4 study blender skeleton rigging .fbx animations
+
+    5 single .fbx animation
+      - .fbx export
+      - .fbx convert to .c3b
+      - .c3b cocos2d-x import
+      - animation test
+
+    6 multiple .fbx animations
+
+
+  cocos2d-x | multiple animations
+    https://docs.cocos2d-x.org/cocos2d-x/v3/en/3d/animation.html#multiple-animations
+
+----------
+Wednesday 2020-10-28
+
+  THIS IS ALL SO COMPLICATED! my mind is being pulled in so many directions just writing these notes.
+
+  regarding the task "2 fix material issue" from yesterday
+    - materials defined in blender (like glass, metal, gold, etc.) CANNOT be exported it seems - only the 3d models, textures (including normal maps?) and animations.
+    - fancier things like metallic materials have to be re-created as opengl "shaders" in glsl -- SO VERY COMPLICATED
+    - some things could be "baked" as textures -- I still have to learn this technique
+
+  so I tried modifying the "gyro spaceship" project and smooshing in some code from the "c++ tests" : metallic teapot / skybox. I eventually got some working code. I discovered the opengl shaders for material effects issue here. I'm just re-using the existing code, but there are caveats as always..
+
+  OBSERVATIONS
+    1 - the metal shader fails on complex, multi-3d models like the composite compass
+    2 - image textures are completely ignored when the shader does work
+    3 - the existing metal shader requires a scene skybox for the reflections (the skybox itself can be hidden which is nice)
+
+----------
+Thursday 2020-10-29
+
+  TASKS:
+    - blender lucky cat 3d model > get gold rgb color codes => BASE COLOR: FFCD00
+
+    - try modifying cocos2d-x gyro code opengl code to hopefully reproduce gold color instead of silver => CURRENT LEVEL OF UNDERSTANDING OF GLSL CODE -- NOT POSSIBLE
+
+    - blender lucky cat 3d model export to .obj and .fbx/.c3b and try importing into cocos2d-x gyro, opengl shader disabled
+      => .obj, object loaded, but textures didn't work, not sure why. compass 3d worked for 2 center boxes. lucky cat 3d model is a more complex "composite object" ..just guessing
+      => with .fbx to .c3b, data is much more encapsulated; object loaded and textures maintained with "minor" issues. ~32768 vertices limit broken even after using the blender "decimate" command
+
+    - blender lucky cat 3d model export to .obj and .fbx and try importing into unreal engine
+      => .fbx worked surprisingly well (animation worked with no difficult setup)
+      => .obj orientation off and sized too small, mesh broken in some places (because of scale?)
+      => image textures maintained in both cases
+      => shader material didn't work, but it recognizes each material enough to at least create a starting base color material which is surprisingly easy to re-work with similar values from blender (I did this with the coin..didn't like exactly the same, but still pretty good)
+
+      - there's also a blender to unreal engine add-on created by epic, which I didn't actually use today
+        https://www.unrealengine.com/en-US/blog/download-our-new-blender-addons
+
+
+  OBSERVATIONS
+    I tried the LUCKY CAT .OBJ AGAIN on android to verify - IT STILL FAILS THE TEXTURE LOAD. it is interesting to open the .obj and related .mtl files to look at some of the information from blender - I don't understand much, but I notice that SOME MATERIAL SHADER VALUES ACTUALLY DO EXIST in the .mtl files. how can this be taken advantage of though? OVERALL, THE .FBX/.C3B SEEM BETTER - textures work + it has animations too.
+
+    with cocos2d-x the .apk file size is so small (30-40MB dev), I also have a lot of time invested. the material shaders require learning opengl es 2.. I really don't want to, but.. 
+
+    with unreal engine, I think a bare project .apk is like 160+MB, but it was so easy getting the lucky cat animation working - it was almost TOO EASY. plus the material shader system is more intuitive and similar to blender.
+
+    one more thing, LIVE WALLPAPERS CAN'T BE BUILT USING EITHER ENGINE! 
+
+
+  COMMENTS
+    so this whole process is becoming more and more daunting each day. after each test / observation the "goal post" seems to keep moving further away... and there's so many things to learn.
+
+    the # of tasks is overwhelming and getting harder to track. I created ANOTHER text file with simple one-line tasks, easy to re-arrange (see tasks.txt).
+
+----------
+Friday 2020-10-30
+
+  COMMENTS
+
+    another day and moving that goal post..
+
+    so I think I've decided to switch up to libgdx - actually, I tried libgdx quite awhile back even before I started these notes.  I've been avoiding it (I think) because the primary language is java (now slowly shifting to kotlin..)
+
+
+    FRAMEWORKS I'VE USED THUS FAR (this is interesting)
+      unreal engine (just getting started)
+      cocos2d-x
+      phaser (javascript web framework)
+      sdl
+      libgdx (full circle)
+
+
+    my reasons to switch from cocos2d-x to libgdx..
+
+      ANDROID LIVE WALLPAPERS
+        - a few libgdx examples (weird ganesh one, etc.) I found today yielded 3d-capable live wallpapers written using libgdx. installed file sizes ~20+ MB.
+        - in it's current version, cocos2d-x cannot be used to create live wallpapers (I've tried and failed.. it's technically not possible)
+        - unreal engine is overkill and from what I've seen, live wallpapers aren't a thing.
+        
+      DOCUMENTATION / TUTORIALS / ONLINE COURSES
+        - libgdx training material seems quite extensive.
+        - cocos2d-x has some documentation, but training seems sparse in comparison. perhaps because of it's chinese origin a lot of stuff hasn't been translated??
+
+      3D SUPPORT
+        - maybe it's just me, but just trying to import 3d models has been frustrating. there seems to be a lack of documentation. I have to "reverse engineer" code samples and use "trial-and-error hacking" for the most part
+
+      PERFORMANCE
+        - I assumed cocos2d-x / c++ would have better performance. anecdotal online posts suggest otherwise.
+
+    
+    with libgdx, I can hopefully re-use some sensor logic. RUBE IMPORT CODE MY BE AN ISSUE. honestly, I have to learn/re-learn a lot, then port logic from c++ to java
+
+    in tasks.txt, I can replace most tasks identified with "cocos2d-x" with "libgdx" I think. the .fbx / .c3b converter was lifted from libgdx anyway.. is there any reason to really stick with cocos2d-x?
+
+
+  UDEMY: 2D GAME DEVELOPMENT WITH LIBGDX (FREE)
+    - actually made by google
+    @ 1-9

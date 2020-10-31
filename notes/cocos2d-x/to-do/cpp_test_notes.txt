@@ -1,0 +1,66 @@
+  1 - 3d model touch nav in 3d terrain
+  17/18 - scene effects, shaking etc.
+* 24 - material system, 2d/3d
+  25 - navigation mesh, pathfinding?
+* 27 - camera movement, zoom, change point of view
+  28 - stencil 2d clipping
+  29 - 2d primitives
+* 33 - light direction and 3d
+  37 - 2d parallax
+  38 - particle effects
+* 39 - 3d particle effects
+  41 - 3d physics, which engine
+
+  46 - 3d sprites
+  * 1 - adding
+  * 2 - grab/move
+    3 - async load
+    4 - effects: opacity, blinking, ..
+    5 - uv animation
+    6 - fake ground shadow
+  * 7 - shaders, toon shader
+    8 - light map on composite scene
+    9 - add multiple duplicate animated, control quality
+    10 - skinned outline
+  * 11 - turtle swimming with more than 1 animation?
+  * 12 - add/remove attached mesh
+
+  **13 - animated and change up skin(?) / attached meshes
+        - better visually than most doll dress-up apps
+
+    14 - collision boxes
+    15 - mirror animation
+    16 - circular animation / quaternion(?)
+    17 - sprite3d as container for 2d (not working?)
+    18 - mixing 2d/3d use cases
+  * 20 - interactive z-axis skybox rotation, material (rotating metallic teapot) w/ reflections
+    21 - jumping/bounce effect, "squishing"?
+  * 22 - switch shaders
+    23 - 3d sprite clipping
+  * 24 - mesh + light - texture
+    25 - animate3d callback (finger gun ..particle effect)
+  * 26 - switch background / skybox
+    27 - vertex colors
+    28 - motion streak
+  * 29 - remove/reset texture (swap?)
+  **30 - normal map + shifting light to emphasize the effect (2 spheres with and without normal map)
+
+  48 - terrain 
+    1 - particle effect fixed to a point on the terrain point
+    2 - attached to 3d sprite as it moves on the terrain
+    3 - light map
+
+  49/50 - tilemaps
+
+  54 - multi-touch
+  59 - shader visual effects
+
+  60 - sprite shader effects
+    1 - 2d sprite
+    2 - bump map (?) on 2d sprite + light moved via touch to emphasize
+
+  61 - textures
+  62 - texture caching
+  63 - texture packer encryption
+  65 - scene transitions (page turn, wipe)
+  69 - vibration
