@@ -1,11 +1,11 @@
 TRAINING
 
-  UDEMY: 2D GAME DEVELOPMENT WITH LIBGDX (FREE)
+  UDACITY: 2D GAME DEVELOPMENT WITH LIBGDX (FREE)
     github course content: https://github.com/udacity/ud405
-    @ 1-9 configure android studio
+    @ 3-14 drawing lines
 
 
-  udemy: how to make a platformer using libgdx (free)
+  UDACITY: how to make a platformer using libgdx (free)
 
 
   3d and libgdx
@@ -28,7 +28,7 @@ TRAINING
   libgdx (official??) > getting started
     https://libgdx.badlogicgames.com/index.html
 
-  libgdx wiki
+  libgdx wiki *** MAKE SURE TO READ THROUGH ***
     https://github.com/libgdx/libgdx/wiki
 
 
@@ -36,4 +36,31 @@ TRAINING
     https://molotuspi.blogspot.com/2013/09/how-to-make-simple-android-live.html
 
 
+MISC
+
+  LibGDX javadocs - VERY USEFUL
+  ApplicationListener vs ApplicationAdapter
+  Gdx.app.log()
+
+
+DOCUMENTATION + JAVADOCS
+
+  https://libgdx.com/dev/
+
   
+ANDROID STUDIO RUN CONFIGURATIONS
+
+  from the android terminal:
+
+    linux/mac:
+      $ ./gradlew desktop:run
+
+    windows:
+      $ gradlew desktop:run
+
+
+  run configurations:
+
+    - accessible only via the toolbar?
+    - default run config is android
+    - for desktop (and other types), make sure to fill out the lines for GRADLE PROJECT and TYPE

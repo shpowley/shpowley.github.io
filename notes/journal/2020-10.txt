@@ -225,4 +225,3 @@ Friday 2020-10-30
 
   UDEMY: 2D GAME DEVELOPMENT WITH LIBGDX (FREE)
     - actually made by google
-    @ 1-9

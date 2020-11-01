@@ -1,0 +1,24 @@
+CORONAVIRUS TOTAL INFECTED: 46.39 MILLION (11/1/2020)
+CORONAVIRUS TOTAL INFECTED: 41.02 MILLION (10/20/2020)
+CORONAVIRUS TOTAL INFECTED: 22.78 MILLION (8/21/2020)
+CORONAVIRUS TOTAL INFECTED: 14.82 MILLION (7/21/2020)
+
+----------
+Sunday 2020-11-01
+
+  LIBGDX - UDACITY: 2D GAME DEVELOPMENT WITH LIBGDX (FREE)
+    
+    - getting familiar with running pre-made projects
+
+
+    COMMENTS
+
+      - as mentioned earlier, this is made by google
+
+      - the intro project seems to take a different approach than what's advised by the libgdx wiki ..still too early to tell.
+
+      - canned projects have a lot of older dependencies and code. for the very first intro project, we just make sure everything is setup correctly and runs fine. trying to update to the latest gradle on this projects breaks too much.
+
+      - I honestly don't remember working with libgdx much..
+
+      - I never knew about the correct usage of android studio run configurations
