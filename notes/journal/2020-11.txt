@@ -1,7 +1,9 @@
-CORONAVIRUS TOTAL INFECTED: 46.39 MILLION (11/1/2020)
+CORONAVIRUS TOTAL INFECTED: 46.82 MILLION (11/1/2020)
 CORONAVIRUS TOTAL INFECTED: 41.02 MILLION (10/20/2020)
 CORONAVIRUS TOTAL INFECTED: 22.78 MILLION (8/21/2020)
 CORONAVIRUS TOTAL INFECTED: 14.82 MILLION (7/21/2020)
+
+3d ideas: butterfly wings open/close, spider walk anim, spider dangling, rubber duck
 
 ----------
 Sunday 2020-11-01
@@ -22,3 +24,36 @@ Sunday 2020-11-01
       - I honestly don't remember working with libgdx much..
 
       - I never knew about the correct usage of android studio run configurations
+
+
+----------
+Tuesday 2020-11-03
+
+  BLENDER (UDEMY)
+    * UDEMY take notes in the actual video @ timestamps is handy
+
+----------
+Wednesday 2020-11-04
+
+  LIBGDX (UDACITY)
+
+----------
+Thursday 2020-11-05
+
+  - training material on each of these topics is vast and time consuming.
+
+    BLENDER is a skill I can use in any game engine.
+    LIBGDX is the engine I think I need for many of my personal projects that I want to publish.
+    UNREAL.. somewhat for fun I guess, but we'll see where this goes..
+
+    COCOS2D-X - I really wanted to stick with it, but I know it's limitations. I can still use it for prototyping RUBE/BOX2D and for reference when porting to LIBGDX
+
+
+  UNREAL ENGINE (UDEMY)
+    - still getting used to unreal navigation UI and have to relearn it just after a few days
+
+----------
+Friday 2020-11-06
+
+  UNREAL ENGINE (UDEMY)
+    - finished BullCows word game

@@ -1,39 +1,104 @@
 TRAINING
 
   UDACITY: 2D GAME DEVELOPMENT WITH LIBGDX (FREE)
+    https://classroom.udacity.com/courses/ud405
+
     github course content: https://github.com/udacity/ud405
-    @ 3-14 drawing lines
+
+    @lesson 6 - user input
+
+    starfield
+      - shapeRenderer .dot()
+
+    connect the dots
+      - shapeRenderer .polyline()
+      
+      dot generator
+        - bonus project used to actually create the dots, libgdx "InputProcessor", desktop only, R (reset), L (log)
+
+    CAMERA viewport demo
+      - 2 cameras: overview + controllable
+        - overview camera contains outline of controllable
+        - controllable can actually zoom out and pan past the overview
+
+      * THIS MIGHT COME IN VERY HANDY
+        - code is a bit more involved (NOT EXPLAINED), but still manageable
+
+      COMMANDS
+        arrow keys: move controllable
+        space: switch between overview / controllable cameras
+        z: zoom in controllable
+        x: zoom out controllable
+        w/s: controllable height
+        a/d: controllable width
+        f: reset controllable height/width aspect
+        q/e: controllable rotation
+
+    solar system demo
+      - first explanations of CAMERA
+      - note .resize() handles android screen rotations, desktop screen window size adjustments
+
+    viewport demo
+      - intro to different types of camera viewports
+      - interesting, but would this be used to accomplish something similar to the "camera viewport demo"
+        - comment: world w/h + camera.translate() + viewport.update(..., false)?
+
+    smiley face exercise
+      - combines renderer, shapes, colors, viewport + viewport positioning
+
+    text demo
+      - bitmap font intro, sprite texture filtering
+
+    word cloud exercise
+      - bitmap font color, size..
+
+    circular motion
+      - introduces elapsed time using TimeUtils.nanoTime()
+      - circle rotation + fancy circle pattern (I'm not sure how this is done)
+      - equations from https://www.mathopenref.com/coordparamcircle.html
+
+    reciprocating motion exercise
+      - similar to circular motion demo, but just the x-motion component and minus the fancy circles
+
+    games and screens demo
+      - introduces game and screen concepts ...Gdx.graphics (fps, delta time usage)
+      - switching 2 screens: fps, interval
+
+    screen saver exercise
+      - sub-component render (used previously also)
+      - small use of input processor
+
+  OTHER TRAINING
+
+    UDACITY: how to make a platformer using libgdx (free)
 
 
-  UDACITY: how to make a platformer using libgdx (free)
+    3d and libgdx
+      https://xoppa.github.io
+      https://xoppa.github.io/blog/basic-3d-using-libgdx/
+
+    youtube / foreignguymike
+      https://www.youtube.com/c/ForeignGuyMike/featured
+
+    youtube / brent aureli
+      https://www.youtube.com/c/BrentAurelisCodeSchool/featured
+
+    youtube / dermetfan
+      https://www.youtube.com/c/dermetfan/featured
 
 
-  3d and libgdx
-    https://xoppa.github.io
-    https://xoppa.github.io/blog/basic-3d-using-libgdx/
+    libgdx.com getting started
+      https://libgdx.com/
 
-  youtube / foreignguymike
-    https://www.youtube.com/c/ForeignGuyMike/featured
+    libgdx (official??) > getting started
+      https://libgdx.badlogicgames.com/index.html
 
-  youtube / brent aureli
-    https://www.youtube.com/c/BrentAurelisCodeSchool/featured
-
-  youtube / dermetfan
-    https://www.youtube.com/c/dermetfan/featured
+    libgdx wiki *** MAKE SURE TO READ THROUGH ***
+      https://github.com/libgdx/libgdx/wiki
 
 
-  libgdx.com getting started
-    https://libgdx.com/
-
-  libgdx (official??) > getting started
-    https://libgdx.badlogicgames.com/index.html
-
-  libgdx wiki *** MAKE SURE TO READ THROUGH ***
-    https://github.com/libgdx/libgdx/wiki
-
-
-  live wallpaper
-    https://molotuspi.blogspot.com/2013/09/how-to-make-simple-android-live.html
+    live wallpaper
+      https://molotuspi.blogspot.com/2013/09/how-to-make-simple-android-live.html
 
 
 MISC
@@ -58,9 +123,84 @@ ANDROID STUDIO RUN CONFIGURATIONS
     windows:
       $ gradlew desktop:run
 
+    * use CTRL+ENTER to get correct IDE environment variables
+
 
   run configurations:
 
     - accessible only via the toolbar?
     - default run config is android
     - for desktop (and other types), make sure to fill out the lines for GRADLE PROJECT and TYPE
+
+
+SHAPE RENDERER (shapeRenderer CLASS)
+
+  - BATCH draw commands to graphics
+  - START/STOP BATCH draw commands when switching between filled/outline modes
+  - shapes stack with last drawn on top
+
+
+  NOTEABLE METHODS
+
+    .setColor()
+    .line()
+    .polyline()
+    .rect() : many overloaded versions, vertex colors, rotated rectangles
+    .rectline() : thick lines
+    .cirecle()
+    .arc()
+
+
+CAMERA
+
+  OrthographicCamera CLASS
+    - based on Camera CLASS
+
+    orthographic - 2-dimensional projection of 3-dimensional objects and world
+
+
+  VIEWPORT
+    - helps control camera aspect ratio
+
+    - note viewport "world" vs "screen" terminology (I think..)
+      - "world" refers to virtual viewport coordinates
+      - "screen" refers to actual pixel
+
+
+    pre-made viewport sub-classes
+    
+      StretchViewport
+        - WORLD IS SCALED to take the whole screen, but DOESN'T RESPECT ASPECT RATIO
+
+      FillViewport 
+        - world fill the screen, maintaining aspect ratio, but bits of the WORLD MAY BE CLIPPED
+
+      FitViewport 
+        - world fills the screen, maintaining aspect ratio, but ADDS BLACK BARS (LETTERBOXING) for the remaining space
+        - good choice but may look bad on certain devices
+
+      ExtendViewport
+        - short axis of the world fills the screen, maintaining aspect ratio
+        - almost always the best choice
+
+      ScreenViewport
+        - world size is based on the size of the screen, pixel-per-pixel (ratio can be changed)
+
+
+TEXT
+
+  BITMAPFONT
+
+    - requires SpriteBatch
+
+
+TIMEUTILS / FRAME RATE
+
+  TimeUtils.millis()
+  TimeUtils.nanoTime()
+
+  - .nanoTime() is typically used for elapsed time from application start
+
+
+SCREEN
+  - create/dispose of objects using .hide()/.show() methods instead of .dispose() due to multiple game screens..

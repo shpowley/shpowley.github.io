@@ -1,18 +1,9 @@
-X re-arrange workspace to in move today.txt
-
-libgdx - udacity ~3 hrs
-
-Learn Unreal Engine for Blender Users - UE4 Beginner Tutorial
-https://www.youtube.com/watch?v=3jM_VLzRqlE
-
-
-shopping list - eggs
-
-
 udemy - continue blender
 
 
-blender youtube - note watch order for blender playlist + notes...
+blender youtube - note watch order for blender playlist (+ notes...)
+blender youtube - note watch order blender youtubers
 
 
-schwab - sell CORR % / buy equivalent $ for IVR
+Learn Unreal Engine for Blender Users - UE4 Beginner Tutorial
+https://www.youtube.com/watch?v=3jM_VLzRqlE

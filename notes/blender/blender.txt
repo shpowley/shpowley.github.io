@@ -19,9 +19,11 @@ TOPICS TO RESEARCH
 
 TUTORIALS
 
+  BLENDER 2.8 THE COMPLETE GUIDE FROM BEGINNER TO PRO (UDEMY - PAID)
+    - https://www.udemy.com/course/blender-28-the-complete-guide-from-beginner-to-pro/
+
   FREE BLENDER 2.8 CRASH COURSE (UDEMY - FREE)
     - https://www.udemy.com/course/blender-crash-course/
-    - part 8. Modeling the Airplane
 
   LEARN BLENDER 2.8x THE RIGHT WAY (UDEMY - PAID)
     - https://www.udemy.com/course/learn-blender-28/
@@ -100,10 +102,9 @@ SELECTION
     lasso deselect = "CTRL+SHIFT+RMB"
       - must lasso over object origins
 
-    circle select = "C"
-      deselect = +SHIFT
-      - note: kinda stays active despite active menu selection
-      - press ESC to return to active menu selection
+    circle select "mode" = "C>SELECT>ENTER"
+      deselect = "+SHIFT(HOLD)"
+      - note: stays active until ENTER or ESC is pressed
 
 
   OUTLINER selection
@@ -196,6 +197,7 @@ ADD NEW OBJECT ITEMS
     - these new object options are accessible in a panel, briefly visible at the time of creation
 
   add object (in-place menu) = "SHIFT+A"  OR  on-screen menu
+    + REDO LAST = "F9" (restores object creation dialog)
 
 
 USEFUL PIE MENUS
@@ -219,6 +221,11 @@ MISC USEFUL
 
     custom keymap for the mouse scroll wheel
     - https://blender.stackexchange.com/questions/15049/how-to-roll-the-viewport
+
+      CUSTOM: CTRL+SHIFT+WHEEL
+
+    CAMERA (ALTERNATE METHOD)
+      CTRL+ALT+NUMPAD-0 > SELECT CAMERA > R
 
   REDO LAST = "F9"
     - great for calling back the object creation dialog that typically disappears
@@ -360,6 +367,8 @@ EDIT MODE
       - use the ARROW GRAPHIC MODIFIER to adjust existing extrusion
 
       extrude menu = "ALT+E"
+        - useful menu options: along normals, individual, etc.
+        * perhaps more useful than just "E" as accidental overlapping face is more noticeable / "intentional"
 
       extrude = "E"
         * careful though, as this combines 2 commands (create new face + move) and "+" icon step is skipped

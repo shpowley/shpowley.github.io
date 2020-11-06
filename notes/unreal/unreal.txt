@@ -15,31 +15,44 @@ STUFF
     - programming guide
 
 
-SCENE NAVIGATION
+*************************
+NAVIGATION (EASY TO RE-ACCESS)
 
-  LMB+move - FLY/NAVIGATE
-  MMB+move | LMB+RMB+move - PAN
-  RMB+move - ROTATE COMERA
-  middle-scroll - FORWARD/BACK
+  - navigation is still easy to forget
 
-  LMB+ALT+move - orbit around focal point
-    *** IMPORTANT: 
-      - still kind of figuring this out, but based on "unreal sensei" tutorial this can be manipulated to act like Blender control
-      - first set focus on an object ("F" or select in tree)
-        - this is the important as it establishes the focal point of the orbit
-        - if this is skipped, the focal point is "invisible"
-      - use ALT+LMB+move to orbit
-      - use ALT+RMB+forward/back to change the focal distance
-      - pen control (huion) also works
 
-  arrow keys | WASD - side-side, forward/back
-    - numpad arrows also work
-    - numpad-7 / numpad "-" - down
-    - numpad-9 / numpad "+" - up
-    - RMB+middle-scroll - fine-tune navigation speed (useful for large levels)
+  PEN STYLUS CURRENT CONFIG
 
-  lock camera to object while moving it (translate gizmo "trick")
-    - ALT + move object using translate gizmo arrows
+    top button - right click
+    lower button - middle click
+    pen tip - active
+
+
+  SCENE NAVIGATION
+
+    LMB+move - FLY/NAVIGATE
+    MMB+move | LMB+RMB+move - PAN
+    RMB+move - ROTATE COMERA
+    middle-scroll - FORWARD/BACK
+
+    LMB+ALT+move - orbit around focal point
+      *** IMPORTANT: 
+        - still kind of figuring this out, but based on "unreal sensei" tutorial this can be manipulated to act like Blender control
+        - first set focus on an object ("F" or select in tree)
+          - this is the important as it establishes the focal point of the orbit
+          - if this is skipped, the focal point is "invisible"
+        - use ALT+LMB+move to orbit
+        - use ALT+RMB+forward/back to change the focal distance
+        - pen control (huion) also works
+
+    WASD | arrow keys | numpad arrow keys
+      - side-side, forward/back (traverses height on z-axis while moving forward back)
+      - numpad-7 / numpad "-" - down
+      - numpad-9 / numpad "+" - up
+      - RMB+middle-scroll - fine-tune navigation speed (useful for large levels)
+
+    lock camera to object while moving it (translate gizmo "trick")
+      - SHIFT + move object using translate gizmo arrows
 
 
 RECOMMENDED SHORTCUTS/HOTKEYS
@@ -66,6 +79,7 @@ COMMANDS
     - "CTRL+W" : duplicate in place (almost hidden)
     - "ALT + TRANSLATE GIZMO" (preferred - very quick)
 
+*************************
 
 LIGHTING EXPOSURE
 
@@ -98,10 +112,16 @@ UNREAL UNITS
 MATERIALS (@25:38)
 
 
+GOOGLE SEARCHES
+
+  - use "UE4" + keywords
+
+
 CODING
 
   TEXT FORMATTING
-    FString::Printf() using %i %s, etc.
+    FString::Printf() uses %i %s, etc.
+    https://www.cplusplus.com/reference/cstdio/printf/
 
   TEXT HANDLING
     https://docs.unrealengine.com/en-US/Programming/UnrealArchitecture/StringHandling/index.html
@@ -109,9 +129,31 @@ CODING
   FSTRING / PRINTF
     https://docs.unrealengine.com/en-US/Programming/UnrealArchitecture/StringHandling/FString/index.html
 
-    * USEFUL FEATURES: print to viewport / output log
+    * discusses print to VIEWPORT / OUTPUT LOG
+
+
+LOGGING TO UNREAL OUTPUT LOG
+
+  UE_LOG(LogTemp, Log, TEXT("TESTING 123 123"));
+  GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Blue, TEXT("TESTING 123 123"));
+
+  https://forums.unrealengine.com/development-discussion/c-gameplay-programming/1192-how-do-i-log-a-simple-string
+  https://docs.unrealengine.com/en-US/Programming/UnrealArchitecture/StringHandling/FString/index.html
+
+
+
+TEXT FILE RESOURCE TO STRING ARRAY
+
+  see Udemy lesson 69 instructions - bullcowgame
+
+  - get random item from TArray list:
+    FString random_word = word_list[FMath::RandHelper(word_list.Num())];
 
 
 https://www.reddit.com/r/unrealengine/comments/882myy/best_way_to_learn_ue4_beginner/
 https://forums.unrealengine.com/development-discussion/c-gameplay-programming/1489388-best-way-to-learn-c-for-ue4
 https://forums.unrealengine.com/community/general-discussion/114864-unreal-engine-best-way-to-learn
+
+
+REVIEW:
+I did learn a few things, but honestly, one need to speed up to 1.75x and still FF through the beginning lessons. Learn C++ elsewhere.
