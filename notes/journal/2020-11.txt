@@ -57,3 +57,41 @@ Friday 2020-11-06
 
   UNREAL ENGINE (UDEMY)
     - finished BullCows word game
+
+----------
+Sunday 2020-11-08
+
+  LIBGDX (UDACITY)
+    - studying mostly input today (keys, mouse, touch)
+
+    * interesting to note that the libGDX framework is LIMITED TO BASIC SENSORS (accelerometer, compass, gyro..)
+      - NO linear accleration, light, proximity, steps, proximity, etc. -- all native to android.. 
+
+      - possibly re-use code from cocos2d-x wobble project, but..
+        - would custom sensor logic go into the "android" java module?
+        - how portable is this code to IOS?
+
+----------
+Monday 2020-11-09
+
+  LIBGDX (UDACITY)
+    - accelerometer (built-in)
+    - libGDX project setup
+
+    NOTES
+      - default android projects don't go completely fullscreen yet
+      - also, default orientation is landscape
+
+
+  *********** glTF 3D FILE FORMAT ***********
+    * HOPEFULLY THIS MAKES IT SO I DON'T HAVE TO DELVE INTO LEARNING OPENGL SHADERS
+    - slowly visible on my radar when researching "metallic" materials duing .FBX and cocos2d-x tests
+    - this is the new 3d file format supplanting .OBJ/.FBX and making in-roads throughout tech industry
+    - native blender 2.8x+ support, native godot, libGDX add-on support, unreal engine add-on support
+    - there are also c++ libraries in case I wanted to attempt it with cocos2d-x
+
+----------
+Tuesday 2020-11-09
+
+  LIBGDX (UDACITY)
+    - flesh out icicles game

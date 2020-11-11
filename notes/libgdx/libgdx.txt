@@ -5,7 +5,7 @@ TRAINING
 
     github course content: https://github.com/udacity/ud405
 
-    @lesson 6 - user input
+    @lesson 1.68 - accelerometer input
 
     starfield
       - shapeRenderer .dot()
@@ -67,6 +67,63 @@ TRAINING
     screen saver exercise
       - sub-component render (used previously also)
       - small use of input processor
+
+    input testbed
+      - working demo template of a single bouncing ball that slows down due to drag/friction and get new kicks to propel it after a short delay
+      - game "template" gets more refined
+      - introduces "ScreenAdapter", .setAutoShapeType()
+      * .dispose() method still gets used.. I thought the recommendation was to use the .hide() method, but maybe this is only necessary if there's multiple screens
+
+    polling demo
+      - continue previous ball "input testbed" by adding KEYBOARD POLLING
+      - "Z" grows ball, "X" shrinks ball
+
+    polling exercise
+      - build on "polling demo" by adding UP/DOWN/LEFT/RIGHT + max velocity clamp
+
+    input adapter demo (input event)
+      - builds on "polling exercise
+      - extend InputAdapter class
+        - override keyDown() to create the ball "kick"
+      - register new InputProcessor with libGDX
+      - note that Z X UP DOWN LEFT RIGHT still work using the polling method
+
+    reset ball game state exercise
+
+    demo flick
+      - control ball "kick" direction + velocity with "flicks"
+      * note that this code isn't really a "flick" as the resulting code/execution is solely based on the direction/distance of beginning and end touches (THIS IS MORE LIKE A "SLINGSHOT" THAT CAN BE AIMED)
+      
+    follow the finger
+      - building on "demo flick" to move the ball to the finger/mouse position
+
+      NOTES:
+        - I got the incorrect on some portions using Vec2 .set() and Vec2 initialization
+        - the MAIN LESSON TO TRY AVOIDING UNNECESSARY VEC2 creation/method calls whenever possible
+        - viewport .project()/.unproject for example only deal with Vec2/Vec3 -- REQUIRED HERE
+        - object overhead for storing x/y/z coordinates -- USE PURE FLOAT VARIABLES
+        - also, avoid Vec methods unless necessary.. hides inner workings + extra calls
+        - .touch methods could be more efficient by not creating new Vector2() objects each call
+
+    accelerometer input demo
+      - biggest take-away is that this demo uses 2 viewports, 1 for graphics (FitViewport) and 1 for text (ScreenViewport)
+
+    bubble level exercise
+      - not 100%, but accelerometer axis readings may be skewed by 90 degrees because of landscape game orientation ..so x/y axis reading are swapped
+      - also, once swapped, the new vertical y-axis readings are inverted
+
+    accelerometer movement exercise
+      - builds on "follow the finger" code adding accelerometer x/y as an additional mechanism to control ball
+      - not really sure of the reasoning for the ball acceleration logic..
+
+    CREATE THE ICICLES PROJECT
+      - use the libGDX java setup program
+      - ending up using the android studio JRE (took a while to find it though)
+        - had to set the JAVA_HOME environment variable and add it to the windows PATH
+
+      - open project directly in android studio -- IMPORT not specifically required
+      - update gradle plugin to the latest stable -- THIS WORKED unlike the existing UDEMY project files
+
 
   OTHER TRAINING
 
@@ -147,7 +204,7 @@ SHAPE RENDERER (shapeRenderer CLASS)
     .polyline()
     .rect() : many overloaded versions, vertex colors, rotated rectangles
     .rectline() : thick lines
-    .cirecle()
+    .circle()
     .arc()
 
 
@@ -204,3 +261,38 @@ TIMEUTILS / FRAME RATE
 
 SCREEN
   - create/dispose of objects using .hide()/.show() methods instead of .dispose() due to multiple game screens..
+
+
+INPUT
+
+  POLLING
+
+    - test for individual keys
+      
+      .update() > Gdx.input.isKeyPressed(Keys.<KEY OF INTEREST>)
+
+
+  EVENTS
+
+    - extend InputAdapter class + override appropriate EVENT (ie. keyUp(), mouseMoved(), etc.)
+    - also make sure to register new InputProcessor with libGDX
+      
+      ie. Gdx.input.setInputProcessor(ball);
+
+
+  TOUCH
+
+    - supports multi-touch
+    - part of the InputAdapter class
+    - viewport.unproject() is needed to handle SCREEN TOUCHES -> VIEWPORT COORDINATES
+
+
+  SENSORS
+
+    Gdx.input
+
+    - built-in: accelerometer, gyroscope, compass
+    - buffered data?
+    - actual code implementation appears hidden
+    * application/game orientation may affect swapping of final x/y axes
+    * some axis reading may need to be inverted 
