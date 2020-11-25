@@ -1,0 +1,472 @@
+CHANNELS/MISC
+
+  Gamedev Fred: https://www.youtube.com/channel/UCuVboEAvq5xQB7u5evs5kCg
+    blender gaming-focused, some grease pencil!
+
+  Blender: https://www.youtube.com/channel/UCSMOQeBJ2RAnuFungnQOxLg
+
+  Blender Binge: https://www.youtube.com/channel/UCrXMyWVRmiXdMTpxxCsPuCQ
+    intermediate/advanced techniques, recommended by udemy instructor
+
+  Blender Secrets: https://www.youtube.com/c/BlenderSecrets
+    lots of tips in short videos, ebook $35
+
+  CreativeShrimp.com: https://www.creativeshrimp.com/tutorials
+    paid/free, misc intermediate/advanced topics
+
+  Gleb Alexandrov: https://www.youtube.com/channel/UCVA3cYOgsTN4hs3v7pjne7w
+    blender pro tutorials and tips
+
+  TopChannel1on1: https://www.youtube.com/channel/UClUvUh2AoIhJRezjduP3xcQ
+   intermediate/advanced
+
+  Grant Abbitt: https://www.youtube.com/c/GrantAbbitt
+   broad topics, art style - meh
+
+  MrTriPie: https://www.youtube.com/channel/UCD7LSFqgtaX-RRU535vpdaw
+    broad topics
+
+  CG Geek: https://www.youtube.com/c/CGGeek
+    broad topics, intermediate/advanced, pseudo-commercial
+
+  Blender Guru: https://www.youtube.com/channel/UCOKHwx1VCdgnxwbjyb9Iu1g
+    popular, DONUT
+
+  CG Cookie: https://www.youtube.com/channel/UC9VayT7q3pQ7tdF-TG4Q0yQ
+    broad topics, intermediate/advanced, pseudo-commercial
+
+  YanSculpts: https://www.youtube.com/channel/UCfjswDVU0XHyBN7UFG0Mi5Q
+    quality sculpting focus, rigging, pseudo-commercial (3 gumroad courses)
+
+  CrossMind Studio: https://www.youtube.com/channel/UCHihootMqyGz175gqOPahtw
+    broad topics, intermediate/advanced, pseudo-commercial
+
+  FlippedNormals: https://www.youtube.com/channel/UCQQFz2LkJMoqSFTas-oozOw
+    broad topics (including non-blender stuff), intermediate/advanced, pseudo-commercial (leaning toward commercial)
+
+  Jayanam: https://www.youtube.com/c/JayAnAm
+    creator of JMESH and JSCULPT tools, unreal engine c++
+    HUGE and useful playlist: https://www.youtube.com/c/JayAnAm/playlists?view=1&sort=dd&shelf_id=0
+
+  Andrew_D: https://www.youtube.com/channel/UCe5vB8ehr9hrQrYvfCb8j9w
+    focus on PBR, HDRI, materials
+
+  DevSquad: https://www.youtube.com/channel/UCz-eYJAUgSE-mqzKtit7m9g
+    game development, unreal engine, blender, c++, slightly older stuff
+
+  25GAMES: https://www.youtube.com/channel/UCAwIcpxPyhggo-c_kWywKsg
+    blender varied content, game dev turned 3d modeler..
+
+  askNK: https://www.youtube.com/channel/UCHx1jeKRMi_wDAwvvhaIDYA
+    3d animation varied topics (news, tools, techniques)
+
+  FlyCat: https://www.youtube.com/channel/UCnXU0MjnApXHZkf3uGYbLSA
+    blender timelapse (no instruction/narration), GREAT ART STYLE
+
+  Default Cube: https://www.youtube.com/channel/UCdpWKLNfbROyoGPV46-zaUQ
+    lots of interesting/advanced blender stuff
+
+  Royal Skies LLC: https://www.youtube.com/channel/UC2U5mRfclG1Rrr1ztNkpGKA
+    mostly very quick videos (too fast?), game-related blender character creation
+
+  Activemotionpictures: https://www.youtube.com/channel/UCjBTceQ-XFxKNDoGk805zig
+    - anime style, advanced topics, shaders, grease pencil
+
+  Ducky 3D: https://www.youtube.com/channel/UCuNhGhbemBkdflZ1FGJ0lUQ
+    shaders
+
+  Imphenzia: https://www.youtube.com/channel/UCzfWju7SFoWLCyV_gDVCrGA
+    varied blender tutorials, beginner/intermediate, 10-minute challenges
+
+  Riccardo Bancone: https://www.youtube.com/channel/UC5Xq1VDpD_UxkCSNPlQcZeQ
+    pro blender sculpting
+    playlist: https://www.youtube.com/playlist?list=PLrvJtybxcM79Tunwg7UthoD6EmZEsxJ-K
+
+  SouthernShotty: https://www.youtube.com/c/SouthernShotty
+    animation-focus, professional cartoony style, good stuff I think
+
+  Polygon Runway: https://www.youtube.com/channel/UCGSJevmBuDyxjLLOBNaYMGA
+    low poly style, mostly "mini" environments
+
+  Wayward Art Company: https://www.youtube.com/channel/UC524_NOif1p3YPC39UAbF1A
+    texture painting focus
+
+  Unreal Sensei: https://www.youtube.com/channel/UCue7TFlrt9FxXarpsl872Dg
+    unreal <> blender
+
+  Lightning Boy Studio: https://www.youtube.com/channel/UCd9i2MKimSaKezat1xkn8-A
+    toon shaders
+
+
+SOFTWARE TOOLS & CREATOR WEBSITES
+
+  sketchfab: https://sketchfab.com/
+    FREE/PAID MARKETPLACE
+    showcase only option
+    GREAT for ideas
+
+  glTF import/export plugin: https://github.com/KhronosGroup/glTF-Blender-IO
+
+  materialize: https://www.boundingboxsoftware.com/materialize/index.php
+    FREE
+    create an entire material from a single image
+    import the textures you have and generate the textures you need
+
+  BlockBench: https://blockbench.net/
+    Powerful Free All-In-One 3D Block Modelling Application
+    https://youtu.be/emhdpVv0Gx8
+
+  Meshroom: https://alicevision.org/#meshroom
+    3D Models from Photos using this Free Open Source Photogrammetry Software
+    https://youtu.be/R0PDCp0QF1o (intro games-from-scratch)
+    https://blenderartists.org/t/meshroom-free-photogrammetry/1120286
+
+  mixamo: https://www.mixamo.com
+    ready-to-use characters + auto-rigged animations
+    https://youtu.be/su8KURZ6vRc (intro games-from-scratch)
+
+  https://blenderartists.org/
+    community
+
+  cgtrader: https://www.cgtrader.com/
+    models for sale/free
+
+  MyMiniFactory: https://www.myminifactory.com/
+    free/paid marketplace
+    lots of 3d scanned statues from antiquity
+    check licensing re: commercial use
+    https://www.myminifactory.com/search/?store=0 (advanced search)
+    reference material for now free (I guess)
+
+    3d printing .stl import into blender > re-mesh and apply material shaders..
+      https://youtu.be/8vZ3obrrfcE
+
+
+CAMERA
+
+  Blender 2.8 Set Up a Camera Rig and Animate On A Path: https://youtu.be/K02hlKyoWNI
+
+
+RIGGING
+
+  Armatures - Blender 2.80 Fundamentals: https://youtu.be/cZ3o5tjO51s
+    official blender tutorial
+
+  BLENDER 2.9x - AUTO RIG - FAST & EASY!: https://youtu.be/4tDlcPOIf5w
+    paid plugin
+
+  Blender 2.82 Rigging Tutorial (In 2 Minutes!!!): https://youtu.be/PFaqjwpGxOc
+
+  Blender 2.82 : Everything About Shape-Keys (In 2 Minutes!!!): https://youtu.be/CaHomz6gPWY
+
+  Shape Keys, Drivers, Controls and Limits in Blender - Rigging Tutorial: https://youtu.be/YcvOx65ciTc
+    a bit older, still valid.., check out channel
+
+  How to Rig a Rubber Duck in Blender: https://youtu.be/zPvftMzfu-8
+    squishy object, bonus/free part of a $ course
+
+  How to use Rigify rigging tool in Blender 2.80: https://youtu.be/pAhbO7U1ID8
+
+  Mixamo Character Animation Combiner -- Easy Mode Animations!: https://youtu.be/su8KURZ6vRc
+
+  Importing Characters from Mixamo to Unreal Engine 4 (UE4 Tutorial): https://youtu.be/vgo4jnM0NyY
+    unreal engine
+
+  Blender 2.82 - Rigify to Unity Tutorial - How to Export a Rigify Character and Import it into Unity: https://youtu.be/vrN9duEoA6g
+
+  Among Us But with Commentary: https://youtu.be/CEfptH9Gwm0
+    simple model + rigging
+
+  Rigging Default Cube with Squeeze and Stretch | blender 2.9: https://youtu.be/NaFPEDAF7aI
+
+
+MATERIALS | NORMAL MAPS | TEXTURING
+
+  Normal Maps for Pixel Art: https://youtu.be/gUkY8ZoRfuQ
+    some explanation of map types
+
+  Deconstructing a Normal Map (CGC Weekly #18): https://youtu.be/oOOeV3IU2Yo
+    in-depth discussion
+
+  convert any image to a blender shader or material free addon: https://youtu.be/Ka9eLntJLk8
+    materialize software showcase
+
+  Nodes 4 Noobs | Lvl 1 | Beginners Guide to Nodes | Blender 2.8: https://youtu.be/moKFSMJwpmE
+
+  The Secrets of Realistic Texturing in Blender: https://youtu.be/W07H7xeUnGE
+
+
+TEXTURE PAINT
+
+  Node Based Texture Painting in Blender 2 8: https://youtu.be/gUVEzwAgGzo
+    usefult workflow
+
+  Blender 2.8 For Beginners: Texture Painting: https://youtu.be/JX-UwgKaPsA
+
+  Blender 2.8 Tutorial : PBR Texture Painting: https://youtu.be/svzKoq3vew0
+    COOL, texture paint "geometry"
+
+
+BLENDER PIXEL ART
+
+  3D to 2D pixel in-depth Blender Tutorial: https://youtu.be/vIKJ1AqfI0Q
+    THE definitive guide?
+
+  How to Pre-render your 3D models into 2D sprites like Clash Royale: https://youtu.be/peLvlUHve-4
+    blender/godot
+
+  3D Animation to Pixel Art with Blender: https://youtu.be/x93hABp6FCY
+    simplified instructions?
+
+  Blender 3D: Pixel Art Tutorial: https://youtu.be/FxspGqoKcaE
+
+
+GREASE PENCIL
+
+  TRACE IMAGES into GREASE PENCIL: https://youtu.be/m5QdBZ5sDG0
+
+  Blender 2.91 Beta -- 4 AMAZING New Features Showcased!: https://youtu.be/QuLPsMeGee0
+    grease pencil tracing
+
+
+RENDER
+
+  Reducing render times by 92%! Denoiser showdown: https://youtu.be/eGAjsSNtX6E
+
+  Cut Your Render Time In Half in Blender 2.9: https://youtu.be/PF8SmNFohco
+
+
+SHADERS
+
+  Toon Shader Tutorial - Part 1 - How to Have Multiple Light Sources (Blender 2.8/EEVEE): https://youtu.be/TpWI2rU8iF0
+
+  Blender Toon Shader: https://youtu.be/sJTEJKQ0lYw
+    eevee
+
+  Guilty Gear Stylized shader in Blender's EEVEE (Part 1 of 4): https://youtu.be/UHGoy6A_DmY
+
+  AMAZING Shader Resources for Blender!: https://youtu.be/simEPA0tQoA
+    free/paid shader resources
+
+
+ADD-ONS / MODIFIERS
+
+  Best Blender 2.8 Addons & Plugins for Modeling (includes free addons): https://youtu.be/0MZVHEai1xQ
+
+  All 50+ Modifiers in Blender Explained in 30 Minutes or Less: https://youtu.be/8BQYAwDW6IE
+
+  Intro to Array, Bevel, Boolean and Mirror Modifiers in Blender: https://youtu.be/x8tmnHNKjF4
+
+  BLENDER 2.9 Alpha - MULTIREZ IS HERE WITH UPDATES!: https://youtu.be/DCFVn_EjBXA
+
+  Blender 2.8 New Hardsurface & Sculpting Addons: https://youtu.be/n7LxULILeVc
+    - cables, duplicate features?
+
+  Blender Vehicle Rigging/animation Addons: https://youtu.be/t2APTY2IBWM
+
+  Blender Hard Surface Tips for Grids & Curves: https://youtu.be/fH5WF7-fKK0
+
+
+SUBSURFACE DEFORMATION MODIFIER
+
+  Blender 2 80 - Hole On Curved Surface. SubD Modeling: https://youtu.be/1PE-NUBWPrw
+
+
+SCULPTING
+
+  SCULPT MULTIPLE OBJECTS | Blender Today: https://youtu.be/Leog6MbGABw
+    2.91 sculpting discussion
+
+  Sculpting In Blender For Beginners - Tutorial: https://youtu.be/IG1IEpU5VAw
+
+  The new sculpting workflow in Blender - Pablo Dobarro: https://youtu.be/lxkyA4Xslzs
+    soft audio, check comments
+
+  Best Free Brush Pack for Blender - Orb Brushes: https://youtu.be/9XenjM3gRYc
+
+  Speed Sculpting Live Session - Julien Kaspar: https://youtu.be/YaVEJTLDD3Y
+
+  Blender 2.83 Beta - Playing with Voxel Remesh Modifier: https://youtu.be/28CdMyzv6kc
+    interesting technique
+
+  Blender 2.9 Multires Sculpting Tutorial: https://youtu.be/86lVXEneVfc
+
+  sculpting playlist: https://www.youtube.com/playlist?list=PLrvJtybxcM79Tunwg7UthoD6EmZEsxJ-K
+
+
+RETOPOLOGY / REMESH
+
+  Tutorial: Retopology with SpeedRetopo (Blender 2.8): https://youtu.be/N1ziiDstplQ
+
+  Retopology a Detailed Guide - Part 1 - The Setup: https://youtu.be/6sE-p8PcHDo
+
+  Blender 2.8 Voxel Remesher Sculpting Tips: https://youtu.be/k44PMyRp9CM
+
+  creating stone pt.2 (5 ways..): https://youtu.be/rUzJefYNQlI
+    pt.1 (stone creation): https://youtu.be/HjejvefIicM
+    pt.3 (sculpting): https://youtu.be/sl5EvG4x-bM
+
+  Blender 2.8 Tutorial | Retopology: https://youtu.be/wLqBzU3p6_8
+
+  Blender 2.8 Retopology with Polybuild Tool: https://youtu.be/U3sY3f6aKB8
+
+  Blender 2.81 Features | The New Remeshing Tools: https://youtu.be/iZM9JZBmCxI
+
+  Retopo in Blender - Retopologizing the Face: https://youtu.be/OuFwUaS8y1I
+    check comments re: recommended plugins
+
+  Retopology Using New Polybuild Tool in Blender: https://youtu.be/BEwEWKOH5ws
+
+  Instant Meshes -- Must Have Free 3D Retopology Tool: https://youtu.be/hu4NavAy5f4
+    free open-source, zero-effort(?) retopology
+
+
+BAKING / DISPLACEMENT
+
+  Blender Bake to Lowpoly - 2.82: https://youtu.be/G_dtR9LgnxE
+
+  Baking Perfect Texture Maps Using a Cage | Blender 2.8: https://youtu.be/nJ0PM7m9TJc
+
+  baking normal maps from sculpt | Blender | cycles | quick guide: https://youtu.be/o8giubIE1LY
+    2.7x
+
+  How to Bake Perfect Normals in Blender - Tutorial: https://youtu.be/0r-cGjVKvGw
+    2.7x; check "zerbah" comments re: 2.8x
+
+  Blender 2.8 - How to bake textures - Tutorial: https://youtu.be/2ClzsuExtCo
+
+  Baking Multiple Textures onto One Map | No Plugins: https://youtu.be/9airvjDaVh4
+
+  Reducing Render TImes by 40% With Texture Baking｜Blender Tutorial: https://youtu.be/fbH4aQB5FiM
+
+  Tutorial: Bake Wrangler (Baking made easy in Blender 2.8): https://youtu.be/1QpybXsNcsw
+    paid plugin
+
+  REALTIME Shader Displacement for EEVEE!: https://youtu.be/TJ_o1_m713w
+
+  Bake PERFECT Displacement Maps (with blender): https://youtu.be/arvhK4tvYuY
+    watched, notes taken
+
+  How To Setup PBR and Displacement in EEVEE AND Cycles [Blender 2.8]: https://youtu.be/UkU0-QeWUcU
+    watched, notes taken
+
+  Blender Texture Baking in 3 Steps: https://youtu.be/Ip-OYM1u6Eg
+
+  Blender - Displacement Tricks: https://youtu.be/w8nZCCa_RiA
+    baking on non-flat surfaces..
+
+
+SHARP EDGES
+
+  Blender Intermediate Modeling Tutorial - Part 3: Sharpening Edges: https://youtu.be/lITV4F_P4E0
+
+  Blender Beginners - Edge Split, Mark Sharp, Edge Crease, Bevel Weight: https://youtu.be/9OqomK0HWew
+
+
+STANDARD TECHNIQUES
+
+  Blender 2.8 - 7 Awesome Modeling Tools You Don't Want to Miss (for New Users): https://youtu.be/Gp6OYtwGig8
+
+  The BEST Sketchup tool is now in Blender 2.9!!!: https://youtu.be/Zh3kh5f1N2I
+    extrude manifold (like sketchup)
+
+  Using Lattice in Blender 2.9 Tutorial: https://youtu.be/GjwlXT9MAI4
+
+  20+ Styles of 3D Modeling in 20 Minutes: https://youtu.be/DeHasEMCzcc
+
+  Blender Fundamentals 2.8: https://www.youtube.com/playlist?list=PLa1F2ddGya_-UvuAqHAksYnB0qL9yWDO6
+    blender foundation, 47 videos
+
+  Blender Beginner Tutorial - Part 1: https://youtu.be/TPrnSACiTJ4
+    donut series 2.8x
+
+  How to SNAP | Blender 2.82 | Tutorial: https://youtu.be/Sl_Otq4C9UU
+
+  Using the Lattice Deformer like a Pro in Blender 2.8: https://youtu.be/gVeeTC3AuKY
+
+  Mirror Complex 3D Objects in Blender: https://youtu.be/CThW9kfr8a8
+    mirror techniques
+
+  HDRIs Just Got Better: https://youtu.be/RsAUfQlZH_w
+
+
+EXPORT
+
+  How to Export Models From Blender to Unreal Engine + Troubleshooting (Blender 2.8): https://youtu.be/Wr8qJheu69M
+
+
+glTF | UNREAL ENGINE
+
+  From Blender to Unreal Without bake materials with .glTF: https://youtu.be/6IWKWT_2_Ls
+    read comments
+
+  Learn Unreal Engine for Blender Users - UE4 Beginner Tutorial: https://youtu.be/3jM_VLzRqlE
+    unreal engine beginner guide, quickly moves to advanced stuff
+    lengthy, already started watching
+
+
+EXTENDED WALK-THRUS / TIMELAPSE
+
+  Blender 2.91 - 💀 Sculpting Skull / Animated Content Creation - Chapter 6: https://youtu.be/mA1ADUZTIq4
+
+  Fantasy Character - Blender Modeling- Part 1: https://youtu.be/YKMrF0HL2io
+
+  Jack-O-Lantern Costume | Let's Build It In Blender: https://youtu.be/Sf_ZRp1giHo
+
+  Water Front in Blender 2.8 - 3D Modeling and Sculpting: https://youtu.be/KXe_GbmONy8
+
+  Black Cat - Blender 2.9 Timelapse: https://youtu.be/rtEV-fU0ZJQ
+
+  Knight girl modeling Blender time-lapse Part 1 (3 parts): https://youtu.be/DbGN7d6EiUA
+
+  Blender 2.91 | Stylized Well | Modelling | Sculpting | Texturing | Speed Art: https://youtu.be/Ih0aPiycG9c
+
+
+EXERCISES
+
+  *** DON'T FORGET EXERCISES IN PAID COURSES ***
+
+  get good at blender: https://www.youtube.com/playlist?list=PLn3ukorJv4vvWfYmRnGS260JTjhShJFRP
+    grant abbit, older blender
+
+  get good at blender 2.8: https://www.youtube.com/playlist?list=PLn3ukorJv4vvv3ZpWJYvV5Tmvo7ISO-NN
+    grant abbit
+
+  Blend Motion (channel): https://www.youtube.com/channel/UCzvdeK7Q0Arx-x3rd9Ama2A
+    hard surface modeling walk-thru/timelapse, no narration
+
+
+COOL HOW-TO EXERCISES / TECHNIQUES
+
+  Blender 2.8 Tutorial - Stop Using Loop Cuts: https://youtu.be/qvdvvL1n8I8
+    bevel modifier / vertex groups instead of numerous loop cuts
+    read comments, attempt this..
+
+  Tutorial: Alpha masks creation for sculpting and texture painting (Blender 2.8): https://youtu.be/0zqu_7Zh9LQ
+
+  Daily Blender Secrets - Worn Edges: https://youtu.be/R0vhlxhCUFw
+
+  Blender Tutorial: Basic texturing and fixing free models: https://youtu.be/FD9z2uM5GE4
+
+  How to Create Ghibli Trees in 3D - Blender Tutorial: https://youtu.be/DEgzuMmJtu8
+
+  Blender 2.83 Beta - Playing with Voxel Remesh Modifier: https://youtu.be/28CdMyzv6kc
+    alternative sculpting, also categorized in "sculpting"
+
+  How to Create the World in 1 Minute: https://youtu.be/V4HNIbDn4K4
+    earth from space, similar result quality to the 3d live wallpaper
+
+  Create Your Face (Blender Tutorial): https://youtu.be/sf88UeC7LmE
+
+  Daily Blender Tip 223 - Growing Plant animation (part 1) (Blender 2.8): https://youtu.be/3x6n0dQL0jU
+
+  Blender Secrets - Paper Plane: https://youtu.be/i_I4XWATOYk
+    origami!!
+
+  Daily Blender Secrets - Find the triangles in a dense mesh: https://youtu.be/wv_bx3bGpC0
+    1st comment - ..in edit mode, open search: "select faces by sides"
+
+
+NEW STUFF
+
+  BLENDER 2.90 RELEASED! - NEW AWESOME FEATURES!: https://youtu.be/YA8Gp8KH30Q

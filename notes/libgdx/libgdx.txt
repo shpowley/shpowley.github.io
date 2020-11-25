@@ -5,8 +5,6 @@ TRAINING
 
     github course content: https://github.com/udacity/ud405
 
-    @lesson 1.68 - accelerometer input
-
     starfield
       - shapeRenderer .dot()
 
@@ -124,11 +122,99 @@ TRAINING
       - open project directly in android studio -- IMPORT not specifically required
       - update gradle plugin to the latest stable -- THIS WORKED unlike the existing UDEMY project files
 
+    icicles
+      - avoid falling icicles using keyboard or accelerometer controls
+      - collision detection
+
+      - HUD for score, death count
+        - the font resize code example it unique compared to previous examples
+
+      - difficulty setting
+        - java enum
+
+
+  UDACITY: HOW TO MAKE A PLATFORMER USING LIBGDX (FREE)
+    https://classroom.udacity.com/courses/ud406
+
+    logging
+
+    "punchline"
+      file loading, decrypt text
+
+    texture drawing
+      centering logo
+
+    filtering types demo
+      nearest neighbor: https://en.wikipedia.org/wiki/Nearest-neighbor_interpolation
+      linear interpolation: https://en.wikipedia.org/wiki/Bilinear_filtering
+
+    nine-patch
+      show visual difference nine-patch vs texture "sprite" draw
+      both my solution and actual are similar, but SEE SOLUTION CODE FOR BETTER ALIGNMENT MATH
+
+      libgdx: https://libgdx.badlogicgames.com/ci/nightlies/docs/api/com/badlogic/gdx/graphics/g2d/NinePatch.html
+      android: https://developer.android.com/reference/android/graphics/NinePatch.html
+
+    animation
+      animation class
+      too much done for me here without enough explanation; textureregions, explosions (particle effect?)
+
+    texture packer (creating a texture atlas)
+      uses gradle to create texture atlas (not sure of the logistics from a high-level OR how the .atlas file is created)
+      example is literally copy/paste from solution -- I couldn't figure this out on my own
+      * interesting in that texture packer is not the texturepacker product (see https://www.codeandweb.com/texturepacker/tutorials/libgdx-physics)
+      the libgdx texture packer has it's own UI too
+
+    project skeleton
+      literally copy/paste, but a GOOD PLACE TO START
+
+    asset loading
+      gradle-specific TODO items for creating a texture atlas with libgdx texture packer
+      asset singleton example
+
+    draw gigagal
+      from libgdx docs:
+        originX - the x-coordinate of the scaling and rotation origin relative to the screen space coordinates
+        originY - the y-coordinate of the scaling and rotation origin relative to the screen space coordinates
+
+        - I'm not sure about the math logistics for this code example, tried overlaying a circle but still
+
+      from the circle attempt, renderer batch cannot be nested in sprite batch
+
+    left/right movement
+      keyboard check
+
+    facing direction
+      enum (see icicles final game, defined in constants)
+
+    jumping  
+      handles jumping logic.
+      * to be honest, I'm not sure how I would have approached the jumping beyond the jump enum state.
+      * BASED ON MY EXPERIENCE TESTING RUBE/BOX2D, I WOULD PROBABLY TRY USING THAT
+      my attempt I forgot to convert long nanosec to float with MathUtils.nanoToSec, also forgot to use the delta in position.mulAdd(velocity, delta);
+
+    jumping sprites
+      additional state sprites
+
+    walk state
+      additional state sprites
+
+    walk loop
+      used 2.1.07 animation code sample (previous class) as a reference
+        - proper object types, syntax, correct frame
+      actual solution added a repeated middle keyframe at the beginning of each animation sequence
+
+    basic platforms
+      render basic platform(s) using simple rect shape
+
+    nine-patch platforms
+      used nine-patch demo code as a reference
+
+    collision checking
+    2.3.3
+
 
   OTHER TRAINING
-
-    UDACITY: how to make a platformer using libgdx (free)
-
 
     3d and libgdx
       https://xoppa.github.io
@@ -143,7 +229,6 @@ TRAINING
     youtube / dermetfan
       https://www.youtube.com/c/dermetfan/featured
 
-
     libgdx.com getting started
       https://libgdx.com/
 
@@ -153,9 +238,32 @@ TRAINING
     libgdx wiki *** MAKE SURE TO READ THROUGH ***
       https://github.com/libgdx/libgdx/wiki
 
-
     live wallpaper
       https://molotuspi.blogspot.com/2013/09/how-to-make-simple-android-live.html
+
+    overlap2d
+      open-source visual editor
+      https://www.youtube.com/channel/UC8dKKDwzXTNSIWkB3q166pg/videos
+      https://github.com/UnderwaterApps/overlap2d
+
+
+NEW PROJECT
+
+  https://github.com/libgdx/libgdx/wiki/Project-Setup-Gradle
+
+  get the latest libgdx setup
+
+  command line:
+    java -jar gdx-set.jar
+
+  make sure to specify a new directory for the project
+
+  updating to latest gradle should be ok on new projects
+
+
+GLTF
+
+  https://github.com/mgsx-dev/gdx-gltf
 
 
 MISC
@@ -181,31 +289,79 @@ ANDROID STUDIO RUN CONFIGURATIONS
       $ gradlew desktop:run
 
     * use CTRL+ENTER to get correct IDE environment variables
+      - this also creates a "template" run configuration that can literally be copied, modified, or re-used as-is
 
 
   run configurations:
 
-    - accessible only via the toolbar?
+    - accessible only via the toolbar
     - default run config is android
     - for desktop (and other types), make sure to fill out the lines for GRADLE PROJECT and TYPE
 
 
-SHAPE RENDERER (shapeRenderer CLASS)
+LOGGING
 
-  - BATCH draw commands to graphics
-  - START/STOP BATCH draw commands when switching between filled/outline modes
-  - shapes stack with last drawn on top
+  use TAG = <name of main class>.class.getName(); for logging purposes
+
+  log info, errors
+    Gdx.app.setLogLevel()
+    Gdx.app.error(TAG, <message>, throwable) // throwable?
+    Gdx.app.log(TAG, <message>)
+    Gdx.app.debug(TAG, <message>)
 
 
-  NOTEABLE METHODS
+OS PLATFORM SPECIFIC CODE?
 
-    .setColor()
-    .line()
-    .polyline()
-    .rect() : many overloaded versions, vertex colors, rotated rectangles
-    .rectline() : thick lines
-    .circle()
-    .arc()
+  Gdx.app.getType()
+
+
+FILES
+
+  Gdx.files.internal(<file name)  // defaults to file located in android/assets
+
+
+DRAWING
+
+  Gdx.graphics
+
+  - in general, use Gdx.gl ~ Gdx.gl20
+  - don't use Gdx.gl30 unless needed & check with Gdx.graphics.isGL30Available()
+
+
+  SHAPE RENDERER (shapeRenderer CLASS)
+
+    - BATCH draw commands to graphics
+    - START/STOP BATCH draw commands when switching between filled/outline modes
+    - shapes stack with last drawn on top
+
+    * overloaded draw() methods; the following will scale the texture to the largest side and maintain aspect ratio defined by the type of viewport
+    
+        public void draw(Texture texture,
+          float x,
+          float y,
+          float width,
+          float height)
+
+
+    NOTEABLE METHODS
+
+      .setColor()
+      .line()
+      .polyline()
+      .rect() : many overloaded versions, vertex colors, rotated rectangles
+      .rectline() : thick lines
+      .circle()
+      .arc()
+
+
+  NINE-PATCH
+    - "stretchable" graphic for dialog/platform/buttons/windows
+    - only the 4 corners maintain size
+
+
+ANIMATION
+
+  study sample code..
 
 
 CAMERA
@@ -249,6 +405,36 @@ TEXT
   BITMAPFONT
 
     - requires SpriteBatch
+    - SEE UDACITY CODE 1.6.8 Accelerometer Input Demo  OR  1.8.2 Add the HUD
+    
+    - default origin is TOP-LEFT for positioning the text .draw()
+
+    - for alternate origin-alignment use overloaded draw()
+        draw(batch, string, x, y, targetWidth (= 0?), halign, wrap)
+
+        - targetWidth? seems to shift position in opposite direction of alignment..
+        - halign = Align.topRight | right | etc.
+    
+
+    SCALING 
+
+      .getData().setScale()
+
+      - SEE UDACITY CODE 1.5.5 FPS Counter  OR  1.8.2 Add the HUD
+      - precise scale sizing is a bit hit-or-miss and varies depending on the world size
+
+
+    VERTICAL ALIGNMENT
+
+      - these examples are probably over-simplified from UDACITY 1.8.4 exercise vs. solution
+      - the half-heights are used to offset the draw y-position
+
+        final GlyphLayout easyLayout = new GlyphLayout(font, Constants.EASY_LABEL);
+        easyLayout.height..
+
+          OR
+
+        font.getCapHeight()..
 
 
 TIMEUTILS / FRAME RATE
@@ -260,6 +446,7 @@ TIMEUTILS / FRAME RATE
 
 
 SCREEN
+
   - create/dispose of objects using .hide()/.show() methods instead of .dispose() due to multiple game screens..
 
 
@@ -296,3 +483,23 @@ INPUT
     - actual code implementation appears hidden
     * application/game orientation may affect swapping of final x/y axes
     * some axis reading may need to be inverted 
+
+
+  DelayedRemovalArray
+
+    - allows queued removal of array elements during iteration
+
+
+  IMMERSIVE MODE
+
+    go to:
+      android/src/YOUR/PACKAGE/PATH/android/AndroidLauncher.java
+    
+    add this line:
+      config.useImmersiveMode = true;
+
+
+  SWITCHING SCREENS
+
+    - needs instance of class with Game > game.setScreen(<TARGET SCREEN>)
+    - see UDACITY CODE 1.5.3 Games and Screens  OR  1.8.4 Icicles + Difficulty Screens

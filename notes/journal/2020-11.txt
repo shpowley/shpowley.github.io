@@ -91,7 +91,131 @@ Monday 2020-11-09
     - there are also c++ libraries in case I wanted to attempt it with cocos2d-x
 
 ----------
-Tuesday 2020-11-09
+Tuesday 2020-11-10
 
   LIBGDX (UDACITY)
-    - flesh out icicles game
+    - flesh out icicles game with falling icicle and moveable player
+
+----------
+Wednesday 2020-11-11
+
+  LIBGDX (UDACITY)
+    - polish icicles game
+    - finished free course #1
+
+    - barely started "How to Make a Platformer Using libGDX" (Udacity free course #2)
+      - downloaded source code files
+
+----------
+Thursday 2020-11-12
+
+  UDEMY | BLENDER 2.8 THE COMPLETE GUIDE FROM BEGINNER TO PRO
+    - notes taken directly on the video notes feature
+    - plan is to study blender through sunday
+
+----------
+Monday 2020-11-16
+
+  BLENDER
+    - created a new document "blender - youtube playlist.txt"
+      - my youtube playlists and channels has become a bit large, so this document helps organize the material to better manage what I want to study
+      - I still have quite a few items to categorize in both the BLENDER and BLENDER - GREASE PENCIL playlists
+
+    * A NEW DOCUMENT JUST FOR ADD-ONS with notes specific to each, with "blender.txt" just covering vanilla techniques
+
+----------
+Wednesday 2020-11-18
+
+  UDEMY | BLENDER 2.8 THE COMPLETE GUIDE FROM BEGINNER TO PRO
+    - apple and headphone exercises
+
+----------
+Thursday 2020-11-19
+
+  UDEMY | UNREAL ENGINE C++ DEVELOPER: LEARN C++ AND MAKE VIDEO GAMES
+    - start section 4; paused @ lesson 95. Importing Custom Meshes
+
+----------
+Friday 2020-11-20
+
+  EPIC | UNREAL ENGINE LEARNING PORTAL - EXPLORING BLUEPRINTS (FREE COURSE)
+    additional references: https://learn.unrealengine.com/course/2436619/module/6081129
+
+
+  BLENDER GLTF EXPORT TO UNREAL
+  
+    interesting test. using my lucky cat the .fbx works great for everything except materials (relative positioning of composite meshes, textures, and animation) - this was done a few weeks back. trying the .glb/.gltf the animation and relative positioning of the composite meshes were lost, but the materials were handled.
+
+    I had the idea to use the materials from the .gltf for my .fbx mesh+animation - THIS WORKED.
+
+    with the lucky cat being my very first model, the mesh object heirarchy probably isn't correct. also, the animation contains no armatures, so perhaps that's why the .gltf relative positions / animation fails..not sure though
+
+----------
+Sunday 2020-11-22
+
+  UDEMY | UNREAL ENGINE C++ DEVELOPER: LEARN C++ AND MAKE VIDEO GAMES
+
+    BSP light bleed, clunky, poor teaching presentation
+
+    tried creating a "room", but not much luck with the effort I put in. UV map wasn't done correctly for one..
+
+    "room" type of layout seemed to suffer from light bleed issues
+
+
+  BLENDER-TO-UNREAL PLUGIN
+
+    standard FBX blender export seemed to work better for relative positioning of objects and my rudimentary animation rigging, and the strange collection organization required by unreal engine.
+
+    also, simple materials are handled much better by gltf
+
+    * DON'T DISMISS THE PLUGIN QUITE YET..
+      - make sure to get latest github version
+      - check the official unreal youtube playlists:
+        https://www.youtube.com/playlist?list=PLZlv_N0_O1gZfQaN9qXynWllL7bzX8H3t (general)
+        https://www.youtube.com/playlist?list=PLZlv_N0_O1gaxZDBH0-8A_C3OyhyLsJcE (rigify.. later)
+      - live streams linked here: https://www.unrealengine.com/en-US/blog/download-our-new-blender-addons
+
+----------
+Monday 2020-11-23
+
+  BLENDER PLAYLIST ORG
+    there's a lot of stuff to watch and learn - oh boy
+    still more items to organize
+
+  LIBGDX (UDACITY)
+    starting 2nd course - How to Make a Platformer Using libGDX
+
+    2.1.04 logo centering
+      - "simple" centering, but I'm not sure how this works
+      - maybe review code from previous course OR intro demo (but this doesn't use viewport)
+
+    most of the code exercises are too difficult to figure out with the material given, so just make do with copy/paste/review of solution code
+
+    go through libgdx WIKI as most of this is just scratching the surface
+
+----------
+Tuesday 2020-11-24
+
+  GODOT/glTF IMPORT
+    I was curious about how godot would handle importing my lucky cat glTF from blender and compare that with the results from unreal engine -- THE RESULTS WERE SUCCESSFUL. especially compared to unreal engine. materials were intact, the relative positioning of the sub-objects maintained and the animation intact and working.
+
+    installed v3.2.3 and hacked at it until I could import the file. I've never used godot as far as I can remember so the test wasn't perfect, but visually the model/materials looked good and I had to drill-down into the object "scene" to see the animation, but it was there.
+
+    I also imported my lucky cat FBX in the same scene. here, the FBX model LOST ALL MATERIALS except for base color and the TEXTURES on the body and face. otherwise, the glTF and FBX models appeared identical. unreal engine handled the FBX somewhat better.
+
+    I'm not planning to continue researching godot, except for simple tests like this.
+  
+  LIBGDX (UDACITY)
+    started gigagal sprite animations, texture atlas with built-in texture packer
+
+----------
+Wednesday 2020-11-25
+
+  LIBGDX (UDACITY)
+    finished gigagal sprite animations (lesson 2) and started platforms section (lesson 3)
+
+    * NOTE: I made note of this in libgdx.txt, but as this evolves with the platform logic, I really see how RUBE/box2d can simplify this whole process with movement/collisions etc. (maybe ROBUST is a better word). it might take a little effort to get working, but I already have some experience with this from cocos2d-x.
+
+    stopped at "collision checking". 5 additional lessons.
+
+    I'm doing this mostly to familiarize myself with the basics of libgdx.

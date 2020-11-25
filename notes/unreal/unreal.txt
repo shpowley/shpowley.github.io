@@ -109,12 +109,14 @@ UNREAL UNITS
   - centimeters (cm)
 
 
-MATERIALS (@25:38)
-
-
 GOOGLE SEARCHES
 
   - use "UE4" + keywords
+
+
+SET A PROJECT "DEFAULT LEVEL"
+
+  project settings > maps & modes > default maps > editor startup map
 
 
 CODING
@@ -134,7 +136,8 @@ CODING
 
 LOGGING TO UNREAL OUTPUT LOG
 
-  UE_LOG(LogTemp, Log, TEXT("TESTING 123 123"));
+  UE_LOG(LogTemp, Log, TEXT("TESTING 123 123")); // 2nd param - Log | Display | Warning | Error...
+  UE_LOG(LogTemp, Log, TEXT("%s"), *msg); // alternate where msg is FString
   GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Blue, TEXT("TESTING 123 123"));
 
   https://forums.unrealengine.com/development-discussion/c-gameplay-programming/1192-how-do-i-log-a-simple-string

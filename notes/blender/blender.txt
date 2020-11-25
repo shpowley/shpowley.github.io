@@ -1,8 +1,5 @@
 TOPICS TO RESEARCH
 
-  - retopology
-    - Blender Quick tip №6. Retopology: creating stone pt.2 (https://youtu.be/rUzJefYNQlI)
-
   - box cutter add-on
   - grease pencil
   - modeling quick organic shapes
@@ -13,6 +10,8 @@ TOPICS TO RESEARCH
   - cell shader
   - baking textures
   - nurbs
+  - combining multiple animations (from scratch, mixamo..)
+  - lattice deformer
 
   - flipped normals: https://www.katsbits.com/codex/flip-normals/
 
@@ -28,7 +27,7 @@ TUTORIALS
   LEARN BLENDER 2.8x THE RIGHT WAY (UDEMY - PAID)
     - https://www.udemy.com/course/learn-blender-28/
 
-  marco bucci youtube vids (2)
+  ** marco bucci youtube vids (2)
     - SO MANY ADVANCED UNORTHODOX TECHNIQUES
 
 
@@ -44,6 +43,7 @@ DRAWING TABLET SHORTCUT CANDIDATES
   extrude - "E"
   extrude along normals - "ALT+E"
   inset faces - "I"
+  transform orientation = ","
 
 
 NAVIGATION
@@ -104,7 +104,8 @@ SELECTION
 
     circle select "mode" = "C>SELECT>ENTER"
       deselect = "+SHIFT(HOLD)"
-      - note: stays active until ENTER or ESC is pressed
+      - note: stays active until ENTER or ESC or RMB is pressed
+      - MMB to adjust brush size
 
 
   OUTLINER selection
@@ -206,12 +207,21 @@ USEFUL PIE MENUS
 
   shading pie menu = "Z" key
 
-  snap pie menu = "SHIFT+S"
+  snap (cursor) pie menu = "SHIFT+S"
     - menu > snap > ...
 
+  "snap to" options pie menu = "CTRL+SHIFT+TAB"
+    - toggle "snap to" ON/OFF = "SHIFT+TAB"
+
   main menu commands = "SHIFT+SPACEBAR"
+    - changed to "SPACEBAR" in settings
 
   view presets = "`"
+
+  transform orientation = ","
+
+  "proportional editing" falloff type = "SHIFT+O"
+    - toggle proportional editing = "O"
 
 
 MISC USEFUL
@@ -433,6 +443,9 @@ BRIDGING
   - creates "bridge" of faces on selected faces OR open edges
   - select items > edge (menu OR "CTRL+E") > "bridge edge loops"
 
+  - also available using Loop Tools ADD-ON
+    - there are more CONTEXT MENU OPTIONS using the standard method
+
 
 SPIN TOOL
 
@@ -452,12 +465,14 @@ SMOOTH SHADING
 
   - object menu > "shade smooth" OR "shade flat"
 
+  ************ NEEDS MORE RESEARCH - SHARPS VS. CREASES ************
   leave sharp creases in "shade smooth" mode
     - object data properties (green triangle icon) > normals > "auto smooth" = true
 
   mark individual edges as "sharp"
     - object EDIT mode > select edges > edge menu > "mark/clear sharp"
     - only visible if object data properties "auto smooth" = true
+  ******************************************************************
 
 
 FORM ADJUSTMENT TOOLS
@@ -490,6 +505,7 @@ FILL OPEN AREAS
 POLY BUILD
 
   - "free form"
+  - not really useful..
 
   - some changes from original video ..blender 2.81
     - default creates quad from an edge
@@ -1853,8 +1869,6 @@ OBJECT CONSTRAINTS
     - duplicated into 4 "fingers"
 
   child-of: similar to parenting, but granular control of location, scale, rotation effects
-
-
 
 
 QUESTIONS

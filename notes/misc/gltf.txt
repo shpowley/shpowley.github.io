@@ -1,0 +1,46 @@
+GLTF NOTES
+
+
+main: https://www.khronos.org/gltf/
+
+
+web viewers:
+  http://threejs.org/editor (viewer/editor)
+  https://gltf-viewer.donmccurdy.com/
+  https://www.virtualgis.io/gltfviewer/
+  https://playcanvas.com/viewer
+  https://gltf-viewer.donmccurdy.com/
+  https://pissang.github.io/clay-viewer/editor/
+  https://www.gltfeditor.com/ (viewer/editor)
+
+
+app viewers:
+  https://github.com/pissang/clay-viewer
+
+editors:
+  https://gestaltor.io/
+    30-day trial
+    https://www.youtube.com/channel/UCXQTGmNbmUYo1Gqs9m1LTlw/videos features
+
+
+tutorial: https://github.com/KhronosGroup/glTF-Tutorials/tree/master/gltfTutorial
+
+
+projects: (quite extensive)
+  https://github.khronos.org/glTF-Project-Explorer/
+
+
+github projects: https://github.com/topics/gltf2
+
+
+libgdx: https://github.com/mgsx-dev/gdx-gltf
+
+
+unreal engine plugins
+
+  https://github.com/rdeioris/glTFRuntime
+    - well documented
+    https://www.unrealengine.com/marketplace/en-US/product/gltfruntime
+
+  https://github.com/gildor2/UEViewer
+  https://github.com/code4game/glTFForUE4
