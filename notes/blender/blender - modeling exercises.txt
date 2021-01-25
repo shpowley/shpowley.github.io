@@ -1,6 +1,6 @@
 3D MODELING EXERCISES
 
-  HELICOPTER
+  HELICOPTER (LEARN BLENDER 2.8 THE RIGHT WAY)
 
     VERTEX PAINTING
 
@@ -124,7 +124,7 @@
       - configure output: "output properties" (tab) > end frame, name/location, file format="ffmpeg video", container=mpeg-4
 
 
-  ROBOT
+  ROBOT  (LEARN BLENDER 2.8 THE RIGHT WAY)
 
     REFERENCE IMAGES
       - this is my own technique so far
@@ -474,3 +474,69 @@
         - full 1920x1080
         - location
         - ffmpeg / mpeg-4
+
+
+  JIMMY ROBOT (BLENDER 2.8 THE COMPLETE GUIDE)
+
+    REFERENCE IMAGE
+      front + side reference views, align h-center, bottom to 0 z-axis, transparency 0.4, reference images collection, select "locked"
+
+      ALT+R (clear rotation)
+      ALT+G (clear location)
+
+      new this time around
+        image settings > show in: "orthographic" + "axis-aligned" (2.9x only?)
+        render filter
+
+
+    MODELING
+
+      - all pieces of the robot are separate objects in the same collection, except the fingers
+
+      UPPER HEAD
+        * (EXPERIMENTING) tried SOMETHING DIFFERENT WITH THE SUB-D MODIFIER ON/OFF DURING INITIAL MODELING (I noticed that in prior modeling, applying the sub-d modifier tends to shrink the overall shape more than anticipated and tweaks have to be made)
+        - (EXPERIMENTING) bottom of the head pretty much "attaches" to the jaw portion and is always invisible.. I left that empty without a face as n-gon faces tend to create a visual rippling effect with the sub-d modifier
+
+      NECK
+        cylinder - very clean top/bottom edges without extra loops
+        - shade smooth (on) + normals > "auto smooth" checked @ 30 deg (only these options needed)
+        - sub-d modifier + node > mean crease = 1.0 (not needed)
+        
+      CHEST
+        - single vertex extruded to form 2d plane of side view
+        - close 2d plane "loop" selecting first + last vertices > "F"
+
+        - select all vertices on an edge > LOOP TOOLS > SPACE
+          - this spaces all vertices on the selected edges evenly
+          * exactly what I was trying to remember from a previous lesson
+
+        COOL TRICK TO SHAPE VERTICES TO MATCH OUTER EDGE
+          - select all vertices of the grid-plane EXCEPT the outer edge loop
+          - right-click > SMOOTH VERTICES > increase "repeat" value until the inner faces match the outer shape
+
+        GRID FILL / quad modeling a surface such as the side require and even number of vertices that define the bounding loop.
+
+          *DISADVANTAGE? - compared to more MANUAL METHOD OF EXTRUDING EDGES is the resulting quad topology
+          - main take-away is that the top set of vertices need to match the # of starting vertices for either method
+
+          TIP: lower-right stats show # of selected vertices
+
+        *REMEMBER TO HIDE FEATURES IN EDIT MODE to focus only on those
+          - proportional editing will not affect these items
+
+        TOP/BOTTOM CAVITIES
+          - 2 techniques are used to accomplish similar things
+
+          - bottom groove: removing vertices > creating new faces
+            - sharp edges don't allow easy inward extrusion
+            * bottom surface + groove faces aren't visible and appear "attached" to the hips - because of this, it's arguable that all bottom faces could just be deleted (like the head/jaw)
+
+          - top groove: extrude faces inward + scale
+
+        COMMENTS:
+          - my side view form TOOK MUCH LONGER than anticipated. unlike his, I interpreted the center as bulging out from the center-line. I used proportional editing + grid fill + smooth vertices.
+          - his method was more focused on speed and less "exact"
+          
+          CHALLENGE #1: right # and proportion of vertices for the upper + lower curves with grid fill
+          CHALLENGE #2: getting "smooth vertices" to work with an uneven rippled 3d surface (center-line bulge)
+        

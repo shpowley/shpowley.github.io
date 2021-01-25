@@ -219,3 +219,47 @@ Wednesday 2020-11-25
     stopped at "collision checking". 5 additional lessons.
 
     I'm doing this mostly to familiarize myself with the basics of libgdx.
+
+----------
+Thursday 2020-11-26
+
+  LIBGDX
+
+    3D TUTORIALS: https://xoppa.github.io/
+
+      PART OF THE LIBGDX WIKI; multiple tutorials with progressively more complex parts
+
+      
+      I thought it might be prudent to test out libgdx 3d before delving deeper into this framework. basically, I want to verify if my blender 3d model(s) will work eventually as a 3d live wallpaper
+
+
+      https://xoppa.github.io/blog/basic-3d-using-libgdx/
+        
+        THIS IS THE VERY 1ST TUTORIAL that creates a basic 3d scene with lighting and a 3d cube created in code. camera spins the entire scene and works in desktop and android.
+        I needed to create a new android studio project and I chose to type it in.
+
+        compass control
+        http://disq.us/p/wt4a2t
+        https://www.badlogicgames.com/forum/viewtopic.php?f=11&t=11101#p49965
+
+        object rotate/scale/move
+        http://disq.us/p/wt4a50
+
+
+    UDACITY "GIGAGAL" COURSE CONTINUED
+
+----------
+Friday 2020-11-27
+
+  LIBGDX
+
+    3D TUTORIALS: https://xoppa.github.io/
+
+      .obj object loading (a simple ship .obj + .mtl + .png)
+      .obj > .g3db using FBX-CONV
+      tested on desktop/android
+
+
+    UDACITY: how to make a platformer using libgdx
+
+      follow camera centered on player sprite, no floor > "kill" floor, debug camera

@@ -1,5 +1,6 @@
 TOPICS TO RESEARCH
 
+  - undo stack (see games from scratch video)
   - box cutter add-on
   - grease pencil
   - modeling quick organic shapes
@@ -73,6 +74,8 @@ SELECTION
 
   select all = "A"
   deselect all = "ALT+A"  OR  "A+A" (quickly)  OR  LMB empty area
+
+  select hierarchy = right-click parent (outliner)  OR  select parent > "SHIFT+]" (3d viewport)
 
 
   MENU (ACTIVE SELECTION METHOD)
@@ -560,7 +563,7 @@ BOOLEAN MODIFIER
 
     - slide/merge vertices with the goal of creating QUADS
       - "active tool and workspace settings" tab > options > "auto merge" = ON
-      - slide vertices = "SHIFT+V"  OR  "G+G"
+      - slide vertices = "SHIFT+V"  OR  "G" > "G"
         - also works on 2 vertices that define a edge
 
     - strategically move/join vertices + judicious use of knife tool

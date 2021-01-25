@@ -124,6 +124,7 @@ TRAINING
 
     icicles
       - avoid falling icicles using keyboard or accelerometer controls
+      - DelayedRemovalArray for icicles falling
       - collision detection
 
       - HUD for score, death count
@@ -211,7 +212,59 @@ TRAINING
       used nine-patch demo code as a reference
 
     collision checking
-    2.3.3
+      logic to check if gigagal sprite lands on a test platform
+      lots of range checking I didn't get quite right in the exercise
+
+    debug platforms
+
+    chase camera
+      camera follows main character
+      this was fairly easy as the camera position just needs to match the character position
+
+    remove floor
+
+    kill plane
+      respawn when falling too far
+      * REMEMBER TO USE "Vector2.set()" not "="
+
+    more platforms
+      numerous platforms extend off screen
+
+    debug camera controls
+      more camera options: toggle free move / follow
+      * my version the SPACE toggle acted intermittently using if/else if for cam movement; switched to multi-if like the solution fixed this.. not an issue, but a better visual cue or log message could help diagnose this
+
+    enemy sprites
+      util.drawtexture() for enemy sprite
+
+    enemy class
+      DelayedRemovalArray
+
+    on patrol
+      enemy move left/right to the platform ends
+
+    bouncy anti-gravity
+      cyclic math sin() for bounce
+
+    rectangles colliding w/ circles
+      *NOTE: shaperenderer to draw shape outline; USEFUL FOR DEBUGGING; I forgot this from earlier lessons
+
+      aside challenge
+      my solution only handles rectangle corners (could also add circle left/right/top/bottom extremes easily)..but incomplete either way
+      their solution works, but looks ugly..?
+      rectangles rotated 45 - could their solution detect collision?
+
+    enemy collision
+      rectangle shapes used to define bounds greatly simplifies collision code
+      my solution accidentally used .contains() -- .overlap() works much better
+
+    knockback
+    
+    knockback (additional effects)
+      additional movement state
+      fixes sliding on platform after knockback
+
+    2.6.1 bullets, video 61
 
 
   OTHER TRAINING
@@ -450,6 +503,12 @@ SCREEN
   - create/dispose of objects using .hide()/.show() methods instead of .dispose() due to multiple game screens..
 
 
+  SWITCHING SCREENS
+
+    - needs instance of class with Game > game.setScreen(<TARGET SCREEN>)
+    - see UDACITY CODE 1.5.3 Games and Screens  OR  1.8.4 Icicles + Difficulty Screens
+
+
 INPUT
 
   POLLING
@@ -485,21 +544,25 @@ INPUT
     * some axis reading may need to be inverted 
 
 
-  DelayedRemovalArray
+DELAYEDREMOVALARRAY
 
-    - allows queued removal of array elements during iteration
-
-
-  IMMERSIVE MODE
-
-    go to:
-      android/src/YOUR/PACKAGE/PATH/android/AndroidLauncher.java
-    
-    add this line:
-      config.useImmersiveMode = true;
+  - allows queued removal of array elements during iteration
 
 
-  SWITCHING SCREENS
+IMMERSIVE MODE
 
-    - needs instance of class with Game > game.setScreen(<TARGET SCREEN>)
-    - see UDACITY CODE 1.5.3 Games and Screens  OR  1.8.4 Icicles + Difficulty Screens
+  go to:
+    android/src/YOUR/PACKAGE/PATH/android/AndroidLauncher.java
+  
+  add this line:
+    config.useImmersiveMode = true;
+
+
+LOADING A MODEL / FBX-CONV
+
+  convert .obj .dae .fbx to libgdx runtime-friendly .g3dj or .g3db formats
+  NOTE: there are model limitions as elaborated in the wiki, with the most noticeable one being 32768 max vertices
+
+  ex. fbx-conv.exe -v ship.obj ship.g3db
+
+  useful blender to libgx tips? http://disq.us/p/wt5asi

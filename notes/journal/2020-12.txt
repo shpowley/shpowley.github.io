@@ -1,0 +1,78 @@
+Tuesday 2020-12-01
+
+  LIBGDX
+
+    attempt to my blender models for the 3D TUTORIAL (https://xoppa.github.io/) on Friday 2020-11-27
+
+      PARTIAL SUCCESS
+
+      using the WIKI GUIDE https://github.com/libgdx/libgdx/wiki/Importing-Blender-models-in-LibGDX
+        - RIGIFY PLUGIN IS NOT RECOMMENDED, so the robot final project can't be used..
+
+        export fbx from blender
+          - export fbx scale 1.00 > 0.01
+          - use z-up (blender default);  fbx-conv will automatically compensate
+
+      start with a simple model, "multi-material coffee mug"
+        - 1 object containing 1 mesh, 3 materials
+        - object and mesh renamed to simple names
+
+          fbx-conv.exe -v mug.fbx mug.g3db
+
+        - in android I used pt.2 tutorial code to load mug.g3db
+          - THIS WORKED with the 3 simple materials (I guess they were embedded in the .fbx)
+
+      2 simple models with more complex textures
+        1) "TRANSPARENT wine glass"
+        2) "GOLD METALLIC candlestick"
+
+        - same steps as with the "coffee mug"
+
+        * models loaded, but FANCIER MATERIALS FAILED (comment: only possible with glsl or .gltf..?)
+
+        * another note, both the wine glass and candlestick were OFF-CENTER due to the fact that the models were taken from a composite scene and not placed in the scene origin
+          - fixed the wine glass, but both were a bit too small (not a big issue)
+          - remember to use blender "apply transforms"
+          - tested in android
+
+      TEXTURE and ANIMATION test skipped
+        - will try using .gltf method anyway
+
+----------
+Wednesday 2020-12-02
+
+  LIBGDX (UDACITY) - HOW TO MAKE A PLATFORMER USING LIBGDX | ENEMIES SECTION
+
+  BLENDER (UDEMY) - BLENDER 2.8 THE COMPLETE GUIDE FROM BEGINNER TO PRO
+
+----------
+Thursday 2020-12-03
+
+  BLENDER (UDEMY) - BLENDER 2.8 THE COMPLETE GUIDE FROM BEGINNER TO PRO
+
+    - watched "modeling a robot with reference image" (4 parts)
+    
+      * all notes taken directly on each video using udemy built-in notes
+      - lots of new techniques learned here:
+        SHRINKWRAP modifier, GRID FILL, SMOOTH VERTICES to match outer edge shape
+
+----------
+Friday 2020-12-04
+
+  BLENDER (UDEMY) - BLENDER 2.8 THE COMPLETE GUIDE FROM BEGINNER TO PRO
+
+    - "generate" and "deform" modifiers
+
+----------
+Sunday 2020-12-06
+
+  BLENDER (UDEMY) - BLENDER 2.8 THE COMPLETE GUIDE FROM BEGINNER TO PRO
+
+    - jimmy robot modeling exercise
+
+----------
+Tuesday 2020-12-08
+
+  BLENDER (UDEMY) - BLENDER 2.8 THE COMPLETE GUIDE FROM BEGINNER TO PRO
+
+    - jimmy robot modeling exercise @ hips

@@ -97,8 +97,21 @@ CHANNELS/MISC
   Lightning Boy Studio: https://www.youtube.com/channel/UCd9i2MKimSaKezat1xkn8-A
     toon shaders
 
+  RIOTGEAR: https://www.youtube.com/channel/UC3mUrwUQyV-Bz-6L1IujkdQ
+    animated texture maps and visual effects
+
+  Josh Gambrell: https://www.youtube.com/channel/UCXfGjwohMgPm4Ng2e1FXySw
+    focus mostly on hard-surface modeling
+
+  VeryHotShark: https://www.youtube.com/channel/UC6SvornhqVdZYuUJRWobHGQ
+    sculpting faces, body
+
 
 SOFTWARE TOOLS & CREATOR WEBSITES
+
+  instant meshes: https://www.blendernation.com/2015/11/16/instant-meshes-a-free-qaud-based-autoretopology-program/
+
+  quad remesher: https://exoside.com/quadremesher/
 
   sketchfab: https://sketchfab.com/
     FREE/PAID MARKETPLACE
@@ -180,6 +193,17 @@ RIGGING
   Rigging Default Cube with Squeeze and Stretch | blender 2.9: https://youtu.be/NaFPEDAF7aI
 
 
+TEXTURE PAINT
+
+  Node Based Texture Painting in Blender 2 8: https://youtu.be/gUVEzwAgGzo
+    usefult workflow
+
+  Blender 2.8 For Beginners: Texture Painting: https://youtu.be/JX-UwgKaPsA
+
+  Blender 2.8 Tutorial : PBR Texture Painting: https://youtu.be/svzKoq3vew0
+    COOL, texture paint "geometry"
+
+
 MATERIALS | NORMAL MAPS | TEXTURING
 
   Normal Maps for Pixel Art: https://youtu.be/gUkY8ZoRfuQ
@@ -196,15 +220,42 @@ MATERIALS | NORMAL MAPS | TEXTURING
   The Secrets of Realistic Texturing in Blender: https://youtu.be/W07H7xeUnGE
 
 
-TEXTURE PAINT
+BAKING / DISPLACEMENT
 
-  Node Based Texture Painting in Blender 2 8: https://youtu.be/gUVEzwAgGzo
-    usefult workflow
+  Create FLAWLESS hard-surface decals in Blender 2.8: https://youtu.be/p93I8cTEzIw
+    decal baking
 
-  Blender 2.8 For Beginners: Texture Painting: https://youtu.be/JX-UwgKaPsA
+  Blender Bake to Lowpoly - 2.82: https://youtu.be/G_dtR9LgnxE
 
-  Blender 2.8 Tutorial : PBR Texture Painting: https://youtu.be/svzKoq3vew0
-    COOL, texture paint "geometry"
+  Baking Perfect Texture Maps Using a Cage | Blender 2.8: https://youtu.be/nJ0PM7m9TJc
+
+  baking normal maps from sculpt | Blender | cycles | quick guide: https://youtu.be/o8giubIE1LY
+    2.7x
+
+  How to Bake Perfect Normals in Blender - Tutorial: https://youtu.be/0r-cGjVKvGw
+    2.7x; check "zerbah" comments re: 2.8x
+
+  Blender 2.8 - How to bake textures - Tutorial: https://youtu.be/2ClzsuExtCo
+
+  Baking Multiple Textures onto One Map | No Plugins: https://youtu.be/9airvjDaVh4
+
+  Reducing Render TImes by 40% With Texture Baking｜Blender Tutorial: https://youtu.be/fbH4aQB5FiM
+
+  Tutorial: Bake Wrangler (Baking made easy in Blender 2.8): https://youtu.be/1QpybXsNcsw
+    paid plugin
+
+  REALTIME Shader Displacement for EEVEE!: https://youtu.be/TJ_o1_m713w
+
+  Bake PERFECT Displacement Maps (with blender): https://youtu.be/arvhK4tvYuY
+    watched, notes taken
+
+  How To Setup PBR and Displacement in EEVEE AND Cycles [Blender 2.8]: https://youtu.be/UkU0-QeWUcU
+    watched, notes taken
+
+  Blender Texture Baking in 3 Steps: https://youtu.be/Ip-OYM1u6Eg
+
+  Blender - Displacement Tricks: https://youtu.be/w8nZCCa_RiA
+    baking on non-flat surfaces..
 
 
 BLENDER PIXEL ART
@@ -227,6 +278,8 @@ GREASE PENCIL
 
   Blender 2.91 Beta -- 4 AMAZING New Features Showcased!: https://youtu.be/QuLPsMeGee0
     grease pencil tracing
+
+  Learn Grease pencil in Blender 2.82 (2D Animation and Storyboard) - English: https://youtu.be/9N-glGarYuM
 
 
 RENDER
@@ -266,6 +319,8 @@ ADD-ONS / MODIFIERS
 
   Blender Hard Surface Tips for Grids & Curves: https://youtu.be/fH5WF7-fKK0
 
+  10 essential addons for architectural design that come with Blender 2.81+: https://youtu.be/uTLddu8c-U4
+
 
 SUBSURFACE DEFORMATION MODIFIER
 
@@ -274,10 +329,15 @@ SUBSURFACE DEFORMATION MODIFIER
 
 SCULPTING
 
+  Introduction to Sculpting in Blender 2.8 - Sculpting Essentials: https://youtu.be/A-Wq8K8icpQ
+
   SCULPT MULTIPLE OBJECTS | Blender Today: https://youtu.be/Leog6MbGABw
     2.91 sculpting discussion
 
   Sculpting In Blender For Beginners - Tutorial: https://youtu.be/IG1IEpU5VAw
+
+  Sculpting in Blender 2.8 | Beginners Detailed Guide | Every Brush: https://youtu.be/L3XtAFUWNuk
+    grant abbott
 
   The new sculpting workflow in Blender - Pablo Dobarro: https://youtu.be/lxkyA4Xslzs
     soft audio, check comments
@@ -295,6 +355,8 @@ SCULPTING
 
 
 RETOPOLOGY / REMESH
+
+  Retopology for Beginners in Blender 2.8 - Retopo the Correct Way: https://youtu.be/CuQzPDs99yM
 
   Tutorial: Retopology with SpeedRetopo (Blender 2.8): https://youtu.be/N1ziiDstplQ
 
@@ -320,40 +382,13 @@ RETOPOLOGY / REMESH
   Instant Meshes -- Must Have Free 3D Retopology Tool: https://youtu.be/hu4NavAy5f4
     free open-source, zero-effort(?) retopology
 
+  How to automatically retopologize into quads for free (Instant Meshes): https://youtu.be/l88hQj16IhA
 
-BAKING / DISPLACEMENT
+  Easily Clean Your 3D Scans (blender): https://youtu.be/dKo0rWXVAlc
+    Instant Meshes
 
-  Blender Bake to Lowpoly - 2.82: https://youtu.be/G_dtR9LgnxE
-
-  Baking Perfect Texture Maps Using a Cage | Blender 2.8: https://youtu.be/nJ0PM7m9TJc
-
-  baking normal maps from sculpt | Blender | cycles | quick guide: https://youtu.be/o8giubIE1LY
-    2.7x
-
-  How to Bake Perfect Normals in Blender - Tutorial: https://youtu.be/0r-cGjVKvGw
-    2.7x; check "zerbah" comments re: 2.8x
-
-  Blender 2.8 - How to bake textures - Tutorial: https://youtu.be/2ClzsuExtCo
-
-  Baking Multiple Textures onto One Map | No Plugins: https://youtu.be/9airvjDaVh4
-
-  Reducing Render TImes by 40% With Texture Baking｜Blender Tutorial: https://youtu.be/fbH4aQB5FiM
-
-  Tutorial: Bake Wrangler (Baking made easy in Blender 2.8): https://youtu.be/1QpybXsNcsw
-    paid plugin
-
-  REALTIME Shader Displacement for EEVEE!: https://youtu.be/TJ_o1_m713w
-
-  Bake PERFECT Displacement Maps (with blender): https://youtu.be/arvhK4tvYuY
-    watched, notes taken
-
-  How To Setup PBR and Displacement in EEVEE AND Cycles [Blender 2.8]: https://youtu.be/UkU0-QeWUcU
-    watched, notes taken
-
-  Blender Texture Baking in 3 Steps: https://youtu.be/Ip-OYM1u6Eg
-
-  Blender - Displacement Tricks: https://youtu.be/w8nZCCa_RiA
-    baking on non-flat surfaces..
+  Learn RetopoFlow3 - Ultimate Retopo Tutorial: https://youtu.be/X8kQiccJetw
+    - $86!!! looks nice but $86!!
 
 
 SHARP EDGES
@@ -364,6 +399,9 @@ SHARP EDGES
 
 
 STANDARD TECHNIQUES
+
+  Low and High Poly Workflow in Blender | Part One | TimefireVR: https://youtu.be/OX2DIAnOacU
+    a bit older..
 
   Blender 2.8 - 7 Awesome Modeling Tools You Don't Want to Miss (for New Users): https://youtu.be/Gp6OYtwGig8
 
@@ -388,6 +426,8 @@ STANDARD TECHNIQUES
     mirror techniques
 
   HDRIs Just Got Better: https://youtu.be/RsAUfQlZH_w
+
+  Topology Flow | Hard Surface Modelling | Blender 2.8: https://youtu.be/ormlcMpVx7k
 
 
 EXPORT
@@ -438,6 +478,17 @@ EXERCISES
 
 COOL HOW-TO EXERCISES / TECHNIQUES
 
+  COMPOUND SHAPES - Blender Quickie: https://youtu.be/M5zBqQELdVU
+    physics
+
+  Blender's Solution For Bad Topology | Blender #13: https://youtu.be/YkUxB_bka3U
+    fixing distortion..
+
+  How to Morph in Blender2.8 using ANIMATED TEXTURE MAPS: https://youtu.be/YANVcOcoHQw
+
+  Facets to Face-Maps!: https://youtu.be/PMINZ7JJOAE
+    what is a facet?
+
   Blender 2.8 Tutorial - Stop Using Loop Cuts: https://youtu.be/qvdvvL1n8I8
     bevel modifier / vertex groups instead of numerous loop cuts
     read comments, attempt this..
@@ -465,6 +516,27 @@ COOL HOW-TO EXERCISES / TECHNIQUES
 
   Daily Blender Secrets - Find the triangles in a dense mesh: https://youtu.be/wv_bx3bGpC0
     1st comment - ..in edit mode, open search: "select faces by sides"
+
+  Rotoscoping Tips in Blender: https://youtu.be/1eQst8SAVRE
+    replace video content elsewhere, video FX
+
+  Modeling a character BaseMesh in Blender (Tutorial): https://youtu.be/WlaMfIgS2ns
+    longer vid, JUST watch 1st
+
+  Base Mesh Sculpting Tutorial in Blender 2.8 | Stylized | 1/2: https://youtu.be/BJ6wUtR6cWo
+
+  Blender 2.8. Modelling with Curves, how to make pipes.: https://youtu.be/F2SIbAxLftc
+    - "easy" tube / pipe technique
+
+  Turn a 2D painting into 3D environment - Powerful BLENDER Techniques: https://youtu.be/Ff0aobJRSNc
+    - experimental, non-standard techniques
+
+  Turning your blend file into a asset library - Blender Tutorial: https://youtu.be/7LGVgQm863E
+
+  Photoscanning: Free and Easy! (Blender): https://youtu.be/6VjA9EfkFSc
+
+  How to 3D Photoscan Easy and Free!: https://youtu.be/k4NTf0hMjtY
+    meshroom + blender
 
 
 NEW STUFF

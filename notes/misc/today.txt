@@ -1,15 +1,36 @@
+BLENDER (UDEMY)
+  @ lesson 39
+  model robot using new techniques
+
+
 BLENDER YOUTUBE
+
+  undo stack (see games from scratch video)
   organize vids / channels - just a small portion
-    next: bottom to "Sculpting in Blender 2.8 | Beginners Detailed Guide | Every Brush"
 
 
-UDACITY - LIBGDX 2ND COURSE
+LIBGDX
+  
+  UDACITY - LIBGDX 2ND COURSE
+    sections: bullets, level loading, mobile controls
+    * extract code only sections for easy lookup text search, both course, add to a vs code workspace
+
+  3D TUTORIALS:
+
+    LOADING MODEL
+       completed, but TRY THIS WITH AN EXISTING MODEL in blender (helicopter, iron giant) or create a new one
+       - make a copy of the .blend file first..
+       - also, make sure follow the wiki guide
+
+    NEXT:
+      https://xoppa.github.io/blog/loading-a-scene-with-libgdx/
+      3rd tutorial, a bit more lengthy..
 
 
 UDEMY - UNREAL ENGINE
 
   NEXT TIME
-    - don't proceed with lesson 100
+    - don't proceed with lesson 100 yet
 
     - epic unreal courses: megascans?
     
