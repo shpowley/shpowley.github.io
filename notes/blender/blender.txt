@@ -1,6 +1,5 @@
 TOPICS TO RESEARCH
 
-  - undo stack (see games from scratch video)
   - box cutter add-on
   - grease pencil
   - modeling quick organic shapes
@@ -229,6 +228,10 @@ USEFUL PIE MENUS
 
 MISC USEFUL
 
+  OPENING A FILE WITH/WITHOUT CUSTOM UI
+    - open > select option gear > toggle "load ui"
+    default behavior: preferences > "save and load" tab > "load ui" (toggle ON/OFF)
+
   ROLL
     SHIFT+NUMPAD-4/NUMPAD-6
 
@@ -239,6 +242,9 @@ MISC USEFUL
 
     CAMERA (ALTERNATE METHOD)
       CTRL+ALT+NUMPAD-0 > SELECT CAMERA > R
+
+  UNDO HISTORY = "CTRL+SHIFT+Z" (custom)
+    - undo stack; default is no shortcut and accessible via EDIT > "UNDO HISTORY"
 
   REDO LAST = "F9"
     - great for calling back the object creation dialog that typically disappears

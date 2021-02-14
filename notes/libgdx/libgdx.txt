@@ -264,7 +264,8 @@ TRAINING
       additional movement state
       fixes sliding on platform after knockback
 
-    2.6.1 bullets, video 61
+    asset roundup
+      explosion + bullet + power-up sprites and object skeleton code
 
 
   OTHER TRAINING
@@ -350,6 +351,8 @@ ANDROID STUDIO RUN CONFIGURATIONS
     - accessible only via the toolbar
     - default run config is android
     - for desktop (and other types), make sure to fill out the lines for GRADLE PROJECT and TYPE
+      - save terminal desktop run config
+      - OR create GRADLE PROJECT = "{project name}:desktop" + TYPE = run
 
 
 LOGGING

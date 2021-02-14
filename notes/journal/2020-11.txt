@@ -15,7 +15,7 @@ Sunday 2020-11-01
 
     COMMENTS
 
-      - as mentioned earlier, this is made by google
+      - as mentioned earlier, this tutorial is made by google(?)
 
       - the intro project seems to take a different approach than what's advised by the libgdx wiki ..still too early to tell.
 
@@ -24,7 +24,6 @@ Sunday 2020-11-01
       - I honestly don't remember working with libgdx much..
 
       - I never knew about the correct usage of android studio run configurations
-
 
 ----------
 Tuesday 2020-11-03
@@ -238,12 +237,14 @@ Thursday 2020-11-26
         THIS IS THE VERY 1ST TUTORIAL that creates a basic 3d scene with lighting and a 3d cube created in code. camera spins the entire scene and works in desktop and android.
         I needed to create a new android studio project and I chose to type it in.
 
-        compass control
-        http://disq.us/p/wt4a2t
-        https://www.badlogicgames.com/forum/viewtopic.php?f=11&t=11101#p49965
+        possibly useful comments:
 
-        object rotate/scale/move
-        http://disq.us/p/wt4a50
+          compass control
+          http://disq.us/p/wt4a2t
+          https://www.badlogicgames.com/forum/viewtopic.php?f=11&t=11101#p49965
+
+          object rotate/scale/move
+          http://disq.us/p/wt4a50
 
 
     UDACITY "GIGAGAL" COURSE CONTINUED

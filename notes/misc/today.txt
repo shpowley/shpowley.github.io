@@ -1,14 +1,3 @@
-BLENDER (UDEMY)
-  @ lesson 39
-  model robot using new techniques
-
-
-BLENDER YOUTUBE
-
-  undo stack (see games from scratch video)
-  organize vids / channels - just a small portion
-
-
 LIBGDX
   
   UDACITY - LIBGDX 2ND COURSE
@@ -25,6 +14,11 @@ LIBGDX
     NEXT:
       https://xoppa.github.io/blog/loading-a-scene-with-libgdx/
       3rd tutorial, a bit more lengthy..
+
+
+BLENDER YOUTUBE
+
+  organize vids / channels - just a small portion
 
 
 UDEMY - UNREAL ENGINE

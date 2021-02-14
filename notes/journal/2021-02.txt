@@ -1,0 +1,47 @@
+CORONAVIRUS TOTAL INFECTED: 104.93 MILLION (2/1/2021) *INFLECTION DOWN, VACCINES AVAILABLE
+CORONAVIRUS TOTAL INFECTED: 46.82 MILLION (11/1/2020)
+CORONAVIRUS TOTAL INFECTED: 41.02 MILLION (10/20/2020)
+CORONAVIRUS TOTAL INFECTED: 22.78 MILLION (8/21/2020)
+CORONAVIRUS TOTAL INFECTED: 14.82 MILLION (7/21/2020)
+
+
+3D IDEAS:
+  *lucky cat existing + bitcoin
+  *lucky "doge" similar to lucky cat + dogecoin
+  butterfly wings open/close + flying
+  spider walk anim + dangling
+  rubber duck (not much animation)
+
+----------
+Thursday 2021-02-04
+
+  slow to get back into this with the holidays, home search, etc.
+
+
+  libgdx
+  
+    read through notes to get caught up
+      - skimming the notes, it appears I started to transition to libgdx around 10/2020
+      - I need to go review these journal notes later on to get a better overall picture of libgdx specifically
+  
+
+    UDACITY
+
+      ran some existing projects to verify they still work (starfield + icicles)
+
+      restarting from where I left off on the gigagal platformer
+        - attempt to complete this course
+        - extract code-only sections for easy review in visual studio code (not 100% about this)
+
+      2.6.01 asset round-up
+        - good starting point I suppose
+        - forgot most of how this works (sprite sheet / atlas, animation code, run configurations, etc.)
+        - most of this exercise was cut/paste from the solution or inferenced from similar code
+
+      @ 2.6.2 bulletstorm
+
+      WHAT'S LEFT
+        - level loading, mobile controls, review both course lessons
+        - 3d tutorials => gltf (possibly re-evaluate plan)
+
+----------

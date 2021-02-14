@@ -1,8 +1,8 @@
 Tuesday 2020-12-01
 
-  LIBGDX
+  LIBGDX                  ***** IMPORTANT TESTS *****
 
-    attempt to my blender models for the 3D TUTORIAL (https://xoppa.github.io/) on Friday 2020-11-27
+    attempt to use my blender models for the 3D TUTORIAL (https://xoppa.github.io/) on Friday 2020-11-27
 
       PARTIAL SUCCESS
 
@@ -31,7 +31,7 @@ Tuesday 2020-12-01
         * models loaded, but FANCIER MATERIALS FAILED (comment: only possible with glsl or .gltf..?)
 
         * another note, both the wine glass and candlestick were OFF-CENTER due to the fact that the models were taken from a composite scene and not placed in the scene origin
-          - fixed the wine glass, but both were a bit too small (not a big issue)
+          - fixed the wine glass, but both were a bit too small (not a big issue at the moment)
           - remember to use blender "apply transforms"
           - tested in android
 
