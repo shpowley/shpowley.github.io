@@ -6,8 +6,9 @@ CORONAVIRUS TOTAL INFECTED: 14.82 MILLION (7/21/2020)
 
 
 3D IDEAS:
-  *lucky cat existing + bitcoin
-  *lucky "doge" similar to lucky cat + dogecoin
+  *LUCKY CAT EXISTING + BITCOIN
+  *LUCKY "DOGE" SIMILAR TO LUCKY CAT + DOGECOIN
+
   butterfly wings open/close + flying
   spider walk anim + dangling
   rubber duck (not much animation)
@@ -30,8 +31,8 @@ Thursday 2021-02-04
       ran some existing projects to verify they still work (starfield + icicles)
 
       restarting from where I left off on the gigagal platformer
-        - attempt to complete this course
-        - extract code-only sections for easy review in visual studio code (not 100% about this)
+        * ATTEMPT TO COMPLETE THIS COURSE
+        * EXTRACT CODE-ONLY SECTIONS FOR EASY REVIEW IN VISUAL STUDIO CODE (NOT 100% ABOUT THIS)
 
       2.6.01 asset round-up
         - good starting point I suppose
@@ -45,3 +46,138 @@ Thursday 2021-02-04
         - 3d tutorials => gltf (possibly re-evaluate plan)
 
 ----------
+Monday 2021-02-15
+
+  so I decided to start experimenting with gltf (libgdx project "gdx-gltf")
+  - besides learning libgdx, getting .gltf or .glb 3d files to work with the libgdx library is CRITICAL
+  - without gltf, the complexity of WORKING WITH SHADERS IS MOST LIKELY A BIT TOO DAUNTING for me
+
+
+  libgdx / gltf
+  
+    - downloaded the "gdx-gltf" source + examples from github
+      - altered sample code to run the various demos
+      - 5 demos/templates for web, desktop, android; focused on just android right now
+
+      - the "primary" demo is the only example that DYNAMICALLY SCALES to main 3d model so that it fits in the camera view
+        - the boombox 3d model is quite small when opened in blender and when attempting to use other test models within the simpler demos, the scaling differences consistently made it challenging
+
+      - using various 3d models within the GLTFQuickStartExample demo, I consistently encountered errors that prevented the android demo app from running
+        - most of my blender models I tried failed: lucky cat, compass scene, compass arrows
+        - these blender models worked: apple (no materials or images), compass cube
+        - I don't know what exactly why these failed.. perhaps they were just too complex (2/14)
+
+    - downloaded separate "gltf-sample-models (khronos)" from github (https://github.com/KhronosGroup/glTF-Sample-Models)
+      - debugging and modifying the primary demo, I got this to load the default boombox and allowed the combo for switching to the other provided models
+      - I further copied 2 gltf models from the khronos samples to the demo: cube (shiny marble) + complex flight helmet -- these successfully loaded
+      - the marble cube, though relatively simple, verified that copying the khronos models to the anroid assets folder works
+      - the flight helmet VERIFIED THAT A VERY COMPLEX MULTI-PART, MULTI-MATERIAL, MULTI-IMAGE MODEL WILL WORK
+
+    more experiments with primary demo
+      - apple - WORKED
+      - skull export from ms 3d viewer (large + detailed image/texture) - WORKED
+
+      - my animated lucky cat - FAILED
+        - coin (isolated from lucky cat) - WORKED
+        - animated paw (isolated from lucky cat) - WORKED
+        - by process of elimination, the "bell" is causing the entire 3d model to fail - not sure why yet
+
+        - not exactly sure what I did to fix this..
+          - joined 2 non-quad-forming floating vertices
+          - eliminated back face of the bell that would never be visible (on tail mesh also)
+          - converted quads to tris
+          * I might try to re-produce these steps
+
+    MAIN TAKE-AWAYS
+      * identify key blender modeling techniques that will allow gdx-gltf import
+      - look at model auto-scaling?
+      - blender animation using bones/rigging?
+      - blender export steps (https://github.com/mgsx-dev/gdx-gltf/blob/master/docs/DOC.md#export-from-blender-280)
+
+      - exporting scene camera is a cool effect, also the outline option
+      - bone rigging wasn't necessary for the lucky cat
+
+
+    MANY MANY THANKS!
+    AFTER YESTERDAY'S EXPERIMENTS I REALLY THOUGHT THIS WOULD BE A DEAD-END
+
+----------
+Wednesday 2021-02-17
+
+  continuing on with libgdx/gltf and why certain blender model meshes fail
+
+
+  LIBGDX / GLTF
+
+    WHY IS THE LUCKY CAT BELL MESH FAILING?
+      x (A) joined 2 non-quad-forming floating vertices
+      x (B) eliminated back face of the bell that would never be visible
+      * (C) converted quads to tris <== THIS ONE
+
+      so the simple solution is to CONVERT QUADS TO TRIS, but on this particular mesh the only face really causing the error was the large center polygon face
+        - from blender notes, this is a POLE "STAR" composed of 5 or more vertices
+
+      there are other POLE "STAR" polygons in the lucky cat model that aren't causing problems (the cat bottom base AND the front/back faces of the coin)
+        - I tried one more experiment, adding an edge loop to the bottom adjacent faces thereby increasing the vertex count by 1 -- THIS NOW WORKS
+        - my hypothesis is that POLE STAR POLYGONS NEED TO HAVE AN EVEN NUMBER OF VERTICES (17 vertices -> 18 vertices) for gdx-gltf
+          - based on this hypothesis, I experimented with the other 2 fixes that initially seemed inconsequential (items A and B), as these were also pole star polygons with an odd # of vertices
+          - these both validate the hypothesis I believe
+          - item A fix ended up produces a quad and the item B fix removed the pole star polygon altogether; if left unfixed they would also produce the error-crash
+
+      SOLUTION SPECIFIC FOR LIBGDX/GDX-GLTF EXPORT:
+        1 - for *simple* hard-surface models, TRY TO REMOVE POLE STAR POLYGONS WITH AN EVEN NUMBER OF VERTICES using various techniques
+          - in general, I think this is preferred
+        2 - quads to tris using "FACE > TRIANGULATE FACES (CTRL+T)" or "TRIANGULATE MODIFIER"
+          - try to keep quads in the design model for easier future edits within blender (requires the "TRIANGULATE MODIFIER" or a separate export version)
+          - see https://blender.stackexchange.com/questions/19253/how-to-make-all-polygons-into-triangles
+        3 - grid fill "FACE > GRID FILL" is another option besides "quads to tris", but note that this still requires an even number of vertices
+
+      REPRODUCE HYPOTHESIS/FIX WITH MY BLENDER COMPASS MESH
+        - I eventually got this to work using the quad-to-tris method
+        - a bit trickier as the arrow and letters vertices were created using an SVG technique and a couple faces edges were overlapping.. the only method to find these was through visual inspection + dissolving overlapping edges
+        - more or less verified the POLE STAR POLYGON WITH ODD VERTEX COUNT
+
+    
+    WHAT'S NEXT
+      - blender: detecting and eliminating overlapping edges
+      - libgdx: live wallpaper
+      - libgdx: live wallpaper + gdx-gltf
+
+----------
+Thursday 2021-02-18
+
+  researched "detecting and eliminating overlapping edges in blender" - see blender.txt - MODELING "FIXES"
+
+
+  simple search of my android live wallpaper notes and found some possibly useful internet links
+    Thursday 2020-11-26 - good candidate for live wallpaper test (cube)
+
+    Thursday 2020-03-04 - good live wallpaper info in link 1
+
+    Thursday 2020-02-27 - summary of lwp projects during 2019-06
+      Sunday 2019-06-23
+
+    project list.txt - my live wallpaper related projects
+
+    libgdx.txt - see live wallpaper links (possibly relevant)
+
+
+  just out of curiousity, my notes go back to 2018-10 ==> a little over 2 years not counting some earlier web stuff as far back as frisco, tx
+  so this has evolved from motion sensors + 2d images + web (javascript) => cocos2d-x (c++) => 3d models (blender) + libgdx (java)
+
+----------
+Friday 2021-02-19
+
+  D:\code\backup (read-only)\android\LWP_simple
+    - got this to work and glanced at code
+    - this is vanilla android java + canvas, not cocos2d-x
+    - see cocos2d-x / project list.txt for description
+
+  D:\code\backup (read-only)\android\LWP_simple_pic_only
+    - got this to work and glanced at code
+    - code comparison to LWP_simple
+
+  print code to PDF for easy reference as I review notes and libgdx-specific stuff from "Thursday 2021-02-18"
+
+----------
+Monday 2021-02-22

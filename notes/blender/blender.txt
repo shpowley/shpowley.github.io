@@ -303,10 +303,6 @@ MISC USEFUL
   SHOW OBJECT VOLUME BOUNDS
     - "object properties" (tab) > "viewport display" > "display as" = bounds  OR  "bounds" checkbox
 
-  FLIPPED NORMALS
-    - quickly check: overlays > geometry > face orientation = checked
-    - fix: select objects > edit mode > select meshes > mesh (menu) > normals > recalculate outside
-
 
 CURSOR
 
@@ -621,6 +617,7 @@ MODELING "FIXES"
 
   OVERLAPPING VERTICES
     - usually created by "accident" (eg. "E" (extrude) cancelled)
+    
     FIX: select all vertices on shape (or "A") > mesh menu > merge ("M") > "by distance"
 
 
@@ -635,6 +632,20 @@ MODELING "FIXES"
     - ex. uv sphere ring > new face > creates an interior face
 
     FIX: nothing selected > select menu > "select all by trait" > "interior faces" > "DELETE" > faces
+
+
+  FLIPPED NORMALS
+    - quickly check: overlays > geometry > face orientation = checked
+    - fix: select objects > edit mode > select meshes > mesh (menu) > normals > recalculate outside
+
+
+  DOUBLE EDGES
+    - ex. overlapping or double edges usually found by import models, automated SVG to 3D, or poor modeling
+
+    FIX: nothing selected > select menu > "select all by trait" > "non-manifold" + OVERLAPPING VERTICES FIX
+      - this method *might* work, but may still require manual inspection / verification of edges and manual fixes
+
+    FIX: another option is re-topologizing techniques
 
 
 ANIMATION
