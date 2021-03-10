@@ -1,8 +1,19 @@
+glTF
+
+  read gltf.txt docs..
+  libgdx..
+  unreal engine
+    - try default plugin again?
+    - try alternate gltf import plugins
+
+--------------------------------------------------------------
+
 LIBGDX
   
   UDACITY - LIBGDX 2ND COURSE
     sections: bullets, level loading, mobile controls
     * extract code only sections for easy lookup text search, both course, add to a vs code workspace
+
 
   3D TUTORIALS:
 
@@ -15,24 +26,25 @@ LIBGDX
       https://xoppa.github.io/blog/loading-a-scene-with-libgdx/
       3rd tutorial, a bit more lengthy..
 
+--------------------------------------------------------------
 
 BLENDER YOUTUBE
 
   organize vids / channels - just a small portion
 
+==============================================================
 
 UDEMY - UNREAL ENGINE
 
   NEXT TIME
     - don't proceed with lesson 100 yet
 
-    - epic unreal courses: megascans?
-    
     - focus on importing blender mesh(es) to address LIGHT BLEED
       - google "unreal light bleed enclosed area"
 
       - 2 meshes: enclosed with door, floor+walls
       - make full u/v map + textures for walls, floor, and ceiling
+    
       - 3 levels:
         - use lighting tips
         - default lighting
@@ -43,18 +55,12 @@ UDEMY - UNREAL ENGINE
 
     - try .OBJ vs .FBX vs .GLTF vs BLENDER-TO-UNREAL PLUGIN
 
-
-glTF
-  read gltf.txt docs..
-  libgdx..
-  unreal engine
-    - try default plugin again?
-    - try alternate gltf import plugins
-
+--------------------------------------------------------------
 
 Learn Unreal Engine for Blender Users - UE4 Beginner Tutorial
-https://www.youtube.com/watch?v=3jM_VLzRqlE
+  https://www.youtube.com/watch?v=3jM_VLzRqlE
 
+--------------------------------------------------------------
 
 Jayanam playlists
   - watch a couple and maybe expand list

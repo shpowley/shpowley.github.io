@@ -4,6 +4,12 @@ GLTF NOTES
 main: https://www.khronos.org/gltf/
 
 
+libgdx: https://github.com/mgsx-dev/gdx-gltf
+  "full" documentation: https://github.com/mgsx-dev/gdx-gltf/blob/master/docs/DOC.md
+  khronos model examples: https://github.com/mgsx-dev/gdx-gltf/blob/master/demo/README.md
+  lighting: https://github.com/mgsx-dev/gdx-gltf/blob/master/docs/IBL.md
+
+
 web viewers:
   http://threejs.org/editor (viewer/editor)
   https://gltf-viewer.donmccurdy.com/
@@ -16,6 +22,7 @@ web viewers:
 
 app viewers:
   https://github.com/pissang/clay-viewer
+
 
 editors:
   https://gestaltor.io/
@@ -31,9 +38,6 @@ projects: (quite extensive)
 
 
 github projects: https://github.com/topics/gltf2
-
-
-libgdx: https://github.com/mgsx-dev/gdx-gltf
 
 
 unreal engine plugins

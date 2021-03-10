@@ -1,0 +1,235 @@
+Monday 2021-03-01 
+
+  LIBGDX / ANDROID LIVE WALLPAPER
+    molotupi.blogspot.com implementation
+      - android-only (different from more recent libgdx base implementation)
+
+----------
+Tuesday 2021-03-02
+
+  LIBGDX / ANDROID LIVE WALLPAPER
+    molotupi.blogspot.com implementation
+      - older (2013)
+      - android-only (different from more recent libgdx base implementation)
+      - static image only
+
+      * simple example, but VERIFIES LIBGDX WORKS WITH ANDROID LIVE WALLPAPER
+      * some code from this example doesn't appear to work at all (live wallpaper service: offsetChange(), previewStateChange(), iconDropped())
+        - triggered on live wallpaper swipes?
+
+      - default user activity required (similar to vanilla android code examples)
+        - vanilla android code examples
+          D:\code\backup (read-only)\android\LWP_simple_pic_only (static image)
+          D:\code\backup (read-only)\android\LWP_simple (static image + animated gif)
+
+        - just a textbox with onClick() to open live wallpaper preview
+
+        - requires androidx for layout (for consistency with vanilla android)
+        * ANDROIDX - this is required for android-style settings activity
+
+          enable androidx
+            https://developer.android.com/jetpack/androidx#using_androidx_libraries_in_your_project
+
+          enable androidx theme in AndroidManifest.xml
+            https://stackoverflow.com/a/25663447
+
+
+    cyphercove/covetools
+      - primary codebase for creating libgdx live wallpaper
+
+      * created an early-stage covetools test project ("covetools-test") implementing covetools/jitpack instructions
+        D:\code\libgdx\covetools-test
+
+----------
+Wednesday 2021-03-03
+
+  LIBGDX / ANDROID LIVE WALLPAPER
+
+    cyphercove/covetools
+
+      - try to understand example "DoubleHelix" (somewhat complex and this also uses KOTLIN for android code modules - which I haven't studied at all)
+
+
+      "covetools-test" (1st attempt)
+
+        - use the following modules from "DoubleHelix" example to construct my "covetools-test" (simplified with no settings or daydream activities)
+
+          android > androidmanifest.xml
+          android > infoactivity.kt (auto-launches live wallpaper preview)
+          android > lwservice.kt
+          desktop > desktoplauncher.java
+          core > mainrenderer.java
+
+        NO LUCK GETTING "covetools-test" WORKING
+          1 - try again from scratch, emulating "DoubleHelix" ??
+            - advantage of desktop, swipe implementation, daydream..
+
+
+      "CoveTestSHP" (2nd attempt)
+
+        - project structure > latest "android gradle plugin verstion" and "gradle version"
+        - quick desktop run verification: terminal (ALT-T) > "gradlew desktop:run"
+
+        - enable androidx libraries:
+          https://developer.android.com/jetpack/androidx#using_androidx_libraries_in_your_project
+          - modify gradle.properties (root)
+
+        - enable CypherCove/CoveTools
+          https://jitpack.io/#CypherCove/CoveTools
+          - build.gradle (root) > CoveTools version 1.2.6 modify sections "core" "android" and "desktop"
+
+        - increase minSdkVersion in build.gradle (android) > 16
+
+        - modify AndroidManifest.xml to model "DoubleHelix" example
+          - create "CoveTestSHPApplication" (android section) new java class extending Application
+          * android:theme="@style/GdxTheme" -- LIBGDX DEFAULT
+
+          - create "LWService" (android section) new java class extending AndroidLiveWallpaperService (libgdx)
+            - got hung up on kotlin example > java syntax
+            - create "MainRenderer" (core section) new BAREBONES java class
+            - add appropriate section to AndroidManifest.xml
+              - create android > res > xml > wallpaper.xml + AndroidManifest.xml reference
+              * leave out "android:settingsActivity" for now
+
+          - create "InfoActivity" (android section) new java class extending LiveWallpaperInfoActivity
+            - add appropriate section to AndroidManifest.xml
+            - should auto-start live wallpaper chooser
+
+        - modify MainRenderer.java (core section) to use code from default libgdx starter project
+
+        - modify DesktopLauncher.java (desktop section) to use DesktopLiveWallpaperWrapper() and MainRenderer()
+          - note that config options have changed from the "DoubleHelix" example
+            Lwjgl3Application --> LwjglApplication
+            - not sure where to get more info
+
+        NO LUCK GETTING "CoveTestSHP" WORKING
+          1 - similar errors to "covetools-test"
+            - modified AndroidLauncher.java to auto-start live wallpaper, bypassing InfoActivity.java
+            - tried downgrading to covetools 1.2.4
+
+          * THERE ISN'T A DISCERNABLE ERROR TO DIAGNOSE THE ISSUE
+
+----------
+Thursday 2021-03-04
+
+  LIBGDX / ANDROID LIVE WALLPAPER
+
+    RE-CREATE "simpleLWPoldstyle" (molotupi.blogspot.com implementation)
+
+      project "SimpleLWPNew"
+        - while trying to create an exact replica of "simpleLWPoldstyle" with more understandable class names, I consistently encountered problems starting the wallpaper service -- just like "CoveTestSHP"
+        * in AndroidManifest.xml > service I CONSISTENTLY MISTYPED 'android:permission="android.permission.BIND_WALLPAPER"' with 'android:permission="android:permission.BIND_WALLPAPER"'
+          - notice the extra :
+
+        * ANYWAYS, I applied this fix to "CoveTestSHP" and THIS SUDDENLY WORKS TOO
+
+----------
+Tuesday 2021-03-09
+
+  LIBGDX / ANDROID LIVE WALLPAPER
+
+    "CoveTestSHP" (CypherCove/CoveTools)
+
+      - last time, I got a static image to work for the live wallpaper using libgdx + covetools
+
+      - today, the plan is to attempt to use code from an early 3d libgdx code test from "Thursday 2020-11-26"
+
+        - lighted, 3d cube built in code with touch-camera control
+        https://xoppa.github.io/blog/basic-3d-using-libgdx/
+
+        *** SUCCESSFUL TEST ***
+
+          - I literally copied the main libgdx rendering source code (Basic3DTest.java => MainRenderer.java) without modifications
+
+          * INTERESTING FEATURE - the touch-camera control worked EXACTLY like the original test, but as a live wallpaper
+
+            - while this might be good, IT FEELS ODD BEING ABLE TO THE CONTROL CAMERA ROTATION/SPIN AND PINCH-ZOOM FEATURES DIRECTLY ON THE LIVE WALLPAPER
+
+            * libgdx "CameraInputController" enables this as out-of-the-box default behavior (touch camera spin-rotation around center point + pinch-zoom)
+
+            * CoveTools LiveWallpaperAdapter has a method "render(float xOffset, float yOffset, float xOffsetLooping, float xOffsetFake)" which isn't used at the moment, but is intended to handle swipe gestures on the live wallpaper
+
+            - so the question is how best to take advantage of this?
+              - my INITIAL THOUGHT is to only allow camera spin/rotation + pinch-zoom in a game/art-preview mode and swipe-gestures during the live wallpaper modes, but I'm not sure yet
+
+
+  LIBGDX / GLTF + BOOM BOX
+
+    - next is to create a new libgdx project based off of the gltf demo (libgdx project "gdx-gltf") from "Monday 2021-02-15" and "Wednesday 2021-02-17" and get it to work as a standalone project
+
+    NEW PROJECT SETUP "glTFLuckyCatSHP"
+
+      https://github.com/mgsx-dev/gdx-gltf#getting-started
+      + https://jitpack.io/#mgsx-dev/gdx-gltf (followed these instructions for "core" and "desktop")
+
+      - copy/paste code from the "GLTFQuickStartExample" class of the demo project + boom box .gltf asset
+        
+        *** SUCCESSFUL TEST (WITH CAVEATS) ***
+        
+        - other 3d assets can't be used yet; I NEED A BETTER UNDERSTANDING OF LIBGDX 3D API (cameras, etc.)
+        
+        - ONLY THE BOOMBOX GLTF CAN BE VIEWED CORRECTLY
+          - other assets when imported and viewed in blender are much larger than the boom box gltf, so it appears the asset scale is at issue
+
+        - the "GLTFDemo" class code example is much more complicated, but automatically handles the camera view scaling (along with pinch-zoom + camera spin/rotation) >>>>>>>> RETURN TO THIS PROJECT LATER AND USE AS A TEMPLATE
+          
+
+  LIBGDX / ANDROID LIVE WALLPAPER / GLTF
+
+    - proof-of-concept demonstrating whether or not covetools + gdx-gltf will work
+    - further modifying "CoveTestSHP"
+
+    *** SUCCESSFUL TEST (PARTIAL) ***
+
+      - SOONER OR LATER, I EXPECTED A MAJOR HICCUP
+
+      + .GLTF SUCCESSFULLY LOADS AS A LIVE WALLPAPER
+
+      - PERFORMANCE IS HORRIBLE ON HARDWARE
+          
+          NOKIA 6.1
+            17-18 FPS ("glTFLuckyCat") and 9-11 FPS ("CoveTestSHP" live wallpaper)
+
+          MOTO G (gen 1)
+            ~10 FPS
+
+          emulator
+            ~57 FPS
+
+    OBSERVATIONS AND WHAT'S NEXT
+
+      - "glTFLuckyCat" and "CoveTestSHP" have identical code implementations, where "CoveTestSHP" runs as a live wallpaper
+
+      - physical device performance is horrible, whereas the emulator runs near 60 FPS (just guessing - something to do with x86 or desktop graphics card?)
+        - bookmarked some performance-related links in "libgdx performance" tab group
+        - also, check libgdx discord
+
+      - text overlay showing FPS isn't ideal ..check out the primary demo in the glTFDemo project perhaps
+        + GLProfiler
+        - is there a built-in android studio FPS profiler?
+
+      - adapt primary demo in the glTFDemo project for use with my LuckyCat glTF
+
+----------
+Thursday 2021-03-11
+
+
+
+
+
+PLAN ==> move to today.txt
+
+  lucky cat gltf project
+
+  document live wallpaper coding instructions
+  - document BASIC ANDROID LIVE WALLPAPER coding instructions
+  - document BASIC LIBGDX-VARIANT ANDROID LIVE WALLPAPER coding instructions
+  - document BASIC LIBGDX+COVETOOLS-VARIANT ANDROID LIVE WALLPAPER coding instructions
+    - check out "Thursday 2020-03-04 - good live wallpaper info in link 1"
+
+  - live wallpaper plan:
+    - cyphercove technique + gltf
+
+  - live wallpapers: animated 3d models for the android mascot versions
+
+  - NFT digital artwork

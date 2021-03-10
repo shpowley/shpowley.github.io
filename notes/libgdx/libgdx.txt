@@ -293,12 +293,9 @@ TRAINING
       https://github.com/libgdx/libgdx/wiki
 
     live wallpaper
-      https://dbeef.lol/2019/09/29/creating-live-wallpaper-in-android-studio/
-      https://dbeef.lol/2019/09/29/creating-live-wallpaper-in-libgdx/
       https://molotuspi.blogspot.com/2013/09/how-to-make-simple-android-live.html
       https://stackoverflow.com/questions/20804976/how-to-make-android-live-wallpaper-with-libgdx (old)
       https://creatiosoft.com/make-livewallpapers-through-libgdx/
-      https://stackoverflow.com/questions/52466477/android-libgdx-livewallpaper-does-not-stop
 
     overlap2d
       open-source visual editor

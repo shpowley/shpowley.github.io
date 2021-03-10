@@ -235,7 +235,9 @@ Thursday 2020-11-26
       https://xoppa.github.io/blog/basic-3d-using-libgdx/
         
         THIS IS THE VERY 1ST TUTORIAL that creates a basic 3d scene with lighting and a 3d cube created in code. camera spins the entire scene and works in desktop and android.
+
         I needed to create a new android studio project and I chose to type it in.
+          D:\code\libgdx\xoppa-3d-tutorials\tutorial-1-basics
 
         possibly useful comments:
 

@@ -1,3 +1,5 @@
+BROAD LIST OF TASKS (PERUSE & ADD/REMOVE)
+
 blender "retopology": study techniques + notes
 
 blender "retopology": reduce lucky cat vertex count => .fbx export => .c3b => cocos2d-x gyro test project import + simple test => compare vertex count vs the original
@@ -11,8 +13,6 @@ cocos2d-x: try viewing baked metal material => is this acceptable?
 blender "baking": complex model feature set => baked texture => placed on an simplified version of the same model
 
 blender "baking": complex model feature set => baked texture NORMAL MAP => placed on an simplified version of the same model
-
-unreal engine: mobile sensors
 
 blender "rigging": study techniques + notes
 
@@ -40,10 +40,6 @@ project (cocos2d-x/libgdx): top-down accelerometer-controlled project => early t
 
 cocos2d-x: complete simplified box2d + sensor template
 
-opengl es 2: deep sigh.. got the e-book already
-
-opengl es 2: shaders to create / granular control of materials on .obj + incorporate textures
-
 unreal engine: learn unreal engine for blender users - ue4 beginner tutorial (youtube @25:38)
 udemy: blender 2.8 the complete guide from beginner to pro
 udemy: unreal engine c++ developer: learn c++ and make video games
@@ -59,5 +55,3 @@ cocos2d-x: cpp_tests => study and make notes of relevant code samples
 unreal engine: mobile ui overlay controls
 
 coco2d-x: .obj vs .fbx/.c3b comparison - resource handling, import issues, orientation/size, multiple objects, textures, etc.
-
-

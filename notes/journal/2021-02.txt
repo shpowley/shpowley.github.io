@@ -159,7 +159,7 @@ Thursday 2021-02-18
 
     project list.txt - my live wallpaper related projects
 
-    libgdx.txt - see live wallpaper links (possibly relevant)
+    libgdx.txt - see live wallpaper links
 
 
   just out of curiousity, my notes go back to 2018-10 ==> a little over 2 years not counting some earlier web stuff as far back as frisco, tx
@@ -181,3 +181,30 @@ Friday 2021-02-19
 
 ----------
 Monday 2021-02-22
+
+  LIBGDX / ANDROID LIVE WALLPAPER
+
+    dbeef.lol - NO LUCK, THIS SEEMS INCOMPLETE
+
+      - download source from specified github, read guides and compare to android live wallpaper projects mentioned on "Friday 2021-02-19"
+      
+      https://dbeef.lol/2019/09/29/creating-live-wallpaper-in-android-studio/
+      https://dbeef.lol/2019/09/29/creating-live-wallpaper-in-libgdx/
+
+
+    discord search
+      https://github.com/CypherCove/DoubleHelix (libgdx live wallpaper reference)
+      https://github.com/CypherCove/CoveTools (libgdx live wallpaper utilities)
+
+      - complex stuff
+      - got the reference DoubleHelix project running by commenting all the "release" specific code out
+      - reference project might be useful for intended best practices
+      * "CoveTools" is probably what I want to actually use, maybe in conjunction with the 3d cube project source
+
+
+    web search
+      https://molotuspi.blogspot.com/2013/09/how-to-make-simple-android-live.html
+      
+      - this project is a bit old from 2013
+      - may be worth creating for comparisons to android-only and CypherCove implementations
+      - basis for "3D Ganesh Live Wallpaper" (kinda crappy app, but still..)
